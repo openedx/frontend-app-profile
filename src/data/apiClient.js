@@ -4,6 +4,7 @@ import { configuration } from '../config';
 
 const apiClient = getAuthenticatedAPIClient({
   appBaseUrl: configuration.BASE_URL,
+  authBaseUrl: process.env.LMS_BASE_URL,
   loginUrl: configuration.LOGIN_URL,
   logoutUrl: configuration.LOGOUT_URL,
   csrfTokenApiPath: process.env.CSRF_TOKEN_API_PATH,
