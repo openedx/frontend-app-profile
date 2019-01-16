@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import SiteFooter from '@edx/frontend-component-footer';
 
 import apiClient from './data/apiClient';
+import { handleTrackEvents } from './analytics';
 import UserAccount from './components/UserAccount';
 import store from './data/store';
 import FooterLogo from '../assets/edx-footer.png';
@@ -37,6 +38,7 @@ const App = () => (
           redditUrl={process.env.REDDIT_URL}
           appleAppStoreUrl={process.env.APPLE_APP_STORE_URL}
           googlePlayUrl={process.env.GOOGLE_PLAY_URL}
+          handleAllTrackEvents={handleTrackEvents}
         />
       </div>
     </Router>
