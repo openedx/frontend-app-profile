@@ -1,17 +1,22 @@
 import { applyMiddleware, createStore } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 import thunkMiddleware from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction';
 import { createLogger } from 'redux-logger';
 
 import apiClient from './apiClient';
-import reducers from './reducers';
+import reducers from './reducers/RootReducer';
+import rootSaga from '../sagas/RootSaga';
 
 const loggerMiddleware = createLogger();
+const sagaMiddleware = createSagaMiddleware();
 const initialState = apiClient.getAuthenticationState();
 const store = createStore(
   reducers,
   initialState,
-  composeWithDevTools(applyMiddleware(thunkMiddleware, loggerMiddleware)),
+  composeWithDevTools(applyMiddleware(thunkMiddleware, sagaMiddleware, loggerMiddleware)),
 );
+
+sagaMiddleware.run(rootSaga);
 
 export default store;
