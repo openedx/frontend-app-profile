@@ -9,7 +9,7 @@ import { fetchUserAccount, UserAccountApiService } from '@edx/frontend-auth';
 import apiClient from './data/apiClient';
 import { handleTrackEvents, identifyUser } from './analytics';
 import SiteHeader from './containers/SiteHeader';
-import UserAccount from './components/UserAccount';
+import UserProfile from './containers/UserProfile';
 import store from './data/store';
 import HeaderLogo from '../assets/edx-sm.png';
 import FooterLogo from '../assets/edx-footer.png';
@@ -34,7 +34,7 @@ class App extends Component {
             />
             <main>
               <Switch>
-                <Route exact path="/" component={UserAccount} />
+                <Route exact path="/" component={UserProfile} />
               </Switch>
             </main>
             <SiteFooter

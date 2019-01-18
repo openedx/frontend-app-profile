@@ -23,17 +23,23 @@
     "access": "public"
   },
   "dependencies": {
-    "@edx/edx-bootstrap": "^0.4.3",
+    "@edx/edx-bootstrap": "git://github.com/edx/edx-bootstrap.git#update-with-documentation-site",
     "@edx/frontend-auth": "^2.0.0",
     "@edx/frontend-component-footer": "^2.0.0",
     "@edx/frontend-component-site-header": "^1.0.1",
-    "@edx/paragon": "^3.7.2",
+    "@edx/paragon": "^3.8.3",
+    "@fortawesome/fontawesome-svg-core": "^1.2.14",
+    "@fortawesome/free-regular-svg-icons": "^5.7.1",
+    "@fortawesome/free-solid-svg-icons": "^5.7.1",
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.2.1",
+    "camelcase-keys": "^5.0.0",
     "classnames": "^2.2.5",
     "email-prop-type": "^1.1.5",
     "font-awesome": "^4.7.0",
     "history": "^4.7.2",
+    "i18n-iso-countries": "^3.7.8",
     "prop-types": "^15.5.10",
     "query-string": "^5.1.1",
     "react": "^16.2.0",
@@ -42,10 +48,14 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.9",
-    "redux": "^3.7.2",
+    "react-transition-group": "^2.5.3",
+    "reactstrap": "^7.1.0",
+    "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.2",
     "redux-logger": "^3.0.6",
+    "redux-saga": "^1.0.1",
     "redux-thunk": "^2.2.0",
+    "snakecase-keys": "^2.1.0",
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
@@ -89,6 +99,7 @@
     "webpack-merge": "^4.1.1"
   },
   "jest": {
+    "testURL": "http://localhost/",
     "setupFiles": [
       "./src/setupTest.js"
     ],
