@@ -2,19 +2,33 @@ import React from 'react';
 import { Icon, Hyperlink } from '@edx/paragon';
 import {
   Container, Row, Col,
-  Button,
-  FormGroup, Input, Label,
+  Button, Input, Label,
   Card, CardImg, CardBody, CardTitle,
 } from 'reactstrap';
-
+import EditableContent from './EditableContent';
 
 class UserAccount extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      getTheLinterOffMyBack: true,
+      currentlyEditingField: null,
     };
+
+    this.resetEditing = this.resetEditing.bind(this);
+    this.editField = this.editField.bind(this);
+  }
+
+  resetEditing() {
+    this.setState({
+      currentlyEditingField: null,
+    });
+  }
+
+  editField(fieldName) {
+    this.setState({
+      currentlyEditingField: fieldName,
+    });
   }
 
   render() {
@@ -115,9 +129,50 @@ class UserAccount extends React.Component {
               </Row>
             </Col>
             <Col md={8} lg={9} className="pt-md-1">
+              <EditableContent
+                fieldName="about"
+                isEditing={this.state.currentlyEditingField === 'about'}
+                disabled={false}
+                renderStatic={props => ( // eslint-disable-line no-unused-vars
+                  <React.Fragment>
+                    <h3>About {firstName}</h3>
+                    <p>{aboutMe}</p>
+                  </React.Fragment>
+                )}
+                renderEditable={props => ( // eslint-disable-line no-unused-vars
+                  <React.Fragment>
+                    <h3>
+                      About {firstName}
+                      <button className="btn btn-sm btn-link" onClick={() => this.editField(props.fieldName)}>
+                        <Icon className="fa fa-pencil" /> Edit
+                      </button>
+                      <br />
+                      <span className="ml-auto small text-muted"><Icon className="fa fa-eye-slash" /> Everyone</span>
+                    </h3>
 
-              <h3>About {firstName}</h3>
-              <p>{aboutMe}</p>
+                    <p>{aboutMe}</p>
+                  </React.Fragment>
+                )}
+                renderEditing={props => ( // eslint-disable-line no-unused-vars
+                  <React.Fragment>
+                    <Label tag="h3" for="exampleText">About {firstName}</Label>
+                    <Input defaultValue={aboutMe} type="textarea" name="text" id="exampleText" />
+                    <Row className="align-items-center">
+                      <Col className="mt-3 mb-3 flex-shrink-0">
+                        <Label className="d-inline-block mb-0 mr-2" size="sm" for="exampleSelect">Who can see this:</Label>
+                        <Input className="d-inline-block w-auto" bsSize="sm" type="select" name="select" id="exampleSelect">
+                          <option>Just me</option>
+                          <option>Everyone</option>
+                        </Input>
+                      </Col>
+                      <Col className="col-auto mt-3 mb-3">
+                        <Button color="link" onClick={this.resetEditing}>Discard Changes</Button>
+                        <Button className="ml-2" color="primary">Save Changes</Button>
+                      </Col>
+                    </Row>
+                  </React.Fragment>
+                )}
+              />
 
               <div className="d-md-none">
                 {renderEducationAndSocial()}
@@ -126,7 +181,7 @@ class UserAccount extends React.Component {
               <h3>My Certificates</h3>
               <Row>
                 {certificates.map(({ title }) => (
-                  <Col sm={6} lg={4}>
+                  <Col key={title} sm={6} lg={4}>
                     <Card className="mb-4">
                       <CardImg top src="https://placeholdit.imgix.net/~text?txt=Certificate&w=300&h=100" />
                       <CardBody>
@@ -140,7 +195,7 @@ class UserAccount extends React.Component {
               <h3>Courses I’ve Taken</h3>
               <Row>
                 {courses.map(({ title }) => (
-                  <Col sm={6} lg={4}>
+                  <Col key={title} sm={6} lg={4}>
                     <Card className="mb-4">
                       <CardImg top src="https://placeholdit.imgix.net/~text?txt=Certificate&w=300&h=100" />
                       <CardBody>
@@ -152,25 +207,6 @@ class UserAccount extends React.Component {
               </Row>
             </Col>
           </Row>
-
-          <h1>Utils for later</h1>
-          <p>{this.state.getTheLinterOffMyBack}</p>
-
-          <FormGroup>
-            <Label className="d-inline-block mr-2" size="sm" for="exampleSelect">Who can see this:</Label>
-            <Input className="d-inline-block w-auto" size="sm" type="select" name="select" id="exampleSelect">
-              <option>Just me</option>
-              <option>Everyone</option>
-            </Input>
-          </FormGroup>
-          <div>
-            <span className="small"><Icon className="fa fa-eye-slash" /> Everyone</span>
-            <span className="small"><Icon className="fa fa-eye" /> Just me</span>
-          </div>
-          <div>
-            <Button color="link">Discard Changes</Button>
-            <Button className="ml-2" color="primary">Save Changes</Button>
-          </div>
         </Container>
       </div>
     );
