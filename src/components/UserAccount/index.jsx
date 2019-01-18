@@ -9,13 +9,33 @@ import {
 
 
 function UserAccount() {
+  const bannerImage = 'https://source.unsplash.com/featured/1000x200/?colored,pattern';
+  const profileImage = 'https://source.unsplash.com/featured/200x200/?face';
+  const displayName = 'Hermione Granger';
+  const username = 'itslevioooosa20';
+  const location = 'London, UK';
+  const firstName = 'Hermione'; // How can we get the first name in an 18n friendly way?
+
+  const education = 'Bachelor’s Degree';
+  const linkedin = {
+    url: 'https://www.linkedin.com/in/hermione-granger',
+    display: 'https://www.linkedin.com/in/hermione-granger',
+  };
+  const twitter = {
+    url: 'https://www.twitter.com/hermione_granger',
+    display: 'https://www.twitter.com/hermione_granger',
+  };
+  const personalWebsite = 'http://google.com';
+
+  const aboutMe = 'These are some words about me and who I am as a person.';
   const certificates = [{ title: 'Certificate 1' }, { title: 'Certificate 2' }, { title: 'Certificate 3' }];
   const courses = [{ title: 'Course ' }, { title: 'Course 2' }, { title: 'Course 3' }];
+
 
   const renderEducationAndSocial = () => (
     <React.Fragment>
       <h3>Education</h3>
-      <p>Bachelor’s Degree</p>
+      <p>{education}</p>
 
       <h3>Social Links</h3>
       <dl>
@@ -23,8 +43,8 @@ function UserAccount() {
         <dd>
           <Hyperlink
             className="word-break-all"
-            destination="https://www.linkedin.com/in/hermione-granger"
-            content="https://www.linkedin.com/in/hermione-granger"
+            destination={linkedin.url}
+            content={linkedin.display}
           />
         </dd>
 
@@ -32,8 +52,8 @@ function UserAccount() {
         <dd>
           <Hyperlink
             className="word-break-all"
-            destination="https://www.twitter.com/hermione_granger"
-            content="https://www.twitter.com/hermione_granger"
+            destination={twitter.url}
+            content={twitter.display}
           />
         </dd>
 
@@ -41,8 +61,8 @@ function UserAccount() {
         <dd>
           <Hyperlink
             className="word-break-all"
-            destination="http://www.google.com"
-            content="www.google.com"
+            destination={personalWebsite}
+            content={personalWebsite}
           />
         </dd>
       </dl>
@@ -54,12 +74,12 @@ function UserAccount() {
     <div>
       <div
         style={{
-          backgroundImage: 'url(https://source.unsplash.com/featured/1000x200/?colored,pattern)',
+          backgroundImage: `url(${bannerImage})`,
         }}
         className="bg-banner d-none d-md-block p-relative"
       >
         <Container fluid>
-          <img className="avatar mw-100 p-absolute rounded-circle d-block" src="https://source.unsplash.com/featured/200x200/?face" alt="avatar" />
+          <img className="avatar mw-100 p-absolute rounded-circle d-block" src={profileImage} alt="avatar" />
         </Container>
       </div>
 
@@ -69,13 +89,13 @@ function UserAccount() {
             <Row className="mb-3">
               <Col className="d-flex align-items-center d-md-block">
                 <div className="mr-3 d-md-none" style={{ flexBasis: '30%' }}>
-                  <img className="mw-100 rounded-circle d-block" src="https://source.unsplash.com/featured/200x200/?face" alt="avatar" />
+                  <img className="mw-100 rounded-circle d-block" src={profileImage} alt="avatar" />
                 </div>
                 <div>
-                  <h1 className="h2 mb-0">Hermione Granger</h1>
+                  <h1 className="h2 mb-0">{displayName}</h1>
                   <ul className="list-unstyled mb-0">
-                    <li className="mb-2">itslevioooosa20</li>
-                    <li>London, UK</li>
+                    <li className="mb-2">{username}</li>
+                    <li>{location}</li>
                   </ul>
                 </div>
               </Col>
@@ -88,8 +108,8 @@ function UserAccount() {
           </Col>
           <Col md={8} lg={9} className="pt-md-1">
 
-            <h3>About Hermione</h3>
-            <p>These are some words about me and who I am as a person.</p>
+            <h3>About {firstName}</h3>
+            <p>{aboutMe}</p>
 
             <div className="d-md-none">
               {renderEducationAndSocial()}
