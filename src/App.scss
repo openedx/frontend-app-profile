@@ -10,3 +10,23 @@ $fa-font-path: "~font-awesome/fonts";
 .word-break-all {
   word-break: break-all !important;
 }
+.w-auto {
+  width: auto !important;
+}
+
+.container-fluid {
+  max-width: 1200px;
+}
+
+.bg-banner {
+  height: 12rem;
+  margin-bottom: 6rem;
+  background-size: cover;
+  position: relative;
+  .avatar {
+    position: absolute;
+    top: 100%;
+    transform: translateY(-50%);
+    width: 12rem;
+  }
+}
