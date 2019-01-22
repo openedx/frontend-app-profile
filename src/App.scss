@@ -30,3 +30,32 @@ $fa-font-path: "~font-awesome/fonts";
     width: 12rem;
   }
 }
+
+.editable-content-container {
+  position: relative;
+  transition: height .25s ease;
+  display: flex;
+  flex-direction: column;
+
+  .editable-content {
+    transition: opacity .25s ease;
+  }
+
+  .crossfade-enter {
+    top: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    opacity: 0;
+  }
+  .crossfade-enter-active {
+    opacity: 1;
+  }
+  .crossfade-exit {
+    pointer-events: none;
+    opacity: 1;
+  }
+  .crossfade-exit-active {
+    opacity: 0;
+  }
+}
