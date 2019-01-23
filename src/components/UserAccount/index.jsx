@@ -174,16 +174,12 @@ UserAccount.propTypes = {
   }),
   aboutMe: PropTypes.string,
   bio: PropTypes.string,
-  certificates: PropTypes.shape([
-    PropTypes.shape({
-      title: PropTypes.string,
-    }),
-  ]),
-  courses: PropTypes.shape([
-    PropTypes.shape({
-      title: PropTypes.string,
-    }),
-  ]),
+  certificates: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string,
+  })),
+  courses: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string,
+  })),
 };
 
 UserAccount.defaultProps = {

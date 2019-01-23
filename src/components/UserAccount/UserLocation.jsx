@@ -24,12 +24,12 @@ function UserLocation(props) {
       disabled={false}
       renderStatic={() => (
         <React.Fragment>
-          <li>{userLocation}</li>
+          {userLocation}
         </React.Fragment>
       )}
       renderEditable={() => (
         <React.Fragment>
-          <li>{userLocation} <EditButton onClick={() => onEdit('userLocation')} /></li>
+          {userLocation} <EditButton onClick={() => onEdit('userLocation')} />
         </React.Fragment>
       )}
       renderEditing={() => (
@@ -46,7 +46,7 @@ export default UserLocation;
 
 
 UserLocation.propTypes = {
-  tag: PropTypes.oneOf([PropTypes.func, PropTypes.string]),
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   userLocation: PropTypes.string,
   editMode: PropTypes.bool,
   onEdit: PropTypes.func,
