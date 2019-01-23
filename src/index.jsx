@@ -4,12 +4,12 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import SiteFooter from '@edx/frontend-component-footer';
-import { fetchUserProfile } from '@edx/frontend-auth';
+import { fetchUserAccount, UserAccountApiService } from '@edx/frontend-auth';
 
 import apiClient from './data/apiClient';
 import { handleTrackEvents, identifyUser } from './analytics';
 import SiteHeader from './containers/SiteHeader';
-import UserAccount from './components/UserAccount';
+import UserAccount from './containers/UserAccount';
 import store from './data/store';
 import HeaderLogo from '../assets/edx-sm.png';
 import FooterLogo from '../assets/edx-footer.png';
@@ -18,7 +18,8 @@ import './App.scss';
 class App extends Component {
   componentDidMount() {
     const { username } = store.getState().authentication;
-    store.dispatch(fetchUserProfile(apiClient, username));
+    const userAccountApiService = new UserAccountApiService(apiClient, process.env.LMS_BASE_URL);
+    store.dispatch(fetchUserAccount(userAccountApiService, username));
   }
 
   render() {

@@ -35,7 +35,17 @@ function Bio({
       renderEditing={(state, setState) => ( // eslint-disable-line no-unused-vars
         <React.Fragment>
           <h3>{title}</h3>
-          <Input defaultValue={bio} type="textarea" name="text" id="exampleText" />
+          <Input
+            defaultValue={state.bio}
+            type="textarea"
+            name="text"
+            id="exampleText"
+            onChange={(e) => {
+              setState({
+                bio: e.target.value,
+              });
+            }}
+          />
         </React.Fragment>
       )}
     />

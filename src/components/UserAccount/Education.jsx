@@ -6,17 +6,7 @@ import EditableContent from './EditableContent';
 import EditButton from './EditButton';
 import Visibility from './Visibility';
 
-const valueMap = {
-  p: 'Doctorate',
-  m: 'Master’s or professional degree',
-  b: 'Bachelor’s degree',
-  a: 'Associate degree',
-  hs: 'Secondary/high school',
-  jhs: 'Junior secondary/junior high/middle school',
-  el: 'Elementary/primary school',
-  none: 'No formal education',
-  other: 'Other education',
-};
+import EDUCATION from '../../constants/education';
 
 function Education({ education, visibility, ...editableContentProps }) {
   return (
@@ -29,32 +19,31 @@ function Education({ education, visibility, ...editableContentProps }) {
       renderStatic={() => (
         <React.Fragment>
           <h3>Education</h3>
-          <p>{education.name}</p>
+          <p>{EDUCATION[education]}</p>
         </React.Fragment>
       )}
       renderEditable={onClickEdit => (
         <React.Fragment>
           <h3>Education <EditButton onClick={onClickEdit} /> <br /><Visibility to="Everyone" /></h3>
-          <p>{education.name}</p>
+          <p>{EDUCATION[education]}</p>
         </React.Fragment>
       )}
       renderEditing={(state, setState) => (
         <React.Fragment>
           <h3>Education</h3>
           <Input
-            value={state.education.value}
-            onChange={e => setState({
-              education: {
-                value: e.target.value,
-                name: valueMap[e.target.value],
-              },
-            })}
+            value={state.education}
+            onChange={(e) => {
+              setState({
+                education: e.target.value,
+              });
+            }}
             className="w-100"
             type="select"
             name="select"
           >
-            {Object.keys(valueMap).map(educationKey => (
-              <option key={educationKey} value={educationKey}>{valueMap[educationKey]}</option>
+            {Object.keys(EDUCATION).map(educationKey => (
+              <option key={educationKey} value={educationKey}>{EDUCATION[educationKey]}</option>
             ))}
           </Input>
         </React.Fragment>

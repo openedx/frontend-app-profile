@@ -8,17 +8,17 @@ import EditButton from './EditButton';
 import Visibility from './Visibility';
 
 function SocialLinks({
-  links,
+  socialLinks,
   visibility,
   ...editableContentProps
 }) {
-  const linkKeys = Object.keys(links);
+  const linkKeys = Object.keys(socialLinks);
 
   return (
     <EditableContent
       {...editableContentProps}
       values={{
-        links,
+        socialLinks,
         visibility,
       }}
       renderStatic={() => (
@@ -27,12 +27,12 @@ function SocialLinks({
           <dl>
             {linkKeys.map(linkName => (
               <React.Fragment key={linkName}>
-                <dt>{links[linkName].title}</dt>
+                <dt>{socialLinks[linkName].title}</dt>
                 <dd>
                   <Hyperlink
                     className="word-break-all"
-                    destination={links[linkName].url}
-                    content={links[linkName].display}
+                    destination={socialLinks[linkName].url}
+                    content={socialLinks[linkName].display}
                   />
                 </dd>
               </React.Fragment>
@@ -46,12 +46,12 @@ function SocialLinks({
           <dl>
             {linkKeys.map(linkName => (
               <React.Fragment key={linkName}>
-                <dt>{links[linkName].title}</dt>
+                <dt>{socialLinks[linkName].title}</dt>
                 <dd>
                   <Hyperlink
                     className="word-break-all"
-                    destination={links[linkName].url}
-                    content={links[linkName].display}
+                    destination={socialLinks[linkName].url}
+                    content={socialLinks[linkName].display}
                   />
                 </dd>
               </React.Fragment>
@@ -65,9 +65,20 @@ function SocialLinks({
           <dl>
             {linkKeys.map(linkName => (
               <React.Fragment key={linkName}>
-                <dt>{links[linkName].title}</dt>
+                <dt>{socialLinks[linkName].title}</dt>
                 <dd>
-                  <Input defaultValue={links[linkName].url} type="text" name="text" id="exampleText" />
+                  <Input
+                    defaultValue={state.socialLinks[linkName].url}
+                    type="text"
+                    name={linkName}
+                    id="exampleText"
+                    onChange={(e) => {
+                      const newState = { ...state.socialLinks };
+                      newState[e.target.name].url = e.target.value;
+                      newState[e.target.name].display = e.target.value;
+                      setState({ socialLinks: newState });
+                    }}
+                  />
                 </dd>
               </React.Fragment>
             ))}
@@ -82,7 +93,7 @@ function SocialLinks({
 export default SocialLinks;
 
 SocialLinks.propTypes = {
-  links: PropTypes.shape({
+  socialLinks: PropTypes.shape({
     linkedIn: PropTypes.shape({
       title: PropTypes.string,
       url: PropTypes.string,
@@ -103,6 +114,6 @@ SocialLinks.propTypes = {
 };
 
 SocialLinks.defaultProps = {
-  links: {},
+  socialLinks: {},
   visibility: 'Everyone',
 };
