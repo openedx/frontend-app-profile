@@ -30,11 +30,9 @@ function MyCourses(props) {
 export default MyCourses;
 
 MyCourses.propTypes = {
-  courses: PropTypes.shape([
-    PropTypes.shape({
-      title: PropTypes.string,
-    }),
-  ]),
+  courses: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string,
+  })),
 };
 
 MyCourses.defaultProps = {

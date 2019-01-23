@@ -31,11 +31,9 @@ function MyCertificates(props) {
 export default MyCertificates;
 
 MyCertificates.propTypes = {
-  certificates: PropTypes.shape([
-    PropTypes.shape({
-      title: PropTypes.string,
-    }),
-  ]),
+  certificates: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string,
+  })),
 };
 
 MyCertificates.defaultProps = {

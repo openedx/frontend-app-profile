@@ -57,7 +57,10 @@ function Education(props) {
 export default Education;
 
 Education.propTypes = {
-  education: PropTypes.string,
+  education: PropTypes.shape({
+    name: PropTypes.string,
+    value: PropTypes.string,
+  }),
   editMode: PropTypes.bool,
   onEdit: PropTypes.func,
   onCancel: PropTypes.func,

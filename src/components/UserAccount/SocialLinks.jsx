@@ -28,7 +28,7 @@ function SocialLinks(props) {
           <h3>Social Links</h3>
           <dl>
             {linkNames.map(linkName => (
-              <React.Fragment>
+              <React.Fragment key={linkName}>
                 <dt>{links[linkName].title}</dt>
                 <dd>
                   <Hyperlink
@@ -47,7 +47,7 @@ function SocialLinks(props) {
           <h3>Social Links <EditButton onClick={() => onEdit('socialLinks')} /> <br /><Visibility to="Everyone" /></h3>
           <dl>
             {linkNames.map(linkName => (
-              <React.Fragment>
+              <React.Fragment key={linkName}>
                 <dt>{links[linkName].title}</dt>
                 <dd>
                   <Hyperlink
@@ -66,7 +66,7 @@ function SocialLinks(props) {
           <h3>Social Links</h3>
           <dl>
             {linkNames.map(linkName => (
-              <React.Fragment>
+              <React.Fragment key={linkName}>
                 <dt>{links[linkName].title}</dt>
                 <dd>
                   <Input defaultValue={links[linkName].url} type="text" name="text" id="exampleText" />
