@@ -9,6 +9,7 @@ import EditControls from './EditControls';
 
 function UserLocation(props) {
   const {
+    tag,
     userLocation,
     editMode,
     onEdit,
@@ -18,6 +19,7 @@ function UserLocation(props) {
 
   return (
     <EditableContent
+      tag={tag}
       isEditing={editMode}
       disabled={false}
       renderStatic={() => (
@@ -44,6 +46,7 @@ export default UserLocation;
 
 
 UserLocation.propTypes = {
+  tag: PropTypes.oneOf([PropTypes.func, PropTypes.string]),
   userLocation: PropTypes.string,
   editMode: PropTypes.bool,
   onEdit: PropTypes.func,
@@ -52,6 +55,7 @@ UserLocation.propTypes = {
 };
 
 UserLocation.defaultProps = {
+  tag: 'li',
   userLocation: '',
   editMode: false,
   onEdit: () => {},
