@@ -13,7 +13,7 @@ class EditableContent extends React.Component {
 
     this.state = {
       height: null,
-      values: props.values, // maybe should do this on change to editing mode not on mount?
+      values: null, // maybe should do this on change to editing mode not on mount?
       containerRef: this.container,
       // Mirroring props in state as described here:
       // https://github.com/reactjs/rfcs/blob/master/text/0006-static-lifecycle-methods.md#state-derived-from-propsstate
@@ -111,11 +111,13 @@ class EditableContent extends React.Component {
 
         <CSSTransition in={mode === 'editing'} {...transitionProps}>
           <div ref={isEditing ? this.content : null} className="editable-content">
-            {renderEditing(this.state.values, this.setValueState)}
+            {renderEditing(this.state.values || this.props.values, this.setValueState)}
             <EditControls
               onCancel={this.onClickCancel}
               onSave={this.onClickSave}
-              visibility={this.state.values.visibility}
+              visibility={
+                this.state.values ? this.state.values.visibility : this.props.values.visibility
+              }
               onVisibilityChange={e => this.setValueState({
                 visibility: e.target.value,
               })}

@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@edx/edx-bootstrap": "^0.4.3",
-    "@edx/frontend-auth": "^1.2.1",
+    "@edx/frontend-auth": "^2.0.0",
     "@edx/frontend-component-footer": "^2.0.0",
     "@edx/frontend-component-site-header": "^1.0.1",
     "@edx/paragon": "^3.8.3",
@@ -34,6 +34,7 @@
     "email-prop-type": "^1.1.5",
     "font-awesome": "^4.7.0",
     "history": "^4.7.2",
+    "i18n-iso-countries": "^3.7.8",
     "prop-types": "^15.5.10",
     "query-string": "^5.1.1",
     "react": "^16.2.0",

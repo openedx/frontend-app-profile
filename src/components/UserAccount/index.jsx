@@ -36,7 +36,9 @@ class UserAccount extends React.Component {
   }
 
   onSave(fieldName, values) {
-    console.log('Save', fieldName, values); // eslint-disable-line
+    const userAccountData = {};
+    userAccountData[fieldName] = values[fieldName];
+    this.props.saveUserAccount(this.props.username, userAccountData, values.visibility);
   }
 
   render() {
@@ -46,9 +48,8 @@ class UserAccount extends React.Component {
       displayName,
       username,
       userLocation,
-      firstName,
       education,
-      links,
+      socialLinks,
       bio,
       certificates,
       courses,
@@ -80,7 +81,7 @@ class UserAccount extends React.Component {
         <SocialLinks
           name="socialLinks"
           mode={getEditMode('socialLinks')}
-          links={links}
+          socialLinks={socialLinks}
           visibility="Everyone"
           {...commonProps}
         />
@@ -139,7 +140,7 @@ class UserAccount extends React.Component {
               <Bio
                 name="bio"
                 mode={getEditMode('bio')}
-                title={`About ${firstName}`}
+                title={`About ${displayName}`}
                 bio={bio}
                 visibility="Everyone"
                 {...commonProps}
@@ -165,12 +166,11 @@ UserAccount.propTypes = {
   displayName: PropTypes.string,
   username: PropTypes.string,
   userLocation: PropTypes.string,
-  firstName: PropTypes.string,
   education: PropTypes.shape({
     name: PropTypes.string,
     value: PropTypes.string,
   }),
-  links: PropTypes.shape({
+  socialLinks: PropTypes.shape({
     linkedIn: PropTypes.shape({
       title: PropTypes.string,
       url: PropTypes.string,
@@ -195,6 +195,7 @@ UserAccount.propTypes = {
   courses: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string,
   })),
+  saveUserAccount: PropTypes.func,
 };
 
 UserAccount.defaultProps = {
@@ -203,12 +204,11 @@ UserAccount.defaultProps = {
   displayName: 'Hermione Granger',
   username: 'itslevioooosa20',
   userLocation: 'London, UK',
-  firstName: 'Hermione',
   education: {
     name: 'Bachelor’s Degree',
     value: 'b',
   },
-  links: {
+  socialLinks: {
     linkedIn: {
       title: 'Linked In',
       url: 'https://www.linkedin.com/in/hermione-granger',
@@ -229,4 +229,5 @@ UserAccount.defaultProps = {
   bio: 'These are some words about me and who I am as a person.',
   certificates: [{ title: 'Certificate 1' }, { title: 'Certificate 2' }, { title: 'Certificate 3' }],
   courses: [{ title: 'Course ' }, { title: 'Course 2' }, { title: 'Course 3' }],
+  saveUserAccount: null,
 };
