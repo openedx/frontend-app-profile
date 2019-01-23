@@ -8,6 +8,7 @@ import Bio from './Bio';
 import SocialLinks from './SocialLinks';
 import MyCourses from './MyCourses';
 import MyCertificates from './MyCertificates';
+import Avatar from './Avatar';
 
 class UserAccount extends React.Component {
   constructor(props) {
@@ -64,7 +65,11 @@ class UserAccount extends React.Component {
           className="bg-banner d-none d-md-block p-relative"
         >
           <Container fluid>
-            <img className="avatar mw-100 p-absolute rounded-circle d-block" src={profileImage} alt="avatar" />
+            <Avatar
+              src={profileImage}
+              editMode={isEditing('avatar')}
+              {...commonProps}
+            />
           </Container>
         </div>
 
@@ -74,7 +79,11 @@ class UserAccount extends React.Component {
               <Row className="mb-3">
                 <Col className="d-flex align-items-center d-md-block">
                   <div className="mr-3 d-md-none" style={{ flexBasis: '30%' }}>
-                    <img className="mw-100 rounded-circle d-block" src={profileImage} alt="avatar" />
+                    <Avatar
+                      src={profileImage}
+                      editMode={isEditing('avatar')}
+                      {...commonProps}
+                    />
                   </div>
                   <div>
                     <h1 className="h2 mb-0">{displayName}</h1>

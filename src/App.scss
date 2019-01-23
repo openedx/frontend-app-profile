@@ -13,6 +13,9 @@ $fa-font-path: "~font-awesome/fonts";
 .w-auto {
   width: auto !important;
 }
+.flex-shrink-0 {
+  flex-shrink: 0 !important;
+}
 
 .container-fluid {
   max-width: 1200px;
@@ -57,5 +60,23 @@ $fa-font-path: "~font-awesome/fonts";
   }
   .crossfade-exit-active {
     opacity: 0;
+  }
+}
+
+.avatar-edit-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,.5);
+  opacity: 0;
+  transition: opacity 200ms ease;
+  border: solid 3px rgba(0,0,0,.8);
+  &:focus, &:hover, &:active, &.active {
+    opacity: 1;
   }
 }
