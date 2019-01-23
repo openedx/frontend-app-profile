@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
 
 class EditableContent extends React.Component {
@@ -10,7 +11,7 @@ class EditableContent extends React.Component {
     this.content = React.createRef();
 
     this.state = {
-      height: 'auto',
+      height: null,
       containerRef: this.container,
 
       // Mirroring props in state as described here:
@@ -45,11 +46,13 @@ class EditableContent extends React.Component {
   }
 
   onTransitionEnd() {
-    this.setState({ height: 'auto' });
+    this.setState({ height: null });
   }
 
   render() {
     const {
+      tag: Tag, // Breaks if React.Fragment is passed in because of transition
+      className,
       isEditing,
       disabled,
       renderStatic,
@@ -66,9 +69,9 @@ class EditableContent extends React.Component {
     };
 
     return (
-      <div
+      <Tag
         ref={this.container}
-        className="editable-content-container"
+        className={classNames('editable-content-container', className)}
         style={{ height: this.state.height }}
       >
         <CSSTransition in={!isEditing} {...transitionProps}>
@@ -82,13 +85,15 @@ class EditableContent extends React.Component {
             {renderEditing(this.props)}
           </div>
         </CSSTransition>
-      </div>
+      </Tag>
     );
   }
 }
 
 
 EditableContent.propTypes = {
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  className: PropTypes.string,
   isEditing: PropTypes.bool,
   disabled: PropTypes.bool,
   renderStatic: PropTypes.func,
@@ -97,6 +102,8 @@ EditableContent.propTypes = {
 };
 
 EditableContent.defaultProps = {
+  tag: 'div',
+  className: null,
   isEditing: false,
   disabled: false,
   renderStatic: () => {},
