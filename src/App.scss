@@ -26,13 +26,17 @@ $fa-font-path: "~font-awesome/fonts";
   margin-bottom: 6rem;
   background-size: cover;
   position: relative;
+  
   .avatar {
+    width: 12rem;
+    height: 12rem;
     position: absolute;
     top: 100%;
     transform: translateY(-50%);
-    width: 12rem;
   }
 }
+
+
 
 .editable-content-container {
   position: relative;

@@ -38,14 +38,14 @@ class Avatar extends React.Component {
     } = this.props;
 
     return (
-      <div className="avatar rounded-circle">
+      <div className="avatar rounded-circle overflow-hidden">
         <button
           className="text-white avatar-edit-button rounded-circle"
           onClick={this.onClick}
         >
           Change
         </button>
-        <img className="mw-100 rounded-circle d-block" src={src} alt="avatar" />
+        <img className="w-100" src={src} alt="avatar" />
         <form
           ref={this.form}
           onSubmit={this.onSubmit}
@@ -63,7 +63,6 @@ class Avatar extends React.Component {
             accept=".jpg, .jpeg, .png"
           />
         </form>
-
       </div>
     );
   }
