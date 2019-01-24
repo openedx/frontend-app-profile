@@ -80,3 +80,27 @@ $fa-font-path: "~font-awesome/fonts";
     opacity: 1;
   }
 }
+
+.btn-async-action {
+  transition: background .2s linear;
+  min-width: 6rem;
+
+  .icon-state {
+    transition: opacity .2s ease, width .2s ease;
+    opacity: 0;
+    width: 0;
+  }
+  
+  .icon {
+    font-size: 1.125rem;
+  }
+
+  &.btn-state-pending,
+  &.btn-state-complete,
+  &.btn-state-error, {
+    .icon-state {
+      width: 1.5rem;
+      opacity: 1;
+    }
+  }
+}

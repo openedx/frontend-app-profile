@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Input, Button, Label, Row, Col } from 'reactstrap';
+import AsyncActionButton from './AsyncActionButton';
 
 function EditControls({ onCancel, onSave }) {
   return (
@@ -14,7 +15,16 @@ function EditControls({ onCancel, onSave }) {
       </Col>
       <Col className="col-auto mt-3 mb-3">
         <Button color="link" onClick={onCancel}>Cancel</Button>
-        <Button className="ml-2" color="primary" onClick={onSave}>Save</Button>
+        <AsyncActionButton
+          onClick={onSave}
+          variant="default"
+          labels={{
+            default: 'Save',
+            pending: 'Saving',
+            complete: 'Saved',
+            error: 'Save Failed',
+          }}
+        />
       </Col>
     </Row>
   );
