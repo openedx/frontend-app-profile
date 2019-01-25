@@ -5,29 +5,27 @@ import { Hyperlink } from '@edx/paragon';
 
 import EditableContent from './EditableContent';
 import EditButton from './EditButton';
-import EditControls from './EditControls';
 import Visibility from './Visibility';
 
-function SocialLinks(props) {
-  const {
-    links,
-    editMode,
-    onEdit,
-    onCancel,
-    onSave,
-  } = props;
-
-  const linkNames = Object.keys(links);
+function SocialLinks({
+  links,
+  visibility,
+  ...editableContentProps
+}) {
+  const linkKeys = Object.keys(links);
 
   return (
     <EditableContent
-      isEditing={editMode}
-      disabled={false}
+      {...editableContentProps}
+      values={{
+        links,
+        visibility,
+      }}
       renderStatic={() => (
         <React.Fragment>
           <h3>Social Links</h3>
           <dl>
-            {linkNames.map(linkName => (
+            {linkKeys.map(linkName => (
               <React.Fragment key={linkName}>
                 <dt>{links[linkName].title}</dt>
                 <dd>
@@ -42,11 +40,11 @@ function SocialLinks(props) {
           </dl>
         </React.Fragment>
       )}
-      renderEditable={() => (
+      renderEditable={onClickEdit => (
         <React.Fragment>
-          <h3>Social Links <EditButton onClick={() => onEdit('socialLinks')} /> <br /><Visibility to="Everyone" /></h3>
+          <h3>Social Links <EditButton onClick={onClickEdit} /> <br /><Visibility to="Everyone" /></h3>
           <dl>
-            {linkNames.map(linkName => (
+            {linkKeys.map(linkName => (
               <React.Fragment key={linkName}>
                 <dt>{links[linkName].title}</dt>
                 <dd>
@@ -61,11 +59,11 @@ function SocialLinks(props) {
           </dl>
         </React.Fragment>
       )}
-      renderEditing={() => (
+      renderEditing={(state, setState) => ( // eslint-disable-line no-unused-vars
         <React.Fragment>
           <h3>Social Links</h3>
           <dl>
-            {linkNames.map(linkName => (
+            {linkKeys.map(linkName => (
               <React.Fragment key={linkName}>
                 <dt>{links[linkName].title}</dt>
                 <dd>
@@ -74,7 +72,6 @@ function SocialLinks(props) {
               </React.Fragment>
             ))}
           </dl>
-          <EditControls onCancel={onCancel} onSave={onSave} />
         </React.Fragment>
       )}
     />
@@ -102,16 +99,10 @@ SocialLinks.propTypes = {
       display: PropTypes.string,
     }),
   }),
-  editMode: PropTypes.bool,
-  onEdit: PropTypes.func,
-  onCancel: PropTypes.func,
-  onSave: PropTypes.func,
+  visibility: PropTypes.oneOf('Everyone', 'Just me'),
 };
 
 SocialLinks.defaultProps = {
   links: {},
-  editMode: false,
-  onEdit: () => {},
-  onCancel: () => {},
-  onSave: () => {},
+  visibility: 'Everyone',
 };
