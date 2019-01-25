@@ -20,6 +20,7 @@ class UserAccount extends React.Component {
 
     this.onCancel = this.onCancel.bind(this);
     this.onEdit = this.onEdit.bind(this);
+    this.onSave = this.onSave.bind(this);
   }
 
   onCancel() {
@@ -32,6 +33,10 @@ class UserAccount extends React.Component {
     this.setState({
       currentlyEditingField: fieldName,
     });
+  }
+
+  onSave(fieldName, values) {
+    console.log('Save', fieldName, values); // eslint-disable-line
   }
 
   render() {
@@ -51,12 +56,36 @@ class UserAccount extends React.Component {
 
 
     const commonProps = {
-      onSave: () => { /* Save */ },
+      onSave: this.onSave,
       onEdit: this.onEdit,
       onCancel: this.onCancel,
     };
 
     const isEditing = name => name === this.state.currentlyEditingField;
+
+    const getEditMode = (name) => {
+      if (name === this.state.currentlyEditingField) return 'editing';
+      return 'editable';
+    };
+
+    const renderEducationAndSocial = () => (
+      <React.Fragment>
+        <Education
+          name="education"
+          mode={getEditMode('education')}
+          education={education}
+          visibility="Everyone"
+          {...commonProps}
+        />
+        <SocialLinks
+          name="socialLinks"
+          mode={getEditMode('socialLinks')}
+          links={links}
+          visibility="Everyone"
+          {...commonProps}
+        />
+      </React.Fragment>
+    );
 
     return (
       <div>
@@ -90,8 +119,10 @@ class UserAccount extends React.Component {
                     <ul className="list-unstyled mb-0">
                       <li className="mb-2">{username}</li>
                       <UserLocation
+                        name="userLocation"
+                        mode={getEditMode('userLocation')}
                         userLocation={userLocation}
-                        editMode={isEditing('userLocation')}
+                        visibility="Everyone"
                         {...commonProps}
                       />
                     </ul>
@@ -100,37 +131,21 @@ class UserAccount extends React.Component {
               </Row>
               <Row className="mb-3 d-none d-md-block">
                 <Col>
-                  <Education
-                    education={education}
-                    editMode={isEditing('education')}
-                    {...commonProps}
-                  />
-                  <SocialLinks
-                    links={links}
-                    editMode={isEditing('socialLinks')}
-                    {...commonProps}
-                  />
+                  {renderEducationAndSocial()}
                 </Col>
               </Row>
             </Col>
             <Col md={8} lg={9} className="pt-md-1">
               <Bio
+                name="bio"
+                mode={getEditMode('bio')}
                 title={`About ${firstName}`}
                 bio={bio}
-                editMode={isEditing('bio')}
+                visibility="Everyone"
                 {...commonProps}
               />
               <div className="d-md-none">
-                <Education
-                  education={education}
-                  editMode={isEditing('education')}
-                  {...commonProps}
-                />
-                <SocialLinks
-                  links={links}
-                  editMode={isEditing('socialLinks')}
-                  {...commonProps}
-                />
+                {renderEducationAndSocial()}
               </div>
               <MyCertificates certificates={certificates} />
               <MyCourses courses={courses} />

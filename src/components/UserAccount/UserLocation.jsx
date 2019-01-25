@@ -4,38 +4,33 @@ import { Input } from 'reactstrap';
 
 import EditableContent from './EditableContent';
 import EditButton from './EditButton';
-import EditControls from './EditControls';
 
 
-function UserLocation(props) {
-  const {
-    tag,
-    userLocation,
-    editMode,
-    onEdit,
-    onCancel,
-    onSave,
-  } = props;
-
+function UserLocation({
+  userLocation,
+  visibility,
+  ...editableContentProps
+}) {
   return (
     <EditableContent
-      tag={tag}
-      isEditing={editMode}
-      disabled={false}
+      {...editableContentProps}
+      values={{
+        userLocation,
+        visibility,
+      }}
       renderStatic={() => (
         <React.Fragment>
           {userLocation}
         </React.Fragment>
       )}
-      renderEditable={() => (
+      renderEditable={onClickEdit => (
         <React.Fragment>
-          {userLocation} <EditButton onClick={() => onEdit('userLocation')} />
+          {userLocation} <EditButton onClick={onClickEdit} />
         </React.Fragment>
       )}
-      renderEditing={() => (
+      renderEditing={(state, setState) => ( // eslint-disable-line no-unused-vars
         <React.Fragment>
           <Input defaultValue={userLocation} type="text" name="text" id="exampleText" />
-          <EditControls onCancel={onCancel} onSave={onSave} />
         </React.Fragment>
       )}
     />
@@ -48,17 +43,11 @@ export default UserLocation;
 UserLocation.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   userLocation: PropTypes.string,
-  editMode: PropTypes.bool,
-  onEdit: PropTypes.func,
-  onCancel: PropTypes.func,
-  onSave: PropTypes.func,
+  visibility: PropTypes.oneOf('Everyone', 'Just me'),
 };
 
 UserLocation.defaultProps = {
   tag: 'li',
-  userLocation: '',
-  editMode: false,
-  onEdit: () => {},
-  onCancel: () => {},
-  onSave: () => {},
+  userLocation: null,
+  visibility: 'Everyone',
 };
