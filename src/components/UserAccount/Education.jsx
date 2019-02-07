@@ -54,7 +54,7 @@ function Education({ education, visibility, ...editableContentProps }) {
             name="select"
           >
             {Object.keys(valueMap).map(educationKey => (
-              <option value={educationKey}>{valueMap[educationKey]}</option>
+              <option key={educationKey} value={educationKey}>{valueMap[educationKey]}</option>
             ))}
           </Input>
         </React.Fragment>
