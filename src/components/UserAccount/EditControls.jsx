@@ -22,8 +22,8 @@ function EditControls({
           value={visibility}
           onChange={onVisibilityChange}
         >
-          <option value="Just me">Just me</option>
-          <option value="Everyone">Everyone</option>
+          <option key="Just me" value="Just me">Just me</option>
+          <option key="Everyone" value="Everyone">Everyone</option>
         </Input>
       </Col>
       <Col className="col-auto mt-3 mb-3">
