@@ -7,7 +7,7 @@ import SiteFooter from '@edx/frontend-component-footer';
 import { fetchUserProfile } from '@edx/frontend-auth';
 
 import apiClient from './data/apiClient';
-import { handleTrackEvents } from './analytics';
+import { handleTrackEvents, identifyUser } from './analytics';
 import SiteHeader from './containers/SiteHeader';
 import UserAccount from './components/UserAccount';
 import store from './data/store';
@@ -64,4 +64,8 @@ class App extends Component {
 
 if (apiClient.ensurePublicOrAuthencationAndCookies(window.location.pathname)) {
   ReactDOM.render(<App />, document.getElementById('root'));
+
+  // identify user for future analytics calls
+  // TODO: Call before each page call.
+  identifyUser();
 }
