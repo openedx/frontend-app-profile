@@ -70,7 +70,7 @@ Education.propTypes = {
     name: PropTypes.string,
     value: PropTypes.string,
   }),
-  visibility: PropTypes.oneOf('Everyone', 'Just me'),
+  visibility: PropTypes.oneOf(['Everyone', 'Just me']),
 };
 
 Education.defaultProps = {
