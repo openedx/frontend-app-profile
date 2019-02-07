@@ -13,5 +13,14 @@
   "plugins": [
     "transform-object-rest-spread",
     "transform-class-properties"
-  ]
+  ],
+  "env": {
+    "i18n": {
+      "plugins": [
+        ["react-intl", {
+          "messagesDir": "./src/i18n/messages"
+        }]
+      ]
+    }
+  }
 }

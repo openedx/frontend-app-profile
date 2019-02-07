@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 import { Row, Col, Card, CardBody, CardTitle } from 'reactstrap';
 
 import EditControls from './elements/EditControls';
@@ -65,7 +66,11 @@ function MyCertificates({
         ),
         empty: (
           <div>
-            You don’t have any certificates yet. Find a course.
+            <FormattedMessage
+              id="profile.no.certificates"
+              defaultMessage="You don't have any certificates yet."
+              description="displays when user has no course completion certificates"
+            />
           </div>
         ),
         static: (

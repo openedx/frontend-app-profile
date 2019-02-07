@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 import { Input } from 'reactstrap';
 
 import EditControls from './elements/EditControls';
@@ -54,7 +55,13 @@ function Bio({
           </React.Fragment>
         ),
         empty: (
-          <EmptyContent onClick={() => onEdit('bio')}>Add a short bio</EmptyContent>
+          <EmptyContent onClick={() => onEdit('bio')}>
+            <FormattedMessage
+              id="profile.bio.empty"
+              defaultMessage="Add a short bio"
+              description="instructions when the user hasn't written an About Me"
+            />
+          </EmptyContent>
         ),
         static: (
           <React.Fragment>
