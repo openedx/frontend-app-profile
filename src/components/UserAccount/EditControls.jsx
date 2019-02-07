@@ -48,7 +48,7 @@ export default EditControls;
 EditControls.propTypes = {
   onCancel: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
-  visibility: PropTypes.oneOf('Everyone', 'Just me'),
+  visibility: PropTypes.oneOf(['Everyone', 'Just me']),
   onVisibilityChange: PropTypes.func,
 };
 

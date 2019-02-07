@@ -99,7 +99,7 @@ SocialLinks.propTypes = {
       display: PropTypes.string,
     }),
   }),
-  visibility: PropTypes.oneOf('Everyone', 'Just me'),
+  visibility: PropTypes.oneOf(['Everyone', 'Just me']),
 };
 
 SocialLinks.defaultProps = {

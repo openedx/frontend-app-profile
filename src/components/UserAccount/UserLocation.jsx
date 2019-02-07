@@ -43,7 +43,7 @@ export default UserLocation;
 UserLocation.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   userLocation: PropTypes.string,
-  visibility: PropTypes.oneOf('Everyone', 'Just me'),
+  visibility: PropTypes.oneOf(['Everyone', 'Just me']),
 };
 
 UserLocation.defaultProps = {

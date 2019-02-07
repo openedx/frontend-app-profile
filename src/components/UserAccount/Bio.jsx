@@ -47,7 +47,7 @@ export default Bio;
 Bio.propTypes = {
   bio: PropTypes.string,
   title: PropTypes.string,
-  visibility: PropTypes.oneOf('Everyone', 'Just me'),
+  visibility: PropTypes.oneOf(['Everyone', 'Just me']),
 };
 
 Bio.defaultProps = {

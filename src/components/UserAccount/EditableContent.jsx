@@ -132,7 +132,7 @@ EditableContent.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   className: PropTypes.string,
   name: PropTypes.string.isRequired,
-  mode: PropTypes.oneOf('static', 'editable', 'editing'),
+  mode: PropTypes.oneOf(['static', 'editable', 'editing']),
   values: PropTypes.object, // eslint-disable-line
   renderStatic: PropTypes.func,
   renderEditable: PropTypes.func,
