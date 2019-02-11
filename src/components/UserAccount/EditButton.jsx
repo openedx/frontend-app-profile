@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { Icon } from '@edx/paragon';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 
 function EditButton({ onClick, className, style }) {
   return (
@@ -10,13 +11,12 @@ function EditButton({ onClick, className, style }) {
       onClick={onClick}
       style={style}
     >
-      <Icon className="fa fa-pencil" /> Edit
+      <FontAwesomeIcon icon={faPencilAlt} /> Edit
     </button>
   );
 }
 
 export default EditButton;
-
 
 EditButton.propTypes = {
   onClick: PropTypes.func.isRequired,
