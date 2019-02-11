@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Input } from 'reactstrap';
 
-import EditButton from './EditButton';
-import Visibility from './Visibility';
-import TransitionReplace from './TransitionReplace';
+import EditableItemHeader from './EditableItemHeader';
 import EditControls from './EditControls';
+import TransitionReplace from './TransitionReplace';
 
 import { ALL_COUNTRIES } from '../../constants/countries';
 
@@ -34,6 +33,9 @@ class UserLocation extends React.Component {
       case 'editing':
         return (
           <React.Fragment key="editing">
+            <EditableItemHeader
+              content="Location"
+            />
             <Input
               defaultValue={this.props.userLocation}
               value={this.state.userLocation}
@@ -67,9 +69,14 @@ class UserLocation extends React.Component {
       case 'editable':
         return (
           <React.Fragment key="editable">
-            {this.props.userLocation}
-            <EditButton onClick={this.onClickEdit} /> <br />
-            <Visibility to={this.props.visibility} />
+            <EditableItemHeader
+              content="Location"
+              showEditButton
+              onClickEdit={this.onClickEdit}
+              showVisibility
+              visibility={this.props.visibility}
+            />
+            <h5>{ALL_COUNTRIES[this.props.userLocation]}</h5>
           </React.Fragment>
         );
 
@@ -77,7 +84,10 @@ class UserLocation extends React.Component {
       default:
         return (
           <React.Fragment key="static">
-            {this.props.userLocation}
+            <EditableItemHeader
+              content="Location"
+            />
+            <h5>{ALL_COUNTRIES[this.props.userLocation]}</h5>
           </React.Fragment>
         );
     }

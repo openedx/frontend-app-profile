@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col, Card, CardImg, CardBody, CardTitle } from 'reactstrap';
 
+import EditableItemHeader from './EditableItemHeader';
+
 
 function MyCertificates(props) {
   const {
@@ -10,7 +12,9 @@ function MyCertificates(props) {
 
   return (
     <React.Fragment>
-      <h3>My Certificates</h3>
+      <EditableItemHeader
+        content="My Certificates"
+      />
       <Row>
         {certificates.map(({ title }) => (
           <Col key={title} sm={6} lg={4}>

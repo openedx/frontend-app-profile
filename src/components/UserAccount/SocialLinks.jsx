@@ -3,10 +3,9 @@ import PropTypes from 'prop-types';
 import { Input } from 'reactstrap';
 import { Hyperlink } from '@edx/paragon';
 
-import EditButton from './EditButton';
-import Visibility from './Visibility';
-import TransitionReplace from './TransitionReplace';
+import EditableItemHeader from './EditableItemHeader';
 import EditControls from './EditControls';
+import TransitionReplace from './TransitionReplace';
 
 
 class SocialLinks extends React.Component {
@@ -36,7 +35,9 @@ class SocialLinks extends React.Component {
       case 'editing':
         return (
           <React.Fragment key="editing">
-            <h3>Social Links</h3>
+            <EditableItemHeader
+              content="Social Links"
+            />
             <dl>
               {linkKeys.map(linkName => (
                 <React.Fragment key={linkName}>
@@ -75,7 +76,13 @@ class SocialLinks extends React.Component {
       case 'editable':
         return (
           <React.Fragment key="editable">
-            <h3>Social Links <EditButton onClick={this.onClickEdit} /> <br /><Visibility to="Everyone" /></h3>
+            <EditableItemHeader
+              content="Social Links"
+              showEditButton
+              onClickEdit={this.onClickEdit}
+              showVisibility
+              visibility={this.props.visibility}
+            />
             <dl>
               {linkKeys.map(linkName => (
                 <React.Fragment key={linkName}>
@@ -97,7 +104,9 @@ class SocialLinks extends React.Component {
       default:
         return (
           <React.Fragment key="static">
-            <h3>Social Links</h3>
+            <EditableItemHeader
+              content="Social Links"
+            />
             <dl>
               {linkKeys.map(linkName => (
                 <React.Fragment key={linkName}>

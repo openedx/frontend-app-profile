@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Input } from 'reactstrap';
 
-import EditButton from './EditButton';
-import Visibility from './Visibility';
-import TransitionReplace from './TransitionReplace';
+import EditableItemHeader from './EditableItemHeader';
 import EditControls from './EditControls';
+import TransitionReplace from './TransitionReplace';
 
 
 class Bio extends React.Component {
@@ -32,7 +31,9 @@ class Bio extends React.Component {
       case 'editing':
         return (
           <React.Fragment key="editing">
-            <h3>{this.props.title}</h3>
+            <EditableItemHeader
+              content={this.props.title}
+            />
             <Input
               defaultValue={this.props.bio}
               type="textarea"
@@ -61,11 +62,13 @@ class Bio extends React.Component {
       case 'editable':
         return (
           <React.Fragment key="editable">
-            <h3>
-              {this.props.title}
-              <EditButton onClick={this.onClickEdit} /> <br />
-              <Visibility to={this.props.visibility} />
-            </h3>
+            <EditableItemHeader
+              content={this.props.title}
+              showEditButton
+              onClickEdit={this.onClickEdit}
+              showVisibility
+              visibility={this.props.visibility}
+            />
             <p>{this.props.bio}</p>
           </React.Fragment>
         );
@@ -74,7 +77,9 @@ class Bio extends React.Component {
       default:
         return (
           <React.Fragment key="static">
-            <h3>{this.props.title}</h3>
+            <EditableItemHeader
+              content={this.props.title}
+            />
             <p>{this.props.bio}</p>
           </React.Fragment>
         );
@@ -106,7 +111,7 @@ Bio.propTypes = {
 
 Bio.defaultProps = {
   bio: '',
-  title: 'About',
+  title: 'About Me',
   visibility: 'Everyone',
   mode: 'editable',
   saveState: null,

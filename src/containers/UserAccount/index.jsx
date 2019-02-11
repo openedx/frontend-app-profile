@@ -6,7 +6,7 @@ import { getSocialLinks } from '../../constants/social';
 import UserAccount from '../../components/UserAccount';
 
 const PROP_TO_STATE_MAP = {
-  displayName: 'name',
+  fullName: 'name',
   userLocation: 'country',
   education: 'levelOfEducation',
   socialLinks: socialLinks => Object.keys(socialLinks).map(linkKey => ({
@@ -31,7 +31,7 @@ const mapPropsToState = (props) => {
 const mapStateToProps = state => ({
   bannerImage: 'https://source.unsplash.com/featured/1000x200/?colored,pattern',
   profileImage: state.userAccount.profileImage.imageUrlLarge,
-  displayName: state.userAccount.name,
+  fullName: state.userAccount.name,
   username: state.userAccount.username,
   userLocation: state.userAccount.country,
   education: state.userAccount.levelOfEducation,

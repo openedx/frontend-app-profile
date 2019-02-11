@@ -6,22 +6,20 @@ import EditableItemHeader from './EditableItemHeader';
 import EditControls from './EditControls';
 import TransitionReplace from './TransitionReplace';
 
-import EDUCATION from '../../constants/education';
 
-
-class Education extends React.Component {
+class FullName extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      education: props.education,
+      fullName: props.fullName,
       visibility: props.visibility,
     };
 
     this.onClickEdit = () => { this.props.onEdit(this.props.name); };
     this.onClickSave = () => {
       this.props.onSave(this.props.name, {
-        education: this.state.education,
+        fullName: this.state.fullName,
         visibility: this.state.visibility,
       });
     };
@@ -34,23 +32,17 @@ class Education extends React.Component {
         return (
           <React.Fragment key="editing">
             <EditableItemHeader
-              content="Education"
+              content="Full Name"
             />
             <Input
-              value={this.state.education}
+              defaultValue={this.props.fullName}
+              type="text"
+              name="fullName"
+              id="fullName"
               onChange={(e) => {
-                this.setState({
-                  education: e.target.value,
-                });
+                this.setState({ fullName: e.target.value });
               }}
-              className="w-100"
-              type="select"
-              name="select"
-            >
-              {Object.keys(EDUCATION).map(educationKey => (
-                <option key={educationKey} value={educationKey}>{EDUCATION[educationKey]}</option>
-              ))}
-            </Input>
+            />
             <EditControls
               onCancel={this.onClickCancel}
               onSave={this.onClickSave}
@@ -69,13 +61,13 @@ class Education extends React.Component {
         return (
           <React.Fragment key="editable">
             <EditableItemHeader
-              content="Education"
+              content="Full Name"
               showEditButton
               onClickEdit={this.onClickEdit}
               showVisibility
               visibility={this.props.visibility}
             />
-            <h5>{EDUCATION[this.props.education]}</h5>
+            <h5>{this.props.fullName}</h5>
           </React.Fragment>
         );
 
@@ -84,9 +76,9 @@ class Education extends React.Component {
         return (
           <React.Fragment key="static">
             <EditableItemHeader
-              content="Education"
+              content="Full Name"
             />
-            <h5>{EDUCATION[this.props.education]}</h5>
+            <h5>{this.props.fullName}</h5>
           </React.Fragment>
         );
     }
@@ -99,15 +91,12 @@ class Education extends React.Component {
 }
 
 
-export default Education;
+export default FullName;
 
 
-Education.propTypes = {
+FullName.propTypes = {
   name: PropTypes.string.isRequired,
-  education: PropTypes.shape({
-    name: PropTypes.string,
-    value: PropTypes.string,
-  }),
+  fullName: PropTypes.string,
   visibility: PropTypes.oneOf(['Everyone', 'Just me']),
   mode: PropTypes.oneOf(['static', 'editable', 'editing']),
   onEdit: PropTypes.func.isRequired,
@@ -116,8 +105,8 @@ Education.propTypes = {
   saveState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
 };
 
-Education.defaultProps = {
-  education: null,
+FullName.defaultProps = {
+  fullName: null,
   visibility: 'Everyone',
   mode: 'editable',
   saveState: null,

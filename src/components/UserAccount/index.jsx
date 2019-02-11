@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Row, Col } from 'reactstrap';
 
+import FullName from './FullName';
 import UserLocation from './UserLocation';
 import Education from './Education';
 import Bio from './Bio';
@@ -45,7 +46,7 @@ class UserAccount extends React.Component {
     const {
       bannerImage,
       profileImage,
-      displayName,
+      fullName,
       username,
       userLocation,
       education,
@@ -116,17 +117,24 @@ class UserAccount extends React.Component {
                     />
                   </div>
                   <div>
-                    <h1 className="h2 mb-0">{displayName}</h1>
-                    <ul className="list-unstyled mb-0">
-                      <li className="mb-2">{username}</li>
-                      <UserLocation
-                        name="userLocation"
-                        mode={getEditMode('userLocation')}
-                        userLocation={userLocation}
-                        visibility="Everyone"
-                        {...commonProps}
-                      />
-                    </ul>
+                    <h2 className="mb-0">{username}</h2>
+                    <p>Member since 2017</p>
+
+                    <FullName
+                      name="fullName"
+                      mode={getEditMode('fullName')}
+                      fullName={fullName}
+                      visibility="Everyone"
+                      {...commonProps}
+                    />
+
+                    <UserLocation
+                      name="userLocation"
+                      mode={getEditMode('userLocation')}
+                      userLocation={userLocation}
+                      visibility="Everyone"
+                      {...commonProps}
+                    />
                   </div>
                 </Col>
               </Row>
@@ -140,7 +148,6 @@ class UserAccount extends React.Component {
               <Bio
                 name="bio"
                 mode={getEditMode('bio')}
-                title={`About ${displayName}`}
                 bio={bio}
                 visibility="Everyone"
                 {...commonProps}
@@ -163,7 +170,7 @@ export default UserAccount;
 UserAccount.propTypes = {
   bannerImage: PropTypes.string,
   profileImage: PropTypes.string,
-  displayName: PropTypes.string,
+  fullName: PropTypes.string,
   username: PropTypes.string,
   userLocation: PropTypes.string,
   education: PropTypes.shape({
@@ -201,7 +208,7 @@ UserAccount.propTypes = {
 UserAccount.defaultProps = {
   bannerImage: 'https://source.unsplash.com/featured/1000x200/?colored,pattern',
   profileImage: 'https://source.unsplash.com/featured/200x200/?face',
-  displayName: 'Hermione Granger',
+  fullName: 'Hermione Granger',
   username: 'itslevioooosa20',
   userLocation: 'London, UK',
   education: {
