@@ -37,7 +37,7 @@ class Education extends React.Component {
               content="Education"
             />
             <Input
-              value={this.state.education}
+              value={this.state.education || this.props.education}
               onChange={(e) => {
                 this.setState({
                   education: e.target.value,
@@ -104,10 +104,7 @@ export default Education;
 
 Education.propTypes = {
   name: PropTypes.string.isRequired,
-  education: PropTypes.shape({
-    name: PropTypes.string,
-    value: PropTypes.string,
-  }),
+  education: PropTypes.oneOf(Object.keys(EDUCATION)),
   visibility: PropTypes.oneOf(['Everyone', 'Just me']),
   mode: PropTypes.oneOf(['static', 'editable', 'editing']),
   onEdit: PropTypes.func.isRequired,
@@ -117,7 +114,7 @@ Education.propTypes = {
 };
 
 Education.defaultProps = {
-  education: null,
+  education: '',
   visibility: 'Everyone',
   mode: 'editable',
   saveState: null,
