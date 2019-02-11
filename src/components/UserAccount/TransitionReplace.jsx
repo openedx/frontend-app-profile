@@ -56,8 +56,8 @@ class TransitionReplace extends React.Component {
 
     const defaultStyle = {
       opacity: 0,
-      padding: '1px 0',
-      margin: '-1px 0',
+      padding: '.1px 0',
+      // margin: '-1px 0',
     };
 
     const transitionStyles = {
@@ -142,8 +142,8 @@ TransitionReplace.propTypes = {
 
 TransitionReplace.defaultProps = {
   duration: 300,
-  enterFadeEaseFunction: 'ease',
-  exitFadeEaseFunction: 'ease',
+  enterFadeEaseFunction: 'linear',
+  exitFadeEaseFunction: 'linear',
   heightChangeEaseFunction: 'ease-in-out',
   className: null,
 };

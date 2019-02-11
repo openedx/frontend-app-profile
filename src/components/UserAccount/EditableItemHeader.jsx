@@ -14,11 +14,13 @@ function EditableItemHeader({
 }) {
   return (
     <React.Fragment>
-      <h6 className="font-weight-normal">
-        {content}
-        {showEditButton ? <EditButton style={{ marginTop: '-.35rem' }} className="float-right" onClick={onClickEdit} /> : null}
-      </h6>
-      {showVisibility ? <p className="mb-1"><Visibility to={visibility} /></p> : null}
+      <div className="editable-item-header mb-2">
+        <h6 className="font-weight-normal mb-0">
+          {content}
+          {showEditButton ? <EditButton style={{ marginTop: '-.35rem' }} className="float-right" onClick={onClickEdit} /> : null}
+        </h6>
+        {showVisibility ? <p className="mb-0"><Visibility to={visibility} /></p> : null}
+      </div>
     </React.Fragment>
   );
 }

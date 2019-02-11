@@ -12,7 +12,7 @@ function EditControls({
 }) {
   return (
     <Row className="align-items-center">
-      <Col className="mt-3 mb-3 d-flex">
+      <Col className="mt-3 mb-3 ">
         <Label className="d-inline-block mb-0 mr-2" size="sm" for="exampleSelect">Who can see this:</Label>
         <Input
           className="d-inline-block
@@ -27,7 +27,7 @@ function EditControls({
           <option key="Everyone" value="Everyone">Everyone</option>
         </Input>
       </Col>
-      <Col className="col-auto mt-3 mb-3">
+      <Col className="col-auto mt-3 mb-3 flex-grow-1 d-flex justify-content-end">
         <Button color="link" onClick={onCancel}>Cancel</Button>
         <AsyncActionButton
           onClick={onSave}
