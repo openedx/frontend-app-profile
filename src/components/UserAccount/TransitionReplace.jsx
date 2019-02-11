@@ -107,6 +107,7 @@ class TransitionReplace extends React.Component {
           height: this.state.height, // prevent rounding shifts from being too noticeable
           transition: `height ${duration}ms ${heightChangeEaseFunction}`,
         }}
+        className={this.props.className}
       >
         {React.Children.map(this.props.children, child => (
           <Transition {...transitionProps}>
@@ -136,6 +137,7 @@ TransitionReplace.propTypes = {
   enterFadeEaseFunction: PropTypes.string,
   exitFadeEaseFunction: PropTypes.string,
   heightChangeEaseFunction: PropTypes.string,
+  className: PropTypes.string,
 };
 
 TransitionReplace.defaultProps = {
@@ -143,4 +145,5 @@ TransitionReplace.defaultProps = {
   enterFadeEaseFunction: 'ease',
   exitFadeEaseFunction: 'ease',
   heightChangeEaseFunction: 'ease-in-out',
+  className: null,
 };
