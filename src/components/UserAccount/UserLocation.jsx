@@ -38,7 +38,6 @@ class UserLocation extends React.Component {
             />
             <Input
               defaultValue={this.props.userLocation}
-              value={this.state.userLocation}
               onChange={(e) => {
                 this.setState({
                   userLocation: e.target.value,
@@ -49,7 +48,7 @@ class UserLocation extends React.Component {
               name="select"
             >
               {Object.keys(ALL_COUNTRIES).map(countryKey => (
-                <option value={countryKey}>{ALL_COUNTRIES[countryKey]}</option>
+                <option key={countryKey} value={countryKey}>{ALL_COUNTRIES[countryKey]}</option>
               ))}
             </Input>
             <EditControls
