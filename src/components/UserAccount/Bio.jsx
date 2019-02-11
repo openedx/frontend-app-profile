@@ -13,97 +13,77 @@ class Bio extends React.Component {
     super(props);
 
     this.state = {
-      values: {
-        bio: props.bio,
-        visibility: props.visibility,
-      },
+      bio: props.bio,
+      visibility: props.visibility,
     };
 
-    this.renderModes = {
-      editing: this.renderEditing.bind(this),
-      editable: this.renderEditable.bind(this),
-      static: this.renderStatic.bind(this),
+    this.onClickEdit = () => { this.props.onEdit(this.props.name); };
+    this.onClickSave = () => {
+      this.props.onSave(this.props.name, {
+        bio: this.state.bio,
+        visibility: this.state.visibility,
+      });
     };
-
-    this.onClickEdit = this.onClickEdit.bind(this);
-    this.onClickSave = this.onClickSave.bind(this);
-    this.onClickCancel = this.onClickCancel.bind(this);
+    this.onClickCancel = () => { this.props.onCancel(this.props.name); };
   }
 
-  onClickEdit() {
-    this.props.onEdit(this.props.name);
-  }
+  renderMode() {
+    switch (this.props.mode) {
+      case 'editing':
+        return (
+          <React.Fragment key="editing">
+            <h3>{this.props.title}</h3>
+            <Input
+              defaultValue={this.props.bio}
+              type="textarea"
+              name="text"
+              id="exampleText"
+              onChange={(e) => {
+                this.setState({
+                  bio: e.target.value,
+                });
+              }}
+            />
+            <EditControls
+              onCancel={this.onClickCancel}
+              onSave={this.onClickSave}
+              saveState={this.props.saveState}
+              visibility={this.state.visibility}
+              onVisibilityChange={(e) => {
+                this.setState({
+                  visibility: e.target.value,
+                });
+              }}
+            />
+          </React.Fragment>
+        );
 
-  onClickSave() {
-    this.props.onSave(this.props.name, this.state.values);
-  }
+      case 'editable':
+        return (
+          <React.Fragment key="editable">
+            <h3>
+              {this.props.title}
+              <EditButton onClick={this.onClickEdit} /> <br />
+              <Visibility to={this.props.visibility} />
+            </h3>
+            <p>{this.props.bio}</p>
+          </React.Fragment>
+        );
 
-  onClickCancel() {
-    this.props.onCancel(this.props.name);
-  }
-
-  renderStatic() {
-    return (
-      <React.Fragment key="static">
-        <h3>{this.props.title}</h3>
-        <p>{this.props.bio}</p>
-      </React.Fragment>
-    );
-  }
-
-  renderEditable() {
-    return (
-      <React.Fragment key="editable">
-        <h3>
-          {this.props.title}
-          <EditButton onClick={this.onClickEdit} /> <br />
-          <Visibility to={this.props.visibility} />
-        </h3>
-        <p>{this.props.bio}</p>
-      </React.Fragment>
-    );
-  }
-
-  renderEditing() {
-    return (
-      <React.Fragment key="editing">
-        <h3>{this.props.title}</h3>
-        <Input
-          defaultValue={this.props.bio}
-          type="textarea"
-          name="text"
-          id="exampleText"
-          onChange={(e) => {
-            this.setState({
-              values: {
-                bio: e.target.value,
-                visibility: this.state.values.visibility,
-              },
-            });
-          }}
-        />
-        <EditControls
-          onCancel={this.onClickCancel}
-          onSave={this.onClickSave}
-          visibility={this.state.values.visibility}
-          onVisibilityChange={(e) => {
-            this.setState({
-              values: {
-                bio: this.state.values.bio,
-                visibility: e.target.value,
-              },
-            });
-          }}
-        />
-      </React.Fragment>
-    );
+      case 'static':
+      default:
+        return (
+          <React.Fragment key="static">
+            <h3>{this.props.title}</h3>
+            <p>{this.props.bio}</p>
+          </React.Fragment>
+        );
+    }
   }
 
   render() {
     return (
-      <TransitionReplace>
-        {this.renderModes[this.props.mode]()}
-      </TransitionReplace>
+      <TransitionReplace>{this.renderMode()}</TransitionReplace>
     );
   }
 }
@@ -121,6 +101,7 @@ Bio.propTypes = {
   onEdit: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
+  saveState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
 };
 
 Bio.defaultProps = {
@@ -128,4 +109,5 @@ Bio.defaultProps = {
   title: 'About',
   visibility: 'Everyone',
   mode: 'editable',
+  saveState: null,
 };

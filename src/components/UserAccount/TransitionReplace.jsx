@@ -103,7 +103,7 @@ class TransitionReplace extends React.Component {
       <div
         style={{
           position: 'relative',
-          overflow: this.state.height === null ? 'auto' : 'hidden',
+          overflow: this.state.height === null ? null : 'hidden',
           height: this.state.height, // prevent rounding shifts from being too noticeable
           transition: `height ${duration}ms ${heightChangeEaseFunction}`,
         }}

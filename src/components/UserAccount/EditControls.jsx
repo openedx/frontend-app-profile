@@ -8,6 +8,7 @@ function EditControls({
   onSave,
   visibility,
   onVisibilityChange,
+  saveState,
 }) {
   return (
     <Row className="align-items-center">
@@ -30,7 +31,7 @@ function EditControls({
         <Button color="link" onClick={onCancel}>Cancel</Button>
         <AsyncActionButton
           onClick={onSave}
-          variant="default"
+          variant={saveState}
           labels={{
             default: 'Save',
             pending: 'Saving',
@@ -50,9 +51,11 @@ EditControls.propTypes = {
   onSave: PropTypes.func.isRequired,
   visibility: PropTypes.oneOf(['Everyone', 'Just me']),
   onVisibilityChange: PropTypes.func,
+  saveState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
 };
 
 EditControls.defaultProps = {
   visibility: null,
   onVisibilityChange: null,
+  saveState: null,
 };
