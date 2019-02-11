@@ -100,7 +100,7 @@ class TransitionReplace extends React.Component {
     };
 
     return (
-      <div
+      <TransitionGroup
         style={{
           position: 'relative',
           overflow: this.state.height === null ? null : 'hidden',
@@ -108,23 +108,21 @@ class TransitionReplace extends React.Component {
           transition: `height ${duration}ms ${heightChangeEaseFunction}`,
         }}
       >
-        <TransitionGroup>
-          {React.Children.map(this.props.children, child => (
-            <Transition {...transitionProps}>
-              {state => (
-                <div
-                  style={{
-                    ...defaultStyle,
-                    ...transitionStyles[state],
-                  }}
-                >
-                  {child}
-                </div>
-              )}
-            </Transition>
-          ))}
-        </TransitionGroup>
-      </div>
+        {React.Children.map(this.props.children, child => (
+          <Transition {...transitionProps}>
+            {state => (
+              <div
+                style={{
+                  ...defaultStyle,
+                  ...transitionStyles[state],
+                }}
+              >
+                {child}
+              </div>
+            )}
+          </Transition>
+        ))}
+      </TransitionGroup>
     );
   }
 }
