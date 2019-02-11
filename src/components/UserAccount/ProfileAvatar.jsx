@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Input } from 'reactstrap';
 
-class Avatar extends React.Component {
+class ProfileAvatar extends React.Component {
   constructor(props) {
     super(props);
 
@@ -38,14 +38,14 @@ class Avatar extends React.Component {
     } = this.props;
 
     return (
-      <div className="avatar rounded-circle overflow-hidden">
+      <div className="profile-avatar rounded-circle overflow-hidden">
         <button
-          className="text-white avatar-edit-button rounded-circle"
+          className="text-white profile-avatar-edit-button"
           onClick={this.onClick}
         >
-          Change
+          Update
         </button>
-        <img className="w-100" src={src} alt="avatar" />
+        <img className="w-100" src={src} alt="profile avatar" />
         <form
           ref={this.form}
           onSubmit={this.onSubmit}
@@ -69,12 +69,12 @@ class Avatar extends React.Component {
 }
 
 
-export default Avatar;
+export default ProfileAvatar;
 
-Avatar.propTypes = {
+ProfileAvatar.propTypes = {
   src: PropTypes.string,
 };
 
-Avatar.defaultProps = {
+ProfileAvatar.defaultProps = {
   src: null,
 };

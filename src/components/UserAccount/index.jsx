@@ -8,7 +8,7 @@ import Education from './Education';
 import Bio from './Bio';
 import SocialLinks from './SocialLinks';
 import MyCertificates from './MyCertificates';
-import Avatar from './Avatar';
+import ProfileAvatar from './ProfileAvatar';
 
 class UserAccount extends React.Component {
   constructor(props) {
@@ -61,88 +61,66 @@ class UserAccount extends React.Component {
       onCancel: this.onCancel,
     };
 
-    const isEditing = name => name === this.state.currentlyEditingField;
-
     const getEditMode = (name) => {
       if (name === this.state.currentlyEditingField) return 'editing';
       return 'editable';
     };
-
-    const renderEducationAndSocial = () => (
-      <React.Fragment>
-        <Education
-          name="education"
-          mode={getEditMode('education')}
-          education={education}
-          visibility="Everyone"
-          {...commonProps}
-        />
-        <SocialLinks
-          name="socialLinks"
-          mode={getEditMode('socialLinks')}
-          socialLinks={socialLinks}
-          visibility="Everyone"
-          {...commonProps}
-        />
-      </React.Fragment>
-    );
 
     return (
       <div>
         <div
           style={{ backgroundImage: `url(${bannerImage})` }}
           className="bg-banner d-none d-md-block p-relative"
-        >
-          <Container fluid>
-            <Avatar
-              src={profileImage}
-              editMode={isEditing('avatar')}
-              {...commonProps}
-            />
-          </Container>
-        </div>
+        />
 
-        <Container fluid className="pt-3">
+        <Container fluid>
           <Row>
             <Col md={4} lg={3}>
-              <Row className="">
-                <Col className="d-flex align-items-center d-md-block">
-                  <div className="mr-3 d-md-none" style={{ flexBasis: '30%' }}>
-                    <Avatar
-                      src={profileImage}
-                      editMode={isEditing('avatar')}
-                      {...commonProps}
-                    />
-                  </div>
-                  <div className="flex-grow-1">
-                    <h2 className="mb-0">{username}</h2>
-                    <p className="mb-4">Member since 2017</p>
-
-                    <FullName
-                      name="fullName"
-                      mode={getEditMode('fullName')}
-                      fullName={fullName}
-                      visibility="Everyone"
-                      {...commonProps}
-                    />
-
-                    <UserLocation
-                      name="userLocation"
-                      mode={getEditMode('userLocation')}
-                      userLocation={userLocation}
-                      visibility="Everyone"
-                      {...commonProps}
-                    />
-                  </div>
-                </Col>
-              </Row>
-              <Row className="d-none d-md-block">
-                <Col>
-                  {renderEducationAndSocial()}
-                </Col>
-              </Row>
+              <div className="d-flex align-items-center d-md-block mt-4 mt-md-0">
+                <ProfileAvatar
+                  className="mb-md-3"
+                  src={profileImage}
+                  {...commonProps}
+                />
+                <div>
+                  <h2 className="mb-0">{username}</h2>
+                  <p className="mb-0">Member since 2017</p>
+                </div>
+              </div>
             </Col>
-            <Col md={8} lg={9} className="pt-md-1">
+          </Row>
+          <Row>
+            <Col xs={{ order: 2 }} md={{ size: 4, order: 1 }} lg={3} className="mt-md-4">
+              <FullName
+                name="fullName"
+                mode={getEditMode('fullName')}
+                fullName={fullName}
+                visibility="Everyone"
+                {...commonProps}
+              />
+              <UserLocation
+                name="userLocation"
+                mode={getEditMode('userLocation')}
+                userLocation={userLocation}
+                visibility="Everyone"
+                {...commonProps}
+              />
+              <Education
+                name="education"
+                mode={getEditMode('education')}
+                education={education}
+                visibility="Everyone"
+                {...commonProps}
+              />
+              <SocialLinks
+                name="socialLinks"
+                mode={getEditMode('socialLinks')}
+                socialLinks={socialLinks}
+                visibility="Everyone"
+                {...commonProps}
+              />
+            </Col>
+            <Col xs={{ order: 1 }} md={{ size: 8, order: 2 }} lg={{ size: 8, offset: 1 }} className="mt-4 mt-md-n5">
               <Bio
                 name="bio"
                 mode={getEditMode('bio')}
@@ -150,9 +128,6 @@ class UserAccount extends React.Component {
                 visibility="Everyone"
                 {...commonProps}
               />
-              <div className="d-md-none">
-                {renderEducationAndSocial()}
-              </div>
               <MyCertificates certificates={certificates} />
             </Col>
           </Row>

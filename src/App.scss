@@ -23,17 +23,10 @@ $fa-font-path: "~font-awesome/fonts";
 
 .bg-banner {
   height: 12rem;
-  margin-bottom: 6rem;
+  margin-bottom: 4rem;
   background-size: cover;
   position: relative;
   
-  .avatar {
-    width: 12rem;
-    height: 12rem;
-    position: absolute;
-    top: 100%;
-    transform: translateY(-50%);
-  }
 }
 
 .editable-content-container {
@@ -65,21 +58,47 @@ $fa-font-path: "~font-awesome/fonts";
   }
 }
 
-.avatar-edit-button {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0,0,0,.5);
-  opacity: 0;
-  transition: opacity 200ms ease;
-  border: solid 3px rgba(0,0,0,.8);
-  &:focus, &:hover, &:active, &.active {
-    opacity: 1;
+.profile-avatar {
+  // box-shadow: 0 0 2px red;
+  max-width: 50%;
+  width: 5rem;
+  height: 5rem;
+  margin-right: 1rem;
+  
+  // float: left;
+  position: relative;
+  // top: 100%;
+  // transform: translateY(-70%);
+  @include media-breakpoint-up(md) {
+    width: 12rem;
+    max-width: none;
+    height: 12rem;
+    margin-right: 0;
+    margin-top: -12rem;
+    margin-bottom: 2rem;
+  }
+
+  .profile-avatar-edit-button {
+    position: absolute;
+    height: 100%;
+    @include media-breakpoint-up(md) {
+      height: 4rem;
+    }
+    left: 0;
+    width: 100%;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    padding-top: .1rem;
+    font-weight: 600;
+    background: rgba(0,0,0,.5);
+    border-radius:0;
+    // opacity: 0;
+    transition: opacity 200ms ease;
+    // border: solid 3px rgba(0,0,0,.8);
+    &:focus, &:hover, &:active, &.active {
+      opacity: 1;
+    }
   }
 }
 
