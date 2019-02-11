@@ -24,7 +24,8 @@ function Education({ education, visibility, ...editableContentProps }) {
       )}
       renderEditable={onClickEdit => (
         <React.Fragment>
-          <h3>Education <EditButton onClick={onClickEdit} /> <br /><Visibility to="Everyone" /></h3>
+          <h3>Education <EditButton onClick={onClickEdit} /></h3>
+          <Visibility to="Everyone" />
           <p>{EDUCATION[education]}</p>
         </React.Fragment>
       )}

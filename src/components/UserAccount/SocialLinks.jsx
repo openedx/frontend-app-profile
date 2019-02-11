@@ -42,7 +42,8 @@ function SocialLinks({
       )}
       renderEditable={onClickEdit => (
         <React.Fragment>
-          <h3>Social Links <EditButton onClick={onClickEdit} /> <br /><Visibility to="Everyone" /></h3>
+          <h3>Social Links <EditButton onClick={onClickEdit} /> <br /></h3>
+          <Visibility to="Everyone" />
           <dl>
             {linkKeys.map(linkName => (
               <React.Fragment key={linkName}>
