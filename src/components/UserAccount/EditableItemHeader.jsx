@@ -16,7 +16,7 @@ function EditableItemHeader({
     <React.Fragment>
       <h6 className="font-weight-normal">
         {content}
-        {showEditButton ? <EditButton className="float-right" onClick={onClickEdit} /> : null}
+        {showEditButton ? <EditButton style={{ marginTop: '-.35rem' }} className="float-right" onClick={onClickEdit} /> : null}
       </h6>
       {showVisibility ? <p className="mb-1"><Visibility to={visibility} /></p> : null}
     </React.Fragment>

@@ -4,7 +4,7 @@ import { Input } from 'reactstrap';
 
 import EditableItemHeader from './EditableItemHeader';
 import EditControls from './EditControls';
-import TransitionReplace from './TransitionReplace';
+import EditableContent from './EditableContent';
 
 import { ALL_COUNTRIES } from '../../constants/countries';
 
@@ -93,7 +93,7 @@ class UserLocation extends React.Component {
   }
   render() {
     return (
-      <TransitionReplace>{this.renderMode()}</TransitionReplace>
+      <EditableContent>{this.renderMode()}</EditableContent>
     );
   }
 }

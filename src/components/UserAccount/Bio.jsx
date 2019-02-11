@@ -4,7 +4,7 @@ import { Input } from 'reactstrap';
 
 import EditableItemHeader from './EditableItemHeader';
 import EditControls from './EditControls';
-import TransitionReplace from './TransitionReplace';
+import EditableContent from './EditableContent';
 
 
 class Bio extends React.Component {
@@ -69,7 +69,7 @@ class Bio extends React.Component {
               showVisibility
               visibility={this.props.visibility}
             />
-            <p>{this.props.bio}</p>
+            <p className="lead">{this.props.bio}</p>
           </React.Fragment>
         );
 
@@ -80,7 +80,7 @@ class Bio extends React.Component {
             <EditableItemHeader
               content={this.props.title}
             />
-            <p>{this.props.bio}</p>
+            <p className="lead">{this.props.bio}</p>
           </React.Fragment>
         );
     }
@@ -88,7 +88,7 @@ class Bio extends React.Component {
 
   render() {
     return (
-      <TransitionReplace>{this.renderMode()}</TransitionReplace>
+      <EditableContent>{this.renderMode()}</EditableContent>
     );
   }
 }

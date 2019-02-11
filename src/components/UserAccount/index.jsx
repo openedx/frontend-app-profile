@@ -7,7 +7,6 @@ import UserLocation from './UserLocation';
 import Education from './Education';
 import Bio from './Bio';
 import SocialLinks from './SocialLinks';
-import MyCourses from './MyCourses';
 import MyCertificates from './MyCertificates';
 import Avatar from './Avatar';
 
@@ -53,7 +52,6 @@ class UserAccount extends React.Component {
       socialLinks,
       bio,
       certificates,
-      courses,
     } = this.props;
 
 
@@ -107,7 +105,7 @@ class UserAccount extends React.Component {
         <Container fluid className="pt-3">
           <Row>
             <Col md={4} lg={3}>
-              <Row className="mb-3">
+              <Row className="">
                 <Col className="d-flex align-items-center d-md-block">
                   <div className="mr-3 d-md-none" style={{ flexBasis: '30%' }}>
                     <Avatar
@@ -116,9 +114,9 @@ class UserAccount extends React.Component {
                       {...commonProps}
                     />
                   </div>
-                  <div>
+                  <div className="flex-grow-1">
                     <h2 className="mb-0">{username}</h2>
-                    <p>Member since 2017</p>
+                    <p className="mb-4">Member since 2017</p>
 
                     <FullName
                       name="fullName"
@@ -138,7 +136,7 @@ class UserAccount extends React.Component {
                   </div>
                 </Col>
               </Row>
-              <Row className="mb-3 d-none d-md-block">
+              <Row className="d-none d-md-block">
                 <Col>
                   {renderEducationAndSocial()}
                 </Col>
@@ -156,7 +154,6 @@ class UserAccount extends React.Component {
                 {renderEducationAndSocial()}
               </div>
               <MyCertificates certificates={certificates} />
-              <MyCourses courses={courses} />
             </Col>
           </Row>
         </Container>
@@ -199,9 +196,6 @@ UserAccount.propTypes = {
   certificates: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string,
   })),
-  courses: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string,
-  })),
   saveUserAccount: PropTypes.func,
 };
 
@@ -235,6 +229,5 @@ UserAccount.defaultProps = {
   aboutMe: 'These are some words about me and who I am as a person.',
   bio: 'These are some words about me and who I am as a person.',
   certificates: [{ title: 'Certificate 1' }, { title: 'Certificate 2' }, { title: 'Certificate 3' }],
-  courses: [{ title: 'Course ' }, { title: 'Course 2' }, { title: 'Course 3' }],
   saveUserAccount: null,
 };

@@ -4,7 +4,7 @@ import { Input } from 'reactstrap';
 
 import EditableItemHeader from './EditableItemHeader';
 import EditControls from './EditControls';
-import TransitionReplace from './TransitionReplace';
+import EditableContent from './EditableContent';
 
 
 class FullName extends React.Component {
@@ -85,7 +85,7 @@ class FullName extends React.Component {
   }
   render() {
     return (
-      <TransitionReplace>{this.renderMode()}</TransitionReplace>
+      <EditableContent>{this.renderMode()}</EditableContent>
     );
   }
 }

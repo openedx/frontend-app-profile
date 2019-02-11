@@ -4,7 +4,7 @@ import { Input } from 'reactstrap';
 
 import EditableItemHeader from './EditableItemHeader';
 import EditControls from './EditControls';
-import TransitionReplace from './TransitionReplace';
+import EditableContent from './EditableContent';
 
 import EDUCATION from '../../constants/education';
 
@@ -93,7 +93,7 @@ class Education extends React.Component {
   }
   render() {
     return (
-      <TransitionReplace>{this.renderMode()}</TransitionReplace>
+      <EditableContent>{this.renderMode()}</EditableContent>
     );
   }
 }
