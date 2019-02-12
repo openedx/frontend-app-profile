@@ -5,6 +5,7 @@ import { Input } from 'reactstrap';
 import EditableItemHeader from './EditableItemHeader';
 import EditControls from './EditControls';
 import EditableContent from './EditableContent';
+import EmptyContent from './EmptyContent';
 
 import { ALL_COUNTRIES } from '../../constants/countries';
 
@@ -75,7 +76,15 @@ class UserLocation extends React.Component {
               showVisibility
               visibility={this.props.visibility}
             />
-            <h5>{ALL_COUNTRIES[this.props.userLocation]}</h5>
+            {
+              this.props.userLocation ? (
+                <h5>{ALL_COUNTRIES[this.props.userLocation]}</h5>
+              ) : (
+                <EmptyContent onClick={this.onClickEdit}>
+                  Add location
+                </EmptyContent>
+              )
+            }
           </React.Fragment>
         );
 

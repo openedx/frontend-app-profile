@@ -5,6 +5,7 @@ import { Input } from 'reactstrap';
 import EditableItemHeader from './EditableItemHeader';
 import EditControls from './EditControls';
 import EditableContent from './EditableContent';
+import EmptyContent from './EmptyContent';
 
 
 class FullName extends React.Component {
@@ -67,7 +68,15 @@ class FullName extends React.Component {
               showVisibility
               visibility={this.props.visibility}
             />
-            <h5>{this.props.fullName}</h5>
+            {
+              this.props.fullName ? (
+                <h5>{this.props.fullName}</h5>
+              ) : (
+                <EmptyContent onClick={this.onClickEdit}>
+                  Add your full name
+                </EmptyContent>
+              )
+            }
           </React.Fragment>
         );
 

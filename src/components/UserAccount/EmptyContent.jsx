@@ -8,8 +8,10 @@ function EmptyContent({ children, onClick, showPlusIcon }) {
   const onKeyDown = (e) => { if (e.key === 'Enter') onClick(); };
 
   const commonProps = {
-    className: 'd-flex align-items-center p-3 border rounded text-muted',
-    style: { borderStyle: 'dashed' },
+    className: 'd-flex align-items-center p-3 bg-light rounded text-muted',
+    style: {
+      cursor: onClick ? 'pointer' : null,
+    },
   };
 
   const interactiveProps = {
@@ -32,7 +34,7 @@ function EmptyContent({ children, onClick, showPlusIcon }) {
 
   return (
     <div {...props}>
-      {showPlusIcon ? <FontAwesomeIcon className="mr-3" icon={faPlus} /> : null}
+      {showPlusIcon ? <FontAwesomeIcon className="ml-1 mr-3" icon={faPlus} /> : null}
       {children}
     </div>
   );

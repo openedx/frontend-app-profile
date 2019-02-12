@@ -5,6 +5,7 @@ import { Input } from 'reactstrap';
 import EditableItemHeader from './EditableItemHeader';
 import EditControls from './EditControls';
 import EditableContent from './EditableContent';
+import EmptyContent from './EmptyContent';
 
 import EDUCATION from '../../constants/education';
 
@@ -75,7 +76,15 @@ class Education extends React.Component {
               showVisibility
               visibility={this.props.visibility}
             />
-            <h5>{EDUCATION[this.props.education]}</h5>
+            {
+              this.props.education ? (
+                <h5>{EDUCATION[this.props.education]}</h5>
+              ) : (
+                <EmptyContent onClick={this.onClickEdit}>
+                  Add education level
+                </EmptyContent>
+              )
+            }
           </React.Fragment>
         );
 

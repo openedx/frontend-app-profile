@@ -17,7 +17,7 @@ function MyCertificates(props) {
       />
       <Row>
         {certificates.map(({ title }) => (
-          <Col key={title} sm={6} lg={4}>
+          <Col key={title} sm={6}>
             <Card className="mb-4">
               <CardImg top src="https://placeholdit.imgix.net/~text?txt=Certificate&w=300&h=100" />
               <CardBody>
