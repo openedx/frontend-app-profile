@@ -1,34 +1,12 @@
 import { connect } from 'react-redux';
-import { saveUserAccount, UserAccountApiService } from '@edx/frontend-auth';
 
-import apiClient from '../../data/apiClient';
 import { getSocialLinks } from '../../constants/social';
 import UserAccount from '../../components/UserAccount';
-
-const PROP_TO_STATE_MAP = {
-  fullName: 'name',
-  userLocation: 'country',
-  education: 'levelOfEducation',
-  socialLinks: socialLinks => Object.keys(socialLinks).map(linkKey => ({
-    platform: linkKey,
-    socialLink: socialLinks[linkKey].url,
-  })),
-};
-
-const mapPropsToState = (props) => {
-  const state = {};
-  Object.keys(props).forEach((prop) => {
-    const propModifier = PROP_TO_STATE_MAP[prop] || prop;
-    if (typeof propModifier === 'function') {
-      state[prop] = propModifier(props[prop]);
-    } else {
-      state[propModifier] = props[prop];
-    }
-  });
-  return state;
-};
+import { saveUserProfile } from '../../actions/profileActions';
 
 const mapStateToProps = state => ({
+  saveState: state.profile.saveState,
+  error: state.profile.error,
   bannerImage: 'https://source.unsplash.com/featured/1000x200/?colored,pattern',
   profileImage: state.userAccount.profileImage.imageUrlLarge,
   fullName: state.userAccount.name,
@@ -41,16 +19,6 @@ const mapStateToProps = state => ({
   courses: [{ title: 'Course ' }, { title: 'Course 2' }, { title: 'Course 3' }],
 });
 
-const userAccountApiService = new UserAccountApiService(apiClient, process.env.LMS_BASE_URL);
-const mapDispatchToProps = {
-  saveUserAccount: (username, props, visibility) => (
-    saveUserAccount(
-      userAccountApiService,
-      username,
-      mapPropsToState(props),
-      visibility,
-    )
-  ),
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(UserAccount);
+export default connect(mapStateToProps, {
+  saveUserProfile,
+})(UserAccount);
