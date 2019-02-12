@@ -14,31 +14,23 @@ class UserAccount extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      currentlyEditingField: null,
-    };
-
     this.onCancel = this.onCancel.bind(this);
     this.onEdit = this.onEdit.bind(this);
     this.onSave = this.onSave.bind(this);
   }
 
   onCancel() {
-    this.setState({
-      currentlyEditingField: null,
-    });
+    this.props.closeEditableField();
   }
 
   onEdit(fieldName) {
-    this.setState({
-      currentlyEditingField: fieldName,
-    });
+    this.props.openEditableField(fieldName);
   }
 
   onSave(fieldName, values) {
     const userAccountData = {};
     userAccountData[fieldName] = values[fieldName];
-    this.props.saveUserProfile(this.props.username, userAccountData, values.visibility);
+    this.props.saveUserProfile(this.props.username, userAccountData, values.visibility, fieldName);
   }
 
   render() {
@@ -66,7 +58,7 @@ class UserAccount extends React.Component {
     };
 
     const getEditMode = (name) => {
-      if (name === this.state.currentlyEditingField) return 'editing';
+      if (name === this.props.currentlyEditingField) return 'editing';
       return 'editable';
     };
 
@@ -144,6 +136,7 @@ class UserAccount extends React.Component {
 export default UserAccount;
 
 UserAccount.propTypes = {
+  currentlyEditingField: PropTypes.string,
   saveState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
   error: PropTypes.string,
   bannerImage: PropTypes.string,
@@ -178,9 +171,12 @@ UserAccount.propTypes = {
     title: PropTypes.string,
   })),
   saveUserProfile: PropTypes.func,
+  openEditableField: PropTypes.func.isRequired,
+  closeEditableField: PropTypes.func.isRequired,
 };
 
 UserAccount.defaultProps = {
+  currentlyEditingField: null,
   saveState: null,
   error: null,
   bannerImage: 'https://source.unsplash.com/featured/1000x200/?colored,pattern',

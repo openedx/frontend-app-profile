@@ -2,9 +2,14 @@ import { connect } from 'react-redux';
 
 import { getSocialLinks } from '../../constants/social';
 import UserAccount from '../../components/UserAccount';
-import { saveUserProfile } from '../../actions/profileActions';
+import {
+  saveUserProfile,
+  openEditableField,
+  closeEditableField,
+} from '../../actions/profileActions';
 
 const mapStateToProps = state => ({
+  currentlyEditingField: state.profile.currentlyEditingField,
   saveState: state.profile.saveState,
   error: state.profile.error,
   bannerImage: 'https://source.unsplash.com/featured/1000x200/?colored,pattern',
@@ -21,4 +26,6 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, {
   saveUserProfile,
+  openEditableField,
+  closeEditableField,
 })(UserAccount);

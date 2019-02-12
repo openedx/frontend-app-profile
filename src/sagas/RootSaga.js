@@ -6,6 +6,7 @@ import {
   saveUserProfileSuccess,
   saveUserProfileFailure,
   saveUserProfileReset,
+  closeEditableField,
 } from '../actions/profileActions';
 
 import * as UserProfileApiService from '../services/UserProfileApiService';
@@ -27,8 +28,9 @@ function* saveUserProfile(action) {
       type: 'FETCH_USER_ACCOUNT_SUCCESS',
       payload: { userAccount },
     });
-    yield delay(3000);
     yield put(saveUserProfileReset());
+    yield delay(300);
+    yield put(closeEditableField(action.fieldName));
   } catch (e) {
     yield put(saveUserProfileFailure(e));
   }
