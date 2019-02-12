@@ -5,6 +5,7 @@ import { Input } from 'reactstrap';
 import EditableItemHeader from './EditableItemHeader';
 import EditControls from './EditControls';
 import EditableContent from './EditableContent';
+import EmptyContent from './EmptyContent';
 
 
 class Bio extends React.Component {
@@ -69,7 +70,15 @@ class Bio extends React.Component {
               showVisibility
               visibility={this.props.visibility}
             />
-            <p className="lead">{this.props.bio}</p>
+            {
+              this.props.bio ? (
+                <p className="lead">{this.props.bio}</p>
+              ) : (
+                <EmptyContent onClick={this.onClickEdit}>
+                  Tell other learners a little about yourself...
+                </EmptyContent>
+              )
+            }
           </React.Fragment>
         );
 
@@ -110,9 +119,10 @@ Bio.propTypes = {
 };
 
 Bio.defaultProps = {
-  bio: '',
+  bio: null,
   title: 'About Me',
   visibility: 'Everyone',
   mode: 'editable',
   saveState: null,
 };
+
