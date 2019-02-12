@@ -38,11 +38,13 @@ class UserAccount extends React.Component {
   onSave(fieldName, values) {
     const userAccountData = {};
     userAccountData[fieldName] = values[fieldName];
-    this.props.saveUserAccount(this.props.username, userAccountData, values.visibility);
+    this.props.saveUserProfile(this.props.username, userAccountData, values.visibility);
   }
 
   render() {
     const {
+      saveState,
+      error,
       bannerImage,
       profileImage,
       fullName,
@@ -59,6 +61,8 @@ class UserAccount extends React.Component {
       onSave: this.onSave,
       onEdit: this.onEdit,
       onCancel: this.onCancel,
+      saveState,
+      error,
     };
 
     const getEditMode = (name) => {
@@ -140,6 +144,8 @@ class UserAccount extends React.Component {
 export default UserAccount;
 
 UserAccount.propTypes = {
+  saveState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
+  error: PropTypes.string,
   bannerImage: PropTypes.string,
   profileImage: PropTypes.string,
   fullName: PropTypes.string,
@@ -171,10 +177,12 @@ UserAccount.propTypes = {
   certificates: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string,
   })),
-  saveUserAccount: PropTypes.func,
+  saveUserProfile: PropTypes.func,
 };
 
 UserAccount.defaultProps = {
+  saveState: null,
+  error: null,
   bannerImage: 'https://source.unsplash.com/featured/1000x200/?colored,pattern',
   profileImage: 'https://source.unsplash.com/featured/200x200/?face',
   fullName: 'Hermione Granger',
@@ -204,5 +212,5 @@ UserAccount.defaultProps = {
   aboutMe: 'These are some words about me and who I am as a person.',
   bio: 'These are some words about me and who I am as a person.',
   certificates: [{ title: 'Certificate 1' }, { title: 'Certificate 2' }, { title: 'Certificate 3' }],
-  saveUserAccount: null,
+  saveUserProfile: null,
 };
