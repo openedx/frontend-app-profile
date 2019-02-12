@@ -11,23 +11,24 @@ function EditControls({
   saveState,
 }) {
   return (
-    <Row className="align-items-center">
-      <Col className="mt-3 mb-3 ">
-        <Label className="d-inline-block mb-0 mr-2" size="sm" for="exampleSelect">Who can see this:</Label>
-        <Input
-          className="d-inline-block
-          w-auto"
-          bsSize="sm"
-          type="select"
-          name="select"
-          value={visibility}
-          onChange={onVisibilityChange}
-        >
-          <option key="Just me" value="Just me">Just me</option>
-          <option key="Everyone" value="Everyone">Everyone</option>
-        </Input>
+    <Row className="align-items-center flex-wrap-1 pt-3">
+      <Col xs="auto" className="d-flex mb-3">
+        <Label className="flex-shrink-0 d-inline-block mb-0 mr-2" size="sm" for="exampleSelect">Who can see this:</Label>
+        <span>
+          <Input
+            className="d-inline-block"
+            bsSize="sm"
+            type="select"
+            name="select"
+            value={visibility}
+            onChange={onVisibilityChange}
+          >
+            <option key="Just me" value="Just me">Just me</option>
+            <option key="Everyone" value="Everyone">Everyone</option>
+          </Input>
+        </span>
       </Col>
-      <Col className="col-auto mt-3 mb-3 flex-grow-1 d-flex justify-content-end">
+      <Col xs="auto" className="flex-grow-1 d-flex justify-content-end mb-3">
         <Button color="link" onClick={onCancel}>Cancel</Button>
         <AsyncActionButton
           onClick={onSave}

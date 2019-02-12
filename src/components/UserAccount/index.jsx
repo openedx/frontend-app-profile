@@ -37,7 +37,6 @@ class UserAccount extends React.Component {
     const {
       saveState,
       error,
-      bannerImage,
       profileImage,
       fullName,
       username,
@@ -65,8 +64,7 @@ class UserAccount extends React.Component {
     return (
       <div>
         <div
-          style={{ backgroundImage: `url(${bannerImage})` }}
-          className="bg-banner d-none d-md-block p-relative"
+          className="bg-banner bg-program-micro-masters d-none d-md-block p-relative"
         />
 
         <Container fluid>
@@ -139,7 +137,6 @@ UserAccount.propTypes = {
   currentlyEditingField: PropTypes.string,
   saveState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
   error: PropTypes.string,
-  bannerImage: PropTypes.string,
   profileImage: PropTypes.string,
   fullName: PropTypes.string,
   username: PropTypes.string,
@@ -179,7 +176,6 @@ UserAccount.defaultProps = {
   currentlyEditingField: null,
   saveState: null,
   error: null,
-  bannerImage: 'https://source.unsplash.com/featured/1000x200/?colored,pattern',
   profileImage: 'https://source.unsplash.com/featured/200x200/?face',
   fullName: 'Hermione Granger',
   username: 'itslevioooosa20',
