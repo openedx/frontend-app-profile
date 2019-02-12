@@ -1,4 +1,4 @@
-import { call, put, takeEvery, delay } from 'redux-saga/effects';
+import { call, put, takeEvery } from 'redux-saga/effects';
 
 import {
   SAVE_USER_PROFILE,
@@ -29,7 +29,6 @@ function* saveUserProfile(action) {
       payload: { userAccount },
     });
     yield put(saveUserProfileReset());
-    yield delay(300);
     yield put(closeEditableField(action.fieldName));
   } catch (e) {
     yield put(saveUserProfileFailure(e));
