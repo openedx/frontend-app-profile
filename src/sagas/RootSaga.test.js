@@ -88,14 +88,16 @@ describe('RootSaga', () => {
         fullName: 'Donkey McWafflebatter',
         userLocation: 'US',
         education: 'BS',
-        socialLinks: {
-          twitter: {
-            url: 'https://www.twitter.com',
+        socialLinks: [
+          {
+            platform: 'twitter',
+            socialLink: null,
           },
-          facebook: {
-            url: 'https://www.facebook.com',
+          {
+            platform: 'facebook',
+            socialLink: 'https://www.facebook.com',
           },
-        },
+        ],
       };
       const result = mapDataForRequest(props);
       expect(result).toEqual({
@@ -106,10 +108,6 @@ describe('RootSaga', () => {
         country: 'US',
         levelOfEducation: 'BS',
         socialLinks: [
-          {
-            platform: 'twitter',
-            socialLink: 'https://www.twitter.com',
-          },
           {
             platform: 'facebook',
             socialLink: 'https://www.facebook.com',
