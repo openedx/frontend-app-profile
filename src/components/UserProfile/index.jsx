@@ -89,9 +89,9 @@ class UserProfile extends React.Component {
       error,
     };
 
-
-    const getEditMode = (name) => {
+    const getMode = (name) => {
       if (name === this.props.currentlyEditingField) return 'editing';
+      if (!this.props[name] || !this.props[name].length) return 'empty';
       return 'editable';
     };
 
@@ -119,25 +119,25 @@ class UserProfile extends React.Component {
 
               <FullName
                 fullName={fullName}
-                editMode={getEditMode('fullName')}
+                editMode={getMode('fullName')}
                 {...commonProps}
               />
 
               <UserLocation
                 userLocation={userLocation}
-                editMode={getEditMode('userLocation')}
+                editMode={getMode('userLocation')}
                 {...commonProps}
               />
 
               <Education
                 education={education}
-                editMode={getEditMode('education')}
+                editMode={getMode('education')}
                 {...commonProps}
               />
 
               <SocialLinks
                 socialLinks={socialLinks}
-                editMode={getEditMode('socialLinks')}
+                editMode={getMode('socialLinks')}
                 {...commonProps}
               />
 
@@ -146,13 +146,13 @@ class UserProfile extends React.Component {
 
               <Bio
                 bio={bio}
-                editMode={getEditMode('bio')}
+                editMode={getMode('bio')}
                 {...commonProps}
               />
 
               <MyCertificates
                 certificates={certificates}
-                editMode={getEditMode('certificates')}
+                editMode={getMode('certificates')}
                 {...commonProps}
               />
 
@@ -193,15 +193,15 @@ UserProfile.defaultProps = {
   currentlyEditingField: null,
   saveState: null,
   error: null,
-  profileImage: 'https://source.unsplash.com/featured/200x200/?face',
-  fullName: 'Hermione Granger',
-  username: 'itslevioooosa20',
-  userLocation: 'London, UK',
+  profileImage: null,
+  fullName: null,
+  username: null,
+  userLocation: null,
   education: null,
   socialLinks: [],
-  aboutMe: 'These are some words about me and who I am as a person.',
-  bio: 'These are some words about me and who I am as a person.',
-  certificates: [{ title: 'Certificate 1' }, { title: 'Certificate 2' }, { title: 'Certificate 3' }],
+  aboutMe: null,
+  bio: null,
+  certificates: null,
   saveUserProfile: null,
 };
 
@@ -264,12 +264,11 @@ function FullName({
               showVisibility={Boolean(fullName)}
               visibility="Everyone"
             />
-            {fullName ? (
-              <h5>{fullName}</h5>
-            ) : (
-              <EmptyContent onClick={() => onEdit('fullName')}>Add name</EmptyContent>
-            )}
+            <h5>{fullName}</h5>
           </React.Fragment>
+        ),
+        empty: (
+          <EmptyContent onClick={() => onEdit('fullName')}>Add name</EmptyContent>
         ),
         static: (
           <React.Fragment>
@@ -340,12 +339,11 @@ function UserLocation({
               showVisibility={Boolean(userLocation)}
               visibility="Everyone"
             />
-            {userLocation ? (
-              <h5>{ALL_COUNTRIES[userLocation]}</h5>
-            ) : (
-              <EmptyContent onClick={() => onEdit('userLocation')}>Add location</EmptyContent>
-            )}
+            <h5>{ALL_COUNTRIES[userLocation]}</h5>
           </React.Fragment>
+        ),
+        empty: (
+          <EmptyContent onClick={() => onEdit('userLocation')}>Add location</EmptyContent>
         ),
         static: (
           <React.Fragment>
@@ -416,12 +414,11 @@ function Education({
               showVisibility={Boolean(education)}
               visibility="Everyone"
             />
-            {education ? (
-              <h5>{EDUCATION[education]}</h5>
-            ) : (
-              <EmptyContent onClick={() => onEdit('education')}>Add education</EmptyContent>
-            )}
+            <h5>{EDUCATION[education]}</h5>
           </React.Fragment>
+        ),
+        empty: (
+          <EmptyContent onClick={() => onEdit('education')}>Add education</EmptyContent>
         ),
         static: (
           <React.Fragment>
@@ -487,12 +484,11 @@ function Bio({
               showVisibility={Boolean(bio)}
               visibility="Everyone"
             />
-            {bio ? (
-              <p className="lead">{bio}</p>
-            ) : (
-              <EmptyContent onClick={() => onEdit('bio')}>Tell other learners a little about yourself...</EmptyContent>
-            )}
+            <p className="lead">{bio}</p>
           </React.Fragment>
+        ),
+        empty: (
+          <EmptyContent onClick={() => onEdit('bio')}>Add a short bio</EmptyContent>
         ),
         static: (
           <React.Fragment>
@@ -526,9 +522,7 @@ function MyCertificates({
   saveState,
 }) {
   const renderCertificates = () => {
-    if (!certificates) {
-      return <EmptyContent onClick={() => onEdit('certificates')}>You don&quot;t have any certificates yet.</EmptyContent>;
-    }
+    if (!certificates) return null;
 
     return (
       <Row>
@@ -574,6 +568,11 @@ function MyCertificates({
             />
             {renderCertificates()}
           </React.Fragment>
+        ),
+        empty: (
+          <div>
+            You don’t have any certificates yet. Find a course.
+          </div>
         ),
         static: (
           <React.Fragment>
