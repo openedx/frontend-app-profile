@@ -15,11 +15,7 @@ const PROP_TO_STATE_MAP = {
   fullName: 'name',
   userLocation: 'country',
   education: 'levelOfEducation',
-  socialLinks: socialLinks =>
-    Object.keys(socialLinks).map(linkKey => ({
-      platform: linkKey,
-      socialLink: socialLinks[linkKey].url,
-    })),
+  socialLinks: socialLinks => socialLinks.filter(({ socialLink }) => socialLink !== null),
 };
 
 export const mapDataForRequest = (props) => {
