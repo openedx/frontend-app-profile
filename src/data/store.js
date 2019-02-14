@@ -3,6 +3,7 @@ import createSagaMiddleware from 'redux-saga';
 import thunkMiddleware from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction';
 import { createLogger } from 'redux-logger';
+import { UserAccountApiService } from '@edx/frontend-auth';
 
 import apiClient from './apiClient';
 import reducers from './reducers/RootReducer';
@@ -17,6 +18,9 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(thunkMiddleware, sagaMiddleware, loggerMiddleware)),
 );
 
-sagaMiddleware.run(rootSaga);
+const apiService = new UserAccountApiService(apiClient, process.env.LMS_BASE_URL);
+apiService.saveUserAccount = apiService.saveUserAccount.bind(apiService);
+
+sagaMiddleware.run(rootSaga, apiService);
 
 export default store;

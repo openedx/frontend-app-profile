@@ -1,5 +1,4 @@
 import { call, put, takeEvery, delay } from 'redux-saga/effects';
-import { UserAccountApiService } from '@edx/frontend-auth';
 
 import {
   SAVE_USER_PROFILE,
@@ -9,9 +8,8 @@ import {
   saveUserProfileReset,
   closeEditableField,
 } from '../actions/profile';
-import apiClient from '../data/apiClient';
 
-const apiService = new UserAccountApiService(apiClient, process.env.LMS_BASE_URL);
+let userAccountApiService = null;
 
 const PROP_TO_STATE_MAP = {
   fullName: 'name',
@@ -20,7 +18,7 @@ const PROP_TO_STATE_MAP = {
   socialLinks: socialLinks => socialLinks.filter(({ socialLink }) => socialLink !== null),
 };
 
-const mapDataForRequest = (props) => {
+export const mapDataForRequest = (props) => {
   const state = {};
   Object.keys(props).forEach((prop) => {
     const propModifier = PROP_TO_STATE_MAP[prop] || prop;
@@ -33,12 +31,12 @@ const mapDataForRequest = (props) => {
   return state;
 };
 
-function* saveUserProfile(action) {
+export function* saveUserProfile(action) {
   try {
     yield put(saveUserProfileBegin());
     const userAccount = yield call(
       // Because apiService is a class, 'this' needs to be bound.
-      apiService.saveUserAccount.bind(apiService),
+      userAccountApiService.saveUserAccount,
       action.payload.username,
       mapDataForRequest(action.payload.userAccountState),
     );
@@ -60,6 +58,7 @@ function* saveUserProfile(action) {
   }
 }
 
-export default function* rootSaga() {
+export default function* rootSaga(apiService) {
+  userAccountApiService = apiService;
   yield takeEvery(SAVE_USER_PROFILE.BASE, saveUserProfile);
 }
