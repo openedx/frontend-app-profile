@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 function EmptyContent({ children, onClick, showPlusIcon }) {
   const onKeyDown = (e) => { if (e.key === 'Enter') onClick(); };
@@ -34,7 +34,7 @@ function EmptyContent({ children, onClick, showPlusIcon }) {
 
   return (
     <div {...props}>
-      {showPlusIcon ? <FontAwesomeIcon className="ml-1 mr-3" icon={faPencilAlt} /> : null}
+      {showPlusIcon ? <FontAwesomeIcon className="ml-1 mr-3" icon={faPlus} /> : null}
       {children}
     </div>
   );

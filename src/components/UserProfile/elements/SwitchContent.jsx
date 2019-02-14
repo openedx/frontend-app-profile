@@ -18,9 +18,21 @@ const onChildExit = (htmlNode) => {
 
 
 function SwitchContent({ expression, cases, className }) {
-  if (!cases[expression] && !cases.default) {
+  const getContent = (caseKey) => {
+    if (cases[caseKey]) {
+      if (typeof cases[caseKey] === 'string') {
+        return getContent(cases[caseKey]);
+      }
+      return React.cloneElement(cases[caseKey], { key: caseKey });
+    } else if (cases.default) {
+      if (typeof cases.default === 'string') {
+        return getContent(cases.default);
+      }
+      React.cloneElement(cases.default, { key: 'default' });
+    }
+
     return null;
-  }
+  };
 
   return (
     <TransitionReplace
@@ -28,7 +40,7 @@ function SwitchContent({ expression, cases, className }) {
       onChildEntered={onChildEntered}
       onChildExit={onChildExit}
     >
-      {expression ? React.cloneElement(cases[expression], { key: expression }) : React.cloneElement(cases.default, { key: 'default' })}
+      {getContent(expression)}
     </TransitionReplace>
   );
 }
