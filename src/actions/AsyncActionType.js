@@ -10,6 +10,10 @@ export default class AsyncActionType {
     this.name = name;
   }
 
+  get BASE() {
+    return `${this.topic}__${this.name}`;
+  }
+
   get BEGIN() {
     return `${this.topic}__${this.name}__BEGIN`;
   }
@@ -25,10 +29,4 @@ export default class AsyncActionType {
   get RESET() {
     return `${this.topic}__${this.name}__RESET`;
   }
-
-  get BASE() {
-    return `${this.topic}__${this.name}`;
-  }
 }
-
-AsyncActionType.prototype.toString = () => `${this.topic}__${this.name}`;
