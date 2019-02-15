@@ -10,12 +10,17 @@ class ProfileAvatar extends React.Component {
     this.form = React.createRef();
 
     this.onClick = this.onClick.bind(this);
+    this.onClickDelete = this.onClickDelete.bind(this);
     this.onInput = this.onInput.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
   onClick() {
     this.fileInput.current.click();
+  }
+
+  onClickDelete() {
+    this.props.onDelete();
   }
 
   onInput() {
@@ -33,41 +38,52 @@ class ProfileAvatar extends React.Component {
     } = this.props;
 
     return (
-      <div className="profile-avatar rounded-circle overflow-hidden p-relative bg-dark">
-        {this.props.savePhotoState === 'pending' ? (
-          <div
-            className="p-absolute w-100 h-100 d-flex justify-content-center align-items-center"
-            style={{ backgroundColor: 'rgba(255,255,255,.5)' }}
+      <div className="profile-avatar-wrap position-relative">
+        <div className="profile-avatar rounded-circle overflow-hidden bg-dark">
+          {this.props.savePhotoState === 'pending' ? (
+            <div
+              className="p-absolute w-100 h-100 d-flex justify-content-center align-items-center"
+              style={{ backgroundColor: 'rgba(255,255,255,.5)' }}
+            >
+              <Spinner color="primary" />
+            </div>
+          ) : null}
+
+          <button
+            className="text-white profile-avatar-edit-button"
+            onClick={this.onClick}
           >
-            <Spinner color="primary" />
-          </div>
+            Change
+          </button>
+
+          <form
+            ref={this.form}
+            onSubmit={this.onSubmit}
+            encType="multipart/form-data"
+          >
+            <img className="w-100" src={src} alt="profile avatar" />
+
+            {/* The name of this input must be 'file' */}
+            <Input
+              className="d-none"
+              innerRef={this.fileInput}
+              type="file"
+              name="file"
+              id="exampleFile"
+              onInput={this.onInput}
+              accept=".jpg, .jpeg, .png"
+            />
+          </form>
+
+        </div>
+        {src ? (
+          <button
+            className="position-absolute btn btn-link w-100 btn-sm"
+            onClick={this.onClickDelete}
+          >
+            Remove
+          </button>
         ) : null}
-
-        <button
-          className="text-white profile-avatar-edit-button"
-          onClick={this.onClick}
-        >
-          Change
-        </button>
-
-        <form
-          ref={this.form}
-          onSubmit={this.onSubmit}
-          encType="multipart/form-data"
-        >
-          <img className="w-100" src={src} alt="profile avatar" />
-
-          {/* The name of this input must be 'file' */}
-          <Input
-            className="d-none"
-            innerRef={this.fileInput}
-            type="file"
-            name="file"
-            id="exampleFile"
-            onInput={this.onInput}
-            accept=".jpg, .jpeg, .png"
-          />
-        </form>
       </div>
     );
   }
@@ -79,6 +95,7 @@ export default ProfileAvatar;
 ProfileAvatar.propTypes = {
   src: PropTypes.string,
   onSave: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
   savePhotoState: PropTypes.oneOf([null, 'pending', 'complete', 'error']).isRequired,
 };
 

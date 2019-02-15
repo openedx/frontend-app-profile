@@ -1,6 +1,7 @@
 import {
   SAVE_USER_PROFILE,
   SAVE_USER_PROFILE_PHOTO,
+  DELETE_USER_PROFILE_PHOTO,
   EDITABLE_FIELD_CLOSE,
   EDITABLE_FIELD_OPEN,
 } from '../../actions/profile';
@@ -75,6 +76,31 @@ const profile = (state = initialState, action) => {
         error: action.payload.error,
       };
     case SAVE_USER_PROFILE_PHOTO.RESET:
+      return {
+        ...state,
+        savePhotoState: null,
+        error: null,
+      };
+
+    case DELETE_USER_PROFILE_PHOTO.BEGIN:
+      return {
+        ...state,
+        savePhotoState: 'pending',
+        error: null,
+      };
+    case DELETE_USER_PROFILE_PHOTO.SUCCESS:
+      return {
+        ...state,
+        savePhotoState: 'complete',
+        error: null,
+      };
+    case DELETE_USER_PROFILE_PHOTO.FAILURE:
+      return {
+        ...state,
+        savePhotoState: 'error',
+        error: action.payload.error,
+      };
+    case DELETE_USER_PROFILE_PHOTO.RESET:
       return {
         ...state,
         savePhotoState: null,

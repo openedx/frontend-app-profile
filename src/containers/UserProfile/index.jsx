@@ -4,6 +4,7 @@ import UserProfile from '../../components/UserProfile';
 import {
   saveUserProfile,
   saveUserProfilePhoto,
+  deleteUserProfilePhoto,
   openEditableField,
   closeEditableField,
 } from '../../actions/profile';
@@ -28,6 +29,7 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, {
   saveUserProfile,
   saveUserProfilePhoto,
+  deleteUserProfilePhoto,
   openEditableField,
   closeEditableField,
 })(UserProfile);

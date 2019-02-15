@@ -4,6 +4,7 @@ export const EDITABLE_FIELD_OPEN = 'EDITABLE_FIELD_OPEN';
 export const EDITABLE_FIELD_CLOSE = 'EDITABLE_FIELD_CLOSE';
 export const SAVE_USER_PROFILE = new AsyncActionType('PROFILE', 'SAVE_USER_PROFILE');
 export const SAVE_USER_PROFILE_PHOTO = new AsyncActionType('PROFILE', 'SAVE_USER_PROFILE_PHOTO');
+export const DELETE_USER_PROFILE_PHOTO = new AsyncActionType('PROFILE', 'DELETE_USER_PROFILE_PHOTO');
 
 export const openEditableField = fieldName => ({
   type: EDITABLE_FIELD_OPEN,
@@ -63,5 +64,29 @@ export const saveUserProfilePhoto = (username, formData) => ({
   payload: {
     username,
     formData,
+  },
+});
+
+export const deleteUserProfilePhotoBegin = () => ({
+  type: DELETE_USER_PROFILE_PHOTO.BEGIN,
+});
+
+export const deleteUserProfilePhotoSuccess = () => ({
+  type: DELETE_USER_PROFILE_PHOTO.SUCCESS,
+});
+
+export const deleteUserProfilePhotoReset = () => ({
+  type: DELETE_USER_PROFILE_PHOTO.RESET,
+});
+
+export const deleteUserProfilePhotoFailure = error => ({
+  type: DELETE_USER_PROFILE_PHOTO.FAILURE,
+  payload: { error },
+});
+
+export const deleteUserProfilePhoto = username => ({
+  type: DELETE_USER_PROFILE_PHOTO.BASE,
+  payload: {
+    username,
   },
 });

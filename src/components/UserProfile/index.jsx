@@ -30,6 +30,7 @@ class UserProfile extends React.Component {
     this.onEdit = this.onEdit.bind(this);
     this.onSave = this.onSave.bind(this);
     this.onSaveProfilePhoto = this.onSaveProfilePhoto.bind(this);
+    this.onDeleteProfilePhoto = this.onDeleteProfilePhoto.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onVisibilityChange = this.onVisibilityChange.bind(this);
   }
@@ -51,6 +52,10 @@ class UserProfile extends React.Component {
 
   onSaveProfilePhoto(formData) {
     this.props.saveUserProfilePhoto(this.props.username, formData);
+  }
+
+  onDeleteProfilePhoto() {
+    this.props.deleteUserProfilePhoto(this.props.username);
   }
 
   onChange(fieldName, value) {
@@ -111,6 +116,7 @@ class UserProfile extends React.Component {
                   className="mb-md-3"
                   src={profileImage}
                   onSave={this.onSaveProfilePhoto}
+                  onDelete={this.onDeleteProfilePhoto}
                   savePhotoState={this.props.savePhotoState}
                 />
                 <div>
@@ -193,6 +199,7 @@ UserProfile.propTypes = {
   })),
   saveUserProfile: PropTypes.func,
   saveUserProfilePhoto: PropTypes.func.isRequired,
+  deleteUserProfilePhoto: PropTypes.func.isRequired,
   openEditableField: PropTypes.func.isRequired,
   closeEditableField: PropTypes.func.isRequired,
 };
