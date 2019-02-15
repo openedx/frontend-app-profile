@@ -43,7 +43,7 @@ class UserProfile extends React.Component {
     const userAccountData = {
       [fieldName]: value || this.state[fieldName].value,
     };
-    this.props.saveUserProfile(this.props.username, userAccountData, 'Everyone', fieldName);
+    this.props.saveUserProfile(this.props.username, userAccountData, fieldName);
   }
 
   onChange(fieldName, value) {
