@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Input } from 'reactstrap';
+import { Input, Spinner } from 'reactstrap';
 
 class ProfileAvatar extends React.Component {
   constructor(props) {
@@ -11,7 +11,6 @@ class ProfileAvatar extends React.Component {
 
     this.onClick = this.onClick.bind(this);
     this.onInput = this.onInput.bind(this);
-    this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
@@ -19,17 +18,13 @@ class ProfileAvatar extends React.Component {
     this.fileInput.current.click();
   }
 
-  onInput(e) { // eslint-disable-line no-unused-vars
-    // console.log('input', e)
-    this.form.current.submit();
+  onInput() {
+    this.onSubmit();
   }
 
-  onChange(e) { // eslint-disable-line no-unused-vars
-    // console.log('change', e)
-  }
-
-  onSubmit(e) { // eslint-disable-line no-unused-vars
-    // console.log('onsubmit', e);
+  onSubmit(e) {
+    if (e) e.preventDefault();
+    this.props.onSave(new FormData(this.form.current));
   }
 
   render() {
@@ -38,20 +33,31 @@ class ProfileAvatar extends React.Component {
     } = this.props;
 
     return (
-      <div className="profile-avatar rounded-circle overflow-hidden">
+      <div className="profile-avatar rounded-circle overflow-hidden p-relative bg-dark">
+        {this.props.savePhotoState === 'pending' ? (
+          <div
+            className="p-absolute w-100 h-100 d-flex justify-content-center align-items-center"
+            style={{ backgroundColor: 'rgba(255,255,255,.5)' }}
+          >
+            <Spinner color="primary" />
+          </div>
+        ) : null}
+
         <button
           className="text-white profile-avatar-edit-button"
           onClick={this.onClick}
         >
-          Update
+          Change
         </button>
-        <img className="w-100" src={src} alt="profile avatar" />
+
         <form
           ref={this.form}
           onSubmit={this.onSubmit}
-          method="post"
           encType="multipart/form-data"
         >
+          <img className="w-100" src={src} alt="profile avatar" />
+
+          {/* The name of this input must be 'file' */}
           <Input
             className="d-none"
             innerRef={this.fileInput}
@@ -59,7 +65,6 @@ class ProfileAvatar extends React.Component {
             name="file"
             id="exampleFile"
             onInput={this.onInput}
-            onChange={this.onChange}
             accept=".jpg, .jpeg, .png"
           />
         </form>
@@ -73,6 +78,8 @@ export default ProfileAvatar;
 
 ProfileAvatar.propTypes = {
   src: PropTypes.string,
+  onSave: PropTypes.func.isRequired,
+  savePhotoState: PropTypes.oneOf([null, 'pending', 'complete', 'error']).isRequired,
 };
 
 ProfileAvatar.defaultProps = {
