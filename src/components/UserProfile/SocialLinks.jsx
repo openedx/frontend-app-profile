@@ -82,7 +82,7 @@ class SocialLinks extends React.Component {
                 content="Social Links"
                 showEditButton
                 onClickEdit={() => onEdit('socialLinks')}
-                showVisibility={Boolean(socialLinks && socialLinks.length)}
+                showVisibility={socialLinks && socialLinks.length > 0}
                 visibility="Everyone"
               />
               <ul className="list-unstyled">
