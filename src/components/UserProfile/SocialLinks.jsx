@@ -1,11 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Input } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTwitter, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 import EditControls from './elements/EditControls';
 import EditableItemHeader from './elements/EditableItemHeader';
 import SwitchContent from './elements/SwitchContent';
 import EmptyContent from './elements/EmptyContent';
+
+const brandIcons = {
+  facebook: faFacebook,
+  twitter: faTwitter,
+  linkedin: faLinkedin,
+};
 
 
 class SocialLinks extends React.Component {
@@ -90,7 +98,13 @@ class SocialLinks extends React.Component {
                   <li key={key} className="form-group">
                     {
                       socialLinksObj[key] ? (
-                        <a href={socialLinksObj[key]}>{name}</a>
+                        <a
+                          href={socialLinksObj[key]}
+                          className="font-weight-bold"
+                        >
+                          <FontAwesomeIcon className="mr-2" icon={brandIcons[key]} />
+                          {name}
+                        </a>
                       ) : (
                         <EmptyContent onClick={() => onEdit('socialLinks')}>Add {name}</EmptyContent>
                       )
