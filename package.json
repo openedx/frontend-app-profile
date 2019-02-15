@@ -31,6 +31,7 @@
     "@edx/frontend-component-site-header": "^1.0.1",
     "@edx/paragon": "^3.8.3",
     "@fortawesome/fontawesome-svg-core": "^1.2.14",
+    "@fortawesome/free-brands-svg-icons": "^5.7.2",
     "@fortawesome/free-regular-svg-icons": "^5.7.1",
     "@fortawesome/free-solid-svg-icons": "^5.7.1",
     "@fortawesome/react-fontawesome": "^0.1.4",
