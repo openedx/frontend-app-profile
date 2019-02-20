@@ -20,7 +20,6 @@ class UserProfile extends React.Component {
       education: { value: null, visibility: null },
       bio: { value: null, visibility: null },
       socialLinks: { value: null, visibility: null },
-      visibility: {},
     };
 
 
@@ -50,6 +49,13 @@ class UserProfile extends React.Component {
       [fieldName]: value || this.state[fieldName].value,
     };
     this.props.saveProfile(this.props.username, userAccountData, fieldName);
+    if (this.state[fieldName].visibility) {
+      this.props.savePreferences(this.props.username, {
+        visibility: {
+          [fieldName]: this.state[fieldName].visibility,
+        },
+      });
+    }
   }
 
   onSaveProfilePhoto(formData) {
@@ -64,7 +70,7 @@ class UserProfile extends React.Component {
     this.setState({
       [fieldName]: {
         value,
-        visibility: this.state.visibility[fieldName],
+        visibility: this.state[fieldName].visibility,
       },
     });
   }
@@ -213,6 +219,7 @@ UserProfile.propTypes = {
   deleteProfilePhoto: PropTypes.func.isRequired,
   openEditableField: PropTypes.func.isRequired,
   closeEditableField: PropTypes.func.isRequired,
+  savePreferences: PropTypes.func.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
       username: PropTypes.string.isRequired,

@@ -31,13 +31,14 @@ const clientServerKeyMap = {
 
 const serverClientKeyMap = _.invert(clientServerKeyMap);
 
+
 export function getPreferences(username) {
   const url = `${lmsBaseUrl}/api/user/v1/preferences/${username}`;
 
   return new Promise((resolve, reject) => {
     apiClient.get(url)
       .then(({ data }) => {
-        const createPathsAndTransformKeys = (acc, key) => {
+        const unflattenAndTransformKeys = (acc, key) => {
           _.set(
             acc,
             key.split('.').map(pathKey => serverClientKeyMap[pathKey] || pathKey),
@@ -45,9 +46,7 @@ export function getPreferences(username) {
           );
           return acc;
         };
-
-        const preferences = Object.keys(data).reduce(createPathsAndTransformKeys, {});
-
+        const preferences = Object.keys(data).reduce(unflattenAndTransformKeys, {});
         resolve(preferences);
       })
       .catch((error) => {
@@ -58,17 +57,23 @@ export function getPreferences(username) {
 
 export function savePreferences(username, preferences) {
   const url = `${lmsBaseUrl}/api/user/v1/preferences/${username}`;
-  // const data = {
-  //   "account_privacy": "custom",
-  //   "visibility.bio": "all_users",
-  //   "visibility.country": "private",
-  //   "visibility.language_proficiencies": "all_users"
-  // };
+  const data = {};
+  const flattenAndTransformKeys = (prevKeys, currentValue) => {
+    if (typeof currentValue !== 'object') {
+      const serverKey = prevKeys.map(key => serverClientKeyMap[key] || key).join('.');
+      data[serverKey] = currentValue;
+      return;
+    }
+    Object.keys(currentValue).forEach((key) => {
+      flattenAndTransformKeys(prevKeys.concat(key), currentValue[key]);
+    });
+  };
+  flattenAndTransformKeys([], preferences);
 
   return new Promise((resolve, reject) => {
     apiClient.patch(
       url,
-      preferences,
+      data,
       { headers: { 'Content-Type': 'application/merge-patch+json' } },
     )
       .then((response) => {

@@ -9,6 +9,7 @@ import {
   openEditableField,
   closeEditableField,
 } from '../../actions/profile';
+import { savePreferences } from '../../actions/preferences';
 
 const mapStateToProps = (state) => {
   const profileImage =
@@ -42,5 +43,6 @@ export default connect(
     deleteProfilePhoto,
     openEditableField,
     closeEditableField,
+    savePreferences,
   },
 )(UserProfile);

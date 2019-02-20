@@ -32,8 +32,9 @@ export const savePreferencesBegin = () => ({
   type: SAVE_PREFERENCES.BEGIN,
 });
 
-export const savePreferencesSuccess = () => ({
+export const savePreferencesSuccess = preferences => ({
   type: SAVE_PREFERENCES.SUCCESS,
+  preferences,
 });
 
 export const savePreferencesFailure = error => ({
