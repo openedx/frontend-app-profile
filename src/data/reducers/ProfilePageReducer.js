@@ -5,8 +5,6 @@ import {
   EDITABLE_FIELD_CLOSE,
   EDITABLE_FIELD_OPEN,
   FETCH_PROFILE,
-  FETCH_PREFERENCES,
-  SAVE_PREFERENCES,
 } from '../../actions/profile';
 
 const initialState = {
@@ -15,8 +13,6 @@ const initialState = {
   savePhotoState: null,
   currentlyEditingField: null,
   profile: {},
-  fetchPreferencesState: null,
-  savePreferencesState: null,
 };
 
 const profilePage = (state = initialState, action) => {
@@ -113,53 +109,6 @@ const profilePage = (state = initialState, action) => {
       return {
         ...state,
         savePhotoState: null,
-        error: null,
-      };
-
-    case FETCH_PREFERENCES.BEGIN:
-      return {
-        ...state,
-        fetchPreferencesState: 'pending',
-      };
-    case FETCH_PREFERENCES.SUCCESS:
-      return {
-        ...state,
-        fetchPreferencesState: 'complete',
-        preferences: action.preferences,
-      };
-    case FETCH_PREFERENCES.FAILURE:
-      return {
-        ...state,
-        fetchPreferencesState: 'error',
-      };
-    case FETCH_PREFERENCES.RESET:
-      return {
-        ...state,
-        fetchPreferencesState: null,
-        error: null,
-      };
-
-
-    case SAVE_PREFERENCES.BEGIN:
-      return {
-        ...state,
-        savePreferencesState: 'pending',
-      };
-    case SAVE_PREFERENCES.SUCCESS:
-      return {
-        ...state,
-        savePreferencesState: 'complete',
-        preferences: action.preferences,
-      };
-    case SAVE_PREFERENCES.FAILURE:
-      return {
-        ...state,
-        savePreferencesState: 'error',
-      };
-    case SAVE_PREFERENCES.RESET:
-      return {
-        ...state,
-        savePreferencesState: null,
         error: null,
       };
 

@@ -5,11 +5,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEyeSlash, faEye } from '@fortawesome/free-regular-svg-icons';
 
 function Visibility({ to }) {
-  const icon = to === 'Everyone' ? faEye : faEyeSlash;
+  const icon = to === 'private' ? faEyeSlash : faEye;
+  const label = to === 'private' ? 'Just me' : 'Everyone on edX';
 
   return (
     <span className="ml-auto small text-muted">
-      <FontAwesomeIcon icon={icon} /> {to}
+      <FontAwesomeIcon icon={icon} /> {label}
     </span>
   );
 }
@@ -17,9 +18,9 @@ function Visibility({ to }) {
 export default Visibility;
 
 Visibility.propTypes = {
-  to: PropTypes.oneOf(['Everyone', 'Just me']),
+  to: PropTypes.oneOf(['private', 'all_users']),
 };
 
 Visibility.defaultProps = {
-  to: 'Everyone',
+  to: 'private',
 };

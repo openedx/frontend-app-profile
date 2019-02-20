@@ -20,6 +20,7 @@ class UserProfile extends React.Component {
       education: { value: null, visibility: null },
       bio: { value: null, visibility: null },
       socialLinks: { value: null, visibility: null },
+      visibility: {},
     };
 
 
@@ -63,7 +64,7 @@ class UserProfile extends React.Component {
     this.setState({
       [fieldName]: {
         value,
-        visibility: this.state[fieldName].visibility,
+        visibility: this.state.visibility[fieldName],
       },
     });
   }
@@ -106,6 +107,8 @@ class UserProfile extends React.Component {
       return 'editable';
     };
 
+    const getVisibility = name => this.props.visibility[name];
+
     return (
       <div>
         <div className="bg-banner bg-program-micro-masters d-none d-md-block p-relative" />
@@ -132,24 +135,28 @@ class UserProfile extends React.Component {
 
               <FullName
                 fullName={fullName}
+                visibility={getVisibility('fullName')}
                 editMode={getMode('fullName')}
                 {...commonProps}
               />
 
               <UserLocation
                 userLocation={userLocation}
+                visibility={getVisibility('userLocation')}
                 editMode={getMode('userLocation')}
                 {...commonProps}
               />
 
               <Education
                 education={education}
+                visibility={getVisibility('education')}
                 editMode={getMode('education')}
                 {...commonProps}
               />
 
               <SocialLinks
                 socialLinks={socialLinks}
+                visibility={getVisibility('socialLinks')}
                 editMode={getMode('socialLinks')}
                 {...commonProps}
               />
@@ -159,12 +166,14 @@ class UserProfile extends React.Component {
 
               <Bio
                 bio={bio}
+                visibility={getVisibility('bio')}
                 editMode={getMode('bio')}
                 {...commonProps}
               />
 
               <MyCertificates
                 certificates={certificates}
+                visibility={getVisibility('certificates')}
                 editMode={getMode('certificates')}
                 {...commonProps}
               />
@@ -209,6 +218,8 @@ UserProfile.propTypes = {
       username: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+  accountPrivacy: PropTypes.string,
+  visibility: PropTypes.object, // eslint-disable-line
 };
 
 UserProfile.defaultProps = {
@@ -225,4 +236,6 @@ UserProfile.defaultProps = {
   aboutMe: null,
   bio: null,
   certificates: null,
+  accountPrivacy: null,
+  visibility: {}, // eslint-disable-line
 };

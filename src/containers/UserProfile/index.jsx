@@ -28,6 +28,8 @@ const mapStateToProps = (state) => {
     socialLinks: state.profilePage.profile.socialLinks,
     bio: state.profilePage.profile.bio,
     certificates: null,
+  accountPrivacy: state.preferences.accountPrivacy,
+  visibility: state.preferences.visibility || {},
   };
 };
 

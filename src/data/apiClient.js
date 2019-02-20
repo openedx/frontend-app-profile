@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import { getAuthenticatedAPIClient } from '@edx/frontend-auth';
 
 import { configuration } from '../config';
@@ -15,14 +16,39 @@ const apiClient = getAuthenticatedAPIClient({
   csrfCookieName: configuration.CSRF_COOKIE_NAME,
 });
 
+const clientServerKeyMap = {
+  bio: 'bio',
+  socialLinks: 'social_links',
+  country: 'country',
+  education: 'level_of_education',
+  fullName: 'name',
+  username: 'username',
+  profileImage: 'profile_image',
+  dateJoined: 'date_joined',
+  languageProficiencies: 'language_proficiencies',
+  accountPrivacy: 'account_privacy',
+};
+
+const serverClientKeyMap = _.invert(clientServerKeyMap);
 
 export function getPreferences(username) {
   const url = `${lmsBaseUrl}/api/user/v1/preferences/${username}`;
 
   return new Promise((resolve, reject) => {
     apiClient.get(url)
-      .then((response) => {
-        resolve(response.data);
+      .then(({ data }) => {
+        const createPathsAndTransformKeys = (acc, key) => {
+          _.set(
+            acc,
+            key.split('.').map(pathKey => serverClientKeyMap[pathKey] || pathKey),
+            data[key],
+          );
+          return acc;
+        };
+
+        const preferences = Object.keys(data).reduce(createPathsAndTransformKeys, {});
+
+        resolve(preferences);
       })
       .catch((error) => {
         reject(error);

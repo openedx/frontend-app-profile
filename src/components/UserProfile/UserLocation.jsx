@@ -12,6 +12,7 @@ import { ALL_COUNTRIES } from '../../constants/countries';
 
 function UserLocation({
   userLocation,
+  visibility,
   editMode,
   onEdit,
   onChange,
@@ -43,7 +44,7 @@ function UserLocation({
               onCancel={() => onCancel('userLocation')}
               onSave={() => onSave('userLocation')}
               saveState={saveState}
-              visibility="Everyone"
+              visibility={visibility}
               onVisibilityChange={e => onVisibilityChange('userLocation', e.target.value)}
             />
           </React.Fragment>
@@ -55,7 +56,7 @@ function UserLocation({
               showEditButton
               onClickEdit={() => onEdit('userLocation')}
               showVisibility={Boolean(userLocation)}
-              visibility="Everyone"
+              visibility={visibility}
             />
             <h5>{ALL_COUNTRIES[userLocation]}</h5>
           </React.Fragment>
@@ -83,12 +84,14 @@ UserLocation.propTypes = {
   onVisibilityChange: PropTypes.func.isRequired,
   saveState: PropTypes.string,
   userLocation: PropTypes.string,
+  visibility: PropTypes.oneOf(['private', 'all_users']),
 };
 
 UserLocation.defaultProps = {
   editMode: 'static',
   saveState: null,
   userLocation: null,
+  visibility: 'private',
 };
 
 

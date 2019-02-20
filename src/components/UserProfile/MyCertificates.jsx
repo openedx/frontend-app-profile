@@ -9,6 +9,7 @@ import SwitchContent from './elements/SwitchContent';
 
 function MyCertificates({
   certificates,
+  visibility,
   editMode,
   onEdit,
   onSave,
@@ -47,7 +48,7 @@ function MyCertificates({
               onCancel={() => onCancel('certificates')}
               onSave={() => onSave('certificates')}
               saveState={saveState}
-              visibility="Everyone"
+              visibility={visibility}
               onVisibilityChange={e => onVisibilityChange('certificates', e.target.value)}
             />
           </React.Fragment>
@@ -59,7 +60,7 @@ function MyCertificates({
               showEditButton
               onClickEdit={() => onEdit('certificates')}
               showVisibility={Boolean(certificates)}
-              visibility="Everyone"
+              visibility={visibility}
             />
             {renderCertificates()}
           </React.Fragment>
@@ -95,12 +96,14 @@ MyCertificates.propTypes = {
   certificates: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string,
   })),
+  visibility: PropTypes.oneOf(['private', 'all_users']),
 };
 
 MyCertificates.defaultProps = {
   editMode: 'static',
   saveState: null,
   certificates: null,
+  visibility: 'private',
 };
 
 
