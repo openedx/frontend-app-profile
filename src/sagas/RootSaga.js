@@ -152,7 +152,7 @@ export function* handleSavePreferences(action) {
   try {
     yield put(savePreferencesBegin());
     yield call(savePreferences, username, preferences);
-    yield put(savePreferencesSuccess());
+    yield put(savePreferencesSuccess(preferences));
     yield put(savePreferencesReset());
   } catch (e) {
     yield put(savePreferencesFailure(e));
