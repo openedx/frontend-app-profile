@@ -41,7 +41,6 @@ import {
 import * as ProfileApiService from '../services/ProfileApiService';
 import { getPreferences, savePreferences } from '../data/apiClient';
 
-let userAccountApiService = null;
 
 const PROP_TO_STATE_MAP = {
   fullName: 'name',
