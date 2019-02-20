@@ -1,39 +1,55 @@
 import { takeEvery, put, call, delay } from 'redux-saga/effects';
 
-import rootSaga, { saveUserProfile, saveUserProfilePhoto, deleteUserProfilePhoto, mapDataForRequest } from './RootSaga';
 import * as profileActions from '../actions/profile';
 
-class MockUserAccountApiService {
-  constructor() {
-    this.saveUserAccount = jest.fn();
-  }
-}
+jest.mock('../services/ProfileApiService', () => ({
+  getProfile: jest.fn(),
+  patchProfile: jest.fn(),
+  postProfilePhoto: jest.fn(),
+  deleteProfilePhoto: jest.fn(),
+  getUserPreference: jest.fn(),
+}));
+
+// RootSaga and ProfileApiService must be imported AFTER the mock above.
+/* eslint-disable import/first */
+import rootSaga, {
+  handleFetchProfile,
+  handleSaveProfile,
+  handleSaveProfilePhoto,
+  handleDeleteProfilePhoto,
+} from './RootSaga';
+import * as ProfileApiService from '../services/ProfileApiService';
+/* eslint-enable import/first */
 
 describe('RootSaga', () => {
   describe('rootSaga', () => {
     it('should pass actions to the correct sagas', () => {
       const gen = rootSaga();
-      // There is only one.
-      expect(gen.next().value)
-        .toEqual(takeEvery(profileActions.SAVE_USER_PROFILE.BASE, saveUserProfile));
 
-      expect(gen.next().value)
-        .toEqual(takeEvery(profileActions.SAVE_USER_PROFILE_PHOTO.BASE, saveUserProfilePhoto));
+      expect(gen.next().value).toEqual(takeEvery(
+        profileActions.FETCH_PROFILE.BASE,
+        handleFetchProfile,
+      ));
+      expect(gen.next().value).toEqual(takeEvery(
+        profileActions.SAVE_PROFILE.BASE,
+        handleSaveProfile,
+      ));
+      expect(gen.next().value).toEqual(takeEvery(
+        profileActions.SAVE_PROFILE_PHOTO.BASE,
+        handleSaveProfilePhoto,
+      ));
+      expect(gen.next().value).toEqual(takeEvery(
+        profileActions.DELETE_PROFILE_PHOTO.BASE,
+        handleDeleteProfilePhoto,
+      ));
 
-      expect(gen.next().value)
-        .toEqual(takeEvery(profileActions.DELETE_USER_PROFILE_PHOTO.BASE, deleteUserProfilePhoto));
-      // ... and done.
       expect(gen.next().value).toBeUndefined();
     });
   });
 
-  describe('saveUserProfile', () => {
-    it('should successfully process a saveUserProfile request if there are no exceptions', () => {
-      const service = new MockUserAccountApiService();
-      const rootGen = rootSaga(service);
-      rootGen.next(); // Causes the service to be set.
-
-      const action = profileActions.saveUserProfile(
+  describe('handleSaveProfile', () => {
+    it('should successfully process a saveProfile request if there are no exceptions', () => {
+      const action = profileActions.saveProfile(
         'my username',
         {
           fullName: 'Full Name',
@@ -41,34 +57,27 @@ describe('RootSaga', () => {
         },
         'ze field',
       );
-      const gen = saveUserProfile(action);
-      const userAccount = {
+      const gen = handleSaveProfile(action);
+      const profile = {
         name: 'Full Name',
         levelOfEducation: 'b',
       };
-      expect(gen.next().value).toEqual(put(profileActions.saveUserProfileBegin()));
-      expect(gen.next().value).toEqual(call([service, 'saveUserAccount'], 'my username', userAccount));
+      expect(gen.next().value).toEqual(put(profileActions.saveProfileBegin()));
+      expect(gen.next().value).toEqual(call(ProfileApiService.patchProfile, 'my username', action.payload.userAccountState));
       // The library would supply the result of the above call
       // as the parameter to the NEXT yield.  Here:
-      expect(gen.next(userAccount).value).toEqual(put(profileActions.saveUserProfileSuccess()));
-      expect(gen.next().value).toEqual(put({
-        type: 'FETCH_USER_ACCOUNT_SUCCESS',
-        payload: { userAccount },
-      }));
+      expect(gen.next(profile).value).toEqual(put(profileActions.saveProfileSuccess()));
+      expect(gen.next().value).toEqual(put(profileActions.fetchProfileSuccess(profile)));
       expect(gen.next().value).toEqual(delay(300));
       expect(gen.next().value).toEqual(put(profileActions.closeEditableField('ze field')));
       expect(gen.next().value).toEqual(delay(300));
-      expect(gen.next().value).toEqual(put(profileActions.saveUserProfileReset()));
+      expect(gen.next().value).toEqual(put(profileActions.saveProfileReset()));
       expect(gen.next().value).toBeUndefined();
     });
 
     it('should successfully publish a failure action on exception', () => {
-      const service = new MockUserAccountApiService();
       const error = new Error('uhoh');
-      const rootGen = rootSaga(service);
-      rootGen.next(); // Causes the service to be set.
-
-      const action = profileActions.saveUserProfile(
+      const action = profileActions.saveProfile(
         'my username',
         {
           fullName: 'Full Name',
@@ -76,50 +85,12 @@ describe('RootSaga', () => {
         },
         'ze field',
       );
-      const gen = saveUserProfile(action);
+      const gen = handleSaveProfile(action);
 
-      expect(gen.next().value).toEqual(put(profileActions.saveUserProfileBegin()));
+      expect(gen.next().value).toEqual(put(profileActions.saveProfileBegin()));
       const result = gen.throw(error);
-      expect(result.value).toEqual(put(profileActions.saveUserProfileFailure(error)));
+      expect(result.value).toEqual(put(profileActions.saveProfileFailure('uhoh')));
       expect(gen.next().value).toBeUndefined();
-    });
-  });
-
-  describe('mapDataForRequest', () => {
-    it('should modify props according to prop modifier strings and functions', () => {
-      const props = {
-        favoriteColor: 'red',
-        age: 30,
-        petName: 'Donkey',
-        fullName: 'Donkey McWafflebatter',
-        userLocation: 'US',
-        education: 'BS',
-        socialLinks: [
-          {
-            platform: 'twitter',
-            socialLink: null,
-          },
-          {
-            platform: 'facebook',
-            socialLink: 'https://www.facebook.com',
-          },
-        ],
-      };
-      const result = mapDataForRequest(props);
-      expect(result).toEqual({
-        favoriteColor: 'red',
-        age: 30,
-        petName: 'Donkey',
-        name: 'Donkey McWafflebatter',
-        country: 'US',
-        levelOfEducation: 'BS',
-        socialLinks: [
-          {
-            platform: 'facebook',
-            socialLink: 'https://www.facebook.com',
-          },
-        ],
-      });
     });
   });
 });

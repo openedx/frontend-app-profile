@@ -3,24 +3,24 @@ import {
   closeEditableField,
   EDITABLE_FIELD_OPEN,
   EDITABLE_FIELD_CLOSE,
-  SAVE_USER_PROFILE,
-  saveUserProfileBegin,
-  saveUserProfileSuccess,
-  saveUserProfileFailure,
-  saveUserProfileReset,
-  saveUserProfile,
-  SAVE_USER_PROFILE_PHOTO,
-  saveUserProfilePhotoBegin,
-  saveUserProfilePhotoSuccess,
-  saveUserProfilePhotoFailure,
-  saveUserProfilePhotoReset,
-  saveUserProfilePhoto,
-  DELETE_USER_PROFILE_PHOTO,
-  deleteUserProfilePhotoBegin,
-  deleteUserProfilePhotoSuccess,
-  deleteUserProfilePhotoFailure,
-  deleteUserProfilePhotoReset,
-  deleteUserProfilePhoto,
+  SAVE_PROFILE,
+  saveProfileBegin,
+  saveProfileSuccess,
+  saveProfileFailure,
+  saveProfileReset,
+  saveProfile,
+  SAVE_PROFILE_PHOTO,
+  saveProfilePhotoBegin,
+  saveProfilePhotoSuccess,
+  saveProfilePhotoFailure,
+  saveProfilePhotoReset,
+  saveProfilePhoto,
+  DELETE_PROFILE_PHOTO,
+  deleteProfilePhotoBegin,
+  deleteProfilePhotoSuccess,
+  deleteProfilePhotoFailure,
+  deleteProfilePhotoReset,
+  deleteProfilePhoto,
 } from './profile';
 
 describe('editable field actions', () => {
@@ -53,44 +53,44 @@ describe('SAVE profile actions', () => {
 
   it('should create an action to signal the start of a profile save', () => {
     const expectedAction = {
-      type: SAVE_USER_PROFILE.BASE,
+      type: SAVE_PROFILE.BASE,
       payload: {
         username: 'user person',
         userAccountState,
         fieldName: 'fullName',
       },
     };
-    expect(saveUserProfile('user person', userAccountState, 'fullName')).toEqual(expectedAction);
+    expect(saveProfile('user person', userAccountState, 'fullName')).toEqual(expectedAction);
   });
 
   it('should create an action to signal user profile save success', () => {
     const expectedAction = {
-      type: SAVE_USER_PROFILE.SUCCESS,
+      type: SAVE_PROFILE.SUCCESS,
     };
-    expect(saveUserProfileSuccess()).toEqual(expectedAction);
+    expect(saveProfileSuccess()).toEqual(expectedAction);
   });
 
   it('should create an action to signal user profile save beginning', () => {
     const expectedAction = {
-      type: SAVE_USER_PROFILE.BEGIN,
+      type: SAVE_PROFILE.BEGIN,
     };
-    expect(saveUserProfileBegin()).toEqual(expectedAction);
+    expect(saveProfileBegin()).toEqual(expectedAction);
   });
 
   it('should create an action to signal user profile save success', () => {
     const expectedAction = {
-      type: SAVE_USER_PROFILE.RESET,
+      type: SAVE_PROFILE.RESET,
     };
-    expect(saveUserProfileReset()).toEqual(expectedAction);
+    expect(saveProfileReset()).toEqual(expectedAction);
   });
 
   it('should create an action to signal user account save failure', () => {
     const error = 'Test failure';
     const expectedAction = {
-      type: SAVE_USER_PROFILE.FAILURE,
+      type: SAVE_PROFILE.FAILURE,
       payload: { error },
     };
-    expect(saveUserProfileFailure(error)).toEqual(expectedAction);
+    expect(saveProfileFailure(error)).toEqual(expectedAction);
   });
 });
 
@@ -99,43 +99,43 @@ describe('SAVE profile photo actions', () => {
   it('should create an action to signal the start of a profile photo save', () => {
     const formData = 'multipart form data';
     const expectedAction = {
-      type: SAVE_USER_PROFILE_PHOTO.BASE,
+      type: SAVE_PROFILE_PHOTO.BASE,
       payload: {
         username: 'myusername',
         formData,
       },
     };
-    expect(saveUserProfilePhoto('myusername', formData)).toEqual(expectedAction);
+    expect(saveProfilePhoto('myusername', formData)).toEqual(expectedAction);
   });
 
   it('should create an action to signal user profile photo save beginning', () => {
     const expectedAction = {
-      type: SAVE_USER_PROFILE_PHOTO.BEGIN,
+      type: SAVE_PROFILE_PHOTO.BEGIN,
     };
-    expect(saveUserProfilePhotoBegin()).toEqual(expectedAction);
+    expect(saveProfilePhotoBegin()).toEqual(expectedAction);
   });
 
   it('should create an action to signal user profile photo save success', () => {
     const expectedAction = {
-      type: SAVE_USER_PROFILE_PHOTO.SUCCESS,
+      type: SAVE_PROFILE_PHOTO.SUCCESS,
     };
-    expect(saveUserProfilePhotoSuccess()).toEqual(expectedAction);
+    expect(saveProfilePhotoSuccess()).toEqual(expectedAction);
   });
 
   it('should create an action to signal user profile photo save success', () => {
     const expectedAction = {
-      type: SAVE_USER_PROFILE_PHOTO.RESET,
+      type: SAVE_PROFILE_PHOTO.RESET,
     };
-    expect(saveUserProfilePhotoReset()).toEqual(expectedAction);
+    expect(saveProfilePhotoReset()).toEqual(expectedAction);
   });
 
   it('should create an action to signal user profile photo save failure', () => {
     const error = 'Test failure';
     const expectedAction = {
-      type: SAVE_USER_PROFILE_PHOTO.FAILURE,
+      type: SAVE_PROFILE_PHOTO.FAILURE,
       payload: { error },
     };
-    expect(saveUserProfilePhotoFailure(error)).toEqual(expectedAction);
+    expect(saveProfilePhotoFailure(error)).toEqual(expectedAction);
   });
 });
 
@@ -143,42 +143,42 @@ describe('SAVE profile photo actions', () => {
 describe('DELETE profile photo actions', () => {
   it('should create an action to signal the start of a profile photo deletion', () => {
     const expectedAction = {
-      type: DELETE_USER_PROFILE_PHOTO.BASE,
+      type: DELETE_PROFILE_PHOTO.BASE,
       payload: {
         username: 'myusername',
       },
     };
-    expect(deleteUserProfilePhoto('myusername')).toEqual(expectedAction);
+    expect(deleteProfilePhoto('myusername')).toEqual(expectedAction);
   });
 
   it('should create an action to signal user profile photo deletion beginning', () => {
     const expectedAction = {
-      type: DELETE_USER_PROFILE_PHOTO.BEGIN,
+      type: DELETE_PROFILE_PHOTO.BEGIN,
     };
-    expect(deleteUserProfilePhotoBegin()).toEqual(expectedAction);
+    expect(deleteProfilePhotoBegin()).toEqual(expectedAction);
   });
 
   it('should create an action to signal user profile photo deletion success', () => {
     const expectedAction = {
-      type: DELETE_USER_PROFILE_PHOTO.SUCCESS,
+      type: DELETE_PROFILE_PHOTO.SUCCESS,
     };
-    expect(deleteUserProfilePhotoSuccess()).toEqual(expectedAction);
+    expect(deleteProfilePhotoSuccess()).toEqual(expectedAction);
   });
 
   it('should create an action to signal user profile photo deletion success', () => {
     const expectedAction = {
-      type: DELETE_USER_PROFILE_PHOTO.RESET,
+      type: DELETE_PROFILE_PHOTO.RESET,
     };
-    expect(deleteUserProfilePhotoReset()).toEqual(expectedAction);
+    expect(deleteProfilePhotoReset()).toEqual(expectedAction);
   });
 
   it('should create an action to signal user profile photo deletion failure', () => {
     const error = 'Test failure';
     const expectedAction = {
-      type: DELETE_USER_PROFILE_PHOTO.FAILURE,
+      type: DELETE_PROFILE_PHOTO.FAILURE,
       payload: { error },
     };
-    expect(deleteUserProfilePhotoFailure(error)).toEqual(expectedAction);
+    expect(deleteProfilePhotoFailure(error)).toEqual(expectedAction);
   });
 });
 

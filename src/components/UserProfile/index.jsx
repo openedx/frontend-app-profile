@@ -10,7 +10,6 @@ import SocialLinks from './SocialLinks';
 import Bio from './Bio';
 import MyCertificates from './MyCertificates';
 
-
 class UserProfile extends React.Component {
   constructor(props) {
     super(props);
@@ -33,6 +32,10 @@ class UserProfile extends React.Component {
     this.onVisibilityChange = this.onVisibilityChange.bind(this);
   }
 
+  componentDidMount() {
+    this.props.fetchProfile(this.props.match.params.username);
+  }
+
   onCancel() {
     this.props.closeEditableField(this.props.currentlyEditingField);
   }
@@ -45,15 +48,15 @@ class UserProfile extends React.Component {
     const userAccountData = {
       [fieldName]: value || this.state[fieldName].value,
     };
-    this.props.saveUserProfile(this.props.username, userAccountData, fieldName);
+    this.props.saveProfile(this.props.username, userAccountData, fieldName);
   }
 
   onSaveProfilePhoto(formData) {
-    this.props.saveUserProfilePhoto(this.props.username, formData);
+    this.props.saveProfilePhoto(this.props.username, formData);
   }
 
   onDeleteProfilePhoto() {
-    this.props.deleteUserProfilePhoto(this.props.username);
+    this.props.deleteProfilePhoto(this.props.username);
   }
 
   onChange(fieldName, value) {
@@ -195,11 +198,17 @@ UserProfile.propTypes = {
   certificates: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string,
   })),
-  saveUserProfile: PropTypes.func,
-  saveUserProfilePhoto: PropTypes.func.isRequired,
-  deleteUserProfilePhoto: PropTypes.func.isRequired,
+  fetchProfile: PropTypes.func.isRequired,
+  saveProfile: PropTypes.func.isRequired,
+  saveProfilePhoto: PropTypes.func.isRequired,
+  deleteProfilePhoto: PropTypes.func.isRequired,
   openEditableField: PropTypes.func.isRequired,
   closeEditableField: PropTypes.func.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      username: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 UserProfile.defaultProps = {
@@ -216,5 +225,4 @@ UserProfile.defaultProps = {
   aboutMe: null,
   bio: null,
   certificates: null,
-  saveUserProfile: null,
 };

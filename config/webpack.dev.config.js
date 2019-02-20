@@ -9,6 +9,7 @@ const commonConfig = require('./webpack.common.config.js');
 
 module.exports = Merge.smart(commonConfig, {
   mode: 'development',
+  devtool: 'eval-source-map',
   entry: [
     // enable react's custom hot dev client so we get errors reported in the browser
     require.resolve('react-dev-utils/webpackHotDevClient'),
@@ -24,6 +25,10 @@ module.exports = Merge.smart(commonConfig, {
         test: /\.(js|jsx)$/,
         include: [
           path.resolve(__dirname, '../src'),
+          path.resolve(__dirname, 'node_modules/camelcase-keys'),
+          path.resolve(__dirname, 'node_modules/camelcase'),
+          path.resolve(__dirname, 'node_modules/map-obj'),
+          path.resolve(__dirname, 'node_modules/quick-lru'),
         ],
         loader: 'babel-loader',
         options: {
@@ -136,5 +141,6 @@ module.exports = Merge.smart(commonConfig, {
     historyApiFallback: true,
     hot: true,
     inline: true,
+    publicPath: '/',
   },
 });

@@ -2,32 +2,43 @@ import { connect } from 'react-redux';
 
 import UserProfile from '../../components/UserProfile';
 import {
-  saveUserProfile,
-  saveUserProfilePhoto,
-  deleteUserProfilePhoto,
+  fetchProfile,
+  saveProfile,
+  saveProfilePhoto,
+  deleteProfilePhoto,
   openEditableField,
   closeEditableField,
 } from '../../actions/profile';
 
-const mapStateToProps = state => ({
-  currentlyEditingField: state.profile.currentlyEditingField,
-  saveState: state.profile.saveState,
-  savePhotoState: state.profile.savePhotoState,
-  error: state.profile.error,
-  profileImage: state.userAccount.profileImage.imageUrlLarge,
-  fullName: state.userAccount.name,
-  username: state.userAccount.username,
-  userLocation: state.userAccount.country,
-  education: state.userAccount.levelOfEducation,
-  socialLinks: state.userAccount.socialLinks,
-  bio: state.userAccount.bio,
-  certificates: null,
-});
+const mapStateToProps = (state) => {
+  const profileImage =
+    state.profilePage.profile.profileImage != null
+      ? state.profilePage.profile.profileImage.imageUrlLarge
+      : null;
+  return {
+    currentlyEditingField: state.profilePage.currentlyEditingField,
+    saveState: state.profilePage.saveState,
+    savePhotoState: state.profilePage.savePhotoState,
+    error: state.profilePage.error,
+    profileImage,
+    fullName: state.profilePage.profile.name,
+    username: state.profilePage.profile.username,
+    userLocation: state.profilePage.profile.country,
+    education: state.profilePage.profile.levelOfEducation,
+    socialLinks: state.profilePage.profile.socialLinks,
+    bio: state.profilePage.profile.bio,
+    certificates: null,
+  };
+};
 
-export default connect(mapStateToProps, {
-  saveUserProfile,
-  saveUserProfilePhoto,
-  deleteUserProfilePhoto,
-  openEditableField,
-  closeEditableField,
-})(UserProfile);
+export default connect(
+  mapStateToProps,
+  {
+    fetchProfile,
+    saveProfile,
+    saveProfilePhoto,
+    deleteProfilePhoto,
+    openEditableField,
+    closeEditableField,
+  },
+)(UserProfile);
