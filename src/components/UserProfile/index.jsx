@@ -44,15 +44,22 @@ class UserProfile extends React.Component {
     this.props.openEditableField(fieldName);
   }
 
-  onSave(fieldName, value) {
+  onSave(fieldName, value, visibility) {
+    const {
+      value: fieldValue,
+      visibility: fieldVisibility,
+    } = this.state[fieldName];
+
     const userAccountData = {
-      [fieldName]: value || this.state[fieldName].value,
+      [fieldName]: value || fieldValue,
     };
+
     this.props.saveProfile(this.props.username, userAccountData, fieldName);
-    if (this.state[fieldName].visibility) {
+
+    if (fieldVisibility || visibility) {
       this.props.savePreferences(this.props.username, {
         visibility: {
-          [fieldName]: this.state[fieldName].visibility,
+          [fieldName]: visibility || fieldVisibility,
         },
       });
     }
