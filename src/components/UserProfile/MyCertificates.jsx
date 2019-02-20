@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
+import { withTranslation, useTranslation } from 'react-i18next';
 import { Row, Col, Card, CardBody, CardTitle } from 'reactstrap';
 
 import EditControls from './elements/EditControls';
@@ -16,6 +16,8 @@ function MyCertificates({
   onVisibilityChange,
   saveState,
 }) {
+  const { t } = useTranslation();
+
   const renderCertificates = () => {
     if (!certificates) return null;
 
@@ -66,11 +68,7 @@ function MyCertificates({
         ),
         empty: (
           <div>
-            <FormattedMessage
-              id="profile.no.certificates"
-              defaultMessage="You don't have any certificates yet."
-              description="displays when user has no course completion certificates"
-            />
+            {t('profile.no.certificates')}
           </div>
         ),
         static: (
@@ -104,4 +102,4 @@ MyCertificates.defaultProps = {
 };
 
 
-export default MyCertificates;
+export default withTranslation()(MyCertificates);

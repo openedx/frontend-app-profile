@@ -1,14 +1,13 @@
 import 'babel-polyfill';
 
-import React, { Component } from 'react';
+import React, { Component, Suspense } from 'react';
 import ReactDOM from 'react-dom';
-import { IntlProvider } from 'react-intl';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import SiteFooter from '@edx/frontend-component-footer';
 import { fetchUserAccount, UserAccountApiService } from '@edx/frontend-auth';
 
-import { getLocale, getMessages } from './i18n/i18n-loader';
+import './i18n/i18n-loader';
 import apiClient from './data/apiClient';
 import { handleTrackEvents, identifyUser } from './analytics';
 import SiteHeader from './containers/SiteHeader';
@@ -19,6 +18,12 @@ import FooterLogo from '../assets/edx-footer.png';
 import './App.scss';
 import NotFoundPage from './components/NotFoundPage';
 
+const Loader = () => (
+  <div className="App">
+    <div>loading...</div>
+  </div>
+);
+
 class App extends Component {
   componentDidMount() {
     const { username } = store.getState().authentication;
@@ -28,8 +33,8 @@ class App extends Component {
 
   render() {
     return (
-      <IntlProvider locale={getLocale()} messages={getMessages()}>
-        <Provider store={store}>
+      <Provider store={store}>
+        <Suspense fallback={<Loader />}>
           <Router>
             <div>
               <SiteHeader
@@ -64,8 +69,8 @@ class App extends Component {
               />
             </div>
           </Router>
-        </Provider>
-      </IntlProvider>
+        </Suspense>
+      </Provider>
     );
   }
 }

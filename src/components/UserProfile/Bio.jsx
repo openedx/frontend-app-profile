@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
+import { withTranslation, Trans } from 'react-i18next';
 import { Input } from 'reactstrap';
 
 import EditControls from './elements/EditControls';
@@ -56,11 +56,9 @@ function Bio({
         ),
         empty: (
           <EmptyContent onClick={() => onEdit('bio')}>
-            <FormattedMessage
-              id="profile.bio.empty"
-              defaultMessage="Add a short bio"
-              description="instructions when the user hasn't written an About Me"
-            />
+            <Trans i18nKey="profile.bio.empty">
+              Add a short bio
+            </Trans>
           </EmptyContent>
         ),
         static: (
@@ -92,4 +90,4 @@ Bio.defaultProps = {
 };
 
 
-export default Bio;
+export default withTranslation()(Bio);
