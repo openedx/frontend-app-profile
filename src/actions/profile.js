@@ -2,9 +2,10 @@ import AsyncActionType from './AsyncActionType';
 
 export const EDITABLE_FIELD_OPEN = 'EDITABLE_FIELD_OPEN';
 export const EDITABLE_FIELD_CLOSE = 'EDITABLE_FIELD_CLOSE';
-export const SAVE_USER_PROFILE = new AsyncActionType('PROFILE', 'SAVE_USER_PROFILE');
-export const SAVE_USER_PROFILE_PHOTO = new AsyncActionType('PROFILE', 'SAVE_USER_PROFILE_PHOTO');
-export const DELETE_USER_PROFILE_PHOTO = new AsyncActionType('PROFILE', 'DELETE_USER_PROFILE_PHOTO');
+export const FETCH_PROFILE = new AsyncActionType('PROFILE', 'FETCH_PROFILE');
+export const SAVE_PROFILE = new AsyncActionType('PROFILE', 'SAVE_PROFILE');
+export const SAVE_PROFILE_PHOTO = new AsyncActionType('PROFILE', 'SAVE_PROFILE_PHOTO');
+export const DELETE_PROFILE_PHOTO = new AsyncActionType('PROFILE', 'DELETE_PROFILE_PHOTO');
 
 export const openEditableField = fieldName => ({
   type: EDITABLE_FIELD_OPEN,
@@ -16,25 +17,48 @@ export const closeEditableField = fieldName => ({
   fieldName,
 });
 
-export const saveUserProfileBegin = () => ({
-  type: SAVE_USER_PROFILE.BEGIN,
+export const fetchProfileBegin = () => ({
+  type: FETCH_PROFILE.BEGIN,
 });
 
-export const saveUserProfileSuccess = () => ({
-  type: SAVE_USER_PROFILE.SUCCESS,
+export const fetchProfileSuccess = profile => ({
+  type: FETCH_PROFILE.SUCCESS,
+  payload: { profile },
 });
 
-export const saveUserProfileReset = () => ({
-  type: SAVE_USER_PROFILE.RESET,
-});
-
-export const saveUserProfileFailure = error => ({
-  type: SAVE_USER_PROFILE.FAILURE,
+export const fetchProfileFailure = error => ({
+  type: FETCH_PROFILE.FAILURE,
   payload: { error },
 });
 
-export const saveUserProfile = (username, userAccountState, fieldName) => ({
-  type: SAVE_USER_PROFILE.BASE,
+export const fetchProfileReset = () => ({
+  type: FETCH_PROFILE.RESET,
+});
+
+export const fetchProfile = username => ({
+  type: FETCH_PROFILE.BASE,
+  payload: { username },
+});
+
+export const saveProfileBegin = () => ({
+  type: SAVE_PROFILE.BEGIN,
+});
+
+export const saveProfileSuccess = () => ({
+  type: SAVE_PROFILE.SUCCESS,
+});
+
+export const saveProfileReset = () => ({
+  type: SAVE_PROFILE.RESET,
+});
+
+export const saveProfileFailure = error => ({
+  type: SAVE_PROFILE.FAILURE,
+  payload: { error },
+});
+
+export const saveProfile = (username, userAccountState, fieldName) => ({
+  type: SAVE_PROFILE.BASE,
   payload: {
     fieldName,
     username,
@@ -42,50 +66,50 @@ export const saveUserProfile = (username, userAccountState, fieldName) => ({
   },
 });
 
-export const saveUserProfilePhotoBegin = () => ({
-  type: SAVE_USER_PROFILE_PHOTO.BEGIN,
+export const saveProfilePhotoBegin = () => ({
+  type: SAVE_PROFILE_PHOTO.BEGIN,
 });
 
-export const saveUserProfilePhotoSuccess = () => ({
-  type: SAVE_USER_PROFILE_PHOTO.SUCCESS,
+export const saveProfilePhotoSuccess = () => ({
+  type: SAVE_PROFILE_PHOTO.SUCCESS,
 });
 
-export const saveUserProfilePhotoReset = () => ({
-  type: SAVE_USER_PROFILE_PHOTO.RESET,
+export const saveProfilePhotoReset = () => ({
+  type: SAVE_PROFILE_PHOTO.RESET,
 });
 
-export const saveUserProfilePhotoFailure = error => ({
-  type: SAVE_USER_PROFILE_PHOTO.FAILURE,
+export const saveProfilePhotoFailure = error => ({
+  type: SAVE_PROFILE_PHOTO.FAILURE,
   payload: { error },
 });
 
-export const saveUserProfilePhoto = (username, formData) => ({
-  type: SAVE_USER_PROFILE_PHOTO.BASE,
+export const saveProfilePhoto = (username, formData) => ({
+  type: SAVE_PROFILE_PHOTO.BASE,
   payload: {
     username,
     formData,
   },
 });
 
-export const deleteUserProfilePhotoBegin = () => ({
-  type: DELETE_USER_PROFILE_PHOTO.BEGIN,
+export const deleteProfilePhotoBegin = () => ({
+  type: DELETE_PROFILE_PHOTO.BEGIN,
 });
 
-export const deleteUserProfilePhotoSuccess = () => ({
-  type: DELETE_USER_PROFILE_PHOTO.SUCCESS,
+export const deleteProfilePhotoSuccess = () => ({
+  type: DELETE_PROFILE_PHOTO.SUCCESS,
 });
 
-export const deleteUserProfilePhotoReset = () => ({
-  type: DELETE_USER_PROFILE_PHOTO.RESET,
+export const deleteProfilePhotoReset = () => ({
+  type: DELETE_PROFILE_PHOTO.RESET,
 });
 
-export const deleteUserProfilePhotoFailure = error => ({
-  type: DELETE_USER_PROFILE_PHOTO.FAILURE,
+export const deleteProfilePhotoFailure = error => ({
+  type: DELETE_PROFILE_PHOTO.FAILURE,
   payload: { error },
 });
 
-export const deleteUserProfilePhoto = username => ({
-  type: DELETE_USER_PROFILE_PHOTO.BASE,
+export const deleteProfilePhoto = username => ({
+  type: DELETE_PROFILE_PHOTO.BASE,
   payload: {
     username,
   },

@@ -1,138 +1,107 @@
 import { call, put, takeEvery, delay } from 'redux-saga/effects';
 
 import {
-  SAVE_USER_PROFILE,
-  saveUserProfileBegin,
-  saveUserProfileSuccess,
-  saveUserProfileFailure,
-  saveUserProfileReset,
+  FETCH_PROFILE,
+  fetchProfileBegin,
+  fetchProfileSuccess,
+  fetchProfileFailure,
+  fetchProfileReset,
+  fetchProfile as fetchProfileAction,
+  SAVE_PROFILE,
+  saveProfileBegin,
+  saveProfileSuccess,
+  saveProfileFailure,
+  saveProfileReset,
   closeEditableField,
-  SAVE_USER_PROFILE_PHOTO,
-  saveUserProfilePhotoBegin,
-  saveUserProfilePhotoSuccess,
-  saveUserProfilePhotoFailure,
-  saveUserProfilePhotoReset,
-  DELETE_USER_PROFILE_PHOTO,
-  deleteUserProfilePhotoBegin,
-  deleteUserProfilePhotoSuccess,
-  deleteUserProfilePhotoFailure,
-  deleteUserProfilePhotoReset,
+  SAVE_PROFILE_PHOTO,
+  saveProfilePhotoBegin,
+  saveProfilePhotoSuccess,
+  saveProfilePhotoFailure,
+  saveProfilePhotoReset,
+  DELETE_PROFILE_PHOTO,
+  deleteProfilePhotoBegin,
+  deleteProfilePhotoSuccess,
+  deleteProfilePhotoFailure,
+  deleteProfilePhotoReset,
 } from '../actions/profile';
 
-let userAccountApiService = null;
+import * as ProfileApiService from '../services/ProfileApiService';
 
-const PROP_TO_STATE_MAP = {
-  fullName: 'name',
-  userLocation: 'country',
-  education: 'levelOfEducation',
-  socialLinks: socialLinks => socialLinks.filter(({ socialLink }) => socialLink !== null),
-};
-
-export const mapDataForRequest = (props) => {
-  const state = {};
-  Object.keys(props).forEach((prop) => {
-    const propModifier = PROP_TO_STATE_MAP[prop] || prop;
-    if (typeof propModifier === 'function') {
-      state[prop] = propModifier(props[prop]);
-    } else {
-      state[propModifier] = props[prop];
-    }
-  });
-  return state;
-};
-
-
-export function* saveUserProfile(action) {
-  const { username, userAccountState } = action.payload;
-
-  try {
-    yield put(saveUserProfileBegin());
-
-    // Use call([context, fnName], ...args) for proper context on apiService
-    const userAccount = yield call(
-      [userAccountApiService, 'saveUserAccount'],
-      username,
-      mapDataForRequest(userAccountState),
-    );
-
-    // Tells the profile form that
-    yield put(saveUserProfileSuccess());
-    // TODO: export the fetchUserAccountSuccess action from frontend-auth so we can
-    // dry this up.
-    yield put({
-      type: 'FETCH_USER_ACCOUNT_SUCCESS',
-      payload: { userAccount },
-    });
-    yield delay(300);
-    yield put(closeEditableField(action.payload.fieldName));
-    yield delay(300);
-    yield put(saveUserProfileReset());
-  } catch (e) {
-    yield put(saveUserProfileFailure(e));
-  }
-}
-
-
-export function* saveUserProfilePhoto(action) {
-  const { username, formData } = action.payload;
-
-  try {
-    yield put(saveUserProfilePhotoBegin());
-
-    // Use call([context, fnName], ...args) for proper context on apiService
-    yield call([userAccountApiService, 'saveUserProfilePhoto'], username, formData);
-
-    // Get the account data. Saving doesn't return anything on success.
-    const userAccount = yield call(
-      [userAccountApiService, 'getUserAccount'],
-      username,
-    );
-
-    yield put(saveUserProfilePhotoSuccess());
-    // TODO: export the fetchUserAccountSuccess action from frontend-auth so we can
-    // dry this up.
-    yield put({
-      type: 'FETCH_USER_ACCOUNT_SUCCESS',
-      payload: { userAccount },
-    });
-    yield put(saveUserProfilePhotoReset());
-  } catch (e) {
-    yield put(saveUserProfilePhotoFailure(e));
-  }
-}
-
-
-export function* deleteUserProfilePhoto(action) {
+export function* handleFetchProfile(action) {
   const { username } = action.payload;
 
   try {
-    yield put(deleteUserProfilePhotoBegin());
-
-    // Use call([context, fnName], ...args) for proper context on apiService
-    yield call([userAccountApiService, 'deleteUserProfilePhoto'], username);
-
-    // Get the account data. Saving doesn't return anything on success.
-    const userAccount = yield call(
-      [userAccountApiService, 'getUserAccount'],
+    yield put(fetchProfileBegin());
+    const profile = yield call(
+      ProfileApiService.getProfile,
       username,
     );
 
-    yield put(deleteUserProfilePhotoSuccess());
-    // TODO: export the fetchUserAccountSuccess action from frontend-auth so we can
-    // dry this up.
-    yield put({
-      type: 'FETCH_USER_ACCOUNT_SUCCESS',
-      payload: { userAccount },
-    });
-    yield put(deleteUserProfilePhotoReset());
+    yield put(fetchProfileSuccess(profile));
+    yield put(fetchProfileReset());
   } catch (e) {
-    yield put(deleteUserProfilePhotoFailure(e));
+    yield put(fetchProfileFailure(e.message));
   }
 }
 
-export default function* rootSaga(apiService) {
-  userAccountApiService = apiService;
-  yield takeEvery(SAVE_USER_PROFILE.BASE, saveUserProfile);
-  yield takeEvery(SAVE_USER_PROFILE_PHOTO.BASE, saveUserProfilePhoto);
-  yield takeEvery(DELETE_USER_PROFILE_PHOTO.BASE, deleteUserProfilePhoto);
+export function* handleSaveProfile(action) {
+  const { username, userAccountState } = action.payload;
+  try {
+    yield put(saveProfileBegin());
+    const profile = yield call(
+      ProfileApiService.patchProfile,
+      username,
+      userAccountState,
+    );
+
+    yield put(saveProfileSuccess());
+    yield put(fetchProfileSuccess(profile));
+    yield delay(300);
+    yield put(closeEditableField(action.payload.fieldName));
+    yield delay(300);
+    yield put(saveProfileReset());
+  } catch (e) {
+    yield put(saveProfileFailure(e.message));
+  }
+}
+
+export function* handleSaveProfilePhoto(action) {
+  const { username, formData } = action.payload;
+
+  try {
+    yield put(saveProfilePhotoBegin());
+    yield call(ProfileApiService.postProfilePhoto, username, formData);
+
+    // Get the account data. Saving doesn't return anything on success.
+    yield handleFetchProfile(fetchProfileAction);
+
+    yield put(saveProfilePhotoSuccess());
+    yield put(saveProfilePhotoReset());
+  } catch (e) {
+    yield put(saveProfilePhotoFailure(e.message));
+  }
+}
+
+export function* handleDeleteProfilePhoto(action) {
+  const { username } = action.payload;
+
+  try {
+    yield put(deleteProfilePhotoBegin());
+    yield call(ProfileApiService.deleteProfilePhoto, username);
+
+    // Get the account data. Saving doesn't return anything on success.
+    yield handleFetchProfile(fetchProfileAction);
+
+    yield put(deleteProfilePhotoSuccess());
+    yield put(deleteProfilePhotoReset());
+  } catch (e) {
+    yield put(deleteProfilePhotoFailure(e.message));
+  }
+}
+
+export default function* rootSaga() {
+  yield takeEvery(FETCH_PROFILE.BASE, handleFetchProfile);
+  yield takeEvery(SAVE_PROFILE.BASE, handleSaveProfile);
+  yield takeEvery(SAVE_PROFILE_PHOTO.BASE, handleSaveProfilePhoto);
+  yield takeEvery(DELETE_PROFILE_PHOTO.BASE, handleDeleteProfilePhoto);
 }

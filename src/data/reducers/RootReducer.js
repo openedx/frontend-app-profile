@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { userAccount } from '@edx/frontend-auth';
-import profile from './ProfileReducer';
+import profilePage from './ProfilePageReducer';
 
 const identityReducer = (state) => {
   const newState = { ...state };
@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
   // creating the store in data/store.js.
   authentication: identityReducer,
   userAccount,
-  profile,
+  profilePage,
 });
 
 export default rootReducer;

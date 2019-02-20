@@ -9,6 +9,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, '../dist'),
+    publicPath: '/',
   },
   resolve: {
     extensions: ['.js', '.jsx'],

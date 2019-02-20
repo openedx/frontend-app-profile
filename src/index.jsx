@@ -17,6 +17,7 @@ import store from './data/store';
 import HeaderLogo from '../assets/edx-sm.png';
 import FooterLogo from '../assets/edx-footer.png';
 import './App.scss';
+import NotFoundPage from './components/NotFoundPage';
 
 class App extends Component {
   componentDidMount() {
@@ -38,7 +39,8 @@ class App extends Component {
               />
               <main>
                 <Switch>
-                  <Route exact path="/" component={UserProfile} />
+                  <Route path="/u/:username" component={UserProfile} />
+                  <Route path="*" component={NotFoundPage} />
                 </Switch>
               </main>
               <SiteFooter
