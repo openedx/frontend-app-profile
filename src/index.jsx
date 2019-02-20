@@ -19,11 +19,14 @@ import FooterLogo from '../assets/edx-footer.png';
 import './App.scss';
 import NotFoundPage from './components/NotFoundPage';
 
+import { fetchPreferences } from './actions/profile';
+
 class App extends Component {
   componentDidMount() {
     const { username } = store.getState().authentication;
     const userAccountApiService = new UserAccountApiService(apiClient, process.env.LMS_BASE_URL);
     store.dispatch(fetchUserAccount(userAccountApiService, username));
+    store.dispatch(fetchPreferences(username));
   }
 
   render() {

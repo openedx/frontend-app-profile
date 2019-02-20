@@ -16,11 +16,35 @@ const apiClient = getAuthenticatedAPIClient({
 });
 
 
-export function getUserPreference(username, preferenceKey) {
-  const url = `${lmsBaseUrl}/api/user/v1/preferences/${username}/${preferenceKey}`;
+export function getPreferences(username) {
+  const url = `${lmsBaseUrl}/api/user/v1/preferences/${username}`;
 
   return new Promise((resolve, reject) => {
     apiClient.get(url)
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+}
+
+export function savePreferences(username, preferences) {
+  const url = `${lmsBaseUrl}/api/user/v1/preferences/${username}`;
+  // const data = {
+  //   "account_privacy": "custom",
+  //   "visibility.bio": "all_users",
+  //   "visibility.country": "private",
+  //   "visibility.language_proficiencies": "all_users"
+  // };
+
+  return new Promise((resolve, reject) => {
+    apiClient.patch(
+      url,
+      preferences,
+      { headers: { 'Content-Type': 'application/merge-patch+json' } },
+    )
       .then((response) => {
         resolve(response.data);
       })
