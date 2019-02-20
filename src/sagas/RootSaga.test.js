@@ -1,6 +1,6 @@
 import { takeEvery, put, call, delay } from 'redux-saga/effects';
 
-import rootSaga, { saveUserProfile, mapDataForRequest } from './RootSaga';
+import rootSaga, { saveUserProfile, saveUserProfilePhoto, deleteUserProfilePhoto, mapDataForRequest } from './RootSaga';
 import * as profileActions from '../actions/profile';
 
 class MockUserAccountApiService {
@@ -16,6 +16,12 @@ describe('RootSaga', () => {
       // There is only one.
       expect(gen.next().value)
         .toEqual(takeEvery(profileActions.SAVE_USER_PROFILE.BASE, saveUserProfile));
+
+      expect(gen.next().value)
+        .toEqual(takeEvery(profileActions.SAVE_USER_PROFILE_PHOTO.BASE, saveUserProfilePhoto));
+
+      expect(gen.next().value)
+        .toEqual(takeEvery(profileActions.DELETE_USER_PROFILE_PHOTO.BASE, deleteUserProfilePhoto));
       // ... and done.
       expect(gen.next().value).toBeUndefined();
     });
@@ -41,7 +47,7 @@ describe('RootSaga', () => {
         levelOfEducation: 'b',
       };
       expect(gen.next().value).toEqual(put(profileActions.saveUserProfileBegin()));
-      expect(gen.next().value).toEqual(call(service.saveUserAccount, 'my username', userAccount));
+      expect(gen.next().value).toEqual(call([service, 'saveUserAccount'], 'my username', userAccount));
       // The library would supply the result of the above call
       // as the parameter to the NEXT yield.  Here:
       expect(gen.next(userAccount).value).toEqual(put(profileActions.saveUserProfileSuccess()));

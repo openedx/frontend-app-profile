@@ -73,7 +73,7 @@ export function* saveUserProfile(action) {
 }
 
 
-function* saveUserProfilePhoto(action) {
+export function* saveUserProfilePhoto(action) {
   const { username, formData } = action.payload;
 
   try {
@@ -101,7 +101,8 @@ function* saveUserProfilePhoto(action) {
   }
 }
 
-function* deleteUserProfilePhoto(action) {
+
+export function* deleteUserProfilePhoto(action) {
   const { username } = action.payload;
 
   try {
