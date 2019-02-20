@@ -23,9 +23,44 @@ import {
   deleteProfilePhotoSuccess,
   deleteProfilePhotoFailure,
   deleteProfilePhotoReset,
+  FETCH_PREFERENCES,
+  fetchPreferencesBegin,
+  fetchPreferencesSuccess,
+  fetchPreferencesFailure,
+  fetchPreferencesReset,
+  SAVE_PREFERENCES,
+  savePreferencesBegin,
+  savePreferencesSuccess,
+  savePreferencesFailure,
+  savePreferencesReset,
 } from '../actions/profile';
 
+
 import * as ProfileApiService from '../services/ProfileApiService';
+import { getPreferences, savePreferences } from '../data/apiClient';
+
+let userAccountApiService = null;
+
+const PROP_TO_STATE_MAP = {
+  fullName: 'name',
+  userLocation: 'country',
+  education: 'levelOfEducation',
+  socialLinks: socialLinks => socialLinks.filter(({ socialLink }) => socialLink !== null),
+};
+
+export const mapDataForRequest = (props) => {
+  const state = {};
+  Object.keys(props).forEach((prop) => {
+    const propModifier = PROP_TO_STATE_MAP[prop] || prop;
+    if (typeof propModifier === 'function') {
+      state[prop] = propModifier(props[prop]);
+    } else {
+      state[propModifier] = props[prop];
+    }
+  });
+  return state;
+};
+
 
 export function* handleFetchProfile(action) {
   const { username } = action.payload;
@@ -99,9 +134,36 @@ export function* handleDeleteProfilePhoto(action) {
   }
 }
 
+export function* handleFetchPreferences(action) {
+  const { username } = action.payload;
+  try {
+    yield put(fetchPreferencesBegin());
+    const userPreferences = yield call(getPreferences, username);
+    yield put(fetchPreferencesSuccess(userPreferences));
+    yield put(fetchPreferencesReset());
+  } catch (e) {
+    yield put(fetchPreferencesFailure(e));
+  }
+}
+
+export function* handleSavePreferences(action) {
+  const { username, preferences } = action.payload;
+  try {
+    yield put(savePreferencesBegin());
+    yield call(savePreferences, username, preferences);
+    yield put(savePreferencesSuccess());
+    yield put(savePreferencesReset());
+  } catch (e) {
+    yield put(savePreferencesFailure(e));
+  }
+}
+
+
 export default function* rootSaga() {
   yield takeEvery(FETCH_PROFILE.BASE, handleFetchProfile);
   yield takeEvery(SAVE_PROFILE.BASE, handleSaveProfile);
   yield takeEvery(SAVE_PROFILE_PHOTO.BASE, handleSaveProfilePhoto);
   yield takeEvery(DELETE_PROFILE_PHOTO.BASE, handleDeleteProfilePhoto);
+  yield takeEvery(FETCH_PREFERENCES.BASE, handleFetchPreferences);
+  yield takeEvery(SAVE_PREFERENCES.BASE, handleSavePreferences);
 }
