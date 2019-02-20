@@ -158,7 +158,7 @@ export default TransitionReplace;
 
 
 TransitionReplace.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.node,
   enterDuration: PropTypes.number,
   exitDuration: PropTypes.number,
   enterFadeEaseFunction: PropTypes.string,
@@ -172,6 +172,7 @@ TransitionReplace.propTypes = {
 };
 
 TransitionReplace.defaultProps = {
+  children: null,
   enterDuration: 300,
   exitDuration: 300,
   enterFadeEaseFunction: 'linear',
