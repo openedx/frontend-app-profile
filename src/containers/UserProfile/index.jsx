@@ -16,6 +16,7 @@ const mapStateToProps = (state) => {
       ? state.profilePage.profile.profileImage.imageUrlLarge
       : null;
   return {
+    isCurrentUserProfile: state.userAccount.username === state.profilePage.profile.username,
     currentlyEditingField: state.profilePage.currentlyEditingField,
     saveState: state.profilePage.saveState,
     savePhotoState: state.profilePage.savePhotoState,

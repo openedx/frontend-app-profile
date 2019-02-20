@@ -45,7 +45,7 @@ export default EmptyContent;
 
 EmptyContent.propTypes = {
   onClick: PropTypes.func,
-  children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
+  children: PropTypes.node,
   showPlusIcon: PropTypes.bool,
 };
 

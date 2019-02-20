@@ -88,6 +88,7 @@ class UserProfile extends React.Component {
       education,
       socialLinks,
       certificates,
+      isCurrentUserProfile,
     } = this.props;
 
     const commonProps = {
@@ -101,8 +102,26 @@ class UserProfile extends React.Component {
     };
 
     const getMode = (name) => {
-      if (name === this.props.currentlyEditingField) return 'editing';
-      if (!this.props[name] || !this.props[name].length) return 'empty';
+      // If the prop doesn't exist, that means it hasn't been set (for the current user's profile)
+      // or is being hidden from us (for other users' profiles)
+      const propExists = this.props[name] != null && this.props[name].length > 0;
+
+      // If this isn't the current user's profile...
+      if (!isCurrentUserProfile) {
+        // then there are only two options: static or nothing.
+        // We use 'null' as a return value because the consumers of
+        // getMode render nothing at all on a mode of null.
+        return propExists ? 'static' : null;
+      }
+      // Otherwise, if this is the current user's profile...
+      if (name === this.props.currentlyEditingField) {
+        return 'editing';
+      }
+
+      if (!propExists) {
+        return 'empty';
+      }
+
       return 'editable';
     };
 
@@ -184,6 +203,7 @@ UserProfile.propTypes = {
   saveState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
   savePhotoState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
   error: PropTypes.string,
+  isCurrentUserProfile: PropTypes.bool.isRequired,
   profileImage: PropTypes.string,
   fullName: PropTypes.string,
   username: PropTypes.string,
