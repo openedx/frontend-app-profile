@@ -27,6 +27,8 @@ class UserProfile extends React.Component {
     this.onCancel = this.onCancel.bind(this);
     this.onEdit = this.onEdit.bind(this);
     this.onSave = this.onSave.bind(this);
+    this.onSaveProfilePhoto = this.onSaveProfilePhoto.bind(this);
+    this.onDeleteProfilePhoto = this.onDeleteProfilePhoto.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onVisibilityChange = this.onVisibilityChange.bind(this);
   }
@@ -44,6 +46,14 @@ class UserProfile extends React.Component {
       [fieldName]: value || this.state[fieldName].value,
     };
     this.props.saveUserProfile(this.props.username, userAccountData, fieldName);
+  }
+
+  onSaveProfilePhoto(formData) {
+    this.props.saveUserProfilePhoto(this.props.username, formData);
+  }
+
+  onDeleteProfilePhoto() {
+    this.props.deleteUserProfilePhoto(this.props.username);
   }
 
   onChange(fieldName, value) {
@@ -103,7 +113,9 @@ class UserProfile extends React.Component {
                 <ProfileAvatar
                   className="mb-md-3"
                   src={profileImage}
-                  {...commonProps}
+                  onSave={this.onSaveProfilePhoto}
+                  onDelete={this.onDeleteProfilePhoto}
+                  savePhotoState={this.props.savePhotoState}
                 />
                 <div>
                   <h2 className="mb-0">{username}</h2>
@@ -167,6 +179,7 @@ export default UserProfile;
 UserProfile.propTypes = {
   currentlyEditingField: PropTypes.string,
   saveState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
+  savePhotoState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
   error: PropTypes.string,
   profileImage: PropTypes.string,
   fullName: PropTypes.string,
@@ -183,6 +196,8 @@ UserProfile.propTypes = {
     title: PropTypes.string,
   })),
   saveUserProfile: PropTypes.func,
+  saveUserProfilePhoto: PropTypes.func.isRequired,
+  deleteUserProfilePhoto: PropTypes.func.isRequired,
   openEditableField: PropTypes.func.isRequired,
   closeEditableField: PropTypes.func.isRequired,
 };
@@ -190,6 +205,7 @@ UserProfile.propTypes = {
 UserProfile.defaultProps = {
   currentlyEditingField: null,
   saveState: null,
+  savePhotoState: null,
   error: null,
   profileImage: null,
   fullName: null,

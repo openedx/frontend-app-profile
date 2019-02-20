@@ -21,20 +21,28 @@ $fa-font-path: "~font-awesome/fonts";
   
 }
 
+
+.profile-avatar-wrap {
+  margin-right: 1rem;
+
+  @include media-breakpoint-up(md) {
+    max-width: 12rem;
+    margin-right: 0;
+    margin-top: -8rem;
+    margin-bottom: 2rem;
+  }
+}
+
 .profile-avatar {
   max-width: 50%;
   width: 5rem;
   height: 5rem;
-  margin-right: 1rem;
   position: relative;
 
   @include media-breakpoint-up(md) {
     width: 12rem;
     max-width: none;
     height: 12rem;
-    margin-right: 0;
-    margin-top: -8rem;
-    margin-bottom: 2rem;
   }
 
   .profile-avatar-edit-button {

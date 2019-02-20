@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import UserProfile from '../../components/UserProfile';
 import {
   saveUserProfile,
+  saveUserProfilePhoto,
+  deleteUserProfilePhoto,
   openEditableField,
   closeEditableField,
 } from '../../actions/profile';
@@ -10,6 +12,7 @@ import {
 const mapStateToProps = state => ({
   currentlyEditingField: state.profile.currentlyEditingField,
   saveState: state.profile.saveState,
+  savePhotoState: state.profile.savePhotoState,
   error: state.profile.error,
   profileImage: state.userAccount.profileImage.imageUrlLarge,
   fullName: state.userAccount.name,
@@ -23,6 +26,8 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, {
   saveUserProfile,
+  saveUserProfilePhoto,
+  deleteUserProfilePhoto,
   openEditableField,
   closeEditableField,
 })(UserProfile);
