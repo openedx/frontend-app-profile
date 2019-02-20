@@ -21,10 +21,6 @@ import {
   deleteUserProfilePhotoFailure,
   deleteUserProfilePhotoReset,
   deleteUserProfilePhoto,
-  EDITABLE_FIELD_OPEN,
-  EDITABLE_FIELD_CLOSE,
-  openEditableField,
-  closeEditableField,
 } from './profile';
 
 describe('editable field actions', () => {

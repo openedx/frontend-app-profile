@@ -84,7 +84,7 @@ function* saveUserProfilePhoto(action) {
 
     // Get the account data. Saving doesn't return anything on success.
     const userAccount = yield call(
-      [apiService, 'getUserAccount'],
+      [userAccountApiService, 'getUserAccount'],
       username,
     );
 
@@ -112,7 +112,7 @@ function* deleteUserProfilePhoto(action) {
 
     // Get the account data. Saving doesn't return anything on success.
     const userAccount = yield call(
-      [apiService, 'getUserAccount'],
+      [userAccountApiService, 'getUserAccount'],
       username,
     );
 

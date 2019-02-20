@@ -96,9 +96,10 @@ ProfileAvatar.propTypes = {
   src: PropTypes.string,
   onSave: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
-  savePhotoState: PropTypes.oneOf([null, 'pending', 'complete', 'error']).isRequired,
+  savePhotoState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
 };
 
 ProfileAvatar.defaultProps = {
   src: null,
+  savePhotoState: null,
 };
