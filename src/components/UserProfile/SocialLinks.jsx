@@ -2,11 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Input } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { faTwitter, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 import EditControls from './elements/EditControls';
 import EditableItemHeader from './elements/EditableItemHeader';
 import SwitchContent from './elements/SwitchContent';
+import EmptyContent from './elements/EmptyContent';
+
+const brandIcons = {
+  facebook: faFacebook,
+  twitter: faTwitter,
+  linkedin: faLinkedin,
+};
 
 
 class SocialLinks extends React.Component {
@@ -35,13 +42,13 @@ class SocialLinks extends React.Component {
       saveState,
     } = this.props;
 
-    if (socialLinks === null) return null;
-
     const socialLinksObj = {};
 
-    socialLinks.forEach(({ platform, socialLink }) => {
-      socialLinksObj[platform] = socialLink;
-    });
+    if (socialLinks !== null) {
+      socialLinks.forEach(({ platform, socialLink }) => {
+        socialLinksObj[platform] = socialLink;
+      });
+    }
 
 
     return (
@@ -83,7 +90,7 @@ class SocialLinks extends React.Component {
                 content="Social Links"
                 showEditButton
                 onClickEdit={() => onEdit('socialLinks')}
-                showVisibility={Boolean(socialLinks.length)}
+                showVisibility={socialLinks && socialLinks.length > 0}
                 visibility="Everyone"
               />
               <ul className="list-unstyled">
@@ -91,22 +98,30 @@ class SocialLinks extends React.Component {
                   <li key={key} className="form-group">
                     {
                       socialLinksObj[key] ? (
-                        <a href={socialLinksObj[key]}>{name}</a>
-                      ) : (
-                        <button
-                          className="btn btn-link btn-sm"
-                          tabIndex="0"
-                          onClick={() => onEdit('socialLinks')}
-                          onKeyDown={e => (e.key === 'Enter' ? onEdit('socialLinks') : null)}
+                        <a
+                          href={socialLinksObj[key]}
+                          className="font-weight-bold"
                         >
-                          <FontAwesomeIcon className="mr-2" icon={faPencilAlt} />{`Add ${name}`}
-                        </button>
+                          <FontAwesomeIcon className="mr-2" icon={brandIcons[key]} />
+                          {name}
+                        </a>
+                      ) : (
+                        <EmptyContent onClick={() => onEdit('socialLinks')}>Add {name}</EmptyContent>
                       )
                     }
                   </li>
                 ))}
               </ul>
             </React.Fragment>
+          ),
+          empty: (
+            <ul className="list-unstyled">
+              {this.props.platforms.map(({ key, name }) => (
+                <li key={key} className="mb-4">
+                  <EmptyContent onClick={() => onEdit('socialLinks')}>Add {name}</EmptyContent>
+                </li>
+              ))}
+            </ul>
           ),
           static: (
             <React.Fragment>

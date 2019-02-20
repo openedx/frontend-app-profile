@@ -1,4 +1,8 @@
 import {
+  openEditableField,
+  closeEditableField,
+  EDITABLE_FIELD_OPEN,
+  EDITABLE_FIELD_CLOSE,
   SAVE_USER_PROFILE,
   saveUserProfileBegin,
   saveUserProfileSuccess,
@@ -22,6 +26,24 @@ import {
   openEditableField,
   closeEditableField,
 } from './profile';
+
+describe('editable field actions', () => {
+  it('should create an open action', () => {
+    const expectedAction = {
+      type: EDITABLE_FIELD_OPEN,
+      fieldName: 'name',
+    };
+    expect(openEditableField('name')).toEqual(expectedAction);
+  });
+
+  it('should create a closed action', () => {
+    const expectedAction = {
+      type: EDITABLE_FIELD_CLOSE,
+      fieldName: 'name',
+    };
+    expect(closeEditableField('name')).toEqual(expectedAction);
+  });
+});
 
 describe('SAVE profile actions', () => {
   const userAccountState = {

@@ -1,5 +1,4 @@
 import { call, put, takeEvery, delay } from 'redux-saga/effects';
-import { UserAccountApiService } from '@edx/frontend-auth';
 
 import {
   SAVE_USER_PROFILE,
@@ -19,9 +18,8 @@ import {
   deleteUserProfilePhotoFailure,
   deleteUserProfilePhotoReset,
 } from '../actions/profile';
-import apiClient from '../data/apiClient';
 
-const apiService = new UserAccountApiService(apiClient, process.env.LMS_BASE_URL);
+let userAccountApiService = null;
 
 const PROP_TO_STATE_MAP = {
   fullName: 'name',
@@ -30,7 +28,7 @@ const PROP_TO_STATE_MAP = {
   socialLinks: socialLinks => socialLinks.filter(({ socialLink }) => socialLink !== null),
 };
 
-const mapDataForRequest = (props) => {
+export const mapDataForRequest = (props) => {
   const state = {};
   Object.keys(props).forEach((prop) => {
     const propModifier = PROP_TO_STATE_MAP[prop] || prop;
@@ -43,7 +41,8 @@ const mapDataForRequest = (props) => {
   return state;
 };
 
-function* saveUserProfile(action) {
+
+export function* saveUserProfile(action) {
   const { username, userAccountState } = action.payload;
 
   try {
@@ -51,7 +50,7 @@ function* saveUserProfile(action) {
 
     // Use call([context, fnName], ...args) for proper context on apiService
     const userAccount = yield call(
-      [apiService, 'saveUserAccount'],
+      [userAccountApiService, 'saveUserAccount'],
       username,
       mapDataForRequest(userAccountState),
     );
@@ -73,6 +72,7 @@ function* saveUserProfile(action) {
   }
 }
 
+
 function* saveUserProfilePhoto(action) {
   const { username, formData } = action.payload;
 
@@ -80,7 +80,7 @@ function* saveUserProfilePhoto(action) {
     yield put(saveUserProfilePhotoBegin());
 
     // Use call([context, fnName], ...args) for proper context on apiService
-    yield call([apiService, 'saveUserProfilePhoto'], username, formData);
+    yield call([userAccountApiService, 'saveUserProfilePhoto'], username, formData);
 
     // Get the account data. Saving doesn't return anything on success.
     const userAccount = yield call(
@@ -108,7 +108,7 @@ function* deleteUserProfilePhoto(action) {
     yield put(deleteUserProfilePhotoBegin());
 
     // Use call([context, fnName], ...args) for proper context on apiService
-    yield call([apiService, 'deleteUserProfilePhoto'], username);
+    yield call([userAccountApiService, 'deleteUserProfilePhoto'], username);
 
     // Get the account data. Saving doesn't return anything on success.
     const userAccount = yield call(
@@ -129,7 +129,8 @@ function* deleteUserProfilePhoto(action) {
   }
 }
 
-export default function* rootSaga() {
+export default function* rootSaga(apiService) {
+  userAccountApiService = apiService;
   yield takeEvery(SAVE_USER_PROFILE.BASE, saveUserProfile);
   yield takeEvery(SAVE_USER_PROFILE_PHOTO.BASE, saveUserProfilePhoto);
   yield takeEvery(DELETE_USER_PROFILE_PHOTO.BASE, deleteUserProfilePhoto);
