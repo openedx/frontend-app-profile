@@ -38,15 +38,16 @@ export function getPreferences(username) {
   return new Promise((resolve, reject) => {
     apiClient.get(url)
       .then(({ data }) => {
-        const unflattenAndTransformKeys = (acc, key) => {
+        // Unflatten server response
+        // visibility.social_links: 'value' becomes { visibility: { socialLinks: 'value' }}
+        const preferences = {};
+        Object.entries(data).forEach(([key, value]) => {
           _.set(
-            acc,
+            preferences,
             key.split('.').map(pathKey => serverClientKeyMap[pathKey] || pathKey),
-            data[key],
+            value,
           );
-          return acc;
-        };
-        const preferences = Object.keys(data).reduce(unflattenAndTransformKeys, {});
+        });
         resolve(preferences);
       })
       .catch((error) => {
@@ -57,6 +58,9 @@ export function getPreferences(username) {
 
 export function savePreferences(username, preferences) {
   const url = `${lmsBaseUrl}/api/user/v1/preferences/${username}`;
+
+  // Flatten object for server
+  // { visibility: { socialLinks: 'value' }} becomes visibility.social_links: 'value'
   const data = {};
   const flattenAndTransformKeys = (prevKeys, currentValue) => {
     if (typeof currentValue !== 'object') {
