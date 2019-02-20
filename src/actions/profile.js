@@ -6,8 +6,6 @@ export const FETCH_PROFILE = new AsyncActionType('PROFILE', 'FETCH_PROFILE');
 export const SAVE_PROFILE = new AsyncActionType('PROFILE', 'SAVE_PROFILE');
 export const SAVE_PROFILE_PHOTO = new AsyncActionType('PROFILE', 'SAVE_PROFILE_PHOTO');
 export const DELETE_PROFILE_PHOTO = new AsyncActionType('PROFILE', 'DELETE_PROFILE_PHOTO');
-export const FETCH_PREFERENCES = new AsyncActionType('PROFILE', 'FETCH_PREFERENCES');
-export const SAVE_PREFERENCES = new AsyncActionType('PROFILE', 'SAVE_PREFERENCES');
 
 export const openEditableField = fieldName => ({
   type: EDITABLE_FIELD_OPEN,
@@ -115,51 +113,4 @@ export const deleteProfilePhoto = username => ({
   payload: {
     username,
   },
-});
-
-
-export const fetchPreferencesBegin = () => ({
-  type: FETCH_PREFERENCES.BEGIN,
-});
-
-export const fetchPreferencesSuccess = preferences => ({
-  type: FETCH_PREFERENCES.SUCCESS,
-  preferences,
-});
-
-export const fetchPreferencesFailure = error => ({
-  type: FETCH_PREFERENCES.FAILURE,
-  payload: { error },
-});
-
-export const fetchPreferencesReset = () => ({
-  type: FETCH_PREFERENCES.RESET,
-});
-
-export const fetchPreferences = username => ({
-  type: FETCH_PREFERENCES.BASE,
-  payload: { username },
-});
-
-
-export const savePreferencesBegin = () => ({
-  type: SAVE_PREFERENCES.BEGIN,
-});
-
-export const savePreferencesSuccess = () => ({
-  type: SAVE_PREFERENCES.SUCCESS,
-});
-
-export const savePreferencesFailure = error => ({
-  type: SAVE_PREFERENCES.FAILURE,
-  payload: { error },
-});
-
-export const savePreferencesReset = () => ({
-  type: SAVE_PREFERENCES.RESET,
-});
-
-export const savePreferences = (username, preferences) => ({
-  type: SAVE_PREFERENCES.BASE,
-  payload: { username, preferences },
 });

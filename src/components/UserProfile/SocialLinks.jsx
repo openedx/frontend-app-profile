@@ -79,7 +79,7 @@ class SocialLinks extends React.Component {
                 onCancel={() => onCancel('socialLinks')}
                 onSave={this.onSave}
                 saveState={saveState}
-                visibility="Everyone"
+                visibility={this.props.visibility}
                 onVisibilityChange={e => onVisibilityChange('socialLinks', e.target.value)}
               />
             </React.Fragment>
@@ -91,7 +91,7 @@ class SocialLinks extends React.Component {
                 showEditButton
                 onClickEdit={() => onEdit('socialLinks')}
                 showVisibility={socialLinks && socialLinks.length > 0}
-                visibility="Everyone"
+                visibility={this.props.visibility}
               />
               <ul className="list-unstyled">
                 {this.props.platforms.map(({ key, name }) => (
@@ -170,6 +170,7 @@ SocialLinks.propTypes = {
     key: PropTypes.string,
     name: PropTypes.string,
   })),
+  visibility: PropTypes.oneOf(['private', 'all_users']),
 };
 
 SocialLinks.defaultProps = {
@@ -180,6 +181,7 @@ SocialLinks.defaultProps = {
     { key: 'linkedin', name: 'LinkedIn' },
     { key: 'facebook', name: 'Facebook' },
   ],
+  visibility: 'private',
 };
 
 export default SocialLinks;

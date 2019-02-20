@@ -10,6 +10,7 @@ import SwitchContent from './elements/SwitchContent';
 
 function FullName({
   fullName,
+  visibility,
   editMode,
   onEdit,
   onChange,
@@ -36,7 +37,7 @@ function FullName({
               onCancel={() => onCancel('fullName')}
               onSave={() => onSave('fullName')}
               saveState={saveState}
-              visibility="Everyone"
+              visibility={visibility}
               onVisibilityChange={e => onVisibilityChange('fullName', e.target.value)}
             />
           </React.Fragment>
@@ -48,7 +49,7 @@ function FullName({
               showEditButton
               onClickEdit={() => onEdit('fullName')}
               showVisibility={Boolean(fullName)}
-              visibility="Everyone"
+              visibility={visibility}
             />
             <h5>{fullName}</h5>
           </React.Fragment>
@@ -77,12 +78,14 @@ FullName.propTypes = {
   onVisibilityChange: PropTypes.func.isRequired,
   saveState: PropTypes.string,
   fullName: PropTypes.string,
+  visibility: PropTypes.oneOf(['private', 'all_users']),
 };
 
 FullName.defaultProps = {
   editMode: 'static',
   saveState: null,
   fullName: null,
+  visibility: 'private',
 };
 
 

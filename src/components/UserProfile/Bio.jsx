@@ -11,6 +11,7 @@ import SwitchContent from './elements/SwitchContent';
 
 function Bio({
   bio,
+  visibility,
   editMode,
   onEdit,
   onChange,
@@ -37,7 +38,7 @@ function Bio({
               onCancel={() => onCancel('bio')}
               onSave={() => onSave('bio')}
               saveState={saveState}
-              visibility="Everyone"
+              visibility={visibility}
               onVisibilityChange={e => onVisibilityChange('bio', e.target.value)}
             />
           </React.Fragment>
@@ -49,7 +50,7 @@ function Bio({
               showEditButton
               onClickEdit={() => onEdit('bio')}
               showVisibility={Boolean(bio)}
-              visibility="Everyone"
+              visibility={visibility}
             />
             <p className="lead">{bio}</p>
           </React.Fragment>
@@ -83,12 +84,14 @@ Bio.propTypes = {
   onVisibilityChange: PropTypes.func.isRequired,
   saveState: PropTypes.string,
   bio: PropTypes.string,
+  visibility: PropTypes.oneOf(['private', 'all_users']),
 };
 
 Bio.defaultProps = {
   editMode: 'static',
   saveState: null,
   bio: null,
+  visibility: 'private',
 };
 
 

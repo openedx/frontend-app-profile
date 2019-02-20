@@ -23,6 +23,9 @@ import {
   deleteProfilePhotoSuccess,
   deleteProfilePhotoFailure,
   deleteProfilePhotoReset,
+} from '../actions/profile';
+
+import {
   FETCH_PREFERENCES,
   fetchPreferencesBegin,
   fetchPreferencesSuccess,
@@ -33,8 +36,7 @@ import {
   savePreferencesSuccess,
   savePreferencesFailure,
   savePreferencesReset,
-} from '../actions/profile';
-
+} from '../actions/preferences';
 
 import * as ProfileApiService from '../services/ProfileApiService';
 import { getPreferences, savePreferences } from '../data/apiClient';

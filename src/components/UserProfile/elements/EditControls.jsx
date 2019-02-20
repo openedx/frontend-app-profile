@@ -20,11 +20,11 @@ function EditControls({
             bsSize="sm"
             type="select"
             name="select"
-            value={visibility}
+            defaultValue={visibility}
             onChange={onVisibilityChange}
           >
-            <option key="Just me" value="Just me">Just me</option>
-            <option key="Everyone" value="Everyone">Everyone</option>
+            <option key="private" value="private">Just me</option>
+            <option key="all_users" value="all_users">Everyone on edX</option>
           </Input>
         </span>
       </Col>
@@ -50,13 +50,13 @@ export default EditControls;
 EditControls.propTypes = {
   onCancel: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
-  visibility: PropTypes.oneOf(['Everyone', 'Just me']),
+  visibility: PropTypes.oneOf(['private', 'all_users']),
   onVisibilityChange: PropTypes.func,
   saveState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
 };
 
 EditControls.defaultProps = {
-  visibility: null,
+  visibility: 'private',
   onVisibilityChange: null,
   saveState: null,
 };

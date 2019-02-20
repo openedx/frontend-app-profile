@@ -32,7 +32,7 @@ EditableItemHeader.propTypes = {
   showVisibility: PropTypes.bool,
   showEditButton: PropTypes.bool,
   content: PropTypes.string,
-  visibility: PropTypes.oneOf(['Everyone', 'Just me']),
+  visibility: PropTypes.oneOf(['private', 'all_users']),
 };
 
 EditableItemHeader.defaultProps = {
@@ -40,5 +40,5 @@ EditableItemHeader.defaultProps = {
   showVisibility: false,
   showEditButton: false,
   content: '',
-  visibility: 'Everyone',
+  visibility: 'private',
 };

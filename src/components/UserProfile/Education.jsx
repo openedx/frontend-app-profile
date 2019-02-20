@@ -12,6 +12,7 @@ import EDUCATION from '../../constants/education';
 
 function Education({
   education,
+  visibility,
   editMode,
   onEdit,
   onChange,
@@ -43,7 +44,7 @@ function Education({
               onCancel={() => onCancel('education')}
               onSave={() => onSave('education')}
               saveState={saveState}
-              visibility="Everyone"
+              visibility={visibility}
               onVisibilityChange={e => onVisibilityChange('education', e.target.value)}
             />
           </React.Fragment>
@@ -55,7 +56,7 @@ function Education({
               showEditButton
               onClickEdit={() => onEdit('education')}
               showVisibility={Boolean(education)}
-              visibility="Everyone"
+              visibility={visibility}
             />
             <h5>{EDUCATION[education]}</h5>
           </React.Fragment>
@@ -83,12 +84,14 @@ Education.propTypes = {
   onVisibilityChange: PropTypes.func.isRequired,
   saveState: PropTypes.string,
   education: PropTypes.string,
+  visibility: PropTypes.oneOf(['private', 'all_users']),
 };
 
 Education.defaultProps = {
   editMode: 'static',
   saveState: null,
   education: null,
+  visibility: 'private',
 };
 
 

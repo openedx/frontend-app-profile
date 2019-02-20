@@ -19,7 +19,7 @@ import FooterLogo from '../assets/edx-footer.png';
 import './App.scss';
 import NotFoundPage from './components/NotFoundPage';
 
-import { fetchPreferences } from './actions/profile';
+import { fetchPreferences } from './actions/preferences';
 
 class App extends Component {
   componentDidMount() {
