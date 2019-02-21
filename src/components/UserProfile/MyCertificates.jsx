@@ -68,7 +68,7 @@ function MyCertificates({
         ),
         empty: (
           <div>
-            {t('profile.no.certificates')}
+            {t('profile.certificates.empty')}
           </div>
         ),
         static: (
