@@ -39,7 +39,6 @@ import {
 } from '../actions/preferences';
 
 import * as ProfileApiService from '../services/ProfileApiService';
-import { getPreferences, savePreferences } from '../data/apiClient';
 
 
 const PROP_TO_STATE_MAP = {
@@ -139,7 +138,7 @@ export function* handleFetchPreferences(action) {
   const { username } = action.payload;
   try {
     yield put(fetchPreferencesBegin());
-    const userPreferences = yield call(getPreferences, username);
+    const userPreferences = yield call(ProfileApiService.getPreferences, username);
     yield put(fetchPreferencesSuccess(userPreferences));
     yield put(fetchPreferencesReset());
   } catch (e) {
@@ -151,7 +150,7 @@ export function* handleSavePreferences(action) {
   const { username, preferences } = action.payload;
   try {
     yield put(savePreferencesBegin());
-    yield call(savePreferences, username, preferences);
+    yield call(ProfileApiService.savePreferences, username, preferences);
     yield put(savePreferencesSuccess(preferences));
     yield put(savePreferencesReset());
   } catch (e) {

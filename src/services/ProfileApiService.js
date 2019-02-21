@@ -1,11 +1,27 @@
 import camelcaseKeys from 'camelcase-keys';
 import snakecaseKeys from 'snakecase-keys';
+import _ from 'lodash';
 
 import apiClient from '../data/apiClient';
 import { configuration } from '../config';
+import { unflattenAndTransformKeys, flattenAndTransformKeys } from './utils';
 
 const accountsApiBaseUrl = `${configuration.LMS_BASE_URL}/api/user/v1/accounts`;
 const preferencesApiBaseUrl = `${configuration.LMS_BASE_URL}/api/user/v1/preferences`;
+const clientServerKeyMap = {
+  bio: 'bio',
+  socialLinks: 'social_links',
+  country: 'country',
+  education: 'level_of_education',
+  fullName: 'name',
+  username: 'username',
+  profileImage: 'profile_image',
+  dateJoined: 'date_joined',
+  languageProficiencies: 'language_proficiencies',
+  accountPrivacy: 'account_privacy',
+};
+const serverClientKeyMap = _.invert(clientServerKeyMap);
+
 
 export function getProfile(username) {
   return new Promise((resolve, reject) => {
@@ -72,9 +88,35 @@ export function deleteProfilePhoto(username) {
   return apiClient.delete(`${accountsApiBaseUrl}/${username}/image`);
 }
 
-export function getUserPreference(username, preferenceKey) {
+export function getPreferences(username) {
+  const url = `${preferencesApiBaseUrl}/${username}`;
+
   return new Promise((resolve, reject) => {
-    apiClient.get(`${preferencesApiBaseUrl}/${username}/${preferenceKey}`)
+    apiClient.get(url)
+      .then(({ data }) => {
+        // Unflatten server response
+        // visibility.social_links: 'value' becomes { visibility: { socialLinks: 'value' }}
+        resolve(unflattenAndTransformKeys(data, key => serverClientKeyMap[key] || key));
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+}
+
+export function savePreferences(username, preferences) {
+  const url = `${preferencesApiBaseUrl}/${username}`;
+
+  // Flatten object for server
+  // { visibility: { socialLinks: 'value' }} becomes visibility.social_links: 'value'
+  const data = flattenAndTransformKeys(preferences, key => clientServerKeyMap[key] || key);
+
+  return new Promise((resolve, reject) => {
+    apiClient.patch(
+      url,
+      data,
+      { headers: { 'Content-Type': 'application/merge-patch+json' } },
+    )
       .then((response) => {
         resolve(response.data);
       })
@@ -83,4 +125,3 @@ export function getUserPreference(username, preferenceKey) {
       });
   });
 }
-
