@@ -23,4 +23,13 @@ i18n.addResourceBundle(
   },
 );
 
+i18n.addResourceBundle(
+  'en',
+  'profile', // this is the namespace, so I think it doesn't need to appear below?
+  {
+    'profile.no.certificates': 'No certificates',
+    'no.certificates': 'No certifiCATS',
+  },
+);
+
 export default i18n;
