@@ -1,10 +1,10 @@
-import _ from 'lodash';
+import set from 'lodash.set';
 
 export function unflattenAndTransformKeys(obj, transformer) {
   const newObj = {};
 
   Object.entries(obj).forEach(([key, value]) => {
-    _.set(newObj, key.split('.').map(transformer), value);
+    set(newObj, key.split('.').map(transformer), value);
   });
 
   return newObj;

@@ -1,6 +1,5 @@
 import camelcaseKeys from 'camelcase-keys';
 import snakecaseKeys from 'snakecase-keys';
-import _ from 'lodash';
 
 import apiClient from '../data/apiClient';
 import { configuration } from '../config';
@@ -20,7 +19,10 @@ const clientServerKeyMap = {
   languageProficiencies: 'language_proficiencies',
   accountPrivacy: 'account_privacy',
 };
-const serverClientKeyMap = _.invert(clientServerKeyMap);
+const serverClientKeyMap = Object.entries(clientServerKeyMap).reduce((acc, [key, value]) => {
+  acc[value] = key;
+  return acc;
+}, {});
 
 
 export function getProfile(username) {

@@ -1,3 +1,5 @@
+import defaultsDeep from 'lodash.defaultsdeep';
+
 import {
   FETCH_PREFERENCES,
   SAVE_PREFERENCES,
@@ -41,10 +43,10 @@ const profile = (state = initialState, action) => {
         savePreferencesState: 'pending',
       };
     case SAVE_PREFERENCES.SUCCESS:
+      // defaults deep used because our preferences/state object is multi-dimensional
       return {
-        ...state,
+        ...defaultsDeep({}, action.preferences, state),
         savePreferencesState: 'complete',
-        ...action.preferences,
       };
     case SAVE_PREFERENCES.FAILURE:
       return {
