@@ -18,7 +18,8 @@ i18n.addResources(
   'en',
   'profile',
   {
-    'profile.certificates.empty': 'You don\'t have any certificates yet.',
+    'profile.certificates': 'You have {{count}} certificate.',
+    'profile.certificates_plural': 'You have {{count}} certificates.',
   },
 );
 
@@ -27,7 +28,8 @@ i18n.addResources(
   'profile',
   {
     'profile.bio.empty': 'Añade una breve biografía',
-    'profile.certificates.empty': 'Aún no tienes ningún certificado.',
+    'profile.certificates': 'Tienes {{count}} certificado.',
+    'profile.certificates_plural': 'Tienes {{count}} certificados.',
   },
 );
 

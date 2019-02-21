@@ -68,7 +68,7 @@ function MyCertificates({
         ),
         empty: (
           <div>
-            {t('profile.certificates.empty')}
+            {t('profile.certificates', { count: 11 })}
           </div>
         ),
         static: (
