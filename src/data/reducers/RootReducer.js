@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
 import { userAccount } from '@edx/frontend-auth';
 import profilePage from './ProfilePageReducer';
-import preferences from './PreferencesReducer';
 
 const identityReducer = (state) => {
   const newState = { ...state };
@@ -14,7 +13,6 @@ const rootReducer = combineReducers({
   authentication: identityReducer,
   userAccount,
   profilePage,
-  preferences,
 });
 
 export default rootReducer;
