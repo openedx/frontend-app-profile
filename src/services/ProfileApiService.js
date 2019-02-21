@@ -106,7 +106,7 @@ export function getPreferences(username) {
   });
 }
 
-export function savePreferences(username, preferences) {
+export function postPreferences(username, preferences) {
   const url = `${preferencesApiBaseUrl}/${username}`;
 
   // Flatten object for server
@@ -119,8 +119,10 @@ export function savePreferences(username, preferences) {
       data,
       { headers: { 'Content-Type': 'application/merge-patch+json' } },
     )
-      .then((response) => {
-        resolve(response.data);
+      .then((response) => { // eslint-disable-line no-unused-vars
+        // Server response is blank on success
+        // resolve(response.data);
+        resolve(preferences);
       })
       .catch((error) => {
         reject(error);
