@@ -57,7 +57,7 @@ function Bio({
         empty: (
           <EmptyContent onClick={() => onEdit('bio')}>
             <Trans i18nKey="profile.bio.empty">
-              Add a short cat
+              Add a short bio
             </Trans>
           </EmptyContent>
         ),
