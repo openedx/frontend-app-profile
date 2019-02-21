@@ -6,7 +6,7 @@ i18n
   .init({
     fallbackLng: 'en',
     debug: true,
-    lng: window.navigator.language,
+    lng: window.navigator.language, // temporary; set your browser language to Spanish to see es
     defaultNS: 'profile',
 
     interpolation: {
@@ -18,7 +18,7 @@ i18n.addResources(
   'en',
   'profile',
   {
-    'profile.no.certificates': 'No certificates',
+    'profile.no.certificates': 'You don\'t have any certificates yet.',
   },
 );
 
