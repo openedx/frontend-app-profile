@@ -56,7 +56,7 @@ const profilePage = (state = initialState, action) => {
     case FETCH_PREFERENCES.SUCCESS:
       return {
         ...state,
-        preferences: action.preferences,
+        preferences: defaultsDeep({}, action.preferences, state.preferences),
       };
 
     case SAVE_PREFERENCES.BEGIN:
@@ -69,7 +69,6 @@ const profilePage = (state = initialState, action) => {
       // defaults deep used because our preferences/state object is multi-dimensional
       return {
         ...state,
-        preferences: defaultsDeep({}, action.preferences, state.preferences),
         savePreferencesState: 'complete',
         saveState: mergeSaveStates(['complete', state.saveProfileState]),
       };

@@ -147,11 +147,12 @@ export function* handleFetchPreferences(action) {
 }
 
 export function* handleSavePreferences(action) {
-  const { username, preferences } = action.payload;
+  const { username, preferences: preferencesToSave } = action.payload;
   try {
     yield put(savePreferencesBegin());
-    yield call(ProfileApiService.savePreferences, username, preferences);
-    yield put(savePreferencesSuccess(preferences));
+    const preferences = yield call(ProfileApiService.postPreferences, username, preferencesToSave);
+    yield put(savePreferencesSuccess());
+    yield put(fetchPreferencesSuccess(preferences));
     yield put(savePreferencesReset());
   } catch (e) {
     yield put(savePreferencesFailure(e));
