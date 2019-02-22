@@ -62,7 +62,7 @@ export function* handleFetchProfile(action) {
     );
     const preferences = yield call(
       ProfileApiService.getPreferences,
-      username
+      username,
     );
 
     yield put(fetchProfileSuccess(profile));
@@ -91,7 +91,7 @@ export function* handleSaveProfile(action) {
       responseData.preferences = yield call(
         ProfileApiService.patchPreferences,
         username,
-        preferencesData
+        preferencesData,
       );
     }
 
@@ -146,31 +146,6 @@ export function* handleDeleteProfilePhoto(action) {
     yield put(deleteProfilePhotoFailure(e.message));
   }
 }
-
-// export function* handleFetchPreferences(action) {
-//   const { username } = action.payload;
-//   try {
-//     yield put(fetchPreferencesBegin());
-//     const userPreferences = yield call(ProfileApiService.getPreferences, username);
-//     yield put(fetchPreferencesSuccess(userPreferences));
-//     yield put(fetchPreferencesReset());
-//   } catch (e) {
-//     yield put(fetchPreferencesFailure(e));
-//   }
-// }
-
-// export function* handleSavePreferences(action) {
-//   const { username, preferences: preferencesToSave } = action.payload;
-//   try {
-//     yield put(savePreferencesBegin());
-//     const preferences = yield call(ProfileApiService.postPreferences, username, preferencesToSave);
-//     yield put(savePreferencesSuccess());
-//     yield put(fetchPreferencesSuccess(preferences));
-//     yield put(savePreferencesReset());
-//   } catch (e) {
-//     yield put(savePreferencesFailure(e));
-//   }
-// }
 
 
 export default function* rootSaga() {

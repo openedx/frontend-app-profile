@@ -24,7 +24,7 @@ export const fetchProfileBegin = () => ({
   type: FETCH_PROFILE.BEGIN,
 });
 
-export const fetchProfileSuccess = (profile) => ({
+export const fetchProfileSuccess = profile => ({
   type: FETCH_PROFILE.SUCCESS,
   profile,
 });

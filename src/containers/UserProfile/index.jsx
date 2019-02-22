@@ -9,7 +9,6 @@ import {
   openField,
   closeField,
 } from '../../actions/profile';
-import { savePreferences } from '../../actions/preferences';
 
 const mapStateToProps = (state) => {
   const profileImage =
@@ -44,6 +43,5 @@ export default connect(
     deleteProfilePhoto,
     openField,
     closeField,
-    savePreferences,
   },
 )(UserProfile);

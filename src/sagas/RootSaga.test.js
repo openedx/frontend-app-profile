@@ -1,7 +1,6 @@
 import { takeEvery, put, call, delay } from 'redux-saga/effects';
 
 import * as profileActions from '../actions/profile';
-import * as preferencesActions from '../actions/preferences';
 
 jest.mock('../services/ProfileApiService', () => ({
   getProfile: jest.fn(),
@@ -18,8 +17,6 @@ import rootSaga, {
   handleSaveProfile,
   handleSaveProfilePhoto,
   handleDeleteProfilePhoto,
-  handleFetchPreferences,
-  handleSavePreferences,
 } from './RootSaga';
 import * as ProfileApiService from '../services/ProfileApiService';
 /* eslint-enable import/first */
@@ -44,14 +41,6 @@ describe('RootSaga', () => {
       expect(gen.next().value).toEqual(takeEvery(
         profileActions.DELETE_PROFILE_PHOTO.BASE,
         handleDeleteProfilePhoto,
-      ));
-      expect(gen.next().value).toEqual(takeEvery(
-        preferencesActions.FETCH_PREFERENCES.BASE,
-        handleFetchPreferences,
-      ));
-      expect(gen.next().value).toEqual(takeEvery(
-        preferencesActions.SAVE_PREFERENCES.BASE,
-        handleSavePreferences,
       ));
 
       expect(gen.next().value).toBeUndefined();

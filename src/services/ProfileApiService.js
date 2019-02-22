@@ -18,6 +18,7 @@ const clientServerKeyMap = {
   dateJoined: 'date_joined',
   languageProficiencies: 'language_proficiencies',
   accountPrivacy: 'account_privacy',
+  userLocation: 'user_location',
 };
 const serverClientKeyMap = Object.entries(clientServerKeyMap).reduce((acc, [key, value]) => {
   acc[value] = key;

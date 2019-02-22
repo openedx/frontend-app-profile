@@ -51,7 +51,7 @@ class UserProfile extends React.Component {
     } = this.state[fieldName];
 
     const data = {};
-      
+
     if (value != null) {
       data.profileData = { [fieldName]: value };
     }
