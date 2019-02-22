@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
+import { injectIntl, intlShape } from 'react-intl';
 import { Row, Col, Card, CardBody, CardTitle, CardText, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
@@ -18,6 +18,7 @@ function MyCertificates({
   onCancel,
   onVisibilityChange,
   saveState,
+  intl,
 }) {
   const renderCertificates = () => {
     if (!certificates) return null;
@@ -92,11 +93,11 @@ function MyCertificates({
         ),
         empty: (
           <div>
-            <FormattedMessage
-              id="profile.no.certificates"
-              defaultMessage="You don't have any certificates yet."
-              description="displays when user has no course completion certificates"
-            />
+            {intl.formatMessage({
+              id: 'profile.no.certificates',
+              defaultMessage: 'You don\'t have any certificates yet.',
+              description: 'displays when user has no course completion certificates',
+            })}_
           </div>
         ),
         static: (
@@ -113,6 +114,7 @@ function MyCertificates({
 
 MyCertificates.propTypes = {
   editMode: PropTypes.string,
+  intl: intlShape.isRequired,
   onEdit: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
@@ -132,4 +134,4 @@ MyCertificates.defaultProps = {
 };
 
 
-export default MyCertificates;
+export default injectIntl(MyCertificates);
