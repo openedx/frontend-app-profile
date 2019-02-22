@@ -97,7 +97,7 @@ function MyCertificates({
               id: 'profile.no.certificates',
               defaultMessage: 'You don\'t have any certificates yet.',
               description: 'displays when user has no course completion certificates',
-            })}_
+            })}
           </div>
         ),
         static: (
