@@ -107,7 +107,7 @@ class SocialLinks extends React.Component {
                     platform={key}
                     name={name}
                     url={socialLinksMap[key]}
-                    onEdit={onEdit}
+                    onClickEmptyContent={onEdit}
                   />
                 ))}
               </ul>
@@ -194,12 +194,12 @@ SocialLink.propTypes = {
 function EditableListItem({
   url,
   platform,
-  onEdit,
+  onClickEmptyContent,
   name,
 }) {
   const linkDisplay = url != null ?
     <SocialLink name={name} url={url} platform={platform} /> :
-    <EmptyContent onClick={onEdit}>Add {name}</EmptyContent>;
+    <EmptyContent onClick={onClickEmptyContent}>Add {name}</EmptyContent>;
 
   return <li className="form-group">{linkDisplay}</li>;
 }
@@ -208,11 +208,11 @@ EditableListItem.propTypes = {
   url: PropTypes.string,
   platform: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  onEdit: PropTypes.func,
+  onClickEmptyContent: PropTypes.func,
 };
 EditableListItem.defaultProps = {
   url: null,
-  onEdit: null,
+  onClickEmptyContent: null,
 };
 
 
