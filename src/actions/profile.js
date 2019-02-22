@@ -1,19 +1,22 @@
 import AsyncActionType from './AsyncActionType';
 
-export const EDITABLE_FIELD_OPEN = 'EDITABLE_FIELD_OPEN';
-export const EDITABLE_FIELD_CLOSE = 'EDITABLE_FIELD_CLOSE';
+export const FIELD_OPEN = 'FIELD_OPEN';
+export const FIELD_CLOSE = 'FIELD_CLOSE';
 export const FETCH_PROFILE = new AsyncActionType('PROFILE', 'FETCH_PROFILE');
 export const SAVE_PROFILE = new AsyncActionType('PROFILE', 'SAVE_PROFILE');
 export const SAVE_PROFILE_PHOTO = new AsyncActionType('PROFILE', 'SAVE_PROFILE_PHOTO');
 export const DELETE_PROFILE_PHOTO = new AsyncActionType('PROFILE', 'DELETE_PROFILE_PHOTO');
 
-export const openEditableField = fieldName => ({
-  type: EDITABLE_FIELD_OPEN,
+
+
+
+export const openField = fieldName => ({
+  type: FIELD_OPEN,
   fieldName,
 });
 
-export const closeEditableField = fieldName => ({
-  type: EDITABLE_FIELD_CLOSE,
+export const closeField = fieldName => ({
+  type: FIELD_CLOSE,
   fieldName,
 });
 
@@ -21,9 +24,9 @@ export const fetchProfileBegin = () => ({
   type: FETCH_PROFILE.BEGIN,
 });
 
-export const fetchProfileSuccess = profile => ({
+export const fetchProfileSuccess = ({ profile, preferences }) => ({
   type: FETCH_PROFILE.SUCCESS,
-  payload: { profile },
+  payload: { profile, preferences },
 });
 
 export const fetchProfileFailure = error => ({
@@ -57,12 +60,13 @@ export const saveProfileFailure = error => ({
   payload: { error },
 });
 
-export const saveProfile = (username, userAccountState, fieldName) => ({
+export const saveProfile = (username, { profileData, preferencesData }, fieldName) => ({
   type: SAVE_PROFILE.BASE,
   payload: {
     fieldName,
     username,
-    userAccountState,
+    profileData,
+    preferencesData,
   },
 });
 

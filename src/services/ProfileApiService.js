@@ -106,7 +106,7 @@ export function getPreferences(username) {
   });
 }
 
-export function postPreferences(username, preferences) {
+export function patchPreferences(username, preferences) {
   const url = `${preferencesApiBaseUrl}/${username}`;
 
   // Flatten object for server

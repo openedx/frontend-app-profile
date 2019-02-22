@@ -25,19 +25,6 @@ import {
   deleteProfilePhotoReset,
 } from '../actions/profile';
 
-import {
-  FETCH_PREFERENCES,
-  fetchPreferencesBegin,
-  fetchPreferencesSuccess,
-  fetchPreferencesFailure,
-  fetchPreferencesReset,
-  SAVE_PREFERENCES,
-  savePreferencesBegin,
-  savePreferencesSuccess,
-  savePreferencesFailure,
-  savePreferencesReset,
-} from '../actions/preferences';
-
 import * as ProfileApiService from '../services/ProfileApiService';
 
 
@@ -67,12 +54,17 @@ export function* handleFetchProfile(action) {
 
   try {
     yield put(fetchProfileBegin());
+
     const profile = yield call(
       ProfileApiService.getProfile,
       username,
     );
+    const preferences = yield call(
+      ProfileApiService.getPreferences,
+      username
+    );
 
-    yield put(fetchProfileSuccess(profile));
+    yield put(fetchProfileSuccess({ profile, preferences }));
     yield put(fetchProfileReset());
   } catch (e) {
     yield put(fetchProfileFailure(e.message));
@@ -81,12 +73,18 @@ export function* handleFetchProfile(action) {
 
 export function* handleSaveProfile(action) {
   const { username, userAccountState } = action.payload;
+  const { profileData, preferenceData } = userAccountState;
   try {
     yield put(saveProfileBegin());
     const profile = yield call(
       ProfileApiService.patchProfile,
       username,
       userAccountState,
+    );
+    const preferences = yield call(
+      ProfileApiService.patchPreferences,
+      username,
+      preferencesToSave
     );
 
     yield put(saveProfileSuccess());
@@ -134,30 +132,30 @@ export function* handleDeleteProfilePhoto(action) {
   }
 }
 
-export function* handleFetchPreferences(action) {
-  const { username } = action.payload;
-  try {
-    yield put(fetchPreferencesBegin());
-    const userPreferences = yield call(ProfileApiService.getPreferences, username);
-    yield put(fetchPreferencesSuccess(userPreferences));
-    yield put(fetchPreferencesReset());
-  } catch (e) {
-    yield put(fetchPreferencesFailure(e));
-  }
-}
+// export function* handleFetchPreferences(action) {
+//   const { username } = action.payload;
+//   try {
+//     yield put(fetchPreferencesBegin());
+//     const userPreferences = yield call(ProfileApiService.getPreferences, username);
+//     yield put(fetchPreferencesSuccess(userPreferences));
+//     yield put(fetchPreferencesReset());
+//   } catch (e) {
+//     yield put(fetchPreferencesFailure(e));
+//   }
+// }
 
-export function* handleSavePreferences(action) {
-  const { username, preferences: preferencesToSave } = action.payload;
-  try {
-    yield put(savePreferencesBegin());
-    const preferences = yield call(ProfileApiService.postPreferences, username, preferencesToSave);
-    yield put(savePreferencesSuccess());
-    yield put(fetchPreferencesSuccess(preferences));
-    yield put(savePreferencesReset());
-  } catch (e) {
-    yield put(savePreferencesFailure(e));
-  }
-}
+// export function* handleSavePreferences(action) {
+//   const { username, preferences: preferencesToSave } = action.payload;
+//   try {
+//     yield put(savePreferencesBegin());
+//     const preferences = yield call(ProfileApiService.postPreferences, username, preferencesToSave);
+//     yield put(savePreferencesSuccess());
+//     yield put(fetchPreferencesSuccess(preferences));
+//     yield put(savePreferencesReset());
+//   } catch (e) {
+//     yield put(savePreferencesFailure(e));
+//   }
+// }
 
 
 export default function* rootSaga() {
@@ -165,6 +163,4 @@ export default function* rootSaga() {
   yield takeEvery(SAVE_PROFILE.BASE, handleSaveProfile);
   yield takeEvery(SAVE_PROFILE_PHOTO.BASE, handleSaveProfilePhoto);
   yield takeEvery(DELETE_PROFILE_PHOTO.BASE, handleDeleteProfilePhoto);
-  yield takeEvery(FETCH_PREFERENCES.BASE, handleFetchPreferences);
-  yield takeEvery(SAVE_PREFERENCES.BASE, handleSavePreferences);
 }
