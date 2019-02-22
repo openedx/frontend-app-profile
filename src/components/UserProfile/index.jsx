@@ -37,11 +37,11 @@ class UserProfile extends React.Component {
   }
 
   onCancel() {
-    this.props.closeEditableField(this.props.currentlyEditingField);
+    this.props.closeField(this.props.currentlyEditingField);
   }
 
   onEdit(fieldName) {
-    this.props.openEditableField(fieldName);
+    this.props.openField(fieldName);
   }
 
   onSave(fieldName, value, visibility) {
@@ -57,20 +57,10 @@ class UserProfile extends React.Component {
       this.props.saveProfile(
         this.props.username,
         {
-          [fieldName]: valueToSave,
+          profileData: { [fieldName]: valueToSave },
+          preferencesData: { visibility: { [fieldName]: visibilityToSave } },
         },
         fieldName,
-      );
-    }
-
-    if (visibilityToSave != null) {
-      this.props.savePreferences(
-        this.props.username,
-        {
-          visibility: {
-            [fieldName]: visibilityToSave,
-          },
-        },
       );
     }
 
@@ -258,8 +248,8 @@ UserProfile.propTypes = {
   saveProfile: PropTypes.func.isRequired,
   saveProfilePhoto: PropTypes.func.isRequired,
   deleteProfilePhoto: PropTypes.func.isRequired,
-  openEditableField: PropTypes.func.isRequired,
-  closeEditableField: PropTypes.func.isRequired,
+  openField: PropTypes.func.isRequired,
+  closeField: PropTypes.func.isRequired,
   savePreferences: PropTypes.func.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({

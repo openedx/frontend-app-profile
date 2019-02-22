@@ -12,7 +12,7 @@ import {
   saveProfileSuccess,
   saveProfileFailure,
   saveProfileReset,
-  closeEditableField,
+  closeField,
   SAVE_PROFILE_PHOTO,
   saveProfilePhotoBegin,
   saveProfilePhotoSuccess,
@@ -72,25 +72,25 @@ export function* handleFetchProfile(action) {
 }
 
 export function* handleSaveProfile(action) {
-  const { username, userAccountState } = action.payload;
-  const { profileData, preferenceData } = userAccountState;
+  const { username, profileData, preferencesData } = action.payload;
+
   try {
     yield put(saveProfileBegin());
     const profile = yield call(
       ProfileApiService.patchProfile,
       username,
-      userAccountState,
+      profileData,
     );
     const preferences = yield call(
       ProfileApiService.patchPreferences,
       username,
-      preferencesToSave
+      preferencesData
     );
 
     yield put(saveProfileSuccess());
-    yield put(fetchProfileSuccess(profile));
+    yield put(fetchProfileSuccess({ profile, preferences }));
     yield delay(300);
-    yield put(closeEditableField(action.payload.fieldName));
+    yield put(closeField(action.payload.fieldName));
     yield delay(300);
     yield put(saveProfileReset());
   } catch (e) {
