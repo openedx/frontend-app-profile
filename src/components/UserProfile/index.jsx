@@ -20,6 +20,7 @@ class UserProfile extends React.Component {
       education: { value: null, visibility: null },
       bio: { value: null, visibility: null },
       socialLinks: { value: null, visibility: null },
+      certificates: { value: null, visibility: null },
     };
 
 
