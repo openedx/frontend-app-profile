@@ -7,6 +7,7 @@ import {
   FIELD_CLOSE,
   FIELD_OPEN,
   FETCH_PROFILE,
+  RECEIVE_PREFERENCES,
 } from '../../actions/profile';
 
 const initialState = {
@@ -38,8 +39,13 @@ const profilePage = (state = initialState, action) => {
     case FETCH_PROFILE.SUCCESS:
       return {
         ...state,
-        profile: action.payload.profile,
-        preferences: defaultsDeep({}, action.payload.preferences, state.preferences),
+        profile: action.profile,
+      };
+
+    case RECEIVE_PREFERENCES:
+      return {
+        ...state,
+        preferences: defaultsDeep({}, action.preferences, state.preferences),
       };
 
     case SAVE_PROFILE.BEGIN:

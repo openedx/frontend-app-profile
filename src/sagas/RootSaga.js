@@ -4,6 +4,7 @@ import {
   FETCH_PROFILE,
   fetchProfileBegin,
   fetchProfileSuccess,
+  receivePreferences,
   fetchProfileFailure,
   fetchProfileReset,
   fetchProfile as fetchProfileAction,
@@ -64,7 +65,8 @@ export function* handleFetchProfile(action) {
       username
     );
 
-    yield put(fetchProfileSuccess({ profile, preferences }));
+    yield put(fetchProfileSuccess(profile));
+    yield put(receivePreferences(preferences));
     yield put(fetchProfileReset());
   } catch (e) {
     yield put(fetchProfileFailure(e.message));
@@ -76,19 +78,32 @@ export function* handleSaveProfile(action) {
 
   try {
     yield put(saveProfileBegin());
-    const profile = yield call(
-      ProfileApiService.patchProfile,
-      username,
-      profileData,
-    );
-    const preferences = yield call(
-      ProfileApiService.patchPreferences,
-      username,
-      preferencesData
-    );
+    const responseData = {};
+
+    if (profileData != null) {
+      responseData.profile = yield call(
+        ProfileApiService.patchProfile,
+        username,
+        profileData,
+      );
+    }
+    if (preferencesData != null) {
+      responseData.preferences = yield call(
+        ProfileApiService.patchPreferences,
+        username,
+        preferencesData
+      );
+    }
+
+    const { profile, preferences } = responseData;
 
     yield put(saveProfileSuccess());
-    yield put(fetchProfileSuccess({ profile, preferences }));
+    if (profile != null) {
+      yield put(fetchProfileSuccess(profile));
+    }
+    if (preferences != null) {
+      yield put(receivePreferences(preferences));
+    }
     yield delay(300);
     yield put(closeField(action.payload.fieldName));
     yield delay(300);

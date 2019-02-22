@@ -7,7 +7,7 @@ export const SAVE_PROFILE = new AsyncActionType('PROFILE', 'SAVE_PROFILE');
 export const SAVE_PROFILE_PHOTO = new AsyncActionType('PROFILE', 'SAVE_PROFILE_PHOTO');
 export const DELETE_PROFILE_PHOTO = new AsyncActionType('PROFILE', 'DELETE_PROFILE_PHOTO');
 
-
+export const RECEIVE_PREFERENCES = 'RECEIVE_PREFERENCES';
 
 
 export const openField = fieldName => ({
@@ -24,9 +24,14 @@ export const fetchProfileBegin = () => ({
   type: FETCH_PROFILE.BEGIN,
 });
 
-export const fetchProfileSuccess = ({ profile, preferences }) => ({
+export const fetchProfileSuccess = (profile) => ({
   type: FETCH_PROFILE.SUCCESS,
-  payload: { profile, preferences },
+  profile,
+});
+
+export const receivePreferences = preferences => ({
+  type: RECEIVE_PREFERENCES,
+  preferences,
 });
 
 export const fetchProfileFailure = error => ({
