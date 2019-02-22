@@ -12,7 +12,6 @@ import {
 import { savePreferences } from '../../actions/preferences';
 
 const mapStateToProps = (state) => {
-  console.log(state.profilePage)
   const profileImage =
     state.profilePage.profile.profileImage != null
       ? state.profilePage.profile.profileImage.imageUrlLarge

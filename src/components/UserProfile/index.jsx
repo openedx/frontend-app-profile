@@ -44,28 +44,25 @@ class UserProfile extends React.Component {
     this.props.openField(fieldName);
   }
 
-  onSave(fieldName, value, visibility) {
+  onSave(fieldName) {
     const {
-      value: fieldValue,
-      visibility: fieldVisibility,
+      value,
+      visibility,
     } = this.state[fieldName];
 
-    const valueToSave = value != null ? value : fieldValue;
-    const visibilityToSave = visibility != null ? visibility : fieldVisibility;
-
-    if (valueToSave != null) {
-      this.props.saveProfile(
-        this.props.username,
-        {
-          profileData: { [fieldName]: valueToSave },
-          preferencesData: { visibility: { [fieldName]: visibilityToSave } },
-        },
-        fieldName,
-      );
+    const data = {};
+      
+    if (value != null) {
+      data.profileData = { [fieldName]: value };
+    }
+    if (visibility != null) {
+      data.preferencesData = { visibility: { [fieldName]: visibility } };
     }
 
-    if (valueToSave == null && visibilityToSave == null) {
+    if (value == null && visibility == null) {
       this.onCancel();
+    } else {
+      this.props.saveProfile(this.props.username, data, fieldName);
     }
   }
 

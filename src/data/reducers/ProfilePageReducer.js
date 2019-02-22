@@ -35,44 +35,11 @@ const profilePage = (state = initialState, action) => {
       }
       return state;
 
-    // case FETCH_PREFERENCES.SUCCESS:
-    //   return {
-    //     ...state,
-    //     preferences: defaultsDeep({}, action.preferences, state.preferences),
-    //   };
-
-    // case SAVE_PREFERENCES.BEGIN:
-    //   return {
-    //     ...state,
-    //     savePreferencesState: 'pending',
-    //     saveState: mergeSaveStates(['pending', state.saveProfileState]),
-    //   };
-    // case SAVE_PREFERENCES.SUCCESS:
-    //   // defaults deep used because our preferences/state object is multi-dimensional
-    //   return {
-    //     ...state,
-    //     savePreferencesState: 'complete',
-    //     saveState: mergeSaveStates(['complete', state.saveProfileState]),
-    //   };
-    // case SAVE_PREFERENCES.FAILURE:
-    //   return {
-    //     ...state,
-    //     savePreferencesState: 'error',
-    //     saveState: mergeSaveStates(['error', state.saveProfileState]),
-    //   };
-    // case SAVE_PREFERENCES.RESET:
-    //   return {
-    //     ...state,
-    //     savePreferencesState: null,
-    //     saveState: mergeSaveStates([null, state.saveProfileState]),
-    //     error: null,
-    //   };
-
     case FETCH_PROFILE.SUCCESS:
       return {
         ...state,
         profile: action.payload.profile,
-        preferences: action.payload.preferences,
+        preferences: defaultsDeep({}, action.payload.preferences, state.preferences),
       };
 
     case SAVE_PROFILE.BEGIN:
