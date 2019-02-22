@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withTranslation, useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+import { withTranslation } from 'react-i18next';
 import { Row, Col, Card, CardBody, CardTitle } from 'reactstrap';
 
 import EditControls from './elements/EditControls';
@@ -16,8 +17,6 @@ function MyCertificates({
   onVisibilityChange,
   saveState,
 }) {
-  const { t } = useTranslation();
-
   const renderCertificates = () => {
     if (!certificates) return null;
 
@@ -68,7 +67,12 @@ function MyCertificates({
         ),
         empty: (
           <div>
-            {t('profile.certificates', { count: 12, replace: { name: 'Robert', count: 12 } })}
+            {i18next.t('profile.certificates', {
+              count: 12,
+              replace: { name: 'Robert', count: 12 },
+              translatorNote: 'This is the number of certificates the user has.',
+              defaultValue: 'This is my English fallback.',
+            })}
           </div>
         ),
         static: (
