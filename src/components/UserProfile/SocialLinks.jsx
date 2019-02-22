@@ -52,7 +52,6 @@ class SocialLinks extends React.Component {
       saveState,
       onVisibilityChange,
       onCancel,
-
     } = this.props;
     const { onInputChange, onEdit } = this;
     const socialLinksMap = socialLinks.reduce((acc, { platform, socialLink }) => {
