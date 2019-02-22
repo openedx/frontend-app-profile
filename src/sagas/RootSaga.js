@@ -24,7 +24,7 @@ import {
   deleteProfilePhotoSuccess,
   deleteProfilePhotoFailure,
   deleteProfilePhotoReset,
-} from '../actions/profile';
+} from '../actions/ProfileActions';
 
 import * as ProfileApiService from '../services/ProfileApiService';
 

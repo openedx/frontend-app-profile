@@ -6,7 +6,7 @@ export const FETCH_PROFILE = new AsyncActionType('PROFILE', 'FETCH_PROFILE');
 export const SAVE_PROFILE = new AsyncActionType('PROFILE', 'SAVE_PROFILE');
 export const SAVE_PROFILE_PHOTO = new AsyncActionType('PROFILE', 'SAVE_PROFILE_PHOTO');
 export const DELETE_PROFILE_PHOTO = new AsyncActionType('PROFILE', 'DELETE_PROFILE_PHOTO');
-
+export const UPDATE_DRAFTS = 'UPDATE_DRAFTS';
 export const RECEIVE_PREFERENCES = 'RECEIVE_PREFERENCES';
 
 
@@ -18,6 +18,11 @@ export const openField = fieldName => ({
 export const closeField = fieldName => ({
   type: FIELD_CLOSE,
   fieldName,
+});
+
+export const updateDrafts = drafts => ({
+  type: UPDATE_DRAFTS,
+  drafts,
 });
 
 export const fetchProfileBegin = () => ({

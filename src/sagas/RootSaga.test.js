@@ -1,6 +1,6 @@
 import { takeEvery, put, call, delay } from 'redux-saga/effects';
 
-import * as profileActions from '../actions/profile';
+import * as profileActions from '../actions/ProfileActions';
 
 jest.mock('../services/ProfileApiService', () => ({
   getProfile: jest.fn(),

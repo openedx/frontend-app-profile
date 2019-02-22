@@ -21,7 +21,7 @@ import {
   deleteProfilePhotoFailure,
   deleteProfilePhotoReset,
   deleteProfilePhoto,
-} from './profile';
+} from './ProfileActions';
 
 describe('editable field actions', () => {
   it('should create an open action', () => {

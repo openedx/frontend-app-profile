@@ -8,7 +8,7 @@ import {
   deleteProfilePhoto,
   openField,
   closeField,
-} from '../../actions/profile';
+} from '../../actions/ProfileActions';
 
 const mapStateToProps = (state) => {
   const profileImage =
