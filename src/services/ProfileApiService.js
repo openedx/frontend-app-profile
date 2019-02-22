@@ -129,3 +129,31 @@ export function postPreferences(username, preferences) {
       });
   });
 }
+
+export function getCourseCertificates(username) { // eslint-disable-line no-unused-vars
+  return new Promise((resolve, reject) => { // eslint-disable-line no-unused-vars
+    const dummyData = [
+      {
+        type: {
+          key: 'micro_masters',
+          name: 'Micro Masters',
+        },
+        title: 'Microtonal Scales',
+        organization: 'New England Conservatory',
+        downloadUrl: 'https://pics.me.me/booplesnoot-36468371.png',
+      },
+      {
+        type: {
+          key: 'micro_masters',
+          name: 'Micro Masters',
+        },
+        title: 'Kazoo Pinch Harmonics',
+        organization: 'New England Conservatory',
+        downloadUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR88selLYRHDQemO8MnY3w3ajlSuKZcoRhVTp3eGvKq2HMRTn8q',
+      },
+    ];
+    setTimeout(() => {
+      resolve(dummyData);
+    }, 200);
+  });
+}

@@ -29,7 +29,7 @@ const mapStateToProps = (state) => {
     education: state.profilePage.profile.levelOfEducation,
     socialLinks: state.profilePage.profile.socialLinks,
     bio: state.profilePage.profile.bio,
-    certificates: null,
+    certificates: state.profilePage.profile.certificates,
     accountPrivacy: state.profilePage.preferences.accountPrivacy,
     visibility: state.profilePage.preferences.visibility || {},
   };

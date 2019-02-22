@@ -71,6 +71,10 @@ export function* handleFetchProfile(action) {
       ProfileApiService.getProfile,
       username,
     );
+    profile.certificates = yield call(
+      ProfileApiService.getCourseCertificates,
+      username,
+    );
 
     yield put(fetchProfileSuccess(profile));
     yield put(fetchProfileReset());
