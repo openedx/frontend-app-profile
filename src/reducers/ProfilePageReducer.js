@@ -8,7 +8,8 @@ import {
   FIELD_OPEN,
   FETCH_PROFILE,
   RECEIVE_PREFERENCES,
-} from '../../actions/ProfileActions';
+
+} from '../actions/ProfileActions';
 
 const initialState = {
   error: null,

@@ -1,4 +1,4 @@
-import apiClient from './data/apiClient';
+import apiClient from './config/apiClient';
 
 const handleTrackEvents = (eventName, properties) => {
   // Simply forward track events to Segment

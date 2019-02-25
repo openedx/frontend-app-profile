@@ -1,7 +1,7 @@
 // The code in this file is from Segment's website, with the following update:
 // - Pulls the segment key from configuration.
 // https://segment.com/docs/sources/website/analytics.js/quickstart/
-import { configuration } from './config';
+import { configuration } from './config/environment';
 
 (function(){
 

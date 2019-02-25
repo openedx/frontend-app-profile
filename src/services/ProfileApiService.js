@@ -1,8 +1,8 @@
 import camelcaseKeys from 'camelcase-keys';
 import snakecaseKeys from 'snakecase-keys';
 
-import apiClient from '../data/apiClient';
-import { configuration } from '../config';
+import apiClient from '../config/apiClient';
+import { configuration } from '../config/environment';
 import { unflattenAndTransformKeys, flattenAndTransformKeys } from './utils';
 
 const accountsApiBaseUrl = `${configuration.LMS_BASE_URL}/api/user/v1/accounts`;

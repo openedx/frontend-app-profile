@@ -1,7 +1,6 @@
 import { getAuthenticatedAPIClient } from '@edx/frontend-auth';
 
-import { configuration } from '../config';
-
+import { configuration } from './environment';
 
 const apiClient = getAuthenticatedAPIClient({
   appBaseUrl: configuration.BASE_URL,
@@ -13,6 +12,5 @@ const apiClient = getAuthenticatedAPIClient({
   accessTokenCookieName: configuration.ACCESS_TOKEN_COOKIE_NAME,
   csrfCookieName: configuration.CSRF_COOKIE_NAME,
 });
-
 
 export default apiClient;

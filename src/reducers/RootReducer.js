@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { userAccount } from '@edx/frontend-auth';
+
 import profilePage from './ProfilePageReducer';
 
 const identityReducer = (state) => {

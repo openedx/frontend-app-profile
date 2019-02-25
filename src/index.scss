@@ -22,7 +22,7 @@ $fa-font-path: "~font-awesome/fonts";
     opacity: 0;
     width: 0;
   }
-  
+
   .icon {
     font-size: 1.125rem;
   }
@@ -40,7 +40,7 @@ $fa-font-path: "~font-awesome/fonts";
 .profile-page {
   .bg-banner {
     height: 12rem;
-    background-image: url('./assets/dot-pattern-light.png');
+    background-image: url('../assets/dot-pattern-light.png');
     background-repeat: repeat-x;
     background-size: auto 85%;
   }
