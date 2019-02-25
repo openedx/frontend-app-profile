@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { Row, Col, Card, CardBody, CardTitle } from 'reactstrap';
+import { Row, Col, Card, CardBody, CardTitle, CardText, Button } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDownload } from '@fortawesome/free-solid-svg-icons';
 
 import EditControls from './elements/EditControls';
 import EditableItemHeader from './elements/EditableItemHeader';
@@ -22,11 +24,34 @@ function MyCertificates({
 
     return (
       <Row>
-        {certificates.map(({ title }) => (
-          <Col key={title} sm={6}>
-            <Card className="mb-4">
+        {certificates.map(({
+          type: { key, name }, // eslint-disable-line no-unused-vars
+          title,
+          organization,
+          downloadUrl,
+        }) => (
+          <Col key={downloadUrl} sm={6}>
+            <Card className="mb-4 certificate">
               <CardBody>
-                <CardTitle>{title}</CardTitle>
+                <CardTitle>
+                  <p className="small mb-0">{name}</p>
+                  <h4 className="certificate-title">{title}</h4>
+                </CardTitle>
+                <CardText>
+                  <p className="small mb-0">From</p>
+                  <h6 className="mb-4">{organization}</h6>
+                  <div>
+                    <Button
+                      outline
+                      color="primary"
+                      href={downloadUrl}
+                      target="blank"
+                    >
+                      <FontAwesomeIcon className="ml-n1 mr-2" icon={faDownload} />
+                      Download
+                    </Button>
+                  </div>
+                </CardText>
               </CardBody>
             </Card>
           </Col>

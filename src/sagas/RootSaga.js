@@ -49,7 +49,6 @@ export const mapDataForRequest = (props) => {
   return state;
 };
 
-
 export function* handleFetchProfile(action) {
   const { username } = action.payload;
 
@@ -62,6 +61,10 @@ export function* handleFetchProfile(action) {
     );
     const preferences = yield call(
       ProfileApiService.getPreferences,
+      username,
+    );
+    profile.certificates = yield call(
+      ProfileApiService.getCourseCertificates,
       username,
     );
 
@@ -146,7 +149,6 @@ export function* handleDeleteProfilePhoto(action) {
     yield put(deleteProfilePhotoFailure(e.message));
   }
 }
-
 
 export default function* rootSaga() {
   yield takeEvery(FETCH_PROFILE.BASE, handleFetchProfile);

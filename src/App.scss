@@ -13,62 +13,6 @@ $fa-font-path: "~font-awesome/fonts";
   width: auto !important;
 }
 
-.bg-banner {
-  height: 12rem;
-  background-image: url('./assets/dot-pattern-light.png');
-  background-repeat: repeat-x;
-  background-size: auto 85%;
-  
-}
-
-
-.profile-avatar-wrap {
-  margin-right: 1rem;
-
-  @include media-breakpoint-up(md) {
-    max-width: 12rem;
-    margin-right: 0;
-    margin-top: -8rem;
-    margin-bottom: 2rem;
-  }
-}
-
-.profile-avatar {
-  max-width: 50%;
-  width: 5rem;
-  height: 5rem;
-  position: relative;
-
-  @include media-breakpoint-up(md) {
-    width: 12rem;
-    max-width: none;
-    height: 12rem;
-  }
-
-  .profile-avatar-edit-button {
-    position: absolute;
-    height: 100%;
-    left: 0;
-    width: 100%;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    padding-top: .1rem;
-    font-weight: 600;
-    background: rgba(0,0,0,.5);
-    border-radius:0;
-    transition: opacity 200ms ease;
-
-    @include media-breakpoint-up(md) {
-      height: 4rem;
-    }
-
-    &:focus, &:hover, &:active, &.active {
-      opacity: 1;
-    }
-  }
-}
-
 .btn-async-action {
   transition: background .2s linear;
   min-width: 6rem;
@@ -92,3 +36,68 @@ $fa-font-path: "~font-awesome/fonts";
     }
   }
 }
+
+.profile-page {
+  .bg-banner {
+    height: 12rem;
+    background-image: url('./assets/dot-pattern-light.png');
+    background-repeat: repeat-x;
+    background-size: auto 85%;
+  }
+
+
+  .profile-avatar-wrap {
+    margin-right: 1rem;
+
+    @include media-breakpoint-up(md) {
+      max-width: 12rem;
+      margin-right: 0;
+      margin-top: -8rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  .profile-avatar {
+    max-width: 50%;
+    width: 5rem;
+    height: 5rem;
+    position: relative;
+
+    @include media-breakpoint-up(md) {
+      width: 12rem;
+      max-width: none;
+      height: 12rem;
+    }
+
+    .profile-avatar-edit-button {
+      position: absolute;
+      height: 100%;
+      left: 0;
+      width: 100%;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      padding-top: .1rem;
+      font-weight: 600;
+      background: rgba(0,0,0,.5);
+      border-radius:0;
+      transition: opacity 200ms ease;
+
+      @include media-breakpoint-up(md) {
+        height: 4rem;
+      }
+
+      &:focus, &:hover, &:active, &.active {
+        opacity: 1;
+      }
+    }
+  }
+
+  .certificate {
+    .certificate-title {
+      font-family: $font-family-serif;
+      font-weight: 400;
+    }
+  }
+}
+

@@ -36,20 +36,21 @@ class TransitionReplace extends React.Component {
   }
 
   onChildEntering(htmlNode) {
-    // subtract 1 from the height to improve shifts at the end of the animation
     this.setState({
-      height: htmlNode.offsetHeight - 1,
+      height: htmlNode.offsetHeight,
     });
   }
 
   onChildEntered(htmlNode) {
     if (this.props.onChildEntered) this.props.onChildEntered(htmlNode);
+    this.setState({
+      height: null,
+    });
   }
 
   onChildExit(htmlNode) {
-    // subtract 1 from the height to improve shifts at the end of the animation
     this.setState({
-      height: htmlNode.offsetHeight - 1,
+      height: htmlNode.offsetHeight,
     });
 
     if (this.props.onChildExit) this.props.onChildExit(htmlNode);

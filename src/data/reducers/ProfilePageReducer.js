@@ -8,7 +8,6 @@ import {
   FIELD_OPEN,
   FETCH_PROFILE,
   RECEIVE_PREFERENCES,
-  UPDATE_DRAFTS,
 } from '../../actions/ProfileActions';
 
 const initialState = {

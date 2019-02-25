@@ -20,6 +20,7 @@ class UserProfile extends React.Component {
       education: { value: null, visibility: null },
       bio: { value: null, visibility: null },
       socialLinks: { value: null, visibility: null },
+      certificates: { value: null, visibility: null },
     };
 
 
@@ -143,7 +144,7 @@ class UserProfile extends React.Component {
     const getVisibility = name => this.props.visibility[name];
 
     return (
-      <div>
+      <div className="profile-page">
         <div className="bg-banner bg-program-micro-masters d-none d-md-block p-relative" />
         <Container fluid>
           <Row>
