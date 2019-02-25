@@ -18,6 +18,7 @@ function EmptyContent({ children, onClick, showPlusIcon }) {
     <div>
       {onClick ? (
         <Button
+          type="button"
           color="link"
           block
           className="pl-0 text-left"
