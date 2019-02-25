@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Input } from 'reactstrap';
+import { Form, FormGroup, Input, Label, Button } from 'reactstrap';
 
-import EditControls from './elements/EditControls';
 import EditableItemHeader from './elements/EditableItemHeader';
 import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
+import AsyncActionButton from './elements/AsyncActionButton';
 
 
 function FullName({
@@ -14,33 +14,50 @@ function FullName({
   editMode,
   onEdit,
   onChange,
-  onSave,
   onCancel,
-  onVisibilityChange,
   saveState,
+  onSubmit,
+
 }) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit('fullName');
+  };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    onChange({ name, value });
+  };
+  const handleClickCancel = () => {
+    onCancel('fullName');
+  };
   return (
     <SwitchContent
       className="mb-4"
       expression={editMode}
       cases={{
         editing: (
-          <React.Fragment>
-            <EditableItemHeader content="Full Name" />
-            <Input
-              type="text"
-              name="fullName"
-              defaultValue={fullName}
-              onChange={e => onChange('fullName', e.target.value)}
+          <Form onSubmit={handleSubmit} onChange={handleChange}>
+            <FormGroup>
+              <Label for="fullName">Full Name</Label>
+              <Input type="text" name="fullName" defaultValue={fullName} />
+            </FormGroup>
+            <Label for="visibility.fullName">Who can see this:</Label>
+            <Input type="select" name="visibility.fullName" defaultValue={visibility}>
+              <option value="private">Just me</option>
+              <option value="all_users">Everyone on edX</option>
+            </Input>
+            <Button color="link" onClick={handleClickCancel}>Cancel</Button>
+            <AsyncActionButton
+              type="submit"
+              variant={saveState}
+              labels={{
+                default: 'Save',
+                pending: 'Saving',
+                complete: 'Saved',
+                error: 'Save Failed',
+              }}
             />
-            <EditControls
-              onCancel={() => onCancel('fullName')}
-              onSave={() => onSave('fullName')}
-              saveState={saveState}
-              visibility={visibility}
-              onVisibilityChange={e => onVisibilityChange('fullName', e.target.value)}
-            />
-          </React.Fragment>
+          </Form>
         ),
         editable: (
           <React.Fragment>
@@ -73,9 +90,8 @@ FullName.propTypes = {
   editMode: PropTypes.string,
   onEdit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
-  onSave: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
-  onVisibilityChange: PropTypes.func.isRequired,
   saveState: PropTypes.string,
   fullName: PropTypes.string,
   visibility: PropTypes.oneOf(['private', 'all_users']),

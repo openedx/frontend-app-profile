@@ -33,6 +33,7 @@ export class ProfilePage extends React.Component {
       bio: { value: null, visibility: null },
       socialLinks: { value: null, visibility: null },
       certificates: { value: null, visibility: null },
+      drafts: {},
     };
 
     this.onCancel = this.onCancel.bind(this);
@@ -42,6 +43,8 @@ export class ProfilePage extends React.Component {
     this.onDeleteProfilePhoto = this.onDeleteProfilePhoto.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onVisibilityChange = this.onVisibilityChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -53,29 +56,13 @@ export class ProfilePage extends React.Component {
   }
 
   onEdit(fieldName) {
+    // Reset drafts
+    this.setState({ drafts: {} });
     this.props.openField(fieldName);
   }
 
-  onSave(fieldName) {
-    const {
-      value,
-      visibility,
-    } = this.state[fieldName];
-
-    const data = {};
-
-    if (value != null) {
-      data.profileData = { [fieldName]: value };
-    }
-    if (visibility != null) {
-      data.preferencesData = { visibility: { [fieldName]: visibility } };
-    }
-
-    if (value == null && visibility == null) {
-      this.onCancel();
-    } else {
-      this.props.saveProfile(this.props.username, data, fieldName);
-    }
+  onSave() {
+    // this.props.saveProfile(this.props.username, data, fieldName);
   }
 
   onSaveProfilePhoto(formData) {
@@ -104,6 +91,29 @@ export class ProfilePage extends React.Component {
     });
   }
 
+  handleChange({ name, value }) {
+    this.setState({
+      drafts: Object.assign({}, this.state.drafts, { [name]: value }),
+    });
+  }
+
+  handleSubmit(fieldName) {
+    // THIS IS TEMPORARY. WE SHOULD BE ABLE TO JUST SUBMIT DRAFTS TO ACTION.
+    const dataToSave = Object.entries(this.state.drafts).reduce((acc, [key, value]) => {
+      const keys = key.split('.');
+      if (keys.length > 1) {
+        if (!acc.preferencesData) acc.preferencesData = { visibility: {} };
+        acc.preferencesData.visibility[keys[1]] = value;
+      } else {
+        if (!acc.profileData) acc.profileData = {};
+        acc.profileData[keys[0]] = value;
+      }
+      return acc;
+    }, {});
+    // ^ TEMPORARY
+    this.props.saveProfile(this.props.username, dataToSave, fieldName);
+  }
+
   render() {
     const {
       saveState,
@@ -123,10 +133,11 @@ export class ProfilePage extends React.Component {
       onSave: this.onSave,
       onEdit: this.onEdit,
       onCancel: this.onCancel,
-      onChange: this.onChange,
       onVisibilityChange: this.onVisibilityChange,
       saveState,
       error,
+      onChange: this.handleChange,
+      onSubmit: this.handleSubmit,
     };
 
     const getMode = (name) => {

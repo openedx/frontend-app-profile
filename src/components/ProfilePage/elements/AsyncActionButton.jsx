@@ -11,6 +11,7 @@ function AsyncActionButton({
   style,
   variant,
   labels,
+  type,
 }) {
   const renderIcon = () => {
     if (variant === 'error') return <Icon className="icon fa fa-times-circle" />;
@@ -30,6 +31,7 @@ function AsyncActionButton({
 
   return (
     <Button
+      type={type}
       aria-live="assertive"
       onClick={onClick}
       disabled={variant === 'pending' || variant === 'complete' || variant === 'error'}
@@ -59,6 +61,7 @@ export default AsyncActionButton;
 
 
 AsyncActionButton.propTypes = {
+  type: PropTypes.string,
   onClick: PropTypes.func.isRequired,
   color: PropTypes.string,
   className: PropTypes.string,
@@ -73,6 +76,7 @@ AsyncActionButton.propTypes = {
 };
 
 AsyncActionButton.defaultProps = {
+  type: 'button',
   className: null,
   color: 'primary',
   style: null,
