@@ -1,18 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 function EmptyContent({ children, onClick, showPlusIcon }) {
   const onKeyDown = (e) => { if (e.key === 'Enter') onClick(); };
-
-  const commonProps = {
-    className: 'd-flex align-items-center p-3 bg-light rounded text-muted w-100',
-    style: {
-      cursor: onClick ? 'pointer' : null,
-    },
-  };
 
   const interactiveProps = {
     onClick,
@@ -21,21 +14,20 @@ function EmptyContent({ children, onClick, showPlusIcon }) {
     tabIndex: 0,
   };
 
-  let props;
-
-  if (onClick) {
-    props = {
-      ...commonProps,
-      ...interactiveProps,
-    };
-  } else {
-    props = commonProps;
-  }
-
   return (
-    <div {...props}>
-      {showPlusIcon ? <FontAwesomeIcon className="ml-1 mr-3" icon={faPlus} /> : null}
-      {children}
+    <div>
+      {onClick ? (
+        <Button
+          type="button"
+          color="link"
+          block
+          className="pl-0 text-left"
+          {...interactiveProps}
+        >
+          {showPlusIcon ? <FontAwesomeIcon size="xs" className="mr-2" icon={faPlus} /> : null}
+          {children}
+        </Button>
+      ) : children}
     </div>
   );
 }

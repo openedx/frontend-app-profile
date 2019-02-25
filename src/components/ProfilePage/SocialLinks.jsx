@@ -21,6 +21,8 @@ class SocialLinks extends React.Component {
     super(props);
     this.state = {};
     this.onSave = this.onSave.bind(this);
+    this.onEdit = this.onEdit.bind(this);
+    this.onInputChange = this.onInputChange.bind(this);
   }
 
   onSave() {
@@ -32,56 +34,61 @@ class SocialLinks extends React.Component {
     this.props.onSave('socialLinks', values);
   }
 
+  onEdit() {
+    this.props.onEdit('socialLinks');
+  }
+
+  onInputChange(platform, value) {
+    this.setState({ [platform]: value });
+    this.props.onChange('socialLinks', this.state);
+  }
+
   render() {
     const {
+      platforms,
       socialLinks,
       editMode,
-      onEdit,
-      onCancel,
-      onVisibilityChange,
+      visibility,
       saveState,
+      onVisibilityChange,
+      onCancel,
     } = this.props;
-
-    const socialLinksObj = {};
-
-    if (socialLinks !== null) {
-      socialLinks.forEach(({ platform, socialLink }) => {
-        socialLinksObj[platform] = socialLink;
-      });
-    }
-
+    const { onInputChange, onEdit } = this;
+    const socialLinksMap = socialLinks.reduce((acc, { platform, socialLink }) => {
+      acc[platform] = socialLink;
+      return acc;
+    }, {});
+    const isEmpty = socialLinks && socialLinks.length > 0;
 
     return (
       <SwitchContent
         className="mb-4"
         expression={editMode}
         cases={{
-          editing: (
+          empty: (
+            <ul className="list-unstyled">
+              {platforms.map(({ key, name }) => (
+                <EmptyListItem
+                  key={key}
+                  onClick={onEdit}
+                  name={name}
+                />
+              ))}
+            </ul>
+          ),
+          static: (
             <React.Fragment>
               <EditableItemHeader content="Social Links" />
               <ul className="list-unstyled">
-                {this.props.platforms.map(({ key, name }) => (
-                  <li key={key} className="form-group">
-                    <h6>{name}</h6>
-                    <Input
-                      type="text"
-                      defaultValue={socialLinksObj[key]}
-                      onChange={(e) => {
-                        this.setState({
-                          [key]: e.target.value,
-                        });
-                      }}
-                    />
-                  </li>
+                {socialLinks.map(({ platform, socialLink }) => (
+                  <StaticListItem
+                    key={platform}
+                    name={platforms[platform]}
+                    url={socialLink}
+                    platform={platform}
+                  />
                 ))}
               </ul>
-              <EditControls
-                onCancel={() => onCancel('socialLinks')}
-                onSave={this.onSave}
-                saveState={saveState}
-                visibility={this.props.visibility}
-                onVisibilityChange={e => onVisibilityChange('socialLinks', e.target.value)}
-              />
             </React.Fragment>
           ),
           editable: (
@@ -89,54 +96,44 @@ class SocialLinks extends React.Component {
               <EditableItemHeader
                 content="Social Links"
                 showEditButton
-                onClickEdit={() => onEdit('socialLinks')}
-                showVisibility={socialLinks && socialLinks.length > 0}
-                visibility={this.props.visibility}
+                onClickEdit={onEdit}
+                showVisibility={isEmpty}
+                visibility={visibility}
               />
               <ul className="list-unstyled">
-                {this.props.platforms.map(({ key, name }) => (
-                  <li key={key} className="form-group">
-                    {
-                      socialLinksObj[key] ? (
-                        <a
-                          href={socialLinksObj[key]}
-                          className="font-weight-bold"
-                        >
-                          <FontAwesomeIcon className="mr-2" icon={brandIcons[key]} />
-                          {name}
-                        </a>
-                      ) : (
-                        <EmptyContent onClick={() => onEdit('socialLinks')}>Add {name}</EmptyContent>
-                      )
-                    }
-                  </li>
+                {platforms.map(({ key, name }) => (
+                  <EditableListItem
+                    key={key}
+                    platform={key}
+                    name={name}
+                    url={socialLinksMap[key]}
+                    onClickEmptyContent={onEdit}
+                  />
                 ))}
               </ul>
             </React.Fragment>
           ),
-          empty: (
-            <ul className="list-unstyled">
-              {this.props.platforms.map(({ key, name }) => (
-                <li key={key} className="mb-4">
-                  <EmptyContent onClick={() => onEdit('socialLinks')}>Add {name}</EmptyContent>
-                </li>
-              ))}
-            </ul>
-          ),
-          static: (
+          editing: (
             <React.Fragment>
               <EditableItemHeader content="Social Links" />
-              <ul>
-                {this.props.platforms.map(({ key, name }) => {
-                  if (!socialLinksObj[key]) return null;
-
-                  return (
-                    <li key={key}>
-                      <a href={socialLinksObj[key]}>{name}</a>
-                    </li>
-                  );
-                })}
+              <ul className="list-unstyled">
+                {platforms.map(({ key, name }) => (
+                  <EditingListItem
+                    key={key}
+                    name={name}
+                    platform={key}
+                    defaultValue={socialLinksMap[key]}
+                    onChange={onInputChange}
+                  />
+                ))}
               </ul>
+              <EditControls
+                onCancel={() => onCancel('socialLinks')}
+                onSave={this.onSave}
+                saveState={saveState}
+                visibility={visibility}
+                onVisibilityChange={e => onVisibilityChange('socialLinks', e.target.value)}
+              />
             </React.Fragment>
           ),
         }}
@@ -145,23 +142,7 @@ class SocialLinks extends React.Component {
   }
 }
 
-const sectionPropTypes = {
-  editMode: PropTypes.string,
-  onEdit: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-  onSave: PropTypes.func.isRequired,
-  onCancel: PropTypes.func.isRequired,
-  onVisibilityChange: PropTypes.func.isRequired,
-  saveState: PropTypes.string,
-};
-
-const sectionDefaultProps = {
-  editMode: 'static',
-  saveState: null,
-};
-
 SocialLinks.propTypes = {
-  ...sectionPropTypes,
   socialLinks: PropTypes.arrayOf(PropTypes.shape({
     platform: PropTypes.string,
     socialLink: PropTypes.string,
@@ -171,10 +152,15 @@ SocialLinks.propTypes = {
     name: PropTypes.string,
   })),
   visibility: PropTypes.oneOf(['private', 'all_users']),
+  editMode: PropTypes.string,
+  onEdit: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onSave: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
+  onVisibilityChange: PropTypes.func.isRequired,
+  saveState: PropTypes.string,
 };
-
 SocialLinks.defaultProps = {
-  ...sectionDefaultProps,
   socialLinks: [],
   platforms: [
     { key: 'twitter', name: 'Twitter' },
@@ -182,6 +168,107 @@ SocialLinks.defaultProps = {
     { key: 'facebook', name: 'Facebook' },
   ],
   visibility: 'private',
+  editMode: 'static',
+  saveState: null,
 };
 
 export default SocialLinks;
+
+
+function SocialLink({ url, name, platform }) {
+  return (
+    <a href={url} className="font-weight-bold">
+      <FontAwesomeIcon className="mr-2" icon={brandIcons[platform]} />
+      {name}
+    </a>
+  );
+}
+
+SocialLink.propTypes = {
+  url: PropTypes.string.isRequired,
+  platform: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+};
+
+
+function EditableListItem({
+  url,
+  platform,
+  onClickEmptyContent,
+  name,
+}) {
+  const linkDisplay = url != null ?
+    <SocialLink name={name} url={url} platform={platform} /> :
+    <EmptyContent onClick={onClickEmptyContent}>Add {name}</EmptyContent>;
+
+  return <li className="form-group">{linkDisplay}</li>;
+}
+
+EditableListItem.propTypes = {
+  url: PropTypes.string,
+  platform: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  onClickEmptyContent: PropTypes.func,
+};
+EditableListItem.defaultProps = {
+  url: null,
+  onClickEmptyContent: null,
+};
+
+
+function EditingListItem({
+  platform,
+  name,
+  defaultValue,
+  onChange,
+}) {
+  return (
+    <li className="form-group">
+      <h6>{name}</h6>
+      <Input
+        type="text"
+        defaultValue={defaultValue}
+        onChange={e => onChange(platform, e.target.value)}
+      />
+    </li>
+  );
+}
+
+EditingListItem.propTypes = {
+  platform: PropTypes.string.isRequired,
+  defaultValue: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
+EditingListItem.defaultProps = {
+  defaultValue: null,
+};
+
+
+function EmptyListItem({ onClick, name }) {
+  return (
+    <li className="mb-4">
+      <EmptyContent onClick={onClick}>Add {name}</EmptyContent>
+    </li>
+  );
+}
+
+EmptyListItem.propTypes = {
+  name: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
+
+
+function StaticListItem({ name, url, platform }) {
+  return (
+    <li className="mb-2">
+      <SocialLink name={name} url={url} platform={platform} />
+    </li>
+  );
+}
+
+StaticListItem.propTypes = {
+  name: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  platform: PropTypes.string.isRequired,
+};
