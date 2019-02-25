@@ -1,8 +1,8 @@
 import {
-  openEditableField,
-  closeEditableField,
-  EDITABLE_FIELD_OPEN,
-  EDITABLE_FIELD_CLOSE,
+  openField,
+  closeField,
+  FIELD_OPEN,
+  FIELD_CLOSE,
   SAVE_PROFILE,
   saveProfileBegin,
   saveProfileSuccess,
@@ -26,23 +26,23 @@ import {
 describe('editable field actions', () => {
   it('should create an open action', () => {
     const expectedAction = {
-      type: EDITABLE_FIELD_OPEN,
+      type: FIELD_OPEN,
       fieldName: 'name',
     };
-    expect(openEditableField('name')).toEqual(expectedAction);
+    expect(openField('name')).toEqual(expectedAction);
   });
 
   it('should create a closed action', () => {
     const expectedAction = {
-      type: EDITABLE_FIELD_CLOSE,
+      type: FIELD_CLOSE,
       fieldName: 'name',
     };
-    expect(closeEditableField('name')).toEqual(expectedAction);
+    expect(closeField('name')).toEqual(expectedAction);
   });
 });
 
 describe('SAVE profile actions', () => {
-  const userAccountState = {
+  const profileData = {
     username: 'verified',
     email: 'verified@example.com',
     bio: 'A great bio.',
@@ -51,16 +51,19 @@ describe('SAVE profile actions', () => {
     // Good enough for testing / and since we have no factories
   };
 
+  const preferencesData = {};
+
   it('should create an action to signal the start of a profile save', () => {
     const expectedAction = {
       type: SAVE_PROFILE.BASE,
       payload: {
         username: 'user person',
-        userAccountState,
         fieldName: 'fullName',
+        profileData,
+        preferencesData,
       },
     };
-    expect(saveProfile('user person', userAccountState, 'fullName')).toEqual(expectedAction);
+    expect(saveProfile('user person', { profileData, preferencesData }, 'fullName')).toEqual(expectedAction);
   });
 
   it('should create an action to signal user profile save success', () => {
@@ -188,17 +191,17 @@ describe('Editable field opening and closing actions', () => {
 
   it('should create an action to signal the opening a field', () => {
     const expectedAction = {
-      type: EDITABLE_FIELD_OPEN,
+      type: FIELD_OPEN,
       fieldName,
     };
-    expect(openEditableField(fieldName)).toEqual(expectedAction);
+    expect(openField(fieldName)).toEqual(expectedAction);
   });
 
   it('should create an action to signal the closing a field', () => {
     const expectedAction = {
-      type: EDITABLE_FIELD_CLOSE,
+      type: FIELD_CLOSE,
       fieldName,
     };
-    expect(closeEditableField(fieldName)).toEqual(expectedAction);
+    expect(closeField(fieldName)).toEqual(expectedAction);
   });
 });
