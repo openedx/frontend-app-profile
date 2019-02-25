@@ -1,20 +1,28 @@
 import AsyncActionType from './AsyncActionType';
 
-export const EDITABLE_FIELD_OPEN = 'EDITABLE_FIELD_OPEN';
-export const EDITABLE_FIELD_CLOSE = 'EDITABLE_FIELD_CLOSE';
+export const FIELD_OPEN = 'FIELD_OPEN';
+export const FIELD_CLOSE = 'FIELD_CLOSE';
 export const FETCH_PROFILE = new AsyncActionType('PROFILE', 'FETCH_PROFILE');
 export const SAVE_PROFILE = new AsyncActionType('PROFILE', 'SAVE_PROFILE');
 export const SAVE_PROFILE_PHOTO = new AsyncActionType('PROFILE', 'SAVE_PROFILE_PHOTO');
 export const DELETE_PROFILE_PHOTO = new AsyncActionType('PROFILE', 'DELETE_PROFILE_PHOTO');
+export const UPDATE_DRAFTS = 'UPDATE_DRAFTS';
+export const RECEIVE_PREFERENCES = 'RECEIVE_PREFERENCES';
 
-export const openEditableField = fieldName => ({
-  type: EDITABLE_FIELD_OPEN,
+
+export const openField = fieldName => ({
+  type: FIELD_OPEN,
   fieldName,
 });
 
-export const closeEditableField = fieldName => ({
-  type: EDITABLE_FIELD_CLOSE,
+export const closeField = fieldName => ({
+  type: FIELD_CLOSE,
   fieldName,
+});
+
+export const updateDrafts = drafts => ({
+  type: UPDATE_DRAFTS,
+  drafts,
 });
 
 export const fetchProfileBegin = () => ({
@@ -23,7 +31,12 @@ export const fetchProfileBegin = () => ({
 
 export const fetchProfileSuccess = profile => ({
   type: FETCH_PROFILE.SUCCESS,
-  payload: { profile },
+  profile,
+});
+
+export const receivePreferences = preferences => ({
+  type: RECEIVE_PREFERENCES,
+  preferences,
 });
 
 export const fetchProfileFailure = error => ({
@@ -57,12 +70,13 @@ export const saveProfileFailure = error => ({
   payload: { error },
 });
 
-export const saveProfile = (username, userAccountState, fieldName) => ({
+export const saveProfile = (username, { profileData, preferencesData }, fieldName) => ({
   type: SAVE_PROFILE.BASE,
   payload: {
     fieldName,
     username,
-    userAccountState,
+    profileData,
+    preferencesData,
   },
 });
 

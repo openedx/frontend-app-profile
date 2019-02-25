@@ -1,4 +1,4 @@
-const configuration = {
+export const configuration = {
   BASE_URL: process.env.BASE_URL,
   LMS_BASE_URL: process.env.LMS_BASE_URL,
   LOGIN_URL: process.env.LOGIN_URL,
@@ -10,8 +10,7 @@ const configuration = {
   SEGMENT_KEY: process.env.SEGMENT_KEY,
   ACCESS_TOKEN_COOKIE_NAME: process.env.ACCESS_TOKEN_COOKIE_NAME,
   CSRF_COOKIE_NAME: process.env.CSRF_COOKIE_NAME,
+  ENVIRONMENT: process.env.NODE_ENV,
 };
 
-const features = {};
-
-export { configuration, features };
+export const features = {};

@@ -1,16 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Row, Col } from 'reactstrap';
+import { connect } from 'react-redux';
 
-import ProfileAvatar from './ProfileAvatar';
-import FullName from './FullName';
-import UserLocation from './UserLocation';
-import Education from './Education';
-import SocialLinks from './SocialLinks';
-import Bio from './Bio';
-import MyCertificates from './MyCertificates';
+// Actions
+import {
+  fetchProfile,
+  saveProfile,
+  saveProfilePhoto,
+  deleteProfilePhoto,
+  openField,
+  closeField,
+} from '../actions/ProfileActions';
 
-class UserProfile extends React.Component {
+// Components
+import ProfileAvatar from './ProfilePage/ProfileAvatar';
+import FullName from './ProfilePage/FullName';
+import UserLocation from './ProfilePage/UserLocation';
+import Education from './ProfilePage/Education';
+import SocialLinks from './ProfilePage/SocialLinks';
+import Bio from './ProfilePage/Bio';
+import MyCertificates from './ProfilePage/MyCertificates';
+
+export class ProfilePage extends React.Component {
   constructor(props) {
     super(props);
 
@@ -22,7 +34,6 @@ class UserProfile extends React.Component {
       socialLinks: { value: null, visibility: null },
       certificates: { value: null, visibility: null },
     };
-
 
     this.onCancel = this.onCancel.bind(this);
     this.onEdit = this.onEdit.bind(this);
@@ -38,45 +49,32 @@ class UserProfile extends React.Component {
   }
 
   onCancel() {
-    this.props.closeEditableField(this.props.currentlyEditingField);
+    this.props.closeField(this.props.currentlyEditingField);
   }
 
   onEdit(fieldName) {
-    this.props.openEditableField(fieldName);
+    this.props.openField(fieldName);
   }
 
-  onSave(fieldName, value, visibility) {
+  onSave(fieldName) {
     const {
-      value: fieldValue,
-      visibility: fieldVisibility,
+      value,
+      visibility,
     } = this.state[fieldName];
 
-    const valueToSave = value != null ? value : fieldValue;
-    const visibilityToSave = visibility != null ? visibility : fieldVisibility;
+    const data = {};
 
-    if (valueToSave != null) {
-      this.props.saveProfile(
-        this.props.username,
-        {
-          [fieldName]: valueToSave,
-        },
-        fieldName,
-      );
+    if (value != null) {
+      data.profileData = { [fieldName]: value };
+    }
+    if (visibility != null) {
+      data.preferencesData = { visibility: { [fieldName]: visibility } };
     }
 
-    if (visibilityToSave != null) {
-      this.props.savePreferences(
-        this.props.username,
-        {
-          visibility: {
-            [fieldName]: visibilityToSave,
-          },
-        },
-      );
-    }
-
-    if (valueToSave == null && visibilityToSave == null) {
+    if (value == null && visibility == null) {
       this.onCancel();
+    } else {
+      this.props.saveProfile(this.props.username, data, fieldName);
     }
   }
 
@@ -96,6 +94,7 @@ class UserProfile extends React.Component {
       },
     });
   }
+
   onVisibilityChange(fieldName, visibility) {
     this.setState({
       [fieldName]: {
@@ -233,9 +232,7 @@ class UserProfile extends React.Component {
   }
 }
 
-export default UserProfile;
-
-UserProfile.propTypes = {
+ProfilePage.propTypes = {
   currentlyEditingField: PropTypes.string,
   saveState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
   savePhotoState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
@@ -255,13 +252,13 @@ UserProfile.propTypes = {
   certificates: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string,
   })),
+
   fetchProfile: PropTypes.func.isRequired,
   saveProfile: PropTypes.func.isRequired,
   saveProfilePhoto: PropTypes.func.isRequired,
   deleteProfilePhoto: PropTypes.func.isRequired,
-  openEditableField: PropTypes.func.isRequired,
-  closeEditableField: PropTypes.func.isRequired,
-  savePreferences: PropTypes.func.isRequired,
+  openField: PropTypes.func.isRequired,
+  closeField: PropTypes.func.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
       username: PropTypes.string.isRequired,
@@ -271,7 +268,7 @@ UserProfile.propTypes = {
   visibility: PropTypes.object, // eslint-disable-line
 };
 
-UserProfile.defaultProps = {
+ProfilePage.defaultProps = {
   currentlyEditingField: null,
   saveState: null,
   savePhotoState: null,
@@ -288,3 +285,39 @@ UserProfile.defaultProps = {
   accountPrivacy: null,
   visibility: {}, // eslint-disable-line
 };
+
+const mapStateToProps = (state) => {
+  const profileImage =
+    state.profilePage.profile.profileImage != null
+      ? state.profilePage.profile.profileImage.imageUrlLarge
+      : null;
+  return {
+    isCurrentUserProfile: state.userAccount.username === state.profilePage.profile.username,
+    currentlyEditingField: state.profilePage.currentlyEditingField,
+    saveState: state.profilePage.saveState,
+    savePhotoState: state.profilePage.savePhotoState,
+    error: state.profilePage.error,
+    profileImage,
+    fullName: state.profilePage.profile.name,
+    username: state.profilePage.profile.username,
+    userLocation: state.profilePage.profile.country,
+    education: state.profilePage.profile.levelOfEducation,
+    socialLinks: state.profilePage.profile.socialLinks,
+    bio: state.profilePage.profile.bio,
+    certificates: state.profilePage.profile.certificates,
+    accountPrivacy: state.profilePage.preferences.accountPrivacy,
+    visibility: state.profilePage.preferences.visibility || {},
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  {
+    fetchProfile,
+    saveProfile,
+    saveProfilePhoto,
+    deleteProfilePhoto,
+    openField,
+    closeField,
+  },
+)(ProfilePage);

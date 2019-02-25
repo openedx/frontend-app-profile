@@ -1,8 +1,8 @@
 import camelcaseKeys from 'camelcase-keys';
 import snakecaseKeys from 'snakecase-keys';
 
-import apiClient from '../data/apiClient';
-import { configuration } from '../config';
+import apiClient from '../config/apiClient';
+import { configuration } from '../config/environment';
 import { unflattenAndTransformKeys, flattenAndTransformKeys } from './utils';
 
 const accountsApiBaseUrl = `${configuration.LMS_BASE_URL}/api/user/v1/accounts`;
@@ -18,6 +18,7 @@ const clientServerKeyMap = {
   dateJoined: 'date_joined',
   languageProficiencies: 'language_proficiencies',
   accountPrivacy: 'account_privacy',
+  userLocation: 'user_location',
 };
 const serverClientKeyMap = Object.entries(clientServerKeyMap).reduce((acc, [key, value]) => {
   acc[value] = key;
@@ -106,7 +107,7 @@ export function getPreferences(username) {
   });
 }
 
-export function postPreferences(username, preferences) {
+export function patchPreferences(username, preferences) {
   const url = `${preferencesApiBaseUrl}/${username}`;
 
   // Flatten object for server

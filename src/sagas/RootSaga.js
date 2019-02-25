@@ -4,6 +4,7 @@ import {
   FETCH_PROFILE,
   fetchProfileBegin,
   fetchProfileSuccess,
+  receivePreferences,
   fetchProfileFailure,
   fetchProfileReset,
   fetchProfile as fetchProfileAction,
@@ -12,7 +13,7 @@ import {
   saveProfileSuccess,
   saveProfileFailure,
   saveProfileReset,
-  closeEditableField,
+  closeField,
   SAVE_PROFILE_PHOTO,
   saveProfilePhotoBegin,
   saveProfilePhotoSuccess,
@@ -23,20 +24,7 @@ import {
   deleteProfilePhotoSuccess,
   deleteProfilePhotoFailure,
   deleteProfilePhotoReset,
-} from '../actions/profile';
-
-import {
-  FETCH_PREFERENCES,
-  fetchPreferencesBegin,
-  fetchPreferencesSuccess,
-  fetchPreferencesFailure,
-  fetchPreferencesReset,
-  SAVE_PREFERENCES,
-  savePreferencesBegin,
-  savePreferencesSuccess,
-  savePreferencesFailure,
-  savePreferencesReset,
-} from '../actions/preferences';
+} from '../actions/ProfileActions';
 
 import * as ProfileApiService from '../services/ProfileApiService';
 
@@ -61,14 +49,18 @@ export const mapDataForRequest = (props) => {
   return state;
 };
 
-
 export function* handleFetchProfile(action) {
   const { username } = action.payload;
 
   try {
     yield put(fetchProfileBegin());
+
     const profile = yield call(
       ProfileApiService.getProfile,
+      username,
+    );
+    const preferences = yield call(
+      ProfileApiService.getPreferences,
       username,
     );
     profile.certificates = yield call(
@@ -77,6 +69,7 @@ export function* handleFetchProfile(action) {
     );
 
     yield put(fetchProfileSuccess(profile));
+    yield put(receivePreferences(preferences));
     yield put(fetchProfileReset());
   } catch (e) {
     yield put(fetchProfileFailure(e.message));
@@ -84,19 +77,38 @@ export function* handleFetchProfile(action) {
 }
 
 export function* handleSaveProfile(action) {
-  const { username, userAccountState } = action.payload;
+  const { username, profileData, preferencesData } = action.payload;
+
   try {
     yield put(saveProfileBegin());
-    const profile = yield call(
-      ProfileApiService.patchProfile,
-      username,
-      userAccountState,
-    );
+    const responseData = {};
+
+    if (profileData != null) {
+      responseData.profile = yield call(
+        ProfileApiService.patchProfile,
+        username,
+        profileData,
+      );
+    }
+    if (preferencesData != null) {
+      responseData.preferences = yield call(
+        ProfileApiService.patchPreferences,
+        username,
+        preferencesData,
+      );
+    }
+
+    const { profile, preferences } = responseData;
 
     yield put(saveProfileSuccess());
-    yield put(fetchProfileSuccess(profile));
+    if (profile != null) {
+      yield put(fetchProfileSuccess(profile));
+    }
+    if (preferences != null) {
+      yield put(receivePreferences(preferences));
+    }
     yield delay(300);
-    yield put(closeEditableField(action.payload.fieldName));
+    yield put(closeField(action.payload.fieldName));
     yield delay(300);
     yield put(saveProfileReset());
   } catch (e) {
@@ -138,37 +150,9 @@ export function* handleDeleteProfilePhoto(action) {
   }
 }
 
-export function* handleFetchPreferences(action) {
-  const { username } = action.payload;
-  try {
-    yield put(fetchPreferencesBegin());
-    const userPreferences = yield call(ProfileApiService.getPreferences, username);
-    yield put(fetchPreferencesSuccess(userPreferences));
-    yield put(fetchPreferencesReset());
-  } catch (e) {
-    yield put(fetchPreferencesFailure(e));
-  }
-}
-
-export function* handleSavePreferences(action) {
-  const { username, preferences: preferencesToSave } = action.payload;
-  try {
-    yield put(savePreferencesBegin());
-    const preferences = yield call(ProfileApiService.postPreferences, username, preferencesToSave);
-    yield put(savePreferencesSuccess());
-    yield put(fetchPreferencesSuccess(preferences));
-    yield put(savePreferencesReset());
-  } catch (e) {
-    yield put(savePreferencesFailure(e));
-  }
-}
-
-
 export default function* rootSaga() {
   yield takeEvery(FETCH_PROFILE.BASE, handleFetchProfile);
   yield takeEvery(SAVE_PROFILE.BASE, handleSaveProfile);
   yield takeEvery(SAVE_PROFILE_PHOTO.BASE, handleSaveProfilePhoto);
   yield takeEvery(DELETE_PROFILE_PHOTO.BASE, handleDeleteProfilePhoto);
-  yield takeEvery(FETCH_PREFERENCES.BASE, handleFetchPreferences);
-  yield takeEvery(SAVE_PREFERENCES.BASE, handleSavePreferences);
 }
