@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Input } from 'reactstrap';
+import { Form, FormGroup, Input, Label, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
-import EditControls from './elements/EditControls';
+import AsyncActionButton from './elements/AsyncActionButton';
 import EditableItemHeader from './elements/EditableItemHeader';
 import SwitchContent from './elements/SwitchContent';
 import EmptyContent from './elements/EmptyContent';
@@ -22,7 +22,6 @@ class SocialLinks extends React.Component {
     this.state = {};
     this.onSave = this.onSave.bind(this);
     this.onEdit = this.onEdit.bind(this);
-    this.onInputChange = this.onInputChange.bind(this);
   }
 
   onSave() {
@@ -38,11 +37,6 @@ class SocialLinks extends React.Component {
     this.props.onEdit('socialLinks');
   }
 
-  onInputChange(platform, value) {
-    this.setState({ [platform]: value });
-    this.props.onChange('socialLinks', this.state);
-  }
-
   render() {
     const {
       platforms,
@@ -52,13 +46,27 @@ class SocialLinks extends React.Component {
       saveState,
       onVisibilityChange,
       onCancel,
+      onChange,
+      onSubmit,
     } = this.props;
-    const { onInputChange, onEdit } = this;
+    const { onEdit } = this;
     const socialLinksMap = socialLinks.reduce((acc, { platform, socialLink }) => {
       acc[platform] = socialLink;
       return acc;
     }, {});
     const isEmpty = socialLinks && socialLinks.length > 0;
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      onSubmit('bio');
+    };
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      onChange({ name, value, namespace: 'socialLinks' });
+    };
+    const handleClickCancel = () => {
+      onCancel('bio');
+    };
 
     return (
       <SwitchContent
@@ -114,7 +122,8 @@ class SocialLinks extends React.Component {
             </React.Fragment>
           ),
           editing: (
-            <React.Fragment>
+            <Form onSubmit={handleSubmit} onChange={handleChange}>
+              
               <EditableItemHeader content="Social Links" />
               <ul className="list-unstyled">
                 {platforms.map(({ key, name }) => (
@@ -123,18 +132,26 @@ class SocialLinks extends React.Component {
                     name={name}
                     platform={key}
                     defaultValue={socialLinksMap[key]}
-                    onChange={onInputChange}
                   />
                 ))}
               </ul>
-              <EditControls
-                onCancel={() => onCancel('socialLinks')}
-                onSave={this.onSave}
-                saveState={saveState}
-                visibility={visibility}
-                onVisibilityChange={e => onVisibilityChange('socialLinks', e.target.value)}
+              <Label for="visibility.socialLinks">Who can see this:</Label>
+              <Input type="select" name="visibility.socialLinks" defaultValue={visibility}>
+                <option value="private">Just me</option>
+                <option value="all_users">Everyone on edX</option>
+              </Input>
+              <Button color="link" onClick={handleClickCancel}>Cancel</Button>
+              <AsyncActionButton
+                type="submit"
+                variant={saveState}
+                labels={{
+                  default: 'Save',
+                  pending: 'Saving',
+                  complete: 'Saved',
+                  error: 'Save Failed',
+                }}
               />
-            </React.Fragment>
+            </Form>
           ),
         }}
       />
@@ -227,8 +244,8 @@ function EditingListItem({
       <h6>{name}</h6>
       <Input
         type="text"
+        name={platform}
         defaultValue={defaultValue}
-        onChange={e => onChange(platform, e.target.value)}
       />
     </li>
   );

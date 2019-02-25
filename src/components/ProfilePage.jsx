@@ -74,27 +74,39 @@ export class ProfilePage extends React.Component {
   }
 
   onChange(fieldName, value) {
-    this.setState({
-      [fieldName]: {
-        value,
-        visibility: this.state[fieldName].visibility,
-      },
-    });
+    // this.setState({
+    //   [fieldName]: {
+    //     value,
+    //     visibility: this.state[fieldName].visibility,
+    //   },
+    // });
   }
 
   onVisibilityChange(fieldName, visibility) {
-    this.setState({
-      [fieldName]: {
-        value: this.state[fieldName].value,
-        visibility,
-      },
-    });
+    // this.setState({
+    //   [fieldName]: {
+    //     value: this.state[fieldName].value,
+    //     visibility,
+    //   },
+    // });
   }
 
-  handleChange({ name, value }) {
-    this.setState({
-      drafts: Object.assign({}, this.state.drafts, { [name]: value }),
-    });
+  handleChange({ name, value, namespace }) {
+    console.log('handleChange', name , value, namespace)
+    if (namespace) {
+      const namespacedData = Object.assign({}, this.state.drafts[namespace], { [namespace]: { [name]: value } });
+      this.setState({
+        drafts: Object.assign({}, this.state.drafts, namespacedData),
+      });
+    } else {
+      this.setState({
+        drafts: Object.assign(
+          {},
+          this.state.drafts,
+          { [name]: value },
+        ),
+      });
+    }
   }
 
   handleSubmit(fieldName) {
