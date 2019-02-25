@@ -1,11 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { Row, Col, Card, CardBody, CardTitle, CardText, Button } from 'reactstrap';
+import {
+  Row,
+  Col,
+  Card,
+  CardBody,
+  CardTitle,
+  CardText,
+  Button,
+  Form,
+  Input,
+  Label,
+} from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 
-import EditControls from './elements/EditControls';
+import AsyncActionButton from './elements/AsyncActionButton';
 import EditableItemHeader from './elements/EditableItemHeader';
 import SwitchContent from './elements/SwitchContent';
 
@@ -14,11 +25,23 @@ function MyCertificates({
   visibility,
   editMode,
   onEdit,
-  onSave,
+  onSubmit,
   onCancel,
-  onVisibilityChange,
+  onChange,
   saveState,
 }) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit('certificates');
+  };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    onChange({ name, value });
+  };
+  const handleClickCancel = () => {
+    onCancel('certificates');
+  };
+
   const renderCertificates = () => {
     if (!certificates) return null;
 
@@ -66,17 +89,26 @@ function MyCertificates({
       expression={editMode}
       cases={{
         editing: (
-          <React.Fragment>
+          <Form onSubmit={handleSubmit} onChange={handleChange}>
             <EditableItemHeader content="My Certificates" />
             {renderCertificates()}
-            <EditControls
-              onCancel={() => onCancel('certificates')}
-              onSave={() => onSave('certificates')}
-              saveState={saveState}
-              visibility={visibility}
-              onVisibilityChange={e => onVisibilityChange('certificates', e.target.value)}
+            <Label for="visibility.certificates">Who can see this:</Label>
+            <Input type="select" name="visibility.certificates" defaultValue={visibility}>
+              <option value="private">Just me</option>
+              <option value="all_users">Everyone on edX</option>
+            </Input>
+            <Button color="link" onClick={handleClickCancel}>Cancel</Button>
+            <AsyncActionButton
+              type="submit"
+              variant={saveState}
+              labels={{
+                default: 'Save',
+                pending: 'Saving',
+                complete: 'Saved',
+                error: 'Save Failed',
+              }}
             />
-          </React.Fragment>
+          </Form>
         ),
         editable: (
           <React.Fragment>
@@ -114,9 +146,9 @@ function MyCertificates({
 MyCertificates.propTypes = {
   editMode: PropTypes.string,
   onEdit: PropTypes.func.isRequired,
-  onSave: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
-  onVisibilityChange: PropTypes.func.isRequired,
   saveState: PropTypes.string,
   certificates: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string,

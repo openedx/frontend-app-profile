@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Input } from 'reactstrap';
+import { Form, FormGroup, Input, Label, Button } from 'reactstrap';
 
-import EditControls from './elements/EditControls';
+import AsyncActionButton from './elements/AsyncActionButton';
 import EditableItemHeader from './elements/EditableItemHeader';
 import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
@@ -16,38 +16,58 @@ function UserLocation({
   editMode,
   onEdit,
   onChange,
-  onSave,
   onCancel,
-  onVisibilityChange,
+  onSubmit,
   saveState,
 }) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit('userLocation');
+  };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    onChange({ name, value });
+  };
+  const handleClickCancel = () => {
+    onCancel('userLocation');
+  };
   return (
     <SwitchContent
       className="mb-4"
       expression={editMode}
       cases={{
         editing: (
-          <React.Fragment>
-            <EditableItemHeader content="Location" />
-            <Input
-              type="select"
-              name="userLocation"
-              className="w-100"
-              defaultValue={userLocation}
-              onChange={e => onChange('userLocation', e.target.value)}
-            >
-              {Object.keys(ALL_COUNTRIES).map(key => (
-                <option key={key} value={key}>{ALL_COUNTRIES[key]}</option>
-              ))}
+          <Form onSubmit={handleSubmit} onChange={handleChange}>
+            <FormGroup>
+              <Label for="userLocation">Location</Label>
+              <Input
+                type="select"
+                name="userLocation"
+                className="w-100"
+                defaultValue={userLocation}
+              >
+                {Object.keys(ALL_COUNTRIES).map(key => (
+                  <option key={key} value={key}>{ALL_COUNTRIES[key]}</option>
+                ))}
+              </Input>
+            </FormGroup>
+            <Label for="visibility.userLocation">Who can see this:</Label>
+            <Input type="select" name="visibility.userLocation" defaultValue={visibility}>
+              <option value="private">Just me</option>
+              <option value="all_users">Everyone on edX</option>
             </Input>
-            <EditControls
-              onCancel={() => onCancel('userLocation')}
-              onSave={() => onSave('userLocation')}
-              saveState={saveState}
-              visibility={visibility}
-              onVisibilityChange={e => onVisibilityChange('userLocation', e.target.value)}
+            <Button color="link" onClick={handleClickCancel}>Cancel</Button>
+            <AsyncActionButton
+              type="submit"
+              variant={saveState}
+              labels={{
+                default: 'Save',
+                pending: 'Saving',
+                complete: 'Saved',
+                error: 'Save Failed',
+              }}
             />
-          </React.Fragment>
+          </Form>
         ),
         editable: (
           <React.Fragment>
@@ -79,9 +99,8 @@ UserLocation.propTypes = {
   editMode: PropTypes.string,
   onEdit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
-  onSave: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
-  onVisibilityChange: PropTypes.func.isRequired,
   saveState: PropTypes.string,
   userLocation: PropTypes.string,
   visibility: PropTypes.oneOf(['private', 'all_users']),

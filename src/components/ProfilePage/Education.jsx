@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Input } from 'reactstrap';
+import { Form, FormGroup, Input, Label, Button } from 'reactstrap';
 
-import EditControls from './elements/EditControls';
 import EditableItemHeader from './elements/EditableItemHeader';
 import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
+import AsyncActionButton from './elements/AsyncActionButton';
 
 import EDUCATION from '../../constants/education';
 
@@ -16,38 +16,58 @@ function Education({
   editMode,
   onEdit,
   onChange,
-  onSave,
   onCancel,
-  onVisibilityChange,
+  onSubmit,
   saveState,
 }) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit('education');
+  };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    onChange({ name, value });
+  };
+  const handleClickCancel = () => {
+    onCancel('education');
+  };
   return (
     <SwitchContent
       className="mb-4"
       expression={editMode}
       cases={{
         editing: (
-          <React.Fragment>
-            <EditableItemHeader content="Education" />
-            <Input
-              type="select"
-              name="education"
-              className="w-100"
-              defaultValue={education}
-              onChange={e => onChange('education', e.target.value)}
-            >
-              {Object.keys(EDUCATION).map(key => (
-                <option key={key} value={key}>{EDUCATION[key]}</option>
-              ))}
+          <Form onSubmit={handleSubmit} onChange={handleChange}>
+            <FormGroup>
+              <Label for="education">Education</Label>
+              <Input
+                type="select"
+                name="education"
+                className="w-100"
+                defaultValue={education}
+              >
+                {Object.keys(EDUCATION).map(key => (
+                  <option key={key} value={key}>{EDUCATION[key]}</option>
+                ))}
+              </Input>
+            </FormGroup>
+            <Label for="visibility.education">Who can see this:</Label>
+            <Input type="select" name="visibility.education" defaultValue={visibility}>
+              <option value="private">Just me</option>
+              <option value="all_users">Everyone on edX</option>
             </Input>
-            <EditControls
-              onCancel={() => onCancel('education')}
-              onSave={() => onSave('education')}
-              saveState={saveState}
-              visibility={visibility}
-              onVisibilityChange={e => onVisibilityChange('education', e.target.value)}
+            <Button color="link" onClick={handleClickCancel}>Cancel</Button>
+            <AsyncActionButton
+              type="submit"
+              variant={saveState}
+              labels={{
+                default: 'Save',
+                pending: 'Saving',
+                complete: 'Saved',
+                error: 'Save Failed',
+              }}
             />
-          </React.Fragment>
+          </Form>
         ),
         editable: (
           <React.Fragment>
@@ -79,9 +99,8 @@ Education.propTypes = {
   editMode: PropTypes.string,
   onEdit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
-  onSave: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
-  onVisibilityChange: PropTypes.func.isRequired,
   saveState: PropTypes.string,
   education: PropTypes.string,
   visibility: PropTypes.oneOf(['private', 'all_users']),

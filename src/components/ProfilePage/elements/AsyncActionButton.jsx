@@ -62,7 +62,7 @@ export default AsyncActionButton;
 
 AsyncActionButton.propTypes = {
   type: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   color: PropTypes.string,
   className: PropTypes.string,
   style: PropTypes.object, // eslint-disable-line
@@ -76,6 +76,7 @@ AsyncActionButton.propTypes = {
 };
 
 AsyncActionButton.defaultProps = {
+  onClick: null,
   type: 'button',
   className: null,
   color: 'primary',
