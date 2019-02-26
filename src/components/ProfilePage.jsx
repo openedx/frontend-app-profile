@@ -127,7 +127,7 @@ export class ProfilePage extends React.Component {
   render() {
     const {
       saveState,
-      error,
+      errors,
       profileImage,
       username,
       fullName,
@@ -145,7 +145,6 @@ export class ProfilePage extends React.Component {
       onCancel: this.onCancel,
       onVisibilityChange: this.onVisibilityChange,
       saveState,
-      error,
       onChange: this.handleChange,
       onSubmit: this.handleSubmit,
     };
@@ -205,7 +204,7 @@ export class ProfilePage extends React.Component {
                 visibility={getVisibility('fullName')}
                 editMode={getMode('fullName')}
                 {...commonProps}
-                error="Please have a name 2 characters or longer."
+                error={errors.fullName}
               />
 
               <UserLocation
@@ -213,7 +212,7 @@ export class ProfilePage extends React.Component {
                 visibility={getVisibility('userLocation')}
                 editMode={getMode('userLocation')}
                 {...commonProps}
-                error="Please choose another country"
+                error={errors.userLocation}
               />
 
               <Education
@@ -221,7 +220,7 @@ export class ProfilePage extends React.Component {
                 visibility={getVisibility('education')}
                 editMode={getMode('education')}
                 {...commonProps}
-                error="Please choose another school."
+                error={errors.education}
               />
 
               <SocialLinks
@@ -229,11 +228,7 @@ export class ProfilePage extends React.Component {
                 visibility={getVisibility('socialLinks')}
                 editMode={getMode('socialLinks')}
                 {...commonProps}
-                errors={{
-                  twitter: "Please use a proper URL.",
-                  facebook: "Please use a proper URL.",
-                  linkedin: "Please use a proper URL.",
-                }}
+                errors={errors.socialLinks}
               />
 
             </Col>
@@ -244,7 +239,7 @@ export class ProfilePage extends React.Component {
                 visibility={getVisibility('bio')}
                 editMode={getMode('bio')}
                 {...commonProps}
-                error="Please avoid XSS attempts."
+                error={errors.bio}
               />
 
               <MyCertificates
@@ -266,7 +261,7 @@ ProfilePage.propTypes = {
   currentlyEditingField: PropTypes.string,
   saveState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
   savePhotoState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
-  error: PropTypes.string,
+  errors: PropTypes.object, // eslint-disable-line
   isCurrentUserProfile: PropTypes.bool.isRequired,
   profileImage: PropTypes.string,
   fullName: PropTypes.string,
@@ -302,7 +297,7 @@ ProfilePage.defaultProps = {
   currentlyEditingField: null,
   saveState: null,
   savePhotoState: null,
-  error: null,
+  errors: null,
   profileImage: null,
   fullName: null,
   username: null,
@@ -326,7 +321,17 @@ const mapStateToProps = (state) => {
     currentlyEditingField: state.profilePage.currentlyEditingField,
     saveState: state.profilePage.saveState,
     savePhotoState: state.profilePage.savePhotoState,
-    error: state.profilePage.error,
+    errors: {
+      fullName: "Your name must be at least two characters long.",
+      socialLinks: {
+        twitter: "Please use a proper URL.",
+        facebook: "Please use a proper URL.",
+        linkedin: "Please use a proper URL.",
+      },
+      userLocation: "Please choose another country.",
+      education: "Please choose another school.",
+      bio: "Please avoid XSS attempts.",
+    },
     profileImage,
     fullName: state.profilePage.profile.name,
     username: state.profilePage.profile.username,
