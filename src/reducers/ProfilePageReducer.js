@@ -7,6 +7,7 @@ import {
   FETCH_PROFILE,
   UPDATE_ACCOUNT_DRAFT,
   UPDATE_VISIBILITY_DRAFT,
+  RESET_DRAFTS,
 } from '../actions/ProfileActions';
 
 const initialState = {
@@ -22,19 +23,6 @@ const initialState = {
   accountDrafts: {},
   visibilityDrafts: {},
 };
-
-function mergePreferences(preferences, updates) {
-  if (updates !== null) {
-    const updatedPreferences = Object.assign({}, preferences);
-    updatedPreferences.visibility = Object.assign(
-      updatedPreferences.visibility,
-      updates.visibility,
-    );
-    return updatedPreferences;
-  }
-
-  return preferences;
-}
 
 const profilePage = (state = initialState, action) => {
   switch (action.type) {
@@ -59,7 +47,13 @@ const profilePage = (state = initialState, action) => {
         // Account is always replaced completely.
         account: action.payload.account !== null ? action.payload.account : state.account,
         // Preferences changes get merged in.
-        preferences: mergePreferences(state.preferences, action.payload.preferences),
+        preferences: Object.assign({}, state.preferences, {
+          visibility: Object.assign(
+            {},
+            state.preferences.visibility,
+            action.payload.preferences.visibility,
+          ),
+        }),
       };
     case SAVE_PROFILE.FAILURE:
       return {
@@ -138,6 +132,13 @@ const profilePage = (state = initialState, action) => {
         visibilityDrafts: Object.assign({}, state.visibilityDrafts, {
           [action.payload.name]: action.payload.value,
         }),
+      };
+
+    case RESET_DRAFTS:
+      return {
+        ...state,
+        accountDrafts: {},
+        visibilityDrafts: {},
       };
     case OPEN_FORM:
       return {

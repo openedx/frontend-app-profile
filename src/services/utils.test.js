@@ -4,7 +4,7 @@ import { flattenAndTransformKeys, unflattenAndTransformKeys } from './utils';
 describe('unflattenAndTransformKeys', () => {
   it('should unflatten objects and transform keys', () => {
     const sourceObject = {
-      userlocation: 'US',
+      country: 'US',
       'visibility.sociallinks': 'private',
       'visibility.education': 'private',
       'visibility.bio': 'private',
@@ -13,7 +13,7 @@ describe('unflattenAndTransformKeys', () => {
     const result = unflattenAndTransformKeys(sourceObject, key => key.toUpperCase());
 
     expect(result).toEqual({
-      USERLOCATION: 'US',
+      COUNTRY: 'US',
       VISIBILITY: {
         SOCIALLINKS: 'private',
         EDUCATION: 'private',
@@ -27,7 +27,7 @@ describe('unflattenAndTransformKeys', () => {
 describe('flattenAndTransformKeys', () => {
   it('should flatten objects and transform keys', () => {
     const sourceObject = {
-      USERLOCATION: 'US',
+      COUNTRY: 'US',
       VISIBILITY: {
         SOCIALLINKS: 'private',
         EDUCATION: 'private',
@@ -38,7 +38,7 @@ describe('flattenAndTransformKeys', () => {
     const result = flattenAndTransformKeys(sourceObject, key => key.toLowerCase());
 
     expect(result).toEqual({
-      userlocation: 'US',
+      country: 'US',
       'visibility.sociallinks': 'private',
       'visibility.education': 'private',
       'visibility.bio': 'private',

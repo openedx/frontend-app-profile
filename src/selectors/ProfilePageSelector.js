@@ -52,6 +52,12 @@ export const accountDraftsFieldSelector = createSelector(
   (formId, accountDrafts) => accountDrafts[formId],
 );
 
+export const visibilityDraftsFieldSelector = createSelector(
+  formIdSelector,
+  profileVisibilityDraftsSelector,
+  (formId, visibilityDrafts) => visibilityDrafts[formId],
+);
+
 export const formErrorSelector = createSelector(
   accountErrorsSelector,
   formIdSelector,
@@ -66,7 +72,7 @@ export const editableFormSelector = createSelector(
   formErrorSelector,
   saveStateSelector,
   accountDraftsFieldSelector,
-  profileVisibilityDraftsSelector,
+  visibilityDraftsFieldSelector,
   (
     editMode,
     account,
@@ -75,10 +81,10 @@ export const editableFormSelector = createSelector(
     error,
     saveState,
     accountDraftsField,
-    visibilityDrafts,
+    visibilityDraftsField,
   ) => ({
-    value: accountDraftsField || account[formId] || null,
-    visibility: visibilityDrafts[formId] || visibility[formId] || null, // TODO: Fix me
+    value: accountDraftsField || account[formId] || '',
+    visibility: visibilityDraftsField || visibility[formId] || 'private',
     editMode,
     error,
     saveState,

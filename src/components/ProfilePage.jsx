@@ -19,10 +19,10 @@ import {
 import ProfileAvatar from './ProfilePage/ProfileAvatar';
 import Name from './ProfilePage/Name';
 import Country from './ProfilePage/Country';
-import Education from './ProfilePage/Education';
-import SocialLinks from './ProfilePage/SocialLinks';
+// import Education from './ProfilePage/Education';
+// import SocialLinks from './ProfilePage/SocialLinks';
 import Bio from './ProfilePage/Bio';
-import Certificates from './ProfilePage/Certificates';
+// import Certificates from './ProfilePage/Certificates';
 
 export class ProfilePage extends React.Component {
   constructor(props) {
@@ -103,6 +103,9 @@ export class ProfilePage extends React.Component {
           <Row>
             <Col xs={{ order: 2 }} md={{ size: 4, order: 1 }} lg={3} className="mt-md-4">
               <Name formId="name" {...commonFormProps} />
+              <Country formId="country" {...commonFormProps} />
+              {/* <Education formId="education" {...commonFormProps} />
+              <SocialLinks formId="socialLinks" {...commonFormProps} /> */}
             </Col>
             <Col
               xs={{ order: 1 }}
@@ -111,6 +114,7 @@ export class ProfilePage extends React.Component {
               className="mt-4 mt-md-n5"
             >
               <Bio formId="bio" {...commonFormProps} />
+              {/* <Certificates formId="certificates" {...commonFormProps} /> */}
             </Col>
           </Row>
         </Container>
@@ -136,7 +140,6 @@ ProfilePage.propTypes = {
   })),
 
   // Profile data for form fields
-  userLocation: PropTypes.string,
   education: PropTypes.string,
   socialLinks: PropTypes.arrayOf(PropTypes.shape({
     platform: PropTypes.string,
@@ -170,7 +173,6 @@ ProfilePage.defaultProps = {
   errors: {},
   profileImage: null,
   username: null,
-  userLocation: null,
   education: null,
   socialLinks: [],
   bio: null,
@@ -193,7 +195,6 @@ const mapStateToProps = (state) => {
     profileImage,
 
     username: state.profilePage.account.username,
-    userLocation: state.profilePage.account.country,
     education: state.profilePage.account.levelOfEducation,
     socialLinks: state.profilePage.account.socialLinks,
     bio: state.profilePage.account.bio,

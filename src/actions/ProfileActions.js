@@ -8,6 +8,7 @@ export const OPEN_FORM = 'OPEN_FORM';
 export const CLOSE_FORM = 'CLOSE_FORM';
 export const UPDATE_ACCOUNT_DRAFT = 'UPDATE_ACCOUNT_DRAFT';
 export const UPDATE_VISIBILITY_DRAFT = 'UPDATE_VISIBILITY_DRAFT';
+export const RESET_DRAFTS = 'RESET_DRAFTS';
 
 // FETCH PROFILE ACTIONS
 
@@ -151,4 +152,8 @@ export const updateVisibilityDraft = (name, value) => ({
     name,
     value,
   },
+});
+
+export const resetDrafts = () => ({
+  type: RESET_DRAFTS,
 });

@@ -24,6 +24,7 @@ import {
   deleteProfilePhotoSuccess,
   deleteProfilePhotoFailure,
   deleteProfilePhotoReset,
+  resetDrafts,
 } from '../actions/ProfileActions';
 
 // Selectors
@@ -78,6 +79,7 @@ export function* handleSaveProfile(action) {
     yield put(closeForm(action.payload.formId));
     yield delay(300);
     yield put(saveProfileReset());
+    yield put(resetDrafts());
   } catch (e) {
     yield put(saveProfileFailure(e.message));
   }

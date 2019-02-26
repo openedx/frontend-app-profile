@@ -6,16 +6,12 @@ import { configuration } from '../config/environment';
 import { unflattenAndTransformKeys, flattenAndTransformKeys } from './utils';
 
 const clientToServerKeyMap = {
-  bio: 'bio',
   socialLinks: 'social_links',
-  country: 'country',
   education: 'level_of_education',
-  username: 'username',
   profileImage: 'profile_image',
   dateJoined: 'date_joined',
   languageProficiencies: 'language_proficiencies',
   accountPrivacy: 'account_privacy',
-  userLocation: 'user_location',
 };
 const serverToClientKeyMap = Object.entries(clientToServerKeyMap).reduce((acc, [key, value]) => {
   acc[value] = key;
@@ -45,7 +41,6 @@ export function getAccount(username) {
 
 export const mapSaveProfileRequestData = (props) => {
   const PROFILE_REQUEST_DATA_MAP = {
-    userLocation: 'country',
     education: 'levelOfEducation',
     socialLinks: socialLinks =>
       Object.entries(socialLinks)
@@ -108,9 +103,14 @@ export function getPreferences(username) {
     apiClient
       .get(url)
       .then(({ data }) => {
+        const hydratedData = data;
+        // If the response doesn't have a "visibility" section, just add a blank one.
+        if (data.visibility === undefined) {
+          Object.assign(hydratedData, { visibility: {} });
+        }
         // Unflatten server response
         // visibility.social_links: 'value' becomes { visibility: { socialLinks: 'value' }}
-        resolve(unflattenAndTransformKeys(data, key => mapServerKey(key)));
+        resolve(unflattenAndTransformKeys(hydratedData, key => mapServerKey(key)));
       })
       .catch((error) => {
         reject(error);

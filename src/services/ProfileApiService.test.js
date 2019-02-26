@@ -7,7 +7,7 @@ describe('mapSaveProfileRequestData', () => {
       age: 30,
       petName: 'Donkey',
       name: 'Donkey McWafflebatter',
-      userLocation: 'US',
+      country: 'US',
       education: 'BS',
       socialLinks: {
         twitter: null,

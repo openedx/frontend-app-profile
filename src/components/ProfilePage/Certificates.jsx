@@ -9,7 +9,7 @@ import FormControls from './elements/FormControls';
 import EditableItemHeader from './elements/EditableItemHeader';
 import SwitchContent from './elements/SwitchContent';
 
-function MyCertificates({
+function Certificates({
   certificates,
   visibility,
   editMode,
@@ -111,7 +111,7 @@ function MyCertificates({
 }
 
 
-MyCertificates.propTypes = {
+Certificates.propTypes = {
   editMode: PropTypes.string,
   onEdit: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
@@ -124,7 +124,7 @@ MyCertificates.propTypes = {
   visibility: PropTypes.oneOf(['private', 'all_users']),
 };
 
-MyCertificates.defaultProps = {
+Certificates.defaultProps = {
   editMode: 'static',
   saveState: null,
   certificates: null,
@@ -132,4 +132,4 @@ MyCertificates.defaultProps = {
 };
 
 
-export default MyCertificates;
+export default Certificates;
