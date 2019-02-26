@@ -45,9 +45,9 @@ export const mapSaveProfileRequestData = (props) => {
     userLocation: 'country',
     education: 'levelOfEducation',
     socialLinks: socialLinks => Object.entries(socialLinks)
-      .filter(([platform, value]) => value !== null)
+      .filter(([platform, value]) => value !== null) // eslint-disable-line no-unused-vars
       .reduce((acc, [platform, value]) => {
-        acc.push({ socialLink: value, platform});
+        acc.push({ socialLink: value, platform });
         return acc;
       }, []),
   };

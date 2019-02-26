@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, FormGroup, Input, Label, Button, FormFeedback } from 'reactstrap';
+import { Form, FormGroup, Input, Label, FormFeedback } from 'reactstrap';
 
 import FormControls from './elements/FormControls';
 import EditableItemHeader from './elements/EditableItemHeader';
@@ -29,9 +29,6 @@ function UserLocation({
     const { name, value } = e.target;
     onChange({ name, value });
   };
-  const handleClickCancel = () => {
-    onCancel('userLocation');
-  };
   return (
     <SwitchContent
       className="mb-4"
@@ -56,7 +53,7 @@ function UserLocation({
             </FormGroup>
             <FormControls
               saveState={saveState}
-              onCancel={onCancel} 
+              onCancel={() => onCancel('userLocation')}
               visibility={visibility}
               visibilityName="visibility.userLocation"
             />

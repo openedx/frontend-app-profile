@@ -27,12 +27,6 @@ export class ProfilePage extends React.Component {
     super(props);
 
     this.state = {
-      fullName: { value: null, visibility: null },
-      userLocation: { value: null, visibility: null },
-      education: { value: null, visibility: null },
-      bio: { value: null, visibility: null },
-      socialLinks: { value: null, visibility: null },
-      certificates: { value: null, visibility: null },
       drafts: {},
     };
 
@@ -73,24 +67,6 @@ export class ProfilePage extends React.Component {
     this.props.deleteProfilePhoto(this.props.username);
   }
 
-  onChange(fieldName, value) {
-    // this.setState({
-    //   [fieldName]: {
-    //     value,
-    //     visibility: this.state[fieldName].visibility,
-    //   },
-    // });
-  }
-
-  onVisibilityChange(fieldName, visibility) {
-    // this.setState({
-    //   [fieldName]: {
-    //     value: this.state[fieldName].value,
-    //     visibility,
-    //   },
-    // });
-  }
-
   handleChange({ name, value, namespace }) {
     const { drafts } = this.state;
 
@@ -102,7 +78,7 @@ export class ProfilePage extends React.Component {
       });
     } else {
       this.setState({
-        drafts: Object.assign( {}, drafts, { [name]: value }),
+        drafts: Object.assign({}, drafts, { [name]: value }),
       });
     }
   }
@@ -322,15 +298,15 @@ const mapStateToProps = (state) => {
     saveState: state.profilePage.saveState,
     savePhotoState: state.profilePage.savePhotoState,
     errors: {
-      fullName: "Your name must be at least two characters long.",
+      fullName: 'Your name must be at least two characters long.',
       socialLinks: {
-        twitter: "Please use a proper URL.",
-        facebook: "Please use a proper URL.",
-        linkedin: "Please use a proper URL.",
+        twitter: 'Please use a proper URL.',
+        facebook: 'Please use a proper URL.',
+        linkedin: 'Please use a proper URL.',
       },
-      userLocation: "Please choose another country.",
-      education: "Please choose another school.",
-      bio: "Please avoid XSS attempts.",
+      userLocation: 'Please choose another country.',
+      education: 'Please choose another school.',
+      bio: 'Please avoid XSS attempts.',
     },
     profileImage,
     fullName: state.profilePage.profile.name,

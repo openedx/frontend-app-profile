@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { Form, FormGroup, Input, Label, Button, FormFeedback, FormText } from 'reactstrap';
+import { Form, FormGroup, Input, Label, FormFeedback } from 'reactstrap';
 
 import EditableItemHeader from './elements/EditableItemHeader';
 import EmptyContent from './elements/EmptyContent';
@@ -28,9 +28,6 @@ function Bio({
     const { name, value } = e.target;
     onChange({ name, value });
   };
-  const handleClickCancel = () => {
-    onCancel('bio');
-  };
   return (
     <SwitchContent
       className="mb-4"
@@ -50,7 +47,7 @@ function Bio({
             </FormGroup>
             <FormControls
               saveState={saveState}
-              onCancel={onCancel} 
+              onCancel={() => onCancel('bio')}
               visibility={visibility}
               visibilityName="visibility.bio"
             />

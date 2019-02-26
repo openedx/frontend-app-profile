@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, FormGroup, Input, Label, Button, FormFeedback } from 'reactstrap';
+import { Form, Input, FormFeedback } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
@@ -44,7 +44,6 @@ class SocialLinks extends React.Component {
       editMode,
       visibility,
       saveState,
-      onVisibilityChange,
       onCancel,
       onChange,
       onSubmit,
@@ -64,9 +63,6 @@ class SocialLinks extends React.Component {
     const handleChange = (e) => {
       const { name, value } = e.target;
       onChange({ name, value, namespace: 'socialLinks' });
-    };
-    const handleClickCancel = () => {
-      onCancel('socialLinks');
     };
 
     return (
@@ -89,7 +85,7 @@ class SocialLinks extends React.Component {
             <React.Fragment>
               <EditableItemHeader content="Social Links" />
               <ul className="list-unstyled">
-                {platforms.filter(({platform}) => socialLinksMap[platform] != null)
+                {platforms.filter(({ platform }) => socialLinksMap[platform] != null)
                   .map(({ platform, name }) => (
                     <StaticListItem
                       key={platform}
@@ -97,8 +93,7 @@ class SocialLinks extends React.Component {
                       url={socialLinksMap[platform]}
                       platform={platform}
                     />
-                  )
-                )}
+                ))}
               </ul>
             </React.Fragment>
           ),
@@ -140,7 +135,7 @@ class SocialLinks extends React.Component {
               </ul>
               <FormControls
                 saveState={saveState}
-                onCancel={onCancel} 
+                onCancel={() => onCancel('socialLinks')}
                 visibility={visibility}
                 visibilityName="visibility.socialLinks"
               />
@@ -167,7 +162,7 @@ SocialLinks.propTypes = {
   onChange: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
-  onVisibilityChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   saveState: PropTypes.string,
   errors: PropTypes.shape({
     twitter: PropTypes.string,
@@ -213,7 +208,7 @@ function EditableListItem({
   onClickEmptyContent,
   name,
 }) {
-  const linkDisplay = url != null && url != '' ?
+  const linkDisplay = (url != null && url !== '') ?
     <SocialLink name={name} url={url} platform={platform} /> :
     <EmptyContent onClick={onClickEmptyContent}>Add {name}</EmptyContent>;
 

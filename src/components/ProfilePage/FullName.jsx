@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, FormGroup, Input, Label, Button, FormText, FormFeedback } from 'reactstrap';
+import { Form, FormGroup, Input, Label, FormText, FormFeedback } from 'reactstrap';
 
 import EditableItemHeader from './elements/EditableItemHeader';
 import EmptyContent from './elements/EmptyContent';
@@ -27,9 +27,6 @@ function FullName({
     const { name, value } = e.target;
     onChange({ name, value });
   };
-  const handleClickCancel = () => {
-    onCancel('fullName');
-  };
   return (
     <SwitchContent
       className="mb-4"
@@ -45,12 +42,14 @@ function FullName({
                 defaultValue={fullName}
                 invalid={error != null}
               />
-              <FormText>This is your name that appears in your account and on your certificates.</FormText>
+              <FormText>
+                This is your name that appears in your account and on your certificates.
+              </FormText>
               <FormFeedback>{error}</FormFeedback>
             </FormGroup>
             <FormControls
               saveState={saveState}
-              onCancel={onCancel} 
+              onCancel={() => onCancel('fullName')}
               visibility={visibility}
               visibilityName="visibility.fullName"
             />

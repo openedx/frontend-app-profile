@@ -10,8 +10,6 @@ import {
   CardText,
   Button,
   Form,
-  Input,
-  Label,
 } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
@@ -38,10 +36,6 @@ function MyCertificates({
     const { name, value } = e.target;
     onChange({ name, value });
   };
-  const handleClickCancel = () => {
-    onCancel('certificates');
-  };
-
   const renderCertificates = () => {
     if (!certificates) return null;
 
@@ -82,7 +76,6 @@ function MyCertificates({
       </Row>
     );
   };
-
   return (
     <SwitchContent
       className="mb-4"
@@ -94,7 +87,7 @@ function MyCertificates({
             {renderCertificates()}
             <FormControls
               saveState={saveState}
-              onCancel={onCancel} 
+              onCancel={() => onCancel('certificates')}
               visibility={visibility}
               visibilityName="visibility.certificates"
             />
