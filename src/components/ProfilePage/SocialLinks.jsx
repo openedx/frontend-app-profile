@@ -58,14 +58,14 @@ class SocialLinks extends React.Component {
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      onSubmit('bio');
+      onSubmit('socialLinks');
     };
     const handleChange = (e) => {
       const { name, value } = e.target;
       onChange({ name, value, namespace: 'socialLinks' });
     };
     const handleClickCancel = () => {
-      onCancel('bio');
+      onCancel('socialLinks');
     };
 
     return (
@@ -214,7 +214,7 @@ function EditableListItem({
   onClickEmptyContent,
   name,
 }) {
-  const linkDisplay = url != null ?
+  const linkDisplay = url != null && url != '' ?
     <SocialLink name={name} url={url} platform={platform} /> :
     <EmptyContent onClick={onClickEmptyContent}>Add {name}</EmptyContent>;
 

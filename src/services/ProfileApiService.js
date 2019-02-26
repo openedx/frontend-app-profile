@@ -44,7 +44,12 @@ export const mapSaveProfileRequestData = (props) => {
     fullName: 'name',
     userLocation: 'country',
     education: 'levelOfEducation',
-    socialLinks: socialLinks => socialLinks.filter(({ socialLink }) => socialLink !== null),
+    socialLinks: socialLinks => Object.entries(socialLinks)
+      .filter(([platform, value]) => value !== null)
+      .reduce((acc, [platform, value]) => {
+        acc.push({ socialLink: value, platform});
+        return acc;
+      }, []),
   };
   const state = {};
 
