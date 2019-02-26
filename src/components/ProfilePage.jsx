@@ -21,6 +21,7 @@ import Education from './ProfilePage/Education';
 import SocialLinks from './ProfilePage/SocialLinks';
 import Bio from './ProfilePage/Bio';
 import MyCertificates from './ProfilePage/MyCertificates';
+import AgeMessage from './ProfilePage/AgeMessage';
 
 export class ProfilePage extends React.Component {
   constructor(props) {
@@ -210,6 +211,8 @@ export class ProfilePage extends React.Component {
             </Col>
             <Col xs={{ order: 1 }} md={{ size: 8, order: 2 }} lg={{ size: 8, offset: 1 }} className="mt-4 mt-md-n5">
 
+              {this.props.requiresParentalConsent ? <AgeMessage accountURL="#account" /> : null}
+
               <Bio
                 bio={bio}
                 visibility={getVisibility('bio')}
@@ -266,6 +269,8 @@ ProfilePage.propTypes = {
   }).isRequired,
   accountPrivacy: PropTypes.string,
   visibility: PropTypes.object, // eslint-disable-line
+  yearOfBirth: PropTypes.number,
+  requiresParentalConsent: PropTypes.bool,
 };
 
 ProfilePage.defaultProps = {
@@ -284,6 +289,8 @@ ProfilePage.defaultProps = {
   certificates: null,
   accountPrivacy: null,
   visibility: {}, // eslint-disable-line
+  yearOfBirth: null,
+  requiresParentalConsent: null,
 };
 
 const mapStateToProps = (state) => {
@@ -307,6 +314,8 @@ const mapStateToProps = (state) => {
     certificates: state.profilePage.profile.certificates,
     accountPrivacy: state.profilePage.preferences.accountPrivacy,
     visibility: state.profilePage.preferences.visibility || {},
+    yearOfBirth: state.profilePage.profile.yearOfBirth,
+    requiresParentalConsent: state.profilePage.profile.requiresParentalConsent,
   };
 };
 
