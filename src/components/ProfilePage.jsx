@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Row, Col } from 'reactstrap';
 import { connect } from 'react-redux';
+import { logEvent } from '../analytics';
 
 // Actions
 import {
@@ -40,6 +41,9 @@ export class ProfilePage extends React.Component {
 
   componentDidMount() {
     this.props.fetchProfile(this.props.match.params.username);
+    logEvent('edx.profile.viewed', {
+      profileUsername: this.props.match.params.username,
+    });
   }
 
   handleSaveProfilePhoto(formData) {

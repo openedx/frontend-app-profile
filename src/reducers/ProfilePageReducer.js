@@ -10,7 +10,7 @@ import {
   RESET_DRAFTS,
 } from '../actions/ProfileActions';
 
-const initialState = {
+export const initialState = {
   errors: {},
   saveState: null,
   savePhotoState: null,
