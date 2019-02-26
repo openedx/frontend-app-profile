@@ -12,7 +12,7 @@ import SwitchContent from './elements/SwitchContent';
 // Selectors
 import { editableFormSelector } from '../../selectors/ProfilePageSelector';
 
-class NameForm extends React.Component {
+class Name extends React.Component {
   constructor(props) {
     super(props);
 
@@ -97,7 +97,7 @@ class NameForm extends React.Component {
   }
 }
 
-NameForm.propTypes = {
+Name.propTypes = {
   // It'd be nice to just set this as a defaultProps...
   // except the class that comes out on the other side of react-redux's
   // connect() method won't have it anymore. Static properties won't survive
@@ -118,7 +118,7 @@ NameForm.propTypes = {
   openHandler: PropTypes.func.isRequired,
 };
 
-NameForm.defaultProps = {
+Name.defaultProps = {
   editMode: 'static',
   saveState: null,
   value: null,
@@ -129,4 +129,4 @@ NameForm.defaultProps = {
 export default connect(
   editableFormSelector,
   {},
-)(NameForm);
+)(Name);

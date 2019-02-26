@@ -17,12 +17,12 @@ import {
 
 // Components
 import ProfileAvatar from './ProfilePage/ProfileAvatar';
-import NameForm from './ProfilePage/NameForm';
-// import UserLocation from './ProfilePage/UserLocation';
-// import Education from './ProfilePage/Education';
-// import SocialLinks from './ProfilePage/SocialLinks';
-// import Bio from './ProfilePage/Bio';
-// import MyCertificates from './ProfilePage/MyCertificates';
+import Name from './ProfilePage/Name';
+import Country from './ProfilePage/Country';
+import Education from './ProfilePage/Education';
+import SocialLinks from './ProfilePage/SocialLinks';
+import Bio from './ProfilePage/Bio';
+import Certificates from './ProfilePage/Certificates';
 
 export class ProfilePage extends React.Component {
   constructor(props) {
@@ -69,11 +69,7 @@ export class ProfilePage extends React.Component {
   }
 
   render() {
-    const {
-      profileImage,
-      username,
-      errors,
-    } = this.props;
+    const { profileImage, username, errors } = this.props;
 
     const commonFormProps = {
       openHandler: this.handleOpen,
@@ -99,36 +95,14 @@ export class ProfilePage extends React.Component {
                 />
                 <div>
                   <h2 className="mb-0">{username}</h2>
-                  <p className="mb-0">Member since 2017</p>
+                  <p className="mb-0">Member since 2017 - THIS IS FAKE</p>
                 </div>
               </div>
             </Col>
           </Row>
           <Row>
             <Col xs={{ order: 2 }} md={{ size: 4, order: 1 }} lg={3} className="mt-md-4">
-              <NameForm formId="name" {...commonFormProps} />
-              {/* <CountryForm formId="country" {...commonFormProps} /> */}
-
-              {/* <UserLocation
-                userLocation={userLocation}
-                visibility={getVisibility('userLocation')}
-                editMode={getMode('userLocation')}
-                {...commonProps}
-              />
-
-              <Education
-                education={education}
-                visibility={getVisibility('education')}
-                editMode={getMode('education')}
-                {...commonProps}
-              />
-
-              <SocialLinks
-                socialLinks={socialLinks}
-                visibility={getVisibility('socialLinks')}
-                editMode={getMode('socialLinks')}
-                {...commonProps}
-              /> */}
+              <Name formId="name" {...commonFormProps} />
             </Col>
             <Col
               xs={{ order: 1 }}
@@ -136,18 +110,7 @@ export class ProfilePage extends React.Component {
               lg={{ size: 8, offset: 1 }}
               className="mt-4 mt-md-n5"
             >
-              {/* <Bio
-                bio={bio}
-                visibility={getVisibility('bio')}
-                editMode={getMode('bio')}
-                {...commonProps}
-              /> */}
-
-              {/* <MyCertificates
-                certificates={certificates}
-                visibility={getVisibility('certificates')}
-                editMode={getMode('certificates')}
-              /> */}
+              <Bio formId="bio" {...commonFormProps} />
             </Col>
           </Row>
         </Container>
