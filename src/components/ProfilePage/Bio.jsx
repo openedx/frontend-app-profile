@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { Input } from 'reactstrap';
 
-import EditControls from './elements/EditControls';
+import FormControls from './elements/FormControls';
 import EditableItemHeader from './elements/EditableItemHeader';
 import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
@@ -34,7 +34,7 @@ function Bio({
               defaultValue={bio}
               onChange={e => onChange('bio', e.target.value)}
             />
-            <EditControls
+            <FormControls
               onCancel={() => onCancel('bio')}
               onSave={() => onSave('bio')}
               saveState={saveState}

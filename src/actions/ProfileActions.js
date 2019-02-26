@@ -4,9 +4,10 @@ export const FETCH_PROFILE = new AsyncActionType('PROFILE', 'FETCH_PROFILE');
 export const SAVE_PROFILE = new AsyncActionType('PROFILE', 'SAVE_PROFILE');
 export const SAVE_PROFILE_PHOTO = new AsyncActionType('PROFILE', 'SAVE_PROFILE_PHOTO');
 export const DELETE_PROFILE_PHOTO = new AsyncActionType('PROFILE', 'DELETE_PROFILE_PHOTO');
-export const FIELD_OPEN = 'FIELD_OPEN';
-export const FIELD_CLOSE = 'FIELD_CLOSE';
-export const UPDATE_DRAFTS = 'UPDATE_DRAFTS';
+export const OPEN_FORM = 'OPEN_FORM';
+export const CLOSE_FORM = 'CLOSE_FORM';
+export const UPDATE_ACCOUNT_DRAFT = 'UPDATE_ACCOUNT_DRAFT';
+export const UPDATE_VISIBILITY_DRAFT = 'UPDATE_VISIBILITY_DRAFT';
 
 // FETCH PROFILE ACTIONS
 
@@ -37,13 +38,10 @@ export const fetchProfileReset = () => ({
 
 // SAVE PROFILE ACTIONS
 
-export const saveProfile = (username, draftAccount, draftPreferences, fieldName) => ({
+export const saveProfile = formId => ({
   type: SAVE_PROFILE.BASE,
   payload: {
-    fieldName,
-    username,
-    draftAccount,
-    draftPreferences,
+    formId,
   },
 });
 
@@ -123,19 +121,34 @@ export const deleteProfilePhotoFailure = error => ({
 
 // FIELD STATE ACTIONS
 
-export const openField = fieldName => ({
-  type: FIELD_OPEN,
-  fieldName,
+export const openForm = formId => ({
+  type: OPEN_FORM,
+  payload: {
+    formId,
+  },
 });
 
-export const closeField = fieldName => ({
-  type: FIELD_CLOSE,
-  fieldName,
+export const closeForm = formId => ({
+  type: CLOSE_FORM,
+  payload: {
+    formId,
+  },
 });
 
 // FORM STATE ACTIONS
 
-export const updateDrafts = drafts => ({
-  type: UPDATE_DRAFTS,
-  drafts,
+export const updateAccountDraft = (name, value) => ({
+  type: UPDATE_ACCOUNT_DRAFT,
+  payload: {
+    name,
+    value,
+  },
+});
+
+export const updateVisibilityDraft = (name, value) => ({
+  type: UPDATE_VISIBILITY_DRAFT,
+  payload: {
+    name,
+    value,
+  },
 });

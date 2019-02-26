@@ -2,19 +2,25 @@ import {
   SAVE_PROFILE,
   SAVE_PROFILE_PHOTO,
   DELETE_PROFILE_PHOTO,
-  FIELD_CLOSE,
-  FIELD_OPEN,
+  CLOSE_FORM,
+  OPEN_FORM,
   FETCH_PROFILE,
+  UPDATE_ACCOUNT_DRAFT,
+  UPDATE_VISIBILITY_DRAFT,
 } from '../actions/ProfileActions';
 
 const initialState = {
-  error: null,
+  errors: {},
   saveState: null,
   savePhotoState: null,
   currentlyEditingField: null,
   account: {},
-  preferences: {},
+  preferences: {
+    visibility: {},
+  },
   certificates: [],
+  accountDrafts: {},
+  visibilityDrafts: {},
 };
 
 function mergePreferences(preferences, updates) {
@@ -32,21 +38,6 @@ function mergePreferences(preferences, updates) {
 
 const profilePage = (state = initialState, action) => {
   switch (action.type) {
-    case FIELD_OPEN:
-      return {
-        ...state,
-        currentlyEditingField: action.fieldName,
-      };
-    case FIELD_CLOSE:
-      // Only close if the field to close is undefined or matches the field that is currently open
-      if (action.fieldName === state.currentlyEditingField) {
-        return {
-          ...state,
-          currentlyEditingField: null,
-        };
-      }
-      return state;
-
     case FETCH_PROFILE.SUCCESS:
       return {
         ...state,
@@ -58,13 +49,13 @@ const profilePage = (state = initialState, action) => {
       return {
         ...state,
         saveState: 'pending',
-        error: null,
+        errors: {},
       };
     case SAVE_PROFILE.SUCCESS:
       return {
         ...state,
         saveState: 'complete',
-        error: null,
+        errors: {},
         // Account is always replaced completely.
         account: action.payload.account !== null ? action.payload.account : state.account,
         // Preferences changes get merged in.
@@ -74,65 +65,94 @@ const profilePage = (state = initialState, action) => {
       return {
         ...state,
         saveState: 'error',
-        error: action.payload.error,
+        errors: Object.assign({}, state.errors, action.payload.errors),
       };
     case SAVE_PROFILE.RESET:
       return {
         ...state,
         saveState: null,
-        error: null,
+        errors: {},
       };
 
     case SAVE_PROFILE_PHOTO.BEGIN:
       return {
         ...state,
         savePhotoState: 'pending',
-        error: null,
+        errors: {},
       };
     case SAVE_PROFILE_PHOTO.SUCCESS:
       return {
         ...state,
         savePhotoState: 'complete',
-        error: null,
+        errors: {},
       };
     case SAVE_PROFILE_PHOTO.FAILURE:
       return {
         ...state,
         savePhotoState: 'error',
-        error: action.payload.error,
+        errors: Object.assign({}, state.errors, action.payload.errors),
       };
     case SAVE_PROFILE_PHOTO.RESET:
       return {
         ...state,
         savePhotoState: null,
-        error: null,
+        errors: {},
       };
 
     case DELETE_PROFILE_PHOTO.BEGIN:
       return {
         ...state,
         savePhotoState: 'pending',
-        error: null,
+        errors: {},
       };
     case DELETE_PROFILE_PHOTO.SUCCESS:
       return {
         ...state,
         savePhotoState: 'complete',
-        error: null,
+        errors: {},
       };
     case DELETE_PROFILE_PHOTO.FAILURE:
       return {
         ...state,
         savePhotoState: 'error',
-        error: action.payload.error,
+        errors: Object.assign({}, state.errors, action.payload.errors),
       };
     case DELETE_PROFILE_PHOTO.RESET:
       return {
         ...state,
         savePhotoState: null,
-        error: null,
+        errors: {},
       };
 
+    case UPDATE_ACCOUNT_DRAFT:
+      return {
+        ...state,
+        accountDrafts: Object.assign({}, state.accountDrafts, {
+          [action.payload.name]: action.payload.value,
+        }),
+      };
+
+    case UPDATE_VISIBILITY_DRAFT:
+      return {
+        ...state,
+        visibilityDrafts: Object.assign({}, state.visibilityDrafts, {
+          [action.payload.name]: action.payload.value,
+        }),
+      };
+    case OPEN_FORM:
+      return {
+        ...state,
+        currentlyEditingField: action.payload.formId,
+      };
+    case CLOSE_FORM:
+      // Only close if the field to close is undefined or matches the field that is currently open
+      if (action.payload.formId === state.currentlyEditingField) {
+        return {
+          ...state,
+          currentlyEditingField: null,
+        };
+      }
+      return state;
     default:
       return state;
   }

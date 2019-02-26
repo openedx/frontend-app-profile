@@ -1,0 +1,100 @@
+import { createSelector } from 'reselect';
+
+export const formIdSelector = (state, props) => props.formId;
+export const authenticationUsernameSelector = state => state.authentication.username;
+export const profileAccountSelector = state => state.profilePage.account;
+export const profileAccountDraftsSelector = state => state.profilePage.accountDrafts;
+export const profileVisibilityDraftsSelector = state => state.profilePage.visibilityDrafts;
+export const profileVisibilitySelector = state => state.profilePage.preferences.visibility;
+export const saveStateSelector = state => state.profilePage.saveState;
+export const currentlyEditingFieldSelector = state => state.profilePage.currentlyEditingField;
+export const accountErrorsSelector = state => state.profilePage.errors;
+
+export const isCurrentUserProfileSelector = createSelector(
+  authenticationUsernameSelector,
+  profileAccountSelector,
+  (username, profileAccount) => username === profileAccount.username,
+);
+
+export const editableFormModeSelector = createSelector(
+  profileAccountSelector,
+  formIdSelector,
+  isCurrentUserProfileSelector,
+  currentlyEditingFieldSelector,
+  (account, formId, isCurrentUserProfile, currentlyEditingField) => {
+    // If the prop doesn't exist, that means it hasn't been set (for the current user's profile)
+    // or is being hidden from us (for other users' profiles)
+    const propExists = account[formId] != null && account[formId].length > 0;
+
+    // If this isn't the current user's profile...
+    if (!isCurrentUserProfile) {
+      // then there are only two options: static or nothing.
+      // We use 'null' as a return value because the consumers of
+      // getMode render nothing at all on a mode of null.
+      return propExists ? 'static' : null;
+    }
+    // Otherwise, if this is the current user's profile...
+    if (formId === currentlyEditingField) {
+      return 'editing';
+    }
+
+    if (!propExists) {
+      return 'empty';
+    }
+
+    return 'editable';
+  },
+);
+
+export const accountDraftsFieldSelector = createSelector(
+  formIdSelector,
+  profileAccountDraftsSelector,
+  (formId, accountDrafts) => accountDrafts[formId],
+);
+
+export const formErrorSelector = createSelector(
+  accountErrorsSelector,
+  formIdSelector,
+  (errors, formId) => errors[formId] || null,
+);
+
+export const editableFormSelector = createSelector(
+  editableFormModeSelector,
+  profileAccountSelector,
+  profileVisibilitySelector,
+  formIdSelector,
+  formErrorSelector,
+  saveStateSelector,
+  accountDraftsFieldSelector,
+  profileVisibilityDraftsSelector,
+  (
+    editMode,
+    account,
+    visibility,
+    formId,
+    error,
+    saveState,
+    accountDraftsField,
+    visibilityDrafts,
+  ) => ({
+    value: accountDraftsField || account[formId] || null,
+    visibility: visibilityDrafts[formId] || visibility[formId] || null, // TODO: Fix me
+    editMode,
+    error,
+    saveState,
+  }),
+);
+
+/**
+ * This is used by a saga to pull out data to process.
+ */
+export const handleSaveProfileSelector = createSelector(
+  authenticationUsernameSelector,
+  profileAccountDraftsSelector,
+  profileVisibilityDraftsSelector,
+  (username, accountDrafts, visibilityDrafts) => ({
+    username,
+    accountDrafts,
+    visibilityDrafts,
+  }),
+);

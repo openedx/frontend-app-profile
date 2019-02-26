@@ -10,7 +10,6 @@ const clientToServerKeyMap = {
   socialLinks: 'social_links',
   country: 'country',
   education: 'level_of_education',
-  fullName: 'name',
   username: 'username',
   profileImage: 'profile_image',
   dateJoined: 'date_joined',
@@ -46,10 +45,15 @@ export function getAccount(username) {
 
 export const mapSaveProfileRequestData = (props) => {
   const PROFILE_REQUEST_DATA_MAP = {
-    fullName: 'name',
     userLocation: 'country',
     education: 'levelOfEducation',
-    socialLinks: socialLinks => socialLinks.filter(({ socialLink }) => socialLink !== null),
+    socialLinks: socialLinks =>
+      Object.entries(socialLinks)
+        .filter(([platform, value]) => value !== null) // eslint-disable-line no-unused-vars
+        .reduce((acc, [platform, value]) => {
+          acc.push({ socialLink: value, platform });
+          return acc;
+        }, []),
   };
   const state = {};
 
@@ -66,15 +70,16 @@ export const mapSaveProfileRequestData = (props) => {
 
 export function patchProfile(username, data) {
   return new Promise((resolve, reject) => {
-    apiClient.patch(
-      `${configuration.ACCOUNTS_API_BASE_URL}/${username}`,
-      snakecaseKeys(mapSaveProfileRequestData(data), { deep: true }),
-      {
-        headers: {
-          'Content-Type': 'application/merge-patch+json',
+    apiClient
+      .patch(
+        `${configuration.ACCOUNTS_API_BASE_URL}/${username}`,
+        snakecaseKeys(mapSaveProfileRequestData(data), { deep: true }),
+        {
+          headers: {
+            'Content-Type': 'application/merge-patch+json',
+          },
         },
-      },
-    )
+      )
       .then((response) => {
         resolve(camelcaseKeys(response.data, { deep: true }));
       })
@@ -100,7 +105,8 @@ export function getPreferences(username) {
   const url = `${configuration.PREFERENCES_API_BASE_URL}/${username}`;
 
   return new Promise((resolve, reject) => {
-    apiClient.get(url)
+    apiClient
+      .get(url)
       .then(({ data }) => {
         // Unflatten server response
         // visibility.social_links: 'value' becomes { visibility: { socialLinks: 'value' }}
@@ -120,12 +126,10 @@ export function patchPreferences(username, preferences) {
   const data = flattenAndTransformKeys(preferences, key => mapClientKey(key));
 
   return new Promise((resolve, reject) => {
-    apiClient.patch(
-      url,
-      data,
-      { headers: { 'Content-Type': 'application/merge-patch+json' } },
-    )
-      .then((response) => { // eslint-disable-line no-unused-vars
+    apiClient
+      .patch(url, data, { headers: { 'Content-Type': 'application/merge-patch+json' } })
+      .then(() => {
+        // eslint-disable-line no-unused-vars
         // Server response is blank on success
         // resolve(response.data);
         resolve(preferences);

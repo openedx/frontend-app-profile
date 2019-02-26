@@ -11,6 +11,7 @@ function AsyncActionButton({
   style,
   variant,
   labels,
+  type,
 }) {
   const renderIcon = () => {
     if (variant === 'error') return <Icon className="icon fa fa-times-circle" />;
@@ -30,6 +31,7 @@ function AsyncActionButton({
 
   return (
     <Button
+      type={type}
       aria-live="assertive"
       onClick={onClick}
       disabled={variant === 'pending' || variant === 'complete' || variant === 'error'}
@@ -59,7 +61,8 @@ export default AsyncActionButton;
 
 
 AsyncActionButton.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  type: PropTypes.string,
+  onClick: PropTypes.func,
   color: PropTypes.string,
   className: PropTypes.string,
   style: PropTypes.object, // eslint-disable-line
@@ -73,6 +76,8 @@ AsyncActionButton.propTypes = {
 };
 
 AsyncActionButton.defaultProps = {
+  onClick: null,
+  type: 'button',
   className: null,
   color: 'primary',
   style: null,

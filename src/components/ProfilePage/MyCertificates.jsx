@@ -5,7 +5,7 @@ import { Row, Col, Card, CardBody, CardTitle, CardText, Button } from 'reactstra
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 
-import EditControls from './elements/EditControls';
+import FormControls from './elements/FormControls';
 import EditableItemHeader from './elements/EditableItemHeader';
 import SwitchContent from './elements/SwitchContent';
 
@@ -69,7 +69,7 @@ function MyCertificates({
           <React.Fragment>
             <EditableItemHeader content="My Certificates" />
             {renderCertificates()}
-            <EditControls
+            <FormControls
               onCancel={() => onCancel('certificates')}
               onSave={() => onSave('certificates')}
               saveState={saveState}

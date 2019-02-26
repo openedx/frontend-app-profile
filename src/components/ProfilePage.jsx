@@ -9,156 +9,79 @@ import {
   saveProfile,
   saveProfilePhoto,
   deleteProfilePhoto,
-  openField,
-  closeField,
+  openForm,
+  closeForm,
+  updateVisibilityDraft,
+  updateAccountDraft,
 } from '../actions/ProfileActions';
 
 // Components
 import ProfileAvatar from './ProfilePage/ProfileAvatar';
-import FullName from './ProfilePage/FullName';
-import UserLocation from './ProfilePage/UserLocation';
-import Education from './ProfilePage/Education';
-import SocialLinks from './ProfilePage/SocialLinks';
-import Bio from './ProfilePage/Bio';
-import MyCertificates from './ProfilePage/MyCertificates';
+import NameForm from './ProfilePage/NameForm';
+// import UserLocation from './ProfilePage/UserLocation';
+// import Education from './ProfilePage/Education';
+// import SocialLinks from './ProfilePage/SocialLinks';
+// import Bio from './ProfilePage/Bio';
+// import MyCertificates from './ProfilePage/MyCertificates';
 
 export class ProfilePage extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      fullName: { value: null, visibility: null },
-      userLocation: { value: null, visibility: null },
-      education: { value: null, visibility: null },
-      bio: { value: null, visibility: null },
-      socialLinks: { value: null, visibility: null },
-      certificates: { value: null, visibility: null },
-    };
-
-    this.onCancel = this.onCancel.bind(this);
-    this.onEdit = this.onEdit.bind(this);
-    this.onSave = this.onSave.bind(this);
-    this.onSaveProfilePhoto = this.onSaveProfilePhoto.bind(this);
-    this.onDeleteProfilePhoto = this.onDeleteProfilePhoto.bind(this);
-    this.onChange = this.onChange.bind(this);
-    this.onVisibilityChange = this.onVisibilityChange.bind(this);
+    this.handleSaveProfilePhoto = this.handleSaveProfilePhoto.bind(this);
+    this.handleDeleteProfilePhoto = this.handleDeleteProfilePhoto.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.handleOpen = this.handleOpen.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchProfile(this.props.match.params.username);
   }
 
-  onCancel() {
-    this.props.closeField(this.props.currentlyEditingField);
-  }
-
-  onEdit(fieldName) {
-    this.props.openField(fieldName);
-  }
-
-  onSave(fieldName) {
-    const { value, visibility } = this.state[fieldName];
-
-    const data = {
-      profileData: null,
-      preferencesData: null,
-    };
-
-    if (value != null) {
-      data.profileData = { [fieldName]: value };
-    }
-    if (visibility != null) {
-      data.preferencesData = { visibility: { [fieldName]: visibility } };
-    }
-
-    if (value == null && visibility == null) {
-      this.onCancel();
-    } else {
-      this.props.saveProfile(
-        this.props.username,
-        data.profileData,
-        data.preferencesData,
-        fieldName,
-      );
-    }
-  }
-
-  onSaveProfilePhoto(formData) {
+  handleSaveProfilePhoto(formData) {
     this.props.saveProfilePhoto(this.props.username, formData);
   }
 
-  onDeleteProfilePhoto() {
+  handleDeleteProfilePhoto() {
     this.props.deleteProfilePhoto(this.props.username);
   }
 
-  onChange(fieldName, value) {
-    this.setState({
-      [fieldName]: {
-        value,
-        visibility: this.state[fieldName].visibility,
-      },
-    });
+  handleClose(formId) {
+    this.props.closeForm(formId);
   }
 
-  onVisibilityChange(fieldName, visibility) {
-    this.setState({
-      [fieldName]: {
-        value: this.state[fieldName].value,
-        visibility,
-      },
-    });
+  handleOpen(formId) {
+    this.props.openForm(formId);
+  }
+
+  handleSubmit(formId) {
+    this.props.saveProfile(formId);
+  }
+
+  handleChange(formId, name, value) {
+    if (name === 'visibility') {
+      this.props.updateVisibilityDraft(formId, value);
+    } else {
+      this.props.updateAccountDraft(formId, value);
+    }
   }
 
   render() {
     const {
-      saveState,
-      error,
       profileImage,
       username,
-      fullName,
-      userLocation,
-      bio,
-      education,
-      socialLinks,
-      certificates,
-      isCurrentUserProfile,
+      errors,
     } = this.props;
 
-    const commonProps = {
-      onSave: this.onSave,
-      onEdit: this.onEdit,
-      onCancel: this.onCancel,
-      onChange: this.onChange,
-      onVisibilityChange: this.onVisibilityChange,
-      saveState,
-      error,
+    const commonFormProps = {
+      openHandler: this.handleOpen,
+      closeHandler: this.handleClose,
+      submitHandler: this.handleSubmit,
+      changeHandler: this.handleChange,
+      errors,
     };
-
-    const getMode = (name) => {
-      // If the prop doesn't exist, that means it hasn't been set (for the current user's profile)
-      // or is being hidden from us (for other users' profiles)
-      const propExists = this.props[name] != null && this.props[name].length > 0;
-
-      // If this isn't the current user's profile...
-      if (!isCurrentUserProfile) {
-        // then there are only two options: static or nothing.
-        // We use 'null' as a return value because the consumers of
-        // getMode render nothing at all on a mode of null.
-        return propExists ? 'static' : null;
-      }
-      // Otherwise, if this is the current user's profile...
-      if (name === this.props.currentlyEditingField) {
-        return 'editing';
-      }
-
-      if (!propExists) {
-        return 'empty';
-      }
-
-      return 'editable';
-    };
-
-    const getVisibility = name => this.props.visibility[name];
 
     return (
       <div className="profile-page">
@@ -170,8 +93,8 @@ export class ProfilePage extends React.Component {
                 <ProfileAvatar
                   className="mb-md-3"
                   src={profileImage}
-                  onSave={this.onSaveProfilePhoto}
-                  onDelete={this.onDeleteProfilePhoto}
+                  onSave={this.handleSaveProfilePhoto}
+                  onDelete={this.handleDeleteProfilePhoto}
                   savePhotoState={this.props.savePhotoState}
                 />
                 <div>
@@ -183,14 +106,10 @@ export class ProfilePage extends React.Component {
           </Row>
           <Row>
             <Col xs={{ order: 2 }} md={{ size: 4, order: 1 }} lg={3} className="mt-md-4">
-              <FullName
-                fullName={fullName}
-                visibility={getVisibility('fullName')}
-                editMode={getMode('fullName')}
-                {...commonProps}
-              />
+              <NameForm formId="name" {...commonFormProps} />
+              {/* <CountryForm formId="country" {...commonFormProps} /> */}
 
-              <UserLocation
+              {/* <UserLocation
                 userLocation={userLocation}
                 visibility={getVisibility('userLocation')}
                 editMode={getMode('userLocation')}
@@ -209,7 +128,7 @@ export class ProfilePage extends React.Component {
                 visibility={getVisibility('socialLinks')}
                 editMode={getMode('socialLinks')}
                 {...commonProps}
-              />
+              /> */}
             </Col>
             <Col
               xs={{ order: 1 }}
@@ -217,19 +136,18 @@ export class ProfilePage extends React.Component {
               lg={{ size: 8, offset: 1 }}
               className="mt-4 mt-md-n5"
             >
-              <Bio
+              {/* <Bio
                 bio={bio}
                 visibility={getVisibility('bio')}
                 editMode={getMode('bio')}
                 {...commonProps}
-              />
+              /> */}
 
-              <MyCertificates
+              {/* <MyCertificates
                 certificates={certificates}
                 visibility={getVisibility('certificates')}
                 editMode={getMode('certificates')}
-                {...commonProps}
-              />
+              /> */}
             </Col>
           </Row>
         </Container>
@@ -244,7 +162,7 @@ ProfilePage.propTypes = {
   saveState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
   savePhotoState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
   isCurrentUserProfile: PropTypes.bool.isRequired,
-  error: PropTypes.string,
+  errors: PropTypes.objectOf(PropTypes.string),
 
   // Profile data
   username: PropTypes.string,
@@ -255,7 +173,6 @@ ProfilePage.propTypes = {
   })),
 
   // Profile data for form fields
-  fullName: PropTypes.string,
   userLocation: PropTypes.string,
   education: PropTypes.string,
   socialLinks: PropTypes.arrayOf(PropTypes.shape({
@@ -270,8 +187,10 @@ ProfilePage.propTypes = {
   saveProfile: PropTypes.func.isRequired,
   saveProfilePhoto: PropTypes.func.isRequired,
   deleteProfilePhoto: PropTypes.func.isRequired,
-  openField: PropTypes.func.isRequired,
-  closeField: PropTypes.func.isRequired,
+  openForm: PropTypes.func.isRequired,
+  closeForm: PropTypes.func.isRequired,
+  updateVisibilityDraft: PropTypes.func.isRequired,
+  updateAccountDraft: PropTypes.func.isRequired,
 
   // Router
   match: PropTypes.shape({
@@ -285,9 +204,8 @@ ProfilePage.defaultProps = {
   currentlyEditingField: null,
   saveState: null,
   savePhotoState: null,
-  error: null,
+  errors: {},
   profileImage: null,
-  fullName: null,
   username: null,
   userLocation: null,
   education: null,
@@ -311,7 +229,6 @@ const mapStateToProps = (state) => {
     error: state.profilePage.error,
     profileImage,
 
-    fullName: state.profilePage.account.name,
     username: state.profilePage.account.username,
     userLocation: state.profilePage.account.country,
     education: state.profilePage.account.levelOfEducation,
@@ -327,10 +244,12 @@ export default connect(
   mapStateToProps,
   {
     fetchProfile,
-    saveProfile,
     saveProfilePhoto,
     deleteProfilePhoto,
-    openField,
-    closeField,
+    saveProfile,
+    openForm,
+    closeForm,
+    updateVisibilityDraft,
+    updateAccountDraft,
   },
 )(ProfilePage);

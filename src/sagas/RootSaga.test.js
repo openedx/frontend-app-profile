@@ -1,6 +1,7 @@
-import { takeEvery, put, call, delay } from 'redux-saga/effects';
+import { takeEvery, put, call, delay, select } from 'redux-saga/effects';
 
 import * as profileActions from '../actions/ProfileActions';
+import { handleSaveProfileSelector } from '../selectors/ProfilePageSelector';
 
 jest.mock('../services/ProfileApiService', () => ({
   getProfile: jest.fn(),
@@ -36,31 +37,33 @@ describe('RootSaga', () => {
   });
 
   describe('handleSaveProfile', () => {
+    const selectorData = {
+      username: 'my username',
+      accountDrafts: {
+        name: 'Full Name',
+      },
+      visibilityDrafts: {},
+    };
+    beforeEach(() => {});
     it('should successfully process a saveProfile request if there are no exceptions', () => {
-      const action = profileActions.saveProfile(
-        'my username',
-        {
-          profileData: {
-            fullName: 'Full Name',
-            education: 'b',
-          },
-          preferencesData: null,
-        },
-        'ze field',
-      );
+      const action = profileActions.saveProfile('ze form id');
       const gen = handleSaveProfile(action);
       const profile = {
         name: 'Full Name',
         levelOfEducation: 'b',
       };
-      expect(gen.next().value).toEqual(put(profileActions.saveProfileBegin()));
-      expect(gen.next().value).toEqual(call(ProfileApiService.patchProfile, 'my username', action.payload.profileData));
+      expect(gen.next().value).toEqual(select(handleSaveProfileSelector));
+      expect(gen.next(selectorData).value).toEqual(put(profileActions.saveProfileBegin()));
+      expect(gen.next().value).toEqual(call(ProfileApiService.patchProfile, 'my username', {
+        name: 'Full Name',
+      }));
       // The library would supply the result of the above call
       // as the parameter to the NEXT yield.  Here:
-      expect(gen.next(profile).value).toEqual(put(profileActions.saveProfileSuccess()));
-      expect(gen.next().value).toEqual(put(profileActions.fetchProfileSuccess(profile)));
+      expect(gen.next(profile).value).toEqual(put(profileActions.saveProfileSuccess(profile, {
+        visibility: {},
+      })));
       expect(gen.next().value).toEqual(delay(300));
-      expect(gen.next().value).toEqual(put(profileActions.closeField('ze field')));
+      expect(gen.next().value).toEqual(put(profileActions.closeForm('ze form id')));
       expect(gen.next().value).toEqual(delay(300));
       expect(gen.next().value).toEqual(put(profileActions.saveProfileReset()));
       expect(gen.next().value).toBeUndefined();
@@ -71,14 +74,15 @@ describe('RootSaga', () => {
       const action = profileActions.saveProfile(
         'my username',
         {
-          fullName: 'Full Name',
+          name: 'Full Name',
           education: 'b',
         },
-        'ze field',
+        'ze form id',
       );
       const gen = handleSaveProfile(action);
 
-      expect(gen.next().value).toEqual(put(profileActions.saveProfileBegin()));
+      expect(gen.next().value).toEqual(select(handleSaveProfileSelector));
+      expect(gen.next(selectorData).value).toEqual(put(profileActions.saveProfileBegin()));
       const result = gen.throw(error);
       expect(result.value).toEqual(put(profileActions.saveProfileFailure('uhoh')));
       expect(gen.next().value).toBeUndefined();

@@ -4,7 +4,7 @@ import { Input } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
-import EditControls from './elements/EditControls';
+import FormControls from './elements/FormControls';
 import EditableItemHeader from './elements/EditableItemHeader';
 import SwitchContent from './elements/SwitchContent';
 import EmptyContent from './elements/EmptyContent';
@@ -127,7 +127,7 @@ class SocialLinks extends React.Component {
                   />
                 ))}
               </ul>
-              <EditControls
+              <FormControls
                 onCancel={() => onCancel('socialLinks')}
                 onSave={this.onSave}
                 saveState={saveState}

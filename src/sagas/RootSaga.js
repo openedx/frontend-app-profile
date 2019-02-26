@@ -1,5 +1,6 @@
-import { all, call, put, takeEvery, delay } from 'redux-saga/effects';
+import { all, call, delay, put, select, takeEvery } from 'redux-saga/effects';
 
+// Actions
 import {
   FETCH_PROFILE,
   fetchProfileBegin,
@@ -12,7 +13,7 @@ import {
   saveProfileSuccess,
   saveProfileFailure,
   saveProfileReset,
-  closeField,
+  closeForm,
   SAVE_PROFILE_PHOTO,
   saveProfilePhotoBegin,
   saveProfilePhotoSuccess,
@@ -25,6 +26,10 @@ import {
   deleteProfilePhotoReset,
 } from '../actions/ProfileActions';
 
+// Selectors
+import { handleSaveProfileSelector } from '../selectors/ProfilePageSelector';
+
+// Services
 import * as ProfileApiService from '../services/ProfileApiService';
 
 export function* handleFetchProfile(action) {
@@ -47,34 +52,30 @@ export function* handleFetchProfile(action) {
 }
 
 export function* handleSaveProfile(action) {
-  const { username, draftAccount, draftPreferences } = action.payload;
+  const { username, accountDrafts, visibilityDrafts } = yield select(handleSaveProfileSelector);
 
   try {
     yield put(saveProfileBegin());
     let accountResult = null;
+    // Build the visibility drafts into a structure the API expects.
+    const preferences = {
+      visibility: visibilityDrafts,
+    };
 
-    if (draftAccount !== null) {
-      accountResult = yield call(
-        ProfileApiService.patchProfile,
-        username,
-        draftAccount,
-      );
+    if (Object.keys(accountDrafts).length > 0) {
+      accountResult = yield call(ProfileApiService.patchProfile, username, accountDrafts);
     }
 
-    if (draftPreferences !== null) {
-      yield call(
-        ProfileApiService.patchPreferences,
-        username,
-        draftPreferences,
-      );
+    if (Object.keys(visibilityDrafts).length > 0) {
+      yield call(ProfileApiService.patchPreferences, username, preferences);
     }
 
     // The account result is returned from the server.
     // The preferences draft is valid if the server didn't complain, so
     // pass it through directly.
-    yield put(saveProfileSuccess(accountResult, draftPreferences));
+    yield put(saveProfileSuccess(accountResult, preferences));
     yield delay(300);
-    yield put(closeField(action.payload.fieldName));
+    yield put(closeForm(action.payload.formId));
     yield delay(300);
     yield put(saveProfileReset());
   } catch (e) {

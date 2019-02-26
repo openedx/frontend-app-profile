@@ -6,19 +6,13 @@ describe('mapSaveProfileRequestData', () => {
       favoriteColor: 'red',
       age: 30,
       petName: 'Donkey',
-      fullName: 'Donkey McWafflebatter',
+      name: 'Donkey McWafflebatter',
       userLocation: 'US',
       education: 'BS',
-      socialLinks: [
-        {
-          platform: 'twitter',
-          socialLink: null,
-        },
-        {
-          platform: 'facebook',
-          socialLink: 'https://www.facebook.com',
-        },
-      ],
+      socialLinks: {
+        twitter: null,
+        facebook: 'https://www.facebook.com',
+      },
     };
     const result = mapSaveProfileRequestData(props);
     expect(result).toEqual({

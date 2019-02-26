@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Input } from 'reactstrap';
 
-import EditControls from './elements/EditControls';
+import FormControls from './elements/FormControls';
 import EditableItemHeader from './elements/EditableItemHeader';
 import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
@@ -40,7 +40,7 @@ function UserLocation({
                 <option key={key} value={key}>{ALL_COUNTRIES[key]}</option>
               ))}
             </Input>
-            <EditControls
+            <FormControls
               onCancel={() => onCancel('userLocation')}
               onSave={() => onSave('userLocation')}
               saveState={saveState}
