@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, FormGroup, Input, Label, Button } from 'reactstrap';
 
-import AsyncActionButton from './elements/AsyncActionButton';
+import FormControls from './elements/FormControls';
 import EditableItemHeader from './elements/EditableItemHeader';
 import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
@@ -51,21 +51,11 @@ function UserLocation({
                 ))}
               </Input>
             </FormGroup>
-            <Label for="visibility.userLocation">Who can see this:</Label>
-            <Input type="select" name="visibility.userLocation" defaultValue={visibility}>
-              <option value="private">Just me</option>
-              <option value="all_users">Everyone on edX</option>
-            </Input>
-            <Button color="link" onClick={handleClickCancel}>Cancel</Button>
-            <AsyncActionButton
-              type="submit"
-              variant={saveState}
-              labels={{
-                default: 'Save',
-                pending: 'Saving',
-                complete: 'Saved',
-                error: 'Save Failed',
-              }}
+            <FormControls
+              saveState={saveState}
+              onCancel={onCancel} 
+              visibility={visibility}
+              visibilityName="visibility.userLocation"
             />
           </Form>
         ),

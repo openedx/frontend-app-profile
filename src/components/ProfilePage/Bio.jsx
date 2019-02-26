@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { Form, FormGroup, Input, Label, Button } from 'reactstrap';
+import { Form, FormGroup, Input, Label, Button, FormFeedback, FormText } from 'reactstrap';
 
 import EditableItemHeader from './elements/EditableItemHeader';
 import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
-import AsyncActionButton from './elements/AsyncActionButton';
+import FormControls from './elements/FormControls';
 
 
 function Bio({
@@ -39,23 +39,15 @@ function Bio({
           <Form onSubmit={handleSubmit} onChange={handleChange}>
             <FormGroup>
               <Label for="bio">About Me</Label>
-              <Input type="textarea" name="bio" defaultValue={bio} />
+              <Input invalid type="textarea" name="bio" defaultValue={bio} />
+              <FormFeedback>Your submission</FormFeedback>
+              <FormText>Example help text that remains unchanged.</FormText>
             </FormGroup>
-            <Label for="visibility.bio">Who can see this:</Label>
-            <Input type="select" name="visibility.bio" defaultValue={visibility}>
-              <option value="private">Just me</option>
-              <option value="all_users">Everyone on edX</option>
-            </Input>
-            <Button color="link" onClick={handleClickCancel}>Cancel</Button>
-            <AsyncActionButton
-              type="submit"
-              variant={saveState}
-              labels={{
-                default: 'Save',
-                pending: 'Saving',
-                complete: 'Saved',
-                error: 'Save Failed',
-              }}
+            <FormControls
+              saveState={saveState}
+              onCancel={onCancel} 
+              visibility={visibility}
+              visibilityName="visibility.bio"
             />
           </Form>
         ),

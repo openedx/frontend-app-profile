@@ -16,7 +16,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 
-import AsyncActionButton from './elements/AsyncActionButton';
+import FormControls from './elements/FormControls';
 import EditableItemHeader from './elements/EditableItemHeader';
 import SwitchContent from './elements/SwitchContent';
 
@@ -92,21 +92,11 @@ function MyCertificates({
           <Form onSubmit={handleSubmit} onChange={handleChange}>
             <EditableItemHeader content="My Certificates" />
             {renderCertificates()}
-            <Label for="visibility.certificates">Who can see this:</Label>
-            <Input type="select" name="visibility.certificates" defaultValue={visibility}>
-              <option value="private">Just me</option>
-              <option value="all_users">Everyone on edX</option>
-            </Input>
-            <Button color="link" onClick={handleClickCancel}>Cancel</Button>
-            <AsyncActionButton
-              type="submit"
-              variant={saveState}
-              labels={{
-                default: 'Save',
-                pending: 'Saving',
-                complete: 'Saved',
-                error: 'Save Failed',
-              }}
+            <FormControls
+              saveState={saveState}
+              onCancel={onCancel} 
+              visibility={visibility}
+              visibilityName="visibility.certificates"
             />
           </Form>
         ),

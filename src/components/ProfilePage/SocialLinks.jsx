@@ -4,7 +4,7 @@ import { Form, FormGroup, Input, Label, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
-import AsyncActionButton from './elements/AsyncActionButton';
+import FormControls from './elements/FormControls';
 import EditableItemHeader from './elements/EditableItemHeader';
 import SwitchContent from './elements/SwitchContent';
 import EmptyContent from './elements/EmptyContent';
@@ -88,14 +88,16 @@ class SocialLinks extends React.Component {
             <React.Fragment>
               <EditableItemHeader content="Social Links" />
               <ul className="list-unstyled">
-                {socialLinks.map(({ platform, socialLink }) => (
-                  <StaticListItem
-                    key={platform}
-                    name={platforms[platform]}
-                    url={socialLink}
-                    platform={platform}
-                  />
-                ))}
+                {platforms.filter(({platform}) => socialLinksMap[platform] != null)
+                  .map(({ platform, name }) => (
+                    <StaticListItem
+                      key={platform}
+                      name={name}
+                      url={socialLinksMap[platform]}
+                      platform={platform}
+                    />
+                  )
+                )}
               </ul>
             </React.Fragment>
           ),
@@ -135,21 +137,11 @@ class SocialLinks extends React.Component {
                   />
                 ))}
               </ul>
-              <Label for="visibility.socialLinks">Who can see this:</Label>
-              <Input type="select" name="visibility.socialLinks" defaultValue={visibility}>
-                <option value="private">Just me</option>
-                <option value="all_users">Everyone on edX</option>
-              </Input>
-              <Button color="link" onClick={handleClickCancel}>Cancel</Button>
-              <AsyncActionButton
-                type="submit"
-                variant={saveState}
-                labels={{
-                  default: 'Save',
-                  pending: 'Saving',
-                  complete: 'Saved',
-                  error: 'Save Failed',
-                }}
+              <FormControls
+                saveState={saveState}
+                onCancel={onCancel} 
+                visibility={visibility}
+                visibilityName="visibility.socialLinks"
               />
             </Form>
           ),
@@ -237,7 +229,6 @@ function EditingListItem({
   platform,
   name,
   defaultValue,
-  onChange,
 }) {
   return (
     <li className="form-group">
@@ -255,7 +246,6 @@ EditingListItem.propTypes = {
   platform: PropTypes.string.isRequired,
   defaultValue: PropTypes.string,
   name: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
 };
 EditingListItem.defaultProps = {
   defaultValue: null,
