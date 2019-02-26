@@ -1,4 +1,4 @@
-import { call, put, takeEvery, delay } from 'redux-saga/effects';
+import { all, call, put, takeEvery, delay } from 'redux-saga/effects';
 
 import {
   FETCH_PROFILE,
@@ -55,18 +55,13 @@ export function* handleFetchProfile(action) {
   try {
     yield put(fetchProfileBegin());
 
-    const profile = yield call(
-      ProfileApiService.getProfile,
-      username,
-    );
-    const preferences = yield call(
-      ProfileApiService.getPreferences,
-      username,
-    );
-    profile.certificates = yield call(
-      ProfileApiService.getCourseCertificates,
-      username,
-    );
+    const [profile, preferences, certificates] = yield all([
+      call(ProfileApiService.getProfile, username),
+      call(ProfileApiService.getPreferences, username),
+      call(ProfileApiService.getCourseCertificates, username),
+    ]);
+
+    profile.certificates = certificates;
 
     yield put(fetchProfileSuccess(profile));
     yield put(receivePreferences(preferences));
