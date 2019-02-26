@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, FormGroup, Input, Label, Button } from 'reactstrap';
+import { Form, FormGroup, Input, Label, Button, FormFeedback } from 'reactstrap';
 
 import EditableItemHeader from './elements/EditableItemHeader';
 import EmptyContent from './elements/EmptyContent';
@@ -19,6 +19,7 @@ function Education({
   onCancel,
   onSubmit,
   saveState,
+  error,
 }) {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -45,11 +46,13 @@ function Education({
                 name="education"
                 className="w-100"
                 defaultValue={education}
+                invalid={error != null}
               >
                 {Object.keys(EDUCATION).map(key => (
                   <option key={key} value={key}>{EDUCATION[key]}</option>
                 ))}
               </Input>
+              <FormFeedback>{error}</FormFeedback>
             </FormGroup>
             <FormControls
               saveState={saveState}
@@ -94,6 +97,7 @@ Education.propTypes = {
   saveState: PropTypes.string,
   education: PropTypes.string,
   visibility: PropTypes.oneOf(['private', 'all_users']),
+  error: PropTypes.string,
 };
 
 Education.defaultProps = {
@@ -101,6 +105,7 @@ Education.defaultProps = {
   saveState: null,
   education: null,
   visibility: 'private',
+  error: null,
 };
 
 

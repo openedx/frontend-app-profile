@@ -18,6 +18,7 @@ function Bio({
   onCancel,
   onSubmit,
   saveState,
+  error,
 }) {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,9 +40,13 @@ function Bio({
           <Form onSubmit={handleSubmit} onChange={handleChange}>
             <FormGroup>
               <Label for="bio">About Me</Label>
-              <Input invalid type="textarea" name="bio" defaultValue={bio} />
-              <FormFeedback>Your submission</FormFeedback>
-              <FormText>Example help text that remains unchanged.</FormText>
+              <Input
+                name="bio"
+                type="textarea"
+                defaultValue={bio}
+                invalid={error != null}
+              />
+              <FormFeedback>{error}</FormFeedback>
             </FormGroup>
             <FormControls
               saveState={saveState}
@@ -92,6 +97,7 @@ Bio.propTypes = {
   saveState: PropTypes.string,
   bio: PropTypes.string,
   visibility: PropTypes.oneOf(['private', 'all_users']),
+  error: PropTypes.string,
 };
 
 Bio.defaultProps = {
@@ -99,6 +105,7 @@ Bio.defaultProps = {
   saveState: null,
   bio: null,
   visibility: 'private',
+  error: null,
 };
 
 

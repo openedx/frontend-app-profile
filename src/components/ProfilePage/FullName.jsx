@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, FormGroup, Input, Label, Button } from 'reactstrap';
+import { Form, FormGroup, Input, Label, Button, FormText, FormFeedback } from 'reactstrap';
 
 import EditableItemHeader from './elements/EditableItemHeader';
 import EmptyContent from './elements/EmptyContent';
@@ -17,7 +17,7 @@ function FullName({
   onCancel,
   saveState,
   onSubmit,
-
+  error,
 }) {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,7 +39,14 @@ function FullName({
           <Form onSubmit={handleSubmit} onChange={handleChange}>
             <FormGroup>
               <Label for="fullName">Full Name</Label>
-              <Input type="text" name="fullName" defaultValue={fullName} />
+              <Input
+                type="text"
+                name="fullName"
+                defaultValue={fullName}
+                invalid={error != null}
+              />
+              <FormText>This is your name that appears in your account and on your certificates.</FormText>
+              <FormFeedback>{error}</FormFeedback>
             </FormGroup>
             <FormControls
               saveState={saveState}
@@ -85,6 +92,7 @@ FullName.propTypes = {
   saveState: PropTypes.string,
   fullName: PropTypes.string,
   visibility: PropTypes.oneOf(['private', 'all_users']),
+  error: PropTypes.string,
 };
 
 FullName.defaultProps = {
@@ -92,6 +100,7 @@ FullName.defaultProps = {
   saveState: null,
   fullName: null,
   visibility: 'private',
+  error: null,
 };
 
 

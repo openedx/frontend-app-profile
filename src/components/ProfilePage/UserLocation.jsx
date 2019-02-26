@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, FormGroup, Input, Label, Button } from 'reactstrap';
+import { Form, FormGroup, Input, Label, Button, FormFeedback } from 'reactstrap';
 
 import FormControls from './elements/FormControls';
 import EditableItemHeader from './elements/EditableItemHeader';
@@ -19,6 +19,7 @@ function UserLocation({
   onCancel,
   onSubmit,
   saveState,
+  error,
 }) {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -45,11 +46,13 @@ function UserLocation({
                 name="userLocation"
                 className="w-100"
                 defaultValue={userLocation}
+                invalid={error != null}
               >
                 {Object.keys(ALL_COUNTRIES).map(key => (
                   <option key={key} value={key}>{ALL_COUNTRIES[key]}</option>
                 ))}
               </Input>
+              <FormFeedback>{error}</FormFeedback>
             </FormGroup>
             <FormControls
               saveState={saveState}
@@ -94,6 +97,7 @@ UserLocation.propTypes = {
   saveState: PropTypes.string,
   userLocation: PropTypes.string,
   visibility: PropTypes.oneOf(['private', 'all_users']),
+  error: PropTypes.string,
 };
 
 UserLocation.defaultProps = {
@@ -101,6 +105,7 @@ UserLocation.defaultProps = {
   saveState: null,
   userLocation: null,
   visibility: 'private',
+  error: null,
 };
 
 

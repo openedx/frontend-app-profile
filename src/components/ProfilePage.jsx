@@ -205,6 +205,7 @@ export class ProfilePage extends React.Component {
                 visibility={getVisibility('fullName')}
                 editMode={getMode('fullName')}
                 {...commonProps}
+                error="Please have a name 2 characters or longer."
               />
 
               <UserLocation
@@ -212,6 +213,7 @@ export class ProfilePage extends React.Component {
                 visibility={getVisibility('userLocation')}
                 editMode={getMode('userLocation')}
                 {...commonProps}
+                error="Please choose another country"
               />
 
               <Education
@@ -219,6 +221,7 @@ export class ProfilePage extends React.Component {
                 visibility={getVisibility('education')}
                 editMode={getMode('education')}
                 {...commonProps}
+                error="Please choose another school."
               />
 
               <SocialLinks
@@ -226,6 +229,11 @@ export class ProfilePage extends React.Component {
                 visibility={getVisibility('socialLinks')}
                 editMode={getMode('socialLinks')}
                 {...commonProps}
+                errors={{
+                  twitter: "Please use a proper URL.",
+                  facebook: "Please use a proper URL.",
+                  linkedin: "Please use a proper URL.",
+                }}
               />
 
             </Col>
@@ -236,6 +244,7 @@ export class ProfilePage extends React.Component {
                 visibility={getVisibility('bio')}
                 editMode={getMode('bio')}
                 {...commonProps}
+                error="Please avoid XSS attempts."
               />
 
               <MyCertificates
