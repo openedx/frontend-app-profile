@@ -15,7 +15,6 @@ const brandIcons = {
   linkedin: faLinkedin,
 };
 
-
 class SocialLinks extends React.Component {
   constructor(props) {
     super(props);
@@ -26,10 +25,12 @@ class SocialLinks extends React.Component {
   }
 
   onSave() {
-    const values = this.props.platforms.filter(({ key }) => typeof this.state[key] !== 'undefined').map(({ key }) => ({
-      platform: key,
-      socialLink: this.state[key],
-    }));
+    const values = this.props.platforms
+      .filter(({ key }) => typeof this.state[key] !== 'undefined')
+      .map(({ key }) => ({
+        platform: key,
+        socialLink: this.state[key],
+      }));
 
     this.props.onSave('socialLinks', values);
   }
@@ -60,6 +61,12 @@ class SocialLinks extends React.Component {
     }, {});
     const isEmpty = socialLinks && socialLinks.length > 0;
 
+    const platformNames = {
+      twitter: 'Twitter',
+      linkedin: 'LinkedIn',
+      facebook: 'Facebook',
+    };
+
     return (
       <SwitchContent
         className="mb-4"
@@ -68,11 +75,7 @@ class SocialLinks extends React.Component {
           empty: (
             <ul className="list-unstyled">
               {platforms.map(({ key, name }) => (
-                <EmptyListItem
-                  key={key}
-                  onClick={onEdit}
-                  name={name}
-                />
+                <EmptyListItem key={key} onClick={onEdit} name={name} />
               ))}
             </ul>
           ),
@@ -83,7 +86,7 @@ class SocialLinks extends React.Component {
                 {socialLinks.map(({ platform, socialLink }) => (
                   <StaticListItem
                     key={platform}
-                    name={platforms[platform]}
+                    name={platformNames[platform]}
                     url={socialLink}
                     platform={platform}
                   />
@@ -174,7 +177,6 @@ SocialLinks.defaultProps = {
 
 export default SocialLinks;
 
-
 function SocialLink({ url, name, platform }) {
   return (
     <a href={url} className="font-weight-bold">
@@ -190,16 +192,15 @@ SocialLink.propTypes = {
   name: PropTypes.string.isRequired,
 };
 
-
 function EditableListItem({
-  url,
-  platform,
-  onClickEmptyContent,
-  name,
+  url, platform, onClickEmptyContent, name,
 }) {
-  const linkDisplay = url != null ?
-    <SocialLink name={name} url={url} platform={platform} /> :
-    <EmptyContent onClick={onClickEmptyContent}>Add {name}</EmptyContent>;
+  const linkDisplay =
+    url != null ? (
+      <SocialLink name={name} url={url} platform={platform} />
+    ) : (
+      <EmptyContent onClick={onClickEmptyContent}>Add {name}</EmptyContent>
+    );
 
   return <li className="form-group">{linkDisplay}</li>;
 }
@@ -214,7 +215,6 @@ EditableListItem.defaultProps = {
   url: null,
   onClickEmptyContent: null,
 };
-
 
 function EditingListItem({
   platform,
@@ -244,7 +244,6 @@ EditingListItem.defaultProps = {
   defaultValue: null,
 };
 
-
 function EmptyListItem({ onClick, name }) {
   return (
     <li className="mb-4">
@@ -257,7 +256,6 @@ EmptyListItem.propTypes = {
   name: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
 };
-
 
 function StaticListItem({ name, url, platform }) {
   return (
