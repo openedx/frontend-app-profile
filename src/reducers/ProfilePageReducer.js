@@ -1,5 +1,3 @@
-import defaultsDeep from 'lodash.defaultsdeep';
-
 import {
   SAVE_PROFILE,
   SAVE_PROFILE_PHOTO,
@@ -7,8 +5,6 @@ import {
   FIELD_CLOSE,
   FIELD_OPEN,
   FETCH_PROFILE,
-  RECEIVE_PREFERENCES,
-
 } from '../actions/ProfileActions';
 
 const initialState = {
@@ -16,9 +12,23 @@ const initialState = {
   saveState: null,
   savePhotoState: null,
   currentlyEditingField: null,
-  profile: {},
+  account: {},
   preferences: {},
+  certificates: [],
 };
+
+function mergePreferences(preferences, updates) {
+  if (updates !== null) {
+    const updatedPreferences = Object.assign({}, preferences);
+    updatedPreferences.visibility = Object.assign(
+      updatedPreferences.visibility,
+      updates.visibility,
+    );
+    return updatedPreferences;
+  }
+
+  return preferences;
+}
 
 const profilePage = (state = initialState, action) => {
   switch (action.type) {
@@ -40,15 +50,10 @@ const profilePage = (state = initialState, action) => {
     case FETCH_PROFILE.SUCCESS:
       return {
         ...state,
-        profile: action.profile,
+        account: action.account,
+        preferences: action.preferences,
+        certificates: action.certificates,
       };
-
-    case RECEIVE_PREFERENCES:
-      return {
-        ...state,
-        preferences: defaultsDeep({}, action.preferences, state.preferences),
-      };
-
     case SAVE_PROFILE.BEGIN:
       return {
         ...state,
@@ -60,6 +65,10 @@ const profilePage = (state = initialState, action) => {
         ...state,
         saveState: 'complete',
         error: null,
+        // Account is always replaced completely.
+        account: action.payload.account !== null ? action.payload.account : state.account,
+        // Preferences changes get merged in.
+        preferences: mergePreferences(state.preferences, action.payload.preferences),
       };
     case SAVE_PROFILE.FAILURE:
       return {

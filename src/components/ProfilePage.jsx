@@ -57,12 +57,12 @@ export class ProfilePage extends React.Component {
   }
 
   onSave(fieldName) {
-    const {
-      value,
-      visibility,
-    } = this.state[fieldName];
+    const { value, visibility } = this.state[fieldName];
 
-    const data = {};
+    const data = {
+      profileData: null,
+      preferencesData: null,
+    };
 
     if (value != null) {
       data.profileData = { [fieldName]: value };
@@ -74,7 +74,12 @@ export class ProfilePage extends React.Component {
     if (value == null && visibility == null) {
       this.onCancel();
     } else {
-      this.props.saveProfile(this.props.username, data, fieldName);
+      this.props.saveProfile(
+        this.props.username,
+        data.profileData,
+        data.preferencesData,
+        fieldName,
+      );
     }
   }
 
@@ -178,7 +183,6 @@ export class ProfilePage extends React.Component {
           </Row>
           <Row>
             <Col xs={{ order: 2 }} md={{ size: 4, order: 1 }} lg={3} className="mt-md-4">
-
               <FullName
                 fullName={fullName}
                 visibility={getVisibility('fullName')}
@@ -206,10 +210,13 @@ export class ProfilePage extends React.Component {
                 editMode={getMode('socialLinks')}
                 {...commonProps}
               />
-
             </Col>
-            <Col xs={{ order: 1 }} md={{ size: 8, order: 2 }} lg={{ size: 8, offset: 1 }} className="mt-4 mt-md-n5">
-
+            <Col
+              xs={{ order: 1 }}
+              md={{ size: 8, order: 2 }}
+              lg={{ size: 8, offset: 1 }}
+              className="mt-4 mt-md-n5"
+            >
               <Bio
                 bio={bio}
                 visibility={getVisibility('bio')}
@@ -223,7 +230,6 @@ export class ProfilePage extends React.Component {
                 editMode={getMode('certificates')}
                 {...commonProps}
               />
-
             </Col>
           </Row>
         </Container>
@@ -233,39 +239,46 @@ export class ProfilePage extends React.Component {
 }
 
 ProfilePage.propTypes = {
+  // Page state helpers
   currentlyEditingField: PropTypes.string,
   saveState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
   savePhotoState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
-  error: PropTypes.string,
   isCurrentUserProfile: PropTypes.bool.isRequired,
-  profileImage: PropTypes.string,
-  fullName: PropTypes.string,
+  error: PropTypes.string,
+
+  // Profile data
   username: PropTypes.string,
+  profileImage: PropTypes.string,
+  accountPrivacy: PropTypes.string,
+  certificates: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string,
+  })),
+
+  // Profile data for form fields
+  fullName: PropTypes.string,
   userLocation: PropTypes.string,
   education: PropTypes.string,
   socialLinks: PropTypes.arrayOf(PropTypes.shape({
     platform: PropTypes.string,
     socialLink: PropTypes.string,
   })),
-  aboutMe: PropTypes.string,
   bio: PropTypes.string,
-  certificates: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string,
-  })),
+  visibility: PropTypes.objectOf(PropTypes.string),
 
+  // Actions
   fetchProfile: PropTypes.func.isRequired,
   saveProfile: PropTypes.func.isRequired,
   saveProfilePhoto: PropTypes.func.isRequired,
   deleteProfilePhoto: PropTypes.func.isRequired,
   openField: PropTypes.func.isRequired,
   closeField: PropTypes.func.isRequired,
+
+  // Router
   match: PropTypes.shape({
     params: PropTypes.shape({
       username: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
-  accountPrivacy: PropTypes.string,
-  visibility: PropTypes.object, // eslint-disable-line
 };
 
 ProfilePage.defaultProps = {
@@ -279,7 +292,6 @@ ProfilePage.defaultProps = {
   userLocation: null,
   education: null,
   socialLinks: [],
-  aboutMe: null,
   bio: null,
   certificates: null,
   accountPrivacy: null,
@@ -288,23 +300,24 @@ ProfilePage.defaultProps = {
 
 const mapStateToProps = (state) => {
   const profileImage =
-    state.profilePage.profile.profileImage != null
-      ? state.profilePage.profile.profileImage.imageUrlLarge
+    state.profilePage.account.profileImage != null
+      ? state.profilePage.account.profileImage.imageUrlLarge
       : null;
   return {
-    isCurrentUserProfile: state.userAccount.username === state.profilePage.profile.username,
+    isCurrentUserProfile: state.userAccount.username === state.profilePage.account.username,
     currentlyEditingField: state.profilePage.currentlyEditingField,
     saveState: state.profilePage.saveState,
     savePhotoState: state.profilePage.savePhotoState,
     error: state.profilePage.error,
     profileImage,
-    fullName: state.profilePage.profile.name,
-    username: state.profilePage.profile.username,
-    userLocation: state.profilePage.profile.country,
-    education: state.profilePage.profile.levelOfEducation,
-    socialLinks: state.profilePage.profile.socialLinks,
-    bio: state.profilePage.profile.bio,
-    certificates: state.profilePage.profile.certificates,
+
+    fullName: state.profilePage.account.name,
+    username: state.profilePage.account.username,
+    userLocation: state.profilePage.account.country,
+    education: state.profilePage.account.levelOfEducation,
+    socialLinks: state.profilePage.account.socialLinks,
+    bio: state.profilePage.account.bio,
+    certificates: state.profilePage.account.certificates,
     accountPrivacy: state.profilePage.preferences.accountPrivacy,
     visibility: state.profilePage.preferences.visibility || {},
   };

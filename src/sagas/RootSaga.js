@@ -1,13 +1,12 @@
-import { call, put, takeEvery, delay } from 'redux-saga/effects';
+import { all, call, put, takeEvery, delay } from 'redux-saga/effects';
 
 import {
   FETCH_PROFILE,
   fetchProfileBegin,
   fetchProfileSuccess,
-  receivePreferences,
   fetchProfileFailure,
   fetchProfileReset,
-  fetchProfile as fetchProfileAction,
+  fetchProfile,
   SAVE_PROFILE,
   saveProfileBegin,
   saveProfileSuccess,
@@ -28,48 +27,19 @@ import {
 
 import * as ProfileApiService from '../services/ProfileApiService';
 
-
-const PROP_TO_STATE_MAP = {
-  fullName: 'name',
-  userLocation: 'country',
-  education: 'levelOfEducation',
-  socialLinks: socialLinks => socialLinks.filter(({ socialLink }) => socialLink !== null),
-};
-
-export const mapDataForRequest = (props) => {
-  const state = {};
-  Object.keys(props).forEach((prop) => {
-    const propModifier = PROP_TO_STATE_MAP[prop] || prop;
-    if (typeof propModifier === 'function') {
-      state[prop] = propModifier(props[prop]);
-    } else {
-      state[propModifier] = props[prop];
-    }
-  });
-  return state;
-};
-
 export function* handleFetchProfile(action) {
   const { username } = action.payload;
 
   try {
     yield put(fetchProfileBegin());
 
-    const profile = yield call(
-      ProfileApiService.getProfile,
-      username,
-    );
-    const preferences = yield call(
-      ProfileApiService.getPreferences,
-      username,
-    );
-    profile.certificates = yield call(
-      ProfileApiService.getCourseCertificates,
-      username,
-    );
+    const [account, preferences, certificates] = yield all([
+      call(ProfileApiService.getAccount, username),
+      call(ProfileApiService.getPreferences, username),
+      call(ProfileApiService.getCourseCertificates, username),
+    ]);
 
-    yield put(fetchProfileSuccess(profile));
-    yield put(receivePreferences(preferences));
+    yield put(fetchProfileSuccess(account, preferences, certificates));
     yield put(fetchProfileReset());
   } catch (e) {
     yield put(fetchProfileFailure(e.message));
@@ -77,36 +47,32 @@ export function* handleFetchProfile(action) {
 }
 
 export function* handleSaveProfile(action) {
-  const { username, profileData, preferencesData } = action.payload;
+  const { username, draftAccount, draftPreferences } = action.payload;
 
   try {
     yield put(saveProfileBegin());
-    const responseData = {};
+    let accountResult = null;
 
-    if (profileData != null) {
-      responseData.profile = yield call(
+    if (draftAccount !== null) {
+      accountResult = yield call(
         ProfileApiService.patchProfile,
         username,
-        profileData,
+        draftAccount,
       );
     }
-    if (preferencesData != null) {
-      responseData.preferences = yield call(
+
+    if (draftPreferences !== null) {
+      yield call(
         ProfileApiService.patchPreferences,
         username,
-        preferencesData,
+        draftPreferences,
       );
     }
 
-    const { profile, preferences } = responseData;
-
-    yield put(saveProfileSuccess());
-    if (profile != null) {
-      yield put(fetchProfileSuccess(profile));
-    }
-    if (preferences != null) {
-      yield put(receivePreferences(preferences));
-    }
+    // The account result is returned from the server.
+    // The preferences draft is valid if the server didn't complain, so
+    // pass it through directly.
+    yield put(saveProfileSuccess(accountResult, draftPreferences));
     yield delay(300);
     yield put(closeField(action.payload.fieldName));
     yield delay(300);
@@ -124,7 +90,7 @@ export function* handleSaveProfilePhoto(action) {
     yield call(ProfileApiService.postProfilePhoto, username, formData);
 
     // Get the account data. Saving doesn't return anything on success.
-    yield handleFetchProfile(fetchProfileAction);
+    yield handleFetchProfile(fetchProfile);
 
     yield put(saveProfilePhotoSuccess());
     yield put(saveProfilePhotoReset());
@@ -141,7 +107,7 @@ export function* handleDeleteProfilePhoto(action) {
     yield call(ProfileApiService.deleteProfilePhoto, username);
 
     // Get the account data. Saving doesn't return anything on success.
-    yield handleFetchProfile(fetchProfileAction);
+    yield handleFetchProfile(fetchProfile);
 
     yield put(deleteProfilePhotoSuccess());
     yield put(deleteProfilePhotoReset());

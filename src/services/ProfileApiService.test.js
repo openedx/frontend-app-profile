@@ -1,6 +1,6 @@
 import { mapSaveProfileRequestData } from './ProfileApiService';
 
-describe('mapDataForRequest', () => {
+describe('mapSaveProfileRequestData', () => {
   it('should modify props according to prop modifier strings and functions', () => {
     const props = {
       favoriteColor: 'red',

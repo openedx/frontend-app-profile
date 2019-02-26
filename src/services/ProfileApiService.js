@@ -5,9 +5,7 @@ import apiClient from '../config/apiClient';
 import { configuration } from '../config/environment';
 import { unflattenAndTransformKeys, flattenAndTransformKeys } from './utils';
 
-const accountsApiBaseUrl = `${configuration.LMS_BASE_URL}/api/user/v1/accounts`;
-const preferencesApiBaseUrl = `${configuration.LMS_BASE_URL}/api/user/v1/preferences`;
-const clientServerKeyMap = {
+const clientToServerKeyMap = {
   bio: 'bio',
   socialLinks: 'social_links',
   country: 'country',
@@ -20,16 +18,23 @@ const clientServerKeyMap = {
   accountPrivacy: 'account_privacy',
   userLocation: 'user_location',
 };
-const serverClientKeyMap = Object.entries(clientServerKeyMap).reduce((acc, [key, value]) => {
+const serverToClientKeyMap = Object.entries(clientToServerKeyMap).reduce((acc, [key, value]) => {
   acc[value] = key;
   return acc;
 }, {});
 
+export function mapServerKey(key) {
+  return serverToClientKeyMap[key] || key;
+}
 
-export function getProfile(username) {
+export function mapClientKey(key) {
+  return clientToServerKeyMap[key] || key;
+}
+
+export function getAccount(username) {
   return new Promise((resolve, reject) => {
     apiClient
-      .get(`${accountsApiBaseUrl}/${username}`)
+      .get(`${configuration.ACCOUNTS_API_BASE_URL}/${username}`)
       .then((response) => {
         resolve(camelcaseKeys(response.data, { deep: true }));
       })
@@ -62,7 +67,7 @@ export const mapSaveProfileRequestData = (props) => {
 export function patchProfile(username, data) {
   return new Promise((resolve, reject) => {
     apiClient.patch(
-      `${accountsApiBaseUrl}/${username}`,
+      `${configuration.ACCOUNTS_API_BASE_URL}/${username}`,
       snakecaseKeys(mapSaveProfileRequestData(data), { deep: true }),
       {
         headers: {
@@ -80,7 +85,7 @@ export function patchProfile(username, data) {
 }
 
 export function postProfilePhoto(username, formData) {
-  return apiClient.post(`${accountsApiBaseUrl}/${username}/image`, formData, {
+  return apiClient.post(`${configuration.ACCOUNTS_API_BASE_URL}/${username}/image`, formData, {
     headers: {
       'Content-Type': 'multipart/form-data',
     },
@@ -88,18 +93,18 @@ export function postProfilePhoto(username, formData) {
 }
 
 export function deleteProfilePhoto(username) {
-  return apiClient.delete(`${accountsApiBaseUrl}/${username}/image`);
+  return apiClient.delete(`${configuration.ACCOUNTS_API_BASE_URL}/${username}/image`);
 }
 
 export function getPreferences(username) {
-  const url = `${preferencesApiBaseUrl}/${username}`;
+  const url = `${configuration.PREFERENCES_API_BASE_URL}/${username}`;
 
   return new Promise((resolve, reject) => {
     apiClient.get(url)
       .then(({ data }) => {
         // Unflatten server response
         // visibility.social_links: 'value' becomes { visibility: { socialLinks: 'value' }}
-        resolve(unflattenAndTransformKeys(data, key => serverClientKeyMap[key] || key));
+        resolve(unflattenAndTransformKeys(data, key => mapServerKey(key)));
       })
       .catch((error) => {
         reject(error);
@@ -108,11 +113,11 @@ export function getPreferences(username) {
 }
 
 export function patchPreferences(username, preferences) {
-  const url = `${preferencesApiBaseUrl}/${username}`;
+  const url = `${configuration.PREFERENCES_API_BASE_URL}/${username}`;
 
   // Flatten object for server
   // { visibility: { socialLinks: 'value' }} becomes visibility.social_links: 'value'
-  const data = flattenAndTransformKeys(preferences, key => clientServerKeyMap[key] || key);
+  const data = flattenAndTransformKeys(preferences, key => mapClientKey(key));
 
   return new Promise((resolve, reject) => {
     apiClient.patch(
