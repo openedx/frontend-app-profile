@@ -1,4 +1,7 @@
+import camelcaseKeys from 'camelcase-keys';
+
 import apiClient from '../config/apiClient';
+import CERTIFICATE_TYPES from '../constants/certificates';
 import { configuration } from '../config/environment';
 import { unflattenAndTransformKeys, flattenAndTransformKeys } from './utils';
 
@@ -23,6 +26,18 @@ export function mapServerKey(key) {
 
 export function mapClientKey(key) {
   return clientToServerKeyMap[key] || key;
+}
+
+function transformCertificateData(data) {
+  const transformedData = [];
+  data.forEach((cert) => {
+    transformedData.push({
+      ...camelcaseKeys(cert),
+      certificateType: CERTIFICATE_TYPES[cert.certificate_type],
+      downloadUrl: `${configuration.LMS_BASE_URL}${cert.download_url}`,
+    });
+  });
+  return transformedData;
 }
 
 export function getAccount(username) {
@@ -138,30 +153,17 @@ export function patchPreferences(username, preferences) {
   });
 }
 
-export function getCourseCertificates(username) { // eslint-disable-line no-unused-vars
-  return new Promise((resolve, reject) => { // eslint-disable-line no-unused-vars
-    const dummyData = [
-      // {
-      //   type: {
-      //     key: 'micro_masters',
-      //     name: 'Micro Masters',
-      //   },
-      //   title: 'Microtonal Scales',
-      //   organization: 'New England Conservatory',
-      //   downloadUrl: 'https://pics.me.me/booplesnoot-36468371.png',
-      // },
-      // {
-      //   type: {
-      //     key: 'micro_masters',
-      //     name: 'Micro Masters',
-      //   },
-      //   title: 'Kazoo Pinch Harmonics',
-      //   organization: 'New England Conservatory',
-      //   downloadUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR88selLYRHDQemO8MnY3w3ajlSuKZcoRhVTp3eGvKq2HMRTn8q',
-      // },
-    ];
-    setTimeout(() => {
-      resolve(dummyData);
-    }, 200);
+export function getCourseCertificates(username) {
+  const url = `${configuration.CERTIFICATES_API_BASE_URL}/${username}/`;
+
+  return new Promise((resolve, reject) => {
+    apiClient
+      .get(url)
+      .then(({ data }) => {
+        resolve(transformCertificateData(data));
+      })
+      .catch((error) => {
+        reject(error);
+      });
   });
 }
