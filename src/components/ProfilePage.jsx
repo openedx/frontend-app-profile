@@ -35,8 +35,6 @@ export class ProfilePage extends React.Component {
     this.onSave = this.onSave.bind(this);
     this.onSaveProfilePhoto = this.onSaveProfilePhoto.bind(this);
     this.onDeleteProfilePhoto = this.onDeleteProfilePhoto.bind(this);
-    this.onChange = this.onChange.bind(this);
-    this.onVisibilityChange = this.onVisibilityChange.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
