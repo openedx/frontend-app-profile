@@ -58,18 +58,17 @@ $fa-font-path: "~font-awesome/fonts";
   }
 
   .profile-avatar {
-    max-width: 50%;
     width: 5rem;
     height: 5rem;
     position: relative;
 
     @include media-breakpoint-up(md) {
       width: 12rem;
-      max-width: none;
       height: 12rem;
     }
 
     .profile-avatar-edit-button {
+      border: none;
       position: absolute;
       height: 100%;
       left: 0;

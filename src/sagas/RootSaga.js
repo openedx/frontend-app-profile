@@ -106,7 +106,7 @@ export function* handleSaveProfilePhoto(action) {
     yield call(ProfileApiService.postProfilePhoto, username, formData);
 
     // Get the account data. Saving doesn't return anything on success.
-    yield handleFetchProfile(fetchProfile);
+    yield handleFetchProfile(fetchProfile(username));
 
     yield put(saveProfilePhotoSuccess());
     yield put(saveProfilePhotoReset());
@@ -123,7 +123,7 @@ export function* handleDeleteProfilePhoto(action) {
     yield call(ProfileApiService.deleteProfilePhoto, username);
 
     // Get the account data. Saving doesn't return anything on success.
-    yield handleFetchProfile(fetchProfile);
+    yield handleFetchProfile(fetchProfile(username));
 
     yield put(deleteProfilePhotoSuccess());
     yield put(deleteProfilePhotoReset());
