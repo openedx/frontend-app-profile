@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FormattedMessage } from 'react-intl';
 
 export default class NotFoundPage extends Component {
   componentDidMount() {}
@@ -6,8 +7,11 @@ export default class NotFoundPage extends Component {
   render() {
     return (
       <div>
-        The page you&apos;re looking for is unavailable or there&apos;s an error in the URL.
-        Please check the URL and try again.
+        <FormattedMessage
+          id="profile.notfound.message"
+          defaultMessage="The page you're looking for is unavailable or there's an error in the URL. Please check the URL and try again."
+          description="error message when a page does not exist"
+        />
       </div>
     );
   }

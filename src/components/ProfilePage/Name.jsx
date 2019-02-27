@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, FormFeedback, FormGroup, FormText, Input, Label } from 'reactstrap';
 import { connect } from 'react-redux';
+import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
+
+import messages from './Name.messages';
 
 // Components
 import FormControls from './elements/FormControls';
@@ -45,7 +48,7 @@ class Name extends React.Component {
 
   render() {
     const {
-      formId, value, visibility, editMode, saveState, error,
+      formId, value, visibility, editMode, saveState, error, intl,
     } = this.props;
 
     return (
@@ -59,7 +62,11 @@ class Name extends React.Component {
                 <Label for="name">Full Name</Label>
                 <Input type="text" name={formId} value={value} invalid={error != null} onChange={this.handleChange} />
                 <FormText>
-                  This is the name that appears in your account and on your certificates.
+                  <FormattedMessage
+                    id="profile.name.details"
+                    defaultMessage="This is the name that appears in your account and on your certificates."
+                    description="describes the area for the user to update their name"
+                  />
                 </FormText>
                 <FormFeedback>{error}</FormFeedback>
               </FormGroup>
@@ -75,7 +82,7 @@ class Name extends React.Component {
           editable: (
             <React.Fragment>
               <EditableItemHeader
-                content="Full Name"
+                content={intl.formatMessage(messages['profile.name.full.name'])}
                 showEditButton
                 onClickEdit={this.handleOpen}
                 showVisibility={visibility !== null}
@@ -84,10 +91,18 @@ class Name extends React.Component {
               <h5>{value}</h5>
             </React.Fragment>
           ),
-          empty: <EmptyContent onClick={this.handleOpen}>Add name</EmptyContent>,
+          empty: (
+            <EmptyContent onClick={this.handleOpen}>
+              <FormattedMessage
+                id="profile.name.empty"
+                defaultMessage="Add name"
+                description="instructions when the user hasn't entered their name"
+              />
+            </EmptyContent>
+          ),
           static: (
             <React.Fragment>
-              <EditableItemHeader content="Full Name" />
+              <EditableItemHeader content={intl.formatMessage(messages['profile.name.full.name'])} />
               <h5>{value}</h5>
             </React.Fragment>
           ),
@@ -116,6 +131,9 @@ Name.propTypes = {
   submitHandler: PropTypes.func.isRequired,
   closeHandler: PropTypes.func.isRequired,
   openHandler: PropTypes.func.isRequired,
+
+  // i18n
+  intl: intlShape.isRequired,
 };
 
 Name.defaultProps = {
@@ -129,4 +147,4 @@ Name.defaultProps = {
 export default connect(
   editableFormSelector,
   {},
-)(Name);
+)(injectIntl(Name));

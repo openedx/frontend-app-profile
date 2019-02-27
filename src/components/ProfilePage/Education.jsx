@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, FormFeedback, FormGroup, Input, Label } from 'reactstrap';
 import { connect } from 'react-redux';
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
+
+import messages from './Education.messages';
 
 // Components
 import FormControls from './elements/FormControls';
@@ -48,7 +51,7 @@ class Education extends React.Component {
 
   render() {
     const {
-      formId, value, visibility, editMode, saveState, error,
+      formId, value, visibility, editMode, saveState, error, intl,
     } = this.props;
 
     return (
@@ -59,7 +62,9 @@ class Education extends React.Component {
           editing: (
             <Form onSubmit={this.handleSubmit}>
               <FormGroup>
-                <Label for="education">Education</Label>
+                <Label for="education">
+                  {intl.formatMessage(messages['profile.education.education'])}
+                </Label>
                 <Input
                   type="select"
                   name={formId}
@@ -86,7 +91,7 @@ class Education extends React.Component {
           editable: (
             <React.Fragment>
               <EditableItemHeader
-                content="Education"
+                content={intl.formatMessage(messages['profile.education.education'])}
                 showEditButton
                 onClickEdit={this.handleOpen}
                 showVisibility={visibility !== null}
@@ -95,10 +100,18 @@ class Education extends React.Component {
               <h5>{EDUCATION[value]}</h5>
             </React.Fragment>
           ),
-          empty: <EmptyContent onClick={this.handleOpen}>Add education</EmptyContent>,
+          empty: (
+            <EmptyContent onClick={this.handleOpen}>
+              <FormattedMessage
+                id="profile.education.empty"
+                defaultMessage="Add education"
+                description="instructions when the user doesn't have their level of education set"
+              />
+            </EmptyContent>
+          ),
           static: (
             <React.Fragment>
-              <EditableItemHeader content="Education" />
+              <EditableItemHeader content={intl.formatMessage(messages['profile.education.education'])} />
               <h5>{EDUCATION[value]}</h5>
             </React.Fragment>
           ),
@@ -127,6 +140,9 @@ Education.propTypes = {
   submitHandler: PropTypes.func.isRequired,
   closeHandler: PropTypes.func.isRequired,
   openHandler: PropTypes.func.isRequired,
+
+  // i18n
+  intl: intlShape.isRequired,
 };
 
 Education.defaultProps = {
@@ -140,4 +156,4 @@ Education.defaultProps = {
 export default connect(
   editableFormSelector,
   {},
-)(Education);
+)(injectIntl(Education));

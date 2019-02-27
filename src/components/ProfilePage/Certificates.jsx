@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
+import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
 import { Row, Col, Card, CardBody, CardTitle, Button, Form } from 'reactstrap';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
+
+import messages from './Certificates.messages';
 
 // Components
 import FormControls from './elements/FormControls';
@@ -79,7 +81,7 @@ class Certificates extends React.Component {
 
   render() {
     const {
-      formId, visibility, editMode, saveState,
+      formId, visibility, editMode, saveState, intl,
     } = this.props;
 
     return (
@@ -89,7 +91,7 @@ class Certificates extends React.Component {
         cases={{
           editing: (
             <Form onSubmit={this.handleSubmit}>
-              <EditableItemHeader content="My Certificates" />
+              <EditableItemHeader content={intl.formatMessage(messages['profile.certificates.my.certificates'])} />
               {this.renderCertificates()}
               <FormControls
                 formId={formId}
@@ -103,7 +105,7 @@ class Certificates extends React.Component {
           editable: (
             <React.Fragment>
               <EditableItemHeader
-                content="My Certificates"
+                content={intl.formatMessage(messages['profile.certificates.my.certificates'])}
                 showEditButton
                 onClickEdit={this.handleOpen}
                 showVisibility={visibility !== null}
@@ -123,7 +125,7 @@ class Certificates extends React.Component {
           ),
           static: (
             <React.Fragment>
-              <EditableItemHeader content="My Certificates" />
+              <EditableItemHeader content={intl.formatMessage(messages['profile.certificates.my.certificates'])} />
               {this.renderCertificates()}
             </React.Fragment>
           ),
@@ -153,6 +155,9 @@ Certificates.propTypes = {
   submitHandler: PropTypes.func.isRequired,
   closeHandler: PropTypes.func.isRequired,
   openHandler: PropTypes.func.isRequired,
+
+  // i18n
+  intl: intlShape.isRequired,
 };
 
 Certificates.defaultProps = {
@@ -165,4 +170,4 @@ Certificates.defaultProps = {
 export default connect(
   certificatesSelector,
   {},
-)(Certificates);
+)(injectIntl(Certificates));

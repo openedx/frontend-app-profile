@@ -4,6 +4,9 @@ import { Form, Input, FormFeedback } from 'reactstrap';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
+
+import messages from './SocialLinks.messages';
 
 // Components
 import FormControls from './elements/FormControls';
@@ -73,7 +76,7 @@ class SocialLinks extends React.Component {
 
   render() {
     const {
-      formId, value: values, visibility, editMode, saveState, error,
+      formId, value: values, visibility, editMode, saveState, error, intl,
     } = this.props;
 
     return (
@@ -94,7 +97,7 @@ class SocialLinks extends React.Component {
           ),
           static: (
             <React.Fragment>
-              <EditableItemHeader content="Social Links" />
+              <EditableItemHeader content={intl.formatMessage(messages['profile.sociallinks.social.links'])} />
               <ul className="list-unstyled">
                 {values.map(({ platform, social_link: socialLink }) => (
                   <StaticListItem
@@ -110,7 +113,7 @@ class SocialLinks extends React.Component {
           editable: (
             <React.Fragment>
               <EditableItemHeader
-                content="Social Links"
+                content={intl.formatMessage(messages['profile.sociallinks.social.links'])}
                 showEditButton
                 onClickEdit={this.handleOpen}
                 showVisibility={visibility !== null}
@@ -131,7 +134,7 @@ class SocialLinks extends React.Component {
           ),
           editing: (
             <Form onSubmit={this.handleSubmit}>
-              <EditableItemHeader content="Social Links" />
+              <EditableItemHeader content={intl.formatMessage(messages['profile.sociallinks.social.links'])} />
               <ul className="list-unstyled">
                 {values.map(({ platform, social_link: socialLink }) => (
                   <EditingListItem
@@ -185,6 +188,9 @@ SocialLinks.propTypes = {
   submitHandler: PropTypes.func.isRequired,
   closeHandler: PropTypes.func.isRequired,
   openHandler: PropTypes.func.isRequired,
+
+  // i18n
+  intl: intlShape.isRequired,
 };
 
 SocialLinks.defaultProps = {
@@ -199,7 +205,7 @@ SocialLinks.defaultProps = {
 export default connect(
   editableFormSelector,
   {},
-)(SocialLinks);
+)(injectIntl(SocialLinks));
 
 function SocialLink({ url, name, platform }) {
   return (
@@ -281,7 +287,16 @@ EditingListItem.defaultProps = {
 function EmptyListItem({ onClick, name }) {
   return (
     <li className="mb-4">
-      <EmptyContent onClick={onClick}>Add {name}</EmptyContent>
+      <EmptyContent onClick={onClick}>
+        <FormattedMessage
+          id="profile.sociallinks.add"
+          defaultMessage="Add {network}"
+          values={{
+            network: { name },
+          }}
+          description="{network} is the name of a social network such as Facebook or Twitter"
+        />
+      </EmptyContent>
     </li>
   );
 }

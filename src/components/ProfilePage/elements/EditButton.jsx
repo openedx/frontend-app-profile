@@ -3,25 +3,33 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { injectIntl, intlShape } from 'react-intl';
 
-function EditButton({ onClick, className, style }) {
+import messages from './EditButton.messages';
+
+function EditButton({
+  onClick, className, style, intl,
+}) {
   return (
     <button
       className={classNames('btn btn-sm btn-link', className)}
       onClick={onClick}
       style={style}
     >
-      <FontAwesomeIcon icon={faPencilAlt} /> Edit
+      <FontAwesomeIcon icon={faPencilAlt} /> {intl.formatMessage(messages['profile.editbutton.edit'])}
     </button>
   );
 }
 
-export default EditButton;
+export default injectIntl(EditButton);
 
 EditButton.propTypes = {
   onClick: PropTypes.func.isRequired,
   className: PropTypes.string,
   style: PropTypes.object, // eslint-disable-line
+
+  // i18n
+  intl: intlShape.isRequired,
 };
 
 EditButton.defaultProps = {
