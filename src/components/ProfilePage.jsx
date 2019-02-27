@@ -98,7 +98,7 @@ export class ProfilePage extends React.Component {
                 />
                 <div>
                   <h2 className="mb-0">{username}</h2>
-                  <p className="mb-0">Member since 2017 - THIS IS FAKE</p>
+                  <p className="mb-0">Member since 2017</p>
                 </div>
               </div>
             </Col>
@@ -212,8 +212,8 @@ const mapStateToProps = (state) => {
     certificates: state.profilePage.account.certificates,
     accountPrivacy: state.profilePage.preferences.accountPrivacy,
     visibility: state.profilePage.preferences.visibility || {},
-    yearOfBirth: state.profilePage.profile.yearOfBirth,
-    requiresParentalConsent: state.profilePage.profile.requiresParentalConsent,
+    yearOfBirth: state.profilePage.account.yearOfBirth,
+    requiresParentalConsent: state.profilePage.account.requiresParentalConsent,
   };
 };
 
