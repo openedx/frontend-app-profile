@@ -120,7 +120,7 @@ export class ProfilePage extends React.Component {
               <Bio formId="bio" {...commonFormProps} />
               <Certificates
                 formId="certificates"
-                {...commonFormProps}
+                <Certificate formId="certificates" {...commonFormProps} />
               />
             </Col>
           </Row>
