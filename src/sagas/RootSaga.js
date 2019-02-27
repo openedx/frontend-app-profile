@@ -35,17 +35,30 @@ import * as ProfileApiService from '../services/ProfileApiService';
 
 export function* handleFetchProfile(action) {
   const { username } = action.payload;
+  const currentUsername = yield select(state => state.authentication.username); // eslint-disable-line
 
   try {
     yield put(fetchProfileBegin());
 
-    const [account, preferences, certificates] = yield all([
+    const calls = [
       call(ProfileApiService.getAccount, username),
-      call(ProfileApiService.getPreferences, username),
       call(ProfileApiService.getCourseCertificates, username),
-    ]);
+    ];
 
-    yield put(fetchProfileSuccess(account, preferences, certificates));
+    if (username === currentUsername) {
+      calls.push(call(ProfileApiService.getPreferences, username));
+    }
+
+    const result = yield all(calls);
+
+    if (result.length > 2) {
+      const [account, certificates, preferences] = result;
+      yield put(fetchProfileSuccess(account, preferences, certificates));
+    } else {
+      const [account, certificates] = result;
+      yield put(fetchProfileSuccess(account, { visibility: {} }, certificates));
+    }
+
     yield put(fetchProfileReset());
   } catch (e) {
     yield put(fetchProfileFailure(e.message));

@@ -1,6 +1,3 @@
-import camelcaseKeys from 'camelcase-keys';
-import snakecaseKeys from 'snakecase-keys';
-
 import apiClient from '../config/apiClient';
 import { configuration } from '../config/environment';
 import { unflattenAndTransformKeys, flattenAndTransformKeys } from './utils';
@@ -31,7 +28,7 @@ export function getAccount(username) {
     apiClient
       .get(`${configuration.ACCOUNTS_API_BASE_URL}/${username}`)
       .then((response) => {
-        resolve(camelcaseKeys(response.data, { deep: true }));
+        resolve(unflattenAndTransformKeys(response.data, key => mapServerKey(key)));
       })
       .catch((error) => {
         reject(error);
@@ -68,7 +65,7 @@ export function patchProfile(username, data) {
     apiClient
       .patch(
         `${configuration.ACCOUNTS_API_BASE_URL}/${username}`,
-        snakecaseKeys(mapSaveProfileRequestData(data), { deep: true }),
+        flattenAndTransformKeys(data, key => mapClientKey(key)),
         {
           headers: {
             'Content-Type': 'application/merge-patch+json',
@@ -76,7 +73,7 @@ export function patchProfile(username, data) {
         },
       )
       .then((response) => {
-        resolve(camelcaseKeys(response.data, { deep: true }));
+        resolve(unflattenAndTransformKeys(response.data, key => mapServerKey(key)));
       })
       .catch((error) => {
         reject(error);
@@ -103,14 +100,13 @@ export function getPreferences(username) {
     apiClient
       .get(url)
       .then(({ data }) => {
-        const hydratedData = data;
-        // If the response doesn't have a "visibility" section, just add a blank one.
-        if (data.visibility === undefined) {
-          Object.assign(hydratedData, { visibility: {} });
-        }
         // Unflatten server response
         // visibility.social_links: 'value' becomes { visibility: { socialLinks: 'value' }}
-        resolve(unflattenAndTransformKeys(hydratedData, key => mapServerKey(key)));
+        const preferences = unflattenAndTransformKeys(data, key => mapServerKey(key));
+        if (preferences.visibility === undefined) {
+          preferences.visibility = {};
+        }
+        resolve(preferences);
       })
       .catch((error) => {
         reject(error);
