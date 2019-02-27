@@ -1,135 +1,168 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { Row, Col, Card, CardBody, CardTitle, CardText, Button } from 'reactstrap';
+import { Row, Col, Card, CardBody, CardTitle, Button, Form } from 'reactstrap';
+import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 
+// Components
 import FormControls from './elements/FormControls';
 import EditableItemHeader from './elements/EditableItemHeader';
 import SwitchContent from './elements/SwitchContent';
 
-function Certificates({
-  certificates,
-  visibility,
-  editMode,
-  onEdit,
-  onSave,
-  onCancel,
-  onVisibilityChange,
-  saveState,
-}) {
-  const renderCertificates = () => {
-    if (!certificates) return null;
+// Selectors
+import { certificatesSelector } from '../../selectors/ProfilePageSelector';
+
+class Certificates extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.handleOpen = this.handleOpen.bind(this);
+  }
+
+  handleChange(e) {
+    const { name, value } = e.target;
+    this.props.changeHandler(this.props.formId, name, value);
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.submitHandler(this.props.formId);
+  }
+
+  handleClose() {
+    this.props.closeHandler(this.props.formId);
+  }
+
+  handleOpen() {
+    this.props.openHandler(this.props.formId);
+  }
+
+  renderCertificate({
+    type: { name }, title, organization, downloadUrl,
+  }) {
+    return (
+      <Col key={downloadUrl} sm={6}>
+        <Card className="mb-4 certificate">
+          <CardBody>
+            <CardTitle>
+              <p className="small mb-0">{name}</p>
+              <h4 className="certificate-title">{title}</h4>
+            </CardTitle>
+            <p className="small mb-0">From</p>
+            <h6 className="mb-4">{organization}</h6>
+            <div>
+              <Button outline color="primary" href={downloadUrl} target="blank">
+                <FontAwesomeIcon className="ml-n1 mr-2" icon={faDownload} />
+                Download
+              </Button>
+            </div>
+          </CardBody>
+        </Card>
+      </Col>
+    );
+  }
+
+  renderCertificates() {
+    if (this.props.certificates === null) {
+      return null;
+    }
 
     return (
-      <Row>
-        {certificates.map(({
-          type: { key, name }, // eslint-disable-line no-unused-vars
-          title,
-          organization,
-          downloadUrl,
-        }) => (
-          <Col key={downloadUrl} sm={6}>
-            <Card className="mb-4 certificate">
-              <CardBody>
-                <CardTitle>
-                  <p className="small mb-0">{name}</p>
-                  <h4 className="certificate-title">{title}</h4>
-                </CardTitle>
-                <CardText>
-                  <p className="small mb-0">From</p>
-                  <h6 className="mb-4">{organization}</h6>
-                  <div>
-                    <Button
-                      outline
-                      color="primary"
-                      href={downloadUrl}
-                      target="blank"
-                    >
-                      <FontAwesomeIcon className="ml-n1 mr-2" icon={faDownload} />
-                      Download
-                    </Button>
-                  </div>
-                </CardText>
-              </CardBody>
-            </Card>
-          </Col>
-        ))}
-      </Row>
+      <Row>{this.props.certificates.map(certificate => this.renderCertificate(certificate))}</Row>
     );
-  };
+  }
 
-  return (
-    <SwitchContent
-      className="mb-4"
-      expression={editMode}
-      cases={{
-        editing: (
-          <React.Fragment>
-            <EditableItemHeader content="My Certificates" />
-            {renderCertificates()}
-            <FormControls
-              onCancel={() => onCancel('certificates')}
-              onSave={() => onSave('certificates')}
-              saveState={saveState}
-              visibility={visibility}
-              onVisibilityChange={e => onVisibilityChange('certificates', e.target.value)}
-            />
-          </React.Fragment>
-        ),
-        editable: (
-          <React.Fragment>
-            <EditableItemHeader
-              content="My Certificates"
-              showEditButton
-              onClickEdit={() => onEdit('certificates')}
-              showVisibility={Boolean(certificates)}
-              visibility={visibility}
-            />
-            {renderCertificates()}
-          </React.Fragment>
-        ),
-        empty: (
-          <div>
-            <FormattedMessage
-              id="profile.no.certificates"
-              defaultMessage="You don't have any certificates yet."
-              description="displays when user has no course completion certificates"
-            />
-          </div>
-        ),
-        static: (
-          <React.Fragment>
-            <EditableItemHeader content="My Certificates" />
-            {renderCertificates()}
-          </React.Fragment>
-        ),
-      }}
-    />
-  );
+  render() {
+    const {
+      formId, visibility, editMode, saveState,
+    } = this.props;
+
+    return (
+      <SwitchContent
+        className="mb-4"
+        expression={editMode}
+        cases={{
+          editing: (
+            <Form onSubmit={this.handleSubmit}>
+              <EditableItemHeader content="My Certificates" />
+              {this.renderCertificates()}
+              <FormControls
+                formId={formId}
+                saveState={saveState}
+                visibility={visibility}
+                cancelHandler={this.handleClose}
+                changeHandler={this.handleChange}
+              />
+            </Form>
+          ),
+          editable: (
+            <React.Fragment>
+              <EditableItemHeader
+                content="My Certificates"
+                showEditButton
+                onClickEdit={this.handleOpen}
+                showVisibility={visibility !== null}
+                visibility={visibility}
+              />
+              {this.renderCertificates()}
+            </React.Fragment>
+          ),
+          empty: (
+            <div>
+              <FormattedMessage
+                id="profile.no.certificates"
+                defaultMessage="You don't have any certificates yet."
+                description="displays when user has no course completion certificates"
+              />
+            </div>
+          ),
+          static: (
+            <React.Fragment>
+              <EditableItemHeader content="My Certificates" />
+              {this.renderCertificates()}
+            </React.Fragment>
+          ),
+        }}
+      />
+    );
+  }
 }
 
-
 Certificates.propTypes = {
-  editMode: PropTypes.string,
-  onEdit: PropTypes.func.isRequired,
-  onSave: PropTypes.func.isRequired,
-  onCancel: PropTypes.func.isRequired,
-  onVisibilityChange: PropTypes.func.isRequired,
-  saveState: PropTypes.string,
+  // It'd be nice to just set this as a defaultProps...
+  // except the class that comes out on the other side of react-redux's
+  // connect() method won't have it anymore. Static properties won't survive
+  // through the higher order function.
+  formId: PropTypes.string.isRequired,
+
+  // From Selector
   certificates: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string,
   })),
   visibility: PropTypes.oneOf(['private', 'all_users']),
+  editMode: PropTypes.oneOf(['editing', 'editable', 'empty', 'static']),
+  saveState: PropTypes.string,
+
+  // Actions
+  changeHandler: PropTypes.func.isRequired,
+  submitHandler: PropTypes.func.isRequired,
+  closeHandler: PropTypes.func.isRequired,
+  openHandler: PropTypes.func.isRequired,
 };
 
 Certificates.defaultProps = {
   editMode: 'static',
   saveState: null,
-  certificates: null,
   visibility: 'private',
+  certificates: null,
 };
 
-
-export default Certificates;
+export default connect(
+  certificatesSelector,
+  {},
+)(Certificates);

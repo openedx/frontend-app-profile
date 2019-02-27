@@ -3,6 +3,7 @@ import { createSelector } from 'reselect';
 export const formIdSelector = (state, props) => props.formId;
 export const authenticationUsernameSelector = state => state.authentication.username;
 export const profileAccountSelector = state => state.profilePage.account;
+export const profileCertificatesSelector = state => state.profilePage.certificates;
 export const profileAccountDraftsSelector = state => state.profilePage.accountDrafts;
 export const profileVisibilityDraftsSelector = state => state.profilePage.visibilityDrafts;
 export const profileVisibilitySelector = state => state.profilePage.preferences.visibility;
@@ -18,14 +19,15 @@ export const isCurrentUserProfileSelector = createSelector(
 
 export const editableFormModeSelector = createSelector(
   profileAccountSelector,
+  profileCertificatesSelector,
   formIdSelector,
   isCurrentUserProfileSelector,
   currentlyEditingFieldSelector,
-  (account, formId, isCurrentUserProfile, currentlyEditingField) => {
+  (account, certificates, formId, isCurrentUserProfile, currentlyEditingField) => {
     // If the prop doesn't exist, that means it hasn't been set (for the current user's profile)
     // or is being hidden from us (for other users' profiles)
-    const propExists = account[formId] != null && account[formId].length > 0;
-
+    let propExists = account[formId] != null && account[formId].length > 0;
+    propExists = formId === 'certificates' ? certificates !== null : propExists; // overwrite for certificates
     // If this isn't the current user's profile...
     if (!isCurrentUserProfile) {
       // then there are only two options: static or nothing.
@@ -89,6 +91,16 @@ export const editableFormSelector = createSelector(
     editMode,
     error,
     saveState,
+  }),
+);
+
+export const certificatesSelector = createSelector(
+  editableFormSelector,
+  profileCertificatesSelector,
+  (editableForm, certificates) => ({
+    ...editableForm,
+    certificates,
+    value: certificates,
   }),
 );
 

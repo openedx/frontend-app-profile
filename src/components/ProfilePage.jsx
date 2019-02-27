@@ -22,7 +22,7 @@ import Country from './ProfilePage/Country';
 import Education from './ProfilePage/Education';
 import SocialLinks from './ProfilePage/SocialLinks';
 import Bio from './ProfilePage/Bio';
-// import Certificates from './ProfilePage/Certificates';
+import Certificates from './ProfilePage/Certificates';
 
 export class ProfilePage extends React.Component {
   constructor(props) {
@@ -69,7 +69,9 @@ export class ProfilePage extends React.Component {
   }
 
   render() {
-    const { profileImage, username, errors } = this.props;
+    const {
+      profileImage, username, errors,
+    } = this.props;
 
     const commonFormProps = {
       openHandler: this.handleOpen,
@@ -114,7 +116,10 @@ export class ProfilePage extends React.Component {
               className="mt-4 mt-md-n5"
             >
               <Bio formId="bio" {...commonFormProps} />
-              {/* <Certificates formId="certificates" {...commonFormProps} /> */}
+              <Certificates
+                formId="certificates"
+                {...commonFormProps}
+              />
             </Col>
           </Row>
         </Container>
