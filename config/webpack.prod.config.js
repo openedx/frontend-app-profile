@@ -5,6 +5,7 @@ const commonConfig = require('./webpack.common.config.js');
 const path = require('path');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackNewRelicPlugin = require('html-webpack-new-relic-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -144,6 +145,13 @@ module.exports = Merge.smart(commonConfig, {
       REDDIT_URL: null,
       APPLE_APP_STORE_URL: null,
       GOOGLE_PLAY_URL: null,
+    }),
+    new HtmlWebpackNewRelicPlugin({
+      // This plugin fixes an issue where the newrelic script will break if
+      //  not added directly to the HTML.
+      // We use non empty strings as defaults here to prevent errors for empty configs
+      license: process.env.NEW_RELIC_LICENSE_KEY || 'fake_app',
+      applicationID: process.env.NEW_RELIC_APP_ID || 'fake_license',
     }),
   ],
 });
