@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect, Provider } from 'react-redux';
 import PropTypes from 'prop-types';
 import { IntlProvider } from 'react-intl';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router';
 import SiteFooter from '@edx/frontend-component-footer';
 import { fetchUserAccount, UserAccountApiService } from '@edx/frontend-auth';
 
@@ -27,7 +28,7 @@ class App extends Component {
     return (
       <IntlProvider locale={getLocale()} messages={getMessages()}>
         <Provider store={this.props.store}>
-          <Router>
+          <ConnectedRouter history={this.props.history}>
             <div>
               <SiteHeader
                 logo={HeaderLogo}
@@ -60,7 +61,7 @@ class App extends Component {
                 handleAllTrackEvents={handleTrackEvents}
               />
             </div>
-          </Router>
+          </ConnectedRouter>
         </Provider>
       </IntlProvider>
     );
@@ -71,6 +72,7 @@ App.propTypes = {
   fetchUserAccount: PropTypes.func.isRequired,
   username: PropTypes.string.isRequired,
   store: PropTypes.object.isRequired, // eslint-disable-line
+  history: PropTypes.object.isRequired, // eslint-disable-line
 };
 
 const mapStateToProps = state => ({
