@@ -66,6 +66,7 @@ describe('RootSaga', () => {
       expect(gen.next().value).toEqual(put(profileActions.closeForm('ze form id')));
       expect(gen.next().value).toEqual(delay(300));
       expect(gen.next().value).toEqual(put(profileActions.saveProfileReset()));
+      expect(gen.next().value).toEqual(put(profileActions.resetDrafts()));
       expect(gen.next().value).toBeUndefined();
     });
 
