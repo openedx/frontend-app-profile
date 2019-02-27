@@ -118,10 +118,7 @@ export class ProfilePage extends React.Component {
             >
               {this.props.requiresParentalConsent ? <AgeMessage accountURL="#account" /> : null}
               <Bio formId="bio" {...commonFormProps} />
-              <Certificates
-                formId="certificates"
-                <Certificate formId="certificates" {...commonFormProps} />
-              />
+              <Certificates formId="certificates" {...commonFormProps} />
             </Col>
           </Row>
         </Container>
