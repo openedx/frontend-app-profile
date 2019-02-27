@@ -1,6 +1,7 @@
 import snakecaseKeys from 'snakecase-keys';
 import apiClient from '../config/apiClient';
 import { configuration } from '../config/environment';
+import LoggingService from '../services/LoggingService';
 
 const eventLogApiBaseUrl = `${configuration.LMS_BASE_URL}/event`;
 
@@ -20,8 +21,10 @@ function logEvent(eventType, eventData) {
     event: eventData,
     page: window.location.href,
   };
-  // TODO: ARCH-430: Send errors to New Relic.
-  return apiClient.post(eventLogApiBaseUrl, serverData);
+  return apiClient.post(eventLogApiBaseUrl, serverData)
+    .catch((error) => {
+      LoggingService.logAPIErrorResponse(error);
+    });
 }
 
 

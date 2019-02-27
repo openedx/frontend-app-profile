@@ -49,6 +49,7 @@
     "iso-countries-languages": "^0.2.1",
     "lodash.defaultsdeep": "^4.6.0",
     "lodash.set": "^4.3.2",
+    "newrelic": "^5.5.0",
     "prop-types": "^15.5.10",
     "query-string": "^5.1.1",
     "react": "^16.8.3",
