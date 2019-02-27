@@ -84,6 +84,7 @@ export const editableFormSelector = createSelector(
     visibilityDraftsField,
   ) => ({
     value: accountDraftsField || account[formId] || '',
+    committedValue: account[formId] || '',
     visibility: visibilityDraftsField || visibility[formId] || 'private',
     editMode,
     error,

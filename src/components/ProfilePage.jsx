@@ -20,7 +20,7 @@ import ProfileAvatar from './ProfilePage/ProfileAvatar';
 import Name from './ProfilePage/Name';
 import Country from './ProfilePage/Country';
 import Education from './ProfilePage/Education';
-// import SocialLinks from './ProfilePage/SocialLinks';
+import SocialLinks from './ProfilePage/SocialLinks';
 import Bio from './ProfilePage/Bio';
 // import Certificates from './ProfilePage/Certificates';
 
@@ -105,7 +105,7 @@ export class ProfilePage extends React.Component {
               <Name formId="name" {...commonFormProps} />
               <Country formId="country" {...commonFormProps} />
               <Education formId="education" {...commonFormProps} />
-              {/* <SocialLinks formId="socialLinks" {...commonFormProps} /> */}
+              <SocialLinks formId="socialLinks" {...commonFormProps} />
             </Col>
             <Col
               xs={{ order: 1 }}

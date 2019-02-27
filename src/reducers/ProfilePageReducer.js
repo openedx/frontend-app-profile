@@ -15,7 +15,9 @@ const initialState = {
   saveState: null,
   savePhotoState: null,
   currentlyEditingField: null,
-  account: {},
+  account: {
+    socialLinks: [],
+  },
   preferences: {
     visibility: {},
   },

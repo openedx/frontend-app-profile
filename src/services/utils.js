@@ -15,7 +15,9 @@ export function flattenAndTransformKeys(srcObj, transformer = key => key) {
     const tKey = transformer(key);
     const keys = prevKeys.concat(tKey);
 
-    if (value && typeof value === 'object') {
+    if (Array.isArray(value)) {
+      acc[keys.join('.')] = value;
+    } else if (value && typeof value === 'object') {
       Object.assign(acc, flatten(value, keys));
     } else {
       acc[keys.join('.')] = value;

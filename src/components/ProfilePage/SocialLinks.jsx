@@ -1,64 +1,80 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Input } from 'reactstrap';
+import { Form, Input } from 'reactstrap';
+import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
+// Components
 import FormControls from './elements/FormControls';
 import EditableItemHeader from './elements/EditableItemHeader';
-import SwitchContent from './elements/SwitchContent';
 import EmptyContent from './elements/EmptyContent';
+import SwitchContent from './elements/SwitchContent';
 
-const brandIcons = {
-  facebook: faFacebook,
-  twitter: faTwitter,
-  linkedin: faLinkedin,
+// Selectors
+import { editableFormSelector } from '../../selectors/ProfilePageSelector';
+
+const platformDisplayInfo = {
+  facebook: {
+    icon: faFacebook,
+    name: 'Facebook',
+  },
+  twitter: {
+    icon: faTwitter,
+    name: 'Twitter',
+  },
+  linkedin: {
+    icon: faLinkedin,
+    name: 'LinkedIn',
+  },
 };
-
 
 class SocialLinks extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
-    this.onSave = this.onSave.bind(this);
-    this.onEdit = this.onEdit.bind(this);
-    this.onInputChange = this.onInputChange.bind(this);
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.handleOpen = this.handleOpen.bind(this);
   }
 
-  onSave() {
-    const values = this.props.platforms.filter(({ key }) => typeof this.state[key] !== 'undefined').map(({ key }) => ({
-      platform: key,
-      socialLink: this.state[key],
-    }));
+  handleChange(e) {
+    const {
+      name,
+      value,
+    } = e.target;
 
-    this.props.onSave('socialLinks', values);
+    if (name !== 'visibility') {
+      const updatedList = this.props.committedValue.map((socialLink) => {
+        if (socialLink.platform === name) {
+          return { platform: name, social_link: value };
+        }
+        return socialLink;
+      });
+      this.props.changeHandler(this.props.formId, 'socialLinks', updatedList);
+    } else {
+      this.props.changeHandler(this.props.formId, name, value);
+    }
   }
 
-  onEdit() {
-    this.props.onEdit('socialLinks');
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.submitHandler(this.props.formId);
   }
 
-  onInputChange(platform, value) {
-    this.setState({ [platform]: value });
-    this.props.onChange('socialLinks', this.state);
+  handleClose() {
+    this.props.closeHandler(this.props.formId);
+  }
+
+  handleOpen() {
+    this.props.openHandler(this.props.formId);
   }
 
   render() {
     const {
-      platforms,
-      socialLinks,
-      editMode,
-      visibility,
-      saveState,
-      onVisibilityChange,
-      onCancel,
+      formId, value: values, visibility, editMode, saveState, error,
     } = this.props;
-    const { onInputChange, onEdit } = this;
-    const socialLinksMap = socialLinks.reduce((acc, { platform, socialLink }) => {
-      acc[platform] = socialLink;
-      return acc;
-    }, {});
-    const isEmpty = socialLinks && socialLinks.length > 0;
 
     return (
       <SwitchContent
@@ -67,11 +83,11 @@ class SocialLinks extends React.Component {
         cases={{
           empty: (
             <ul className="list-unstyled">
-              {platforms.map(({ key, name }) => (
+              {values.map(({ platform }) => (
                 <EmptyListItem
-                  key={key}
-                  onClick={onEdit}
-                  name={name}
+                  key={platform}
+                  onClick={this.handleOpen}
+                  name={platformDisplayInfo[platform].name}
                 />
               ))}
             </ul>
@@ -80,10 +96,10 @@ class SocialLinks extends React.Component {
             <React.Fragment>
               <EditableItemHeader content="Social Links" />
               <ul className="list-unstyled">
-                {socialLinks.map(({ platform, socialLink }) => (
+                {values.map(({ platform, social_link: socialLink }) => (
                   <StaticListItem
                     key={platform}
-                    name={platforms[platform]}
+                    name={platformDisplayInfo[platform].name}
                     url={socialLink}
                     platform={platform}
                   />
@@ -96,45 +112,46 @@ class SocialLinks extends React.Component {
               <EditableItemHeader
                 content="Social Links"
                 showEditButton
-                onClickEdit={onEdit}
-                showVisibility={isEmpty}
+                onClickEdit={this.handleOpen}
+                showVisibility={visibility !== null}
                 visibility={visibility}
               />
               <ul className="list-unstyled">
-                {platforms.map(({ key, name }) => (
+                {values.map(({ platform, social_link: socialLink }) => (
                   <EditableListItem
-                    key={key}
-                    platform={key}
-                    name={name}
-                    url={socialLinksMap[key]}
-                    onClickEmptyContent={onEdit}
+                    key={platform}
+                    platform={platform}
+                    name={platformDisplayInfo[platform].name}
+                    url={socialLink}
+                    onClickEmptyContent={this.handleOpen}
                   />
                 ))}
               </ul>
             </React.Fragment>
           ),
           editing: (
-            <React.Fragment>
+            <Form onSubmit={this.handleSubmit}>
               <EditableItemHeader content="Social Links" />
               <ul className="list-unstyled">
-                {platforms.map(({ key, name }) => (
+                {values.map(({ platform, social_link: socialLink }) => (
                   <EditingListItem
-                    key={key}
-                    name={name}
-                    platform={key}
-                    defaultValue={socialLinksMap[key]}
-                    onChange={onInputChange}
+                    key={platform}
+                    name={platformDisplayInfo[platform].name}
+                    platform={platform}
+                    value={socialLink}
+                    error={error}
+                    onChange={this.handleChange}
                   />
                 ))}
               </ul>
               <FormControls
-                onCancel={() => onCancel('socialLinks')}
-                onSave={this.onSave}
+                formId={formId}
                 saveState={saveState}
                 visibility={visibility}
-                onVisibilityChange={e => onVisibilityChange('socialLinks', e.target.value)}
+                cancelHandler={this.handleClose}
+                changeHandler={this.handleChange}
               />
-            </React.Fragment>
+            </Form>
           ),
         }}
       />
@@ -143,42 +160,51 @@ class SocialLinks extends React.Component {
 }
 
 SocialLinks.propTypes = {
-  socialLinks: PropTypes.arrayOf(PropTypes.shape({
+  // It'd be nice to just set this as a defaultProps...
+  // except the class that comes out on the other side of react-redux's
+  // connect() method won't have it anymore. Static properties won't survive
+  // through the higher order function.
+  formId: PropTypes.string.isRequired,
+
+  // From Selector
+  value: PropTypes.arrayOf(PropTypes.shape({
     platform: PropTypes.string,
     socialLink: PropTypes.string,
   })),
-  platforms: PropTypes.arrayOf(PropTypes.shape({
-    key: PropTypes.string,
-    name: PropTypes.string,
+  committedValue: PropTypes.arrayOf(PropTypes.shape({
+    platform: PropTypes.string,
+    socialLink: PropTypes.string,
   })),
   visibility: PropTypes.oneOf(['private', 'all_users']),
-  editMode: PropTypes.string,
-  onEdit: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-  onSave: PropTypes.func.isRequired,
-  onCancel: PropTypes.func.isRequired,
-  onVisibilityChange: PropTypes.func.isRequired,
+  editMode: PropTypes.oneOf(['editing', 'editable', 'empty', 'static']),
   saveState: PropTypes.string,
+  error: PropTypes.string,
+
+  // Actions
+  changeHandler: PropTypes.func.isRequired,
+  submitHandler: PropTypes.func.isRequired,
+  closeHandler: PropTypes.func.isRequired,
+  openHandler: PropTypes.func.isRequired,
 };
+
 SocialLinks.defaultProps = {
-  socialLinks: [],
-  platforms: [
-    { key: 'twitter', name: 'Twitter' },
-    { key: 'linkedin', name: 'LinkedIn' },
-    { key: 'facebook', name: 'Facebook' },
-  ],
-  visibility: 'private',
   editMode: 'static',
   saveState: null,
+  value: [],
+  committedValue: [],
+  visibility: 'private',
+  error: null,
 };
 
-export default SocialLinks;
-
+export default connect(
+  editableFormSelector,
+  {},
+)(SocialLinks);
 
 function SocialLink({ url, name, platform }) {
   return (
     <a href={url} className="font-weight-bold">
-      <FontAwesomeIcon className="mr-2" icon={brandIcons[platform]} />
+      <FontAwesomeIcon className="mr-2" icon={platformDisplayInfo[platform].icon} />
       {name}
     </a>
   );
@@ -219,7 +245,7 @@ EditableListItem.defaultProps = {
 function EditingListItem({
   platform,
   name,
-  defaultValue,
+  value,
   onChange,
 }) {
   return (
@@ -227,8 +253,9 @@ function EditingListItem({
       <h6>{name}</h6>
       <Input
         type="text"
-        defaultValue={defaultValue}
-        onChange={e => onChange(platform, e.target.value)}
+        name={platform}
+        value={value}
+        onChange={onChange}
       />
     </li>
   );
@@ -236,12 +263,12 @@ function EditingListItem({
 
 EditingListItem.propTypes = {
   platform: PropTypes.string.isRequired,
-  defaultValue: PropTypes.string,
+  value: PropTypes.string,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 };
 EditingListItem.defaultProps = {
-  defaultValue: null,
+  value: null,
 };
 
 
