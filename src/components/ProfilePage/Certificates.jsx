@@ -1,21 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, FormFeedback, FormGroup, Input, Label } from 'reactstrap';
+import { FormattedMessage } from 'react-intl';
+import { Row, Col, Card, CardBody, CardTitle, Button, Form } from 'reactstrap';
 import { connect } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDownload } from '@fortawesome/free-solid-svg-icons';
 
 // Components
 import FormControls from './elements/FormControls';
 import EditableItemHeader from './elements/EditableItemHeader';
-import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
 
-// Constants
-import EDUCATION from '../../constants/education';
-
 // Selectors
-import { editableFormSelector } from '../../selectors/ProfilePageSelector';
+import { certificatesSelector } from '../../selectors/ProfilePageSelector';
 
-class Education extends React.Component {
+class Certificates extends React.Component {
   constructor(props) {
     super(props);
 
@@ -26,10 +25,7 @@ class Education extends React.Component {
   }
 
   handleChange(e) {
-    const {
-      name,
-      value,
-    } = e.target;
+    const { name, value } = e.target;
     this.props.changeHandler(this.props.formId, name, value);
   }
 
@@ -46,9 +42,44 @@ class Education extends React.Component {
     this.props.openHandler(this.props.formId);
   }
 
+  renderCertificate({
+    type: { name }, title, organization, downloadUrl,
+  }) {
+    return (
+      <Col key={downloadUrl} sm={6}>
+        <Card className="mb-4 certificate">
+          <CardBody>
+            <CardTitle>
+              <p className="small mb-0">{name}</p>
+              <h4 className="certificate-title">{title}</h4>
+            </CardTitle>
+            <p className="small mb-0">From</p>
+            <h6 className="mb-4">{organization}</h6>
+            <div>
+              <Button outline color="primary" href={downloadUrl} target="blank">
+                <FontAwesomeIcon className="ml-n1 mr-2" icon={faDownload} />
+                Download
+              </Button>
+            </div>
+          </CardBody>
+        </Card>
+      </Col>
+    );
+  }
+
+  renderCertificates() {
+    if (this.props.certificates === null) {
+      return null;
+    }
+
+    return (
+      <Row>{this.props.certificates.map(certificate => this.renderCertificate(certificate))}</Row>
+    );
+  }
+
   render() {
     const {
-      formId, value, visibility, editMode, saveState, error,
+      formId, visibility, editMode, saveState,
     } = this.props;
 
     return (
@@ -58,22 +89,8 @@ class Education extends React.Component {
         cases={{
           editing: (
             <Form onSubmit={this.handleSubmit}>
-              <FormGroup>
-                <Label for="education">Education</Label>
-                <Input
-                  type="select"
-                  name={formId}
-                  className="w-100"
-                  value={value}
-                  invalid={error != null}
-                  onChange={this.handleChange}
-                >
-                  {Object.keys(EDUCATION).map(key => (
-                    <option key={key} value={key}>{EDUCATION[key]}</option>
-                  ))}
-                </Input>
-                <FormFeedback>{error}</FormFeedback>
-              </FormGroup>
+              <EditableItemHeader content="My Certificates" />
+              {this.renderCertificates()}
               <FormControls
                 formId={formId}
                 saveState={saveState}
@@ -86,20 +103,28 @@ class Education extends React.Component {
           editable: (
             <React.Fragment>
               <EditableItemHeader
-                content="Education"
+                content="My Certificates"
                 showEditButton
                 onClickEdit={this.handleOpen}
                 showVisibility={visibility !== null}
                 visibility={visibility}
               />
-              <h5>{EDUCATION[value]}</h5>
+              {this.renderCertificates()}
             </React.Fragment>
           ),
-          empty: <EmptyContent onClick={this.handleOpen}>Add education</EmptyContent>,
+          empty: (
+            <div>
+              <FormattedMessage
+                id="profile.no.certificates"
+                defaultMessage="You don't have any certificates yet."
+                description="displays when user has no course completion certificates"
+              />
+            </div>
+          ),
           static: (
             <React.Fragment>
-              <EditableItemHeader content="Education" />
-              <h5>{EDUCATION[value]}</h5>
+              <EditableItemHeader content="My Certificates" />
+              {this.renderCertificates()}
             </React.Fragment>
           ),
         }}
@@ -108,7 +133,7 @@ class Education extends React.Component {
   }
 }
 
-Education.propTypes = {
+Certificates.propTypes = {
   // It'd be nice to just set this as a defaultProps...
   // except the class that comes out on the other side of react-redux's
   // connect() method won't have it anymore. Static properties won't survive
@@ -116,11 +141,12 @@ Education.propTypes = {
   formId: PropTypes.string.isRequired,
 
   // From Selector
-  value: PropTypes.string,
+  certificates: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string,
+  })),
   visibility: PropTypes.oneOf(['private', 'all_users']),
   editMode: PropTypes.oneOf(['editing', 'editable', 'empty', 'static']),
   saveState: PropTypes.string,
-  error: PropTypes.string,
 
   // Actions
   changeHandler: PropTypes.func.isRequired,
@@ -129,15 +155,14 @@ Education.propTypes = {
   openHandler: PropTypes.func.isRequired,
 };
 
-Education.defaultProps = {
+Certificates.defaultProps = {
   editMode: 'static',
   saveState: null,
-  value: null,
   visibility: 'private',
-  error: null,
+  certificates: null,
 };
 
 export default connect(
-  editableFormSelector,
+  certificatesSelector,
   {},
-)(Education);
+)(Certificates);

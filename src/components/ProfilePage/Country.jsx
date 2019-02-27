@@ -10,12 +10,12 @@ import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
 
 // Constants
-import EDUCATION from '../../constants/education';
+import { ALL_COUNTRIES } from '../../constants/countries';
 
 // Selectors
 import { editableFormSelector } from '../../selectors/ProfilePageSelector';
 
-class Education extends React.Component {
+class Country extends React.Component {
   constructor(props) {
     super(props);
 
@@ -59,7 +59,7 @@ class Education extends React.Component {
           editing: (
             <Form onSubmit={this.handleSubmit}>
               <FormGroup>
-                <Label for="education">Education</Label>
+                <Label for="country">Location</Label>
                 <Input
                   type="select"
                   name={formId}
@@ -68,8 +68,8 @@ class Education extends React.Component {
                   invalid={error != null}
                   onChange={this.handleChange}
                 >
-                  {Object.keys(EDUCATION).map(key => (
-                    <option key={key} value={key}>{EDUCATION[key]}</option>
+                  {Object.keys(ALL_COUNTRIES).map(key => (
+                    <option key={key} value={key}>{ALL_COUNTRIES[key]}</option>
                   ))}
                 </Input>
                 <FormFeedback>{error}</FormFeedback>
@@ -86,20 +86,20 @@ class Education extends React.Component {
           editable: (
             <React.Fragment>
               <EditableItemHeader
-                content="Education"
+                content="Location"
                 showEditButton
                 onClickEdit={this.handleOpen}
                 showVisibility={visibility !== null}
                 visibility={visibility}
               />
-              <h5>{EDUCATION[value]}</h5>
+              <h5>{ALL_COUNTRIES[value]}</h5>
             </React.Fragment>
           ),
-          empty: <EmptyContent onClick={this.handleOpen}>Add education</EmptyContent>,
+          empty: <EmptyContent onClick={this.handleOpen}>Add location</EmptyContent>,
           static: (
             <React.Fragment>
-              <EditableItemHeader content="Education" />
-              <h5>{EDUCATION[value]}</h5>
+              <EditableItemHeader content="Location" />
+              <h5>{ALL_COUNTRIES[value]}</h5>
             </React.Fragment>
           ),
         }}
@@ -108,7 +108,7 @@ class Education extends React.Component {
   }
 }
 
-Education.propTypes = {
+Country.propTypes = {
   // It'd be nice to just set this as a defaultProps...
   // except the class that comes out on the other side of react-redux's
   // connect() method won't have it anymore. Static properties won't survive
@@ -129,7 +129,7 @@ Education.propTypes = {
   openHandler: PropTypes.func.isRequired,
 };
 
-Education.defaultProps = {
+Country.defaultProps = {
   editMode: 'static',
   saveState: null,
   value: null,
@@ -140,4 +140,4 @@ Education.defaultProps = {
 export default connect(
   editableFormSelector,
   {},
-)(Education);
+)(Country);

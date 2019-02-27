@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, FormFeedback, FormGroup, Input, Label } from 'reactstrap';
+import { Form, FormFeedback, FormGroup, FormText, Input, Label } from 'reactstrap';
 import { connect } from 'react-redux';
 
 // Components
@@ -9,13 +9,10 @@ import EditableItemHeader from './elements/EditableItemHeader';
 import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
 
-// Constants
-import EDUCATION from '../../constants/education';
-
 // Selectors
 import { editableFormSelector } from '../../selectors/ProfilePageSelector';
 
-class Education extends React.Component {
+class Name extends React.Component {
   constructor(props) {
     super(props);
 
@@ -59,19 +56,11 @@ class Education extends React.Component {
           editing: (
             <Form onSubmit={this.handleSubmit}>
               <FormGroup>
-                <Label for="education">Education</Label>
-                <Input
-                  type="select"
-                  name={formId}
-                  className="w-100"
-                  value={value}
-                  invalid={error != null}
-                  onChange={this.handleChange}
-                >
-                  {Object.keys(EDUCATION).map(key => (
-                    <option key={key} value={key}>{EDUCATION[key]}</option>
-                  ))}
-                </Input>
+                <Label for="name">Full Name</Label>
+                <Input type="text" name={formId} value={value} invalid={error != null} onChange={this.handleChange} />
+                <FormText>
+                  This is the name that appears in your account and on your certificates.
+                </FormText>
                 <FormFeedback>{error}</FormFeedback>
               </FormGroup>
               <FormControls
@@ -86,20 +75,20 @@ class Education extends React.Component {
           editable: (
             <React.Fragment>
               <EditableItemHeader
-                content="Education"
+                content="Full Name"
                 showEditButton
                 onClickEdit={this.handleOpen}
                 showVisibility={visibility !== null}
                 visibility={visibility}
               />
-              <h5>{EDUCATION[value]}</h5>
+              <h5>{value}</h5>
             </React.Fragment>
           ),
-          empty: <EmptyContent onClick={this.handleOpen}>Add education</EmptyContent>,
+          empty: <EmptyContent onClick={this.handleOpen}>Add name</EmptyContent>,
           static: (
             <React.Fragment>
-              <EditableItemHeader content="Education" />
-              <h5>{EDUCATION[value]}</h5>
+              <EditableItemHeader content="Full Name" />
+              <h5>{value}</h5>
             </React.Fragment>
           ),
         }}
@@ -108,7 +97,7 @@ class Education extends React.Component {
   }
 }
 
-Education.propTypes = {
+Name.propTypes = {
   // It'd be nice to just set this as a defaultProps...
   // except the class that comes out on the other side of react-redux's
   // connect() method won't have it anymore. Static properties won't survive
@@ -129,7 +118,7 @@ Education.propTypes = {
   openHandler: PropTypes.func.isRequired,
 };
 
-Education.defaultProps = {
+Name.defaultProps = {
   editMode: 'static',
   saveState: null,
   value: null,
@@ -140,4 +129,4 @@ Education.defaultProps = {
 export default connect(
   editableFormSelector,
   {},
-)(Education);
+)(Name);

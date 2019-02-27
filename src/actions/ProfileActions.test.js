@@ -1,8 +1,8 @@
 import {
-  openField,
-  closeField,
-  FIELD_OPEN,
-  FIELD_CLOSE,
+  openForm,
+  closeForm,
+  OPEN_FORM,
+  CLOSE_FORM,
   SAVE_PROFILE,
   saveProfileBegin,
   saveProfileSuccess,
@@ -26,51 +26,47 @@ import {
 describe('editable field actions', () => {
   it('should create an open action', () => {
     const expectedAction = {
-      type: FIELD_OPEN,
-      fieldName: 'name',
+      type: OPEN_FORM,
+      payload: {
+        formId: 'name',
+      },
     };
-    expect(openField('name')).toEqual(expectedAction);
+    expect(openForm('name')).toEqual(expectedAction);
   });
 
   it('should create a closed action', () => {
     const expectedAction = {
-      type: FIELD_CLOSE,
-      fieldName: 'name',
+      type: CLOSE_FORM,
+      payload: {
+        formId: 'name',
+      },
     };
-    expect(closeField('name')).toEqual(expectedAction);
+    expect(closeForm('name')).toEqual(expectedAction);
   });
 });
 
 describe('SAVE profile actions', () => {
-  const profileData = {
-    username: 'verified',
-    email: 'verified@example.com',
-    bio: 'A great bio.',
-    name: 'Veri Fied',
-    country: 'US',
-    // Good enough for testing / and since we have no factories
-  };
-
-  const preferencesData = {};
-
   it('should create an action to signal the start of a profile save', () => {
     const expectedAction = {
       type: SAVE_PROFILE.BASE,
       payload: {
-        username: 'user person',
-        fieldName: 'fullName',
-        profileData,
-        preferencesData,
+        formId: 'name',
       },
     };
-    expect(saveProfile('user person', { profileData, preferencesData }, 'fullName')).toEqual(expectedAction);
+    expect(saveProfile('name')).toEqual(expectedAction);
   });
 
   it('should create an action to signal user profile save success', () => {
+    const accountData = { name: 'Full Name' };
+    const preferencesData = { visibility: { name: 'private' } };
     const expectedAction = {
       type: SAVE_PROFILE.SUCCESS,
+      payload: {
+        account: accountData,
+        preferences: preferencesData,
+      },
     };
-    expect(saveProfileSuccess()).toEqual(expectedAction);
+    expect(saveProfileSuccess(accountData, preferencesData)).toEqual(expectedAction);
   });
 
   it('should create an action to signal user profile save beginning', () => {
@@ -187,21 +183,25 @@ describe('DELETE profile photo actions', () => {
 
 
 describe('Editable field opening and closing actions', () => {
-  const fieldName = 'fullName';
+  const formId = 'name';
 
   it('should create an action to signal the opening a field', () => {
     const expectedAction = {
-      type: FIELD_OPEN,
-      fieldName,
+      type: OPEN_FORM,
+      payload: {
+        formId,
+      },
     };
-    expect(openField(fieldName)).toEqual(expectedAction);
+    expect(openForm(formId)).toEqual(expectedAction);
   });
 
   it('should create an action to signal the closing a field', () => {
     const expectedAction = {
-      type: FIELD_CLOSE,
-      fieldName,
+      type: CLOSE_FORM,
+      payload: {
+        formId,
+      },
     };
-    expect(closeField(fieldName)).toEqual(expectedAction);
+    expect(closeForm(formId)).toEqual(expectedAction);
   });
 });
