@@ -1,5 +1,6 @@
 // This is the dev Webpack config. All settings here should prefer a fast build
 // time at the expense of creating larger, unoptimized bundles.
+
 const Merge = require('webpack-merge');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -10,12 +11,12 @@ const commonConfig = require('./webpack.common.config.js');
 module.exports = Merge.smart(commonConfig, {
   mode: 'development',
   devtool: 'eval-source-map',
-  entry: [
+  entry: {
     // enable react's custom hot dev client so we get errors reported in the browser
-    require.resolve('react-dev-utils/webpackHotDevClient'),
-    path.resolve(__dirname, '../src/analytics/segment.js'),
-    path.resolve(__dirname, '../src/index.jsx'),
-  ],
+    hot: require.resolve('react-dev-utils/webpackHotDevClient'),
+    segment: path.resolve(__dirname, '../src/analytics/segment.js'),
+    app: path.resolve(__dirname, '../src/index.jsx'),
+  },
   module: {
     // Specify file-by-file rules to Webpack. Some file-types need a particular kind of loader.
     rules: [
