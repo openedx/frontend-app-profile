@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Input } from 'reactstrap';
+import { Form, Input, FormFeedback } from 'reactstrap';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
@@ -139,7 +139,7 @@ class SocialLinks extends React.Component {
                     name={platformDisplayInfo[platform].name}
                     platform={platform}
                     value={socialLink}
-                    error={error}
+                    error={error !== null ? error[platform] : null}
                     onChange={this.handleChange}
                   />
                 ))}
@@ -223,7 +223,7 @@ function EditableListItem({
   onClickEmptyContent,
   name,
 }) {
-  const linkDisplay = url != null ?
+  const linkDisplay = url ?
     <SocialLink name={name} url={url} platform={platform} /> :
     <EmptyContent onClick={onClickEmptyContent}>Add {name}</EmptyContent>;
 
@@ -247,6 +247,7 @@ function EditingListItem({
   name,
   value,
   onChange,
+  error,
 }) {
   return (
     <li className="form-group">
@@ -256,7 +257,9 @@ function EditingListItem({
         name={platform}
         value={value}
         onChange={onChange}
+        invalid={error != null}
       />
+      <FormFeedback>{error}</FormFeedback>
     </li>
   );
 }
@@ -266,9 +269,12 @@ EditingListItem.propTypes = {
   value: PropTypes.string,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  error: PropTypes.string,
 };
+
 EditingListItem.defaultProps = {
   value: null,
+  error: null,
 };
 
 
