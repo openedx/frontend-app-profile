@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, FormFeedback, FormGroup, Input, Label } from 'reactstrap';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
+import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
+
+import messages from './Bio.messages';
 
 // Components
 import FormControls from './elements/FormControls';
@@ -43,7 +45,7 @@ class Bio extends React.Component {
 
   render() {
     const {
-      formId, value, visibility, editMode, saveState, error,
+      formId, value, visibility, editMode, saveState, error, intl,
     } = this.props;
 
     return (
@@ -54,7 +56,7 @@ class Bio extends React.Component {
           editing: (
             <Form onSubmit={this.handleSubmit}>
               <FormGroup>
-                <Label for={formId}>About Me</Label>
+                <Label for={formId}>{intl.formatMessage(messages['profile.bio.about.me'])}</Label>
                 <Input
                   type="textarea"
                   id={formId}
@@ -77,7 +79,7 @@ class Bio extends React.Component {
           editable: (
             <React.Fragment>
               <EditableItemHeader
-                content="About Me"
+                content={intl.formatMessage(messages['profile.bio.about.me'])}
                 showEditButton
                 onClickEdit={this.handleOpen}
                 showVisibility={visibility !== null}
@@ -97,7 +99,7 @@ class Bio extends React.Component {
           ),
           static: (
             <React.Fragment>
-              <EditableItemHeader content="About Me" />
+              <EditableItemHeader content={intl.formatMessage(messages['profile.bio.about.me'])} />
               <p className="lead">{value}</p>
             </React.Fragment>
           ),
@@ -126,6 +128,9 @@ Bio.propTypes = {
   submitHandler: PropTypes.func.isRequired,
   closeHandler: PropTypes.func.isRequired,
   openHandler: PropTypes.func.isRequired,
+
+  // i18n
+  intl: intlShape.isRequired,
 };
 
 Bio.defaultProps = {
@@ -139,4 +144,4 @@ Bio.defaultProps = {
 export default connect(
   editableFormSelector,
   {},
-)(Bio);
+)(injectIntl(Bio));

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, FormFeedback, FormGroup, Input, Label } from 'reactstrap';
 import { connect } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
 
 // Components
 import FormControls from './elements/FormControls';
@@ -95,7 +96,15 @@ class Country extends React.Component {
               <h5>{ALL_COUNTRIES[value]}</h5>
             </React.Fragment>
           ),
-          empty: <EmptyContent onClick={this.handleOpen}>Add location</EmptyContent>,
+          empty: (
+            <EmptyContent onClick={this.handleOpen}>
+              <FormattedMessage
+                id="profile.country.empty"
+                defaultMessage="Add location"
+                description="instructions when the user doesn't have a location set"
+              />
+            </EmptyContent>
+          ),
           static: (
             <React.Fragment>
               <EditableItemHeader content="Location" />
