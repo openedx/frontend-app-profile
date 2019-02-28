@@ -4,8 +4,7 @@ import PropTypes from 'prop-types';
 function DateJoined({ date }) {
   if (date == null) return null;
 
-  // Not a proper way to do it, but probably cheaper than creating a Date.
-  const year = date.substring(0, 4);
+  const year = (new Date(date)).getFullYear();
 
   return (
     <p className="mb-0">Member since {year}</p>
