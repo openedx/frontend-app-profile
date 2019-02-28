@@ -1,9 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { UncontrolledAlert } from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
 
-function AgeMessage({ accountURL }) {
+import { configuration } from '../../config/environment';
+
+const { ACCOUNT_SETTINGS_URL } = configuration;
+
+function AgeMessage() {
   return (
     <UncontrolledAlert color="info">
       <FormattedMessage
@@ -18,7 +21,7 @@ function AgeMessage({ accountURL }) {
         description="error message"
         tagName="p"
       />
-      <a href={accountURL}>
+      <a href={ACCOUNT_SETTINGS_URL}>
         <FormattedMessage
           id="profile.age.set.date"
           defaultMessage="Set your date of birth"
@@ -28,9 +31,5 @@ function AgeMessage({ accountURL }) {
     </UncontrolledAlert>
   );
 }
-
-AgeMessage.propTypes = {
-  accountURL: PropTypes.string.isRequired,
-};
 
 export default AgeMessage;
