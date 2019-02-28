@@ -1,13 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FormattedMessage, FormattedDate } from 'react-intl';
 
 function DateJoined({ date }) {
   if (date == null) return null;
 
-  const year = (new Date(date)).getFullYear();
-
   return (
-    <p className="mb-0">Member since {year}</p>
+    <FormattedMessage
+      id="profile.date.joined"
+      defaultMessage="Member since {year}"
+      description="A label for how long the user has been a member"
+      values={{
+        year: <FormattedDate value={new Date(date)} year="numeric" />,
+      }}
+      tagName="p"
+      className="mb-0"
+    />
   );
 }
 
