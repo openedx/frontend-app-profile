@@ -17,7 +17,7 @@ function EditableItemHeader({
       <div className="editable-item-header mb-2">
         <h6 className="font-weight-normal mb-0">
           {content}
-          {showEditButton ? <EditButton style={{ marginTop: '-.35rem' }} className="float-right" onClick={onClickEdit} /> : null}
+          {showEditButton ? <EditButton style={{ marginTop: '-.35rem' }} className="float-right px-0" onClick={onClickEdit} /> : null}
         </h6>
         {showVisibility ? <p className="mb-0"><Visibility to={visibility} /></p> : null}
       </div>

@@ -6,6 +6,16 @@ const messages = defineMessages({
     defaultMessage: 'Who can see this:',
     description: 'What users can see this area?',
   },
+  'profile.formcontrols.who.just.me': {
+    id: 'profile.formcontrols.who.just.me',
+    defaultMessage: 'Just me',
+    description: 'What users can see this area?',
+  },
+  'profile.formcontrols.who.everyone': {
+    id: 'profile.formcontrols.who.everyone',
+    defaultMessage: 'Everyone on edX',
+    description: 'What users can see this area?',
+  },
   'profile.formcontrols.button.cancel': {
     id: 'profile.formcontrols.button.cancel',
     defaultMessage: 'Cancel',
