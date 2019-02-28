@@ -13,7 +13,9 @@ import rootSaga from '../sagas/RootSaga';
 export default function configureStore() {
   const history = createBrowserHistory();
 
-  const loggerMiddleware = createLogger();
+  const loggerMiddleware = createLogger({
+    collapsed: true,
+  });
   const sagaMiddleware = createSagaMiddleware();
   const initialState = apiClient.getAuthenticationState();
 
