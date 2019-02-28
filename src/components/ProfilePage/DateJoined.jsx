@@ -7,7 +7,7 @@ function DateJoined({ date }) {
 
   return (
     <FormattedMessage
-      id="profile.date.joined"
+      id="profile.datejoined.member.since"
       defaultMessage="Member since {year}"
       description="A label for how long the user has been a member"
       values={{
