@@ -24,6 +24,7 @@ import SocialLinks from './ProfilePage/SocialLinks';
 import Bio from './ProfilePage/Bio';
 import Certificates from './ProfilePage/Certificates';
 import AgeMessage from './ProfilePage/AgeMessage';
+import DateJoined from './ProfilePage/DateJoined';
 
 export class ProfilePage extends React.Component {
   constructor(props) {
@@ -71,7 +72,7 @@ export class ProfilePage extends React.Component {
 
   render() {
     const {
-      profileImage, username, errors,
+      profileImage, username, dateJoined, errors,
     } = this.props;
 
     const commonFormProps = {
@@ -98,7 +99,7 @@ export class ProfilePage extends React.Component {
                 />
                 <div>
                   <h2 className="mb-0">{username}</h2>
-                  <p className="mb-0">Member since 2017</p>
+                  <DateJoined date={dateJoined} />
                 </div>
               </div>
             </Col>
@@ -137,6 +138,7 @@ ProfilePage.propTypes = {
 
   // Profile data
   username: PropTypes.string,
+  dateJoined: PropTypes.string,
   profileImage: PropTypes.string,
   accountPrivacy: PropTypes.string,
   certificates: PropTypes.arrayOf(PropTypes.shape({
@@ -187,6 +189,7 @@ ProfilePage.defaultProps = {
   visibility: {}, // eslint-disable-line
   yearOfBirth: null,
   requiresParentalConsent: null,
+  dateJoined: null,
 };
 
 const mapStateToProps = (state) => {
@@ -211,6 +214,7 @@ const mapStateToProps = (state) => {
     visibility: state.profilePage.preferences.visibility || {},
     yearOfBirth: state.profilePage.account.yearOfBirth,
     requiresParentalConsent: state.profilePage.account.requiresParentalConsent,
+    dateJoined: state.profilePage.account.dateJoined,
   };
 };
 
