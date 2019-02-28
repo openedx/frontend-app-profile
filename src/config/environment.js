@@ -2,6 +2,7 @@ export const configuration = {
   BASE_URL: process.env.BASE_URL,
   LMS_BASE_URL: process.env.LMS_BASE_URL,
   LOGIN_URL: process.env.LOGIN_URL,
+  ACCOUNT_SETTINGS_URL: `${process.env.LMS_BASE_URL}/account/settings`,
   LOGOUT_URL: process.env.LOGOUT_URL,
   CSRF_TOKEN_API_PATH: process.env.CSRF_TOKEN_API_PATH,
   REFRESH_ACCESS_TOKEN_ENDPOINT: process.env.REFRESH_ACCESS_TOKEN_ENDPOINT,
