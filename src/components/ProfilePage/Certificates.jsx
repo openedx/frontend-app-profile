@@ -11,6 +11,9 @@ import FormControls from './elements/FormControls';
 import EditableItemHeader from './elements/EditableItemHeader';
 import SwitchContent from './elements/SwitchContent';
 
+// Assets
+import microMastersSVG from '../../../assets/micro-masters.svg';
+
 // Selectors
 import { certificatesSelector } from '../../selectors/ProfilePageSelector';
 
@@ -45,9 +48,15 @@ class Certificates extends React.Component {
   renderCertificate({
     certificateType, courseDisplayName, courseOrganization, downloadUrl,
   }) {
+    const { intl } = this.props;
+
     return (
       <Col key={downloadUrl} sm={6}>
         <Card className="mb-4 certificate">
+          <div
+            className="certificate-type-illustration"
+            style={{ backgroundImage: `url(${microMastersSVG})` }}
+          />
           <CardBody>
             <CardTitle>
               <p className="small mb-0">{certificateType}</p>
@@ -62,11 +71,7 @@ class Certificates extends React.Component {
             <h6 className="mb-4">{courseOrganization}</h6>
             <div>
               <Button outline color="primary" href={downloadUrl} target="blank">
-                <FormattedMessage
-                  id="profile.view.certificate"
-                  defaultMessage="View Certificate"
-                  description="view certificate button label"
-                />
+                {intl.formatMessage(messages['profile.certificates.view.certificate'])}
               </Button>
             </div>
           </CardBody>
