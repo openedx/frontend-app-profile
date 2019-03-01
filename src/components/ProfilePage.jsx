@@ -19,6 +19,7 @@ import {
 import ProfileAvatar from './ProfilePage/ProfileAvatar';
 import Name from './ProfilePage/Name';
 import Country from './ProfilePage/Country';
+import PreferredLanguage from './ProfilePage/PreferredLanguage';
 import Education from './ProfilePage/Education';
 import SocialLinks from './ProfilePage/SocialLinks';
 import Bio from './ProfilePage/Bio';
@@ -108,6 +109,7 @@ export class ProfilePage extends React.Component {
             <Col xs={{ order: 2 }} md={{ size: 4, order: 1 }} lg={3} className="mt-md-4">
               <Name formId="name" {...commonFormProps} />
               <Country formId="country" {...commonFormProps} />
+              <PreferredLanguage formId="languageProficiencies" {...commonFormProps} />
               <Education formId="education" {...commonFormProps} />
               <SocialLinks formId="socialLinks" {...commonFormProps} />
             </Col>
