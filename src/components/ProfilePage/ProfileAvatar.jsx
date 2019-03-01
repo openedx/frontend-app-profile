@@ -59,7 +59,7 @@ class ProfileAvatar extends React.Component {
   renderMenu() {
     if (!this.props.isEditable) return null;
 
-    if (this.props.src == null) {
+    if (this.props.src === null) {
       return (
         <Button className="text-white btn-block" color="link" size="sm">
           <FormattedMessage
