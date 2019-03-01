@@ -201,7 +201,7 @@ ProfilePage.defaultProps = {
 const mapStateToProps = (state) => {
   const profileImage =
     state.profilePage.account.profileImage != null
-      ? state.profilePage.account.profileImage.imageUrlLarge
+      ? state.profilePage.account.profileImage.image_url_large
       : null;
   return {
     isCurrentUserProfile: state.userAccount.username === state.profilePage.account.username,
