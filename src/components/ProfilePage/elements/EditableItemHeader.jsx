@@ -31,7 +31,7 @@ EditableItemHeader.propTypes = {
   onClickEdit: PropTypes.func,
   showVisibility: PropTypes.bool,
   showEditButton: PropTypes.bool,
-  content: PropTypes.string,
+  content: PropTypes.node,
   visibility: PropTypes.oneOf(['private', 'all_users']),
 };
 
