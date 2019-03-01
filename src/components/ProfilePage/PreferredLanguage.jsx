@@ -31,10 +31,13 @@ class PreferredLanguage extends React.Component {
       name,
       value: rawValue,
     } = e.target;
+    let value = rawValue;
     // Restructure the data.
     // We deconstruct our value prop in render() so this
     // changes our data's shape back to match what came in
-    const value = [{ code: rawValue }];
+    if (name === this.props.formId) {
+      value = [{ code: rawValue }];
+    }
 
     this.props.changeHandler(this.props.formId, name, value);
   }
@@ -67,7 +70,13 @@ class PreferredLanguage extends React.Component {
           editing: (
             <Form onSubmit={this.handleSubmit}>
               <FormGroup>
-                <Label for="language">Preferred Language</Label>
+                <Label for="language">
+                  <FormattedMessage
+                    id="profile.preferredlanguage.label"
+                    defaultMessage="Language"
+                    description="Preferred language label"
+                  />
+                </Label>
                 <Input
                   type="select"
                   name={formId}
@@ -94,7 +103,13 @@ class PreferredLanguage extends React.Component {
           editable: (
             <React.Fragment>
               <EditableItemHeader
-                content="Preferred Language"
+                content={(
+                  <FormattedMessage
+                    id="profile.preferredlanguage.label"
+                    defaultMessage="Language"
+                    description="Preferred language label"
+                  />
+                )}
                 showEditButton
                 onClickEdit={this.handleOpen}
                 showVisibility={visibility !== null}
@@ -114,7 +129,15 @@ class PreferredLanguage extends React.Component {
           ),
           static: (
             <React.Fragment>
-              <EditableItemHeader content="Location" />
+              <EditableItemHeader
+                content={(
+                  <FormattedMessage
+                    id="profile.preferredlanguage.label"
+                    defaultMessage="Language"
+                    description="Preferred language label"
+                  />
+                )}
+              />
               <h5>{ALL_LANGUAGES[value]}</h5>
             </React.Fragment>
           ),
@@ -132,7 +155,12 @@ PreferredLanguage.propTypes = {
   formId: PropTypes.string.isRequired,
 
   // From Selector
-  value: PropTypes.arrayOf(PropTypes.shape({ code: PropTypes.string })),
+  value: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.shape({ code: PropTypes.string })),
+    // TODO: ProfilePageSelector should supply null values
+    // instead of empty strings when no value exists
+    PropTypes.oneOf(['']),
+  ]),
   visibility: PropTypes.oneOf(['private', 'all_users']),
   editMode: PropTypes.oneOf(['editing', 'editable', 'empty', 'static']),
   saveState: PropTypes.string,
