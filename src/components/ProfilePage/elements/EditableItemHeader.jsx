@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import EditButton from './EditButton';
-import Visibility from './Visibility';
+import { Visibility } from './Visibility';
 
 
 function EditableItemHeader({

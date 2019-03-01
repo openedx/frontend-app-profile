@@ -6,7 +6,7 @@ import { injectIntl, intlShape } from 'react-intl';
 import messages from './FormControls.messages';
 
 import AsyncActionButton from './AsyncActionButton';
-import VisibilitySelect from './VisibilitySelect';
+import { VisibilitySelect } from './Visibility';
 
 function FormControls({
   formId, cancelHandler, changeHandler, visibility, saveState, intl,
