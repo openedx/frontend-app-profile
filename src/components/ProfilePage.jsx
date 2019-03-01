@@ -44,6 +44,7 @@ export class ProfilePage extends React.Component {
     this.props.fetchProfile(this.props.match.params.username);
     logEvent('edx.profile.viewed', {
       profileUsername: this.props.match.params.username,
+      version: 'alpha-0.1.0',
     });
   }
 
