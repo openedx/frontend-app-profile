@@ -57,41 +57,49 @@ class ProfileAvatar extends React.Component {
   }
 
   renderMenu() {
+    if (!this.props.isEditable) return null;
+
+    if (this.props.src == null) {
+      return (
+        <Button className="text-white btn-block" color="link" size="sm">
+          <FormattedMessage
+            id="profile.profileavatar.upload-button"
+            defaultMessage="Upload Photo"
+            description="Upload photo button"
+          />
+        </Button>
+      );
+    }
+
     return (
-      <div className="profile-avatar-menu-container">
-        {this.props.src == null ? (
-          <Button className="text-white btn-block" color="link" size="sm">
+      <Dropdown
+        isOpen={this.state.dropdownOpen}
+        toggle={this.toggleDropdown}
+      >
+        <DropdownToggle className="text-white btn-block" color="link" size="sm">
+          <FormattedMessage
+            id="profile.profileavatar.change-button"
+            defaultMessage="Change"
+            description="Change photo button"
+          />
+        </DropdownToggle>
+        <DropdownMenu>
+          <DropdownItem onClick={this.onClickUpload}>
             <FormattedMessage
               id="profile.profileavatar.upload-button"
               defaultMessage="Upload Photo"
               description="Upload photo button"
             />
-          </Button>
-        ) : (
-          <Dropdown
-            isOpen={this.state.dropdownOpen}
-            toggle={this.toggleDropdown}
-          >
-            <DropdownToggle className="text-white btn-block" color="link" size="sm">Change</DropdownToggle>
-            <DropdownMenu>
-              <DropdownItem onClick={this.onClickUpload}>
-                <FormattedMessage
-                  id="profile.profileavatar.upload-button"
-                  defaultMessage="Upload Photo"
-                  description="Upload photo button"
-                />
-              </DropdownItem>
-              <DropdownItem onClick={this.onClickDelete}>
-                <FormattedMessage
-                  id="profile.profileavatar.remove.button"
-                  defaultMessage="Remove"
-                  description="Remove photo button"
-                />
-              </DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
-        )}
-      </div>
+          </DropdownItem>
+          <DropdownItem onClick={this.onClickDelete}>
+            <FormattedMessage
+              id="profile.profileavatar.remove.button"
+              defaultMessage="Remove"
+              description="Remove photo button"
+            />
+          </DropdownItem>
+        </DropdownMenu>
+      </Dropdown>
     );
   }
 
@@ -99,7 +107,9 @@ class ProfileAvatar extends React.Component {
     return (
       <div className="profile-avatar-wrap position-relative">
         <div className="profile-avatar rounded-circle bg-dark">
-          {this.props.savePhotoState === 'pending' ? this.renderPending() : this.renderMenu() }
+          <div className="profile-avatar-menu-container">
+            {this.props.savePhotoState === 'pending' ? this.renderPending() : this.renderMenu() }
+          </div>
           <img
             className="w-100 h-100 d-block rounded-circle overflow-hidden"
             style={{ objectFit: 'cover' }}
@@ -136,9 +146,11 @@ ProfileAvatar.propTypes = {
   onSave: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
   savePhotoState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
+  isEditable: PropTypes.bool,
 };
 
 ProfileAvatar.defaultProps = {
   src: null,
   savePhotoState: null,
+  isEditable: false,
 };

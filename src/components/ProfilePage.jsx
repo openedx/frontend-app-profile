@@ -101,6 +101,7 @@ export class ProfilePage extends React.Component {
                   onSave={this.handleSaveProfilePhoto}
                   onDelete={this.handleDeleteProfilePhoto}
                   savePhotoState={this.props.savePhotoState}
+                  isEditable={this.props.isCurrentUserProfile}
                 />
                 <div>
                   <h2 className="mb-0">{username}</h2>
@@ -201,6 +202,7 @@ ProfilePage.defaultProps = {
 const mapStateToProps = (state) => {
   const profileImage =
     state.profilePage.account.profileImage != null
+      // TODO: This will change back to camelcase in the future
       ? state.profilePage.account.profileImage.image_url_large
       : null;
   return {
