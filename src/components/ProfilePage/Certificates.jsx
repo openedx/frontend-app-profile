@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
 import { Row, Col, Card, CardBody, CardTitle, Button, Form } from 'reactstrap';
 import { connect } from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDownload } from '@fortawesome/free-solid-svg-icons';
 
 import messages from './Certificates.messages';
 
@@ -45,22 +43,30 @@ class Certificates extends React.Component {
   }
 
   renderCertificate({
-    type: { name }, title, organization, downloadUrl,
+    certificateType, courseDisplayName, courseOrganization, downloadUrl,
   }) {
     return (
       <Col key={downloadUrl} sm={6}>
         <Card className="mb-4 certificate">
           <CardBody>
             <CardTitle>
-              <p className="small mb-0">{name}</p>
-              <h4 className="certificate-title">{title}</h4>
+              <p className="small mb-0">{certificateType}</p>
+              <h4 className="certificate-title">{courseDisplayName}</h4>
             </CardTitle>
-            <p className="small mb-0">From</p>
-            <h6 className="mb-4">{organization}</h6>
+            <p className="small mb-0">
+              <FormattedMessage
+                id="profile.certificate.organization.label"
+                defaultMessage="From"
+              />
+            </p>
+            <h6 className="mb-4">{courseOrganization}</h6>
             <div>
               <Button outline color="primary" href={downloadUrl} target="blank">
-                <FontAwesomeIcon className="ml-n1 mr-2" icon={faDownload} />
-                Download
+                <FormattedMessage
+                  id="profile.view.certificate"
+                  defaultMessage="View Certificate"
+                  description="view certificate button label"
+                />
               </Button>
             </div>
           </CardBody>
