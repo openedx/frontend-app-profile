@@ -69,10 +69,12 @@ $fa-font-path: "~font-awesome/fonts";
     @include media-breakpoint-up(md) {
       background: linear-gradient(to top, rgba(0,0,0,.65) 4rem, rgba(0,0,0,0) 4rem);
       align-items: flex-end;
-      padding-bottom: 1.2rem;
     }
     .btn {
       text-decoration: none;
+      @include media-breakpoint-up(md) {
+        margin-bottom: 1.2rem;
+      }
     }
   }
 
