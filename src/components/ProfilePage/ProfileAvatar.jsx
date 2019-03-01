@@ -59,7 +59,11 @@ class ProfileAvatar extends React.Component {
   renderMenu() {
     if (!this.props.isEditable) return null;
 
-    if (this.props.src === null) {
+    // TODO: only checking for null now. We need a way to
+    // check if this src is the default image
+    const hasImage = this.props.src === null;
+
+    if (hasImage) {
       return (
         <Button className="text-white btn-block" color="link" size="sm">
           <FormattedMessage
