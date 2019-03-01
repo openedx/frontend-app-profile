@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import { IntlProvider } from 'react-intl';
 
-import * as analytics from '../analytics';
+import * as analytics from '../analytics/analytics';
 import ConnectedProfilePage from './ProfilePage';
 import { initialState as initialProfilePageState } from '../reducers/ProfilePageReducer';
 

@@ -1,6 +1,6 @@
 import snakecaseKeys from 'snakecase-keys';
-import apiClient from './config/apiClient';
-import { configuration } from './config/environment';
+import apiClient from '../config/apiClient';
+import { configuration } from '../config/environment';
 
 const eventLogApiBaseUrl = `${configuration.LMS_BASE_URL}/event`;
 

@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 
 import configureStore from './config/configureStore';
 import apiClient from './config/apiClient';
-import { identifyUser } from './analytics';
+import { identifyUser } from './analytics/analytics';
 
 import './index.scss';
 
