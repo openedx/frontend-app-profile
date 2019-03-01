@@ -29,7 +29,7 @@ export const editableFormModeSelector = createSelector(
     let propExists = account[formId] != null && account[formId].length > 0;
     propExists = formId === 'certificates' ? certificates !== null : propExists; // overwrite for certificates
     // If this isn't the current user's profile...
-    if (!isCurrentUserProfile) {
+    if (!isCurrentUserProfile || account.requiresParentalConsent) {
       // then there are only two options: static or nothing.
       // We use 'null' as a return value because the consumers of
       // getMode render nothing at all on a mode of null.
