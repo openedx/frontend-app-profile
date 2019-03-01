@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Row, Col } from 'reactstrap';
 import { connect } from 'react-redux';
-import { logEvent } from '../analytics';
+import { logEvent } from '../analytics/analytics';
 
 // Actions
 import {
