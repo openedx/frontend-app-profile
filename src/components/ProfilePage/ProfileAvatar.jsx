@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Input, Spinner, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Button } from 'reactstrap';
+import { FormattedMessage } from 'react-intl';
 
 
 class ProfileAvatar extends React.Component {
@@ -59,7 +60,13 @@ class ProfileAvatar extends React.Component {
     return (
       <div className="profile-avatar-menu-container">
         {this.props.src == null ? (
-          <Button className="text-white btn-block" color="link" size="sm">Upload Photo</Button>
+          <Button className="text-white btn-block" color="link" size="sm">
+            <FormattedMessage
+              id="profile.profileavatar.upload-button"
+              defaultMessage="Upload Photo"
+              description="Upload photo button"
+            />
+          </Button>
         ) : (
           <Dropdown
             isOpen={this.state.dropdownOpen}
@@ -67,8 +74,20 @@ class ProfileAvatar extends React.Component {
           >
             <DropdownToggle className="text-white btn-block" color="link" size="sm">Change</DropdownToggle>
             <DropdownMenu>
-              <DropdownItem onClick={this.onClickUpload}>Upload Photo</DropdownItem>
-              <DropdownItem onClick={this.onClickDelete}>Remove</DropdownItem>
+              <DropdownItem onClick={this.onClickUpload}>
+                <FormattedMessage
+                  id="profile.profileavatar.upload-button"
+                  defaultMessage="Upload Photo"
+                  description="Upload photo button"
+                />
+              </DropdownItem>
+              <DropdownItem onClick={this.onClickDelete}>
+                <FormattedMessage
+                  id="profile.profileavatar.remove.button"
+                  defaultMessage="Remove"
+                  description="Remove photo button"
+                />
+              </DropdownItem>
             </DropdownMenu>
           </Dropdown>
         )}
@@ -99,7 +118,7 @@ class ProfileAvatar extends React.Component {
             innerRef={this.fileInput}
             type="file"
             name="file"
-            id="exampleFile"
+            id="photo-file"
             onInput={this.onInput}
             accept=".jpg, .jpeg, .png"
           />
