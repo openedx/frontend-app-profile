@@ -11,6 +11,9 @@ import { VisibilitySelect } from './Visibility';
 function FormControls({
   cancelHandler, changeHandler, visibility, visibilityId, saveState, intl,
 }) {
+  // Eliminate error/failed state for save button
+  const buttonState = saveState === 'error' ? null : saveState;
+
   return (
     <React.Fragment>
       <FormGroup className="mb-4">
@@ -29,12 +32,11 @@ function FormControls({
       <FormGroup>
         <AsyncActionButton
           type="submit"
-          variant={saveState}
+          variant={buttonState}
           labels={{
             default: intl.formatMessage(messages['profile.formcontrols.button.save']),
             pending: intl.formatMessage(messages['profile.formcontrols.button.saving']),
             complete: intl.formatMessage(messages['profile.formcontrols.button.saved']),
-            error: intl.formatMessage(messages['profile.formcontrols.button.save.failed']),
           }}
         />
         <Button color="link" onClick={cancelHandler}>
