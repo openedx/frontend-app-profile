@@ -88,6 +88,7 @@ export class ProfilePage extends React.Component {
       visibilitySocialLinks,
       languageProficiencies,
       visibilityLanguageProficiencies,
+      visibilityCourseCertificates,
       bio,
       visibilityBio,
     } = this.props;
@@ -169,7 +170,11 @@ export class ProfilePage extends React.Component {
                 formId="bio"
                 {...commonFormProps}
               />
-              <Certificates formId="certificates" {...commonFormProps} />
+              <Certificates
+                visibilityCourseCertificates={visibilityCourseCertificates}
+                formId="certificates"
+                {...commonFormProps}
+              />
             </Col>
           </Row>
         </Container>
