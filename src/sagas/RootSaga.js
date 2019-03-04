@@ -127,8 +127,8 @@ export function* handleSaveProfile(action) {
     yield delay(300);
     yield put(saveProfileReset());
     yield put(resetDrafts());
-  } catch ({ fieldErrors }) {
-    yield put(saveProfileFailure(fieldErrors));
+  } catch (e) {
+    yield put(saveProfileFailure(e.fieldErrors));
   }
 }
 
