@@ -115,9 +115,11 @@ const socialLinksByPlatformSelector = createSelector(
   profileAccountSelector,
   (account) => {
     const linksByPlatform = {};
-    account.socialLinks.forEach((socialLink) => {
-      linksByPlatform[socialLink.platform] = socialLink;
-    });
+    if (account.socialLinks !== undefined) {
+      account.socialLinks.forEach((socialLink) => {
+        linksByPlatform[socialLink.platform] = socialLink;
+      });
+    }
     return linksByPlatform;
   },
 );

@@ -301,7 +301,7 @@ function EmptyListItem({ onClick, name }) {
           id="profile.sociallinks.add"
           defaultMessage="Add {network}"
           values={{
-            network: { name },
+            network: name,
           }}
           description="{network} is the name of a social network such as Facebook or Twitter"
         />
