@@ -37,7 +37,16 @@ export async function patchProfile(username, params) {
         'Content-Type': 'application/merge-patch+json',
       },
     },
-  );
+  ).catch((error) => {
+    const processedError = Object.create(error);
+    const fieldErrors = Object.entries(processAccountData(error.response.data.field_errors))
+      .reduce((acc, [fieldKey, messages]) => {
+        acc[fieldKey] = messages.userMessage;
+        return acc;
+      }, {});
+    processedError.fieldErrors = fieldErrors;
+    throw processedError;
+  });
 
   // Process response data
   return processAccountData(data);
