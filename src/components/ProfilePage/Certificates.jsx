@@ -13,6 +13,8 @@ import SwitchContent from './elements/SwitchContent';
 
 // Assets
 import microMastersSVG from '../../../assets/micro-masters.svg';
+import professionalCertificateSVG from '../../../assets/professional-certificate.svg';
+import verifiedCertificateSVG from '../../../assets/verified-certificate.svg';
 
 // Selectors
 import { certificatesSelector } from '../../selectors/ProfilePageSelector';
@@ -49,13 +51,25 @@ class Certificates extends React.Component {
     certificateType, courseDisplayName, courseOrganization, downloadUrl,
   }) {
     const { intl } = this.props;
+    const certificateIllustration = ((type) => {
+      switch (type) {
+        case 'Verified Certificate':
+          return verifiedCertificateSVG;
+        case 'Professional Certificate':
+          return professionalCertificateSVG;
+        case 'MicroMasters Certificate':
+          return microMastersSVG;
+        default:
+          return verifiedCertificateSVG;
+      }
+    })(certificateType);
 
     return (
       <Col key={downloadUrl} sm={6}>
         <Card className="mb-4 certificate">
           <div
             className="certificate-type-illustration"
-            style={{ backgroundImage: `url(${microMastersSVG})` }}
+            style={{ backgroundImage: `url(${certificateIllustration})` }}
           />
           <CardBody>
             <CardTitle>
