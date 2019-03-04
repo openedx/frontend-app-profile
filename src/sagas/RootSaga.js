@@ -107,6 +107,8 @@ export function* handleSaveProfile(action) {
     let preferencesResult = preferences; // assume it hasn't changed.
     if (Object.keys(preferencesDrafts).length > 0) {
       yield call(ProfileApiService.patchPreferences, username, preferencesDrafts);
+      // TODO: Temporary deoptimization since the patchPreferences call doesn't return anything.
+      // Remove this second call once we can get a result from the one above.
       preferencesResult = yield call(ProfileApiService.getPreferences, username);
     }
 
