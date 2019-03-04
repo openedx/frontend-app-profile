@@ -26,11 +26,6 @@ const messages = defineMessages({
     defaultMessage: 'Saved',
     description: 'A button label',
   },
-  'profile.formcontrols.button.save.failed': {
-    id: 'profile.formcontrols.button.save.failed',
-    defaultMessage: 'Save Failed',
-    description: 'A button label',
-  },
 });
 
 export default messages;
