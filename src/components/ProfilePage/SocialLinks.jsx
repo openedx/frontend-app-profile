@@ -45,6 +45,10 @@ class SocialLinks extends React.Component {
   handleChange(e) {
     const { name, value } = e.target;
 
+    // The social links are a bit special. If we're updating them, we need to merge them
+    // with any existing social link drafts, essentially sending a fresh copy of the whole
+    // data structure back to the reducer. This helps the reducer stay simple and keeps
+    // special cases out of it, concentrating them here, where they began.
     if (name !== 'visibilitySocialLinks') {
       this.props.changeHandler(
         'socialLinks',
