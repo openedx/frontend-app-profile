@@ -7,7 +7,7 @@ const messages = defineMessages({
     description: 'Link to the course catalog',
   },
   'siteheader.links.programs': {
-    id: 'siteheader.links.courses',
+    id: 'siteheader.links.programs',
     defaultMessage: 'Programs & Degrees',
     description: 'Link to the programs catalog',
   },
