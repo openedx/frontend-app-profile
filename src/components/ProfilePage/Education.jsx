@@ -33,7 +33,7 @@ class Education extends React.Component {
       name,
       value,
     } = e.target;
-    this.props.changeHandler(this.props.formId, name, value);
+    this.props.changeHandler(name, value);
   }
 
   handleSubmit(e) {
@@ -51,7 +51,7 @@ class Education extends React.Component {
 
   render() {
     const {
-      formId, value, visibility, editMode, saveState, error, intl,
+      formId, education, visibilityEducation, editMode, saveState, error, intl,
     } = this.props;
 
     return (
@@ -69,7 +69,7 @@ class Education extends React.Component {
                   type="select"
                   name={formId}
                   className="w-100"
-                  value={value}
+                  value={education}
                   invalid={error != null}
                   onChange={this.handleChange}
                 >
@@ -80,9 +80,9 @@ class Education extends React.Component {
                 <FormFeedback>{error}</FormFeedback>
               </FormGroup>
               <FormControls
-                formId={formId}
+                visibilityId="visibilityEducation"
                 saveState={saveState}
-                visibility={visibility}
+                visibility={visibilityEducation}
                 cancelHandler={this.handleClose}
                 changeHandler={this.handleChange}
               />
@@ -94,10 +94,10 @@ class Education extends React.Component {
                 content={intl.formatMessage(messages['profile.education.education'])}
                 showEditButton
                 onClickEdit={this.handleOpen}
-                showVisibility={visibility !== null}
-                visibility={visibility}
+                showVisibility={visibilityEducation !== null}
+                visibility={visibilityEducation}
               />
-              <h5>{EDUCATION[value]}</h5>
+              <h5>{EDUCATION[education]}</h5>
             </React.Fragment>
           ),
           empty: (
@@ -112,7 +112,7 @@ class Education extends React.Component {
           static: (
             <React.Fragment>
               <EditableItemHeader content={intl.formatMessage(messages['profile.education.education'])} />
-              <h5>{EDUCATION[value]}</h5>
+              <h5>{EDUCATION[education]}</h5>
             </React.Fragment>
           ),
         }}
@@ -129,8 +129,8 @@ Education.propTypes = {
   formId: PropTypes.string.isRequired,
 
   // From Selector
-  value: PropTypes.string,
-  visibility: PropTypes.oneOf(['private', 'all_users']),
+  education: PropTypes.string,
+  visibilityEducation: PropTypes.oneOf(['private', 'all_users']),
   editMode: PropTypes.oneOf(['editing', 'editable', 'empty', 'static']),
   saveState: PropTypes.string,
   error: PropTypes.string,
@@ -148,8 +148,8 @@ Education.propTypes = {
 Education.defaultProps = {
   editMode: 'static',
   saveState: null,
-  value: null,
-  visibility: 'private',
+  education: null,
+  visibilityEducation: 'private',
   error: null,
 };
 

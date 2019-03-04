@@ -1,30 +1,48 @@
-import set from 'lodash.set';
+import camelCase from 'lodash.camelcase';
+import snakeCase from 'lodash.snakecase';
 
-export function unflattenAndTransformKeys(obj, transformer) {
-  const newObj = {};
+export function modifyObjectKeys(object, modify) {
+  // If the passed in object is not an object, return it.
+  if (
+    object === undefined ||
+    object === null ||
+    (typeof object !== 'object' && !Array.isArray(object))
+  ) {
+    return object;
+  }
 
-  Object.entries(obj).forEach(([key, value]) => {
-    set(newObj, key.split('.').map(transformer), value);
+  if (Array.isArray(object)) {
+    return object.map(value => modifyObjectKeys(value, modify));
+  }
+
+  // Otherwise, process all its keys.
+  const result = {};
+  Object.entries(object).forEach(([key, value]) => {
+    result[modify(key)] = modifyObjectKeys(value, modify);
   });
-
-  return newObj;
+  return result;
 }
 
-export function flattenAndTransformKeys(srcObj, transformer = key => key) {
-  const flatten = (obj, prevKeys = []) => (Object.entries(obj).reduce((acc, [key, value]) => {
-    const tKey = transformer(key);
-    const keys = prevKeys.concat(tKey);
+export function camelCaseObject(object) {
+  return modifyObjectKeys(object, camelCase);
+}
 
-    if (Array.isArray(value)) {
-      acc[keys.join('.')] = value;
-    } else if (value && typeof value === 'object') {
-      Object.assign(acc, flatten(value, keys));
-    } else {
-      acc[keys.join('.')] = value;
+export function snakeCaseObject(object) {
+  return modifyObjectKeys(object, snakeCase);
+}
+
+export function convertKeyNames(object, nameMap) {
+  const transformer = key => (nameMap[key] === undefined ? key : nameMap[key]);
+
+  return modifyObjectKeys(object, transformer);
+}
+
+export function keepKeys(data, whitelist) {
+  const result = {};
+  Object.keys(data).forEach((key) => {
+    if (whitelist.indexOf(key) > -1) {
+      result[key] = data[key];
     }
-
-    return acc;
-  }, {}));
-
-  return flatten(srcObj);
+  });
+  return result;
 }

@@ -27,7 +27,7 @@ class Bio extends React.Component {
 
   handleChange(e) {
     const { name, value } = e.target;
-    this.props.changeHandler(this.props.formId, name, value);
+    this.props.changeHandler(name, value);
   }
 
   handleSubmit(e) {
@@ -45,7 +45,7 @@ class Bio extends React.Component {
 
   render() {
     const {
-      formId, value, visibility, editMode, saveState, error, intl,
+      formId, bio, visibilityBio, editMode, saveState, error, intl,
     } = this.props;
 
     return (
@@ -61,16 +61,16 @@ class Bio extends React.Component {
                   type="textarea"
                   id={formId}
                   name={formId}
-                  value={value}
+                  value={bio || ''}
                   invalid={error != null}
                   onChange={this.handleChange}
                 />
                 <FormFeedback>{error}</FormFeedback>
               </FormGroup>
               <FormControls
-                formId={formId}
+                visibilityId="visibilityBio"
                 saveState={saveState}
-                visibility={visibility}
+                visibility={visibilityBio}
                 cancelHandler={this.handleClose}
                 changeHandler={this.handleChange}
               />
@@ -82,10 +82,10 @@ class Bio extends React.Component {
                 content={intl.formatMessage(messages['profile.bio.about.me'])}
                 showEditButton
                 onClickEdit={this.handleOpen}
-                showVisibility={visibility !== null}
-                visibility={visibility}
+                showVisibility={visibilityBio !== null}
+                visibility={visibilityBio}
               />
-              <p className="lead">{value}</p>
+              <p className="lead">{bio}</p>
             </React.Fragment>
           ),
           empty: (
@@ -100,7 +100,7 @@ class Bio extends React.Component {
           static: (
             <React.Fragment>
               <EditableItemHeader content={intl.formatMessage(messages['profile.bio.about.me'])} />
-              <p className="lead">{value}</p>
+              <p className="lead">{bio}</p>
             </React.Fragment>
           ),
         }}
@@ -117,8 +117,8 @@ Bio.propTypes = {
   formId: PropTypes.string.isRequired,
 
   // From Selector
-  value: PropTypes.string,
-  visibility: PropTypes.oneOf(['private', 'all_users']),
+  bio: PropTypes.string,
+  visibilityBio: PropTypes.oneOf(['private', 'all_users']),
   editMode: PropTypes.oneOf(['editing', 'editable', 'empty', 'static']),
   saveState: PropTypes.string,
   error: PropTypes.string,
@@ -136,8 +136,8 @@ Bio.propTypes = {
 Bio.defaultProps = {
   editMode: 'static',
   saveState: null,
-  value: null,
-  visibility: 'private',
+  bio: null,
+  visibilityBio: 'private',
   error: null,
 };
 

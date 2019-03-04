@@ -33,6 +33,9 @@ import { handleSaveProfileSelector } from '../selectors/ProfilePageSelector';
 // Services
 import * as ProfileApiService from '../services/ProfileApiService';
 
+// Utils
+import { keepKeys } from '../services/utils';
+
 export function* handleFetchProfile(action) {
   const { username } = action.payload;
   const currentUsername = yield select(state => state.authentication.username); // eslint-disable-line
@@ -52,11 +55,11 @@ export function* handleFetchProfile(action) {
     const result = yield all(calls);
 
     if (result.length > 2) {
-      const [account, certificates, preferences] = result;
-      yield put(fetchProfileSuccess(account, preferences, certificates));
+      const [account, courseCertificates, preferences] = result;
+      yield put(fetchProfileSuccess(account, preferences, courseCertificates));
     } else {
-      const [account, certificates] = result;
-      yield put(fetchProfileSuccess(account, { visibility: {} }, certificates));
+      const [account, courseCertificates] = result;
+      yield put(fetchProfileSuccess(account, {}, courseCertificates));
     }
 
     yield put(fetchProfileReset());
@@ -66,35 +69,62 @@ export function* handleFetchProfile(action) {
 }
 
 export function* handleSaveProfile(action) {
-  const { username, accountDrafts, visibilityDrafts } = yield select(handleSaveProfileSelector);
-
   try {
+    const { username, drafts, preferences } = yield select(handleSaveProfileSelector);
+
+    const accountDrafts = keepKeys(drafts, [
+      'bio',
+      'courseCertificates',
+      'country',
+      'education',
+      'languageProficiencies',
+      'name',
+      'socialLinks',
+    ]);
+
+    const preferencesDrafts = keepKeys(drafts, [
+      'visibilityBio',
+      'visibilityCourseCertificates',
+      'visibilityCountry',
+      'visibilityEducation',
+      'visibilityLanguageProficiencies',
+      'visibilityName',
+      'visibilitySocialLinks',
+    ]);
+
+    if (Object.keys(preferencesDrafts).length > 0) {
+      preferencesDrafts.accountPrivacy = 'custom';
+    }
+
     yield put(saveProfileBegin());
     let accountResult = null;
     // Build the visibility drafts into a structure the API expects.
-    const preferences = {
-      visibility: visibilityDrafts,
-    };
 
     if (Object.keys(accountDrafts).length > 0) {
       accountResult = yield call(ProfileApiService.patchProfile, username, accountDrafts);
     }
 
-    if (Object.keys(visibilityDrafts).length > 0) {
-      yield call(ProfileApiService.patchPreferences, username, preferences);
+    let preferencesResult = preferences; // assume it hasn't changed.
+    if (Object.keys(preferencesDrafts).length > 0) {
+      yield call(ProfileApiService.patchPreferences, username, preferencesDrafts);
+      // TODO: Temporary deoptimization since the patchPreferences call doesn't return anything.
+      // Remove this second call once we can get a result from the one above.
+      preferencesResult = yield call(ProfileApiService.getPreferences, username);
     }
 
     // The account result is returned from the server.
     // The preferences draft is valid if the server didn't complain, so
     // pass it through directly.
-    yield put(saveProfileSuccess(accountResult, preferences));
+    yield put(saveProfileSuccess(accountResult, preferencesResult));
     yield delay(300);
     yield put(closeForm(action.payload.formId));
     yield delay(300);
     yield put(saveProfileReset());
     yield put(resetDrafts());
   } catch (e) {
-    yield put(saveProfileFailure(e.message));
+    // TODO: If this is any other kind of exception than a known validation error from the server,
+    // this code will fail gracelessly when it can't find fieldErrors on the error.
+    yield put(saveProfileFailure(e.fieldErrors));
   }
 }
 

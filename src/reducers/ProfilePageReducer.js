@@ -5,8 +5,7 @@ import {
   CLOSE_FORM,
   OPEN_FORM,
   FETCH_PROFILE,
-  UPDATE_ACCOUNT_DRAFT,
-  UPDATE_VISIBILITY_DRAFT,
+  UPDATE_DRAFT,
   RESET_DRAFTS,
 } from '../actions/ProfileActions';
 
@@ -18,12 +17,9 @@ export const initialState = {
   account: {
     socialLinks: [],
   },
-  preferences: {
-    visibility: {},
-  },
-  certificates: [],
-  accountDrafts: {},
-  visibilityDrafts: {},
+  preferences: {},
+  courseCertificates: [],
+  drafts: {},
 };
 
 const profilePage = (state = initialState, action) => {
@@ -33,7 +29,7 @@ const profilePage = (state = initialState, action) => {
         ...state,
         account: action.account,
         preferences: action.preferences,
-        certificates: action.certificates,
+        courseCertificates: action.courseCertificates,
       };
     case SAVE_PROFILE.BEGIN:
       return {
@@ -49,13 +45,7 @@ const profilePage = (state = initialState, action) => {
         // Account is always replaced completely.
         account: action.payload.account !== null ? action.payload.account : state.account,
         // Preferences changes get merged in.
-        preferences: Object.assign({}, state.preferences, {
-          visibility: Object.assign(
-            {},
-            state.preferences.visibility,
-            action.payload.preferences.visibility,
-          ),
-        }),
+        preferences: Object.assign({}, state.preferences, action.payload.preferences),
       };
     case SAVE_PROFILE.FAILURE:
       return {
@@ -120,18 +110,10 @@ const profilePage = (state = initialState, action) => {
         errors: {},
       };
 
-    case UPDATE_ACCOUNT_DRAFT:
+    case UPDATE_DRAFT:
       return {
         ...state,
-        accountDrafts: Object.assign({}, state.accountDrafts, {
-          [action.payload.name]: action.payload.value,
-        }),
-      };
-
-    case UPDATE_VISIBILITY_DRAFT:
-      return {
-        ...state,
-        visibilityDrafts: Object.assign({}, state.visibilityDrafts, {
+        drafts: Object.assign({}, state.drafts, {
           [action.payload.name]: action.payload.value,
         }),
       };
@@ -139,13 +121,13 @@ const profilePage = (state = initialState, action) => {
     case RESET_DRAFTS:
       return {
         ...state,
-        accountDrafts: {},
-        visibilityDrafts: {},
+        drafts: {},
       };
     case OPEN_FORM:
       return {
         ...state,
         currentlyEditingField: action.payload.formId,
+        drafts: {},
       };
     case CLOSE_FORM:
       // Only close if the field to close is undefined or matches the field that is currently open
@@ -153,6 +135,7 @@ const profilePage = (state = initialState, action) => {
         return {
           ...state,
           currentlyEditingField: null,
+          drafts: {},
         };
       }
       return state;

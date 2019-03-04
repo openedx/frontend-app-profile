@@ -9,9 +9,11 @@ import AsyncActionButton from './AsyncActionButton';
 import { VisibilitySelect } from './Visibility';
 
 function FormControls({
-  formId, cancelHandler, changeHandler, visibility, saveState, intl,
+  cancelHandler, changeHandler, visibility, visibilityId, saveState, intl,
 }) {
-  const visibilityId = `${formId}-visibility`;
+  // Eliminate error/failed state for save button
+  const buttonState = saveState === 'error' ? null : saveState;
+
   return (
     <React.Fragment>
       <FormGroup className="mb-4">
@@ -22,7 +24,7 @@ function FormControls({
           id={visibilityId}
           className="w-auto"
           type="select"
-          name="visibility"
+          name={visibilityId}
           value={visibility}
           onChange={changeHandler}
         />
@@ -30,12 +32,11 @@ function FormControls({
       <FormGroup>
         <AsyncActionButton
           type="submit"
-          variant={saveState}
+          variant={buttonState}
           labels={{
             default: intl.formatMessage(messages['profile.formcontrols.button.save']),
             pending: intl.formatMessage(messages['profile.formcontrols.button.saving']),
             complete: intl.formatMessage(messages['profile.formcontrols.button.saved']),
-            error: intl.formatMessage(messages['profile.formcontrols.button.save.failed']),
           }}
         />
         <Button color="link" onClick={cancelHandler}>
@@ -49,9 +50,9 @@ function FormControls({
 export default injectIntl(FormControls);
 
 FormControls.propTypes = {
-  formId: PropTypes.string.isRequired,
   saveState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
   visibility: PropTypes.oneOf(['private', 'all_users']),
+  visibilityId: PropTypes.string.isRequired,
   cancelHandler: PropTypes.func.isRequired,
   changeHandler: PropTypes.func.isRequired,
 

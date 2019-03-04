@@ -12,8 +12,7 @@ import {
   deleteProfilePhoto,
   openForm,
   closeForm,
-  updateVisibilityDraft,
-  updateAccountDraft,
+  updateDraft,
 } from '../actions/ProfileActions';
 
 // Components
@@ -27,6 +26,7 @@ import Bio from './ProfilePage/Bio';
 import Certificates from './ProfilePage/Certificates';
 import AgeMessage from './ProfilePage/AgeMessage';
 import DateJoined from './ProfilePage/DateJoined';
+import { profilePageSelector } from '../selectors/ProfilePageSelector';
 
 export class ProfilePage extends React.Component {
   constructor(props) {
@@ -67,17 +67,30 @@ export class ProfilePage extends React.Component {
     this.props.saveProfile(formId);
   }
 
-  handleChange(formId, name, value) {
-    if (name === 'visibility') {
-      this.props.updateVisibilityDraft(formId, value);
-    } else {
-      this.props.updateAccountDraft(formId, value);
-    }
+  handleChange(name, value) {
+    this.props.updateDraft(name, value);
   }
 
   render() {
     const {
-      profileImage, username, dateJoined, errors,
+      profileImage,
+      username,
+      dateJoined,
+      errors,
+      name,
+      visibilityName,
+      country,
+      visibilityCountry,
+      education,
+      visibilityEducation,
+      socialLinks,
+      draftSocialLinksByPlatform,
+      visibilitySocialLinks,
+      languageProficiencies,
+      visibilityLanguageProficiencies,
+      visibilityCourseCertificates,
+      bio,
+      visibilityBio,
     } = this.props;
 
     const commonFormProps = {
@@ -112,11 +125,37 @@ export class ProfilePage extends React.Component {
           </Row>
           <Row>
             <Col xs={{ order: 2 }} md={{ size: 4, order: 1 }} lg={3} className="mt-md-4">
-              <Name formId="name" {...commonFormProps} />
-              <Country formId="country" {...commonFormProps} />
-              <PreferredLanguage formId="languageProficiencies" {...commonFormProps} />
-              <Education formId="education" {...commonFormProps} />
-              <SocialLinks formId="socialLinks" {...commonFormProps} />
+              <Name
+                name={name}
+                visibilityName={visibilityName}
+                formId="name"
+                {...commonFormProps}
+              />
+              <Country
+                country={country}
+                visibilityCountry={visibilityCountry}
+                formId="country"
+                {...commonFormProps}
+              />
+              <PreferredLanguage
+                languageProficiencies={languageProficiencies}
+                visibilityLanguageProficiencies={visibilityLanguageProficiencies}
+                formId="languageProficiencies"
+                {...commonFormProps}
+              />
+              <Education
+                education={education}
+                visibilityEducation={visibilityEducation}
+                formId="education"
+                {...commonFormProps}
+              />
+              <SocialLinks
+                socialLinks={socialLinks}
+                draftSocialLinksByPlatform={draftSocialLinksByPlatform}
+                visibilitySocialLinks={visibilitySocialLinks}
+                formId="socialLinks"
+                {...commonFormProps}
+              />
             </Col>
             <Col
               xs={{ order: 1 }}
@@ -125,8 +164,17 @@ export class ProfilePage extends React.Component {
               className="mt-4 mt-md-n5"
             >
               {this.props.requiresParentalConsent ? <AgeMessage accountURL="#account" /> : null}
-              <Bio formId="bio" {...commonFormProps} />
-              <Certificates formId="certificates" {...commonFormProps} />
+              <Bio
+                bio={bio}
+                visibilityBio={visibilityBio}
+                formId="bio"
+                {...commonFormProps}
+              />
+              <Certificates
+                visibilityCourseCertificates={visibilityCourseCertificates}
+                formId="certificates"
+                {...commonFormProps}
+              />
             </Col>
           </Row>
         </Container>
@@ -136,30 +184,58 @@ export class ProfilePage extends React.Component {
 }
 
 ProfilePage.propTypes = {
-  // Page state helpers
-  currentlyEditingField: PropTypes.string,
-  saveState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
-  savePhotoState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
-  isCurrentUserProfile: PropTypes.bool.isRequired,
-  errors: PropTypes.objectOf(PropTypes.string),
-
-  // Profile data
+  // Account data
   username: PropTypes.string,
+  requiresParentalConsent: PropTypes.bool,
   dateJoined: PropTypes.string,
-  profileImage: PropTypes.string,
-  accountPrivacy: PropTypes.string,
-  certificates: PropTypes.arrayOf(PropTypes.shape({
+  isCurrentUserProfile: PropTypes.bool.isRequired,
+
+  // Bio form data
+  bio: PropTypes.string,
+  visibilityBio: PropTypes.string.isRequired,
+
+  // Certificates form data
+  courseCertificates: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string,
   })),
+  visibilityCourseCertificates: PropTypes.string.isRequired,
 
-  // Profile data for form fields
+  // Country form data
+  country: PropTypes.string,
+  visibilityCountry: PropTypes.string.isRequired,
+
+  // Education form data
   education: PropTypes.string,
+  visibilityEducation: PropTypes.string.isRequired,
+
+  // Language proficiency form data
+  languageProficiencies: PropTypes.arrayOf(PropTypes.shape({
+    code: PropTypes.string.isRequired,
+  })),
+  visibilityLanguageProficiencies: PropTypes.string.isRequired,
+
+  // Name form data
+  name: PropTypes.string,
+  visibilityName: PropTypes.string.isRequired,
+
+  // Social links form data
   socialLinks: PropTypes.arrayOf(PropTypes.shape({
     platform: PropTypes.string,
     socialLink: PropTypes.string,
   })),
-  bio: PropTypes.string,
-  visibility: PropTypes.objectOf(PropTypes.string),
+  draftSocialLinksByPlatform: PropTypes.objectOf(PropTypes.shape({
+    platform: PropTypes.string,
+    socialLink: PropTypes.string,
+  })),
+  visibilitySocialLinks: PropTypes.string.isRequired,
+
+  // Other data we need
+  profileImage: PropTypes.string,
+  saveState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
+  savePhotoState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
+
+  // Page state helpers
+  errors: PropTypes.objectOf(PropTypes.string),
 
   // Actions
   fetchProfile: PropTypes.func.isRequired,
@@ -168,8 +244,7 @@ ProfilePage.propTypes = {
   deleteProfilePhoto: PropTypes.func.isRequired,
   openForm: PropTypes.func.isRequired,
   closeForm: PropTypes.func.isRequired,
-  updateVisibilityDraft: PropTypes.func.isRequired,
-  updateAccountDraft: PropTypes.func.isRequired,
+  updateDraft: PropTypes.func.isRequired,
 
   // Router
   match: PropTypes.shape({
@@ -177,57 +252,28 @@ ProfilePage.propTypes = {
       username: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
-  yearOfBirth: PropTypes.number,
-  requiresParentalConsent: PropTypes.bool,
 };
 
 ProfilePage.defaultProps = {
-  currentlyEditingField: null,
   saveState: null,
   savePhotoState: null,
   errors: {},
   profileImage: null,
+  name: null,
   username: null,
   education: null,
+  country: null,
   socialLinks: [],
+  draftSocialLinksByPlatform: {},
   bio: null,
-  certificates: null,
-  accountPrivacy: null,
-  visibility: {}, // eslint-disable-line
-  yearOfBirth: null,
+  languageProficiencies: [],
+  courseCertificates: null,
   requiresParentalConsent: null,
   dateJoined: null,
 };
 
-const mapStateToProps = (state) => {
-  const profileImage =
-    state.profilePage.account.profileImage != null
-      // TODO: This will change back to camelcase in the future
-      ? state.profilePage.account.profileImage.image_url_large
-      : null;
-  return {
-    isCurrentUserProfile: state.userAccount.username === state.profilePage.account.username,
-    currentlyEditingField: state.profilePage.currentlyEditingField,
-    saveState: state.profilePage.saveState,
-    savePhotoState: state.profilePage.savePhotoState,
-    error: state.profilePage.error,
-    profileImage,
-
-    username: state.profilePage.account.username,
-    education: state.profilePage.account.levelOfEducation,
-    socialLinks: state.profilePage.account.socialLinks,
-    bio: state.profilePage.account.bio,
-    certificates: state.profilePage.account.certificates,
-    accountPrivacy: state.profilePage.preferences.accountPrivacy,
-    visibility: state.profilePage.preferences.visibility || {},
-    yearOfBirth: state.profilePage.account.yearOfBirth,
-    requiresParentalConsent: state.profilePage.account.requiresParentalConsent,
-    dateJoined: state.profilePage.account.dateJoined,
-  };
-};
-
 export default connect(
-  mapStateToProps,
+  profilePageSelector,
   {
     fetchProfile,
     saveProfilePhoto,
@@ -235,7 +281,6 @@ export default connect(
     saveProfile,
     openForm,
     closeForm,
-    updateVisibilityDraft,
-    updateAccountDraft,
+    updateDraft,
   },
 )(ProfilePage);

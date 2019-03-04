@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Input, FormFeedback } from 'reactstrap';
+import { Form, Input, FormFeedback, Alert } from 'reactstrap';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
@@ -43,22 +43,38 @@ class SocialLinks extends React.Component {
   }
 
   handleChange(e) {
-    const {
-      name,
-      value,
-    } = e.target;
+    const { name, value } = e.target;
 
-    if (name !== 'visibility') {
-      const updatedList = this.props.committedValue.map((socialLink) => {
-        if (socialLink.platform === name) {
-          return { platform: name, social_link: value };
-        }
-        return socialLink;
-      });
-      this.props.changeHandler(this.props.formId, 'socialLinks', updatedList);
+    // The social links are a bit special. If we're updating them, we need to merge them
+    // with any existing social link drafts, essentially sending a fresh copy of the whole
+    // data structure back to the reducer. This helps the reducer stay simple and keeps
+    // special cases out of it, concentrating them here, where they began.
+    if (name !== 'visibilitySocialLinks') {
+      this.props.changeHandler(
+        'socialLinks',
+        this.mergeWithDrafts({
+          platform: name,
+          // If it's an empty string, send it as null.
+          // The empty string is just for the input.  We want nulls.
+          socialLink: value,
+        }),
+      );
     } else {
-      this.props.changeHandler(this.props.formId, name, value);
+      this.props.changeHandler(name, value);
     }
+  }
+
+  mergeWithDrafts(newSocialLink) {
+    const knownPlatforms = ['twitter', 'facebook', 'linkedin'];
+    const updated = [];
+    knownPlatforms.forEach((platform) => {
+      if (newSocialLink.platform === platform) {
+        updated.push(newSocialLink);
+      } else if (this.props.draftSocialLinksByPlatform[platform] !== undefined) {
+        updated.push(this.props.draftSocialLinksByPlatform[platform]);
+      }
+    });
+    return updated;
   }
 
   handleSubmit(e) {
@@ -76,7 +92,7 @@ class SocialLinks extends React.Component {
 
   render() {
     const {
-      formId, value: values, visibility, editMode, saveState, error, intl,
+      socialLinks, visibilitySocialLinks, editMode, saveState, error, intl,
     } = this.props;
 
     return (
@@ -86,7 +102,7 @@ class SocialLinks extends React.Component {
         cases={{
           empty: (
             <ul className="list-unstyled">
-              {values.map(({ platform }) => (
+              {socialLinks.map(({ platform }) => (
                 <EmptyListItem
                   key={platform}
                   onClick={this.handleOpen}
@@ -97,9 +113,11 @@ class SocialLinks extends React.Component {
           ),
           static: (
             <React.Fragment>
-              <EditableItemHeader content={intl.formatMessage(messages['profile.sociallinks.social.links'])} />
+              <EditableItemHeader
+                content={intl.formatMessage(messages['profile.sociallinks.social.links'])}
+              />
               <ul className="list-unstyled">
-                {values.map(({ platform, social_link: socialLink }) => (
+                {socialLinks.map(({ platform, socialLink }) => (
                   <StaticListItem
                     key={platform}
                     name={platformDisplayInfo[platform].name}
@@ -116,11 +134,11 @@ class SocialLinks extends React.Component {
                 content={intl.formatMessage(messages['profile.sociallinks.social.links'])}
                 showEditButton
                 onClickEdit={this.handleOpen}
-                showVisibility={visibility !== null}
-                visibility={visibility}
+                showVisibility={visibilitySocialLinks !== null}
+                visibility={visibilitySocialLinks}
               />
               <ul className="list-unstyled">
-                {values.map(({ platform, social_link: socialLink }) => (
+                {socialLinks.map(({ platform, socialLink }) => (
                   <EditableListItem
                     key={platform}
                     platform={platform}
@@ -134,23 +152,27 @@ class SocialLinks extends React.Component {
           ),
           editing: (
             <Form onSubmit={this.handleSubmit}>
-              <EditableItemHeader content={intl.formatMessage(messages['profile.sociallinks.social.links'])} />
+              <EditableItemHeader
+                content={intl.formatMessage(messages['profile.sociallinks.social.links'])}
+              />
+              {/* TODO: Replace this alert with per-field errors. Needs API update. */}
+              {error !== null ? <Alert color="danger">{error}</Alert> : null}
               <ul className="list-unstyled">
-                {values.map(({ platform, social_link: socialLink }) => (
+                {socialLinks.map(({ platform, socialLink }) => (
                   <EditingListItem
                     key={platform}
                     name={platformDisplayInfo[platform].name}
                     platform={platform}
                     value={socialLink}
-                    error={error !== null ? error[platform] : null}
+                    /* TODO: Per-field errors: error={error !== null ? error[platform] : null} */
                     onChange={this.handleChange}
                   />
                 ))}
               </ul>
               <FormControls
-                formId={formId}
+                visibilityId="visibilitySocialLinks"
                 saveState={saveState}
-                visibility={visibility}
+                visibility={visibilitySocialLinks}
                 cancelHandler={this.handleClose}
                 changeHandler={this.handleChange}
               />
@@ -170,15 +192,15 @@ SocialLinks.propTypes = {
   formId: PropTypes.string.isRequired,
 
   // From Selector
-  value: PropTypes.arrayOf(PropTypes.shape({
+  socialLinks: PropTypes.arrayOf(PropTypes.shape({
+    platform: PropTypes.string,
+    socialLink: PropTypes.string,
+  })).isRequired,
+  draftSocialLinksByPlatform: PropTypes.objectOf(PropTypes.shape({
     platform: PropTypes.string,
     socialLink: PropTypes.string,
   })),
-  committedValue: PropTypes.arrayOf(PropTypes.shape({
-    platform: PropTypes.string,
-    socialLink: PropTypes.string,
-  })),
-  visibility: PropTypes.oneOf(['private', 'all_users']),
+  visibilitySocialLinks: PropTypes.oneOf(['private', 'all_users']),
   editMode: PropTypes.oneOf(['editing', 'editable', 'empty', 'static']),
   saveState: PropTypes.string,
   error: PropTypes.string,
@@ -196,9 +218,8 @@ SocialLinks.propTypes = {
 SocialLinks.defaultProps = {
   editMode: 'static',
   saveState: null,
-  value: [],
-  committedValue: [],
-  visibility: 'private',
+  draftSocialLinksByPlatform: {},
+  visibilitySocialLinks: 'private',
   error: null,
 };
 
@@ -222,16 +243,14 @@ SocialLink.propTypes = {
   name: PropTypes.string.isRequired,
 };
 
-
 function EditableListItem({
-  url,
-  platform,
-  onClickEmptyContent,
-  name,
+  url, platform, onClickEmptyContent, name,
 }) {
-  const linkDisplay = url ?
-    <SocialLink name={name} url={url} platform={platform} /> :
-    <EmptyContent onClick={onClickEmptyContent}>Add {name}</EmptyContent>;
+  const linkDisplay = url ? (
+    <SocialLink name={name} url={url} platform={platform} />
+  ) : (
+    <EmptyContent onClick={onClickEmptyContent}>Add {name}</EmptyContent>
+  );
 
   return <li className="form-group">{linkDisplay}</li>;
 }
@@ -247,13 +266,8 @@ EditableListItem.defaultProps = {
   onClickEmptyContent: null,
 };
 
-
 function EditingListItem({
-  platform,
-  name,
-  value,
-  onChange,
-  error,
+  platform, name, value, onChange, error,
 }) {
   return (
     <li className="form-group">
@@ -261,7 +275,7 @@ function EditingListItem({
       <Input
         type="text"
         name={platform}
-        value={value}
+        value={value || ''}
         onChange={onChange}
         invalid={error != null}
       />
@@ -283,7 +297,6 @@ EditingListItem.defaultProps = {
   error: null,
 };
 
-
 function EmptyListItem({ onClick, name }) {
   return (
     <li className="mb-4">
@@ -292,7 +305,7 @@ function EmptyListItem({ onClick, name }) {
           id="profile.sociallinks.add"
           defaultMessage="Add {network}"
           values={{
-            network: { name },
+            network: name,
           }}
           description="{network} is the name of a social network such as Facebook or Twitter"
         />
@@ -306,7 +319,6 @@ EmptyListItem.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
 
-
 function StaticListItem({ name, url, platform }) {
   return (
     <li className="mb-2">
@@ -317,6 +329,10 @@ function StaticListItem({ name, url, platform }) {
 
 StaticListItem.propTypes = {
   name: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
+  url: PropTypes.string,
   platform: PropTypes.string.isRequired,
+};
+
+StaticListItem.defaultProps = {
+  url: null,
 };
