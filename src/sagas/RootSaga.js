@@ -33,6 +33,9 @@ import { handleSaveProfileSelector } from '../selectors/ProfilePageSelector';
 // Services
 import * as ProfileApiService from '../services/ProfileApiService';
 
+// Utils
+import { keepKeys } from '../services/utils';
+
 export function* handleFetchProfile(action) {
   const { username } = action.payload;
   const currentUsername = yield select(state => state.authentication.username); // eslint-disable-line
@@ -63,16 +66,6 @@ export function* handleFetchProfile(action) {
   } catch (e) {
     yield put(fetchProfileFailure(e.message));
   }
-}
-
-function keepKeys(data, whitelist) {
-  const result = {};
-  Object.keys(data).forEach((key) => {
-    if (whitelist.indexOf(key) > -1) {
-      result[key] = data[key];
-    }
-  });
-  return result;
 }
 
 export function* handleSaveProfile(action) {
@@ -127,6 +120,8 @@ export function* handleSaveProfile(action) {
     yield put(saveProfileReset());
     yield put(resetDrafts());
   } catch (e) {
+    // TODO: If this is any other kind of exception than a known validation error from the server,
+    // this code will fail gracelessly when it can't find fieldErrors on the error.
     yield put(saveProfileFailure(e.fieldErrors));
   }
 }

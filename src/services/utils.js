@@ -36,3 +36,13 @@ export function convertKeyNames(object, nameMap) {
 
   return modifyObjectKeys(object, transformer);
 }
+
+export function keepKeys(data, whitelist) {
+  const result = {};
+  Object.keys(data).forEach((key) => {
+    if (whitelist.indexOf(key) > -1) {
+      result[key] = data[key];
+    }
+  });
+  return result;
+}

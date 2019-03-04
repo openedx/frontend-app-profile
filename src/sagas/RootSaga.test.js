@@ -27,10 +27,14 @@ describe('RootSaga', () => {
     it('should pass actions to the correct sagas', () => {
       const gen = rootSaga();
 
-      expect(gen.next().value).toEqual(takeEvery(profileActions.FETCH_PROFILE.BASE, handleFetchProfile)); // eslint-disable-line
-      expect(gen.next().value).toEqual(takeEvery(profileActions.SAVE_PROFILE.BASE, handleSaveProfile)); // eslint-disable-line
-      expect(gen.next().value).toEqual(takeEvery(profileActions.SAVE_PROFILE_PHOTO.BASE, handleSaveProfilePhoto)); // eslint-disable-line
-      expect(gen.next().value).toEqual(takeEvery(profileActions.DELETE_PROFILE_PHOTO.BASE, handleDeleteProfilePhoto)); // eslint-disable-line
+      expect(gen.next().value)
+        .toEqual(takeEvery(profileActions.FETCH_PROFILE.BASE, handleFetchProfile));
+      expect(gen.next().value)
+        .toEqual(takeEvery(profileActions.SAVE_PROFILE.BASE, handleSaveProfile));
+      expect(gen.next().value)
+        .toEqual(takeEvery(profileActions.SAVE_PROFILE_PHOTO.BASE, handleSaveProfilePhoto));
+      expect(gen.next().value)
+        .toEqual(takeEvery(profileActions.DELETE_PROFILE_PHOTO.BASE, handleDeleteProfilePhoto));
 
       expect(gen.next().value).toBeUndefined();
     });
@@ -39,12 +43,12 @@ describe('RootSaga', () => {
   describe('handleSaveProfile', () => {
     const selectorData = {
       username: 'my username',
-      accountDrafts: {
+      drafts: {
         name: 'Full Name',
       },
-      visibilityDrafts: {},
+      preferences: {},
     };
-    beforeEach(() => {});
+
     it('should successfully process a saveProfile request if there are no exceptions', () => {
       const action = profileActions.saveProfile('ze form id');
       const gen = handleSaveProfile(action);
@@ -59,9 +63,7 @@ describe('RootSaga', () => {
       }));
       // The library would supply the result of the above call
       // as the parameter to the NEXT yield.  Here:
-      expect(gen.next(profile).value).toEqual(put(profileActions.saveProfileSuccess(profile, {
-        visibility: {},
-      })));
+      expect(gen.next(profile).value).toEqual(put(profileActions.saveProfileSuccess(profile, {})));
       expect(gen.next().value).toEqual(delay(300));
       expect(gen.next().value).toEqual(put(profileActions.closeForm('ze form id')));
       expect(gen.next().value).toEqual(delay(300));
@@ -72,6 +74,9 @@ describe('RootSaga', () => {
 
     it('should successfully publish a failure action on exception', () => {
       const error = new Error('uhoh');
+      error.fieldErrors = {
+        uhoh: 'not good',
+      };
       const action = profileActions.saveProfile(
         'my username',
         {
@@ -85,7 +90,7 @@ describe('RootSaga', () => {
       expect(gen.next().value).toEqual(select(handleSaveProfileSelector));
       expect(gen.next(selectorData).value).toEqual(put(profileActions.saveProfileBegin()));
       const result = gen.throw(error);
-      expect(result.value).toEqual(put(profileActions.saveProfileFailure('uhoh')));
+      expect(result.value).toEqual(put(profileActions.saveProfileFailure({ uhoh: 'not good' })));
       expect(gen.next().value).toBeUndefined();
     });
   });

@@ -84,12 +84,12 @@ describe('SAVE profile actions', () => {
   });
 
   it('should create an action to signal user account save failure', () => {
-    const error = 'Test failure';
+    const errors = ['Test failure'];
     const expectedAction = {
       type: SAVE_PROFILE.FAILURE,
-      payload: { error },
+      payload: { errors },
     };
-    expect(saveProfileFailure(error)).toEqual(expectedAction);
+    expect(saveProfileFailure(errors)).toEqual(expectedAction);
   });
 });
 
