@@ -127,6 +127,7 @@ const profilePage = (state = initialState, action) => {
       return {
         ...state,
         currentlyEditingField: action.payload.formId,
+        drafts: {},
       };
     case CLOSE_FORM:
       // Only close if the field to close is undefined or matches the field that is currently open
@@ -134,6 +135,7 @@ const profilePage = (state = initialState, action) => {
         return {
           ...state,
           currentlyEditingField: null,
+          drafts: {},
         };
       }
       return state;
