@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Input, FormFeedback } from 'reactstrap';
+import { Form, Input, FormFeedback, Alert } from 'reactstrap';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
@@ -151,6 +151,8 @@ class SocialLinks extends React.Component {
               <EditableItemHeader
                 content={intl.formatMessage(messages['profile.sociallinks.social.links'])}
               />
+              {/* TODO: Replace this alert with per-field errors. Needs API update. */}
+              {error !== null ? <Alert color="danger">{error}</Alert> : null}
               <ul className="list-unstyled">
                 {socialLinks.map(({ platform, socialLink }) => (
                   <EditingListItem
@@ -158,7 +160,7 @@ class SocialLinks extends React.Component {
                     name={platformDisplayInfo[platform].name}
                     platform={platform}
                     value={socialLink}
-                    error={error !== null ? error[platform] : null}
+                    /* TODO: Per-field errors: error={error !== null ? error[platform] : null} */
                     onChange={this.handleChange}
                   />
                 ))}
