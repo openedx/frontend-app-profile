@@ -1,6 +1,6 @@
-import snakecaseKeys from 'snakecase-keys';
 import apiClient from '../config/apiClient';
 import { configuration } from '../config/environment';
+import { snakeCaseObject } from '../services/utils';
 
 const eventLogApiBaseUrl = `${configuration.LMS_BASE_URL}/event`;
 
@@ -14,7 +14,7 @@ function handleTrackEvents(eventName, properties) {
 // Sends events to tracking log and downstream
 // TODO: Determine consistent naming for eventName vs eventType and properties v eventData.
 function logEvent(eventType, eventData) {
-  snakecaseKeys(eventData, { deep: true });
+  snakeCaseObject(eventData, { deep: true });
   const serverData = {
     event_type: eventType,
     event: eventData,

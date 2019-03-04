@@ -6,8 +6,7 @@ export const SAVE_PROFILE_PHOTO = new AsyncActionType('PROFILE', 'SAVE_PROFILE_P
 export const DELETE_PROFILE_PHOTO = new AsyncActionType('PROFILE', 'DELETE_PROFILE_PHOTO');
 export const OPEN_FORM = 'OPEN_FORM';
 export const CLOSE_FORM = 'CLOSE_FORM';
-export const UPDATE_ACCOUNT_DRAFT = 'UPDATE_ACCOUNT_DRAFT';
-export const UPDATE_VISIBILITY_DRAFT = 'UPDATE_VISIBILITY_DRAFT';
+export const UPDATE_DRAFT = 'UPDATE_DRAFT';
 export const RESET_DRAFTS = 'RESET_DRAFTS';
 
 // FETCH PROFILE ACTIONS
@@ -21,11 +20,11 @@ export const fetchProfileBegin = () => ({
   type: FETCH_PROFILE.BEGIN,
 });
 
-export const fetchProfileSuccess = (account, preferences, certificates) => ({
+export const fetchProfileSuccess = (account, preferences, courseCertificates) => ({
   type: FETCH_PROFILE.SUCCESS,
   account,
   preferences,
-  certificates,
+  courseCertificates,
 });
 
 export const fetchProfileFailure = error => ({
@@ -138,16 +137,8 @@ export const closeForm = formId => ({
 
 // FORM STATE ACTIONS
 
-export const updateAccountDraft = (name, value) => ({
-  type: UPDATE_ACCOUNT_DRAFT,
-  payload: {
-    name,
-    value,
-  },
-});
-
-export const updateVisibilityDraft = (name, value) => ({
-  type: UPDATE_VISIBILITY_DRAFT,
+export const updateDraft = (name, value) => ({
+  type: UPDATE_DRAFT,
   payload: {
     name,
     value,

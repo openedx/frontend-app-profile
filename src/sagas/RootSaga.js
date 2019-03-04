@@ -52,11 +52,11 @@ export function* handleFetchProfile(action) {
     const result = yield all(calls);
 
     if (result.length > 2) {
-      const [account, certificates, preferences] = result;
-      yield put(fetchProfileSuccess(account, preferences, certificates));
+      const [account, courseCertificates, preferences] = result;
+      yield put(fetchProfileSuccess(account, preferences, courseCertificates));
     } else {
-      const [account, certificates] = result;
-      yield put(fetchProfileSuccess(account, { visibility: {} }, certificates));
+      const [account, courseCertificates] = result;
+      yield put(fetchProfileSuccess(account, {}, courseCertificates));
     }
 
     yield put(fetchProfileReset());
@@ -65,29 +65,63 @@ export function* handleFetchProfile(action) {
   }
 }
 
-export function* handleSaveProfile(action) {
-  const { username, accountDrafts, visibilityDrafts } = yield select(handleSaveProfileSelector);
+function keepKeys(data, whitelist) {
+  const result = {};
+  Object.keys(data).forEach((key) => {
+    if (whitelist.indexOf(key) > -1) {
+      result[key] = data[key];
+    }
+  });
+  return result;
+}
 
+export function* handleSaveProfile(action) {
   try {
+    const { username, drafts, preferences } = yield select(handleSaveProfileSelector);
+
+    const accountDrafts = keepKeys(drafts, [
+      'bio',
+      'courseCertificates',
+      'country',
+      'education',
+      'languageProficiencies',
+      'name',
+      'socialLinks',
+    ]);
+
+    const preferencesDrafts = keepKeys(drafts, [
+      'visibilityBio',
+      'visibilityCourseCertificates',
+      'visibilityCountry',
+      'visibilityEducation',
+      'visibilityLanguageProficiencies',
+      'visibilityName',
+      'visibilitySocialLinks',
+    ]);
+
+    if (Object.keys(preferencesDrafts).length > 0) {
+      accountDrafts.accountPrivacy = 'custom';
+    }
+
     yield put(saveProfileBegin());
     let accountResult = null;
     // Build the visibility drafts into a structure the API expects.
-    const preferences = {
-      visibility: visibilityDrafts,
-    };
 
     if (Object.keys(accountDrafts).length > 0) {
       accountResult = yield call(ProfileApiService.patchProfile, username, accountDrafts);
     }
 
-    if (Object.keys(visibilityDrafts).length > 0) {
-      yield call(ProfileApiService.patchPreferences, username, preferences);
+    if (Object.keys(preferencesDrafts).length > 0) {
+      yield call(ProfileApiService.patchPreferences, username, preferencesDrafts);
     }
+
+    // Merge preferences drafts back into the full list.
+    const preferencesResult = Object.assign({}, preferences, preferencesDrafts);
 
     // The account result is returned from the server.
     // The preferences draft is valid if the server didn't complain, so
     // pass it through directly.
-    yield put(saveProfileSuccess(accountResult, preferences));
+    yield put(saveProfileSuccess(accountResult, preferencesResult));
     yield delay(300);
     yield put(closeForm(action.payload.formId));
     yield delay(300);

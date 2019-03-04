@@ -26,7 +26,7 @@ class Certificates extends React.Component {
 
   handleChange(e) {
     const { name, value } = e.target;
-    this.props.changeHandler(this.props.formId, name, value);
+    this.props.changeHandler(name, value);
   }
 
   handleSubmit(e) {
@@ -87,7 +87,7 @@ class Certificates extends React.Component {
 
   render() {
     const {
-      formId, visibility, editMode, saveState, intl,
+      visibilityCourseCertificates, editMode, saveState, intl,
     } = this.props;
 
     return (
@@ -100,9 +100,9 @@ class Certificates extends React.Component {
               <EditableItemHeader content={intl.formatMessage(messages['profile.certificates.my.certificates'])} />
               {this.renderCertificates()}
               <FormControls
-                formId={formId}
+                visibilityId="visibilityCourseCertificates"
                 saveState={saveState}
-                visibility={visibility}
+                visibility={visibilityCourseCertificates}
                 cancelHandler={this.handleClose}
                 changeHandler={this.handleChange}
               />
@@ -114,8 +114,8 @@ class Certificates extends React.Component {
                 content={intl.formatMessage(messages['profile.certificates.my.certificates'])}
                 showEditButton
                 onClickEdit={this.handleOpen}
-                showVisibility={visibility !== null}
-                visibility={visibility}
+                showVisibility={visibilityCourseCertificates !== null}
+                visibility={visibilityCourseCertificates}
               />
               {this.renderCertificates()}
             </React.Fragment>
@@ -152,7 +152,7 @@ Certificates.propTypes = {
   certificates: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string,
   })),
-  visibility: PropTypes.oneOf(['private', 'all_users']),
+  visibilityCourseCertificates: PropTypes.oneOf(['private', 'all_users']),
   editMode: PropTypes.oneOf(['editing', 'editable', 'empty', 'static']),
   saveState: PropTypes.string,
 
@@ -169,7 +169,7 @@ Certificates.propTypes = {
 Certificates.defaultProps = {
   editMode: 'static',
   saveState: null,
-  visibility: 'private',
+  visibilityCourseCertificates: 'private',
   certificates: null,
 };
 

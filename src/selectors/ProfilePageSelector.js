@@ -3,11 +3,14 @@ import { createSelector } from 'reselect';
 export const formIdSelector = (state, props) => props.formId;
 export const authenticationUsernameSelector = state => state.authentication.username;
 export const profileAccountSelector = state => state.profilePage.account;
-export const profileCertificatesSelector = state => state.profilePage.certificates;
+export const profileDraftsSelector = state => state.profilePage.drafts;
+export const accountPrivacySelector = state => state.profilePage.account.accountPrivacy;
+export const profilePreferencesSelector = state => state.profilePage.preferences;
+export const profileCourseCertificatesSelector = state => state.profilePage.courseCertificates;
 export const profileAccountDraftsSelector = state => state.profilePage.accountDrafts;
 export const profileVisibilityDraftsSelector = state => state.profilePage.visibilityDrafts;
-export const profileVisibilitySelector = state => state.profilePage.preferences.visibility;
 export const saveStateSelector = state => state.profilePage.saveState;
+export const savePhotoStateSelector = state => state.profilePage.savePhotoState;
 export const currentlyEditingFieldSelector = state => state.profilePage.currentlyEditingField;
 export const accountErrorsSelector = state => state.profilePage.errors;
 
@@ -19,7 +22,7 @@ export const isCurrentUserProfileSelector = createSelector(
 
 export const editableFormModeSelector = createSelector(
   profileAccountSelector,
-  profileCertificatesSelector,
+  profileCourseCertificatesSelector,
   formIdSelector,
   isCurrentUserProfileSelector,
   currentlyEditingFieldSelector,
@@ -51,8 +54,8 @@ export const editableFormModeSelector = createSelector(
 
 export const accountDraftsFieldSelector = createSelector(
   formIdSelector,
-  profileAccountDraftsSelector,
-  (formId, accountDrafts) => accountDrafts[formId],
+  profileDraftsSelector,
+  (formId, drafts) => drafts[formId],
 );
 
 export const visibilityDraftsFieldSelector = createSelector(
@@ -69,26 +72,9 @@ export const formErrorSelector = createSelector(
 
 export const editableFormSelector = createSelector(
   editableFormModeSelector,
-  profileAccountSelector,
-  profileVisibilitySelector,
-  formIdSelector,
   formErrorSelector,
   saveStateSelector,
-  accountDraftsFieldSelector,
-  visibilityDraftsFieldSelector,
-  (
-    editMode,
-    account,
-    visibility,
-    formId,
-    error,
-    saveState,
-    accountDraftsField,
-    visibilityDraftsField,
-  ) => ({
-    value: accountDraftsField || account[formId] || '',
-    committedValue: account[formId] || '',
-    visibility: visibilityDraftsField || visibility[formId] || 'private',
+  (editMode, error, saveState) => ({
     editMode,
     error,
     saveState,
@@ -97,7 +83,7 @@ export const editableFormSelector = createSelector(
 
 export const certificatesSelector = createSelector(
   editableFormSelector,
-  profileCertificatesSelector,
+  profileCourseCertificatesSelector,
   (editableForm, certificates) => ({
     ...editableForm,
     certificates,
@@ -105,16 +91,221 @@ export const certificatesSelector = createSelector(
   }),
 );
 
+export const profileImageSelector = createSelector(
+  profileAccountSelector,
+  account => (account.profileImage != null ? account.profileImage.imageUrlLarge : null),
+);
+
 /**
  * This is used by a saga to pull out data to process.
  */
 export const handleSaveProfileSelector = createSelector(
   authenticationUsernameSelector,
-  profileAccountDraftsSelector,
-  profileVisibilityDraftsSelector,
-  (username, accountDrafts, visibilityDrafts) => ({
+  profileDraftsSelector,
+  profilePreferencesSelector,
+  (username, drafts, preferences) => ({
     username,
-    accountDrafts,
-    visibilityDrafts,
+    drafts,
+    preferences,
+  }),
+);
+
+// Reformats the social links in a platform-keyed hash.
+const socialLinksByPlatformSelector = createSelector(
+  profileAccountSelector,
+  (account) => {
+    const linksByPlatform = {};
+    account.socialLinks.forEach((socialLink) => {
+      linksByPlatform[socialLink.platform] = socialLink;
+    });
+    return linksByPlatform;
+  },
+);
+
+const draftSocialLinksByPlatformSelector = createSelector(
+  profileDraftsSelector,
+  (drafts) => {
+    const linksByPlatform = {};
+    if (drafts.socialLinks !== undefined) {
+      drafts.socialLinks.forEach((socialLink) => {
+        linksByPlatform[socialLink.platform] = socialLink;
+      });
+    }
+    return linksByPlatform;
+  },
+);
+
+// Fleshes out our list of existing social links with all the other ones the user can set.
+export const formSocialLinksSelector = createSelector(
+  socialLinksByPlatformSelector,
+  draftSocialLinksByPlatformSelector,
+  (linksByPlatform, draftLinksByPlatform) => {
+    const knownPlatforms = ['twitter', 'facebook', 'linkedin'];
+    const socialLinks = [];
+    // For each known platform
+    knownPlatforms.forEach((platform) => {
+      // If the link is in our drafts.
+      if (draftLinksByPlatform[platform] !== undefined) {
+        // Use the draft one.
+        socialLinks.push(draftLinksByPlatform[platform]);
+      } else if (linksByPlatform[platform] !== undefined) {
+        // Otherwise use the real one.
+        socialLinks.push(linksByPlatform[platform]);
+      } else {
+        // And if it's not in either, use a stub.
+        socialLinks.push({
+          platform,
+          socialLink: null,
+        });
+      }
+    });
+    return socialLinks;
+  },
+);
+
+export const visibilitiesSelector = createSelector(
+  profilePreferencesSelector,
+  accountPrivacySelector,
+  (preferences, accountPrivacy) => {
+    switch (accountPrivacy) {
+      case 'all_users':
+        return {
+          visibilityBio: 'all_users',
+          visibilityCourseCertificates: 'all_users',
+          visibilityCountry: 'all_users',
+          visibilityEducation: 'all_users',
+          visibilityLanguageProficiencies: 'all_users',
+          visibilityName: 'all_users',
+          visibilitySocialLinks: 'all_users',
+        };
+      case 'custom':
+        return {
+          visibilityBio: preferences.visibilityBio || 'private',
+          visibilityCourseCertificates: preferences.visibilityCourseCertificates || 'private',
+          visibilityCountry: preferences.visibilityCountry || 'private',
+          visibilityEducation: preferences.visibilityEducation || 'private',
+          visibilityLanguageProficiencies: preferences.visibilityLanguageProficiencies || 'private',
+          visibilityName: preferences.visibilityName || 'private',
+          visibilitySocialLinks: preferences.visibilitySocialLinks || 'private',
+        };
+      case 'private':
+      default:
+        // If there is some other value for accountPrivacy set, we're going to assume
+        // it's private, since that's safest.
+        return {
+          visibilityBio: 'private',
+          visibilityCourseCertificates: 'private',
+          visibilityCountry: 'private',
+          visibilityEducation: 'private',
+          visibilityLanguageProficiencies: 'private',
+          visibilityName: 'private',
+          visibilitySocialLinks: 'private',
+        };
+    }
+  },
+);
+
+/**
+ * If there's no draft present at all (undefined), use the original committed value.
+ */
+function chooseFormValue(draft, committed) {
+  return draft !== undefined ? draft : committed;
+}
+
+export const formValuesSelector = createSelector(
+  profileAccountSelector,
+  visibilitiesSelector,
+  profileDraftsSelector,
+  profileCourseCertificatesSelector,
+  formSocialLinksSelector,
+  (account, visibilities, drafts, courseCertificates, socialLinks) => ({
+    bio: chooseFormValue(drafts.bio, account.bio),
+    visibilityBio: chooseFormValue(drafts.visibilityBio, visibilities.visibilityBio),
+    courseCertificates,
+    visibilityCourseCertificates: chooseFormValue(
+      drafts.visibilityCourseCertificates,
+      visibilities.visibilityCourseCertificates,
+    ),
+    country: chooseFormValue(drafts.country, account.country),
+    visibilityCountry: chooseFormValue(drafts.visibilityCountry, visibilities.visibilityCountry),
+    education: chooseFormValue(drafts.education, account.education),
+    visibilityEducation: chooseFormValue(
+      drafts.visibilityEducation,
+      visibilities.visibilityEducation,
+    ),
+    languageProficiencies: chooseFormValue(
+      drafts.languageProficiencies,
+      account.languageProficiencies,
+    ),
+    visibilityLanguageProficiencies: chooseFormValue(
+      drafts.visibilityLanguageProficiencies,
+      visibilities.visibilityLanguageProficiencies,
+    ),
+    name: chooseFormValue(drafts.name, account.name),
+    visibilityName: chooseFormValue(drafts.visibilityName, visibilities.visibilityName),
+    socialLinks, // Social links is calculated in its own selector, since it's complicated.
+    visibilitySocialLinks: chooseFormValue(
+      drafts.visibilitySocialLinks,
+      visibilities.visibilitySocialLinks,
+    ),
+  }),
+);
+
+export const profilePageSelector = createSelector(
+  profileAccountSelector,
+  formValuesSelector,
+  profileImageSelector,
+  saveStateSelector,
+  savePhotoStateSelector,
+  isCurrentUserProfileSelector,
+  draftSocialLinksByPlatformSelector,
+  (
+    account,
+    formValues,
+    profileImage,
+    saveState,
+    savePhotoState,
+    isCurrentUserProfile,
+    draftSocialLinksByPlatform,
+  ) => ({
+    // Account data we need
+    username: account.username,
+    profileImage,
+    requiresParentalConsent: account.requiresParentalConsent,
+    dateJoined: account.dateJoined,
+
+    // Bio form data
+    bio: formValues.bio,
+    visibilityBio: formValues.visibilityBio,
+
+    // Certificates form data
+    courseCertificates: formValues.courseCertificates,
+    visibilityCourseCertificates: formValues.visibilityCourseCertificates,
+
+    // Country form data
+    country: formValues.country,
+    visibilityCountry: formValues.visibilityCountry,
+
+    // Education form data
+    education: formValues.education,
+    visibilityEducation: formValues.visibilityEducation,
+
+    // Language proficiency form data
+    languageProficiencies: formValues.languageProficiencies,
+    visibilityLanguageProficiencies: formValues.visibilityLanguageProficiencies,
+
+    // Name form data
+    name: formValues.name,
+    visibilityName: formValues.visibilityName,
+
+    // Social links form data
+    socialLinks: formValues.socialLinks,
+    visibilitySocialLinks: formValues.visibilitySocialLinks,
+    draftSocialLinksByPlatform,
+
+    // Other data we need
+    saveState,
+    savePhotoState,
+    isCurrentUserProfile,
   }),
 );

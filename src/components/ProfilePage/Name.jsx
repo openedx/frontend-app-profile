@@ -30,7 +30,7 @@ class Name extends React.Component {
       name,
       value,
     } = e.target;
-    this.props.changeHandler(this.props.formId, name, value);
+    this.props.changeHandler(name, value);
   }
 
   handleSubmit(e) {
@@ -48,7 +48,7 @@ class Name extends React.Component {
 
   render() {
     const {
-      formId, value, visibility, editMode, saveState, error, intl,
+      formId, name, visibilityName, editMode, saveState, error, intl,
     } = this.props;
 
     return (
@@ -60,7 +60,7 @@ class Name extends React.Component {
             <Form onSubmit={this.handleSubmit}>
               <FormGroup>
                 <Label for="name">Full Name</Label>
-                <Input type="text" name={formId} value={value} invalid={error != null} onChange={this.handleChange} />
+                <Input type="text" name={formId} value={name} invalid={error != null} onChange={this.handleChange} />
                 <FormText>
                   <FormattedMessage
                     id="profile.name.details"
@@ -71,9 +71,9 @@ class Name extends React.Component {
                 <FormFeedback>{error}</FormFeedback>
               </FormGroup>
               <FormControls
-                formId={formId}
+                visibilityId="visibilityName"
                 saveState={saveState}
-                visibility={visibility}
+                visibility={visibilityName}
                 cancelHandler={this.handleClose}
                 changeHandler={this.handleChange}
               />
@@ -85,10 +85,10 @@ class Name extends React.Component {
                 content={intl.formatMessage(messages['profile.name.full.name'])}
                 showEditButton
                 onClickEdit={this.handleOpen}
-                showVisibility={visibility !== null}
-                visibility={visibility}
+                showVisibility={visibilityName !== null}
+                visibility={visibilityName}
               />
-              <h5>{value}</h5>
+              <h5>{name}</h5>
             </React.Fragment>
           ),
           empty: (
@@ -103,7 +103,7 @@ class Name extends React.Component {
           static: (
             <React.Fragment>
               <EditableItemHeader content={intl.formatMessage(messages['profile.name.full.name'])} />
-              <h5>{value}</h5>
+              <h5>{name}</h5>
             </React.Fragment>
           ),
         }}
@@ -120,8 +120,8 @@ Name.propTypes = {
   formId: PropTypes.string.isRequired,
 
   // From Selector
-  value: PropTypes.string,
-  visibility: PropTypes.oneOf(['private', 'all_users']),
+  name: PropTypes.string,
+  visibilityName: PropTypes.oneOf(['private', 'all_users']),
   editMode: PropTypes.oneOf(['editing', 'editable', 'empty', 'static']),
   saveState: PropTypes.string,
   error: PropTypes.string,
@@ -139,8 +139,8 @@ Name.propTypes = {
 Name.defaultProps = {
   editMode: 'static',
   saveState: null,
-  value: null,
-  visibility: 'private',
+  name: null,
+  visibilityName: 'private',
   error: null,
 };
 

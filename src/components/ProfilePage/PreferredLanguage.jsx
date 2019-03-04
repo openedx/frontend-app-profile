@@ -39,7 +39,7 @@ class PreferredLanguage extends React.Component {
       value = [{ code: rawValue }];
     }
 
-    this.props.changeHandler(this.props.formId, name, value);
+    this.props.changeHandler(name, value);
   }
 
   handleSubmit(e) {
@@ -57,10 +57,10 @@ class PreferredLanguage extends React.Component {
 
   render() {
     const {
-      formId, value: valueArr, visibility, editMode, saveState, error,
+      formId, languageProficiencies, visibilityLanguageProficiencies, editMode, saveState, error,
     } = this.props;
 
-    const value = valueArr.length ? valueArr[0].code : '';
+    const value = languageProficiencies.length ? languageProficiencies[0].code : '';
 
     return (
       <SwitchContent
@@ -92,9 +92,9 @@ class PreferredLanguage extends React.Component {
                 <FormFeedback>{error}</FormFeedback>
               </FormGroup>
               <FormControls
-                formId={formId}
+                visibilityId="visibilityLanguageProficiencies"
                 saveState={saveState}
-                visibility={visibility}
+                visibility={visibilityLanguageProficiencies}
                 cancelHandler={this.handleClose}
                 changeHandler={this.handleChange}
               />
@@ -112,8 +112,8 @@ class PreferredLanguage extends React.Component {
                 )}
                 showEditButton
                 onClickEdit={this.handleOpen}
-                showVisibility={visibility !== null}
-                visibility={visibility}
+                showVisibility={visibilityLanguageProficiencies !== null}
+                visibility={visibilityLanguageProficiencies}
               />
               <h5>{ALL_LANGUAGES[value]}</h5>
             </React.Fragment>
@@ -155,13 +155,13 @@ PreferredLanguage.propTypes = {
   formId: PropTypes.string.isRequired,
 
   // From Selector
-  value: PropTypes.oneOfType([
+  languageProficiencies: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.shape({ code: PropTypes.string })),
     // TODO: ProfilePageSelector should supply null values
     // instead of empty strings when no value exists
     PropTypes.oneOf(['']),
   ]),
-  visibility: PropTypes.oneOf(['private', 'all_users']),
+  visibilityLanguageProficiencies: PropTypes.oneOf(['private', 'all_users']),
   editMode: PropTypes.oneOf(['editing', 'editable', 'empty', 'static']),
   saveState: PropTypes.string,
   error: PropTypes.string,
@@ -176,8 +176,8 @@ PreferredLanguage.propTypes = {
 PreferredLanguage.defaultProps = {
   editMode: 'static',
   saveState: null,
-  value: null,
-  visibility: 'private',
+  languageProficiencies: [],
+  visibilityLanguageProficiencies: 'private',
   error: null,
 };
 

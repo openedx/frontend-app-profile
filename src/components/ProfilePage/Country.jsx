@@ -31,7 +31,7 @@ class Country extends React.Component {
       name,
       value,
     } = e.target;
-    this.props.changeHandler(this.props.formId, name, value);
+    this.props.changeHandler(name, value);
   }
 
   handleSubmit(e) {
@@ -49,7 +49,7 @@ class Country extends React.Component {
 
   render() {
     const {
-      formId, value, visibility, editMode, saveState, error,
+      formId, country, visibilityCountry, editMode, saveState, error,
     } = this.props;
 
     return (
@@ -65,7 +65,7 @@ class Country extends React.Component {
                   type="select"
                   name={formId}
                   className="w-100"
-                  value={value}
+                  value={country}
                   invalid={error != null}
                   onChange={this.handleChange}
                 >
@@ -76,9 +76,9 @@ class Country extends React.Component {
                 <FormFeedback>{error}</FormFeedback>
               </FormGroup>
               <FormControls
-                formId={formId}
+                visibilityId="visibilityCountry"
                 saveState={saveState}
-                visibility={visibility}
+                visibility={visibilityCountry}
                 cancelHandler={this.handleClose}
                 changeHandler={this.handleChange}
               />
@@ -90,10 +90,10 @@ class Country extends React.Component {
                 content="Location"
                 showEditButton
                 onClickEdit={this.handleOpen}
-                showVisibility={visibility !== null}
-                visibility={visibility}
+                showVisibility={visibilityCountry !== null}
+                visibility={visibilityCountry}
               />
-              <h5>{ALL_COUNTRIES[value]}</h5>
+              <h5>{ALL_COUNTRIES[country]}</h5>
             </React.Fragment>
           ),
           empty: (
@@ -108,7 +108,7 @@ class Country extends React.Component {
           static: (
             <React.Fragment>
               <EditableItemHeader content="Location" />
-              <h5>{ALL_COUNTRIES[value]}</h5>
+              <h5>{ALL_COUNTRIES[country]}</h5>
             </React.Fragment>
           ),
         }}
@@ -125,8 +125,8 @@ Country.propTypes = {
   formId: PropTypes.string.isRequired,
 
   // From Selector
-  value: PropTypes.string,
-  visibility: PropTypes.oneOf(['private', 'all_users']),
+  country: PropTypes.string,
+  visibilityCountry: PropTypes.oneOf(['private', 'all_users']),
   editMode: PropTypes.oneOf(['editing', 'editable', 'empty', 'static']),
   saveState: PropTypes.string,
   error: PropTypes.string,
@@ -141,8 +141,8 @@ Country.propTypes = {
 Country.defaultProps = {
   editMode: 'static',
   saveState: null,
-  value: null,
-  visibility: 'private',
+  country: null,
+  visibilityCountry: 'private',
   error: null,
 };
 
