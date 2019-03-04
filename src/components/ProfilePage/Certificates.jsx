@@ -53,12 +53,11 @@ class Certificates extends React.Component {
     const { intl } = this.props;
     const certificateIllustration = ((type) => {
       switch (type) {
-        case 'Verified Certificate':
-          return verifiedCertificateSVG;
         case 'Professional Certificate':
           return professionalCertificateSVG;
         case 'MicroMasters Certificate':
           return microMastersSVG;
+        case 'Verified Certificate':
         default:
           return verifiedCertificateSVG;
       }
