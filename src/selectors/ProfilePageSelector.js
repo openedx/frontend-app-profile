@@ -4,7 +4,7 @@ export const formIdSelector = (state, props) => props.formId;
 export const authenticationUsernameSelector = state => state.authentication.username;
 export const profileAccountSelector = state => state.profilePage.account;
 export const profileDraftsSelector = state => state.profilePage.drafts;
-export const accountPrivacySelector = state => state.profilePage.account.accountPrivacy;
+export const accountPrivacySelector = state => state.profilePage.preferences.accountPrivacy;
 export const profilePreferencesSelector = state => state.profilePage.preferences;
 export const profileCourseCertificatesSelector = state => state.profilePage.courseCertificates;
 export const profileAccountDraftsSelector = state => state.profilePage.accountDrafts;

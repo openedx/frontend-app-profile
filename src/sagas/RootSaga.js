@@ -100,7 +100,7 @@ export function* handleSaveProfile(action) {
     ]);
 
     if (Object.keys(preferencesDrafts).length > 0) {
-      accountDrafts.accountPrivacy = 'custom';
+      preferencesDrafts.accountPrivacy = 'custom';
     }
 
     yield put(saveProfileBegin());
@@ -111,12 +111,11 @@ export function* handleSaveProfile(action) {
       accountResult = yield call(ProfileApiService.patchProfile, username, accountDrafts);
     }
 
+    let preferencesResult = preferences; // assume it hasn't changed.
     if (Object.keys(preferencesDrafts).length > 0) {
       yield call(ProfileApiService.patchPreferences, username, preferencesDrafts);
+      preferencesResult = yield call(ProfileApiService.getPreferences, username);
     }
-
-    // Merge preferences drafts back into the full list.
-    const preferencesResult = Object.assign({}, preferences, preferencesDrafts);
 
     // The account result is returned from the server.
     // The preferences draft is valid if the server didn't complain, so
