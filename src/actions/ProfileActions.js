@@ -61,9 +61,9 @@ export const saveProfileReset = () => ({
   type: SAVE_PROFILE.RESET,
 });
 
-export const saveProfileFailure = error => ({
+export const saveProfileFailure = errors => ({
   type: SAVE_PROFILE.FAILURE,
-  payload: { error },
+  payload: { errors },
 });
 
 // SAVE PROFILE PHOTO ACTIONS
