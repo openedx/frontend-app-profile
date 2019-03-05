@@ -74,8 +74,10 @@ describe('RootSaga', () => {
 
     it('should successfully publish a failure action on exception', () => {
       const error = new Error('uhoh');
-      error.fieldErrors = {
-        uhoh: 'not good',
+      error.processedData = {
+        fieldErrors: {
+          uhoh: 'not good',
+        },
       };
       const action = profileActions.saveProfile(
         'my username',
