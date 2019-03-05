@@ -122,9 +122,13 @@ export function* handleSaveProfile(action) {
     yield put(saveProfileReset());
     yield put(resetDrafts());
   } catch (e) {
-    // TODO: If this is any other kind of exception than a known validation error from the server,
-    // this code will fail gracelessly when it can't find fieldErrors on the error.
-    yield put(saveProfileFailure(e.fieldErrors));
+    if (e.processedData.fieldErrors) {
+      yield put(saveProfileFailure(e.processedData.fieldErrors));
+    } else {
+      // TODO: If this is any other kind of exception than a field error
+      // from the server, the error will fail silently
+      yield put(saveProfileReset());
+    }
   }
 }
 
@@ -141,7 +145,13 @@ export function* handleSaveProfilePhoto(action) {
     yield put(saveProfilePhotoSuccess());
     yield put(saveProfilePhotoReset());
   } catch (e) {
-    yield put(saveProfilePhotoFailure(e.message));
+    if (e.processedData) {
+      yield put(saveProfilePhotoFailure(e.processedData));
+    } else {
+      // TODO: If no error data was returned from the server,
+      // the error will fail silently
+      yield put(saveProfilePhotoReset());
+    }
   }
 }
 
