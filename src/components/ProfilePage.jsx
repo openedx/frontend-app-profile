@@ -42,8 +42,9 @@ export class ProfilePage extends React.Component {
 
   componentDidMount() {
     this.props.fetchProfile(this.props.match.params.username);
-    logEvent('edx.profile.viewed', {
-      profileUsername: this.props.match.params.username,
+    // TODO: Rename 'edx.bi.profile.viewed' when the event is finalized
+    logEvent('edx.bi.profile.viewed', {
+      username: this.props.match.params.username,
     });
   }
 
