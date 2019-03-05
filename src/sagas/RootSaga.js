@@ -125,8 +125,7 @@ export function* handleSaveProfile(action) {
     if (e.processedData.fieldErrors) {
       yield put(saveProfileFailure(e.processedData.fieldErrors));
     } else {
-      // TODO: If this is any other kind of exception than a field error
-      // from the server, the error will fail silently
+      // TODO: Currently failing silently on other kinds of errors
       yield put(saveProfileReset());
     }
   }
@@ -148,8 +147,7 @@ export function* handleSaveProfilePhoto(action) {
     if (e.processedData) {
       yield put(saveProfilePhotoFailure(e.processedData));
     } else {
-      // TODO: If no error data was returned from the server,
-      // the error will fail silently
+      // TODO: Currently failing silently on other kinds of errors
       yield put(saveProfilePhotoReset());
     }
   }
