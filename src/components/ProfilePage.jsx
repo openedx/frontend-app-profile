@@ -110,7 +110,8 @@ export class ProfilePage extends React.Component {
               <div className="d-flex align-items-center d-md-block mt-4 mt-md-0">
                 <ProfileAvatar
                   className="mb-md-3"
-                  src={profileImage}
+                  src={profileImage.src}
+                  isDefault={profileImage.isDefault}
                   onSave={this.handleSaveProfilePhoto}
                   onDelete={this.handleDeleteProfilePhoto}
                   savePhotoState={this.props.savePhotoState}
@@ -230,7 +231,10 @@ ProfilePage.propTypes = {
   visibilitySocialLinks: PropTypes.string.isRequired,
 
   // Other data we need
-  profileImage: PropTypes.string,
+  profileImage: PropTypes.shape({
+    src: PropTypes.string,
+    isDefault: PropTypes.bool,
+  }),
   saveState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
   savePhotoState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
 
@@ -258,7 +262,7 @@ ProfilePage.defaultProps = {
   saveState: null,
   savePhotoState: null,
   errors: {},
-  profileImage: null,
+  profileImage: {},
   name: null,
   username: null,
   education: null,
