@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, Alert } from 'reactstrap';
 import { connect } from 'react-redux';
 import { logEvent } from '../analytics/analytics';
 
@@ -76,7 +76,7 @@ export class ProfilePage extends React.Component {
       profileImage,
       username,
       dateJoined,
-      errors,
+      photoUploadError,
       name,
       visibilityName,
       country,
@@ -98,7 +98,6 @@ export class ProfilePage extends React.Component {
       closeHandler: this.handleClose,
       submitHandler: this.handleSubmit,
       changeHandler: this.handleChange,
-      errors,
     };
 
     return (
@@ -117,6 +116,7 @@ export class ProfilePage extends React.Component {
                   isEditable={this.props.isCurrentUserProfile}
                 />
                 <div>
+                  {photoUploadError !== null ? <Alert color="danger">{photoUploadError.userMessage}</Alert> : null}
                   <h2 className="mb-0">{username}</h2>
                   <DateJoined date={dateJoined} />
                 </div>
@@ -235,7 +235,7 @@ ProfilePage.propTypes = {
   savePhotoState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
 
   // Page state helpers
-  errors: PropTypes.objectOf(PropTypes.string),
+  photoUploadError: PropTypes.objectOf(PropTypes.string),
 
   // Actions
   fetchProfile: PropTypes.func.isRequired,
@@ -257,7 +257,7 @@ ProfilePage.propTypes = {
 ProfilePage.defaultProps = {
   saveState: null,
   savePhotoState: null,
-  errors: {},
+  photoUploadError: {},
   profileImage: null,
   name: null,
   username: null,

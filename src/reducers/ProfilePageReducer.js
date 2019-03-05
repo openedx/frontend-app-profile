@@ -76,7 +76,7 @@ const profilePage = (state = initialState, action) => {
       return {
         ...state,
         savePhotoState: 'error',
-        errors: Object.assign({}, state.errors, action.payload.errors),
+        errors: Object.assign({}, state.errors, { photo: action.payload.error }),
       };
     case SAVE_PROFILE_PHOTO.RESET:
       return {

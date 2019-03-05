@@ -67,7 +67,7 @@ export const visibilityDraftsFieldSelector = createSelector(
 export const formErrorSelector = createSelector(
   accountErrorsSelector,
   formIdSelector,
-  (errors, formId) => errors[formId] || null,
+  (errors, formId) => (errors[formId] ? errors[formId].userMessage : null),
 );
 
 export const editableFormSelector = createSelector(
@@ -261,6 +261,7 @@ export const profilePageSelector = createSelector(
   savePhotoStateSelector,
   isCurrentUserProfileSelector,
   draftSocialLinksByPlatformSelector,
+  accountErrorsSelector,
   (
     account,
     formValues,
@@ -269,6 +270,7 @@ export const profilePageSelector = createSelector(
     savePhotoState,
     isCurrentUserProfile,
     draftSocialLinksByPlatform,
+    errors,
   ) => ({
     // Account data we need
     username: account.username,
@@ -309,5 +311,6 @@ export const profilePageSelector = createSelector(
     saveState,
     savePhotoState,
     isCurrentUserProfile,
+    photoUploadError: errors.photo || null,
   }),
 );
