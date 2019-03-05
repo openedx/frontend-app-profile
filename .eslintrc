@@ -20,5 +20,8 @@
   },
   "env": {
     "jest": true
+  },
+  "globals": {
+    "newrelic": false
   }
 }

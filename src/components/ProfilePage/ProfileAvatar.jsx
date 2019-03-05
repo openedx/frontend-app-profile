@@ -59,13 +59,14 @@ class ProfileAvatar extends React.Component {
   renderMenu() {
     if (!this.props.isEditable) return null;
 
-    // TODO: only checking for null now. We need a way to
-    // check if this src is the default image
-    const hasImage = this.props.src === null;
-
-    if (hasImage) {
+    if (this.props.isDefault) {
       return (
-        <Button className="text-white btn-block" color="link" size="sm">
+        <Button
+          className="text-white btn-block"
+          color="link"
+          size="sm"
+          onClick={this.onClickUpload}
+        >
           <FormattedMessage
             id="profile.profileavatar.upload-button"
             defaultMessage="Upload Photo"
@@ -147,6 +148,7 @@ export default ProfileAvatar;
 
 ProfileAvatar.propTypes = {
   src: PropTypes.string,
+  isDefault: PropTypes.bool,
   onSave: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
   savePhotoState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
@@ -155,6 +157,7 @@ ProfileAvatar.propTypes = {
 
 ProfileAvatar.defaultProps = {
   src: null,
+  isDefault: true,
   savePhotoState: null,
   isEditable: false,
 };
