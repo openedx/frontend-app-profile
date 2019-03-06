@@ -10,7 +10,7 @@ import { fetchUserAccount, UserAccountApiService } from '@edx/frontend-auth';
 import apiClient from '../config/apiClient';
 import { handleTrackEvents } from '../analytics/analytics';
 import { getLocale, getMessages } from '../i18n/i18n-loader';
-import SiteHeader from './/SiteHeader';
+import SiteHeader from './Header/SiteHeader';
 import ConnectedProfilePage from './ProfilePage';
 
 import HeaderLogo from '../../assets/edx-sm.png';
