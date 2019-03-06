@@ -39,12 +39,7 @@ export async function patchProfile(username, params) {
     },
   ).catch((error) => {
     const processedError = Object.create(error);
-    const fieldErrors = Object.entries(processAccountData(error.response.data.field_errors))
-      .reduce((acc, [fieldKey, messages]) => {
-        acc[fieldKey] = messages.userMessage;
-        return acc;
-      }, {});
-    processedError.fieldErrors = fieldErrors;
+    processedError.processedData = processAccountData(error.response.data);
     throw processedError;
   });
 
@@ -63,7 +58,11 @@ export async function postProfilePhoto(username, formData) {
         'Content-Type': 'multipart/form-data',
       },
     },
-  );
+  ).catch((error) => {
+    const processedError = Object.create(error);
+    processedError.processedData = camelCaseObject(error.response.data);
+    throw processedError;
+  });
 
   return camelCaseObject(data);
 }
