@@ -18,7 +18,7 @@ function logEvent(eventType, eventData) {
   const snakeEventData = snakeCaseObject(eventData, { deep: true });
   const serverData = {
     event_type: eventType,
-    event: snakeEventData,
+    event: JSON.stringify(snakeEventData),
     page: window.location.href,
   };
   return apiClient.post(eventLogApiBaseUrl, serverData)
