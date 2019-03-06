@@ -32,12 +32,7 @@ describe('analytics logEvent', () => {
         expect(apiClient.post.mock.calls[0][0]).toEqual(`${configuration.LMS_BASE_URL}/event`);
         expect(apiClient.post.mock.calls[0][1]).toEqual({
           event_type: 'test.event',
-          event: {
-            test_shallow: 'test-shallow',
-            test_object: {
-              test_deep: 'test-deep',
-            },
-          },
+          event: '{"test_shallow":"test-shallow","test_object":{"test_deep":"test-deep"}}',
           page: window.location.href,
         });
       });
