@@ -24,7 +24,7 @@ const mapStateToProps = (state, { intl }) => ({
     {
       type: 'item',
       href: `${process.env.MARKETING_SITE_BASE_URL}/schools-partners`,
-      content: intl.formatMessage(messages['siteheader.links.programs']),
+      content: intl.formatMessage(messages['siteheader.links.schools']),
     },
   ],
   loggedIn: true,
