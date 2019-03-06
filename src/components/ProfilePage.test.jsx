@@ -39,7 +39,7 @@ describe('<ProfilePage />', () => {
       ));
 
       expect(analytics.logEvent.mock.calls.length).toBe(1);
-      expect(analytics.logEvent.mock.calls[0][0]).toEqual('edx.bi.profile.viewed');
+      expect(analytics.logEvent.mock.calls[0][0]).toEqual('edx.profile.viewed');
       expect(analytics.logEvent.mock.calls[0][1]).toEqual({
         username: 'test-username',
       });
