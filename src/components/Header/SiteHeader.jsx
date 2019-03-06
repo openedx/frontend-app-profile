@@ -29,7 +29,9 @@ const mapStateToProps = (state, { intl }) => ({
   ],
   loggedIn: true,
   username: state.userAccount.username,
-  avatar: state.userAccount.profileImage.imageUrlMedium,
+  avatar: state.userAccount.profileImage.hasImage ?
+    state.userAccount.profileImage.imageUrlMedium :
+    null,
   userMenu: [
     {
       type: 'item',
