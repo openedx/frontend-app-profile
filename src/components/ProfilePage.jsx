@@ -92,6 +92,8 @@ export class ProfilePage extends React.Component {
       visibilityCourseCertificates,
       bio,
       visibilityBio,
+      requiresParentalConsent,
+      isCurrentUserProfile,
     } = this.props;
 
     const commonFormProps = {
@@ -100,6 +102,8 @@ export class ProfilePage extends React.Component {
       submitHandler: this.handleSubmit,
       changeHandler: this.handleChange,
     };
+
+    const shouldShowAgeMessage = requiresParentalConsent && isCurrentUserProfile;
 
     return (
       <div className="profile-page">
@@ -165,7 +169,7 @@ export class ProfilePage extends React.Component {
               lg={{ size: 8, offset: 1 }}
               className="mt-4 mt-md-n5"
             >
-              {this.props.requiresParentalConsent ? <AgeMessage accountURL="#account" /> : null}
+              {shouldShowAgeMessage ? <AgeMessage accountURL="#account" /> : null}
               <Bio
                 bio={bio}
                 visibilityBio={visibilityBio}
