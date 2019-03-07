@@ -1,5 +1,5 @@
 import React from 'react';
-import { UncontrolledAlert } from 'reactstrap';
+import { Alert } from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
 
 import { configuration } from '../../config/environment';
@@ -8,7 +8,7 @@ const { ACCOUNT_SETTINGS_URL } = configuration;
 
 function AgeMessage() {
   return (
-    <UncontrolledAlert color="info">
+    <Alert color="info">
       <FormattedMessage
         id="profile.age.headline"
         defaultMessage="Your profile cannot be shared."
@@ -28,7 +28,7 @@ function AgeMessage() {
           description="label on a link to set birthday"
         />
       </a>
-    </UncontrolledAlert>
+    </Alert>
   );
 }
 
