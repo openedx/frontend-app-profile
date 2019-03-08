@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Input, FormFeedback, Alert } from 'reactstrap';
+import { Form, Input, Label, FormFeedback, Alert } from 'reactstrap';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
@@ -271,9 +271,10 @@ function EditingListItem({
 }) {
   return (
     <li className="form-group">
-      <h6>{name}</h6>
+      <Label for={`social-${platform}`}>{name}</Label>
       <Input
         type="text"
+        id={`social-${platform}`}
         name={platform}
         value={value || ''}
         onChange={onChange}
