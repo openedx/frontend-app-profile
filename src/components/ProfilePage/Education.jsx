@@ -67,6 +67,7 @@ class Education extends React.Component {
                 </Label>
                 <Input
                   type="select"
+                  id={formId}
                   name={formId}
                   className="w-100"
                   value={education}

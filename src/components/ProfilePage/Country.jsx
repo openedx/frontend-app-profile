@@ -63,6 +63,7 @@ class Country extends React.Component {
                 <Label for="country">Location</Label>
                 <Input
                   type="select"
+                  id={formId}
                   name={formId}
                   className="w-100"
                   value={country}

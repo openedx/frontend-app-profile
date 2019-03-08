@@ -60,7 +60,7 @@ class Name extends React.Component {
             <Form onSubmit={this.handleSubmit}>
               <FormGroup>
                 <Label for="name">Full Name</Label>
-                <Input type="text" name={formId} value={name} invalid={error != null} onChange={this.handleChange} />
+                <Input type="text" id={formId} name={formId} value={name} invalid={error != null} onChange={this.handleChange} />
                 <FormText>
                   <FormattedMessage
                     id="profile.name.details"

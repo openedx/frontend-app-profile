@@ -70,7 +70,7 @@ class PreferredLanguage extends React.Component {
           editing: (
             <Form onSubmit={this.handleSubmit}>
               <FormGroup>
-                <Label for="language">
+                <Label for={formId}>
                   <FormattedMessage
                     id="profile.preferredlanguage.label"
                     defaultMessage="Language"
@@ -79,6 +79,7 @@ class PreferredLanguage extends React.Component {
                 </Label>
                 <Input
                   type="select"
+                  id={formId}
                   name={formId}
                   className="w-100"
                   value={value}
