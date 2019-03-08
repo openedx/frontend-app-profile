@@ -11,11 +11,12 @@ function EditableItemHeader({
   visibility,
   showEditButton,
   onClickEdit,
+  headingId,
 }) {
   return (
     <React.Fragment>
       <div className="editable-item-header mb-2">
-        <h6 className="font-weight-normal mb-0">
+        <h6 className="font-weight-normal mb-0" id={headingId}>
           {content}
           {showEditButton ? <EditButton style={{ marginTop: '-.35rem' }} className="float-right px-0" onClick={onClickEdit} /> : null}
         </h6>
@@ -33,6 +34,7 @@ EditableItemHeader.propTypes = {
   showEditButton: PropTypes.bool,
   content: PropTypes.node,
   visibility: PropTypes.oneOf(['private', 'all_users']),
+  headingId: PropTypes.string,
 };
 
 EditableItemHeader.defaultProps = {
@@ -41,4 +43,5 @@ EditableItemHeader.defaultProps = {
   showEditButton: false,
   content: '',
   visibility: 'private',
+  headingId: null,
 };

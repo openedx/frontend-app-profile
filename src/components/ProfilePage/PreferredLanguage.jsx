@@ -68,38 +68,40 @@ class PreferredLanguage extends React.Component {
         expression={editMode}
         cases={{
           editing: (
-            <Form onSubmit={this.handleSubmit}>
-              <FormGroup>
-                <Label for={formId}>
-                  <FormattedMessage
-                    id="profile.preferredlanguage.label"
-                    defaultMessage="Language"
-                    description="Preferred language label"
-                  />
-                </Label>
-                <Input
-                  type="select"
-                  id={formId}
-                  name={formId}
-                  className="w-100"
-                  value={value}
-                  invalid={error != null}
-                  onChange={this.handleChange}
-                >
-                  {Object.entries(ALL_LANGUAGES).map(([code, name]) => (
-                    <option key={code} value={code}>{name}</option>
-                  ))}
-                </Input>
-                <FormFeedback>{error}</FormFeedback>
-              </FormGroup>
-              <FormControls
-                visibilityId="visibilityLanguageProficiencies"
-                saveState={saveState}
-                visibility={visibilityLanguageProficiencies}
-                cancelHandler={this.handleClose}
-                changeHandler={this.handleChange}
-              />
-            </Form>
+            <div role="dialog" aria-labelledby={`${formId}-label`}>
+              <Form onSubmit={this.handleSubmit}>
+                <FormGroup>
+                  <Label for={formId} id={`${formId}-label`}>
+                    <FormattedMessage
+                      id="profile.preferredlanguage.label"
+                      defaultMessage="Language"
+                      description="Preferred language label"
+                    />
+                  </Label>
+                  <Input
+                    type="select"
+                    id={formId}
+                    name={formId}
+                    className="w-100"
+                    value={value}
+                    invalid={error != null}
+                    onChange={this.handleChange}
+                  >
+                    {Object.entries(ALL_LANGUAGES).map(([code, name]) => (
+                      <option key={code} value={code}>{name}</option>
+                    ))}
+                  </Input>
+                  <FormFeedback>{error}</FormFeedback>
+                </FormGroup>
+                <FormControls
+                  visibilityId="visibilityLanguageProficiencies"
+                  saveState={saveState}
+                  visibility={visibilityLanguageProficiencies}
+                  cancelHandler={this.handleClose}
+                  changeHandler={this.handleChange}
+                />
+              </Form>
+            </div>
           ),
           editable: (
             <React.Fragment>

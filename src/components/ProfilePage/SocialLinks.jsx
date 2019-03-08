@@ -151,32 +151,35 @@ class SocialLinks extends React.Component {
             </React.Fragment>
           ),
           editing: (
-            <Form onSubmit={this.handleSubmit}>
-              <EditableItemHeader
-                content={intl.formatMessage(messages['profile.sociallinks.social.links'])}
-              />
-              {/* TODO: Replace this alert with per-field errors. Needs API update. */}
-              {error !== null ? <Alert color="danger">{error}</Alert> : null}
-              <ul className="list-unstyled">
-                {socialLinks.map(({ platform, socialLink }) => (
-                  <EditingListItem
-                    key={platform}
-                    name={platformDisplayInfo[platform].name}
-                    platform={platform}
-                    value={socialLink}
-                    /* TODO: Per-field errors: error={error !== null ? error[platform] : null} */
-                    onChange={this.handleChange}
-                  />
-                ))}
-              </ul>
-              <FormControls
-                visibilityId="visibilitySocialLinks"
-                saveState={saveState}
-                visibility={visibilitySocialLinks}
-                cancelHandler={this.handleClose}
-                changeHandler={this.handleChange}
-              />
-            </Form>
+            <div role="dialog" aria-labelledby="social-links-label">
+              <Form onSubmit={this.handleSubmit}>
+                <EditableItemHeader
+                  headingId="social-links-label"
+                  content={intl.formatMessage(messages['profile.sociallinks.social.links'])}
+                />
+                {/* TODO: Replace this alert with per-field errors. Needs API update. */}
+                {error !== null ? <Alert color="danger">{error}</Alert> : null}
+                <ul className="list-unstyled">
+                  {socialLinks.map(({ platform, socialLink }) => (
+                    <EditingListItem
+                      key={platform}
+                      name={platformDisplayInfo[platform].name}
+                      platform={platform}
+                      value={socialLink}
+                      /* TODO: Per-field errors: error={error !== null ? error[platform] : null} */
+                      onChange={this.handleChange}
+                    />
+                  ))}
+                </ul>
+                <FormControls
+                  visibilityId="visibilitySocialLinks"
+                  saveState={saveState}
+                  visibility={visibilitySocialLinks}
+                  cancelHandler={this.handleClose}
+                  changeHandler={this.handleChange}
+                />
+              </Form>
+            </div>
           ),
         }}
       />

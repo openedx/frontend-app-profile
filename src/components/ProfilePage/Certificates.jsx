@@ -114,17 +114,22 @@ class Certificates extends React.Component {
         expression={editMode}
         cases={{
           editing: (
-            <Form onSubmit={this.handleSubmit}>
-              <EditableItemHeader content={intl.formatMessage(messages['profile.certificates.my.certificates'])} />
-              {this.renderCertificates()}
-              <FormControls
-                visibilityId="visibilityCourseCertificates"
-                saveState={saveState}
-                visibility={visibilityCourseCertificates}
-                cancelHandler={this.handleClose}
-                changeHandler={this.handleChange}
-              />
-            </Form>
+            <div role="dialog" aria-labelledby="course-certificates-label">
+              <Form onSubmit={this.handleSubmit}>
+                <EditableItemHeader
+                  headingId="course-certificates-label"
+                  content={intl.formatMessage(messages['profile.certificates.my.certificates'])}
+                />
+                {this.renderCertificates()}
+                <FormControls
+                  visibilityId="visibilityCourseCertificates"
+                  saveState={saveState}
+                  visibility={visibilityCourseCertificates}
+                  cancelHandler={this.handleClose}
+                  changeHandler={this.handleChange}
+                />
+              </Form>
+            </div>
           ),
           editable: (
             <React.Fragment>

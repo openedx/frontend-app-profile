@@ -57,27 +57,29 @@ class Name extends React.Component {
         expression={editMode}
         cases={{
           editing: (
-            <Form onSubmit={this.handleSubmit}>
-              <FormGroup>
-                <Label for="name">Full Name</Label>
-                <Input type="text" id={formId} name={formId} value={name} invalid={error != null} onChange={this.handleChange} />
-                <FormText>
-                  <FormattedMessage
-                    id="profile.name.details"
-                    defaultMessage="This is the name that appears in your account and on your certificates."
-                    description="describes the area for the user to update their name"
-                  />
-                </FormText>
-                <FormFeedback>{error}</FormFeedback>
-              </FormGroup>
-              <FormControls
-                visibilityId="visibilityName"
-                saveState={saveState}
-                visibility={visibilityName}
-                cancelHandler={this.handleClose}
-                changeHandler={this.handleChange}
-              />
-            </Form>
+            <div role="dialog" aria-labelledby={`${formId}-label`}>
+              <Form onSubmit={this.handleSubmit}>
+                <FormGroup>
+                  <Label for="name" id={`${formId}-label`}>Full Name</Label>
+                  <Input type="text" id={formId} name={formId} value={name} invalid={error != null} onChange={this.handleChange} />
+                  <FormText>
+                    <FormattedMessage
+                      id="profile.name.details"
+                      defaultMessage="This is the name that appears in your account and on your certificates."
+                      description="describes the area for the user to update their name"
+                    />
+                  </FormText>
+                  <FormFeedback>{error}</FormFeedback>
+                </FormGroup>
+                <FormControls
+                  visibilityId="visibilityName"
+                  saveState={saveState}
+                  visibility={visibilityName}
+                  cancelHandler={this.handleClose}
+                  changeHandler={this.handleChange}
+                />
+              </Form>
+            </div>
           ),
           editable: (
             <React.Fragment>

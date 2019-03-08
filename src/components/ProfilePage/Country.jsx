@@ -58,32 +58,40 @@ class Country extends React.Component {
         expression={editMode}
         cases={{
           editing: (
-            <Form onSubmit={this.handleSubmit}>
-              <FormGroup>
-                <Label for="country">Location</Label>
-                <Input
-                  type="select"
-                  id={formId}
-                  name={formId}
-                  className="w-100"
-                  value={country}
-                  invalid={error != null}
-                  onChange={this.handleChange}
-                >
-                  {Object.keys(ALL_COUNTRIES).map(key => (
-                    <option key={key} value={key}>{ALL_COUNTRIES[key]}</option>
-                  ))}
-                </Input>
-                <FormFeedback>{error}</FormFeedback>
-              </FormGroup>
-              <FormControls
-                visibilityId="visibilityCountry"
-                saveState={saveState}
-                visibility={visibilityCountry}
-                cancelHandler={this.handleClose}
-                changeHandler={this.handleChange}
-              />
-            </Form>
+            <div role="dialog" aria-labelledby={`${formId}-label`}>
+              <Form onSubmit={this.handleSubmit}>
+                <FormGroup>
+                  <Label for="country" id={`${formId}-label`}>
+                    <FormattedMessage
+                      id="profile.country.label"
+                      defaultMessage="Location"
+                      description="Location form label"
+                    />
+                  </Label>
+                  <Input
+                    type="select"
+                    id={formId}
+                    name={formId}
+                    className="w-100"
+                    value={country}
+                    invalid={error != null}
+                    onChange={this.handleChange}
+                  >
+                    {Object.keys(ALL_COUNTRIES).map(key => (
+                      <option key={key} value={key}>{ALL_COUNTRIES[key]}</option>
+                    ))}
+                  </Input>
+                  <FormFeedback>{error}</FormFeedback>
+                </FormGroup>
+                <FormControls
+                  visibilityId="visibilityCountry"
+                  saveState={saveState}
+                  visibility={visibilityCountry}
+                  cancelHandler={this.handleClose}
+                  changeHandler={this.handleChange}
+                />
+              </Form>
+            </div>
           ),
           editable: (
             <React.Fragment>

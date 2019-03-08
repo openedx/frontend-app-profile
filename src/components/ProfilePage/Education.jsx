@@ -60,34 +60,36 @@ class Education extends React.Component {
         expression={editMode}
         cases={{
           editing: (
-            <Form onSubmit={this.handleSubmit}>
-              <FormGroup>
-                <Label for="education">
-                  {intl.formatMessage(messages['profile.education.education'])}
-                </Label>
-                <Input
-                  type="select"
-                  id={formId}
-                  name={formId}
-                  className="w-100"
-                  value={education}
-                  invalid={error != null}
-                  onChange={this.handleChange}
-                >
-                  {Object.keys(EDUCATION).map(key => (
-                    <option key={key} value={key}>{EDUCATION[key]}</option>
-                  ))}
-                </Input>
-                <FormFeedback>{error}</FormFeedback>
-              </FormGroup>
-              <FormControls
-                visibilityId="visibilityEducation"
-                saveState={saveState}
-                visibility={visibilityEducation}
-                cancelHandler={this.handleClose}
-                changeHandler={this.handleChange}
-              />
-            </Form>
+            <div role="dialog" aria-labelledby={`${formId}-label`}>
+              <Form onSubmit={this.handleSubmit}>
+                <FormGroup>
+                  <Label for="education" id={`${formId}-label`}>
+                    {intl.formatMessage(messages['profile.education.education'])}
+                  </Label>
+                  <Input
+                    type="select"
+                    id={formId}
+                    name={formId}
+                    className="w-100"
+                    value={education}
+                    invalid={error != null}
+                    onChange={this.handleChange}
+                  >
+                    {Object.keys(EDUCATION).map(key => (
+                      <option key={key} value={key}>{EDUCATION[key]}</option>
+                    ))}
+                  </Input>
+                  <FormFeedback>{error}</FormFeedback>
+                </FormGroup>
+                <FormControls
+                  visibilityId="visibilityEducation"
+                  saveState={saveState}
+                  visibility={visibilityEducation}
+                  cancelHandler={this.handleClose}
+                  changeHandler={this.handleChange}
+                />
+              </Form>
+            </div>
           ),
           editable: (
             <React.Fragment>
