@@ -61,15 +61,23 @@ class Name extends React.Component {
               <Form onSubmit={this.handleSubmit}>
                 <FormGroup>
                   <Label for="name" id={`${formId}-label`}>Full Name</Label>
-                  <Input type="text" id={formId} name={formId} value={name} invalid={error != null} onChange={this.handleChange} />
-                  <FormText>
+                  <Input
+                    type="text"
+                    id={formId}
+                    name={formId}
+                    value={name}
+                    invalid={error != null}
+                    onChange={this.handleChange}
+                    aria-describedby={`${formId}-error-feedback ${formId}-help-text`}
+                  />
+                  <FormText id={`${formId}-help-text`}>
                     <FormattedMessage
                       id="profile.name.details"
                       defaultMessage="This is the name that appears in your account and on your certificates."
                       description="describes the area for the user to update their name"
                     />
                   </FormText>
-                  <FormFeedback>{error}</FormFeedback>
+                  <FormFeedback id={`${formId}-error-feedback`}>{error}</FormFeedback>
                 </FormGroup>
                 <FormControls
                   visibilityId="visibilityName"

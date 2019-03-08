@@ -76,12 +76,13 @@ class Country extends React.Component {
                     value={country}
                     invalid={error != null}
                     onChange={this.handleChange}
+                    aria-describedby={`${formId}-error-feedback`}
                   >
                     {Object.keys(ALL_COUNTRIES).map(key => (
                       <option key={key} value={key}>{ALL_COUNTRIES[key]}</option>
                     ))}
                   </Input>
-                  <FormFeedback>{error}</FormFeedback>
+                  <FormFeedback id={`${formId}-error-feedback`}>{error}</FormFeedback>
                 </FormGroup>
                 <FormControls
                   visibilityId="visibilityCountry"

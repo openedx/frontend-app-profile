@@ -67,8 +67,9 @@ class Bio extends React.Component {
                     value={bio || ''}
                     invalid={error != null}
                     onChange={this.handleChange}
+                    aria-describedby={`${formId}-error-feedback`}
                   />
-                  <FormFeedback>{error}</FormFeedback>
+                  <FormFeedback id={`${formId}-error-feedback`}>{error}</FormFeedback>
                 </FormGroup>
                 <FormControls
                   visibilityId="visibilityBio"

@@ -86,12 +86,13 @@ class PreferredLanguage extends React.Component {
                     value={value}
                     invalid={error != null}
                     onChange={this.handleChange}
+                    aria-describedby={`${formId}-error-feedback`}
                   >
                     {Object.entries(ALL_LANGUAGES).map(([code, name]) => (
                       <option key={code} value={code}>{name}</option>
                     ))}
                   </Input>
-                  <FormFeedback>{error}</FormFeedback>
+                  <FormFeedback id={`${formId}-error-feedback`}>{error}</FormFeedback>
                 </FormGroup>
                 <FormControls
                   visibilityId="visibilityLanguageProficiencies"

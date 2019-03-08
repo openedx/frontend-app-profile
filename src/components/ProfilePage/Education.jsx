@@ -74,12 +74,13 @@ class Education extends React.Component {
                     value={education}
                     invalid={error != null}
                     onChange={this.handleChange}
+                    aria-describedby={`${formId}-error-feedback`}
                   >
                     {Object.keys(EDUCATION).map(key => (
                       <option key={key} value={key}>{EDUCATION[key]}</option>
                     ))}
                   </Input>
-                  <FormFeedback>{error}</FormFeedback>
+                  <FormFeedback id={`${formId}-error-feedback`}>{error}</FormFeedback>
                 </FormGroup>
                 <FormControls
                   visibilityId="visibilityEducation"

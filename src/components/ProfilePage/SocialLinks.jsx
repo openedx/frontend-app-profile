@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Input, Label, FormFeedback, Alert } from 'reactstrap';
+import { Form, Input, Label, Alert } from 'reactstrap';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
@@ -158,7 +158,9 @@ class SocialLinks extends React.Component {
                   content={intl.formatMessage(messages['profile.sociallinks.social.links'])}
                 />
                 {/* TODO: Replace this alert with per-field errors. Needs API update. */}
-                {error !== null ? <Alert color="danger">{error}</Alert> : null}
+                <div id="social-error-feedback">
+                  {error !== null ? <Alert color="danger">{error}</Alert> : null}
+                </div>
                 <ul className="list-unstyled">
                   {socialLinks.map(({ platform, socialLink }) => (
                     <EditingListItem
@@ -282,8 +284,8 @@ function EditingListItem({
         value={value || ''}
         onChange={onChange}
         invalid={error != null}
+        aria-describedby="social-error-feedback"
       />
-      <FormFeedback>{error}</FormFeedback>
     </li>
   );
 }
