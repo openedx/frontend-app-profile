@@ -119,7 +119,7 @@ class PreferredLanguage extends React.Component {
                 showVisibility={visibilityLanguageProficiencies !== null}
                 visibility={visibilityLanguageProficiencies}
               />
-              <h5>{ALL_LANGUAGES[value]}</h5>
+              <p className="h5">{ALL_LANGUAGES[value]}</p>
             </React.Fragment>
           ),
           empty: (
@@ -142,7 +142,7 @@ class PreferredLanguage extends React.Component {
                   />
                 )}
               />
-              <h5>{ALL_LANGUAGES[value]}</h5>
+              <p className="h5">{ALL_LANGUAGES[value]}</p>
             </React.Fragment>
           ),
         }}

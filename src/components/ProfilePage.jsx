@@ -122,7 +122,7 @@ export class ProfilePage extends React.Component {
                 />
                 <div>
                   {photoUploadError !== null ? <Alert color="danger">{photoUploadError.userMessage}</Alert> : null}
-                  <h2 className="mb-0">{username}</h2>
+                  <h1 className="h2 mb-0">{username}</h1>
                   <DateJoined date={dateJoined} />
                 </div>
               </div>

@@ -101,7 +101,7 @@ class Education extends React.Component {
                 showVisibility={visibilityEducation !== null}
                 visibility={visibilityEducation}
               />
-              <h5>{EDUCATION[education]}</h5>
+              <p className="h5">{EDUCATION[education]}</p>
             </React.Fragment>
           ),
           empty: (
@@ -116,7 +116,7 @@ class Education extends React.Component {
           static: (
             <React.Fragment>
               <EditableItemHeader content={intl.formatMessage(messages['profile.education.education'])} />
-              <h5>{EDUCATION[education]}</h5>
+              <p className="h5">{EDUCATION[education]}</p>
             </React.Fragment>
           ),
         }}

@@ -98,7 +98,7 @@ class Name extends React.Component {
                 showVisibility={visibilityName !== null}
                 visibility={visibilityName}
               />
-              <h5>{name}</h5>
+              <p className="h5">{name}</p>
             </React.Fragment>
           ),
           empty: (
@@ -113,7 +113,7 @@ class Name extends React.Component {
           static: (
             <React.Fragment>
               <EditableItemHeader content={intl.formatMessage(messages['profile.name.full.name'])} />
-              <h5>{name}</h5>
+              <p className="h5">{name}</p>
             </React.Fragment>
           ),
         }}

@@ -81,7 +81,7 @@ class Certificates extends React.Component {
                 defaultMessage="From"
               />
             </p>
-            <h6 className="mb-4">{courseOrganization}</h6>
+            <p className="h6 mb-4">{courseOrganization}</p>
             <div>
               <Button outline color="primary" href={downloadUrl} target="blank">
                 {intl.formatMessage(messages['profile.certificates.view.certificate'])}

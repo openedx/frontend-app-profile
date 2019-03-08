@@ -103,7 +103,7 @@ class Country extends React.Component {
                 showVisibility={visibilityCountry !== null}
                 visibility={visibilityCountry}
               />
-              <h5>{ALL_COUNTRIES[country]}</h5>
+              <p className="h5">{ALL_COUNTRIES[country]}</p>
             </React.Fragment>
           ),
           empty: (
@@ -118,7 +118,7 @@ class Country extends React.Component {
           static: (
             <React.Fragment>
               <EditableItemHeader content="Location" />
-              <h5>{ALL_COUNTRIES[country]}</h5>
+              <p className="h5">{ALL_COUNTRIES[country]}</p>
             </React.Fragment>
           ),
         }}
