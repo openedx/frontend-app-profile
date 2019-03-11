@@ -173,16 +173,6 @@ export const visibilitiesSelector = createSelector(
   accountPrivacySelector,
   (preferences, accountPrivacy) => {
     switch (accountPrivacy) {
-      case 'all_users':
-        return {
-          visibilityBio: 'all_users',
-          visibilityCourseCertificates: 'all_users',
-          visibilityCountry: 'all_users',
-          visibilityEducation: 'all_users',
-          visibilityLanguageProficiencies: 'all_users',
-          visibilityName: 'all_users',
-          visibilitySocialLinks: 'all_users',
-        };
       case 'custom':
         return {
           visibilityBio: preferences.visibilityBio || 'private',
@@ -194,9 +184,6 @@ export const visibilitiesSelector = createSelector(
           visibilitySocialLinks: preferences.visibilitySocialLinks || 'private',
         };
       case 'private':
-      default:
-        // If there is some other value for accountPrivacy set, we're going to assume
-        // it's private, since that's safest.
         return {
           visibilityBio: 'private',
           visibilityCourseCertificates: 'private',
@@ -205,6 +192,21 @@ export const visibilitiesSelector = createSelector(
           visibilityLanguageProficiencies: 'private',
           visibilityName: 'private',
           visibilitySocialLinks: 'private',
+        };
+      case 'all_users':
+      default:
+        // All users is intended to fall through to default.
+        // If there is no value for accountPrivacy in perferences, that means it has not been
+        // explicitly set yet. The server assumes - today - that this means "all_users",
+        // so we emulate that here in the client.
+        return {
+          visibilityBio: 'all_users',
+          visibilityCourseCertificates: 'all_users',
+          visibilityCountry: 'all_users',
+          visibilityEducation: 'all_users',
+          visibilityLanguageProficiencies: 'all_users',
+          visibilityName: 'all_users',
+          visibilitySocialLinks: 'all_users',
         };
     }
   },
