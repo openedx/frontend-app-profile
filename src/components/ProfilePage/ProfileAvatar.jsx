@@ -17,7 +17,7 @@ class ProfileAvatar extends React.Component {
 
     this.onClickUpload = this.onClickUpload.bind(this);
     this.onClickDelete = this.onClickDelete.bind(this);
-    this.onInput = this.onInput.bind(this);
+    this.onChangeInput = this.onChangeInput.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.toggleDropdown = this.toggleDropdown.bind(this);
   }
@@ -30,13 +30,14 @@ class ProfileAvatar extends React.Component {
     this.props.onDelete();
   }
 
-  onInput() {
+  onChangeInput() {
     this.onSubmit();
   }
 
   onSubmit(e) {
     if (e) e.preventDefault();
     this.props.onSave(new FormData(this.form.current));
+    this.form.current.reset();
   }
 
   toggleDropdown() {
@@ -134,7 +135,7 @@ class ProfileAvatar extends React.Component {
             type="file"
             name="file"
             id="photo-file"
-            onInput={this.onInput}
+            onChange={this.onChangeInput}
             accept=".jpg, .jpeg, .png"
           />
         </form>
