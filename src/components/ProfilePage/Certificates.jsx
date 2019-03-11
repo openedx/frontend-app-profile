@@ -140,6 +140,13 @@ class Certificates extends React.Component {
           ),
           empty: (
             <div>
+              <EditableItemHeader
+                content={intl.formatMessage(messages['profile.certificates.my.certificates'])}
+                showEditButton
+                onClickEdit={this.handleOpen}
+                showVisibility={visibilityCourseCertificates !== null}
+                visibility={visibilityCourseCertificates}
+              />
               <FormattedMessage
                 id="profile.no.certificates"
                 defaultMessage="You don't have any certificates yet."
