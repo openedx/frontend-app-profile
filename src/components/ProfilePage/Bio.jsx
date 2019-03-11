@@ -54,27 +54,32 @@ class Bio extends React.Component {
         expression={editMode}
         cases={{
           editing: (
-            <Form onSubmit={this.handleSubmit}>
-              <FormGroup>
-                <Label for={formId}>{intl.formatMessage(messages['profile.bio.about.me'])}</Label>
-                <Input
-                  type="textarea"
-                  id={formId}
-                  name={formId}
-                  value={bio || ''}
-                  invalid={error != null}
-                  onChange={this.handleChange}
+            <div role="dialog" aria-labelledby={`${formId}-label`}>
+              <Form onSubmit={this.handleSubmit}>
+                <FormGroup>
+                  <Label for={formId} id={`${formId}-label`}>
+                    {intl.formatMessage(messages['profile.bio.about.me'])}
+                  </Label>
+                  <Input
+                    type="textarea"
+                    id={formId}
+                    name={formId}
+                    value={bio || ''}
+                    invalid={error != null}
+                    onChange={this.handleChange}
+                    aria-describedby={`${formId}-error-feedback`}
+                  />
+                  <FormFeedback id={`${formId}-error-feedback`}>{error}</FormFeedback>
+                </FormGroup>
+                <FormControls
+                  visibilityId="visibilityBio"
+                  saveState={saveState}
+                  visibility={visibilityBio}
+                  cancelHandler={this.handleClose}
+                  changeHandler={this.handleChange}
                 />
-                <FormFeedback>{error}</FormFeedback>
-              </FormGroup>
-              <FormControls
-                visibilityId="visibilityBio"
-                saveState={saveState}
-                visibility={visibilityBio}
-                cancelHandler={this.handleClose}
-                changeHandler={this.handleChange}
-              />
-            </Form>
+              </Form>
+            </div>
           ),
           editable: (
             <React.Fragment>

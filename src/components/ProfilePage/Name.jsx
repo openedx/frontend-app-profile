@@ -57,27 +57,37 @@ class Name extends React.Component {
         expression={editMode}
         cases={{
           editing: (
-            <Form onSubmit={this.handleSubmit}>
-              <FormGroup>
-                <Label for="name">Full Name</Label>
-                <Input type="text" id={formId} name={formId} value={name} invalid={error != null} onChange={this.handleChange} />
-                <FormText>
-                  <FormattedMessage
-                    id="profile.name.details"
-                    defaultMessage="This is the name that appears in your account and on your certificates."
-                    description="describes the area for the user to update their name"
+            <div role="dialog" aria-labelledby={`${formId}-label`}>
+              <Form onSubmit={this.handleSubmit}>
+                <FormGroup>
+                  <Label for="name" id={`${formId}-label`}>Full Name</Label>
+                  <Input
+                    type="text"
+                    id={formId}
+                    name={formId}
+                    value={name}
+                    invalid={error != null}
+                    onChange={this.handleChange}
+                    aria-describedby={`${formId}-error-feedback ${formId}-help-text`}
                   />
-                </FormText>
-                <FormFeedback>{error}</FormFeedback>
-              </FormGroup>
-              <FormControls
-                visibilityId="visibilityName"
-                saveState={saveState}
-                visibility={visibilityName}
-                cancelHandler={this.handleClose}
-                changeHandler={this.handleChange}
-              />
-            </Form>
+                  <FormText id={`${formId}-help-text`}>
+                    <FormattedMessage
+                      id="profile.name.details"
+                      defaultMessage="This is the name that appears in your account and on your certificates."
+                      description="describes the area for the user to update their name"
+                    />
+                  </FormText>
+                  <FormFeedback id={`${formId}-error-feedback`}>{error}</FormFeedback>
+                </FormGroup>
+                <FormControls
+                  visibilityId="visibilityName"
+                  saveState={saveState}
+                  visibility={visibilityName}
+                  cancelHandler={this.handleClose}
+                  changeHandler={this.handleChange}
+                />
+              </Form>
+            </div>
           ),
           editable: (
             <React.Fragment>
@@ -88,7 +98,7 @@ class Name extends React.Component {
                 showVisibility={visibilityName !== null}
                 visibility={visibilityName}
               />
-              <h5>{name}</h5>
+              <p className="h5">{name}</p>
             </React.Fragment>
           ),
           empty: (
@@ -103,7 +113,7 @@ class Name extends React.Component {
           static: (
             <React.Fragment>
               <EditableItemHeader content={intl.formatMessage(messages['profile.name.full.name'])} />
-              <h5>{name}</h5>
+              <p className="h5">{name}</p>
             </React.Fragment>
           ),
         }}

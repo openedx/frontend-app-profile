@@ -58,32 +58,41 @@ class Country extends React.Component {
         expression={editMode}
         cases={{
           editing: (
-            <Form onSubmit={this.handleSubmit}>
-              <FormGroup>
-                <Label for="country">Location</Label>
-                <Input
-                  type="select"
-                  id={formId}
-                  name={formId}
-                  className="w-100"
-                  value={country}
-                  invalid={error != null}
-                  onChange={this.handleChange}
-                >
-                  {Object.keys(ALL_COUNTRIES).map(key => (
-                    <option key={key} value={key}>{ALL_COUNTRIES[key]}</option>
-                  ))}
-                </Input>
-                <FormFeedback>{error}</FormFeedback>
-              </FormGroup>
-              <FormControls
-                visibilityId="visibilityCountry"
-                saveState={saveState}
-                visibility={visibilityCountry}
-                cancelHandler={this.handleClose}
-                changeHandler={this.handleChange}
-              />
-            </Form>
+            <div role="dialog" aria-labelledby={`${formId}-label`}>
+              <Form onSubmit={this.handleSubmit}>
+                <FormGroup>
+                  <Label for="country" id={`${formId}-label`}>
+                    <FormattedMessage
+                      id="profile.country.label"
+                      defaultMessage="Location"
+                      description="Location form label"
+                    />
+                  </Label>
+                  <Input
+                    type="select"
+                    id={formId}
+                    name={formId}
+                    className="w-100"
+                    value={country}
+                    invalid={error != null}
+                    onChange={this.handleChange}
+                    aria-describedby={`${formId}-error-feedback`}
+                  >
+                    {Object.keys(ALL_COUNTRIES).map(key => (
+                      <option key={key} value={key}>{ALL_COUNTRIES[key]}</option>
+                    ))}
+                  </Input>
+                  <FormFeedback id={`${formId}-error-feedback`}>{error}</FormFeedback>
+                </FormGroup>
+                <FormControls
+                  visibilityId="visibilityCountry"
+                  saveState={saveState}
+                  visibility={visibilityCountry}
+                  cancelHandler={this.handleClose}
+                  changeHandler={this.handleChange}
+                />
+              </Form>
+            </div>
           ),
           editable: (
             <React.Fragment>
@@ -94,7 +103,7 @@ class Country extends React.Component {
                 showVisibility={visibilityCountry !== null}
                 visibility={visibilityCountry}
               />
-              <h5>{ALL_COUNTRIES[country]}</h5>
+              <p className="h5">{ALL_COUNTRIES[country]}</p>
             </React.Fragment>
           ),
           empty: (
@@ -109,7 +118,7 @@ class Country extends React.Component {
           static: (
             <React.Fragment>
               <EditableItemHeader content="Location" />
-              <h5>{ALL_COUNTRIES[country]}</h5>
+              <p className="h5">{ALL_COUNTRIES[country]}</p>
             </React.Fragment>
           ),
         }}
