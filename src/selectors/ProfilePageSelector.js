@@ -94,7 +94,7 @@ export const certificatesSelector = createSelector(
 export const profileImageSelector = createSelector(
   profileAccountSelector,
   account => (account.profileImage != null ? {
-    src: account.profileImage.imageUrlLarge,
+    src: account.profileImage.imageUrlFull,
     isDefault: !account.profileImage.hasImage,
   } : {}),
 );
