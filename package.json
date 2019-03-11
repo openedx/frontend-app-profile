@@ -29,7 +29,7 @@
     "@edx/edx-bootstrap": "git://github.com/edx/edx-bootstrap.git#update-with-documentation-site",
     "@edx/frontend-auth": "^2.0.0",
     "@edx/frontend-component-footer": "^2.0.3",
-    "@edx/frontend-component-site-header": "^2.0.4",
+    "@edx/frontend-component-site-header": "^2.0.5",
     "@edx/paragon": "^3.8.3",
     "@fortawesome/fontawesome-svg-core": "^1.2.14",
     "@fortawesome/free-brands-svg-icons": "^5.7.2",
