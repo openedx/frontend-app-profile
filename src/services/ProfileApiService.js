@@ -116,7 +116,7 @@ function transformCertificateData(data) {
     transformedData.push({
       ...camelCaseObject(cert),
       certificateType: CERTIFICATE_TYPES[cert.certificate_type],
-      downloadUrl: `${configuration.LMS_BASE_URL}${cert.download_url}`,
+      downloadUrl: new URL(cert.download_url, configuration.LMS_BASE_URL).toString(),
     });
   });
   return transformedData;
