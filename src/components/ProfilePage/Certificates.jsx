@@ -94,8 +94,12 @@ class Certificates extends React.Component {
   }
 
   renderCertificates() {
-    if (this.props.certificates === null) {
-      return null;
+    if (this.props.certificates === null || this.props.certificates.length === 0) {
+      return (<FormattedMessage
+        id="profile.no.certificates"
+        defaultMessage="You don't have any certificates yet."
+        description="displays when user has no course completion certificates"
+      />);
     }
 
     return (
@@ -147,11 +151,7 @@ class Certificates extends React.Component {
                 showVisibility={visibilityCourseCertificates !== null}
                 visibility={visibilityCourseCertificates}
               />
-              <FormattedMessage
-                id="profile.no.certificates"
-                defaultMessage="You don't have any certificates yet."
-                description="displays when user has no course completion certificates"
-              />
+              {this.renderCertificates()}
             </div>
           ),
           static: (
