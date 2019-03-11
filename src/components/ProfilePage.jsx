@@ -104,13 +104,32 @@ export class ProfilePage extends React.Component {
 
     const shouldShowAgeMessage = requiresParentalConsent && isCurrentUserProfile;
 
+    // Inserted into the DOM in two places (for responsive layout)
+    const headingLockup = (
+      <React.Fragment>
+        <h1 className="h2 mb-0">{username}</h1>
+        <DateJoined date={dateJoined} />
+      </React.Fragment>
+    );
+
+    const photoUploadErrorMessage = ((error) => {
+      if (error === null) return null;
+      return (
+        <Row>
+          <Col md={4} lg={3}>
+            <Alert color="danger">{error.userMessage}</Alert>
+          </Col>
+        </Row>
+      );
+    })(photoUploadError);
+
     return (
       <div className="profile-page">
         <div className="bg-banner bg-program-micro-masters d-none d-md-block p-relative" />
         <Container fluid>
-          <Row>
-            <Col md={4} lg={3}>
-              <div className="d-flex align-items-center d-md-block mt-4 mt-md-0">
+          <Row className="align-items-center pt-4 mb-4 pt-md-0 mb-md-0">
+            <Col xs="auto" md={4} lg={3}>
+              <div className="d-flex align-items-center d-md-block">
                 <ProfileAvatar
                   className="mb-md-3"
                   src={profileImage.src}
@@ -120,16 +139,20 @@ export class ProfilePage extends React.Component {
                   savePhotoState={this.props.savePhotoState}
                   isEditable={this.props.isCurrentUserProfile}
                 />
-                <div>
-                  {photoUploadError !== null ? <Alert color="danger">{photoUploadError.userMessage}</Alert> : null}
-                  <h1 className="h2 mb-0">{username}</h1>
-                  <DateJoined date={dateJoined} />
-                </div>
               </div>
             </Col>
+            <Col xs="auto" className="pl-0 d-md-none">
+              {headingLockup}
+            </Col>
           </Row>
+
+          {photoUploadErrorMessage}
+
           <Row>
-            <Col xs={{ order: 2 }} md={{ size: 4, order: 1 }} lg={3} className="mt-md-4">
+            <Col md={4} lg={3}>
+              <div className="d-none d-md-block mb-4">
+                {headingLockup}
+              </div>
               <Name
                 name={name}
                 visibilityName={visibilityName}
@@ -162,12 +185,7 @@ export class ProfilePage extends React.Component {
                 {...commonFormProps}
               />
             </Col>
-            <Col
-              xs={{ order: 1 }}
-              md={{ size: 8, order: 2 }}
-              lg={{ size: 8, offset: 1 }}
-              className="mt-4 mt-md-n5"
-            >
+            <Col md={8} className="pt-md-3">
               {shouldShowAgeMessage ? <AgeMessage accountURL="#account" /> : null}
               <Bio
                 bio={bio}
