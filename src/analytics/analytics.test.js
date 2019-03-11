@@ -25,16 +25,15 @@ describe('analytics logEvent', () => {
   it('posts expected data when successful', () => {
     jest.spyOn(apiClient, 'post').mockResolvedValue(undefined);
 
-    expect.assertions(3);
+    expect.assertions(4);
     return logEvent(eventType, eventData)
       .then(() => {
         expect(apiClient.post.mock.calls.length).toEqual(1);
         expect(apiClient.post.mock.calls[0][0]).toEqual(`${configuration.LMS_BASE_URL}/event`);
-        expect(apiClient.post.mock.calls[0][1]).toEqual({
-          event_type: 'test.event',
-          event: '{"test_shallow":"test-shallow","test_object":{"test_deep":"test-deep"}}',
-          page: window.location.href,
-        });
+        const data = 'event_type=test.event&event=%7B%22test_shallow%22%3A%22test-shallow%22%2C%22test_object%22%3A%7B%22test_deep%22%3A%22test-deep%22%7D%7D&page=http%3A%2F%2Flocalhost%2F';
+        expect(apiClient.post.mock.calls[0][1]).toEqual(data);
+        const config = apiClient.post.mock.calls[0][2];
+        expect(config.headers['Content-Type']).toEqual('application/x-www-form-urlencoded');
       });
   });
 
