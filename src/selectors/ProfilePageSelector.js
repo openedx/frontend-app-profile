@@ -11,6 +11,7 @@ export const profileAccountDraftsSelector = state => state.profilePage.accountDr
 export const profileVisibilityDraftsSelector = state => state.profilePage.visibilityDrafts;
 export const saveStateSelector = state => state.profilePage.saveState;
 export const savePhotoStateSelector = state => state.profilePage.savePhotoState;
+export const isLoadingProfileSelector = state => state.profilePage.isLoadingProfile;
 export const currentlyEditingFieldSelector = state => state.profilePage.currentlyEditingField;
 export const accountErrorsSelector = state => state.profilePage.errors;
 
@@ -264,6 +265,7 @@ export const profilePageSelector = createSelector(
   profileImageSelector,
   saveStateSelector,
   savePhotoStateSelector,
+  isLoadingProfileSelector,
   isCurrentUserProfileSelector,
   draftSocialLinksByPlatformSelector,
   accountErrorsSelector,
@@ -273,6 +275,7 @@ export const profilePageSelector = createSelector(
     profileImage,
     saveState,
     savePhotoState,
+    isLoadingProfile,
     isCurrentUserProfile,
     draftSocialLinksByPlatform,
     errors,
@@ -315,6 +318,7 @@ export const profilePageSelector = createSelector(
     // Other data we need
     saveState,
     savePhotoState,
+    isLoadingProfile,
     isCurrentUserProfile,
     photoUploadError: errors.photo || null,
   }),

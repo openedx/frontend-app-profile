@@ -93,7 +93,10 @@ export class ProfilePage extends React.Component {
       visibilityBio,
       requiresParentalConsent,
       isCurrentUserProfile,
+      isLoadingProfile,
     } = this.props;
+
+    if (isLoadingProfile) return null;
 
     const commonFormProps = {
       openHandler: this.handleOpen,
@@ -260,6 +263,7 @@ ProfilePage.propTypes = {
   }),
   saveState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
   savePhotoState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
+  isLoadingProfile: PropTypes.bool.isRequired,
 
   // Page state helpers
   photoUploadError: PropTypes.objectOf(PropTypes.string),
