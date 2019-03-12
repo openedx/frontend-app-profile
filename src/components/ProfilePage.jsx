@@ -26,6 +26,8 @@ import Bio from './ProfilePage/Bio';
 import Certificates from './ProfilePage/Certificates';
 import AgeMessage from './ProfilePage/AgeMessage';
 import DateJoined from './ProfilePage/DateJoined';
+import PageLoading from './ProfilePage/PageLoading';
+import Banner from './ProfilePage/elements/Banner';
 import { profilePageSelector } from '../selectors/ProfilePageSelector';
 
 export class ProfilePage extends React.Component {
@@ -96,7 +98,7 @@ export class ProfilePage extends React.Component {
       isLoadingProfile,
     } = this.props;
 
-    if (isLoadingProfile) return null;
+    if (isLoadingProfile) return <PageLoading />;
 
     const commonFormProps = {
       openHandler: this.handleOpen,
@@ -129,7 +131,7 @@ export class ProfilePage extends React.Component {
 
     return (
       <div className="profile-page">
-        <div className="bg-banner bg-program-micro-masters d-none d-md-block p-relative" />
+        <Banner />
         <Container fluid>
           <Row className="align-items-center pt-4 mb-4 pt-md-0 mb-md-0">
             <Col xs="auto" md={4} lg={3}>
