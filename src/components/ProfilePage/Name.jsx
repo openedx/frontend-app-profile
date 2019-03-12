@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, FormFeedback, FormGroup, FormText, Input, Label } from 'reactstrap';
 import { connect } from 'react-redux';
-import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
+import { injectIntl, intlShape } from 'react-intl';
 
 import messages from './Name.messages';
 
@@ -60,7 +60,9 @@ class Name extends React.Component {
             <div role="dialog" aria-labelledby={`${formId}-label`}>
               <Form onSubmit={this.handleSubmit}>
                 <FormGroup>
-                  <Label for="name" id={`${formId}-label`}>Full Name</Label>
+                  <Label for="name" id={`${formId}-label`}>
+                    {intl.formatMessage(messages['profile.name.full.name'])}
+                  </Label>
                   <Input
                     type="text"
                     id={formId}
@@ -71,11 +73,7 @@ class Name extends React.Component {
                     aria-describedby={`${formId}-error-feedback ${formId}-help-text`}
                   />
                   <FormText id={`${formId}-help-text`}>
-                    <FormattedMessage
-                      id="profile.name.details"
-                      defaultMessage="This is the name that appears in your account and on your certificates."
-                      description="describes the area for the user to update their name"
-                    />
+                    {intl.formatMessage(messages['profile.name.details'])}
                   </FormText>
                   <FormFeedback id={`${formId}-error-feedback`}>{error}</FormFeedback>
                 </FormGroup>
@@ -99,16 +97,21 @@ class Name extends React.Component {
                 visibility={visibilityName}
               />
               <p className="h5">{name}</p>
+              <FormText>
+                {intl.formatMessage(messages['profile.name.details'])}
+              </FormText>
             </React.Fragment>
           ),
           empty: (
-            <EmptyContent onClick={this.handleOpen}>
-              <FormattedMessage
-                id="profile.name.empty"
-                defaultMessage="Add name"
-                description="instructions when the user hasn't entered their name"
-              />
-            </EmptyContent>
+            <React.Fragment>
+              <EditableItemHeader content={intl.formatMessage(messages['profile.name.full.name'])} />
+              <EmptyContent onClick={this.handleOpen}>
+                {intl.formatMessage(messages['profile.name.empty'])}
+              </EmptyContent>
+              <FormText>
+                {intl.formatMessage(messages['profile.name.details'])}
+              </FormText>
+            </React.Fragment>
           ),
           static: (
             <React.Fragment>

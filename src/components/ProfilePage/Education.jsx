@@ -105,13 +105,16 @@ class Education extends React.Component {
             </React.Fragment>
           ),
           empty: (
-            <EmptyContent onClick={this.handleOpen}>
-              <FormattedMessage
-                id="profile.education.empty"
-                defaultMessage="Add education"
-                description="instructions when the user doesn't have their level of education set"
-              />
-            </EmptyContent>
+            <React.Fragment>
+              <EditableItemHeader content={intl.formatMessage(messages['profile.education.education'])} />
+              <EmptyContent onClick={this.handleOpen}>
+                <FormattedMessage
+                  id="profile.education.empty"
+                  defaultMessage="Add education"
+                  description="instructions when the user doesn't have their level of education set"
+                />
+              </EmptyContent>
+            </React.Fragment>
           ),
           static: (
             <React.Fragment>

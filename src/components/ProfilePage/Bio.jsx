@@ -94,13 +94,16 @@ class Bio extends React.Component {
             </React.Fragment>
           ),
           empty: (
-            <EmptyContent onClick={this.handleOpen}>
-              <FormattedMessage
-                id="profile.bio.empty"
-                defaultMessage="Add a short bio"
-                description="instructions when the user hasn't written an About Me"
-              />
-            </EmptyContent>
+            <React.Fragment>
+              <EditableItemHeader content={intl.formatMessage(messages['profile.bio.about.me'])} />
+              <EmptyContent onClick={this.handleOpen}>
+                <FormattedMessage
+                  id="profile.bio.empty"
+                  defaultMessage="Add a short bio"
+                  description="instructions when the user hasn't written an About Me"
+                />
+              </EmptyContent>
+            </React.Fragment>
           ),
           static: (
             <React.Fragment>
