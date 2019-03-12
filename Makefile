@@ -15,8 +15,8 @@ i18n.concat:
 i18n.pre_validate: | i18n.extract i18n.concat
 	git diff --exit-code ./src/i18n/transifex_input.json
 
-tx_url1 = https://www.transifex.com/api/2/project/edx-platform/resource/studio-frontend/translation/en/strings/
-tx_url2 = https://www.transifex.com/api/2/project/edx-platform/resource/studio-frontend/source/
+tx_url1 = https://www.transifex.com/api/2/project/edx-platform/resource/frontend-app-profile/translation/en/strings/
+tx_url2 = https://www.transifex.com/api/2/project/edx-platform/resource/frontend-app-profile/source/
 
 # push translations to Transifex, doing magic so we can include the translator comments
 push_translations: | i18n.extract
@@ -30,7 +30,7 @@ push_translations: | i18n.extract
 
 # pull translations from Transifex
 pull_translations: ## must be exactly this name for edx tooling support, see ecommerce-scripts/transifex/pull.py
-	tx pull -f --mode reviewed --language="es"
+	tx pull -f --mode reviewed --language="ar,fr,es_419,zh_CN"
 
 validate-no-uncommitted-package-lock-changes:
 	git diff --exit-code package-lock.json

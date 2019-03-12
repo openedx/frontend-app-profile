@@ -14,16 +14,30 @@
 
 import { addLocaleData } from 'react-intl';
 
+import arLocale from 'react-intl/locale-data/ar';
 import enLocale from 'react-intl/locale-data/en';
+import es419Locale from 'react-intl/locale-data/es';
+import frLocale from 'react-intl/locale-data/fr';
+import zhcnLocale from 'react-intl/locale-data/zh';
 
-import esLocale from 'react-intl/locale-data/es';
-import esMessages from './messages/es.json';
+import arMessages from './messages/ar.json';
+// no need to import en messages-- they are in the defaultMessage field
+import es419Messages from './messages/es-419.json';
+import frMessages from './messages/fr.json';
+import zhcnMessages from './messages/zh-cn.json';
 
-addLocaleData([...enLocale, ...esLocale]);
+addLocaleData([...arLocale, ...enLocale, ...es419Locale, ...frLocale, ...zhcnLocale]);
 
-// temporary; set your browser language to Spanish to see es
+// temporary; set your browser language to Spanish (or whatever) to see that language
 const getLocale = (localeStr = window.navigator.language) => localeStr.substr(0, 2);
 
-const getMessages = (locale = getLocale()) => (locale === 'es' ? esMessages : {});
+const messages = { // for now using only first two letters
+  ar: arMessages,
+  es: es419Messages,
+  fr: frMessages,
+  zh: zhcnMessages,
+};
+
+const getMessages = (locale = getLocale()) => messages[locale];
 
 export { getLocale, getMessages };
