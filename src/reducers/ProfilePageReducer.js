@@ -20,16 +20,23 @@ export const initialState = {
   preferences: {},
   courseCertificates: [],
   drafts: {},
+  isLoadingProfile: true,
 };
 
 const profilePage = (state = initialState, action) => {
   switch (action.type) {
+    case FETCH_PROFILE.BEGIN:
+      return {
+        ...state,
+        isLoadingProfile: true,
+      };
     case FETCH_PROFILE.SUCCESS:
       return {
         ...state,
         account: action.account,
         preferences: action.preferences,
         courseCertificates: action.courseCertificates,
+        isLoadingProfile: false,
       };
     case SAVE_PROFILE.BEGIN:
       return {
