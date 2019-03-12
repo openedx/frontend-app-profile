@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, FormFeedback, FormGroup, Input, Label } from 'reactstrap';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
+import { injectIntl, intlShape } from 'react-intl';
+
+import messages from './PreferredLanguage.messages';
 
 // Components
 import FormControls from './elements/FormControls';
@@ -57,7 +59,13 @@ class PreferredLanguage extends React.Component {
 
   render() {
     const {
-      formId, languageProficiencies, visibilityLanguageProficiencies, editMode, saveState, error,
+      formId,
+      languageProficiencies,
+      visibilityLanguageProficiencies,
+      editMode,
+      saveState,
+      error,
+      intl,
     } = this.props;
 
     const value = languageProficiencies.length ? languageProficiencies[0].code : '';
@@ -72,11 +80,7 @@ class PreferredLanguage extends React.Component {
               <Form onSubmit={this.handleSubmit}>
                 <FormGroup>
                   <Label for={formId} id={`${formId}-label`}>
-                    <FormattedMessage
-                      id="profile.preferredlanguage.label"
-                      defaultMessage="Primary Language Spoken"
-                      description="Preferred language label"
-                    />
+                    {intl.formatMessage(messages['profile.preferredlanguage.label'])}
                   </Label>
                   <Input
                     type="select"
@@ -107,13 +111,7 @@ class PreferredLanguage extends React.Component {
           editable: (
             <React.Fragment>
               <EditableItemHeader
-                content={(
-                  <FormattedMessage
-                    id="profile.preferredlanguage.label"
-                    defaultMessage="Primary Language Spoken"
-                    description="Preferred language label"
-                  />
-                )}
+                content={intl.formatMessage(messages['profile.preferredlanguage.label'])}
                 showEditButton
                 onClickEdit={this.handleOpen}
                 showVisibility={visibilityLanguageProficiencies !== null}
@@ -125,33 +123,17 @@ class PreferredLanguage extends React.Component {
           empty: (
             <React.Fragment>
               <EditableItemHeader
-                content={(
-                  <FormattedMessage
-                    id="profile.preferredlanguage.label"
-                    defaultMessage="Primary Language Spoken"
-                    description="Preferred language label"
-                  />
-                )}
+                content={intl.formatMessage(messages['profile.preferredlanguage.label'])}
               />
               <EmptyContent onClick={this.handleOpen}>
-                <FormattedMessage
-                  id="profile.preferredlanguage.empty"
-                  defaultMessage="Add language"
-                  description="instructions when the user doesn't have a location set"
-                />
+                {intl.formatMessage(messages['profile.preferredlanguage.empty'])}
               </EmptyContent>
             </React.Fragment>
           ),
           static: (
             <React.Fragment>
               <EditableItemHeader
-                content={(
-                  <FormattedMessage
-                    id="profile.preferredlanguage.label"
-                    defaultMessage="Primary Language Spoken"
-                    description="Preferred language label"
-                  />
-                )}
+                content={intl.formatMessage(messages['profile.preferredlanguage.label'])}
               />
               <p className="h5">{ALL_LANGUAGES[value]}</p>
             </React.Fragment>
@@ -186,6 +168,9 @@ PreferredLanguage.propTypes = {
   submitHandler: PropTypes.func.isRequired,
   closeHandler: PropTypes.func.isRequired,
   openHandler: PropTypes.func.isRequired,
+
+  // i18n
+  intl: intlShape.isRequired,
 };
 
 PreferredLanguage.defaultProps = {
@@ -199,4 +184,4 @@ PreferredLanguage.defaultProps = {
 export default connect(
   editableFormSelector,
   {},
-)(PreferredLanguage);
+)(injectIntl(PreferredLanguage));

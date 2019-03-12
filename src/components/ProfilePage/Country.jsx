@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, FormFeedback, FormGroup, Input, Label } from 'reactstrap';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
+import { injectIntl, intlShape } from 'react-intl';
+
+import messages from './Country.messages';
 
 // Components
 import FormControls from './elements/FormControls';
@@ -49,7 +51,7 @@ class Country extends React.Component {
 
   render() {
     const {
-      formId, country, visibilityCountry, editMode, saveState, error,
+      formId, country, visibilityCountry, editMode, saveState, error, intl,
     } = this.props;
 
     return (
@@ -62,11 +64,7 @@ class Country extends React.Component {
               <Form onSubmit={this.handleSubmit}>
                 <FormGroup>
                   <Label for="country" id={`${formId}-label`}>
-                    <FormattedMessage
-                      id="profile.country.label"
-                      defaultMessage="Location"
-                      description="Location form label"
-                    />
+                    {intl.formatMessage(messages['profile.country.label'])}
                   </Label>
                   <Input
                     type="select"
@@ -97,13 +95,7 @@ class Country extends React.Component {
           editable: (
             <React.Fragment>
               <EditableItemHeader
-                content={(
-                  <FormattedMessage
-                    id="profile.country.label"
-                    defaultMessage="Location"
-                    description="Location form label"
-                  />
-                )}
+                content={intl.formatMessage(messages['profile.country.label'])}
                 showEditButton
                 onClickEdit={this.handleOpen}
                 showVisibility={visibilityCountry !== null}
@@ -115,33 +107,17 @@ class Country extends React.Component {
           empty: (
             <React.Fragment>
               <EditableItemHeader
-                content={(
-                  <FormattedMessage
-                    id="profile.country.label"
-                    defaultMessage="Location"
-                    description="Location form label"
-                  />
-                )}
+                content={intl.formatMessage(messages['profile.country.label'])}
               />
               <EmptyContent onClick={this.handleOpen}>
-                <FormattedMessage
-                  id="profile.country.empty"
-                  defaultMessage="Add location"
-                  description="instructions when the user doesn't have a location set"
-                />
+                {intl.formatMessage(messages['profile.country.empty'])}
               </EmptyContent>
             </React.Fragment>
           ),
           static: (
             <React.Fragment>
               <EditableItemHeader
-                content={(
-                  <FormattedMessage
-                    id="profile.country.label"
-                    defaultMessage="Location"
-                    description="Location form label"
-                  />
-                )}
+                content={intl.formatMessage(messages['profile.country.label'])}
               />
               <p className="h5">{ALL_COUNTRIES[country]}</p>
             </React.Fragment>
@@ -171,6 +147,9 @@ Country.propTypes = {
   submitHandler: PropTypes.func.isRequired,
   closeHandler: PropTypes.func.isRequired,
   openHandler: PropTypes.func.isRequired,
+
+  // i18n
+  intl: intlShape.isRequired,
 };
 
 Country.defaultProps = {
@@ -184,4 +163,4 @@ Country.defaultProps = {
 export default connect(
   editableFormSelector,
   {},
-)(Country);
+)(injectIntl(Country));
