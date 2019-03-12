@@ -74,7 +74,7 @@ class PreferredLanguage extends React.Component {
                   <Label for={formId} id={`${formId}-label`}>
                     <FormattedMessage
                       id="profile.preferredlanguage.label"
-                      defaultMessage="Language"
+                      defaultMessage="Primary Language Spoken"
                       description="Preferred language label"
                     />
                   </Label>
@@ -110,7 +110,7 @@ class PreferredLanguage extends React.Component {
                 content={(
                   <FormattedMessage
                     id="profile.preferredlanguage.label"
-                    defaultMessage="Language"
+                    defaultMessage="Primary Language Spoken"
                     description="Preferred language label"
                   />
                 )}
@@ -137,7 +137,7 @@ class PreferredLanguage extends React.Component {
                 content={(
                   <FormattedMessage
                     id="profile.preferredlanguage.label"
-                    defaultMessage="Language"
+                    defaultMessage="Primary Language Spoken"
                     description="Preferred language label"
                   />
                 )}
