@@ -60,7 +60,9 @@ class Name extends React.Component {
             <div role="dialog" aria-labelledby={`${formId}-label`}>
               <Form onSubmit={this.handleSubmit}>
                 <FormGroup>
-                  <Label for="name" id={`${formId}-label`}>Full Name</Label>
+                  <Label for="name" id={`${formId}-label`}>
+                    {intl.formatMessage(messages['profile.name.full.name'])}
+                  </Label>
                   <Input
                     type="text"
                     id={formId}
