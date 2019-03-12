@@ -1,21 +1,10 @@
+import formurlencoded from 'form-urlencoded';
 import apiClient from '../config/apiClient';
 import { configuration } from '../config/environment';
 import { snakeCaseObject } from '../services/utils';
 import LoggingService from '../services/LoggingService';
 
 const eventLogApiBaseUrl = `${configuration.LMS_BASE_URL}/event`;
-
-
-// Uses a JSON as a source of key value pairs for x-www-form-urlencoded output.
-// Note should be handled by axios, but is not built in.
-// - see https://github.com/axios/axios/issues/97
-function xWwwFormUrlEncoded(json) {
-  const data = [];
-  Object.keys(json).forEach((key) => {
-    data.push(`${encodeURIComponent(key)}=${encodeURIComponent(json[key])}`);
-  });
-  return data.join('&');
-}
 
 
 // Sends events to Segment and downstream
@@ -36,7 +25,7 @@ function logEvent(eventType, eventData) {
   };
   return apiClient.post(
     eventLogApiBaseUrl,
-    xWwwFormUrlEncoded(serverData),
+    formurlencoded(serverData),
     {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
