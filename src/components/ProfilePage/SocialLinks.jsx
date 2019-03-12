@@ -101,15 +101,18 @@ class SocialLinks extends React.Component {
         expression={editMode}
         cases={{
           empty: (
-            <ul className="list-unstyled">
-              {socialLinks.map(({ platform }) => (
-                <EmptyListItem
-                  key={platform}
-                  onClick={this.handleOpen}
-                  name={platformDisplayInfo[platform].name}
-                />
-              ))}
-            </ul>
+            <React.Fragment>
+              <EditableItemHeader content={intl.formatMessage(messages['profile.sociallinks.social.links'])} />
+              <ul className="list-unstyled">
+                {socialLinks.map(({ platform }) => (
+                  <EmptyListItem
+                    key={platform}
+                    onClick={this.handleOpen}
+                    name={platformDisplayInfo[platform].name}
+                  />
+                ))}
+              </ul>
+            </React.Fragment>
           ),
           static: (
             <React.Fragment>

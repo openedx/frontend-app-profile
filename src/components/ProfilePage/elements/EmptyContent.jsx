@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
@@ -17,16 +16,14 @@ function EmptyContent({ children, onClick, showPlusIcon }) {
   return (
     <div>
       {onClick ? (
-        <Button
-          type="button"
-          color="link"
-          block
-          className="pl-0 text-left"
+        <a
+          role="button"
+          className="pl-0 text-left d-block"
           {...interactiveProps}
         >
           {showPlusIcon ? <FontAwesomeIcon size="xs" className="mr-2" icon={faPlus} /> : null}
           {children}
-        </Button>
+        </a>
       ) : children}
     </div>
   );

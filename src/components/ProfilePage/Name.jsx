@@ -102,13 +102,16 @@ class Name extends React.Component {
             </React.Fragment>
           ),
           empty: (
-            <EmptyContent onClick={this.handleOpen}>
-              <FormattedMessage
-                id="profile.name.empty"
-                defaultMessage="Add name"
-                description="instructions when the user hasn't entered their name"
-              />
-            </EmptyContent>
+            <React.Fragment>
+              <EditableItemHeader content={intl.formatMessage(messages['profile.name.full.name'])} />
+              <EmptyContent onClick={this.handleOpen}>
+                <FormattedMessage
+                  id="profile.name.empty"
+                  defaultMessage="Add name"
+                  description="instructions when the user hasn't entered their name"
+                />
+              </EmptyContent>
+            </React.Fragment>
           ),
           static: (
             <React.Fragment>

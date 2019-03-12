@@ -97,7 +97,13 @@ class Country extends React.Component {
           editable: (
             <React.Fragment>
               <EditableItemHeader
-                content="Location"
+                content={(
+                  <FormattedMessage
+                    id="profile.country.label"
+                    defaultMessage="Location"
+                    description="Location form label"
+                  />
+                )}
                 showEditButton
                 onClickEdit={this.handleOpen}
                 showVisibility={visibilityCountry !== null}
@@ -107,17 +113,36 @@ class Country extends React.Component {
             </React.Fragment>
           ),
           empty: (
-            <EmptyContent onClick={this.handleOpen}>
-              <FormattedMessage
-                id="profile.country.empty"
-                defaultMessage="Add location"
-                description="instructions when the user doesn't have a location set"
+            <React.Fragment>
+              <EditableItemHeader
+                content={(
+                  <FormattedMessage
+                    id="profile.country.label"
+                    defaultMessage="Location"
+                    description="Location form label"
+                  />
+                )}
               />
-            </EmptyContent>
+              <EmptyContent onClick={this.handleOpen}>
+                <FormattedMessage
+                  id="profile.country.empty"
+                  defaultMessage="Add location"
+                  description="instructions when the user doesn't have a location set"
+                />
+              </EmptyContent>
+            </React.Fragment>
           ),
           static: (
             <React.Fragment>
-              <EditableItemHeader content="Location" />
+              <EditableItemHeader
+                content={(
+                  <FormattedMessage
+                    id="profile.country.label"
+                    defaultMessage="Location"
+                    description="Location form label"
+                  />
+                )}
+              />
               <p className="h5">{ALL_COUNTRIES[country]}</p>
             </React.Fragment>
           ),

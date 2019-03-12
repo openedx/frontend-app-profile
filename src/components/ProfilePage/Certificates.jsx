@@ -148,7 +148,7 @@ class Certificates extends React.Component {
             </React.Fragment>
           ),
           empty: (
-            <div>
+            <React.Fragment>
               <EditableItemHeader
                 content={intl.formatMessage(messages['profile.certificates.my.certificates'])}
                 showEditButton
@@ -157,7 +157,7 @@ class Certificates extends React.Component {
                 visibility={visibilityCourseCertificates}
               />
               {this.renderCertificates()}
-            </div>
+            </React.Fragment>
           ),
           static: (
             <React.Fragment>

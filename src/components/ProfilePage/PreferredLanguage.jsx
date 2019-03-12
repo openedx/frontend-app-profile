@@ -123,13 +123,24 @@ class PreferredLanguage extends React.Component {
             </React.Fragment>
           ),
           empty: (
-            <EmptyContent onClick={this.handleOpen}>
-              <FormattedMessage
-                id="profile.preferredlanguage.empty"
-                defaultMessage="Add language"
-                description="instructions when the user doesn't have a location set"
+            <React.Fragment>
+              <EditableItemHeader
+                content={(
+                  <FormattedMessage
+                    id="profile.preferredlanguage.label"
+                    defaultMessage="Primary Language Spoken"
+                    description="Preferred language label"
+                  />
+                )}
               />
-            </EmptyContent>
+              <EmptyContent onClick={this.handleOpen}>
+                <FormattedMessage
+                  id="profile.preferredlanguage.empty"
+                  defaultMessage="Add language"
+                  description="instructions when the user doesn't have a location set"
+                />
+              </EmptyContent>
+            </React.Fragment>
           ),
           static: (
             <React.Fragment>
