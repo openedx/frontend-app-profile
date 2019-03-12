@@ -99,6 +99,13 @@ class Name extends React.Component {
                 visibility={visibilityName}
               />
               <p className="h5">{name}</p>
+              <FormText>
+                <FormattedMessage
+                  id="profile.name.details"
+                  defaultMessage="This is the name that appears in your account and on your certificates."
+                  description="describes the area for the user to update their name"
+                />
+              </FormText>
             </React.Fragment>
           ),
           empty: (
@@ -111,6 +118,13 @@ class Name extends React.Component {
                   description="instructions when the user hasn't entered their name"
                 />
               </EmptyContent>
+              <FormText>
+                <FormattedMessage
+                  id="profile.name.details"
+                  defaultMessage="This is the name that appears in your account and on your certificates."
+                  description="describes the area for the user to update their name"
+                />
+              </FormText>
             </React.Fragment>
           ),
           static: (
