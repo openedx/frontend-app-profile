@@ -28,10 +28,11 @@ import zhcnMessages from './messages/zh-cn.json';
 
 addLocaleData([...arLocale, ...enLocale, ...es419Locale, ...frLocale, ...zhcnLocale]);
 
-// temporary; set your browser language to Spanish (or whatever) to see that language
+// for now, set your browser language to Spanish (or whatever) to see that language; will be updated
+// in ARCH-563
 const getLocale = (localeStr = window.navigator.language) => localeStr.substr(0, 2);
 
-const messages = { // for now using only first two letters
+const messages = { // current fallback strategy is to use the first two letters of the locale code
   ar: arMessages,
   es: es419Messages,
   fr: frMessages,
