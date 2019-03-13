@@ -120,14 +120,17 @@ class SocialLinks extends React.Component {
                 content={intl.formatMessage(messages['profile.sociallinks.social.links'])}
               />
               <ul className="list-unstyled">
-                {socialLinks.map(({ platform, socialLink }) => (
-                  <StaticListItem
-                    key={platform}
-                    name={platformDisplayInfo[platform].name}
-                    url={socialLink}
-                    platform={platform}
-                  />
-                ))}
+                {socialLinks
+                  .filter(({ socialLink }) => Boolean(socialLink))
+                  .map(({ platform, socialLink }) => (
+                    <StaticListItem
+                      key={platform}
+                      name={platformDisplayInfo[platform].name}
+                      url={socialLink}
+                      platform={platform}
+                    />
+                  ))
+                }
               </ul>
             </React.Fragment>
           ),
