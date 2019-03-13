@@ -128,6 +128,7 @@ module.exports = Merge.smart(commonConfig, {
       REFRESH_ACCESS_TOKEN_ENDPOINT: null,
       SEGMENT_KEY: null,
       ACCESS_TOKEN_COOKIE_NAME: null,
+      USER_INFO_COOKIE_NAME: null,
       CSRF_COOKIE_NAME: 'csrftoken',
       NEW_RELIC_APP_ID: null,
       NEW_RELIC_LICENSE_KEY: null,

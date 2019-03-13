@@ -109,6 +109,7 @@ module.exports = Merge.smart(commonConfig, {
       REFRESH_ACCESS_TOKEN_ENDPOINT: 'http://localhost:18000/login_refresh',
       SEGMENT_KEY: null,
       ACCESS_TOKEN_COOKIE_NAME: 'edx-jwt-cookie-header-payload',
+      USER_INFO_COOKIE_NAME: 'edx-user-info',
       CSRF_COOKIE_NAME: 'csrftoken',
       SITE_NAME: 'edX',
       MARKETING_SITE_BASE_URL: 'http://localhost:18000',

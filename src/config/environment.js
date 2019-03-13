@@ -10,6 +10,7 @@ export const configuration = {
   SECURE_COOKIES: process.env.NODE_ENV !== 'development',
   SEGMENT_KEY: process.env.SEGMENT_KEY,
   ACCESS_TOKEN_COOKIE_NAME: process.env.ACCESS_TOKEN_COOKIE_NAME,
+  USER_INFO_COOKIE_NAME: process.env.USER_INFO_COOKIE_NAME,
   CSRF_COOKIE_NAME: process.env.CSRF_COOKIE_NAME,
   ENVIRONMENT: process.env.NODE_ENV,
   ACCOUNTS_API_BASE_URL: `${process.env.LMS_BASE_URL}/api/user/v1/accounts`,
