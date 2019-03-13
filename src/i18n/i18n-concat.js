@@ -1,5 +1,9 @@
 #!/usr/bin/env node
 
+/**
+ * See the Makefile for how the required hash file is downloaded from Transifex.
+ */
+
 const fs = require('fs');
 const glob = require('glob');
 const path = require('path');
@@ -17,28 +21,38 @@ function gatherJson(dir) {
   return ret;
 }
 
+// the hash file returns ids whose periods are "escaped" (sort of), like this:
+// "key": "profile\\.sociallinks\\.social\\.links"
+// so our regular messageIds won't match them out of the box
+function escapeDots(messageId) {
+  return messageId.replace(/\./g, '\\.');
+}
+
 const jsonDir = process.argv[2];
 const messageObjects = gatherJson(jsonDir);
 
 if (process.argv[3] === '--comments') { // prepare to handle the translator notes
-  const thisFile = path.basename(`${__filename}`);
+  const loggingPrefix = path.basename(`${__filename}`); // the name of this JS file
   const bashScriptsPath = './node_modules/reactifex/bash_scripts';
 
-  process.stdout.write(`${thisFile}: generating bash scripts...\n`);
-  process.stdout.write(`${thisFile}: info file at ${bashScriptsPath}/hashmap.json\n`);
+  const hashFile = `${bashScriptsPath}/hashmap.json`;
+  process.stdout.write(`${loggingPrefix}: reading hash file ${hashFile}\n`);
+  const messageInfo = JSON.parse(fs.readFileSync(hashFile));
 
-  const messageInfo = JSON.parse(fs.readFileSync(`${bashScriptsPath}/hashmap.json`));
-  const dataPath = `${bashScriptsPath}/hashed_data.txt`;
+  const outputFile = `${bashScriptsPath}/hashed_data.txt`;
+  process.stdout.write(`${loggingPrefix}: writing to output file ${outputFile}\n`);
+  fs.writeFileSync(outputFile, '');
 
-  process.stdout.write(`${thisFile}: data path is ${dataPath}\n`);
-  fs.writeFileSync(dataPath, '');
+  messageInfo.forEach(mi => process.stdout.write(mi.key));
 
   messageObjects.forEach((message) => {
-    const info = messageInfo.find(mi => mi.key === message.id);
+    const transifexFormatId = escapeDots(message.id);
+
+    const info = messageInfo.find(mi => mi.key === transifexFormatId);
     if (info) {
-      fs.appendFileSync(dataPath, `${info.string_hash}|${message.description}\n`);
+      fs.appendFileSync(outputFile, `${info.string_hash}|${message.description}\n`);
     } else {
-      process.stdout.write(`${thisFile}: string ${message.id} does not yet exist on transifex!\n`);
+      process.stdout.write(`${loggingPrefix}: string ${message.id} does not yet exist on transifex!\n`);
     }
   });
 } else {
