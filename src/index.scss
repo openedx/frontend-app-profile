@@ -118,14 +118,14 @@ $fa-font-path: "~font-awesome/fonts";
     }
     .certificate-type-illustration {
       position: absolute;
-      top: 0;
-      left: 50%;
+      top: 1rem;
       right: 1rem;
       bottom: 0;
+      width: 12rem;
       opacity: .06;
       background-size: 90%;
       background-repeat: no-repeat;
-      background-position: right center;
+      background-position: right top;
     }
     .card-body {
       position: relative;

@@ -221,7 +221,7 @@ export class ProfilePage extends React.Component {
                 {...commonFormProps}
               />
             </Col>
-            <Col md={8} lg={{ size: 8, offset: 1 }} className="pt-md-3">
+            <Col md={8} lg={{ size: 7, offset: 1 }} className="pt-md-3">
               {shouldShowAgeMessage ? <AgeMessage accountURL="#account" /> : null}
               <Bio
                 bio={bio}
