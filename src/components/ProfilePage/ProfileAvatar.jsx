@@ -60,52 +60,60 @@ class ProfileAvatar extends React.Component {
   renderMenu() {
     if (!this.props.isEditable) return null;
 
-    if (this.props.isDefault) {
-      return (
-        <Button
-          className="text-white btn-block"
-          color="link"
-          size="sm"
-          onClick={this.onClickUpload}
-        >
-          <FormattedMessage
-            id="profile.profileavatar.upload-button"
-            defaultMessage="Upload Photo"
-            description="Upload photo button"
-          />
-        </Button>
-      );
-    }
-
-    return (
-      <Dropdown
-        isOpen={this.state.dropdownOpen}
-        toggle={this.toggleDropdown}
-      >
-        <DropdownToggle className="text-white btn-block" color="link" size="sm">
-          <FormattedMessage
-            id="profile.profileavatar.change-button"
-            defaultMessage="Change"
-            description="Change photo button"
-          />
-        </DropdownToggle>
-        <DropdownMenu>
-          <DropdownItem onClick={this.onClickUpload}>
+    const menuContent = ((isDefault) => {
+      if (isDefault) {
+        return (
+          <Button
+            className="text-white btn-block"
+            color="link"
+            size="sm"
+            onClick={this.onClickUpload}
+          >
             <FormattedMessage
               id="profile.profileavatar.upload-button"
               defaultMessage="Upload Photo"
               description="Upload photo button"
             />
-          </DropdownItem>
-          <DropdownItem onClick={this.onClickDelete}>
+          </Button>
+        );
+      }
+
+      return (
+        <Dropdown
+          isOpen={this.state.dropdownOpen}
+          toggle={this.toggleDropdown}
+        >
+          <DropdownToggle className="text-white btn-block" color="link" size="sm">
             <FormattedMessage
-              id="profile.profileavatar.remove.button"
-              defaultMessage="Remove"
-              description="Remove photo button"
+              id="profile.profileavatar.change-button"
+              defaultMessage="Change"
+              description="Change photo button"
             />
-          </DropdownItem>
-        </DropdownMenu>
-      </Dropdown>
+          </DropdownToggle>
+          <DropdownMenu>
+            <DropdownItem onClick={this.onClickUpload}>
+              <FormattedMessage
+                id="profile.profileavatar.upload-button"
+                defaultMessage="Upload Photo"
+                description="Upload photo button"
+              />
+            </DropdownItem>
+            <DropdownItem onClick={this.onClickDelete}>
+              <FormattedMessage
+                id="profile.profileavatar.remove.button"
+                defaultMessage="Remove"
+                description="Remove photo button"
+              />
+            </DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
+      );
+    })(this.props.isDefault);
+
+    return (
+      <div className="profile-avatar-menu-container">
+        {menuContent}
+      </div>
     );
   }
 
@@ -113,9 +121,7 @@ class ProfileAvatar extends React.Component {
     return (
       <div className="profile-avatar-wrap position-relative">
         <div className="profile-avatar rounded-circle bg-dark">
-          <div className="profile-avatar-menu-container">
-            {this.props.savePhotoState === 'pending' ? this.renderPending() : this.renderMenu() }
-          </div>
+          {this.props.savePhotoState === 'pending' ? this.renderPending() : this.renderMenu() }
           <img
             className="w-100 h-100 d-block rounded-circle overflow-hidden"
             style={{ objectFit: 'cover' }}
