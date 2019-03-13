@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Row, Col, Alert } from 'reactstrap';
+import { Container, Row, Col, Alert, Button } from 'reactstrap';
 import { connect } from 'react-redux';
+import { injectIntl, intlShape } from 'react-intl';
+
+// Analytics
 import { logEvent } from '../analytics/analytics';
 
 // Actions
@@ -29,6 +32,12 @@ import DateJoined from './ProfilePage/DateJoined';
 import PageLoading from './ProfilePage/PageLoading';
 import Banner from './ProfilePage/elements/Banner';
 import { profilePageSelector } from '../selectors/ProfilePageSelector';
+
+// Configuration
+import { configuration } from '../config/environment';
+
+// i18n
+import messages from './ProfilePage.messages';
 
 export class ProfilePage extends React.Component {
   constructor(props) {
@@ -73,12 +82,47 @@ export class ProfilePage extends React.Component {
     this.props.updateDraft(name, value);
   }
 
+  // Inserted into the DOM in two places (for responsive layout)
+  renderViewMyRecordsButton() {
+    return (
+      <Button color="primary" href={configuration.VIEW_MY_RECORDS_URL} target="blank">
+        {this.props.intl.formatMessage(messages['profile.viewMyRecords'])}
+      </Button>
+    );
+  }
+
+  // Inserted into the DOM in two places (for responsive layout)
+  renderHeadingLockup() {
+    const { username, dateJoined } = this.props;
+
+    return (
+      <React.Fragment>
+        <h1 className="h2 mb-0">{username}</h1>
+        <DateJoined date={dateJoined} />
+        <hr className="d-none d-md-block" />
+      </React.Fragment>
+    );
+  }
+
+  renderPhotoUploadErrorMessage() {
+    const { photoUploadError } = this.props;
+
+    if (photoUploadError === null) {
+      return null;
+    }
+
+    return (
+      <Row>
+        <Col md={4} lg={3}>
+          <Alert color="danger">{photoUploadError.userMessage}</Alert>
+        </Col>
+      </Row>
+    );
+  }
+
   render() {
     const {
       profileImage,
-      username,
-      dateJoined,
-      photoUploadError,
       name,
       visibilityName,
       country,
@@ -109,26 +153,6 @@ export class ProfilePage extends React.Component {
 
     const shouldShowAgeMessage = requiresParentalConsent && isCurrentUserProfile;
 
-    // Inserted into the DOM in two places (for responsive layout)
-    const headingLockup = (
-      <React.Fragment>
-        <h1 className="h2 mb-0">{username}</h1>
-        <DateJoined date={dateJoined} />
-        <hr className="d-none d-md-block" />
-      </React.Fragment>
-    );
-
-    const photoUploadErrorMessage = ((error) => {
-      if (error === null) return null;
-      return (
-        <Row>
-          <Col md={4} lg={3}>
-            <Alert color="danger">{error.userMessage}</Alert>
-          </Col>
-        </Row>
-      );
-    })(photoUploadError);
-
     return (
       <div className="profile-page">
         <Banner />
@@ -147,17 +171,23 @@ export class ProfilePage extends React.Component {
                 />
               </div>
             </Col>
-            <Col xs="auto" className="pl-0 d-md-none">
-              {headingLockup}
+            <Col className="pl-0">
+              <div className="d-md-none">
+                {this.renderHeadingLockup()}
+              </div>
+              <div className="d-none d-md-block float-right">
+                {this.renderViewMyRecordsButton()}
+              </div>
             </Col>
           </Row>
-
-          {photoUploadErrorMessage}
-
+          {this.renderPhotoUploadErrorMessage()}
           <Row>
-            <Col md={4} lg={3}>
+            <Col md={4} lg={4}>
               <div className="d-none d-md-block mb-4">
-                {headingLockup}
+                {this.renderHeadingLockup()}
+              </div>
+              <div className="d-md-none mb-4">
+                {this.renderViewMyRecordsButton()}
               </div>
               <Name
                 name={name}
@@ -285,6 +315,9 @@ ProfilePage.propTypes = {
       username: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+
+  // i18n
+  intl: intlShape.isRequired,
 };
 
 ProfilePage.defaultProps = {
@@ -316,4 +349,4 @@ export default connect(
     closeForm,
     updateDraft,
   },
-)(ProfilePage);
+)(injectIntl(ProfilePage));

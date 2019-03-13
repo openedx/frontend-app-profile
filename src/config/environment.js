@@ -15,6 +15,7 @@ export const configuration = {
   ACCOUNTS_API_BASE_URL: `${process.env.LMS_BASE_URL}/api/user/v1/accounts`,
   PREFERENCES_API_BASE_URL: `${process.env.LMS_BASE_URL}/api/user/v1/preferences`,
   CERTIFICATES_API_BASE_URL: `${process.env.LMS_BASE_URL}/api/certificates/v0/certificates`,
+  VIEW_MY_RECORDS_URL: `${process.env.CREDENTIALS_BASE_URL}/records`,
 };
 
 export const features = {};

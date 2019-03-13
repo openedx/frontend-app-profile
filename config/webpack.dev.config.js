@@ -102,6 +102,7 @@ module.exports = Merge.smart(commonConfig, {
       NODE_ENV: 'development',
       BASE_URL: 'localhost:1995',
       LMS_BASE_URL: 'http://localhost:18000',
+      CREDENTIALS_BASE_URL: 'http://localhost:18150',
       LOGIN_URL: 'http://localhost:18000/login',
       LOGOUT_URL: 'http://localhost:18000/login',
       CSRF_TOKEN_API_PATH: '/csrf/api/v1/token',
