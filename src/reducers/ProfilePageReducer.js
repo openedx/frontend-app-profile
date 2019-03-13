@@ -28,7 +28,10 @@ const profilePage = (state = initialState, action) => {
     case FETCH_PROFILE.BEGIN:
       return {
         ...state,
-        isLoadingProfile: true,
+        // TODO: uncomment this line after ARCH-438 Image Post API returns the url
+        // is complete. Right now we refetch the whole profile causing us to show a full reload
+        // instead of a partial one.
+        // isLoadingProfile: true,
       };
     case FETCH_PROFILE.SUCCESS:
       return {

@@ -57,9 +57,7 @@ class ProfileAvatar extends React.Component {
     );
   }
 
-  renderMenu() {
-    if (!this.props.isEditable) return null;
-
+  renderMenuContent() {
     if (this.props.isDefault) {
       return (
         <Button
@@ -109,13 +107,21 @@ class ProfileAvatar extends React.Component {
     );
   }
 
+  renderMenu() {
+    if (!this.props.isEditable) return null;
+
+    return (
+      <div className="profile-avatar-menu-container">
+        {this.renderMenuContent()}
+      </div>
+    );
+  }
+
   render() {
     return (
       <div className="profile-avatar-wrap position-relative">
         <div className="profile-avatar rounded-circle bg-dark">
-          <div className="profile-avatar-menu-container">
-            {this.props.savePhotoState === 'pending' ? this.renderPending() : this.renderMenu() }
-          </div>
+          {this.props.savePhotoState === 'pending' ? this.renderPending() : this.renderMenu() }
           <img
             className="w-100 h-100 d-block rounded-circle overflow-hidden"
             style={{ objectFit: 'cover' }}
