@@ -65,6 +65,8 @@ export const visibilityDraftsFieldSelector = createSelector(
   (formId, visibilityDrafts) => visibilityDrafts[formId],
 );
 
+// Note: Error messages are delivered from the server
+// localized according to a user's account settings
 export const formErrorSelector = createSelector(
   accountErrorsSelector,
   formIdSelector,
