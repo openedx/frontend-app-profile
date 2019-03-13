@@ -58,19 +58,20 @@ class Certificates extends React.Component {
         case 'MicroMasters Certificate':
           return microMastersSVG;
         case 'Verified Certificate':
-        default:
           return verifiedCertificateSVG;
+        default:
+          return null;
       }
     })(certificateType);
 
     return (
-      <Col key={downloadUrl} sm={6}>
+      <Col key={downloadUrl} sm={6} className="d-flex align-items-stretch">
         <Card className="mb-4 certificate">
           <div
             className="certificate-type-illustration"
             style={{ backgroundImage: `url(${certificateIllustration})` }}
           />
-          <CardBody>
+          <CardBody className="d-flex flex-column">
             <CardTitle>
               <p className="small mb-0">{certificateType}</p>
               <h4 className="certificate-title">{courseDisplayName}</h4>
@@ -82,6 +83,7 @@ class Certificates extends React.Component {
               />
             </p>
             <p className="h6 mb-4">{courseOrganization}</p>
+            <div className="flex-grow-1" />
             <div>
               <Button outline color="primary" href={downloadUrl} target="blank">
                 {intl.formatMessage(messages['profile.certificates.view.certificate'])}
@@ -103,7 +105,7 @@ class Certificates extends React.Component {
     }
 
     return (
-      <Row>{this.props.certificates.map(certificate => this.renderCertificate(certificate))}</Row>
+      <Row className="align-items-stretch">{this.props.certificates.map(certificate => this.renderCertificate(certificate))}</Row>
     );
   }
 
