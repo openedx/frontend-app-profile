@@ -43,8 +43,6 @@ if (process.argv[3] === '--comments') { // prepare to handle the translator note
   process.stdout.write(`${loggingPrefix}: writing to output file ${outputFile}\n`);
   fs.writeFileSync(outputFile, '');
 
-  messageInfo.forEach(mi => process.stdout.write(mi.key));
-
   messageObjects.forEach((message) => {
     const transifexFormatId = escapeDots(message.id);
 
