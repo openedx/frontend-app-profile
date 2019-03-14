@@ -19,11 +19,13 @@ class LoggingService {
 
   // Note: will simply log errors that don't seem to be API error responses.
   static logAPIErrorResponse(error) {
-    let processedError = Object.create(error);
+    let processedError;
     if (error.response) {
       processedError = new Error(`API request failed: ${error.response.status} ${error.response.config.url} ${JSON.stringify(error.response.data)}`);
     } else if (error.request) {
       processedError = new Error(`API request failed: ${error.request.status} ${error.request.responseURL} ${error.request.responseText}`);
+    } else {
+      processedError = Object.create(error);
     }
     if (processedError.message) {
       // NewRelic will not log the error if it is too long.
