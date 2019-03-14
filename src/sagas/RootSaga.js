@@ -32,6 +32,7 @@ import { handleSaveProfileSelector } from '../selectors/ProfilePageSelector';
 
 // Services
 import * as ProfileApiService from '../services/ProfileApiService';
+import LoggingService from '../services/LoggingService';
 
 // Utils
 import { keepKeys } from '../services/utils';
@@ -64,6 +65,7 @@ export function* handleFetchProfile(action) {
 
     yield put(fetchProfileReset());
   } catch (e) {
+    LoggingService.logAPIErrorResponse(e);
     yield put(fetchProfileFailure(e.message));
   }
 }
@@ -122,9 +124,10 @@ export function* handleSaveProfile(action) {
     yield put(saveProfileReset());
     yield put(resetDrafts());
   } catch (e) {
-    if (e.processedData.fieldErrors) {
+    if (e.processedData && e.processedData.fieldErrors) {
       yield put(saveProfileFailure(e.processedData.fieldErrors));
     } else {
+      LoggingService.logAPIErrorResponse(e);
       // TODO: Currently failing silently on other kinds of errors
       yield put(saveProfileReset());
     }
@@ -147,6 +150,7 @@ export function* handleSaveProfilePhoto(action) {
     if (e.processedData) {
       yield put(saveProfilePhotoFailure(e.processedData));
     } else {
+      LoggingService.logAPIErrorResponse(e);
       // TODO: Currently failing silently on other kinds of errors
       yield put(saveProfilePhotoReset());
     }
@@ -166,6 +170,7 @@ export function* handleDeleteProfilePhoto(action) {
     yield put(deleteProfilePhotoSuccess());
     yield put(deleteProfilePhotoReset());
   } catch (e) {
+    LoggingService.logAPIErrorResponse(e);
     yield put(deleteProfilePhotoFailure(e.message));
   }
 }
