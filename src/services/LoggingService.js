@@ -12,20 +12,24 @@ class LoggingService {
 
   static logError(error) {
     if (typeof newrelic !== 'undefined') {
+      // Note: customProperties are not sent.  Presumably High-Security Mode is being used.
       newrelic.noticeError(error);
     }
   }
 
+  // Note: will simply log errors that don't seem to be API error responses.
   static logAPIErrorResponse(error) {
-    let { message } = error;
+    let processedError = Object.create(error);
     if (error.response) {
-      message = `${error.response.status} ${error.response.config.url} ${JSON.stringify(error.response.data)}`;
+      processedError = new Error(`API request failed: ${error.response.status} ${error.response.config.url} ${JSON.stringify(error.response.data)}`);
     } else if (error.request) {
-      message = `${error.request.status} ${error.request.responseURL} ${error.request.responseText}`;
-    } else if (error.stack) {
-      message = error.stack;
+      processedError = new Error(`API request failed: ${error.request.status} ${error.request.responseURL} ${error.request.responseText}`);
     }
-    this.logError(new Error(`API request failed: ${message}`));
+    if (processedError.message) {
+      // NewRelic will not log the error if it is too long.
+      processedError.message = processedError.message.substring(0, 4000);
+    }
+    this.logError(processedError);
   }
 }
 

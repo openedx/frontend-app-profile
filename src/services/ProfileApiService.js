@@ -14,6 +14,16 @@ function processAccountData(data) {
   });
 }
 
+function processAndThrowError(error, errorDataProcessor) {
+  const processedError = Object.create(error);
+  if (error.response && error.response.data && typeof error.response.data === 'object') {
+    processedError.processedData = errorDataProcessor(error.response.data);
+    throw processedError;
+  } else {
+    throw error;
+  }
+}
+
 // GET ACCOUNT
 export async function getAccount(username) {
   const { data } = await apiClient.get(`${configuration.ACCOUNTS_API_BASE_URL}/${username}`);
@@ -38,9 +48,7 @@ export async function patchProfile(username, params) {
       },
     },
   ).catch((error) => {
-    const processedError = Object.create(error);
-    processedError.processedData = processAccountData(error.response.data);
-    throw processedError;
+    processAndThrowError(error, processAccountData);
   });
 
   // Process response data
@@ -59,9 +67,7 @@ export async function postProfilePhoto(username, formData) {
       },
     },
   ).catch((error) => {
-    const processedError = Object.create(error);
-    processedError.processedData = camelCaseObject(error.response.data);
-    throw processedError;
+    processAndThrowError(error, camelCaseObject);
   });
 
   return camelCaseObject(data);
