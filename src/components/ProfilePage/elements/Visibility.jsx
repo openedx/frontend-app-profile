@@ -38,7 +38,7 @@ function VisibilitySelect({ intl, className, ...props }) {
 
   return (
     <span className={className}>
-      <span className="d-inline-block mr-2" style={{ width: '1.5rem' }}>
+      <span className="d-inline-block ml-1 mr-2" style={{ width: '1.5rem' }}>
         <FontAwesomeIcon icon={icon} />
       </span>
       <Input className="d-inline-block w-auto" {...props} type="select">
