@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, FormFeedback, FormGroup, FormText, Input, Label } from 'reactstrap';
+import { Form, FormFeedback, FormGroup, FormText, Label } from 'reactstrap';
 import { connect } from 'react-redux';
 import { injectIntl, intlShape } from 'react-intl';
 
@@ -63,15 +63,15 @@ class Name extends React.Component {
                   <Label for="name" id={`${formId}-label`}>
                     {intl.formatMessage(messages['profile.name.full.name'])}
                   </Label>
-                  <Input
-                    type="text"
-                    id={formId}
-                    name={formId}
-                    value={name}
-                    invalid={error != null}
-                    onChange={this.handleChange}
-                    aria-describedby={`${formId}-error-feedback ${formId}-help-text`}
-                  />
+                  {/*
+                  This isn't a mistake - the name field should not be editable.  But if it were,
+                  you'd find the original code got deleted in the commit which added this comment.
+                  -djoy
+                  TODO: Relatedly, the plumbing for editing the name field is still in place.
+                  Once we're super sure we don't want it back, you could delete the name props and
+                  such to fully get rid of it.
+                  */}
+                  <p className="h5">{name}</p>
                   <FormText id={`${formId}-help-text`}>
                     {intl.formatMessage(messages['profile.name.details'])}
                   </FormText>
