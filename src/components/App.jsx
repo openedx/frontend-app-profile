@@ -12,7 +12,6 @@ import { handleTrackEvents } from '../analytics/analytics';
 import { getLocale, getMessages } from '../i18n/i18n-loader';
 import SiteHeader from './common/SiteHeader';
 import ConnectedProfilePage from './ProfilePage';
-import LoggingService from '../services/LoggingService';
 
 import FooterLogo from '../../assets/edx-footer.png';
 import NotFoundPage from './NotFoundPage';
@@ -22,16 +21,6 @@ class App extends Component {
     const { username } = this.props;
     const userAccountApiService = new UserAccountApiService(apiClient, process.env.LMS_BASE_URL);
     this.props.fetchUserAccount(userAccountApiService, username);
-  }
-
-  componentDidCatch(error, info) {
-    let processedError = error;
-    if (info) {
-      processedError = Object.create(error);
-      processedError.message = `${error.message} ${JSON.stringify(info)}`;
-    }
-    LoggingService.logAPIErrorResponse(processedError);
-    // TODO: Handle user UX for uncaught errors
   }
 
   render() {
