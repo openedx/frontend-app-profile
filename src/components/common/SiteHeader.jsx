@@ -40,7 +40,7 @@ const mapStateToProps = (state, { intl }) => ({
     },
     {
       type: 'item',
-      href: `${process.env.LMS_BASE_URL}/profile`,
+      href: `${process.env.BASE_URL}/u/${state.userAccount.username}`,
       content: intl.formatMessage(messages['siteheader.user.menu.profile']),
     },
     {
