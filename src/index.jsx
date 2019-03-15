@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 
 import configureStore from './config/configureStore';
 import apiClient from './config/apiClient';
-import { identifyUser } from './analytics/analytics';
+import { sendPageEvent } from './analytics/analytics';
 
 import './index.scss';
 
@@ -16,7 +16,5 @@ if (apiClient.ensurePublicOrAuthencationAndCookies(window.location.pathname)) {
 
   ReactDOM.render(<App store={store} history={history} />, document.getElementById('root'));
 
-  // identify user for future analytics calls
-  // TODO: Call before each page call.
-  identifyUser();
+  sendPageEvent();
 }
