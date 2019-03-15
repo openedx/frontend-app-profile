@@ -85,11 +85,4 @@ import { configuration } from '../config/environment';
   // load the tools you've enabled for your account. Boosh!
   analytics.load(configuration.SEGMENT_KEY);
 
-  // TODO: Move this page call when we have multiple pages.
-  // - during routing.
-  // Make the first page call to load the integrations. If
-  // you'd like to manually name or tag the page, edit or
-  // move this call however you'd like.
-  analytics.page();
-
 })();

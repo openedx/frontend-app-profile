@@ -37,7 +37,6 @@ function logEvent(eventType, eventData) {
     });
 }
 
-
 function identifyUser() {
   const authState = apiClient.getAuthenticationState();
   if (authState.authentication && authState.authentication.userId) {
@@ -46,5 +45,9 @@ function identifyUser() {
   }
 }
 
+function sendPageEvent() {
+  identifyUser();
+  window.analytics.page();
+}
 
-export { handleTrackEvents, identifyUser, logEvent };
+export { handleTrackEvents, identifyUser, logEvent, sendPageEvent };
