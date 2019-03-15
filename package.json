@@ -90,7 +90,7 @@
     "fetch-mock": "^6.3.0",
     "file-loader": "^1.1.9",
     "html-webpack-harddisk-plugin": "^0.2.0",
-    "html-webpack-new-relic-plugin": "^1.0.1",
+    "html-webpack-new-relic-plugin": "git+https://git@github.com/edx/html-webpack-new-relic-plugin.git#e7204801b9484faa38b448bef3e6a8a3bfa05b6b",
     "html-webpack-plugin": "^3.0.3",
     "husky": "^0.14.3",
     "identity-obj-proxy": "^3.0.0",
