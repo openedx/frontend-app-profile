@@ -22,9 +22,9 @@ import zhcnLocale from 'react-intl/locale-data/zh';
 
 import arMessages from './messages/ar.json';
 // no need to import en messages-- they are in the defaultMessage field
-import es419Messages from './messages/es-419.json';
+import es419Messages from './messages/es_419.json';
 import frMessages from './messages/fr.json';
-import zhcnMessages from './messages/zh-cn.json';
+import zhcnMessages from './messages/zh_CN.json';
 
 addLocaleData([...arLocale, ...enLocale, ...es419Locale, ...frLocale, ...zhcnLocale]);
 
