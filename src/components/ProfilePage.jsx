@@ -84,6 +84,10 @@ export class ProfilePage extends React.Component {
 
   // Inserted into the DOM in two places (for responsive layout)
   renderViewMyRecordsButton() {
+    if (!this.props.isCurrentUserProfile) {
+      return null;
+    }
+
     return (
       <Button color="primary" href={configuration.VIEW_MY_RECORDS_URL} target="blank">
         {this.props.intl.formatMessage(messages['profile.viewMyRecords'])}
