@@ -73,7 +73,9 @@ class Certificates extends React.Component {
           />
           <CardBody className="d-flex flex-column">
             <CardTitle>
-              <p className="small mb-0">{certificateType}</p>
+              <p className="small mb-0">
+                {intl.formatMessage(messages[`profile.certificates.types.${certificateType}`])}
+              </p>
               <h4 className="certificate-title">{courseDisplayName}</h4>
             </CardTitle>
             <p className="small mb-0">
