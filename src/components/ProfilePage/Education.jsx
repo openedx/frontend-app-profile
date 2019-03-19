@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Form, FormFeedback, FormGroup, Input, Label } from 'reactstrap';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
+import get from 'lodash.get';
 
 import messages from './Education.messages';
 
@@ -77,7 +78,13 @@ class Education extends React.Component {
                     aria-describedby={`${formId}-error-feedback`}
                   >
                     {EDUCATION_LEVELS.map(level => (
-                      <option key={level} value={level}>{intl.formatMessage(messages[`profile.education.levels.${level}`])}</option>
+                      <option key={level} value={level}>
+                        {intl.formatMessage(get(
+                          messages,
+                          `profile.education.levels.${level}`,
+                          messages['profile.education.levels.o'],
+                        ))}
+                      </option>
                     ))}
                   </Input>
                   <FormFeedback id={`${formId}-error-feedback`}>{error}</FormFeedback>
@@ -101,7 +108,13 @@ class Education extends React.Component {
                 showVisibility={visibilityEducation !== null}
                 visibility={visibilityEducation}
               />
-              <p className="h5">{intl.formatMessage(messages[`profile.education.levels.${education}`])}</p>
+              <p className="h5">
+                {intl.formatMessage(get(
+                  messages,
+                  `profile.education.levels.${education}`,
+                  messages['profile.education.levels.o'],
+                ))}
+              </p>
             </React.Fragment>
           ),
           empty: (
@@ -119,7 +132,13 @@ class Education extends React.Component {
           static: (
             <React.Fragment>
               <EditableItemHeader content={intl.formatMessage(messages['profile.education.education'])} />
-              <p className="h5">{intl.formatMessage(messages[`profile.education.levels.${education}`])}</p>
+              <p className="h5">
+                {intl.formatMessage(get(
+                  messages,
+                  `profile.education.levels.${education}`,
+                  messages['profile.education.levels.o'],
+                ))}
+              </p>
             </React.Fragment>
           ),
         }}

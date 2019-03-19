@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
 import { Row, Col, Card, CardBody, CardTitle, Button, Form } from 'reactstrap';
 import { connect } from 'react-redux';
+import get from 'lodash.get';
 
 import messages from './Certificates.messages';
 
@@ -74,7 +75,11 @@ class Certificates extends React.Component {
           <CardBody className="d-flex flex-column">
             <CardTitle>
               <p className="small mb-0">
-                {intl.formatMessage(messages[`profile.certificates.types.${certificateType}`])}
+                {intl.formatMessage(get(
+                  messages,
+                  `profile.certificates.types.${certificateType}`,
+                  messages['profile.certificates.types.verified'],
+                ))}
               </p>
               <h4 className="certificate-title">{courseDisplayName}</h4>
             </CardTitle>
