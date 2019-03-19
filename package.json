@@ -47,6 +47,7 @@
     "i18n-iso-countries": "^3.7.8",
     "iso-countries-languages": "^0.2.1",
     "lodash.camelcase": "^4.3.0",
+    "lodash.get": "^4.4.2",
     "lodash.snakecase": "^4.1.1",
     "newrelic": "^5.5.0",
     "prop-types": "^15.5.10",
