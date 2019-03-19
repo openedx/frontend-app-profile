@@ -1,5 +1,4 @@
 import apiClient from '../config/apiClient';
-import CERTIFICATE_TYPES from '../constants/certificates';
 import { configuration } from '../config/environment';
 import {
   camelCaseObject,
@@ -121,7 +120,7 @@ function transformCertificateData(data) {
   data.forEach((cert) => {
     transformedData.push({
       ...camelCaseObject(cert),
-      certificateType: CERTIFICATE_TYPES[cert.certificate_type],
+      certificateType: cert.certificate_type,
       downloadUrl: new URL(cert.download_url, configuration.LMS_BASE_URL).toString(),
     });
   });

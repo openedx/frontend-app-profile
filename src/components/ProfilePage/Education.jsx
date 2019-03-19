@@ -13,7 +13,7 @@ import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
 
 // Constants
-import EDUCATION from '../../constants/education';
+import EDUCATION_LEVELS from '../../constants/education';
 
 // Selectors
 import { editableFormSelector } from '../../selectors/ProfilePageSelector';
@@ -76,8 +76,8 @@ class Education extends React.Component {
                     onChange={this.handleChange}
                     aria-describedby={`${formId}-error-feedback`}
                   >
-                    {Object.keys(EDUCATION).map(key => (
-                      <option key={key} value={key}>{EDUCATION[key]}</option>
+                    {EDUCATION_LEVELS.map(level => (
+                      <option key={level} value={level}>{intl.formatMessage(messages[`profile.education.levels.${level}`])}</option>
                     ))}
                   </Input>
                   <FormFeedback id={`${formId}-error-feedback`}>{error}</FormFeedback>
@@ -101,7 +101,7 @@ class Education extends React.Component {
                 showVisibility={visibilityEducation !== null}
                 visibility={visibilityEducation}
               />
-              <p className="h5">{EDUCATION[education]}</p>
+              <p className="h5">{intl.formatMessage(messages[`profile.education.levels.${education}`])}</p>
             </React.Fragment>
           ),
           empty: (
@@ -119,7 +119,7 @@ class Education extends React.Component {
           static: (
             <React.Fragment>
               <EditableItemHeader content={intl.formatMessage(messages['profile.education.education'])} />
-              <p className="h5">{EDUCATION[education]}</p>
+              <p className="h5">{intl.formatMessage(messages[`profile.education.levels.${education}`])}</p>
             </React.Fragment>
           ),
         }}
