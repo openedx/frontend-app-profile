@@ -17,7 +17,7 @@ const messages = defineMessages({
     description: 'A type of certificate a user may have earned',
   },
   'profile.certificates.types.professional': {
-    id: 'profile.certificates.types.verified',
+    id: 'profile.certificates.types.professional',
     defaultMessage: 'Professional Certificate',
     description: 'A type of certificate a user may have earned',
   },
