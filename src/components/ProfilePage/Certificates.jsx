@@ -78,7 +78,7 @@ class Certificates extends React.Component {
                 {intl.formatMessage(get(
                   messages,
                   `profile.certificates.types.${certificateType}`,
-                  messages['profile.certificates.types.verified'],
+                  messages['profile.certificates.types.unknown'],
                 ))}
               </p>
               <h4 className="certificate-title">{courseDisplayName}</h4>
