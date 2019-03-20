@@ -21,6 +21,11 @@ const messages = defineMessages({
     defaultMessage: 'Professional Certificate',
     description: 'A type of certificate a user may have earned',
   },
+  'profile.certificates.types.unknown': {
+    id: 'profile.certificates.types.unknown',
+    defaultMessage: 'Certificate',
+    description: 'The string to display when a certificate is of an unknown type',
+  },
 });
 
 export default messages;
