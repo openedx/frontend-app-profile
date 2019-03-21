@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Input, Spinner, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Button } from 'reactstrap';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 
+import { ReactComponent as DefaultAvatar } from '../../assets/avatar.svg';
+
+import messages from './ProfileAvatar.messages';
 
 class ProfileAvatar extends React.Component {
   constructor(props) {
@@ -117,17 +120,27 @@ class ProfileAvatar extends React.Component {
     );
   }
 
+  renderAvatar() {
+    const { intl } = this.props;
+
+    return this.props.isDefault ? (
+      <DefaultAvatar className="text-muted" role="img" aria-hidden focusable="false" viewBox="0 0 24 24" />
+    ) : (
+      <img
+        className="w-100 h-100 d-block rounded-circle overflow-hidden"
+        style={{ objectFit: 'cover' }}
+        alt={intl.formatMessage(messages['profile.image.alt.attribute'])}
+        src={this.props.src}
+      />
+    );
+  }
+
   render() {
     return (
       <div className="profile-avatar-wrap position-relative">
-        <div className="profile-avatar rounded-circle bg-dark">
+        <div className="profile-avatar rounded-circle bg-light">
           {this.props.savePhotoState === 'pending' ? this.renderPending() : this.renderMenu() }
-          <img
-            className="w-100 h-100 d-block rounded-circle overflow-hidden"
-            style={{ objectFit: 'cover' }}
-            alt="profile avatar"
-            src={this.props.src}
-          />
+          {this.renderAvatar()}
         </div>
         <form
           ref={this.form}
@@ -150,8 +163,7 @@ class ProfileAvatar extends React.Component {
   }
 }
 
-
-export default ProfileAvatar;
+export default injectIntl(ProfileAvatar);
 
 ProfileAvatar.propTypes = {
   src: PropTypes.string,
@@ -160,6 +172,7 @@ ProfileAvatar.propTypes = {
   onDelete: PropTypes.func.isRequired,
   savePhotoState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
   isEditable: PropTypes.bool,
+  intl: intlShape.isRequired,
 };
 
 ProfileAvatar.defaultProps = {
