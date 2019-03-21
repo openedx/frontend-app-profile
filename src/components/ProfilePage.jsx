@@ -171,7 +171,7 @@ export class ProfilePage extends React.Component {
                   onSave={this.handleSaveProfilePhoto}
                   onDelete={this.handleDeleteProfilePhoto}
                   savePhotoState={this.props.savePhotoState}
-                  isEditable={this.props.isCurrentUserProfile}
+                  isEditable={this.props.isCurrentUserProfile && !requiresParentalConsent}
                 />
               </div>
             </Col>
