@@ -67,8 +67,12 @@ module.exports = Merge.smart(commonConfig, {
       // bundles. This makes the javascript bundles ginormous and defeats caching so we will use the
       // file-loader instead to copy the files directly to the output directory.
       {
-        test: /\.(woff2?|ttf|svg|eot)(\?v=\d+\.\d+\.\d+)?$/,
+        test: /\.(woff2?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'file-loader',
+      },
+      {
+        test: /.svg$/,
+        use: ['@svgr/webpack', 'url-loader'],
       },
       {
         test: /\.(jpe?g|png|gif|ico)(\?v=\d+\.\d+\.\d+)?$/,
