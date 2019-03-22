@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
+import { injectIntl, intlShape, FormattedDate, FormattedMessage } from 'react-intl';
 import { Row, Col, Card, CardBody, CardTitle, Button, Form } from 'reactstrap';
 import { connect } from 'react-redux';
 import get from 'lodash.get';
@@ -49,7 +49,7 @@ class Certificates extends React.Component {
   }
 
   renderCertificate({
-    certificateType, courseDisplayName, courseOrganization, downloadUrl,
+    certificateType, courseDisplayName, courseOrganization, modifiedDate, downloadUrl,
   }) {
     const { intl } = this.props;
     const certificateIllustration = ((type) => {
@@ -91,6 +91,15 @@ class Certificates extends React.Component {
             </p>
             <p className="h6 mb-4">{courseOrganization}</p>
             <div className="flex-grow-1" />
+            <p className="small mb-2">
+              <FormattedMessage
+                id="profile.certificate.completion.date.label"
+                defaultMessage="Completed on {date}"
+                values={{
+                  date: <FormattedDate value={new Date(modifiedDate)} />,
+                }}
+              />
+            </p>
             <div>
               <Button outline color="primary" href={downloadUrl} target="blank">
                 {intl.formatMessage(messages['profile.certificates.view.certificate'])}
