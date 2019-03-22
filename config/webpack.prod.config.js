@@ -62,17 +62,20 @@ module.exports = Merge.smart(commonConfig, {
           },
         ],
       },
+      {
+        test: /.svg$/,
+        issuer: {
+          test: /\.jsx?$/,
+        },
+        use: ['@svgr/webpack', 'url-loader'],
+      },
       // Webpack, by default, uses the url-loader for images and fonts that are required/included by
       // files it processes, which just base64 encodes them and inlines them in the javascript
       // bundles. This makes the javascript bundles ginormous and defeats caching so we will use the
       // file-loader instead to copy the files directly to the output directory.
       {
-        test: /\.(woff2?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+        test: /\.(woff2?|ttf|svg|eot)(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'file-loader',
-      },
-      {
-        test: /.svg$/,
-        use: ['@svgr/webpack', 'url-loader'],
       },
       {
         test: /\.(jpe?g|png|gif|ico)(\?v=\d+\.\d+\.\d+)?$/,
