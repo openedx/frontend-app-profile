@@ -67,7 +67,7 @@ class Certificates extends React.Component {
 
     return (
       <Col key={downloadUrl} sm={6} className="d-flex align-items-stretch">
-        <Card className="mb-4 certificate">
+        <Card className="mb-4 certificate flex-grow-1">
           <div
             className="certificate-type-illustration"
             style={{ backgroundImage: `url(${certificateIllustration})` }}
