@@ -5,6 +5,7 @@ import {
   convertKeyNames,
   snakeCaseObject,
 } from './utils';
+import LoggingService from '../services/LoggingService';
 
 function processAccountData(data) {
   const result = camelCaseObject(data);
@@ -130,7 +131,11 @@ function transformCertificateData(data) {
 
 export async function getCourseCertificates(username) {
   const url = `${configuration.CERTIFICATES_API_BASE_URL}/${username}/`;
-  const { data } = await apiClient.get(url);
-
-  return transformCertificateData(data);
+  try {
+    const { data } = await apiClient.get(url);
+    return transformCertificateData(data);
+  } catch (e) {
+    LoggingService.logAPIErrorResponse(e);
+    return [];
+  }
 }
