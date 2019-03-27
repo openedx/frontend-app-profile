@@ -18,7 +18,6 @@ import {
   DELETE_PROFILE_PHOTO,
   deleteProfilePhotoBegin,
   deleteProfilePhotoSuccess,
-  deleteProfilePhotoFailure,
   deleteProfilePhotoReset,
   deleteProfilePhoto,
 } from './ProfileActions';
@@ -169,15 +168,6 @@ describe('DELETE profile photo actions', () => {
       type: DELETE_PROFILE_PHOTO.RESET,
     };
     expect(deleteProfilePhotoReset()).toEqual(expectedAction);
-  });
-
-  it('should create an action to signal user profile photo deletion failure', () => {
-    const error = 'Test failure';
-    const expectedAction = {
-      type: DELETE_PROFILE_PHOTO.FAILURE,
-      payload: { error },
-    };
-    expect(deleteProfilePhotoFailure(error)).toEqual(expectedAction);
   });
 });
 

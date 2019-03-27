@@ -14,6 +14,7 @@ import SiteHeader from './common/SiteHeader';
 import ConnectedProfilePage from './ProfilePage';
 
 import FooterLogo from '../../assets/edx-footer.png';
+import ErrorPage from './ErrorPage';
 import NotFoundPage from './NotFoundPage';
 
 class App extends Component {
@@ -33,6 +34,7 @@ class App extends Component {
               <main>
                 <Switch>
                   <Route path="/u/:username" component={ConnectedProfilePage} />
+                  <Route path="/error" component={ErrorPage} />
                   <Route path="/notfound" component={NotFoundPage} />
                   <Route path="*" component={NotFoundPage} />
                 </Switch>
