@@ -6,7 +6,6 @@ import {
   FETCH_PROFILE,
   fetchProfileBegin,
   fetchProfileSuccess,
-  fetchProfileFailure,
   fetchProfileReset,
   fetchProfile,
   SAVE_PROFILE,
@@ -23,7 +22,6 @@ import {
   DELETE_PROFILE_PHOTO,
   deleteProfilePhotoBegin,
   deleteProfilePhotoSuccess,
-  deleteProfilePhotoFailure,
   deleteProfilePhotoReset,
   resetDrafts,
 } from '../actions/ProfileActions';
@@ -70,7 +68,7 @@ export function* handleFetchProfile(action) {
     if (e.response.status === 404) {
       yield put(push('/notfound'));
     } else {
-      yield put(fetchProfileFailure(e.message));
+      yield put(push('/error'));
     }
   }
 }
@@ -133,8 +131,8 @@ export function* handleSaveProfile(action) {
       yield put(saveProfileFailure(e.processedData.fieldErrors));
     } else {
       LoggingService.logAPIErrorResponse(e);
-      // TODO: Currently failing silently on other kinds of errors
       yield put(saveProfileReset());
+      yield put(push('/error'));
     }
   }
 }
@@ -156,8 +154,8 @@ export function* handleSaveProfilePhoto(action) {
       yield put(saveProfilePhotoFailure(e.processedData));
     } else {
       LoggingService.logAPIErrorResponse(e);
-      // TODO: Currently failing silently on other kinds of errors
       yield put(saveProfilePhotoReset());
+      yield put(push('/error'));
     }
   }
 }
@@ -176,7 +174,8 @@ export function* handleDeleteProfilePhoto(action) {
     yield put(deleteProfilePhotoReset());
   } catch (e) {
     LoggingService.logAPIErrorResponse(e);
-    yield put(deleteProfilePhotoFailure(e.message));
+    yield put(deleteProfilePhotoReset());
+    yield put(push('/error'));
   }
 }
 

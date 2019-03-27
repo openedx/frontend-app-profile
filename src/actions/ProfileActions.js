@@ -27,11 +27,6 @@ export const fetchProfileSuccess = (account, preferences, courseCertificates) =>
   courseCertificates,
 });
 
-export const fetchProfileFailure = error => ({
-  type: FETCH_PROFILE.FAILURE,
-  payload: { error },
-});
-
 export const fetchProfileReset = () => ({
   type: FETCH_PROFILE.RESET,
 });
@@ -112,11 +107,6 @@ export const deleteProfilePhotoSuccess = () => ({
 
 export const deleteProfilePhotoReset = () => ({
   type: DELETE_PROFILE_PHOTO.RESET,
-});
-
-export const deleteProfilePhotoFailure = error => ({
-  type: DELETE_PROFILE_PHOTO.FAILURE,
-  payload: { error },
 });
 
 // FIELD STATE ACTIONS
