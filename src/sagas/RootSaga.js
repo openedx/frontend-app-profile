@@ -1,3 +1,4 @@
+import { push } from 'connected-react-router';
 import { all, call, delay, put, select, takeEvery } from 'redux-saga/effects';
 
 // Actions
@@ -66,7 +67,11 @@ export function* handleFetchProfile(action) {
     yield put(fetchProfileReset());
   } catch (e) {
     LoggingService.logAPIErrorResponse(e);
-    yield put(fetchProfileFailure(e.message));
+    if (e.response.status === 404) {
+      yield put(push('/notfound'));
+    } else {
+      yield put(fetchProfileFailure(e.message));
+    }
   }
 }
 
