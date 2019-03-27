@@ -33,6 +33,7 @@ class App extends Component {
               <main>
                 <Switch>
                   <Route path="/u/:username" component={ConnectedProfilePage} />
+                  <Route path="/notfound" component={NotFoundPage} />
                   <Route path="*" component={NotFoundPage} />
                 </Switch>
               </main>
