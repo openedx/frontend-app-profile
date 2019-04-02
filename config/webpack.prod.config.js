@@ -8,6 +8,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackNewRelicPlugin = require('html-webpack-new-relic-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const WebpackRTLPlugin = require('webpack-rtl-plugin');
 
 module.exports = Merge.smart(commonConfig, {
   mode: 'production',
@@ -121,6 +122,9 @@ module.exports = Merge.smart(commonConfig, {
     // Writes the extracted CSS from each entry to a file in the output directory.
     new MiniCssExtractPlugin({
       filename: '[name].[chunkhash].css',
+    }),
+    new WebpackRTLPlugin({
+      filename: '[name].[contenthash].rtl.css',
     }),
     // Generates an HTML file in the output directory.
     new HtmlWebpackPlugin({

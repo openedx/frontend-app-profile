@@ -66,6 +66,7 @@
     "redux-saga": "^1.0.1",
     "redux-thunk": "^2.2.0",
     "reselect": "^4.0.0",
+    "webpack-rtl-plugin": "^2.0.0",
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {

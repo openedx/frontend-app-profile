@@ -41,4 +41,13 @@ const messages = { // current fallback strategy is to use the first two letters 
 
 const getMessages = (locale = getLocale()) => messages[locale];
 
-export { getLocale, getMessages };
+const handleRtl = () => {
+  if (getLocale() === 'ar') {
+    document.getElementsByTagName('html')[0].setAttribute('dir', 'rtl');
+    document.styleSheets[0].disabled = true;
+  } else {
+    document.styleSheets[1].disabled = true;
+  }
+};
+
+export { getLocale, getMessages, handleRtl };
