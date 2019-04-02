@@ -136,4 +136,3 @@ module.exports = {
     action: 'POP'
   }
 };
-
