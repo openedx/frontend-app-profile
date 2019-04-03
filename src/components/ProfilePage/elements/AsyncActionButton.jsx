@@ -38,7 +38,7 @@ function AsyncActionButton({
     <Button
       type={type}
       aria-live="assertive"
-      onClick={onClick}
+      onClick={onClick || (() => {})}
       disabled={isDisabled}
       className={classNames(
         'btn-async-action',
