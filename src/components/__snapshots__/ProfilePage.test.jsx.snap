@@ -275,26 +275,24 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     className="dropdown-menu"
                     role="menu"
                   >
-                    <a
+                    <button
                       className="dropdown-item"
                       onClick={[Function]}
                       onKeyDown={[Function]}
-                      role="button"
                     >
                       <span>
                         Upload Photo
                       </span>
-                    </a>
-                    <a
+                    </button>
+                    <button
                       className="dropdown-item"
                       onClick={[Function]}
                       onKeyDown={[Function]}
-                      role="button"
                     >
                       <span>
                         Remove
                       </span>
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -1288,26 +1286,24 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     className="dropdown-menu"
                     role="menu"
                   >
-                    <a
+                    <button
                       className="dropdown-item"
                       onClick={[Function]}
                       onKeyDown={[Function]}
-                      role="button"
                     >
                       <span>
                         Upload Photo
                       </span>
-                    </a>
-                    <a
+                    </button>
+                    <button
                       className="dropdown-item"
                       onClick={[Function]}
                       onKeyDown={[Function]}
-                      role="button"
                     >
                       <span>
                         Remove
                       </span>
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>
