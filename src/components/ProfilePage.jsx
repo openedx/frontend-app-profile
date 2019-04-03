@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Row, Col, Alert, Button } from 'reactstrap';
+import { StatusAlert, Hyperlink } from '@edx/paragon';
 import { connect } from 'react-redux';
 import { injectIntl, intlShape } from 'react-intl';
 
@@ -89,9 +89,12 @@ export class ProfilePage extends React.Component {
     }
 
     return (
-      <Button color="primary" href={configuration.VIEW_MY_RECORDS_URL} target="blank">
-        {this.props.intl.formatMessage(messages['profile.viewMyRecords'])}
-      </Button>
+      <Hyperlink
+        className="btn btn-primary"
+        destination={configuration.VIEW_MY_RECORDS_URL}
+        target="blank"
+        content={this.props.intl.formatMessage(messages['profile.viewMyRecords'])}
+      />
     );
   }
 
@@ -116,11 +119,11 @@ export class ProfilePage extends React.Component {
     }
 
     return (
-      <Row>
-        <Col md={4} lg={3}>
-          <Alert color="danger">{photoUploadError.userMessage}</Alert>
-        </Col>
-      </Row>
+      <div className="row">
+        <div className="col-md-4 col-lg-3">
+          <StatusAlert alertType="danger" dialog={photoUploadError.userMessage} dismissible={false} open />
+        </div>
+      </div>
     );
   }
 
@@ -160,9 +163,9 @@ export class ProfilePage extends React.Component {
     return (
       <div className="profile-page">
         <Banner />
-        <Container fluid>
-          <Row className="align-items-center pt-4 mb-4 pt-md-0 mb-md-0">
-            <Col xs="auto" md={4} lg={3}>
+        <div className="container-fluid">
+          <div className="row align-items-center pt-4 mb-4 pt-md-0 mb-md-0">
+            <div className="col-auto col-md-4 col-lg-3">
               <div className="d-flex align-items-center d-md-block">
                 <ProfileAvatar
                   className="mb-md-3"
@@ -174,19 +177,19 @@ export class ProfilePage extends React.Component {
                   isEditable={this.props.isCurrentUserProfile && !requiresParentalConsent}
                 />
               </div>
-            </Col>
-            <Col className="pl-0">
+            </div>
+            <div className="col pl-0">
               <div className="d-md-none">
                 {this.renderHeadingLockup()}
               </div>
               <div className="d-none d-md-block float-right">
                 {this.renderViewMyRecordsButton()}
               </div>
-            </Col>
-          </Row>
+            </div>
+          </div>
           {this.renderPhotoUploadErrorMessage()}
-          <Row>
-            <Col md={4} lg={4}>
+          <div className="row">
+            <div className="col-md-4 col-lg-4">
               <div className="d-none d-md-block mb-4">
                 {this.renderHeadingLockup()}
               </div>
@@ -224,8 +227,8 @@ export class ProfilePage extends React.Component {
                 formId="socialLinks"
                 {...commonFormProps}
               />
-            </Col>
-            <Col md={8} lg={{ size: 7, offset: 1 }} className="pt-md-3">
+            </div>
+            <div className="pt-md-3 col-md-8 col-lg-7 offset-lg-1">
               {shouldShowAgeMessage ? <AgeMessage accountURL="#account" /> : null}
               <Bio
                 bio={bio}
@@ -238,9 +241,9 @@ export class ProfilePage extends React.Component {
                 formId="certificates"
                 {...commonFormProps}
               />
-            </Col>
-          </Row>
-        </Container>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

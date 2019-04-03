@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Spinner, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Button } from 'reactstrap';
+import { Button, Dropdown } from '@edx/paragon';
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 
 import { ReactComponent as DefaultAvatar } from '../../assets/avatar.svg';
@@ -55,7 +55,7 @@ class ProfileAvatar extends React.Component {
         className="position-absolute w-100 h-100 d-flex justify-content-center align-items-center rounded-circle"
         style={{ backgroundColor: 'rgba(0,0,0,.65)' }}
       >
-        <Spinner color="primary" />
+        <div className="spinner-border text-primary" role="status" />
       </div>
     );
   }
@@ -64,49 +64,51 @@ class ProfileAvatar extends React.Component {
     if (this.props.isDefault) {
       return (
         <Button
-          className="text-white btn-block"
-          color="link"
-          size="sm"
+          className={'text-white btn-block btn-sm'.split(' ')}
+          buttonType="link"
           onClick={this.onClickUpload}
-        >
-          <FormattedMessage
-            id="profile.profileavatar.upload-button"
-            defaultMessage="Upload Photo"
-            description="Upload photo button"
-          />
-        </Button>
-      );
-    }
-
-    return (
-      <Dropdown
-        isOpen={this.state.dropdownOpen}
-        toggle={this.toggleDropdown}
-      >
-        <DropdownToggle className="text-white btn-block" color="link" size="sm">
-          <FormattedMessage
-            id="profile.profileavatar.change-button"
-            defaultMessage="Change"
-            description="Change photo button"
-          />
-        </DropdownToggle>
-        <DropdownMenu>
-          <DropdownItem onClick={this.onClickUpload}>
+          label={
             <FormattedMessage
               id="profile.profileavatar.upload-button"
               defaultMessage="Upload Photo"
               description="Upload photo button"
             />
-          </DropdownItem>
-          <DropdownItem onClick={this.onClickDelete}>
-            <FormattedMessage
-              id="profile.profileavatar.remove.button"
-              defaultMessage="Remove"
-              description="Remove photo button"
-            />
-          </DropdownItem>
-        </DropdownMenu>
-      </Dropdown>
+          }
+        />
+      );
+    }
+
+    return (
+      <Dropdown
+        buttonType="primary"
+        title={(
+          <FormattedMessage
+            id="profile.profileavatar.change-button"
+            defaultMessage="Change"
+            description="Change photo button"
+          />
+        )}
+        menuItems={[
+          (
+            <button className="dropdown-item" onClick={this.onClickUpload}>
+              <FormattedMessage
+                id="profile.profileavatar.upload-button"
+                defaultMessage="Upload Photo"
+                description="Upload photo button"
+              />
+            </button>
+          ),
+          (
+            <button className="dropdown-item" onClick={this.onClickDelete}>
+              <FormattedMessage
+                id="profile.profileavatar.remove.button"
+                defaultMessage="Remove"
+                description="Remove photo button"
+              />
+            </button>
+          ),
+        ]}
+      />
     );
   }
 

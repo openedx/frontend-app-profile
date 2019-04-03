@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'reactstrap';
+import { Button } from '@edx/paragon';
 import { injectIntl, intlShape } from 'react-intl';
 
 import messages from './FormControls.messages';
@@ -39,9 +39,11 @@ function FormControls({
             complete: intl.formatMessage(messages['profile.formcontrols.button.saved']),
           }}
         />
-        <Button color="link" onClick={cancelHandler}>
-          {intl.formatMessage(messages['profile.formcontrols.button.cancel'])}
-        </Button>
+        <Button
+          buttonType="link"
+          onClick={cancelHandler}
+          label={intl.formatMessage(messages['profile.formcontrols.button.cancel'])}
+        />
       </div>
     </React.Fragment>
   );

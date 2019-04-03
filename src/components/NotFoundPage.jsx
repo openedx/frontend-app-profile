@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Container } from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
 
 export default class NotFoundPage extends Component {
@@ -7,10 +6,7 @@ export default class NotFoundPage extends Component {
 
   render() {
     return (
-      <Container
-        fluid
-        className="d-flex py-5 justify-content-center align-items-start text-center"
-      >
+      <div className="container-fluid d-flex py-5 justify-content-center align-items-start text-center">
         <p
           className="my-0 py-5 text-muted"
           style={{ maxWidth: '32em' }}
@@ -21,7 +17,7 @@ export default class NotFoundPage extends Component {
             description="error message when a page does not exist"
           />
         </p>
-      </Container>
+      </div>
     );
   }
 }

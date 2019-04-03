@@ -16,13 +16,7 @@ exports[`<ProfilePage /> Renders correctly in various states app loading 1`] = `
     <div
       className="spinner-border text-primary"
       role="status"
-    >
-      <span
-        className="sr-only"
-      >
-        Loading...
-      </span>
-    </div>
+    />
   </div>
 </div>
 `;
@@ -38,7 +32,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
     className="container-fluid"
   >
     <div
-      className="align-items-center pt-4 mb-4 pt-md-0 mb-md-0 row"
+      className="row align-items-center pt-4 mb-4 pt-md-0 mb-md-0"
     >
       <div
         className="col-auto col-md-4 col-lg-3"
@@ -77,7 +71,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
         </div>
       </div>
       <div
-        className="pl-0 col"
+        className="col pl-0"
       >
         <div
           className="d-md-none"
@@ -235,7 +229,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
     className="container-fluid"
   >
     <div
-      className="align-items-center pt-4 mb-4 pt-md-0 mb-md-0 row"
+      className="row align-items-center pt-4 mb-4 pt-md-0 mb-md-0"
     >
       <div
         className="col-auto col-md-4 col-lg-3"
@@ -254,14 +248,14 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               >
                 <div
                   className="dropdown"
-                  onKeyDown={[Function]}
                 >
                   <button
                     aria-expanded={false}
-                    aria-haspopup={true}
-                    aria-label={null}
-                    className="text-white btn-block btn btn-link btn-sm"
+                    aria-haspopup="true"
+                    className="btn dropdown-toggle btn-primary"
+                    onBlur={[Function]}
                     onClick={[Function]}
+                    onKeyDown={[Function]}
                     type="button"
                   >
                     <span>
@@ -270,33 +264,37 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                   </button>
                   <div
                     aria-hidden={true}
+                    aria-label={
+                      <FormattedMessage
+                        defaultMessage="Change"
+                        description="Change photo button"
+                        id="profile.profileavatar.change-button"
+                        values={Object {}}
+                      />
+                    }
                     className="dropdown-menu"
                     role="menu"
-                    tabIndex="-1"
-                    x-placement={undefined}
                   >
-                    <button
+                    <a
                       className="dropdown-item"
                       onClick={[Function]}
-                      role="menuitem"
-                      tabIndex="0"
-                      type="button"
+                      onKeyDown={[Function]}
+                      role="button"
                     >
                       <span>
                         Upload Photo
                       </span>
-                    </button>
-                    <button
+                    </a>
+                    <a
                       className="dropdown-item"
                       onClick={[Function]}
-                      role="menuitem"
-                      tabIndex="0"
-                      type="button"
+                      onKeyDown={[Function]}
+                      role="button"
                     >
                       <span>
                         Remove
                       </span>
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -328,7 +326,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
         </div>
       </div>
       <div
-        className="pl-0 col"
+        className="col pl-0"
       >
         <div
           className="d-md-none"
@@ -356,12 +354,10 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
           className="d-none d-md-block float-right"
         >
           <a
-            aria-label={null}
             className="btn btn-primary"
             href="undefined/records"
             onClick={[Function]}
             target="blank"
-            type={undefined}
           >
             View My Records
           </a>
@@ -400,12 +396,10 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
           className="d-md-none mb-4"
         >
           <a
-            aria-label={null}
             className="btn btn-primary"
             href="undefined/records"
             onClick={[Function]}
             target="blank"
-            type={undefined}
           >
             View My Records
           </a>
@@ -1157,13 +1151,13 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               </p>
             </div>
             <div
-              className="align-items-stretch row"
+              className="row align-items-stretch"
             >
               <div
-                className="d-flex align-items-stretch col-sm-6"
+                className="col col-sm-6 d-flex align-items-stretch"
               >
                 <div
-                  className="mb-4 certificate flex-grow-1 card"
+                  className="card mb-4 certificate flex-grow-1"
                 >
                   <div
                     className="certificate-type-illustration"
@@ -1174,7 +1168,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     }
                   />
                   <div
-                    className="d-flex flex-column card-body"
+                    className="card-body d-flex flex-column"
                   >
                     <div
                       className="card-title"
@@ -1217,12 +1211,10 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     </p>
                     <div>
                       <a
-                        aria-label={null}
                         className="btn btn-outline-primary"
                         href="http://www.example.com/"
                         onClick={[Function]}
                         target="blank"
-                        type={undefined}
                       >
                         View Certificate
                       </a>
@@ -1250,7 +1242,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
     className="container-fluid"
   >
     <div
-      className="align-items-center pt-4 mb-4 pt-md-0 mb-md-0 row"
+      className="row align-items-center pt-4 mb-4 pt-md-0 mb-md-0"
     >
       <div
         className="col-auto col-md-4 col-lg-3"
@@ -1269,14 +1261,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               >
                 <div
                   className="dropdown"
-                  onKeyDown={[Function]}
                 >
                   <button
                     aria-expanded={false}
-                    aria-haspopup={true}
-                    aria-label={null}
-                    className="text-white btn-block btn btn-link btn-sm"
+                    aria-haspopup="true"
+                    className="btn dropdown-toggle btn-primary"
+                    onBlur={[Function]}
                     onClick={[Function]}
+                    onKeyDown={[Function]}
                     type="button"
                   >
                     <span>
@@ -1285,33 +1277,37 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                   </button>
                   <div
                     aria-hidden={true}
+                    aria-label={
+                      <FormattedMessage
+                        defaultMessage="Change"
+                        description="Change photo button"
+                        id="profile.profileavatar.change-button"
+                        values={Object {}}
+                      />
+                    }
                     className="dropdown-menu"
                     role="menu"
-                    tabIndex="-1"
-                    x-placement={undefined}
                   >
-                    <button
+                    <a
                       className="dropdown-item"
                       onClick={[Function]}
-                      role="menuitem"
-                      tabIndex="0"
-                      type="button"
+                      onKeyDown={[Function]}
+                      role="button"
                     >
                       <span>
                         Upload Photo
                       </span>
-                    </button>
-                    <button
+                    </a>
+                    <a
                       className="dropdown-item"
                       onClick={[Function]}
-                      role="menuitem"
-                      tabIndex="0"
-                      type="button"
+                      onKeyDown={[Function]}
+                      role="button"
                     >
                       <span>
                         Remove
                       </span>
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -1343,7 +1339,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
         </div>
       </div>
       <div
-        className="pl-0 col"
+        className="col pl-0"
       >
         <div
           className="d-md-none"
@@ -1371,12 +1367,10 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
           className="d-none d-md-block float-right"
         >
           <a
-            aria-label={null}
             className="btn btn-primary"
             href="undefined/records"
             onClick={[Function]}
             target="blank"
-            type={undefined}
           >
             View My Records
           </a>
@@ -1415,12 +1409,10 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
           className="d-md-none mb-4"
         >
           <a
-            aria-label={null}
             className="btn btn-primary"
             href="undefined/records"
             onClick={[Function]}
             target="blank"
-            type={undefined}
           >
             View My Records
           </a>
@@ -2104,11 +2096,12 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                   className="form-group"
                 >
                   <button
-                    aria-label={null}
                     aria-live="assertive"
-                    className="btn-async-action d-inline-flex align-items-center justify-content-center btn-state-pending btn btn-primary disabled"
+                    className="btn btn-async-action d-inline-flex align-items-center justify-content-center btn-state-pending btn-primary disabled"
                     disabled={true}
+                    onBlur={[Function]}
                     onClick={[Function]}
+                    onKeyDown={[Function]}
                     style={null}
                     type="submit"
                   >
@@ -2119,20 +2112,15 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                       <div
                         className="spinner-border-sm spinner-border text-white"
                         role="status"
-                      >
-                        <span
-                          className="sr-only"
-                        >
-                          Loading...
-                        </span>
-                      </div>
+                      />
                     </span>
                     Saving
                   </button>
                   <button
-                    aria-label={null}
                     className="btn btn-link"
+                    onBlur={[Function]}
                     onClick={[Function]}
+                    onKeyDown={[Function]}
                     type="button"
                   >
                     Cancel
@@ -2230,13 +2218,13 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               </p>
             </div>
             <div
-              className="align-items-stretch row"
+              className="row align-items-stretch"
             >
               <div
-                className="d-flex align-items-stretch col-sm-6"
+                className="col col-sm-6 d-flex align-items-stretch"
               >
                 <div
-                  className="mb-4 certificate flex-grow-1 card"
+                  className="card mb-4 certificate flex-grow-1"
                 >
                   <div
                     className="certificate-type-illustration"
@@ -2247,7 +2235,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     }
                   />
                   <div
-                    className="d-flex flex-column card-body"
+                    className="card-body d-flex flex-column"
                   >
                     <div
                       className="card-title"
@@ -2290,12 +2278,10 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     </p>
                     <div>
                       <a
-                        aria-label={null}
                         className="btn btn-outline-primary"
                         href="http://www.example.com/"
                         onClick={[Function]}
                         target="blank"
-                        type={undefined}
                       >
                         View Certificate
                       </a>
