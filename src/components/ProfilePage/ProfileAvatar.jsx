@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Input, Spinner, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Button } from 'reactstrap';
+import { Spinner, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Button } from 'reactstrap';
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 
 import { ReactComponent as DefaultAvatar } from '../../assets/avatar.svg';
@@ -148,9 +148,9 @@ class ProfileAvatar extends React.Component {
           encType="multipart/form-data"
         >
           {/* The name of this input must be 'file' */}
-          <Input
-            className="d-none"
-            innerRef={this.fileInput}
+          <input
+            className="d-none form-control-file"
+            ref={this.fileInput}
             type="file"
             name="file"
             id="photo-file"

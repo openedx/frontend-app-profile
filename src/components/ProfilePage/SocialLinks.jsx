@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Input, Label, Alert } from 'reactstrap';
+import { Alert } from 'reactstrap';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
@@ -158,7 +158,7 @@ class SocialLinks extends React.Component {
           ),
           editing: (
             <div role="dialog" aria-labelledby="social-links-label">
-              <Form onSubmit={this.handleSubmit}>
+              <form onSubmit={this.handleSubmit}>
                 <EditableItemHeader
                   headingId="social-links-label"
                   content={intl.formatMessage(messages['profile.sociallinks.social.links'])}
@@ -186,7 +186,7 @@ class SocialLinks extends React.Component {
                   cancelHandler={this.handleClose}
                   changeHandler={this.handleChange}
                 />
-              </Form>
+              </form>
             </div>
           ),
         }}
@@ -282,14 +282,14 @@ function EditingListItem({
 }) {
   return (
     <li className="form-group">
-      <Label for={`social-${platform}`}>{name}</Label>
-      <Input
+      <label htmlFor={`social-${platform}`}>{name}</label>
+      <input
+        className={`form-control ${error ? 'is-invalid' : ''}`}
         type="text"
         id={`social-${platform}`}
         name={platform}
         value={value || ''}
         onChange={onChange}
-        invalid={error != null}
         aria-describedby="social-error-feedback"
       />
     </li>

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, FormFeedback, FormGroup, Input, Label } from 'reactstrap';
 import { connect } from 'react-redux';
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
 
@@ -55,22 +54,48 @@ class Bio extends React.Component {
         cases={{
           editing: (
             <div role="dialog" aria-labelledby={`${formId}-label`}>
-              <Form onSubmit={this.handleSubmit}>
-                <FormGroup>
-                  <Label for={formId} id={`${formId}-label`}>
+              <form onSubmit={this.handleSubmit}>
+                {/*
+                  If we wrote our own form group component, maybe
+                  it would look like this. Encapsulates everything
+                  inside div.form-group
+
+                  <FormGroup
+                    // group info, or shared among child nodes
+                    id={formId}
+                    inline
+                    invalid={error != null}
+
+                    // input info
+                    value={bio}
+                    inputType="textarea"
+                    inputName={formId}
+
+                    // Meta/help/errors
+                    label={intl.formatMessage(messages['profile.bio.about.me'])}
+                    helpText=""
+                    errorMessage={error}
+                    validMessage={successMessage}
+
+                    // event handlers for input
+                    onInputChange={this.handleChange}
+                  />
+                */}
+                <div className="form-group">
+                  <label htmlFor={formId} id={`${formId}-label`}>
                     {intl.formatMessage(messages['profile.bio.about.me'])}
-                  </Label>
-                  <Input
+                  </label>
+                  <textarea
+                    className={`form-control ${error ? 'is-invalid' : ''}`}
                     type="textarea"
                     id={formId}
                     name={formId}
-                    value={bio || ''}
-                    invalid={error != null}
+                    value={bio}
                     onChange={this.handleChange}
                     aria-describedby={`${formId}-error-feedback`}
                   />
-                  <FormFeedback id={`${formId}-error-feedback`}>{error}</FormFeedback>
-                </FormGroup>
+                  <p className="invalid-feedback" id={`${formId}-error-feedback`}>{error}</p>
+                </div>
                 <FormControls
                   visibilityId="visibilityBio"
                   saveState={saveState}
@@ -78,7 +103,7 @@ class Bio extends React.Component {
                   cancelHandler={this.handleClose}
                   changeHandler={this.handleChange}
                 />
-              </Form>
+              </form>
             </div>
           ),
           editable: (

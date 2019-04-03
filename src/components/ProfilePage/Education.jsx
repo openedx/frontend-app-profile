@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, FormFeedback, FormGroup, Input, Label } from 'reactstrap';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import get from 'lodash.get';
@@ -62,18 +61,16 @@ class Education extends React.Component {
         cases={{
           editing: (
             <div role="dialog" aria-labelledby={`${formId}-label`}>
-              <Form onSubmit={this.handleSubmit}>
-                <FormGroup>
-                  <Label for="education" id={`${formId}-label`}>
+              <form onSubmit={this.handleSubmit}>
+                <div className="form-group">
+                  <label htmlFor="education" id={`${formId}-label`}>
                     {intl.formatMessage(messages['profile.education.education'])}
-                  </Label>
-                  <Input
-                    type="select"
+                  </label>
+                  <select
+                    className={`form-control w-100 ${error ? 'is-invalid' : ''}`}
                     id={formId}
                     name={formId}
-                    className="w-100"
                     value={education}
-                    invalid={error != null}
                     onChange={this.handleChange}
                     aria-describedby={`${formId}-error-feedback`}
                   >
@@ -86,9 +83,9 @@ class Education extends React.Component {
                         ))}
                       </option>
                     ))}
-                  </Input>
-                  <FormFeedback id={`${formId}-error-feedback`}>{error}</FormFeedback>
-                </FormGroup>
+                  </select>
+                  <p className="invalid-feedback" id={`${formId}-error-feedback`}>{error}</p>
+                </div>
                 <FormControls
                   visibilityId="visibilityEducation"
                   saveState={saveState}
@@ -96,7 +93,7 @@ class Education extends React.Component {
                   cancelHandler={this.handleClose}
                   changeHandler={this.handleChange}
                 />
-              </Form>
+              </form>
             </div>
           ),
           editable: (

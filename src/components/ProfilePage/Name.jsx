@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, FormFeedback, FormGroup, FormText, Label } from 'reactstrap';
 import { connect } from 'react-redux';
 import { injectIntl, intlShape } from 'react-intl';
 
@@ -58,11 +57,11 @@ class Name extends React.Component {
         cases={{
           editing: (
             <div role="dialog" aria-labelledby={`${formId}-label`}>
-              <Form onSubmit={this.handleSubmit}>
-                <FormGroup>
-                  <Label for="name" id={`${formId}-label`}>
+              <form onSubmit={this.handleSubmit}>
+                <div className="form-group">
+                  <label htmlFor="name" id={`${formId}-label`}>
                     {intl.formatMessage(messages['profile.name.full.name'])}
-                  </Label>
+                  </label>
                   {/*
                   This isn't a mistake - the name field should not be editable.  But if it were,
                   you'd find the original code got deleted in the commit which added this comment.
@@ -72,11 +71,11 @@ class Name extends React.Component {
                   such to fully get rid of it.
                   */}
                   <p className="h5">{name}</p>
-                  <FormText id={`${formId}-help-text`}>
+                  <small className="form-text text-muted" id={`${formId}-help-text`}>
                     {intl.formatMessage(messages['profile.name.details'])}
-                  </FormText>
-                  <FormFeedback id={`${formId}-error-feedback`}>{error}</FormFeedback>
-                </FormGroup>
+                  </small>
+                  <p className="invalid-feedback" id={`${formId}-error-feedback`}>{error}</p>
+                </div>
                 <FormControls
                   visibilityId="visibilityName"
                   saveState={saveState}
@@ -84,7 +83,7 @@ class Name extends React.Component {
                   cancelHandler={this.handleClose}
                   changeHandler={this.handleChange}
                 />
-              </Form>
+              </form>
             </div>
           ),
           editable: (
@@ -97,9 +96,9 @@ class Name extends React.Component {
                 visibility={visibilityName}
               />
               <p className="h5">{name}</p>
-              <FormText>
+              <small className="form-text text-muted">
                 {intl.formatMessage(messages['profile.name.details'])}
-              </FormText>
+              </small>
             </React.Fragment>
           ),
           empty: (
@@ -108,9 +107,9 @@ class Name extends React.Component {
               <EmptyContent onClick={this.handleOpen}>
                 {intl.formatMessage(messages['profile.name.empty'])}
               </EmptyContent>
-              <FormText>
+              <small className="form-text text-muted">
                 {intl.formatMessage(messages['profile.name.details'])}
-              </FormText>
+              </small>
             </React.Fragment>
           ),
           static: (

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Input } from 'reactstrap';
 import { injectIntl, intlShape } from 'react-intl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEyeSlash, faEye } from '@fortawesome/free-regular-svg-icons';
@@ -41,14 +40,14 @@ function VisibilitySelect({ intl, className, ...props }) {
       <span className="d-inline-block ml-1 mr-2" style={{ width: '1.5rem' }}>
         <FontAwesomeIcon icon={icon} />
       </span>
-      <Input className="d-inline-block w-auto" {...props} type="select">
+      <select className="d-inline-block w-auto form-control" {...props}>
         <option key="private" value="private">
           {intl.formatMessage(messages['profile.visibility.who.just.me'])}
         </option>
         <option key="all_users" value="all_users">
           {intl.formatMessage(messages['profile.visibility.who.everyone'])}
         </option>
-      </Input>
+      </select>
     </span>
   );
 }

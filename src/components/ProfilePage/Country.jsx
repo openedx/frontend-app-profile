@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, FormFeedback, FormGroup, Input, Label } from 'reactstrap';
 import { connect } from 'react-redux';
 import { injectIntl, intlShape } from 'react-intl';
 
@@ -61,27 +60,26 @@ class Country extends React.Component {
         cases={{
           editing: (
             <div role="dialog" aria-labelledby={`${formId}-label`}>
-              <Form onSubmit={this.handleSubmit}>
-                <FormGroup>
-                  <Label for="country" id={`${formId}-label`}>
+              <form onSubmit={this.handleSubmit}>
+                <div className="form-group">
+                  <label htmlFor="country" id={`${formId}-label`}>
                     {intl.formatMessage(messages['profile.country.label'])}
-                  </Label>
-                  <Input
+                  </label>
+                  <select
+                    className={`form-control w-100 ${error ? 'is-invalid' : ''}`}
                     type="select"
                     id={formId}
                     name={formId}
-                    className="w-100"
                     value={country}
-                    invalid={error != null}
                     onChange={this.handleChange}
                     aria-describedby={`${formId}-error-feedback`}
                   >
                     {Object.keys(ALL_COUNTRIES).map(key => (
                       <option key={key} value={key}>{ALL_COUNTRIES[key]}</option>
                     ))}
-                  </Input>
-                  <FormFeedback id={`${formId}-error-feedback`}>{error}</FormFeedback>
-                </FormGroup>
+                  </select>
+                  <p className="invalid-feedback" id={`${formId}-error-feedback`}>{error}</p>
+                </div>
                 <FormControls
                   visibilityId="visibilityCountry"
                   saveState={saveState}
@@ -89,7 +87,7 @@ class Country extends React.Component {
                   cancelHandler={this.handleClose}
                   changeHandler={this.handleChange}
                 />
-              </Form>
+              </form>
             </div>
           ),
           editable: (

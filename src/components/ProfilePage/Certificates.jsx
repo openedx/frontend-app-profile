@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl, intlShape, FormattedDate, FormattedMessage } from 'react-intl';
-import { Row, Col, Card, CardBody, CardTitle, Button, Form } from 'reactstrap';
+import { Row, Col, Card, CardBody, CardTitle, Button } from 'reactstrap';
 import { connect } from 'react-redux';
 import get from 'lodash.get';
 
@@ -137,7 +137,7 @@ class Certificates extends React.Component {
         cases={{
           editing: (
             <div role="dialog" aria-labelledby="course-certificates-label">
-              <Form onSubmit={this.handleSubmit}>
+              <form onSubmit={this.handleSubmit}>
                 <EditableItemHeader
                   headingId="course-certificates-label"
                   content={intl.formatMessage(messages['profile.certificates.my.certificates'])}
@@ -150,7 +150,7 @@ class Certificates extends React.Component {
                   cancelHandler={this.handleClose}
                   changeHandler={this.handleChange}
                 />
-              </Form>
+              </form>
             </div>
           ),
           editable: (
