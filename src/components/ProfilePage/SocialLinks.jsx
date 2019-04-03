@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
+import classNames from 'classnames';
 
 import messages from './SocialLinks.messages';
 
@@ -284,7 +285,7 @@ function EditingListItem({
     <li className="form-group">
       <label htmlFor={`social-${platform}`}>{name}</label>
       <input
-        className={`form-control ${error ? 'is-invalid' : ''}`}
+        className={classNames('form-control', { 'is-invalid': Boolean(error) })}
         type="text"
         id={`social-${platform}`}
         name={platform}

@@ -37,7 +37,7 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.2.1",
-    "classnames": "^2.2.5",
+    "classnames": "^2.2.6",
     "connected-react-router": "^5.0.1",
     "email-prop-type": "^1.1.5",
     "font-awesome": "^4.7.0",

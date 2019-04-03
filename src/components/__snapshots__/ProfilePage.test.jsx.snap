@@ -2017,7 +2017,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                   </label>
                   <textarea
                     aria-describedby="bio-error-feedback"
-                    className="form-control "
+                    className="form-control"
                     id="bio"
                     name="bio"
                     onChange={[Function]}

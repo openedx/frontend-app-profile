@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
+import classNames from 'classnames';
 
 import messages from './Bio.messages';
 
@@ -86,7 +87,7 @@ class Bio extends React.Component {
                     {intl.formatMessage(messages['profile.bio.about.me'])}
                   </label>
                   <textarea
-                    className={`form-control ${error ? 'is-invalid' : ''}`}
+                    className={classNames('form-control', { 'is-invalid': Boolean(error) })}
                     type="textarea"
                     id={formId}
                     name={formId}

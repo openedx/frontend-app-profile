@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { injectIntl, intlShape } from 'react-intl';
+import classNames from 'classnames';
 
 import messages from './PreferredLanguage.messages';
 
@@ -84,7 +85,7 @@ class PreferredLanguage extends React.Component {
                   <select
                     id={formId}
                     name={formId}
-                    className={`form-control w-100 ${error ? 'is-invalid' : ''}`}
+                    className={classNames('form-control', 'w-100', { 'is-invalid': Boolean(error) })}
                     value={value}
                     onChange={this.handleChange}
                     aria-describedby={`${formId}-error-feedback`}

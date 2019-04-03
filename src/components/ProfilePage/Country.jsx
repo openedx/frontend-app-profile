@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { injectIntl, intlShape } from 'react-intl';
+import classNames from 'classnames';
 
 import messages from './Country.messages';
 
@@ -66,7 +67,7 @@ class Country extends React.Component {
                     {intl.formatMessage(messages['profile.country.label'])}
                   </label>
                   <select
-                    className={`form-control w-100 ${error ? 'is-invalid' : ''}`}
+                    className={classNames('form-control', 'w-100', { 'is-invalid': Boolean(error) })}
                     type="select"
                     id={formId}
                     name={formId}

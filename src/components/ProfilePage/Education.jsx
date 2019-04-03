@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import get from 'lodash.get';
+import classNames from 'classnames';
 
 import messages from './Education.messages';
 
@@ -67,7 +68,7 @@ class Education extends React.Component {
                     {intl.formatMessage(messages['profile.education.education'])}
                   </label>
                   <select
-                    className={`form-control w-100 ${error ? 'is-invalid' : ''}`}
+                    className={classNames('form-control', 'w-100', { 'is-invalid': Boolean(error) })}
                     id={formId}
                     name={formId}
                     value={education}
