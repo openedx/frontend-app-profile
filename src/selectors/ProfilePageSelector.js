@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { getLocale, getLanguageList, getCountryList, getCountryMessages, getLanguageMessages } from '../i18n/i18n-loader';
 
 export const formIdSelector = (state, props) => props.formId;
 export const authenticationUsernameSelector = state => state.authentication.username;
@@ -81,6 +82,53 @@ export const editableFormSelector = createSelector(
     editMode,
     error,
     saveState,
+  }),
+);
+
+// Because this selector has no input selectors, it will only be evaluated once.  This is fine
+// for now because we don't allow users to change the locale after page load.
+// Once we DO allow this, we should create an actual action which dispatches the locale into redux,
+// then we can modify this to get the locale from state rather than from getLocale() directly.
+// Once we do that, this will work as expected and be re-evaluated when the locale changes.
+export const localeSelector = () => getLocale();
+export const countryMessagesSelector = createSelector(
+  localeSelector,
+  locale => getCountryMessages(locale),
+);
+export const languageMessagesSelector = createSelector(
+  localeSelector,
+  locale => getLanguageMessages(locale),
+);
+
+export const sortedLanguagesSelector = createSelector(
+  localeSelector,
+  locale => getLanguageList(locale),
+);
+
+export const sortedCountriesSelector = createSelector(
+  localeSelector,
+  locale => getCountryList(locale),
+);
+
+export const preferredLanguageSelector = createSelector(
+  editableFormSelector,
+  sortedLanguagesSelector,
+  languageMessagesSelector,
+  (editableForm, sortedLanguages, languageMessages) => ({
+    ...editableForm,
+    sortedLanguages,
+    languageMessages,
+  }),
+);
+
+export const countrySelector = createSelector(
+  editableFormSelector,
+  sortedCountriesSelector,
+  countryMessagesSelector,
+  (editableForm, sortedCountries, countryMessages) => ({
+    ...editableForm,
+    sortedCountries,
+    countryMessages,
   }),
 );
 
