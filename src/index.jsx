@@ -15,7 +15,9 @@ import App from './components/App';
 if (apiClient.ensurePublicOrAuthencationAndCookies(window.location.pathname)) {
   const { store, history } = configureStore();
 
-  handleRtl();
+  if (process.env.NODE_ENV === 'production') {
+    handleRtl();
+  }
 
   ReactDOM.render(<App store={store} history={history} />, document.getElementById('root'));
 
