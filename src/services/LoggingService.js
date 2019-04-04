@@ -51,16 +51,19 @@ class LoggingService {
       updatedCustomAttributes = Object.assign({}, responseAttributes, customAttributes);
       processedError = new Error(`API request failed: ${error.response.status} ${responseAttributes.errorUrl} ${data}`);
     } else if (error.request) {
-      const { request } = error;
+      const { config, request } = error;
       const errorMessage = request.responseText || error.message;
+      const requestMethod = config && config.method;
+      const requestUrl = request.responseURL || (config && config.url);
       const requestAttributes = {
         errorType: 'api-request-error',
         errorStatus: request.status,
-        errorUrl: request.responseURL,
+        errorMethod: requestMethod,
+        errorUrl: requestUrl,
         errorData: errorMessage,
       };
       updatedCustomAttributes = Object.assign({}, requestAttributes, customAttributes);
-      processedError = new Error(`API request failed: ${request.status} ${request.responseURL} ${errorMessage} ${JSON.stringify(error)}`);
+      processedError = new Error(`API request failed: ${request.status} ${requestMethod} ${requestUrl} ${errorMessage}`);
     }
 
     this.logError(processedError, updatedCustomAttributes);
