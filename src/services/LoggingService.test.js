@@ -67,7 +67,7 @@ describe('logAPIErrorResponse', () => {
       },
     };
     const message = `${error.request.status} ${error.request.responseURL} ${error.request.responseText}`;
-    const expectedError = new Error(`API request failed: ${message}`);
+    const expectedError = new Error(`API request failed: ${message} ${JSON.stringify(error)}`);
     const expectedAttributes = {
       errorType: 'api-request-error',
       errorStatus: error.request.status,
