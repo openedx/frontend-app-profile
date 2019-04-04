@@ -65,12 +65,16 @@ describe('logAPIErrorResponse', () => {
         responseURL: 'http://example.com',
         responseText: 'Very bad request',
       },
+      config: {
+        method: 'get',
+      },
     };
-    const message = `${error.request.status} ${error.request.responseURL} ${error.request.responseText}`;
-    const expectedError = new Error(`API request failed: ${message} ${JSON.stringify(error)}`);
+    const message = `${error.request.status} ${error.config.method} ${error.request.responseURL} ${error.request.responseText}`;
+    const expectedError = new Error(`API request failed: ${message}`);
     const expectedAttributes = {
       errorType: 'api-request-error',
       errorStatus: error.request.status,
+      errorMethod: error.config.method,
       errorUrl: error.request.responseURL,
       errorData: error.request.responseText,
     };
