@@ -101,7 +101,7 @@ export class ProfilePage extends React.Component {
 
     return (
       <React.Fragment>
-        <h1 className="h2 mb-0">{username}</h1>
+        <h1 className="h2 mb-0 font-weight-bold">{username}</h1>
         <DateJoined date={dateJoined} />
         <hr className="d-none d-md-block" />
       </React.Fragment>

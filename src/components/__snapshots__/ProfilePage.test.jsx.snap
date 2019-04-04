@@ -83,7 +83,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
           className="d-md-none"
         >
           <h1
-            className="h2 mb-0"
+            className="h2 mb-0 font-weight-bold"
           >
             verified
           </h1>
@@ -116,7 +116,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
           className="d-none d-md-block mb-4"
         >
           <h1
-            className="h2 mb-0"
+            className="h2 mb-0 font-weight-bold"
           >
             verified
           </h1>
@@ -334,7 +334,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
           className="d-md-none"
         >
           <h1
-            className="h2 mb-0"
+            className="h2 mb-0 font-weight-bold"
           >
             staff
           </h1>
@@ -378,7 +378,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
           className="d-none d-md-block mb-4"
         >
           <h1
-            className="h2 mb-0"
+            className="h2 mb-0 font-weight-bold"
           >
             staff
           </h1>
@@ -1349,7 +1349,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
           className="d-md-none"
         >
           <h1
-            className="h2 mb-0"
+            className="h2 mb-0 font-weight-bold"
           >
             staff
           </h1>
@@ -1393,7 +1393,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
           className="d-none d-md-block mb-4"
         >
           <h1
-            className="h2 mb-0"
+            className="h2 mb-0 font-weight-bold"
           >
             staff
           </h1>
