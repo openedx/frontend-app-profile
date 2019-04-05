@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Col, Container, Row } from 'reactstrap';
+import { Button } from '@edx/paragon';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 
@@ -12,12 +12,9 @@ export default class ErrorPage extends Component {
     const { username } = apiClient.getAuthenticationState().authentication;
 
     return (
-      <Container
-        fluid
-        className="py-5 justify-content-center align-items-start text-center"
-      >
-        <Row>
-          <Col>
+      <div className="container-fluid py-5 justify-content-center align-items-start text-center">
+        <div className="row">
+          <div className="col">
             <p className="my-0 py-5 text-muted">
               <FormattedMessage
                 id="profile.error.message.text"
@@ -25,22 +22,25 @@ export default class ErrorPage extends Component {
                 description="error message when an unexpected error occurs"
               />
             </p>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
             <Link to={`/u/${username}`}>
-              <Button color="primary">
-                <FormattedMessage
-                  id="profile.error.button.text"
-                  defaultMessage="Return to Your Profile"
-                  description="text for button that navigates back to your profile page after an error has occured"
-                />
-              </Button>
+              <Button
+                buttonType="primary"
+                label={
+                  <FormattedMessage
+                    id="profile.error.button.text"
+                    defaultMessage="Return to Your Profile"
+                    description="text for button that navigates back to your profile page after an error has occured"
+                  />
+                }
+              />
             </Link>
-          </Col>
-        </Row>
-      </Container>
+          </div>
+        </div>
+      </div>
     );
   }
 }

@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { Icon } from '@edx/paragon';
-import { Button, Spinner } from 'reactstrap';
+import { Icon, Button } from '@edx/paragon';
 
 function AsyncActionButton({
   onClick,
@@ -16,7 +15,11 @@ function AsyncActionButton({
   const renderIcon = () => {
     if (variant === 'error') return <Icon className="icon fa fa-times-circle" />;
     if (variant === 'complete') return <Icon className="icon fa fa-check-circle" />;
-    if (variant === 'pending') return <Spinner size="sm" color="white" />;
+    if (variant === 'pending') {
+      return (
+        <div className="spinner-border-sm spinner-border text-white" role="status" />
+      );
+    }
 
     return null;
   };
@@ -29,12 +32,14 @@ function AsyncActionButton({
     return labels.default;
   };
 
+  const isDisabled = variant === 'pending' || variant === 'complete' || variant === 'error';
+
   return (
     <Button
       type={type}
       aria-live="assertive"
-      onClick={onClick}
-      disabled={variant === 'pending' || variant === 'complete' || variant === 'error'}
+      onClick={onClick || (() => {})}
+      disabled={isDisabled}
       className={classNames(
         'btn-async-action',
         'd-inline-flex align-items-center justify-content-center',
@@ -43,16 +48,20 @@ function AsyncActionButton({
           'btn-state-pending': variant === 'pending',
           'btn-state-complete': variant === 'complete',
           'btn-state-error': variant === 'error',
+          [`btn-${color}`]: color != null,
+          disabled: isDisabled,
         },
-      )}
-      color={color}
+      ).split(' ')}
       style={style}
-    >
-      <span aria-hidden className="icon-state d-inline-flex justify-content-start">
-        {renderIcon()}
-      </span>
-      {renderLabel()}
-    </Button>
+      label={(
+        <React.Fragment>
+          <span aria-hidden className="icon-state d-inline-flex justify-content-start">
+            {renderIcon()}
+          </span>
+          {renderLabel()}
+        </React.Fragment>
+      )}
+    />
   );
 }
 

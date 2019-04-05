@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, FormFeedback, FormGroup, Input, Label } from 'reactstrap';
 import { connect } from 'react-redux';
 import { injectIntl, intlShape } from 'react-intl';
+import classNames from 'classnames';
 
 import messages from './Country.messages';
 
@@ -66,27 +66,26 @@ class Country extends React.Component {
         cases={{
           editing: (
             <div role="dialog" aria-labelledby={`${formId}-label`}>
-              <Form onSubmit={this.handleSubmit}>
-                <FormGroup>
-                  <Label for="country" id={`${formId}-label`}>
+              <form onSubmit={this.handleSubmit}>
+                <div className="form-group">
+                  <label htmlFor="country">
                     {intl.formatMessage(messages['profile.country.label'])}
-                  </Label>
-                  <Input
+                  </label>
+                  <select
+                    className={classNames('form-control', 'w-100', { 'is-invalid': Boolean(error) })}
                     type="select"
                     id={formId}
                     name={formId}
-                    className="w-100"
                     value={country}
-                    invalid={error != null}
                     onChange={this.handleChange}
                     aria-describedby={`${formId}-error-feedback`}
                   >
                     {sortedCountries.map(({ code, name }) => (
                       <option key={code} value={code}>{name}</option>
                     ))}
-                  </Input>
-                  <FormFeedback id={`${formId}-error-feedback`}>{error}</FormFeedback>
-                </FormGroup>
+                  </select>
+                  <p className="invalid-feedback" id={`${formId}-error-feedback`}>{error}</p>
+                </div>
                 <FormControls
                   visibilityId="visibilityCountry"
                   saveState={saveState}
@@ -94,7 +93,7 @@ class Country extends React.Component {
                   cancelHandler={this.handleClose}
                   changeHandler={this.handleChange}
                 />
-              </Form>
+              </form>
             </div>
           ),
           editable: (

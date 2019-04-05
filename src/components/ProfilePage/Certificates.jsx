@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl, intlShape, FormattedDate, FormattedMessage } from 'react-intl';
-import { Row, Col, Card, CardBody, CardTitle, Button, Form } from 'reactstrap';
+import { Hyperlink } from '@edx/paragon';
 import { connect } from 'react-redux';
 import get from 'lodash.get';
 
@@ -66,14 +66,14 @@ class Certificates extends React.Component {
     })(certificateType);
 
     return (
-      <Col key={downloadUrl} sm={6} className="d-flex align-items-stretch">
-        <Card className="mb-4 certificate flex-grow-1">
+      <div key={downloadUrl} className="col col-sm-6 d-flex align-items-stretch">
+        <div className="card mb-4 certificate flex-grow-1">
           <div
             className="certificate-type-illustration"
             style={{ backgroundImage: `url(${certificateIllustration})` }}
           />
-          <CardBody className="d-flex flex-column">
-            <CardTitle>
+          <div className="card-body d-flex flex-column">
+            <div className="card-title">
               <p className="small mb-0">
                 {intl.formatMessage(get(
                   messages,
@@ -82,7 +82,7 @@ class Certificates extends React.Component {
                 ))}
               </p>
               <h4 className="certificate-title">{courseDisplayName}</h4>
-            </CardTitle>
+            </div>
             <p className="small mb-0">
               <FormattedMessage
                 id="profile.certificate.organization.label"
@@ -101,13 +101,16 @@ class Certificates extends React.Component {
               />
             </p>
             <div>
-              <Button outline color="primary" href={downloadUrl} target="blank">
-                {intl.formatMessage(messages['profile.certificates.view.certificate'])}
-              </Button>
+              <Hyperlink
+                className="btn btn-outline-primary"
+                destination={downloadUrl}
+                target="_blank"
+                content={intl.formatMessage(messages['profile.certificates.view.certificate'])}
+              />
             </div>
-          </CardBody>
-        </Card>
-      </Col>
+          </div>
+        </div>
+      </div>
     );
   }
 
@@ -121,7 +124,7 @@ class Certificates extends React.Component {
     }
 
     return (
-      <Row className="align-items-stretch">{this.props.certificates.map(certificate => this.renderCertificate(certificate))}</Row>
+      <div className="row align-items-stretch">{this.props.certificates.map(certificate => this.renderCertificate(certificate))}</div>
     );
   }
 
@@ -137,7 +140,7 @@ class Certificates extends React.Component {
         cases={{
           editing: (
             <div role="dialog" aria-labelledby="course-certificates-label">
-              <Form onSubmit={this.handleSubmit}>
+              <form onSubmit={this.handleSubmit}>
                 <EditableItemHeader
                   headingId="course-certificates-label"
                   content={intl.formatMessage(messages['profile.certificates.my.certificates'])}
@@ -150,7 +153,7 @@ class Certificates extends React.Component {
                   cancelHandler={this.handleClose}
                   changeHandler={this.handleChange}
                 />
-              </Form>
+              </form>
             </div>
           ),
           editable: (

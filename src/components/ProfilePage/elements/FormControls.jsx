@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Label, FormGroup } from 'reactstrap';
+import { Button } from '@edx/paragon';
 import { injectIntl, intlShape } from 'react-intl';
 
 import messages from './FormControls.messages';
@@ -16,10 +16,10 @@ function FormControls({
 
   return (
     <React.Fragment>
-      <FormGroup className="mb-4">
-        <Label className="mb-1" size="sm" for={visibilityId}>
+      <div className="mb-4 form-group">
+        <label className="mb-1 col-form-label-sm" htmlFor={visibilityId}>
           {intl.formatMessage(messages['profile.formcontrols.who.can.see'])}
-        </Label>
+        </label>
         <VisibilitySelect
           id={visibilityId}
           className="w-auto"
@@ -28,8 +28,8 @@ function FormControls({
           value={visibility}
           onChange={changeHandler}
         />
-      </FormGroup>
-      <FormGroup>
+      </div>
+      <div className="form-group">
         <AsyncActionButton
           type="submit"
           variant={buttonState}
@@ -39,10 +39,12 @@ function FormControls({
             complete: intl.formatMessage(messages['profile.formcontrols.button.saved']),
           }}
         />
-        <Button color="link" onClick={cancelHandler}>
-          {intl.formatMessage(messages['profile.formcontrols.button.cancel'])}
-        </Button>
-      </FormGroup>
+        <Button
+          buttonType="link"
+          onClick={cancelHandler}
+          label={intl.formatMessage(messages['profile.formcontrols.button.cancel'])}
+        />
+      </div>
     </React.Fragment>
   );
 }

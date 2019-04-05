@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, FormFeedback, FormGroup, Input, Label } from 'reactstrap';
 import { connect } from 'react-redux';
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
+import classNames from 'classnames';
 
 import messages from './Bio.messages';
 
@@ -55,22 +55,21 @@ class Bio extends React.Component {
         cases={{
           editing: (
             <div role="dialog" aria-labelledby={`${formId}-label`}>
-              <Form onSubmit={this.handleSubmit}>
-                <FormGroup>
-                  <Label for={formId} id={`${formId}-label`}>
+              <form onSubmit={this.handleSubmit}>
+                <div className="form-group">
+                  <label htmlFor={formId}>
                     {intl.formatMessage(messages['profile.bio.about.me'])}
-                  </Label>
-                  <Input
-                    type="textarea"
+                  </label>
+                  <textarea
+                    className={classNames('form-control', { 'is-invalid': Boolean(error) })}
                     id={formId}
                     name={formId}
-                    value={bio || ''}
-                    invalid={error != null}
+                    value={bio}
                     onChange={this.handleChange}
                     aria-describedby={`${formId}-error-feedback`}
                   />
-                  <FormFeedback id={`${formId}-error-feedback`}>{error}</FormFeedback>
-                </FormGroup>
+                  <p className="invalid-feedback" id={`${formId}-error-feedback`}>{error}</p>
+                </div>
                 <FormControls
                   visibilityId="visibilityBio"
                   saveState={saveState}
@@ -78,7 +77,7 @@ class Bio extends React.Component {
                   cancelHandler={this.handleClose}
                   changeHandler={this.handleChange}
                 />
-              </Form>
+              </form>
             </div>
           ),
           editable: (

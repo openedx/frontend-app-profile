@@ -73,6 +73,18 @@ $fa-font-path: "~font-awesome/fonts";
         margin-bottom: 1.2rem;
       }
     }
+    
+    .dropdown {
+      @include media-breakpoint-up(md) {
+        margin-bottom: 1.2rem;
+      }
+      .btn {
+        color: $white;
+        background: transparent;
+        border-color: transparent;
+        margin: 0;
+      }
+    }
   }
 
   .profile-avatar {

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, FormFeedback, FormGroup, Input, Label } from 'reactstrap';
 import { connect } from 'react-redux';
 import { injectIntl, intlShape } from 'react-intl';
+import classNames from 'classnames';
 
 import messages from './PreferredLanguage.messages';
 
@@ -76,27 +76,25 @@ class PreferredLanguage extends React.Component {
         cases={{
           editing: (
             <div role="dialog" aria-labelledby={`${formId}-label`}>
-              <Form onSubmit={this.handleSubmit}>
-                <FormGroup>
-                  <Label for={formId} id={`${formId}-label`}>
+              <form onSubmit={this.handleSubmit}>
+                <div className="form-group">
+                  <label htmlFor={formId}>
                     {intl.formatMessage(messages['profile.preferredlanguage.label'])}
-                  </Label>
-                  <Input
-                    type="select"
+                  </label>
+                  <select
                     id={formId}
                     name={formId}
-                    className="w-100"
+                    className={classNames('form-control', 'w-100', { 'is-invalid': Boolean(error) })}
                     value={value}
-                    invalid={error != null}
                     onChange={this.handleChange}
                     aria-describedby={`${formId}-error-feedback`}
                   >
                     {sortedLanguages.map(({ code, name }) => (
                       <option key={code} value={code}>{name}</option>
                     ))}
-                  </Input>
-                  <FormFeedback id={`${formId}-error-feedback`}>{error}</FormFeedback>
-                </FormGroup>
+                  </select>
+                  <p className="invalid-feedback" id={`${formId}-error-feedback`}>{error}</p>
+                </div>
                 <FormControls
                   visibilityId="visibilityLanguageProficiencies"
                   saveState={saveState}
@@ -104,7 +102,7 @@ class PreferredLanguage extends React.Component {
                   cancelHandler={this.handleClose}
                   changeHandler={this.handleChange}
                 />
-              </Form>
+              </form>
             </div>
           ),
           editable: (

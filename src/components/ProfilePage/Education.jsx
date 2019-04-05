@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, FormFeedback, FormGroup, Input, Label } from 'reactstrap';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import get from 'lodash.get';
+import classNames from 'classnames';
 
 import messages from './Education.messages';
 
@@ -62,18 +62,16 @@ class Education extends React.Component {
         cases={{
           editing: (
             <div role="dialog" aria-labelledby={`${formId}-label`}>
-              <Form onSubmit={this.handleSubmit}>
-                <FormGroup>
-                  <Label for="education" id={`${formId}-label`}>
+              <form onSubmit={this.handleSubmit}>
+                <div className="form-group">
+                  <label htmlFor="education">
                     {intl.formatMessage(messages['profile.education.education'])}
-                  </Label>
-                  <Input
-                    type="select"
+                  </label>
+                  <select
+                    className={classNames('form-control', 'w-100', { 'is-invalid': Boolean(error) })}
                     id={formId}
                     name={formId}
-                    className="w-100"
                     value={education}
-                    invalid={error != null}
                     onChange={this.handleChange}
                     aria-describedby={`${formId}-error-feedback`}
                   >
@@ -86,9 +84,9 @@ class Education extends React.Component {
                         ))}
                       </option>
                     ))}
-                  </Input>
-                  <FormFeedback id={`${formId}-error-feedback`}>{error}</FormFeedback>
-                </FormGroup>
+                  </select>
+                  <p className="invalid-feedback" id={`${formId}-error-feedback`}>{error}</p>
+                </div>
                 <FormControls
                   visibilityId="visibilityEducation"
                   saveState={saveState}
@@ -96,7 +94,7 @@ class Education extends React.Component {
                   cancelHandler={this.handleClose}
                   changeHandler={this.handleChange}
                 />
-              </Form>
+              </form>
             </div>
           ),
           editable: (

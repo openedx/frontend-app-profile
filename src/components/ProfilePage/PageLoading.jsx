@@ -1,5 +1,4 @@
 import React from 'react';
-import { Spinner } from 'reactstrap';
 
 import Banner from './elements/Banner';
 
@@ -13,7 +12,7 @@ function PageLoading() {
           height: '50vh',
         }}
       >
-        <Spinner color="primary" />
+        <div className="spinner-border text-primary" role="status" />
       </div>
     </div>
   );
