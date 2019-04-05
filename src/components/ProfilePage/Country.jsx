@@ -12,11 +12,8 @@ import EditableItemHeader from './elements/EditableItemHeader';
 import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
 
-// Constants
-import { ALL_COUNTRIES } from '../../constants/countries';
-
 // Selectors
-import { editableFormSelector } from '../../selectors/ProfilePageSelector';
+import { countrySelector } from '../../selectors/ProfilePageSelector';
 
 class Country extends React.Component {
   constructor(props) {
@@ -51,7 +48,15 @@ class Country extends React.Component {
 
   render() {
     const {
-      formId, country, visibilityCountry, editMode, saveState, error, intl,
+      formId,
+      country,
+      visibilityCountry,
+      editMode,
+      saveState,
+      error,
+      intl,
+      sortedCountries,
+      countryMessages,
     } = this.props;
 
     return (
@@ -76,8 +81,8 @@ class Country extends React.Component {
                     onChange={this.handleChange}
                     aria-describedby={`${formId}-error-feedback`}
                   >
-                    {Object.keys(ALL_COUNTRIES).map(key => (
-                      <option key={key} value={key}>{ALL_COUNTRIES[key]}</option>
+                    {sortedCountries.map(({ code, name }) => (
+                      <option key={code} value={code}>{name}</option>
                     ))}
                   </Input>
                   <FormFeedback id={`${formId}-error-feedback`}>{error}</FormFeedback>
@@ -101,7 +106,7 @@ class Country extends React.Component {
                 showVisibility={visibilityCountry !== null}
                 visibility={visibilityCountry}
               />
-              <p className="h5">{ALL_COUNTRIES[country]}</p>
+              <p className="h5">{countryMessages[country]}</p>
             </React.Fragment>
           ),
           empty: (
@@ -119,7 +124,7 @@ class Country extends React.Component {
               <EditableItemHeader
                 content={intl.formatMessage(messages['profile.country.label'])}
               />
-              <p className="h5">{ALL_COUNTRIES[country]}</p>
+              <p className="h5">{countryMessages[country]}</p>
             </React.Fragment>
           ),
         }}
@@ -141,6 +146,11 @@ Country.propTypes = {
   editMode: PropTypes.oneOf(['editing', 'editable', 'empty', 'static']),
   saveState: PropTypes.string,
   error: PropTypes.string,
+  sortedCountries: PropTypes.arrayOf(PropTypes.shape({
+    code: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  })).isRequired,
+  countryMessages: PropTypes.objectOf(PropTypes.string).isRequired,
 
   // Actions
   changeHandler: PropTypes.func.isRequired,
@@ -161,6 +171,6 @@ Country.defaultProps = {
 };
 
 export default connect(
-  editableFormSelector,
+  countrySelector,
   {},
 )(injectIntl(Country));

@@ -12,11 +12,8 @@ import EditableItemHeader from './elements/EditableItemHeader';
 import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
 
-// Constants
-import { ALL_LANGUAGES } from '../../constants/languages';
-
 // Selectors
-import { editableFormSelector } from '../../selectors/ProfilePageSelector';
+import { preferredLanguageSelector } from '../../selectors/ProfilePageSelector';
 
 class PreferredLanguage extends React.Component {
   constructor(props) {
@@ -66,6 +63,8 @@ class PreferredLanguage extends React.Component {
       saveState,
       error,
       intl,
+      sortedLanguages,
+      languageMessages,
     } = this.props;
 
     const value = languageProficiencies.length ? languageProficiencies[0].code : '';
@@ -92,7 +91,7 @@ class PreferredLanguage extends React.Component {
                     onChange={this.handleChange}
                     aria-describedby={`${formId}-error-feedback`}
                   >
-                    {Object.entries(ALL_LANGUAGES).map(([code, name]) => (
+                    {sortedLanguages.map(({ code, name }) => (
                       <option key={code} value={code}>{name}</option>
                     ))}
                   </Input>
@@ -117,7 +116,7 @@ class PreferredLanguage extends React.Component {
                 showVisibility={visibilityLanguageProficiencies !== null}
                 visibility={visibilityLanguageProficiencies}
               />
-              <p className="h5">{ALL_LANGUAGES[value]}</p>
+              <p className="h5">{languageMessages[value]}</p>
             </React.Fragment>
           ),
           empty: (
@@ -135,7 +134,7 @@ class PreferredLanguage extends React.Component {
               <EditableItemHeader
                 content={intl.formatMessage(messages['profile.preferredlanguage.label'])}
               />
-              <p className="h5">{ALL_LANGUAGES[value]}</p>
+              <p className="h5">{languageMessages[value]}</p>
             </React.Fragment>
           ),
         }}
@@ -162,6 +161,11 @@ PreferredLanguage.propTypes = {
   editMode: PropTypes.oneOf(['editing', 'editable', 'empty', 'static']),
   saveState: PropTypes.string,
   error: PropTypes.string,
+  sortedLanguages: PropTypes.arrayOf(PropTypes.shape({
+    code: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  })).isRequired,
+  languageMessages: PropTypes.objectOf(PropTypes.string).isRequired,
 
   // Actions
   changeHandler: PropTypes.func.isRequired,
@@ -182,6 +186,6 @@ PreferredLanguage.defaultProps = {
 };
 
 export default connect(
-  editableFormSelector,
+  preferredLanguageSelector,
   {},
 )(injectIntl(PreferredLanguage));
