@@ -1,8 +1,9 @@
 import formurlencoded from 'form-urlencoded';
+import LoggingService from '@edx/frontend-logging';
+
 import apiClient from '../config/apiClient';
 import { configuration } from '../config/environment';
 import { snakeCaseObject } from '../services/utils';
-import LoggingService from '../services/LoggingService';
 
 const eventLogApiBaseUrl = `${configuration.LMS_BASE_URL}/event`;
 

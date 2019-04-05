@@ -1,3 +1,5 @@
+import LoggingService from '@edx/frontend-logging';
+
 import apiClient from '../config/apiClient';
 import { configuration } from '../config/environment';
 import {
@@ -5,7 +7,6 @@ import {
   convertKeyNames,
   snakeCaseObject,
 } from './utils';
-import LoggingService from '../services/LoggingService';
 
 function processAccountData(data) {
   const result = camelCaseObject(data);
