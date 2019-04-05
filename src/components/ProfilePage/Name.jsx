@@ -47,7 +47,7 @@ class Name extends React.Component {
 
   render() {
     const {
-      formId, name, visibilityName, editMode, saveState, error, intl,
+      formId, name, visibilityName, editMode, saveState, intl,
     } = this.props;
 
     return (
@@ -59,9 +59,7 @@ class Name extends React.Component {
             <div role="dialog" aria-labelledby={`${formId}-label`}>
               <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
-                  <label htmlFor="name" id={`${formId}-label`}>
-                    {intl.formatMessage(messages['profile.name.full.name'])}
-                  </label>
+                  <EditableItemHeader content={intl.formatMessage(messages['profile.name.full.name'])} />
                   {/*
                   This isn't a mistake - the name field should not be editable.  But if it were,
                   you'd find the original code got deleted in the commit which added this comment.
@@ -74,7 +72,6 @@ class Name extends React.Component {
                   <small className="form-text text-muted" id={`${formId}-help-text`}>
                     {intl.formatMessage(messages['profile.name.details'])}
                   </small>
-                  <p className="invalid-feedback" id={`${formId}-error-feedback`}>{error}</p>
                 </div>
                 <FormControls
                   visibilityId="visibilityName"
@@ -136,7 +133,6 @@ Name.propTypes = {
   visibilityName: PropTypes.oneOf(['private', 'all_users']),
   editMode: PropTypes.oneOf(['editing', 'editable', 'empty', 'static']),
   saveState: PropTypes.string,
-  error: PropTypes.string,
 
   // Actions
   changeHandler: PropTypes.func.isRequired,
@@ -153,7 +149,6 @@ Name.defaultProps = {
   saveState: null,
   name: null,
   visibilityName: 'private',
-  error: null,
 };
 
 export default connect(

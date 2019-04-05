@@ -355,9 +355,18 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
             className="btn btn-primary"
             href="undefined/records"
             onClick={[Function]}
-            target="blank"
+            target="_blank"
           >
             View My Records
+            <span>
+               
+              <span
+                aria-hidden={false}
+                aria-label="Opens in a new window"
+                className="fa fa-external-link"
+                title="Opens in a new window"
+              />
+            </span>
           </a>
         </div>
       </div>
@@ -397,9 +406,18 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
             className="btn btn-primary"
             href="undefined/records"
             onClick={[Function]}
-            target="blank"
+            target="_blank"
           >
             View My Records
+            <span>
+               
+              <span
+                aria-hidden={false}
+                aria-label="Opens in a new window"
+                className="fa fa-external-link"
+                title="Opens in a new window"
+              />
+            </span>
           </a>
         </div>
         <div
@@ -1212,9 +1230,18 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                         className="btn btn-outline-primary"
                         href="http://www.example.com/"
                         onClick={[Function]}
-                        target="blank"
+                        target="_blank"
                       >
                         View Certificate
+                        <span>
+                           
+                          <span
+                            aria-hidden={false}
+                            aria-label="Opens in a new window"
+                            className="fa fa-external-link"
+                            title="Opens in a new window"
+                          />
+                        </span>
                       </a>
                     </div>
                   </div>
@@ -1366,9 +1393,18 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
             className="btn btn-primary"
             href="undefined/records"
             onClick={[Function]}
-            target="blank"
+            target="_blank"
           >
             View My Records
+            <span>
+               
+              <span
+                aria-hidden={false}
+                aria-label="Opens in a new window"
+                className="fa fa-external-link"
+                title="Opens in a new window"
+              />
+            </span>
           </a>
         </div>
       </div>
@@ -1408,9 +1444,18 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
             className="btn btn-primary"
             href="undefined/records"
             onClick={[Function]}
-            target="blank"
+            target="_blank"
           >
             View My Records
+            <span>
+               
+              <span
+                aria-hidden={false}
+                aria-label="Opens in a new window"
+                className="fa fa-external-link"
+                title="Opens in a new window"
+              />
+            </span>
           </a>
         </div>
         <div
@@ -2021,7 +2066,6 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     id="bio"
                     name="bio"
                     onChange={[Function]}
-                    type="textarea"
                     value="This is my bio"
                   />
                   <p
@@ -2277,9 +2321,18 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                         className="btn btn-outline-primary"
                         href="http://www.example.com/"
                         onClick={[Function]}
-                        target="blank"
+                        target="_blank"
                       >
                         View Certificate
+                        <span>
+                           
+                          <span
+                            aria-hidden={false}
+                            aria-label="Opens in a new window"
+                            className="fa fa-external-link"
+                            title="Opens in a new window"
+                          />
+                        </span>
                       </a>
                     </div>
                   </div>

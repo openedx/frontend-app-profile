@@ -64,7 +64,7 @@ class Education extends React.Component {
             <div role="dialog" aria-labelledby={`${formId}-label`}>
               <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
-                  <label htmlFor="education" id={`${formId}-label`}>
+                  <label htmlFor="education">
                     {intl.formatMessage(messages['profile.education.education'])}
                   </label>
                   <select

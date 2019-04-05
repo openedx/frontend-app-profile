@@ -56,39 +56,12 @@ class Bio extends React.Component {
           editing: (
             <div role="dialog" aria-labelledby={`${formId}-label`}>
               <form onSubmit={this.handleSubmit}>
-                {/*
-                  If we wrote our own form group component, maybe
-                  it would look like this. Encapsulates everything
-                  inside div.form-group
-
-                  <FormGroup
-                    // group info, or shared among child nodes
-                    id={formId}
-                    inline
-                    invalid={error != null}
-
-                    // input info
-                    value={bio}
-                    inputType="textarea"
-                    inputName={formId}
-
-                    // Meta/help/errors
-                    label={intl.formatMessage(messages['profile.bio.about.me'])}
-                    helpText=""
-                    errorMessage={error}
-                    validMessage={successMessage}
-
-                    // event handlers for input
-                    onInputChange={this.handleChange}
-                  />
-                */}
                 <div className="form-group">
-                  <label htmlFor={formId} id={`${formId}-label`}>
+                  <label htmlFor={formId}>
                     {intl.formatMessage(messages['profile.bio.about.me'])}
                   </label>
                   <textarea
                     className={classNames('form-control', { 'is-invalid': Boolean(error) })}
-                    type="textarea"
                     id={formId}
                     name={formId}
                     value={bio}

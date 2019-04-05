@@ -63,7 +63,7 @@ class Country extends React.Component {
             <div role="dialog" aria-labelledby={`${formId}-label`}>
               <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
-                  <label htmlFor="country" id={`${formId}-label`}>
+                  <label htmlFor="country">
                     {intl.formatMessage(messages['profile.country.label'])}
                   </label>
                   <select

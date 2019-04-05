@@ -11,10 +11,6 @@ class ProfileAvatar extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      dropdownOpen: false,
-    };
-
     this.fileInput = React.createRef();
     this.form = React.createRef();
 
@@ -22,7 +18,6 @@ class ProfileAvatar extends React.Component {
     this.onClickDelete = this.onClickDelete.bind(this);
     this.onChangeInput = this.onChangeInput.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.toggleDropdown = this.toggleDropdown.bind(this);
   }
 
   onClickUpload() {
@@ -41,12 +36,6 @@ class ProfileAvatar extends React.Component {
     if (e) e.preventDefault();
     this.props.onSave(new FormData(this.form.current));
     this.form.current.reset();
-  }
-
-  toggleDropdown() {
-    this.setState({
-      dropdownOpen: !this.state.dropdownOpen,
-    });
   }
 
   renderPending() {

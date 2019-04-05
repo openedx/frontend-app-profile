@@ -79,7 +79,7 @@ class PreferredLanguage extends React.Component {
             <div role="dialog" aria-labelledby={`${formId}-label`}>
               <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
-                  <label htmlFor={formId} id={`${formId}-label`}>
+                  <label htmlFor={formId}>
                     {intl.formatMessage(messages['profile.preferredlanguage.label'])}
                   </label>
                   <select
