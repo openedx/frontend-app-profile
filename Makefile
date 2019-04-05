@@ -12,7 +12,7 @@ i18n.concat:
     # Gathering JSON messages into one file...
 	./src/i18n/i18n-concat.js ./temp/src ./src/i18n/transifex_input.json
 
-detect_changed_source_translations: | i18n.extract i18n.concat
+detect_changed_source_translations:
 	git diff --exit-code ./src/i18n/transifex_input.json
 
 tx_url1 = https://www.transifex.com/api/2/project/edx-platform/resource/frontend-app-profile/translation/en/strings/
