@@ -2056,7 +2056,6 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                 >
                   <label
                     htmlFor="bio"
-                    id="bio-label"
                   >
                     About Me
                   </label>
