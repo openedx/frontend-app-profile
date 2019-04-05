@@ -1,5 +1,6 @@
 import { push } from 'connected-react-router';
 import { all, call, delay, put, select, takeEvery } from 'redux-saga/effects';
+import LoggingService from '@edx/frontend-logging';
 
 // Actions
 import {
@@ -31,7 +32,6 @@ import { handleSaveProfileSelector } from '../selectors/ProfilePageSelector';
 
 // Services
 import * as ProfileApiService from '../services/ProfileApiService';
-import LoggingService from '../services/LoggingService';
 
 // Utils
 import { keepKeys } from '../services/utils';

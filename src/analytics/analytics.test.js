@@ -1,9 +1,10 @@
+import LoggingService from '@edx/frontend-logging';
+
 import { logEvent } from './analytics';
 import { configuration } from '../config/environment';
-import LoggingService from '../services/LoggingService';
 import apiClient from '../config/apiClient';
 
-jest.mock('../services/LoggingService');
+jest.mock('@edx/frontend-logging');
 jest.mock('../config/apiClient');
 
 const eventType = 'test.event';
