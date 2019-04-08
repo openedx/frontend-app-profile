@@ -355,6 +355,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
             className="btn btn-primary"
             href="undefined/records"
             onClick={[Function]}
+            rel="noopener"
             target="_blank"
           >
             View My Records
@@ -406,6 +407,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
             className="btn btn-primary"
             href="undefined/records"
             onClick={[Function]}
+            rel="noopener"
             target="_blank"
           >
             View My Records
@@ -450,13 +452,16 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               >
                 Full Name
                 <button
-                  className="btn btn-sm btn-link float-right px-0"
+                  className="btn btn btn-sm btn-link float-right px-0"
+                  onBlur={[Function]}
                   onClick={[Function]}
+                  onKeyDown={[Function]}
                   style={
                     Object {
                       "marginTop": "-.35rem",
                     }
                   }
+                  type="button"
                 >
                   <svg
                     aria-hidden="true"
@@ -549,13 +554,16 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               >
                 Location
                 <button
-                  className="btn btn-sm btn-link float-right px-0"
+                  className="btn btn btn-sm btn-link float-right px-0"
+                  onBlur={[Function]}
                   onClick={[Function]}
+                  onKeyDown={[Function]}
                   style={
                     Object {
                       "marginTop": "-.35rem",
                     }
                   }
+                  type="button"
                 >
                   <svg
                     aria-hidden="true"
@@ -643,13 +651,16 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               >
                 Primary Language Spoken
                 <button
-                  className="btn btn-sm btn-link float-right px-0"
+                  className="btn btn btn-sm btn-link float-right px-0"
+                  onBlur={[Function]}
                   onClick={[Function]}
+                  onKeyDown={[Function]}
                   style={
                     Object {
                       "marginTop": "-.35rem",
                     }
                   }
+                  type="button"
                 >
                   <svg
                     aria-hidden="true"
@@ -737,13 +748,16 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               >
                 Education
                 <button
-                  className="btn btn-sm btn-link float-right px-0"
+                  className="btn btn btn-sm btn-link float-right px-0"
+                  onBlur={[Function]}
                   onClick={[Function]}
+                  onKeyDown={[Function]}
                   style={
                     Object {
                       "marginTop": "-.35rem",
                     }
                   }
+                  type="button"
                 >
                   <svg
                     aria-hidden="true"
@@ -831,13 +845,16 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               >
                 Social Links
                 <button
-                  className="btn btn-sm btn-link float-right px-0"
+                  className="btn btn btn-sm btn-link float-right px-0"
+                  onBlur={[Function]}
                   onClick={[Function]}
+                  onKeyDown={[Function]}
                   style={
                     Object {
                       "marginTop": "-.35rem",
                     }
                   }
+                  type="button"
                 >
                   <svg
                     aria-hidden="true"
@@ -1015,13 +1032,16 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               >
                 About Me
                 <button
-                  className="btn btn-sm btn-link float-right px-0"
+                  className="btn btn btn-sm btn-link float-right px-0"
+                  onBlur={[Function]}
                   onClick={[Function]}
+                  onKeyDown={[Function]}
                   style={
                     Object {
                       "marginTop": "-.35rem",
                     }
                   }
+                  type="button"
                 >
                   <svg
                     aria-hidden="true"
@@ -1109,13 +1129,16 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               >
                 My Certificates
                 <button
-                  className="btn btn-sm btn-link float-right px-0"
+                  className="btn btn btn-sm btn-link float-right px-0"
+                  onBlur={[Function]}
                   onClick={[Function]}
+                  onKeyDown={[Function]}
                   style={
                     Object {
                       "marginTop": "-.35rem",
                     }
                   }
+                  type="button"
                 >
                   <svg
                     aria-hidden="true"
@@ -1230,6 +1253,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                         className="btn btn-outline-primary"
                         href="http://www.example.com/"
                         onClick={[Function]}
+                        rel="noopener"
                         target="_blank"
                       >
                         View Certificate
@@ -1393,6 +1417,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
             className="btn btn-primary"
             href="undefined/records"
             onClick={[Function]}
+            rel="noopener"
             target="_blank"
           >
             View My Records
@@ -1444,6 +1469,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
             className="btn btn-primary"
             href="undefined/records"
             onClick={[Function]}
+            rel="noopener"
             target="_blank"
           >
             View My Records
@@ -1488,13 +1514,16 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               >
                 Full Name
                 <button
-                  className="btn btn-sm btn-link float-right px-0"
+                  className="btn btn btn-sm btn-link float-right px-0"
+                  onBlur={[Function]}
                   onClick={[Function]}
+                  onKeyDown={[Function]}
                   style={
                     Object {
                       "marginTop": "-.35rem",
                     }
                   }
+                  type="button"
                 >
                   <svg
                     aria-hidden="true"
@@ -1587,13 +1616,16 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               >
                 Location
                 <button
-                  className="btn btn-sm btn-link float-right px-0"
+                  className="btn btn btn-sm btn-link float-right px-0"
+                  onBlur={[Function]}
                   onClick={[Function]}
+                  onKeyDown={[Function]}
                   style={
                     Object {
                       "marginTop": "-.35rem",
                     }
                   }
+                  type="button"
                 >
                   <svg
                     aria-hidden="true"
@@ -1681,13 +1713,16 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               >
                 Primary Language Spoken
                 <button
-                  className="btn btn-sm btn-link float-right px-0"
+                  className="btn btn btn-sm btn-link float-right px-0"
+                  onBlur={[Function]}
                   onClick={[Function]}
+                  onKeyDown={[Function]}
                   style={
                     Object {
                       "marginTop": "-.35rem",
                     }
                   }
+                  type="button"
                 >
                   <svg
                     aria-hidden="true"
@@ -1775,13 +1810,16 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               >
                 Education
                 <button
-                  className="btn btn-sm btn-link float-right px-0"
+                  className="btn btn btn-sm btn-link float-right px-0"
+                  onBlur={[Function]}
                   onClick={[Function]}
+                  onKeyDown={[Function]}
                   style={
                     Object {
                       "marginTop": "-.35rem",
                     }
                   }
+                  type="button"
                 >
                   <svg
                     aria-hidden="true"
@@ -1869,13 +1907,16 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               >
                 Social Links
                 <button
-                  className="btn btn-sm btn-link float-right px-0"
+                  className="btn btn btn-sm btn-link float-right px-0"
+                  onBlur={[Function]}
                   onClick={[Function]}
+                  onKeyDown={[Function]}
                   style={
                     Object {
                       "marginTop": "-.35rem",
                     }
                   }
+                  type="button"
                 >
                   <svg
                     aria-hidden="true"
@@ -2060,16 +2101,12 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     About Me
                   </label>
                   <textarea
-                    aria-describedby="bio-error-feedback"
+                    aria-describedby=""
                     className="form-control"
                     id="bio"
                     name="bio"
                     onChange={[Function]}
                     value="This is my bio"
-                  />
-                  <p
-                    className="invalid-feedback"
-                    id="bio-error-feedback"
                   />
                 </div>
                 <div
@@ -2136,24 +2173,27 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                 >
                   <button
                     aria-live="assertive"
-                    className="btn btn-async-action d-inline-flex align-items-center justify-content-center btn-state-pending btn-primary disabled"
+                    className="btn pgn__stateful-btn pgn__stateful-btn-state-pending btn-primary disabled"
                     disabled={true}
                     onBlur={[Function]}
                     onClick={[Function]}
                     onKeyDown={[Function]}
-                    style={null}
                     type="submit"
                   >
                     <span
-                      aria-hidden={true}
-                      className="icon-state d-inline-flex justify-content-start"
+                      className="d-flex align-items-center justify-content-center"
                     >
-                      <div
-                        className="spinner-border-sm spinner-border text-white"
-                        role="status"
-                      />
+                      <span
+                        className="pgn__stateful-btn-icon"
+                      >
+                        <span
+                          aria-hidden={true}
+                          className="icon fa fa-spinner fa-spin"
+                          id="Icon1"
+                        />
+                      </span>
+                      Saving
                     </span>
-                    Saving
                   </button>
                   <button
                     className="btn btn-link"
@@ -2199,13 +2239,16 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               >
                 My Certificates
                 <button
-                  className="btn btn-sm btn-link float-right px-0"
+                  className="btn btn btn-sm btn-link float-right px-0"
+                  onBlur={[Function]}
                   onClick={[Function]}
+                  onKeyDown={[Function]}
                   style={
                     Object {
                       "marginTop": "-.35rem",
                     }
                   }
+                  type="button"
                 >
                   <svg
                     aria-hidden="true"
@@ -2320,6 +2363,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                         className="btn btn-outline-primary"
                         href="http://www.example.com/"
                         onClick={[Function]}
+                        rel="noopener"
                         target="_blank"
                       >
                         View Certificate
