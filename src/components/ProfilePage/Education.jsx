@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import get from 'lodash.get';
-import classNames from 'classnames';
+import { ValidationFormGroup } from '@edx/paragon';
 
 import messages from './Education.messages';
 
@@ -63,17 +63,20 @@ class Education extends React.Component {
           editing: (
             <div role="dialog" aria-labelledby={`${formId}-label`}>
               <form onSubmit={this.handleSubmit}>
-                <div className="form-group">
-                  <label htmlFor="education">
+                <ValidationFormGroup
+                  for={formId}
+                  invalid={error !== null}
+                  invalidMessage={error}
+                >
+                  <label htmlFor={formId}>
                     {intl.formatMessage(messages['profile.education.education'])}
                   </label>
                   <select
-                    className={classNames('form-control', 'w-100', { 'is-invalid': Boolean(error) })}
+                    className="form-control"
                     id={formId}
                     name={formId}
                     value={education}
                     onChange={this.handleChange}
-                    aria-describedby={`${formId}-error-feedback`}
                   >
                     {EDUCATION_LEVELS.map(level => (
                       <option key={level} value={level}>
@@ -85,8 +88,7 @@ class Education extends React.Component {
                       </option>
                     ))}
                   </select>
-                  <p className="invalid-feedback" id={`${formId}-error-feedback`}>{error}</p>
-                </div>
+                </ValidationFormGroup>
                 <FormControls
                   visibilityId="visibilityEducation"
                   saveState={saveState}

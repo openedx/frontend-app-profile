@@ -53,17 +53,15 @@ class ProfileAvatar extends React.Component {
     if (this.props.isDefault) {
       return (
         <Button
-          className={'text-white btn-block btn-sm'.split(' ')}
-          buttonType="link"
+          className="text-white btn-block btn-sm btn-link"
           onClick={this.onClickUpload}
-          label={
-            <FormattedMessage
-              id="profile.profileavatar.upload-button"
-              defaultMessage="Upload Photo"
-              description="Upload photo button"
-            />
-          }
-        />
+        >
+          <FormattedMessage
+            id="profile.profileavatar.upload-button"
+            defaultMessage="Upload Photo"
+            description="Upload photo button"
+          />
+        </Button>
       );
     }
 

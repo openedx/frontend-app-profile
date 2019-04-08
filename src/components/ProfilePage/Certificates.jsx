@@ -101,12 +101,9 @@ class Certificates extends React.Component {
               />
             </p>
             <div>
-              <Hyperlink
-                className="btn btn-outline-primary"
-                destination={downloadUrl}
-                target="_blank"
-                content={intl.formatMessage(messages['profile.certificates.view.certificate'])}
-              />
+              <Hyperlink href={downloadUrl} className="btn btn-outline-primary" target="_blank">
+                {intl.formatMessage(messages['profile.certificates.view.certificate'])}
+              </Hyperlink>
             </div>
           </div>
         </div>

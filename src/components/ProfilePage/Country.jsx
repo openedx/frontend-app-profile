@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { injectIntl, intlShape } from 'react-intl';
-import classNames from 'classnames';
+import { ValidationFormGroup } from '@edx/paragon';
 
 import messages from './Country.messages';
 
@@ -67,25 +67,27 @@ class Country extends React.Component {
           editing: (
             <div role="dialog" aria-labelledby={`${formId}-label`}>
               <form onSubmit={this.handleSubmit}>
-                <div className="form-group">
-                  <label htmlFor="country">
+                <ValidationFormGroup
+                  for={formId}
+                  invalid={error !== null}
+                  invalidMessage={error}
+                >
+                  <label htmlFor={formId}>
                     {intl.formatMessage(messages['profile.country.label'])}
                   </label>
                   <select
-                    className={classNames('form-control', 'w-100', { 'is-invalid': Boolean(error) })}
+                    className="form-control"
                     type="select"
                     id={formId}
                     name={formId}
                     value={country}
                     onChange={this.handleChange}
-                    aria-describedby={`${formId}-error-feedback`}
                   >
                     {sortedCountries.map(({ code, name }) => (
                       <option key={code} value={code}>{name}</option>
                     ))}
                   </select>
-                  <p className="invalid-feedback" id={`${formId}-error-feedback`}>{error}</p>
-                </div>
+                </ValidationFormGroup>
                 <FormControls
                   visibilityId="visibilityCountry"
                   saveState={saveState}
