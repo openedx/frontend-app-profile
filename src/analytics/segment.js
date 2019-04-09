@@ -1,9 +1,10 @@
 // The code in this file is from Segment's website, with the following update:
-// - Takes the segment key as a parameter (
+// - Pulls the segment key from configuration.
 // https://segment.com/docs/sources/website/analytics.js/quickstart/
 import { configuration } from '../config/environment';
 
-function initializeSegment(segmentKey) {
+(function(){
+
   // Create a queue, but don't obliterate an existing one!
   var analytics = window.analytics = window.analytics || [];
 
@@ -82,7 +83,6 @@ function initializeSegment(segmentKey) {
 
   // Load Analytics.js with your key, which will automatically
   // load the tools you've enabled for your account. Boosh!
-  analytics.load(segmentKey);
-}
+  analytics.load(configuration.SEGMENT_KEY);
 
-export { initializeSegment };
+})();
