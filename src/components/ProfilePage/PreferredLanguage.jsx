@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { injectIntl, intlShape } from 'react-intl';
-import classNames from 'classnames';
+import { ValidationFormGroup } from '@edx/paragon';
 
 import messages from './PreferredLanguage.messages';
 
@@ -77,24 +77,26 @@ class PreferredLanguage extends React.Component {
           editing: (
             <div role="dialog" aria-labelledby={`${formId}-label`}>
               <form onSubmit={this.handleSubmit}>
-                <div className="form-group">
+                <ValidationFormGroup
+                  for={formId}
+                  invalid={error !== null}
+                  invalidMessage={error}
+                >
                   <label htmlFor={formId}>
                     {intl.formatMessage(messages['profile.preferredlanguage.label'])}
                   </label>
                   <select
                     id={formId}
                     name={formId}
-                    className={classNames('form-control', 'w-100', { 'is-invalid': Boolean(error) })}
+                    className="form-control"
                     value={value}
                     onChange={this.handleChange}
-                    aria-describedby={`${formId}-error-feedback`}
                   >
                     {sortedLanguages.map(({ code, name }) => (
                       <option key={code} value={code}>{name}</option>
                     ))}
                   </select>
-                  <p className="invalid-feedback" id={`${formId}-error-feedback`}>{error}</p>
-                </div>
+                </ValidationFormGroup>
                 <FormControls
                   visibilityId="visibilityLanguageProficiencies"
                   saveState={saveState}

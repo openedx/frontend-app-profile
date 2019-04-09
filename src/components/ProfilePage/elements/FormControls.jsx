@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from '@edx/paragon';
+import { Button, StatefulButton } from '@edx/paragon';
 import { injectIntl, intlShape } from 'react-intl';
 
 import messages from './FormControls.messages';
 
-import AsyncActionButton from './AsyncActionButton';
 import { VisibilitySelect } from './Visibility';
 
 function FormControls({
@@ -30,20 +29,19 @@ function FormControls({
         />
       </div>
       <div className="form-group">
-        <AsyncActionButton
+        <StatefulButton
           type="submit"
-          variant={buttonState}
+          className="btn-primary"
+          state={buttonState}
           labels={{
             default: intl.formatMessage(messages['profile.formcontrols.button.save']),
             pending: intl.formatMessage(messages['profile.formcontrols.button.saving']),
             complete: intl.formatMessage(messages['profile.formcontrols.button.saved']),
           }}
         />
-        <Button
-          buttonType="link"
-          onClick={cancelHandler}
-          label={intl.formatMessage(messages['profile.formcontrols.button.cancel'])}
-        />
+        <Button className="btn-link" onClick={cancelHandler}>
+          {intl.formatMessage(messages['profile.formcontrols.button.cancel'])}
+        </Button>
       </div>
     </React.Fragment>
   );

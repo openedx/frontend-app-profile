@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { injectIntl, intlShape } from 'react-intl';
+import { Button } from '@edx/paragon';
 
 import messages from './EditButton.messages';
 
@@ -11,13 +12,14 @@ function EditButton({
   onClick, className, style, intl,
 }) {
   return (
-    <button
-      className={classNames('btn btn-sm btn-link', className)}
+    <Button
+      className={classNames('btn-sm btn-link', className)}
       onClick={onClick}
       style={style}
     >
-      <FontAwesomeIcon icon={faPencilAlt} /> {intl.formatMessage(messages['profile.editbutton.edit'])}
-    </button>
+      <FontAwesomeIcon className="mr-1" icon={faPencilAlt} />
+      {intl.formatMessage(messages['profile.editbutton.edit'])}
+    </Button>
   );
 }
 
