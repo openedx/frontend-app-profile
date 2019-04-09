@@ -132,7 +132,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
           className="d-md-none mb-4"
         />
         <div
-          className="pgn-transition-replace-group position-relative mb-4"
+          className="pgn-transition-replace-group position-relative mb-5"
           style={
             Object {
               "height": null,
@@ -140,7 +140,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
           }
         />
         <div
-          className="pgn-transition-replace-group position-relative mb-4"
+          className="pgn-transition-replace-group position-relative mb-5"
           style={
             Object {
               "height": null,
@@ -148,7 +148,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
           }
         />
         <div
-          className="pgn-transition-replace-group position-relative mb-4"
+          className="pgn-transition-replace-group position-relative mb-5"
           style={
             Object {
               "height": null,
@@ -156,7 +156,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
           }
         />
         <div
-          className="pgn-transition-replace-group position-relative mb-4"
+          className="pgn-transition-replace-group position-relative mb-5"
           style={
             Object {
               "height": null,
@@ -164,7 +164,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
           }
         />
         <div
-          className="pgn-transition-replace-group position-relative mb-4"
+          className="pgn-transition-replace-group position-relative mb-5"
           style={
             Object {
               "height": null,
@@ -176,7 +176,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
         className="pt-md-3 col-md-8 col-lg-7 offset-lg-1"
       >
         <div
-          className="pgn-transition-replace-group position-relative mb-4"
+          className="pgn-transition-replace-group position-relative mb-5"
           style={
             Object {
               "height": null,
@@ -402,7 +402,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
           </a>
         </div>
         <div
-          className="pgn-transition-replace-group position-relative mb-4"
+          className="pgn-transition-replace-group position-relative mb-5"
           style={
             Object {
               "height": null,
@@ -420,7 +420,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               className="editable-item-header mb-2"
             >
               <h2
-                className="h6 font-weight-normal mb-0"
+                className="edit-section-header"
                 id={null}
               >
                 Full Name
@@ -497,7 +497,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
           </div>
         </div>
         <div
-          className="pgn-transition-replace-group position-relative mb-4"
+          className="pgn-transition-replace-group position-relative mb-5"
           style={
             Object {
               "height": null,
@@ -515,7 +515,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               className="editable-item-header mb-2"
             >
               <h2
-                className="h6 font-weight-normal mb-0"
+                className="edit-section-header"
                 id={null}
               >
                 Location
@@ -587,7 +587,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
           </div>
         </div>
         <div
-          className="pgn-transition-replace-group position-relative mb-4"
+          className="pgn-transition-replace-group position-relative mb-5"
           style={
             Object {
               "height": null,
@@ -605,7 +605,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               className="editable-item-header mb-2"
             >
               <h2
-                className="h6 font-weight-normal mb-0"
+                className="edit-section-header"
                 id={null}
               >
                 Primary Language Spoken
@@ -677,7 +677,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
           </div>
         </div>
         <div
-          className="pgn-transition-replace-group position-relative mb-4"
+          className="pgn-transition-replace-group position-relative mb-5"
           style={
             Object {
               "height": null,
@@ -695,7 +695,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               className="editable-item-header mb-2"
             >
               <h2
-                className="h6 font-weight-normal mb-0"
+                className="edit-section-header"
                 id={null}
               >
                 Education
@@ -767,7 +767,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
           </div>
         </div>
         <div
-          className="pgn-transition-replace-group position-relative mb-4"
+          className="pgn-transition-replace-group position-relative mb-5"
           style={
             Object {
               "height": null,
@@ -785,7 +785,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               className="editable-item-header mb-2"
             >
               <h2
-                className="h6 font-weight-normal mb-0"
+                className="edit-section-header"
                 id={null}
               >
                 Social Links
@@ -910,11 +910,10 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                 className="form-group"
               >
                 <div>
-                  <a
-                    className="pl-0 text-left d-block"
+                  <button
+                    className="pl-0 text-left btn btn-link"
                     onClick={[Function]}
                     onKeyDown={[Function]}
-                    role="button"
                     tabIndex={0}
                   >
                     <svg
@@ -936,7 +935,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     </svg>
                     Add 
                     LinkedIn
-                  </a>
+                  </button>
                 </div>
               </li>
             </ul>
@@ -947,7 +946,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
         className="pt-md-3 col-md-8 col-lg-7 offset-lg-1"
       >
         <div
-          className="pgn-transition-replace-group position-relative mb-4"
+          className="pgn-transition-replace-group position-relative mb-5"
           style={
             Object {
               "height": null,
@@ -965,7 +964,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               className="editable-item-header mb-2"
             >
               <h2
-                className="h6 font-weight-normal mb-0"
+                className="edit-section-header"
                 id={null}
               >
                 About Me
@@ -1055,7 +1054,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               className="editable-item-header mb-2"
             >
               <h2
-                className="h6 font-weight-normal mb-0"
+                className="edit-section-header"
                 id={null}
               >
                 My Certificates
@@ -1415,7 +1414,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
           </a>
         </div>
         <div
-          className="pgn-transition-replace-group position-relative mb-4"
+          className="pgn-transition-replace-group position-relative mb-5"
           style={
             Object {
               "height": null,
@@ -1433,7 +1432,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               className="editable-item-header mb-2"
             >
               <h2
-                className="h6 font-weight-normal mb-0"
+                className="edit-section-header"
                 id={null}
               >
                 Full Name
@@ -1510,7 +1509,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
           </div>
         </div>
         <div
-          className="pgn-transition-replace-group position-relative mb-4"
+          className="pgn-transition-replace-group position-relative mb-5"
           style={
             Object {
               "height": null,
@@ -1528,7 +1527,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               className="editable-item-header mb-2"
             >
               <h2
-                className="h6 font-weight-normal mb-0"
+                className="edit-section-header"
                 id={null}
               >
                 Location
@@ -1600,7 +1599,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
           </div>
         </div>
         <div
-          className="pgn-transition-replace-group position-relative mb-4"
+          className="pgn-transition-replace-group position-relative mb-5"
           style={
             Object {
               "height": null,
@@ -1618,7 +1617,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               className="editable-item-header mb-2"
             >
               <h2
-                className="h6 font-weight-normal mb-0"
+                className="edit-section-header"
                 id={null}
               >
                 Primary Language Spoken
@@ -1690,7 +1689,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
           </div>
         </div>
         <div
-          className="pgn-transition-replace-group position-relative mb-4"
+          className="pgn-transition-replace-group position-relative mb-5"
           style={
             Object {
               "height": null,
@@ -1708,7 +1707,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               className="editable-item-header mb-2"
             >
               <h2
-                className="h6 font-weight-normal mb-0"
+                className="edit-section-header"
                 id={null}
               >
                 Education
@@ -1780,7 +1779,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
           </div>
         </div>
         <div
-          className="pgn-transition-replace-group position-relative mb-4"
+          className="pgn-transition-replace-group position-relative mb-5"
           style={
             Object {
               "height": null,
@@ -1798,7 +1797,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               className="editable-item-header mb-2"
             >
               <h2
-                className="h6 font-weight-normal mb-0"
+                className="edit-section-header"
                 id={null}
               >
                 Social Links
@@ -1923,11 +1922,10 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                 className="form-group"
               >
                 <div>
-                  <a
-                    className="pl-0 text-left d-block"
+                  <button
+                    className="pl-0 text-left btn btn-link"
                     onClick={[Function]}
                     onKeyDown={[Function]}
-                    role="button"
                     tabIndex={0}
                   >
                     <svg
@@ -1949,7 +1947,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     </svg>
                     Add 
                     LinkedIn
-                  </a>
+                  </button>
                 </div>
               </li>
             </ul>
@@ -1960,7 +1958,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
         className="pt-md-3 col-md-8 col-lg-7 offset-lg-1"
       >
         <div
-          className="pgn-transition-replace-group position-relative mb-4"
+          className="pgn-transition-replace-group position-relative mb-5"
           style={
             Object {
               "height": null,
@@ -1985,6 +1983,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                   className="form-group"
                 >
                   <label
+                    className="edit-section-header"
                     htmlFor="bio"
                   >
                     About Me
@@ -1999,100 +1998,104 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                   />
                 </div>
                 <div
-                  className="mb-4 form-group"
+                  className="d-flex flex-row-reverse flex-wrap justify-content-end align-items-center"
                 >
-                  <label
-                    className="mb-1 col-form-label-sm"
-                    htmlFor="visibilityBio"
+                  <div
+                    className="form-group"
                   >
-                    Who can see this:
-                  </label>
-                  <span
-                    className="w-auto"
-                  >
-                    <span
-                      className="d-inline-block ml-1 mr-2"
-                      style={
-                        Object {
-                          "width": "1.5rem",
-                        }
-                      }
+                    <label
+                      className="col-form-label"
+                      htmlFor="visibilityBio"
                     >
-                      <svg
-                        aria-hidden="true"
-                        className="svg-inline--fa fa-eye fa-w-18 "
-                        data-icon="eye"
-                        data-prefix="far"
-                        focusable="false"
-                        role="img"
-                        style={Object {}}
-                        viewBox="0 0 576 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
-                          fill="currentColor"
-                          style={Object {}}
-                        />
-                      </svg>
-                    </span>
-                    <select
-                      className="d-inline-block w-auto form-control"
-                      id="visibilityBio"
-                      name="visibilityBio"
-                      onChange={[Function]}
-                      type="select"
-                      value="all_users"
-                    >
-                      <option
-                        value="private"
-                      >
-                        Just me
-                      </option>
-                      <option
-                        value="all_users"
-                      >
-                        Everyone on edX
-                      </option>
-                    </select>
-                  </span>
-                </div>
-                <div
-                  className="form-group"
-                >
-                  <button
-                    aria-live="assertive"
-                    className="btn pgn__stateful-btn pgn__stateful-btn-state-pending btn-primary disabled"
-                    disabled={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onKeyDown={[Function]}
-                    type="submit"
-                  >
+                      Who can see this:
+                    </label>
                     <span
-                      className="d-flex align-items-center justify-content-center"
+                      className="w-auto"
                     >
                       <span
-                        className="pgn__stateful-btn-icon"
+                        className="d-inline-block ml-1 mr-2"
+                        style={
+                          Object {
+                            "width": "1.5rem",
+                          }
+                        }
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="svg-inline--fa fa-eye fa-w-18 "
+                          data-icon="eye"
+                          data-prefix="far"
+                          focusable="false"
+                          role="img"
+                          style={Object {}}
+                          viewBox="0 0 576 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
+                            fill="currentColor"
+                            style={Object {}}
+                          />
+                        </svg>
+                      </span>
+                      <select
+                        className="d-inline-block w-auto form-control"
+                        id="visibilityBio"
+                        name="visibilityBio"
+                        onChange={[Function]}
+                        type="select"
+                        value="all_users"
+                      >
+                        <option
+                          value="private"
+                        >
+                          Just me
+                        </option>
+                        <option
+                          value="all_users"
+                        >
+                          Everyone on edX
+                        </option>
+                      </select>
+                    </span>
+                  </div>
+                  <div
+                    className="form-group flex-shrink-0 mr-auto"
+                  >
+                    <button
+                      aria-live="assertive"
+                      className="btn pgn__stateful-btn pgn__stateful-btn-state-pending btn-primary disabled"
+                      disabled={true}
+                      onBlur={[Function]}
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                      type="submit"
+                    >
+                      <span
+                        className="d-flex align-items-center justify-content-center"
                       >
                         <span
-                          aria-hidden={true}
-                          className="icon fa fa-spinner fa-spin"
-                          id="Icon1"
-                        />
+                          className="pgn__stateful-btn-icon"
+                        >
+                          <span
+                            aria-hidden={true}
+                            className="icon fa fa-spinner fa-spin"
+                            id="Icon1"
+                          />
+                        </span>
+                        Saving
                       </span>
-                      Saving
-                    </span>
-                  </button>
-                  <button
-                    className="btn btn-link"
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onKeyDown={[Function]}
-                    type="button"
-                  >
-                    Cancel
-                  </button>
+                    </button>
+                    <button
+                      className="btn btn-link"
+                      onBlur={[Function]}
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                      type="button"
+                    >
+                      Cancel
+                    </button>
+                  </div>
                 </div>
               </form>
             </div>
@@ -2117,7 +2120,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               className="editable-item-header mb-2"
             >
               <h2
-                className="h6 font-weight-normal mb-0"
+                className="edit-section-header"
                 id={null}
               >
                 My Certificates
