@@ -425,7 +425,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               >
                 Full Name
                 <button
-                  className="btn btn btn-sm btn-link float-right px-0"
+                  className="btn btn-sm btn-link float-right px-0"
                   onBlur={[Function]}
                   onClick={[Function]}
                   onKeyDown={[Function]}
@@ -453,7 +453,6 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                       style={Object {}}
                     />
                   </svg>
-                   
                   Edit
                 </button>
               </h2>
@@ -521,7 +520,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               >
                 Location
                 <button
-                  className="btn btn btn-sm btn-link float-right px-0"
+                  className="btn btn-sm btn-link float-right px-0"
                   onBlur={[Function]}
                   onClick={[Function]}
                   onKeyDown={[Function]}
@@ -549,7 +548,6 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                       style={Object {}}
                     />
                   </svg>
-                   
                   Edit
                 </button>
               </h2>
@@ -612,7 +610,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               >
                 Primary Language Spoken
                 <button
-                  className="btn btn btn-sm btn-link float-right px-0"
+                  className="btn btn-sm btn-link float-right px-0"
                   onBlur={[Function]}
                   onClick={[Function]}
                   onKeyDown={[Function]}
@@ -640,7 +638,6 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                       style={Object {}}
                     />
                   </svg>
-                   
                   Edit
                 </button>
               </h2>
@@ -703,7 +700,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               >
                 Education
                 <button
-                  className="btn btn btn-sm btn-link float-right px-0"
+                  className="btn btn-sm btn-link float-right px-0"
                   onBlur={[Function]}
                   onClick={[Function]}
                   onKeyDown={[Function]}
@@ -731,7 +728,6 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                       style={Object {}}
                     />
                   </svg>
-                   
                   Edit
                 </button>
               </h2>
@@ -794,7 +790,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               >
                 Social Links
                 <button
-                  className="btn btn btn-sm btn-link float-right px-0"
+                  className="btn btn-sm btn-link float-right px-0"
                   onBlur={[Function]}
                   onClick={[Function]}
                   onKeyDown={[Function]}
@@ -822,7 +818,6 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                       style={Object {}}
                     />
                   </svg>
-                   
                   Edit
                 </button>
               </h2>
@@ -975,7 +970,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               >
                 About Me
                 <button
-                  className="btn btn btn-sm btn-link float-right px-0"
+                  className="btn btn-sm btn-link float-right px-0"
                   onBlur={[Function]}
                   onClick={[Function]}
                   onKeyDown={[Function]}
@@ -1003,7 +998,6 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                       style={Object {}}
                     />
                   </svg>
-                   
                   Edit
                 </button>
               </h2>
@@ -1066,7 +1060,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               >
                 My Certificates
                 <button
-                  className="btn btn btn-sm btn-link float-right px-0"
+                  className="btn btn-sm btn-link float-right px-0"
                   onBlur={[Function]}
                   onClick={[Function]}
                   onKeyDown={[Function]}
@@ -1094,7 +1088,6 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                       style={Object {}}
                     />
                   </svg>
-                   
                   Edit
                 </button>
               </h2>
@@ -1445,7 +1438,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               >
                 Full Name
                 <button
-                  className="btn btn btn-sm btn-link float-right px-0"
+                  className="btn btn-sm btn-link float-right px-0"
                   onBlur={[Function]}
                   onClick={[Function]}
                   onKeyDown={[Function]}
@@ -1473,7 +1466,6 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                       style={Object {}}
                     />
                   </svg>
-                   
                   Edit
                 </button>
               </h2>
@@ -1541,7 +1533,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               >
                 Location
                 <button
-                  className="btn btn btn-sm btn-link float-right px-0"
+                  className="btn btn-sm btn-link float-right px-0"
                   onBlur={[Function]}
                   onClick={[Function]}
                   onKeyDown={[Function]}
@@ -1569,7 +1561,6 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                       style={Object {}}
                     />
                   </svg>
-                   
                   Edit
                 </button>
               </h2>
@@ -1632,7 +1623,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               >
                 Primary Language Spoken
                 <button
-                  className="btn btn btn-sm btn-link float-right px-0"
+                  className="btn btn-sm btn-link float-right px-0"
                   onBlur={[Function]}
                   onClick={[Function]}
                   onKeyDown={[Function]}
@@ -1660,7 +1651,6 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                       style={Object {}}
                     />
                   </svg>
-                   
                   Edit
                 </button>
               </h2>
@@ -1723,7 +1713,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               >
                 Education
                 <button
-                  className="btn btn btn-sm btn-link float-right px-0"
+                  className="btn btn-sm btn-link float-right px-0"
                   onBlur={[Function]}
                   onClick={[Function]}
                   onKeyDown={[Function]}
@@ -1751,7 +1741,6 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                       style={Object {}}
                     />
                   </svg>
-                   
                   Edit
                 </button>
               </h2>
@@ -1814,7 +1803,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               >
                 Social Links
                 <button
-                  className="btn btn btn-sm btn-link float-right px-0"
+                  className="btn btn-sm btn-link float-right px-0"
                   onBlur={[Function]}
                   onClick={[Function]}
                   onKeyDown={[Function]}
@@ -1842,7 +1831,6 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                       style={Object {}}
                     />
                   </svg>
-                   
                   Edit
                 </button>
               </h2>
@@ -2134,7 +2122,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               >
                 My Certificates
                 <button
-                  className="btn btn btn-sm btn-link float-right px-0"
+                  className="btn btn-sm btn-link float-right px-0"
                   onBlur={[Function]}
                   onClick={[Function]}
                   onKeyDown={[Function]}
@@ -2162,7 +2150,6 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                       style={Object {}}
                     />
                   </svg>
-                   
                   Edit
                 </button>
               </h2>

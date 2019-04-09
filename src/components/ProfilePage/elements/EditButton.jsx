@@ -13,11 +13,12 @@ function EditButton({
 }) {
   return (
     <Button
-      className={classNames('btn btn-sm btn-link', className)}
+      className={classNames('btn-sm btn-link', className)}
       onClick={onClick}
       style={style}
     >
-      <FontAwesomeIcon icon={faPencilAlt} /> {intl.formatMessage(messages['profile.editbutton.edit'])}
+      <FontAwesomeIcon icon={faPencilAlt} />
+      {intl.formatMessage(messages['profile.editbutton.edit'])}
     </Button>
   );
 }
