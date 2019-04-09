@@ -438,7 +438,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                 >
                   <svg
                     aria-hidden="true"
-                    className="svg-inline--fa fa-pencil-alt fa-w-16 "
+                    className="svg-inline--fa fa-pencil-alt fa-w-16 mr-1"
                     data-icon="pencil-alt"
                     data-prefix="fas"
                     focusable="false"
@@ -533,7 +533,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                 >
                   <svg
                     aria-hidden="true"
-                    className="svg-inline--fa fa-pencil-alt fa-w-16 "
+                    className="svg-inline--fa fa-pencil-alt fa-w-16 mr-1"
                     data-icon="pencil-alt"
                     data-prefix="fas"
                     focusable="false"
@@ -623,7 +623,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                 >
                   <svg
                     aria-hidden="true"
-                    className="svg-inline--fa fa-pencil-alt fa-w-16 "
+                    className="svg-inline--fa fa-pencil-alt fa-w-16 mr-1"
                     data-icon="pencil-alt"
                     data-prefix="fas"
                     focusable="false"
@@ -713,7 +713,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                 >
                   <svg
                     aria-hidden="true"
-                    className="svg-inline--fa fa-pencil-alt fa-w-16 "
+                    className="svg-inline--fa fa-pencil-alt fa-w-16 mr-1"
                     data-icon="pencil-alt"
                     data-prefix="fas"
                     focusable="false"
@@ -803,7 +803,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                 >
                   <svg
                     aria-hidden="true"
-                    className="svg-inline--fa fa-pencil-alt fa-w-16 "
+                    className="svg-inline--fa fa-pencil-alt fa-w-16 mr-1"
                     data-icon="pencil-alt"
                     data-prefix="fas"
                     focusable="false"
@@ -983,7 +983,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                 >
                   <svg
                     aria-hidden="true"
-                    className="svg-inline--fa fa-pencil-alt fa-w-16 "
+                    className="svg-inline--fa fa-pencil-alt fa-w-16 mr-1"
                     data-icon="pencil-alt"
                     data-prefix="fas"
                     focusable="false"
@@ -1073,7 +1073,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                 >
                   <svg
                     aria-hidden="true"
-                    className="svg-inline--fa fa-pencil-alt fa-w-16 "
+                    className="svg-inline--fa fa-pencil-alt fa-w-16 mr-1"
                     data-icon="pencil-alt"
                     data-prefix="fas"
                     focusable="false"
@@ -1451,7 +1451,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                 >
                   <svg
                     aria-hidden="true"
-                    className="svg-inline--fa fa-pencil-alt fa-w-16 "
+                    className="svg-inline--fa fa-pencil-alt fa-w-16 mr-1"
                     data-icon="pencil-alt"
                     data-prefix="fas"
                     focusable="false"
@@ -1546,7 +1546,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                 >
                   <svg
                     aria-hidden="true"
-                    className="svg-inline--fa fa-pencil-alt fa-w-16 "
+                    className="svg-inline--fa fa-pencil-alt fa-w-16 mr-1"
                     data-icon="pencil-alt"
                     data-prefix="fas"
                     focusable="false"
@@ -1636,7 +1636,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                 >
                   <svg
                     aria-hidden="true"
-                    className="svg-inline--fa fa-pencil-alt fa-w-16 "
+                    className="svg-inline--fa fa-pencil-alt fa-w-16 mr-1"
                     data-icon="pencil-alt"
                     data-prefix="fas"
                     focusable="false"
@@ -1726,7 +1726,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                 >
                   <svg
                     aria-hidden="true"
-                    className="svg-inline--fa fa-pencil-alt fa-w-16 "
+                    className="svg-inline--fa fa-pencil-alt fa-w-16 mr-1"
                     data-icon="pencil-alt"
                     data-prefix="fas"
                     focusable="false"
@@ -1816,7 +1816,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                 >
                   <svg
                     aria-hidden="true"
-                    className="svg-inline--fa fa-pencil-alt fa-w-16 "
+                    className="svg-inline--fa fa-pencil-alt fa-w-16 mr-1"
                     data-icon="pencil-alt"
                     data-prefix="fas"
                     focusable="false"
@@ -2135,7 +2135,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                 >
                   <svg
                     aria-hidden="true"
-                    className="svg-inline--fa fa-pencil-alt fa-w-16 "
+                    className="svg-inline--fa fa-pencil-alt fa-w-16 mr-1"
                     data-icon="pencil-alt"
                     data-prefix="fas"
                     focusable="false"

@@ -17,7 +17,7 @@ function EditButton({
       onClick={onClick}
       style={style}
     >
-      <FontAwesomeIcon icon={faPencilAlt} />
+      <FontAwesomeIcon className="mr-1" icon={faPencilAlt} />
       {intl.formatMessage(messages['profile.editbutton.edit'])}
     </Button>
   );
