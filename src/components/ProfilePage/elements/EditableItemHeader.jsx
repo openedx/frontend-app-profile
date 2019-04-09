@@ -16,7 +16,7 @@ function EditableItemHeader({
   return (
     <React.Fragment>
       <div className="editable-item-header mb-2">
-        <h2 className="h6 font-weight-normal mb-0" id={headingId}>
+        <h2 className="edit-section-header" id={headingId}>
           {content}
           {showEditButton ? <EditButton style={{ marginTop: '-.35rem' }} className="float-right px-0" onClick={onClickEdit} /> : null}
         </h2>

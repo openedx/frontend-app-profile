@@ -46,6 +46,16 @@ $fa-font-path: "~font-awesome/fonts";
 }
 
 .profile-page {
+  .edit-section-header {
+    @extend .h6;
+    display: block;
+    font-weight: normal;
+    letter-spacing: 0;
+    margin: 0;
+  }
+  label.edit-section-header {
+    margin-bottom: $spacer * .5;
+  }
   .profile-avatar-wrap {
     @include media-breakpoint-up(md) {
       max-width: 12rem;
