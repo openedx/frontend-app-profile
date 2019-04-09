@@ -10,31 +10,18 @@ $fa-font-path: "~font-awesome/fonts";
 .word-break-all {
   word-break: break-all !important;
 }
-.w-auto {
-  width: auto !important;
+
+// TODO: Update edx-bootstrap theme to incorporate these edits.
+.btn, a.btn {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;  
+  }
 }
-
-.btn-async-action {
-  transition: background .2s linear;
-  min-width: 6rem;
-
-  .icon-state {
-    transition: opacity .2s ease, width .2s ease;
-    opacity: 0;
-    width: 0;
-  }
-
-  .icon {
-    font-size: 1.125rem;
-  }
-
-  &.btn-state-pending,
-  &.btn-state-complete,
-  &.btn-state-error, {
-    .icon-state {
-      width: 1.5rem;
-      opacity: 1;
-    }
+.btn-link {
+  text-decoration: underline;
+  &:hover {
+    text-decoration: underline;
   }
 }
 
