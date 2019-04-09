@@ -3,7 +3,7 @@
 exports[`<ProfilePage /> Renders correctly in various states app loading 1`] = `
 <div>
   <div
-    className="profile-page-bg-banner bg-program-micro-masters d-none d-md-block p-relative"
+    className="profile-page-bg-banner bg-primary d-none d-md-block p-relative"
   />
   <div
     className="d-flex justify-content-center align-items-center flex-column"
@@ -26,7 +26,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
   className="profile-page"
 >
   <div
-    className="profile-page-bg-banner bg-program-micro-masters d-none d-md-block p-relative"
+    className="profile-page-bg-banner bg-primary d-none d-md-block p-relative"
   />
   <div
     className="container-fluid"
@@ -202,7 +202,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
   className="profile-page"
 >
   <div
-    className="profile-page-bg-banner bg-program-micro-masters d-none d-md-block p-relative"
+    className="profile-page-bg-banner bg-primary d-none d-md-block p-relative"
   />
   <div
     className="container-fluid"
@@ -1214,7 +1214,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
   className="profile-page"
 >
   <div
-    className="profile-page-bg-banner bg-program-micro-masters d-none d-md-block p-relative"
+    className="profile-page-bg-banner bg-primary d-none d-md-block p-relative"
   />
   <div
     className="container-fluid"
