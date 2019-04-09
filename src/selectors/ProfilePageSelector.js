@@ -229,7 +229,7 @@ export const visibilitiesSelector = createSelector(
           visibilityBio: preferences.visibilityBio || 'private',
           visibilityCourseCertificates: preferences.visibilityCourseCertificates || 'private',
           visibilityCountry: preferences.visibilityCountry || 'private',
-          visibilityEducation: preferences.visibilityEducation || 'private',
+          visibilityLevelOfEducation: preferences.visibilityLevelOfEducation || 'private',
           visibilityLanguageProficiencies: preferences.visibilityLanguageProficiencies || 'private',
           visibilityName: preferences.visibilityName || 'private',
           visibilitySocialLinks: preferences.visibilitySocialLinks || 'private',
@@ -239,7 +239,7 @@ export const visibilitiesSelector = createSelector(
           visibilityBio: 'private',
           visibilityCourseCertificates: 'private',
           visibilityCountry: 'private',
-          visibilityEducation: 'private',
+          visibilityLevelOfEducation: 'private',
           visibilityLanguageProficiencies: 'private',
           visibilityName: 'private',
           visibilitySocialLinks: 'private',
@@ -254,7 +254,7 @@ export const visibilitiesSelector = createSelector(
           visibilityBio: 'all_users',
           visibilityCourseCertificates: 'all_users',
           visibilityCountry: 'all_users',
-          visibilityEducation: 'all_users',
+          visibilityLevelOfEducation: 'all_users',
           visibilityLanguageProficiencies: 'all_users',
           visibilityName: 'all_users',
           visibilitySocialLinks: 'all_users',
@@ -286,10 +286,10 @@ export const formValuesSelector = createSelector(
     ),
     country: chooseFormValue(drafts.country, account.country),
     visibilityCountry: chooseFormValue(drafts.visibilityCountry, visibilities.visibilityCountry),
-    education: chooseFormValue(drafts.education, account.education),
-    visibilityEducation: chooseFormValue(
-      drafts.visibilityEducation,
-      visibilities.visibilityEducation,
+    levelOfEducation: chooseFormValue(drafts.levelOfEducation, account.levelOfEducation),
+    visibilityLevelOfEducation: chooseFormValue(
+      drafts.visibilityLevelOfEducation,
+      visibilities.visibilityLevelOfEducation,
     ),
     languageProficiencies: chooseFormValue(
       drafts.languageProficiencies,
@@ -349,8 +349,8 @@ export const profilePageSelector = createSelector(
     visibilityCountry: formValues.visibilityCountry,
 
     // Education form data
-    education: formValues.education,
-    visibilityEducation: formValues.visibilityEducation,
+    levelOfEducation: formValues.levelOfEducation,
+    visibilityLevelOfEducation: formValues.visibilityLevelOfEducation,
 
     // Language proficiency form data
     languageProficiencies: formValues.languageProficiencies,

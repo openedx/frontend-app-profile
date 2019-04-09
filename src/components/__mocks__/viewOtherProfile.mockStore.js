@@ -79,7 +79,7 @@ module.exports = {
       country: null,
       socialLinks: [],
       timeZone: null,
-      education: null,
+      levelOfEducation: null,
       gender: null,
       accountPrivacy: 'private'
     },

@@ -131,8 +131,8 @@ export class ProfilePage extends React.Component {
       visibilityName,
       country,
       visibilityCountry,
-      education,
-      visibilityEducation,
+      levelOfEducation,
+      visibilityLevelOfEducation,
       socialLinks,
       draftSocialLinksByPlatform,
       visibilitySocialLinks,
@@ -212,9 +212,9 @@ export class ProfilePage extends React.Component {
                 {...commonFormProps}
               />
               <Education
-                education={education}
-                visibilityEducation={visibilityEducation}
-                formId="education"
+                levelOfEducation={levelOfEducation}
+                visibilityLevelOfEducation={visibilityLevelOfEducation}
+                formId="levelOfEducation"
                 {...commonFormProps}
               />
               <SocialLinks
@@ -268,8 +268,8 @@ ProfilePage.propTypes = {
   visibilityCountry: PropTypes.string.isRequired,
 
   // Education form data
-  education: PropTypes.string,
-  visibilityEducation: PropTypes.string.isRequired,
+  levelOfEducation: PropTypes.string,
+  visibilityLevelOfEducation: PropTypes.string.isRequired,
 
   // Language proficiency form data
   languageProficiencies: PropTypes.arrayOf(PropTypes.shape({
@@ -331,7 +331,7 @@ ProfilePage.defaultProps = {
   profileImage: {},
   name: null,
   username: null,
-  education: null,
+  levelOfEducation: null,
   country: null,
   socialLinks: [],
   draftSocialLinksByPlatform: {},

@@ -83,7 +83,7 @@ describe('RootSaga', () => {
         'my username',
         {
           name: 'Full Name',
-          education: 'b',
+          levelOfEducation: 'b',
         },
         'ze form id',
       );
