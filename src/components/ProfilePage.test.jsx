@@ -32,7 +32,7 @@ const requiredProfilePageProps = {
 describe('<ProfilePage />', () => {
   describe('Renders correctly in various states', () => {
     it('app loading', () => {
-      analytics.sendTrackingLogEvent = jest.fn();
+      analytics.logEvent = jest.fn();
       const tree = renderer
         .create((
           <IntlProvider locale="en">
@@ -46,7 +46,7 @@ describe('<ProfilePage />', () => {
     });
 
     it('viewing own profile', () => {
-      analytics.sendTrackingLogEvent = jest.fn();
+      analytics.logEvent = jest.fn();
       const tree = renderer
         .create((
           <IntlProvider locale="en">
@@ -60,7 +60,7 @@ describe('<ProfilePage />', () => {
     });
 
     it('viewing other profile', () => {
-      analytics.sendTrackingLogEvent = jest.fn();
+      analytics.logEvent = jest.fn();
       const tree = renderer
         .create((
           <IntlProvider locale="en">
@@ -74,7 +74,7 @@ describe('<ProfilePage />', () => {
     });
 
     it('while saving an edited bio', () => {
-      analytics.sendTrackingLogEvent = jest.fn();
+      analytics.logEvent = jest.fn();
       const tree = renderer
         .create((
           <IntlProvider locale="en">
@@ -90,8 +90,8 @@ describe('<ProfilePage />', () => {
 
 
   describe('handles analytics', () => {
-    it('calls sendTrackingLogEvent when mounting', () => {
-      analytics.sendTrackingLogEvent = jest.fn();
+    it('calls logEvent when mounting', () => {
+      analytics.logEvent = jest.fn();
       mount((
         <IntlProvider locale="en">
           <Provider store={mockStore(storeMocks.loadingApp)}>
@@ -103,9 +103,9 @@ describe('<ProfilePage />', () => {
         </IntlProvider>
       ));
 
-      expect(analytics.sendTrackingLogEvent.mock.calls.length).toBe(1);
-      expect(analytics.sendTrackingLogEvent.mock.calls[0][0]).toEqual('edx.profile.viewed');
-      expect(analytics.sendTrackingLogEvent.mock.calls[0][1]).toEqual({
+      expect(analytics.logEvent.mock.calls.length).toBe(1);
+      expect(analytics.logEvent.mock.calls[0][0]).toEqual('edx.profile.viewed');
+      expect(analytics.logEvent.mock.calls[0][1]).toEqual({
         username: 'test-username',
       });
     });

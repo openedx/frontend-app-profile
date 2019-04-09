@@ -8,7 +8,7 @@ import SiteFooter from '@edx/frontend-component-footer';
 import { fetchUserAccount, UserAccountApiService } from '@edx/frontend-auth';
 
 import apiClient from '../config/apiClient';
-import { sendTrackEvent } from '../analytics/analytics';
+import { handleTrackEvents } from '../analytics/analytics';
 import { getLocale, getMessages } from '../i18n/i18n-loader';
 import SiteHeader from './common/SiteHeader';
 import ConnectedProfilePage from './ProfilePage';
@@ -56,7 +56,7 @@ class App extends Component {
                 redditUrl={process.env.REDDIT_URL}
                 appleAppStoreUrl={process.env.APPLE_APP_STORE_URL}
                 googlePlayUrl={process.env.GOOGLE_PLAY_URL}
-                handleAllTrackEvents={sendTrackEvent}
+                handleAllTrackEvents={handleTrackEvents}
               />
             </div>
           </ConnectedRouter>

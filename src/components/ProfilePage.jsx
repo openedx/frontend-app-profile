@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { injectIntl, intlShape } from 'react-intl';
 
 // Analytics
-import { sendTrackingLogEvent } from '../analytics/analytics';
+import { logEvent } from '../analytics/analytics';
 
 // Actions
 import {
@@ -53,7 +53,7 @@ export class ProfilePage extends React.Component {
 
   componentDidMount() {
     this.props.fetchProfile(this.props.match.params.username);
-    sendTrackingLogEvent('edx.profile.viewed', {
+    logEvent('edx.profile.viewed', {
       username: this.props.match.params.username,
     });
   }
