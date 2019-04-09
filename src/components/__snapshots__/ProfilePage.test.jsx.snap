@@ -132,57 +132,42 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
           className="d-md-none mb-4"
         />
         <div
-          className="mb-4"
+          className="pgn-transition-replace-group position-relative mb-4"
           style={
             Object {
               "height": null,
-              "overflow": null,
-              "position": "relative",
-              "transition": "height 300ms ease-in-out",
             }
           }
         />
         <div
-          className="mb-4"
+          className="pgn-transition-replace-group position-relative mb-4"
           style={
             Object {
               "height": null,
-              "overflow": null,
-              "position": "relative",
-              "transition": "height 300ms ease-in-out",
             }
           }
         />
         <div
-          className="mb-4"
+          className="pgn-transition-replace-group position-relative mb-4"
           style={
             Object {
               "height": null,
-              "overflow": null,
-              "position": "relative",
-              "transition": "height 300ms ease-in-out",
             }
           }
         />
         <div
-          className="mb-4"
+          className="pgn-transition-replace-group position-relative mb-4"
           style={
             Object {
               "height": null,
-              "overflow": null,
-              "position": "relative",
-              "transition": "height 300ms ease-in-out",
             }
           }
         />
         <div
-          className="mb-4"
+          className="pgn-transition-replace-group position-relative mb-4"
           style={
             Object {
               "height": null,
-              "overflow": null,
-              "position": "relative",
-              "transition": "height 300ms ease-in-out",
             }
           }
         />
@@ -191,24 +176,18 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
         className="pt-md-3 col-md-8 col-lg-7 offset-lg-1"
       >
         <div
-          className="mb-4"
+          className="pgn-transition-replace-group position-relative mb-4"
           style={
             Object {
               "height": null,
-              "overflow": null,
-              "position": "relative",
-              "transition": "height 300ms ease-in-out",
             }
           }
         />
         <div
-          className="mb-4"
+          className="pgn-transition-replace-group position-relative mb-4"
           style={
             Object {
               "height": null,
-              "overflow": null,
-              "position": "relative",
-              "transition": "height 300ms ease-in-out",
             }
           }
         />
@@ -423,23 +402,17 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
           </a>
         </div>
         <div
-          className="mb-4"
+          className="pgn-transition-replace-group position-relative mb-4"
           style={
             Object {
               "height": null,
-              "overflow": null,
-              "position": "relative",
-              "transition": "height 300ms ease-in-out",
             }
           }
         >
           <div
             style={
               Object {
-                "opacity": 1,
                 "padding": ".1px 0",
-                "position": "relative",
-                "zIndex": 1,
               }
             }
           >
@@ -525,23 +498,17 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
           </div>
         </div>
         <div
-          className="mb-4"
+          className="pgn-transition-replace-group position-relative mb-4"
           style={
             Object {
               "height": null,
-              "overflow": null,
-              "position": "relative",
-              "transition": "height 300ms ease-in-out",
             }
           }
         >
           <div
             style={
               Object {
-                "opacity": 1,
                 "padding": ".1px 0",
-                "position": "relative",
-                "zIndex": 1,
               }
             }
           >
@@ -622,23 +589,17 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
           </div>
         </div>
         <div
-          className="mb-4"
+          className="pgn-transition-replace-group position-relative mb-4"
           style={
             Object {
               "height": null,
-              "overflow": null,
-              "position": "relative",
-              "transition": "height 300ms ease-in-out",
             }
           }
         >
           <div
             style={
               Object {
-                "opacity": 1,
                 "padding": ".1px 0",
-                "position": "relative",
-                "zIndex": 1,
               }
             }
           >
@@ -719,23 +680,17 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
           </div>
         </div>
         <div
-          className="mb-4"
+          className="pgn-transition-replace-group position-relative mb-4"
           style={
             Object {
               "height": null,
-              "overflow": null,
-              "position": "relative",
-              "transition": "height 300ms ease-in-out",
             }
           }
         >
           <div
             style={
               Object {
-                "opacity": 1,
                 "padding": ".1px 0",
-                "position": "relative",
-                "zIndex": 1,
               }
             }
           >
@@ -816,23 +771,17 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
           </div>
         </div>
         <div
-          className="mb-4"
+          className="pgn-transition-replace-group position-relative mb-4"
           style={
             Object {
               "height": null,
-              "overflow": null,
-              "position": "relative",
-              "transition": "height 300ms ease-in-out",
             }
           }
         >
           <div
             style={
               Object {
-                "opacity": 1,
                 "padding": ".1px 0",
-                "position": "relative",
-                "zIndex": 1,
               }
             }
           >
@@ -1003,23 +952,17 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
         className="pt-md-3 col-md-8 col-lg-7 offset-lg-1"
       >
         <div
-          className="mb-4"
+          className="pgn-transition-replace-group position-relative mb-4"
           style={
             Object {
               "height": null,
-              "overflow": null,
-              "position": "relative",
-              "transition": "height 300ms ease-in-out",
             }
           }
         >
           <div
             style={
               Object {
-                "opacity": 1,
                 "padding": ".1px 0",
-                "position": "relative",
-                "zIndex": 1,
               }
             }
           >
@@ -1100,23 +1043,17 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
           </div>
         </div>
         <div
-          className="mb-4"
+          className="pgn-transition-replace-group position-relative mb-4"
           style={
             Object {
               "height": null,
-              "overflow": null,
-              "position": "relative",
-              "transition": "height 300ms ease-in-out",
             }
           }
         >
           <div
             style={
               Object {
-                "opacity": 1,
                 "padding": ".1px 0",
-                "position": "relative",
-                "zIndex": 1,
               }
             }
           >
@@ -1485,23 +1422,17 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
           </a>
         </div>
         <div
-          className="mb-4"
+          className="pgn-transition-replace-group position-relative mb-4"
           style={
             Object {
               "height": null,
-              "overflow": null,
-              "position": "relative",
-              "transition": "height 300ms ease-in-out",
             }
           }
         >
           <div
             style={
               Object {
-                "opacity": 1,
                 "padding": ".1px 0",
-                "position": "relative",
-                "zIndex": 1,
               }
             }
           >
@@ -1587,23 +1518,17 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
           </div>
         </div>
         <div
-          className="mb-4"
+          className="pgn-transition-replace-group position-relative mb-4"
           style={
             Object {
               "height": null,
-              "overflow": null,
-              "position": "relative",
-              "transition": "height 300ms ease-in-out",
             }
           }
         >
           <div
             style={
               Object {
-                "opacity": 1,
                 "padding": ".1px 0",
-                "position": "relative",
-                "zIndex": 1,
               }
             }
           >
@@ -1684,23 +1609,17 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
           </div>
         </div>
         <div
-          className="mb-4"
+          className="pgn-transition-replace-group position-relative mb-4"
           style={
             Object {
               "height": null,
-              "overflow": null,
-              "position": "relative",
-              "transition": "height 300ms ease-in-out",
             }
           }
         >
           <div
             style={
               Object {
-                "opacity": 1,
                 "padding": ".1px 0",
-                "position": "relative",
-                "zIndex": 1,
               }
             }
           >
@@ -1781,23 +1700,17 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
           </div>
         </div>
         <div
-          className="mb-4"
+          className="pgn-transition-replace-group position-relative mb-4"
           style={
             Object {
               "height": null,
-              "overflow": null,
-              "position": "relative",
-              "transition": "height 300ms ease-in-out",
             }
           }
         >
           <div
             style={
               Object {
-                "opacity": 1,
                 "padding": ".1px 0",
-                "position": "relative",
-                "zIndex": 1,
               }
             }
           >
@@ -1878,23 +1791,17 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
           </div>
         </div>
         <div
-          className="mb-4"
+          className="pgn-transition-replace-group position-relative mb-4"
           style={
             Object {
               "height": null,
-              "overflow": null,
-              "position": "relative",
-              "transition": "height 300ms ease-in-out",
             }
           }
         >
           <div
             style={
               Object {
-                "opacity": 1,
                 "padding": ".1px 0",
-                "position": "relative",
-                "zIndex": 1,
               }
             }
           >
@@ -2065,23 +1972,17 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
         className="pt-md-3 col-md-8 col-lg-7 offset-lg-1"
       >
         <div
-          className="mb-4"
+          className="pgn-transition-replace-group position-relative mb-4"
           style={
             Object {
               "height": null,
-              "overflow": null,
-              "position": "relative",
-              "transition": "height 300ms ease-in-out",
             }
           }
         >
           <div
             style={
               Object {
-                "opacity": 1,
                 "padding": ".1px 0",
-                "position": "relative",
-                "zIndex": 1,
               }
             }
           >
@@ -2210,23 +2111,17 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
           </div>
         </div>
         <div
-          className="mb-4"
+          className="pgn-transition-replace-group position-relative mb-4"
           style={
             Object {
               "height": null,
-              "overflow": null,
-              "position": "relative",
-              "transition": "height 300ms ease-in-out",
             }
           }
         >
           <div
             style={
               Object {
-                "opacity": 1,
                 "padding": ".1px 0",
-                "position": "relative",
-                "zIndex": 1,
               }
             }
           >
