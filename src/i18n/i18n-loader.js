@@ -56,6 +56,8 @@ const messages = { // current fallback strategy is to use the first two letters 
 
 const cookies = new Cookies();
 
+const getTwoLetterLanguageCode = code => code.substr(0, 2);
+
 // Get the locale by setting priority. Skip if we don't support that language.
 const getLocale = (localeStr) => {
   // 1. Explicit application request
@@ -63,12 +65,12 @@ const getLocale = (localeStr) => {
     return localeStr;
   }
   // 2. User setting in cookie
-  const cookieLanguagePreference = cookies.get(process.env.LANGUAGE_PREFERENCE_COOKIE_NAME);
-  if (cookieLanguagePreference && messages[cookieLanguagePreference] !== undefined) {
-    return cookieLanguagePreference.substr(0, 2);
+  const cookieLangPref = cookies.get(process.env.LANGUAGE_PREFERENCE_COOKIE_NAME);
+  if (cookieLangPref && messages[getTwoLetterLanguageCode(cookieLangPref)] !== undefined) {
+    return getTwoLetterLanguageCode(cookieLangPref);
   }
   // 3. Browser language (default)
-  return window.navigator.language.substr(0, 2);
+  return getTwoLetterLanguageCode(window.navigator.language);
 };
 
 const getMessages = (locale = getLocale()) => messages[locale];
