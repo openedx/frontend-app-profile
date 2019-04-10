@@ -13,15 +13,18 @@ import './index.scss';
 
 import App from './components/App';
 
-if (apiClient.ensurePublicOrAuthencationAndCookies(window.location.pathname)) {
-  const { store, history } = configureStore();
+apiClient.ensurePublicOrAuthenticationAndCookies(
+  window.location.pathname,
+  () => {
+    const { store, history } = configureStore();
 
-  if (process.env.NODE_ENV === 'production') {
-    handleRtl();
-  }
+    if (process.env.NODE_ENV === 'production') {
+      handleRtl();
+    }
 
-  ReactDOM.render(<App store={store} history={history} />, document.getElementById('root'));
+    ReactDOM.render(<App store={store} history={history} />, document.getElementById('root'));
 
-  identifyAuthenticatedUser();
-  sendPageEvent();
-}
+    identifyAuthenticatedUser();
+    sendPageEvent();
+  },
+);
