@@ -38,6 +38,17 @@ function FormControls({
             pending: intl.formatMessage(messages['profile.formcontrols.button.saving']),
             complete: intl.formatMessage(messages['profile.formcontrols.button.saved']),
           }}
+          onClick={(e) => {
+            // Swallow clicks if the state is pending.
+            // We do this instead of disabling the button to prevent
+            // it from losing focus (disabled elements cannot have focus).
+            // Disabling it would causes upstream issues in focus management.
+            // Swallowing the onSubmit event on the form would be better, but
+            // we would have to add that logic for every field given our
+            // current structure of the application.
+            if (buttonState === 'pending') e.preventDefault();
+          }}
+          disabledStates={[]}
         />
         <Button className="btn-link" onClick={cancelHandler}>
           {intl.formatMessage(messages['profile.formcontrols.button.cancel'])}
