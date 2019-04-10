@@ -3,16 +3,21 @@ import PropTypes from 'prop-types';
 import { TransitionReplace } from '@edx/paragon';
 
 
-const onChildEntered = (htmlNode) => {
-  const focusableElements = htmlNode.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-  if (focusableElements.length) {
-    focusableElements[0].focus();
-  }
-};
-
 const onChildExit = (htmlNode) => {
+  // If the leaving child has focus, take control and redirect it
   if (htmlNode.contains(document.activeElement)) {
-    document.activeElement.blur();
+    // Get the newly entering sibling.
+    // It's the previousSibling, but not for any explicit reason. So checking for both.
+    const enteringChild = htmlNode.previousSibling || htmlNode.nextSibling;
+
+    // There's no replacement, do nothing.
+    if (!enteringChild) return;
+
+    // Get all the focusable elements in the entering child and focus the first one
+    const focusableElements = enteringChild.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    if (focusableElements.length) {
+      focusableElements[0].focus();
+    }
   }
 };
 
@@ -37,7 +42,6 @@ function SwitchContent({ expression, cases, className }) {
   return (
     <TransitionReplace
       className={className}
-      onChildEntered={onChildEntered}
       onChildExit={onChildExit}
     >
       {getContent(expression)}
@@ -48,7 +52,7 @@ function SwitchContent({ expression, cases, className }) {
 
 SwitchContent.propTypes = {
   expression: PropTypes.string,
-  cases: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  cases: PropTypes.objectOf(PropTypes.node).isRequired,
   className: PropTypes.string,
 };
 
