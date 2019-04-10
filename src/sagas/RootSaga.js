@@ -38,7 +38,7 @@ import { keepKeys } from '../services/utils';
 
 export function* handleFetchProfile(action) {
   const { username } = action.payload;
-  const { isAuthenticatedUserProfile, userAccount } = yield select(handleFetchProfileSelector);
+  const { authenticationUsername, userAccount } = yield select(handleFetchProfileSelector);
 
   // Default our data assuming the account is the current user's account.
   let preferences = {};
@@ -54,7 +54,7 @@ export function* handleFetchProfile(action) {
       call(ProfileApiService.getCourseCertificates, username),
     ];
 
-    if (isAuthenticatedUserProfile) {
+    if (username === authenticationUsername) {
       // If the profile is for the current user, get their preferences.
       // We don't need them for other users.
       calls.push(call(ProfileApiService.getPreferences, username));
@@ -67,7 +67,7 @@ export function* handleFetchProfile(action) {
     // Make all the calls in parallel.
     const result = yield all(calls);
 
-    if (isAuthenticatedUserProfile) {
+    if (username === authenticationUsername) {
       [courseCertificates, preferences] = result;
     } else {
       [courseCertificates, account] = result;

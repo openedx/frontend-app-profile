@@ -49,7 +49,7 @@ describe('RootSaga', () => {
         other: 'data',
       };
       const selectorData = {
-        isAuthenticatedUserProfile: true,
+        authenticationUsername: 'gonzo',
         userAccount,
       };
 
@@ -76,7 +76,7 @@ describe('RootSaga', () => {
         other: 'data',
       };
       const selectorData = {
-        isAuthenticatedUserProfile: false,
+        authenticationUsername: 'gonzo',
         userAccount,
       };
 

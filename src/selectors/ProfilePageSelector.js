@@ -166,10 +166,10 @@ export const handleSaveProfileSelector = createSelector(
 );
 
 export const handleFetchProfileSelector = createSelector(
-  isAuthenticatedUserProfileSelector,
+  authenticationUsernameSelector,
   userAccountSelector,
-  (isAuthenticatedUserProfile, userAccount) => ({
-    isAuthenticatedUserProfile,
+  (authenticationUsername, userAccount) => ({
+    authenticationUsername,
     userAccount,
   }),
 );
