@@ -52,7 +52,7 @@ class Education extends React.Component {
 
   render() {
     const {
-      formId, education, visibilityEducation, editMode, saveState, error, intl,
+      formId, levelOfEducation, visibilityLevelOfEducation, editMode, saveState, error, intl,
     } = this.props;
 
     return (
@@ -75,7 +75,7 @@ class Education extends React.Component {
                     className="form-control"
                     id={formId}
                     name={formId}
-                    value={education}
+                    value={levelOfEducation}
                     onChange={this.handleChange}
                   >
                     {EDUCATION_LEVELS.map(level => (
@@ -90,9 +90,9 @@ class Education extends React.Component {
                   </select>
                 </ValidationFormGroup>
                 <FormControls
-                  visibilityId="visibilityEducation"
+                  visibilityId="visibilityLevelOfEducation"
                   saveState={saveState}
-                  visibility={visibilityEducation}
+                  visibility={visibilityLevelOfEducation}
                   cancelHandler={this.handleClose}
                   changeHandler={this.handleChange}
                 />
@@ -105,13 +105,13 @@ class Education extends React.Component {
                 content={intl.formatMessage(messages['profile.education.education'])}
                 showEditButton
                 onClickEdit={this.handleOpen}
-                showVisibility={visibilityEducation !== null}
-                visibility={visibilityEducation}
+                showVisibility={visibilityLevelOfEducation !== null}
+                visibility={visibilityLevelOfEducation}
               />
               <p className="h5">
                 {intl.formatMessage(get(
                   messages,
-                  `profile.education.levels.${education}`,
+                  `profile.education.levels.${levelOfEducation}`,
                   messages['profile.education.levels.o'],
                 ))}
               </p>
@@ -135,7 +135,7 @@ class Education extends React.Component {
               <p className="h5">
                 {intl.formatMessage(get(
                   messages,
-                  `profile.education.levels.${education}`,
+                  `profile.education.levels.${levelOfEducation}`,
                   messages['profile.education.levels.o'],
                 ))}
               </p>
@@ -155,8 +155,8 @@ Education.propTypes = {
   formId: PropTypes.string.isRequired,
 
   // From Selector
-  education: PropTypes.string,
-  visibilityEducation: PropTypes.oneOf(['private', 'all_users']),
+  levelOfEducation: PropTypes.string,
+  visibilityLevelOfEducation: PropTypes.oneOf(['private', 'all_users']),
   editMode: PropTypes.oneOf(['editing', 'editable', 'empty', 'static']),
   saveState: PropTypes.string,
   error: PropTypes.string,
@@ -174,8 +174,8 @@ Education.propTypes = {
 Education.defaultProps = {
   editMode: 'static',
   saveState: null,
-  education: null,
-  visibilityEducation: 'private',
+  levelOfEducation: null,
+  visibilityLevelOfEducation: 'private',
   error: null,
 };
 

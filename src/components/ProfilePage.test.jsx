@@ -18,7 +18,7 @@ const storeMocks = {
   savingEditedBio: require('./__mocks__/savingEditedBio.mockStore.js'),
 };
 const requiredProfilePageProps = {
-  isCurrentUserProfile: true,
+  isAuthenticatedUserProfile: true,
   fetchProfile: () => {},
   saveProfile: () => {},
   saveProfilePhoto: () => {},

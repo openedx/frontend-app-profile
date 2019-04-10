@@ -29,8 +29,8 @@ import Bio from './ProfilePage/Bio';
 import Certificates from './ProfilePage/Certificates';
 import AgeMessage from './ProfilePage/AgeMessage';
 import DateJoined from './ProfilePage/DateJoined';
-import PageLoading from './ProfilePage/PageLoading';
-import Banner from './ProfilePage/elements/Banner';
+import PageLoading from './common/PageLoading';
+import Banner from './common/Banner';
 import { profilePageSelector } from '../selectors/ProfilePageSelector';
 
 // Configuration
@@ -84,7 +84,7 @@ export class ProfilePage extends React.Component {
 
   // Inserted into the DOM in two places (for responsive layout)
   renderViewMyRecordsButton() {
-    if (!this.props.isCurrentUserProfile) {
+    if (!this.props.isAuthenticatedUserProfile) {
       return null;
     }
 
@@ -131,8 +131,8 @@ export class ProfilePage extends React.Component {
       visibilityName,
       country,
       visibilityCountry,
-      education,
-      visibilityEducation,
+      levelOfEducation,
+      visibilityLevelOfEducation,
       socialLinks,
       draftSocialLinksByPlatform,
       visibilitySocialLinks,
@@ -142,7 +142,7 @@ export class ProfilePage extends React.Component {
       bio,
       visibilityBio,
       requiresParentalConsent,
-      isCurrentUserProfile,
+      isAuthenticatedUserProfile,
       isLoadingProfile,
     } = this.props;
 
@@ -155,7 +155,7 @@ export class ProfilePage extends React.Component {
       changeHandler: this.handleChange,
     };
 
-    const shouldShowAgeMessage = requiresParentalConsent && isCurrentUserProfile;
+    const shouldShowAgeMessage = requiresParentalConsent && isAuthenticatedUserProfile;
 
     return (
       <div className="profile-page">
@@ -171,7 +171,7 @@ export class ProfilePage extends React.Component {
                   onSave={this.handleSaveProfilePhoto}
                   onDelete={this.handleDeleteProfilePhoto}
                   savePhotoState={this.props.savePhotoState}
-                  isEditable={this.props.isCurrentUserProfile && !requiresParentalConsent}
+                  isEditable={this.props.isAuthenticatedUserProfile && !requiresParentalConsent}
                 />
               </div>
             </div>
@@ -212,9 +212,9 @@ export class ProfilePage extends React.Component {
                 {...commonFormProps}
               />
               <Education
-                education={education}
-                visibilityEducation={visibilityEducation}
-                formId="education"
+                levelOfEducation={levelOfEducation}
+                visibilityLevelOfEducation={visibilityLevelOfEducation}
+                formId="levelOfEducation"
                 {...commonFormProps}
               />
               <SocialLinks
@@ -251,7 +251,7 @@ ProfilePage.propTypes = {
   username: PropTypes.string,
   requiresParentalConsent: PropTypes.bool,
   dateJoined: PropTypes.string,
-  isCurrentUserProfile: PropTypes.bool.isRequired,
+  isAuthenticatedUserProfile: PropTypes.bool.isRequired,
 
   // Bio form data
   bio: PropTypes.string,
@@ -268,8 +268,8 @@ ProfilePage.propTypes = {
   visibilityCountry: PropTypes.string.isRequired,
 
   // Education form data
-  education: PropTypes.string,
-  visibilityEducation: PropTypes.string.isRequired,
+  levelOfEducation: PropTypes.string,
+  visibilityLevelOfEducation: PropTypes.string.isRequired,
 
   // Language proficiency form data
   languageProficiencies: PropTypes.arrayOf(PropTypes.shape({
@@ -331,7 +331,7 @@ ProfilePage.defaultProps = {
   profileImage: {},
   name: null,
   username: null,
-  education: null,
+  levelOfEducation: null,
   country: null,
   socialLinks: [],
   draftSocialLinksByPlatform: {},

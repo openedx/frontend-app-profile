@@ -92,7 +92,7 @@ module.exports = {
         }
       ],
       timeZone: null,
-      education: 'el',
+      levelOfEducation: 'el',
       gender: null,
       accountPrivacy: 'custom'
     },
@@ -100,7 +100,7 @@ module.exports = {
       visibilityUserLocation: 'all_users',
       visibilitySocialLinks: 'all_users',
       visibilityCertificates: 'private',
-      visibilityEducation: 'private',
+      visibilityLevelOfEducation: 'private',
       visibilityCourseCertificates: 'all_users',
       prefLang: 'en',
       visibilityBio: 'all_users',

@@ -28,7 +28,7 @@ import {
 } from '../actions/ProfileActions';
 
 // Selectors
-import { handleSaveProfileSelector } from '../selectors/ProfilePageSelector';
+import { handleSaveProfileSelector, handleFetchProfileSelector } from '../selectors/ProfilePageSelector';
 
 // Services
 import * as ProfileApiService from '../services/ProfileApiService';
@@ -38,29 +38,41 @@ import { keepKeys } from '../services/utils';
 
 export function* handleFetchProfile(action) {
   const { username } = action.payload;
-  const currentUsername = yield select(state => state.authentication.username); // eslint-disable-line
+  const { isAuthenticatedUserProfile, userAccount } = yield select(handleFetchProfileSelector);
+
+  // Default our data assuming the account is the current user's account.
+  let preferences = {};
+  let account = userAccount;
+  let courseCertificates = null;
 
   try {
     yield put(fetchProfileBegin());
 
+    // Depending on which profile we're loading, we need to make different calls.
     const calls = [
-      call(ProfileApiService.getAccount, username),
+      // We'll always make a call for certificates.
       call(ProfileApiService.getCourseCertificates, username),
     ];
 
-    if (username === currentUsername) {
+    if (isAuthenticatedUserProfile) {
+      // If the profile is for the current user, get their preferences.
+      // We don't need them for other users.
       calls.push(call(ProfileApiService.getPreferences, username));
+    } else {
+      // If the profile is not for the current user, get that user's account data
+      // since we don't already have it.
+      calls.push(call(ProfileApiService.getAccount, username));
     }
 
+    // Make all the calls in parallel.
     const result = yield all(calls);
 
-    if (result.length > 2) {
-      const [account, courseCertificates, preferences] = result;
-      yield put(fetchProfileSuccess(account, preferences, courseCertificates));
+    if (isAuthenticatedUserProfile) {
+      [courseCertificates, preferences] = result;
     } else {
-      const [account, courseCertificates] = result;
-      yield put(fetchProfileSuccess(account, {}, courseCertificates));
+      [courseCertificates, account] = result;
     }
+    yield put(fetchProfileSuccess(account, preferences, courseCertificates));
 
     yield put(fetchProfileReset());
   } catch (e) {
@@ -81,7 +93,7 @@ export function* handleSaveProfile(action) {
       'bio',
       'courseCertificates',
       'country',
-      'education',
+      'levelOfEducation',
       'languageProficiencies',
       'name',
       'socialLinks',
@@ -91,7 +103,7 @@ export function* handleSaveProfile(action) {
       'visibilityBio',
       'visibilityCourseCertificates',
       'visibilityCountry',
-      'visibilityEducation',
+      'visibilityLevelOfEducation',
       'visibilityLanguageProficiencies',
       'visibilityName',
       'visibilitySocialLinks',

@@ -9,10 +9,7 @@ import {
 } from './utils';
 
 function processAccountData(data) {
-  const result = camelCaseObject(data);
-  return convertKeyNames(result, {
-    levelOfEducation: 'education',
-  });
+  return camelCaseObject(data);
 }
 
 function processAndThrowError(error, errorDataProcessor) {
@@ -35,10 +32,7 @@ export async function getAccount(username) {
 
 // PATCH PROFILE
 export async function patchProfile(username, params) {
-  let processedParams = snakeCaseObject(params);
-  processedParams = convertKeyNames(processedParams, {
-    education: 'level_of_education',
-  });
+  const processedParams = snakeCaseObject(params);
 
   const { data } = await apiClient.patch(
     `${configuration.ACCOUNTS_API_BASE_URL}/${username}`,
@@ -85,10 +79,7 @@ export async function deleteProfilePhoto(username) {
 export async function getPreferences(username) {
   const { data } = await apiClient.get(`${configuration.PREFERENCES_API_BASE_URL}/${username}`);
 
-  const result = camelCaseObject(data);
-  return convertKeyNames(result, {
-    visibilityLevelOfEducation: 'visibilityEducation',
-  });
+  return camelCaseObject(data);
 }
 
 // PATCH PREFERENCES
@@ -99,7 +90,7 @@ export async function patchPreferences(username, params) {
     visibility_course_certificates: 'visibility.course_certificates',
     visibility_country: 'visibility.country',
     visibility_date_joined: 'visibility.date_joined',
-    visibility_education: 'visibility.level_of_education',
+    visibility_level_of_education: 'visibility.level_of_education',
     visibility_language_proficiencies: 'visibility.language_proficiencies',
     visibility_name: 'visibility.name',
     visibility_social_links: 'visibility.social_links',

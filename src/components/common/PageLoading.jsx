@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Banner from './elements/Banner';
+import Banner from './Banner';
 
 function PageLoading() {
   return (

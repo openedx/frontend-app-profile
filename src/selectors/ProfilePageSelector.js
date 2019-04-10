@@ -2,6 +2,7 @@ import { createSelector } from 'reselect';
 import { getLocale, getLanguageList, getCountryList, getCountryMessages, getLanguageMessages } from '../i18n/i18n-loader';
 
 export const formIdSelector = (state, props) => props.formId;
+export const userAccountSelector = state => state.userAccount;
 export const authenticationUsernameSelector = state => state.authentication.username;
 export const profileAccountSelector = state => state.profilePage.account;
 export const profileDraftsSelector = state => state.profilePage.drafts;
@@ -16,7 +17,7 @@ export const isLoadingProfileSelector = state => state.profilePage.isLoadingProf
 export const currentlyEditingFieldSelector = state => state.profilePage.currentlyEditingField;
 export const accountErrorsSelector = state => state.profilePage.errors;
 
-export const isCurrentUserProfileSelector = createSelector(
+export const isAuthenticatedUserProfileSelector = createSelector(
   authenticationUsernameSelector,
   profileAccountSelector,
   (username, profileAccount) => username === profileAccount.username,
@@ -26,16 +27,16 @@ export const editableFormModeSelector = createSelector(
   profileAccountSelector,
   profileCourseCertificatesSelector,
   formIdSelector,
-  isCurrentUserProfileSelector,
+  isAuthenticatedUserProfileSelector,
   currentlyEditingFieldSelector,
-  (account, certificates, formId, isCurrentUserProfile, currentlyEditingField) => {
+  (account, certificates, formId, isAuthenticatedUserProfile, currentlyEditingField) => {
     // If the prop doesn't exist, that means it hasn't been set (for the current user's profile)
     // or is being hidden from us (for other users' profiles)
     let propExists = account[formId] != null && account[formId].length > 0;
     propExists = formId === 'certificates' ? certificates.length > 0 : propExists; // overwrite for certificates
     // If this isn't the current user's profile or if
     // the current user has no age set / under 13 ...
-    if (!isCurrentUserProfile || account.requiresParentalConsent) {
+    if (!isAuthenticatedUserProfile || account.requiresParentalConsent) {
       // then there are only two options: static or nothing.
       // We use 'null' as a return value because the consumers of
       // getMode render nothing at all on a mode of null.
@@ -164,12 +165,21 @@ export const handleSaveProfileSelector = createSelector(
   }),
 );
 
+export const handleFetchProfileSelector = createSelector(
+  isAuthenticatedUserProfileSelector,
+  userAccountSelector,
+  (isAuthenticatedUserProfile, userAccount) => ({
+    isAuthenticatedUserProfile,
+    userAccount,
+  }),
+);
+
 // Reformats the social links in a platform-keyed hash.
 const socialLinksByPlatformSelector = createSelector(
   profileAccountSelector,
   (account) => {
     const linksByPlatform = {};
-    if (account.socialLinks !== undefined) {
+    if (Array.isArray(account.socialLinks)) {
       account.socialLinks.forEach((socialLink) => {
         linksByPlatform[socialLink.platform] = socialLink;
       });
@@ -182,7 +192,7 @@ const draftSocialLinksByPlatformSelector = createSelector(
   profileDraftsSelector,
   (drafts) => {
     const linksByPlatform = {};
-    if (drafts.socialLinks !== undefined) {
+    if (Array.isArray(drafts.socialLinks)) {
       drafts.socialLinks.forEach((socialLink) => {
         linksByPlatform[socialLink.platform] = socialLink;
       });
@@ -229,7 +239,7 @@ export const visibilitiesSelector = createSelector(
           visibilityBio: preferences.visibilityBio || 'private',
           visibilityCourseCertificates: preferences.visibilityCourseCertificates || 'private',
           visibilityCountry: preferences.visibilityCountry || 'private',
-          visibilityEducation: preferences.visibilityEducation || 'private',
+          visibilityLevelOfEducation: preferences.visibilityLevelOfEducation || 'private',
           visibilityLanguageProficiencies: preferences.visibilityLanguageProficiencies || 'private',
           visibilityName: preferences.visibilityName || 'private',
           visibilitySocialLinks: preferences.visibilitySocialLinks || 'private',
@@ -239,7 +249,7 @@ export const visibilitiesSelector = createSelector(
           visibilityBio: 'private',
           visibilityCourseCertificates: 'private',
           visibilityCountry: 'private',
-          visibilityEducation: 'private',
+          visibilityLevelOfEducation: 'private',
           visibilityLanguageProficiencies: 'private',
           visibilityName: 'private',
           visibilitySocialLinks: 'private',
@@ -254,7 +264,7 @@ export const visibilitiesSelector = createSelector(
           visibilityBio: 'all_users',
           visibilityCourseCertificates: 'all_users',
           visibilityCountry: 'all_users',
-          visibilityEducation: 'all_users',
+          visibilityLevelOfEducation: 'all_users',
           visibilityLanguageProficiencies: 'all_users',
           visibilityName: 'all_users',
           visibilitySocialLinks: 'all_users',
@@ -286,10 +296,10 @@ export const formValuesSelector = createSelector(
     ),
     country: chooseFormValue(drafts.country, account.country),
     visibilityCountry: chooseFormValue(drafts.visibilityCountry, visibilities.visibilityCountry),
-    education: chooseFormValue(drafts.education, account.education),
-    visibilityEducation: chooseFormValue(
-      drafts.visibilityEducation,
-      visibilities.visibilityEducation,
+    levelOfEducation: chooseFormValue(drafts.levelOfEducation, account.levelOfEducation),
+    visibilityLevelOfEducation: chooseFormValue(
+      drafts.visibilityLevelOfEducation,
+      visibilities.visibilityLevelOfEducation,
     ),
     languageProficiencies: chooseFormValue(
       drafts.languageProficiencies,
@@ -316,7 +326,7 @@ export const profilePageSelector = createSelector(
   saveStateSelector,
   savePhotoStateSelector,
   isLoadingProfileSelector,
-  isCurrentUserProfileSelector,
+  isAuthenticatedUserProfileSelector,
   draftSocialLinksByPlatformSelector,
   accountErrorsSelector,
   (
@@ -326,7 +336,7 @@ export const profilePageSelector = createSelector(
     saveState,
     savePhotoState,
     isLoadingProfile,
-    isCurrentUserProfile,
+    isAuthenticatedUserProfile,
     draftSocialLinksByPlatform,
     errors,
   ) => ({
@@ -349,8 +359,8 @@ export const profilePageSelector = createSelector(
     visibilityCountry: formValues.visibilityCountry,
 
     // Education form data
-    education: formValues.education,
-    visibilityEducation: formValues.visibilityEducation,
+    levelOfEducation: formValues.levelOfEducation,
+    visibilityLevelOfEducation: formValues.visibilityLevelOfEducation,
 
     // Language proficiency form data
     languageProficiencies: formValues.languageProficiencies,
@@ -369,7 +379,7 @@ export const profilePageSelector = createSelector(
     saveState,
     savePhotoState,
     isLoadingProfile,
-    isCurrentUserProfile,
+    isAuthenticatedUserProfile,
     photoUploadError: errors.photo || null,
   }),
 );
