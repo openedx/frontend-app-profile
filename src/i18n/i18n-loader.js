@@ -63,9 +63,9 @@ const getLocale = (localeStr) => {
     return localeStr;
   }
   // 2. User setting in cookie
-  const cookieLanguagePreference = cookies.get(process.env.LANGUAGE_PREFERENCE_COOKIE_NAME);
-  if (cookieLanguagePreference && messages[cookieLanguagePreference] !== undefined) {
-    return cookieLanguagePreference.substr(0, 2);
+  const cookieLangPref = cookies.get(process.env.LANGUAGE_PREFERENCE_COOKIE_NAME).substr(0, 2);
+  if (cookieLangPref && messages[cookieLangPref] !== undefined) {
+    return cookieLangPref;
   }
   // 3. Browser language (default)
   return window.navigator.language.substr(0, 2);
