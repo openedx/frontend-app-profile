@@ -120,6 +120,7 @@ module.exports = Merge.smart(commonConfig, {
       ACCESS_TOKEN_COOKIE_NAME: 'edx-jwt-cookie-header-payload',
       USER_INFO_COOKIE_NAME: 'edx-user-info',
       CSRF_COOKIE_NAME: 'csrftoken',
+      LANGUAGE_PREFERENCE_COOKIE_NAME: 'openedx-language-preference',
       SITE_NAME: 'edX',
       MARKETING_SITE_BASE_URL: 'http://localhost:18000',
       SUPPORT_URL: 'http://localhost:18000/support',

@@ -13,6 +13,7 @@
  */
 
 import { addLocaleData } from 'react-intl';
+import Cookies from 'universal-cookie';
 
 import arLocale from 'react-intl/locale-data/ar';
 import enLocale from 'react-intl/locale-data/en';
@@ -46,15 +47,28 @@ LANGUAGES.registerLocale(require('@cospired/i18n-iso-languages/langs/en.json'));
 LANGUAGES.registerLocale(require('@cospired/i18n-iso-languages/langs/es.json'));
 LANGUAGES.registerLocale(require('@cospired/i18n-iso-languages/langs/fr.json'));
 
-// TODO (ARCH-563): this should ultimately come from the user's settings, but for now, set your
-// browser language to the language you want to see
-const getLocale = (localeStr = window.navigator.language) => localeStr.substr(0, 2);
-
 const messages = { // current fallback strategy is to use the first two letters of the locale code
   ar: arMessages,
   es: es419Messages,
   fr: frMessages,
   zh: zhcnMessages,
+};
+
+const cookies = new Cookies();
+
+// Get the locale by setting priority. Skip if we don't support that language.
+const getLocale = (localeStr) => {
+  // 1. Explicit application request
+  if (localeStr && messages[localeStr] !== undefined) {
+    return localeStr;
+  }
+  // 2. User setting in cookie
+  const cookieLanguagePreference = cookies.get(process.env.LANGUAGE_PREFERENCE_COOKIE_NAME);
+  if (cookieLanguagePreference && messages[cookieLanguagePreference] !== undefined) {
+    return cookieLanguagePreference;
+  }
+  // 3. Browser language (default)
+  return window.navigator.language.substr(0, 2);
 };
 
 const getMessages = (locale = getLocale()) => messages[locale];
