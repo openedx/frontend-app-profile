@@ -1,14 +1,16 @@
-import { takeEvery, put, call, delay, select } from 'redux-saga/effects';
+import { takeEvery, put, call, delay, select, all } from 'redux-saga/effects';
 
 import * as profileActions from '../actions/ProfileActions';
-import { handleSaveProfileSelector } from '../selectors/ProfilePageSelector';
+import { handleSaveProfileSelector, handleFetchProfileSelector } from '../selectors/ProfilePageSelector';
 
 jest.mock('../services/ProfileApiService', () => ({
   getProfile: jest.fn(),
   patchProfile: jest.fn(),
   postProfilePhoto: jest.fn(),
   deleteProfilePhoto: jest.fn(),
-  getUserPreference: jest.fn(),
+  getPreferences: jest.fn(),
+  getAccount: jest.fn(),
+  getCourseCertificates: jest.fn(),
 }));
 
 // RootSaga and ProfileApiService must be imported AFTER the mock above.
@@ -36,6 +38,62 @@ describe('RootSaga', () => {
       expect(gen.next().value)
         .toEqual(takeEvery(profileActions.DELETE_PROFILE_PHOTO.BASE, handleDeleteProfilePhoto));
 
+      expect(gen.next().value).toBeUndefined();
+    });
+  });
+
+  describe('handleFetchProfile', () => {
+    it('should fetch certificates and preferences for the current user profile', () => {
+      const userAccount = {
+        username: 'gonzo',
+        other: 'data',
+      };
+      const selectorData = {
+        isAuthenticatedUserProfile: true,
+        userAccount,
+      };
+
+      const action = profileActions.fetchProfile('gonzo');
+      const gen = handleFetchProfile(action);
+
+      const result = [[1, 2, 3], { preferences: 'stuff' }];
+
+      expect(gen.next().value).toEqual(select(handleFetchProfileSelector));
+      expect(gen.next(selectorData).value).toEqual(put(profileActions.fetchProfileBegin()));
+      expect(gen.next().value).toEqual(all([
+        call(ProfileApiService.getCourseCertificates, 'gonzo'),
+        call(ProfileApiService.getPreferences, 'gonzo'),
+      ]));
+      expect(gen.next(result).value)
+        .toEqual(put(profileActions.fetchProfileSuccess(userAccount, result[1], result[0])));
+      expect(gen.next().value).toEqual(put(profileActions.fetchProfileReset()));
+      expect(gen.next().value).toBeUndefined();
+    });
+
+    it('should fetch certificates and profile for some other user profile', () => {
+      const userAccount = {
+        username: 'gonzo',
+        other: 'data',
+      };
+      const selectorData = {
+        isAuthenticatedUserProfile: false,
+        userAccount,
+      };
+
+      const action = profileActions.fetchProfile('booyah');
+      const gen = handleFetchProfile(action);
+
+      const result = [[1, 2, 3], { preferences: 'stuff' }];
+
+      expect(gen.next().value).toEqual(select(handleFetchProfileSelector));
+      expect(gen.next(selectorData).value).toEqual(put(profileActions.fetchProfileBegin()));
+      expect(gen.next().value).toEqual(all([
+        call(ProfileApiService.getCourseCertificates, 'booyah'),
+        call(ProfileApiService.getAccount, 'booyah'),
+      ]));
+      expect(gen.next(result).value)
+        .toEqual(put(profileActions.fetchProfileSuccess(result[1], {}, result[0])));
+      expect(gen.next().value).toEqual(put(profileActions.fetchProfileReset()));
       expect(gen.next().value).toBeUndefined();
     });
   });
