@@ -26,7 +26,7 @@ class App extends Component {
   }
 
   renderContent() {
-    if (!this.props.loaded) {
+    if (!this.props.ready) {
       return <PageLoading />;
     }
 
@@ -82,16 +82,18 @@ App.propTypes = {
   username: PropTypes.string.isRequired,
   store: PropTypes.object.isRequired, // eslint-disable-line
   history: PropTypes.object.isRequired, // eslint-disable-line
-  loaded: PropTypes.bool,
+  ready: PropTypes.bool,
 };
 
 App.defaultProps = {
-  loaded: false,
+  ready: false,
 };
 
 const mapStateToProps = state => ({
   username: state.authentication.username,
-  loaded: state.userAccount.loaded,
+  // An error means that we tried to load the user account and failed,
+  // which also means we're ready to display something.
+  ready: state.userAccount.loaded || state.userAccount.error != null,
 });
 
 export default connect(

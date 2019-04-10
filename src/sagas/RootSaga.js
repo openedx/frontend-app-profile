@@ -1,6 +1,7 @@
 import { push } from 'connected-react-router';
 import { all, call, delay, put, select, takeEvery } from 'redux-saga/effects';
 import LoggingService from '@edx/frontend-logging';
+import { FETCH_USER_ACCOUNT_FAILURE } from '@edx/frontend-auth';
 
 // Actions
 import {
@@ -191,9 +192,15 @@ export function* handleDeleteProfilePhoto(action) {
   }
 }
 
+export function* handleFetchUserAccountFailure(action) {
+  LoggingService.logAPIErrorResponse(action.payload.error);
+  yield put(push('/error'));
+}
+
 export default function* rootSaga() {
   yield takeEvery(FETCH_PROFILE.BASE, handleFetchProfile);
   yield takeEvery(SAVE_PROFILE.BASE, handleSaveProfile);
   yield takeEvery(SAVE_PROFILE_PHOTO.BASE, handleSaveProfilePhoto);
   yield takeEvery(DELETE_PROFILE_PHOTO.BASE, handleDeleteProfilePhoto);
+  yield takeEvery(FETCH_USER_ACCOUNT_FAILURE, handleFetchUserAccountFailure);
 }
