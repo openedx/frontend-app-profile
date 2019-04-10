@@ -61,7 +61,7 @@ class Country extends React.Component {
 
     return (
       <SwitchContent
-        className="mb-4"
+        className="mb-5"
         expression={editMode}
         cases={{
           editing: (
@@ -72,7 +72,7 @@ class Country extends React.Component {
                   invalid={error !== null}
                   invalidMessage={error}
                 >
-                  <label htmlFor={formId}>
+                  <label className="edit-section-header" htmlFor={formId}>
                     {intl.formatMessage(messages['profile.country.label'])}
                   </label>
                   <select

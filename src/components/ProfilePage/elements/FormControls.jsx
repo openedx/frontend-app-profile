@@ -14,9 +14,9 @@ function FormControls({
   const buttonState = saveState === 'error' ? null : saveState;
 
   return (
-    <React.Fragment>
-      <div className="mb-4 form-group">
-        <label className="mb-1 col-form-label-sm" htmlFor={visibilityId}>
+    <div className="d-flex flex-row-reverse flex-wrap justify-content-end align-items-center">
+      <div className="form-group">
+        <label className="col-form-label" htmlFor={visibilityId}>
           {intl.formatMessage(messages['profile.formcontrols.who.can.see'])}
         </label>
         <VisibilitySelect
@@ -28,7 +28,7 @@ function FormControls({
           onChange={changeHandler}
         />
       </div>
-      <div className="form-group">
+      <div className="form-group flex-shrink-0 mr-auto">
         <StatefulButton
           type="submit"
           className="btn-primary"
@@ -43,7 +43,7 @@ function FormControls({
           {intl.formatMessage(messages['profile.formcontrols.button.cancel'])}
         </Button>
       </div>
-    </React.Fragment>
+    </div>
   );
 }
 

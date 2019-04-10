@@ -71,7 +71,7 @@ class PreferredLanguage extends React.Component {
 
     return (
       <SwitchContent
-        className="mb-4"
+        className="mb-5"
         expression={editMode}
         cases={{
           editing: (
@@ -82,7 +82,7 @@ class PreferredLanguage extends React.Component {
                   invalid={error !== null}
                   invalidMessage={error}
                 >
-                  <label htmlFor={formId}>
+                  <label className="edit-section-header" htmlFor={formId}>
                     {intl.formatMessage(messages['profile.preferredlanguage.label'])}
                   </label>
                   <select
