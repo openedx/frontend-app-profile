@@ -1,4 +1,5 @@
 import { takeEvery, put, call, delay, select, all } from 'redux-saga/effects';
+import { FETCH_USER_ACCOUNT_FAILURE } from '@edx/frontend-auth';
 
 import * as profileActions from '../actions/ProfileActions';
 import { handleSaveProfileSelector, handleFetchProfileSelector } from '../selectors/ProfilePageSelector';
@@ -20,6 +21,7 @@ import rootSaga, {
   handleSaveProfile,
   handleSaveProfilePhoto,
   handleDeleteProfilePhoto,
+  handleFetchUserAccountFailure,
 } from './RootSaga';
 import * as ProfileApiService from '../services/ProfileApiService';
 /* eslint-enable import/first */
@@ -37,6 +39,8 @@ describe('RootSaga', () => {
         .toEqual(takeEvery(profileActions.SAVE_PROFILE_PHOTO.BASE, handleSaveProfilePhoto));
       expect(gen.next().value)
         .toEqual(takeEvery(profileActions.DELETE_PROFILE_PHOTO.BASE, handleDeleteProfilePhoto));
+      expect(gen.next().value)
+        .toEqual(takeEvery(FETCH_USER_ACCOUNT_FAILURE, handleFetchUserAccountFailure));
 
       expect(gen.next().value).toBeUndefined();
     });
