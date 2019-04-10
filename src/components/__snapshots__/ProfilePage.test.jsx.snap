@@ -2001,7 +2001,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                   className="d-flex flex-row-reverse flex-wrap justify-content-end align-items-center"
                 >
                   <div
-                    className="form-group"
+                    className="form-group d-flex flex-wrap"
                   >
                     <label
                       className="col-form-label"
@@ -2010,7 +2010,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                       Who can see this:
                     </label>
                     <span
-                      className="w-auto"
+                      className="d-flex align-items-center"
                     >
                       <span
                         className="d-inline-block ml-1 mr-2"

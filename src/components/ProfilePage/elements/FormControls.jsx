@@ -15,13 +15,13 @@ function FormControls({
 
   return (
     <div className="d-flex flex-row-reverse flex-wrap justify-content-end align-items-center">
-      <div className="form-group">
+      <div className="form-group d-flex flex-wrap">
         <label className="col-form-label" htmlFor={visibilityId}>
           {intl.formatMessage(messages['profile.formcontrols.who.can.see'])}
         </label>
         <VisibilitySelect
           id={visibilityId}
-          className="w-auto"
+          className="d-flex align-items-center"
           type="select"
           name={visibilityId}
           value={visibility}
