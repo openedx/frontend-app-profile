@@ -1,7 +1,6 @@
+import { configureAnalytics, initializeSegment } from '@edx/frontend-analytics';
 import LoggingService from '@edx/frontend-logging';
 
-import { configureAnalytics } from '../analytics/analytics';
-import { initializeSegment } from '../analytics/segment';
 import apiClient from '../config/apiClient';
 import { configuration } from '../config/environment';
 

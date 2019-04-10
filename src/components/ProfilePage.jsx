@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { injectIntl, intlShape } from 'react-intl';
 
 // Analytics
-import { sendTrackingLogEvent } from '../analytics/analytics';
+import { sendTrackingLogEvent } from '@edx/frontend-analytics';
 
 // Actions
 import {

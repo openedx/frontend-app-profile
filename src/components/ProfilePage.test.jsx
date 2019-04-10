@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl';
 import configureMockStore from 'redux-mock-store';
 
-import * as analytics from '../analytics/analytics';
+import * as analytics from '@edx/frontend-analytics';
 import ConnectedProfilePage from './ProfilePage';
 
 

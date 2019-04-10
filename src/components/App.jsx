@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import { IntlProvider } from 'react-intl';
 import { Route, Switch } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
+import { sendTrackEvent } from '@edx/frontend-analytics';
 import SiteFooter from '@edx/frontend-component-footer';
 import { fetchUserAccount, UserAccountApiService } from '@edx/frontend-auth';
 
 import apiClient from '../config/apiClient';
-import { sendTrackEvent } from '../analytics/analytics';
 import { getLocale, getMessages } from '../i18n/i18n-loader';
 import SiteHeader from './common/SiteHeader';
 import ConnectedProfilePage from './ProfilePage';
