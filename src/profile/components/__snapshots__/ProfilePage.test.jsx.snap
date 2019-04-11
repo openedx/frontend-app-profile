@@ -1,0 +1,2280 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProfilePage /> Renders correctly in various states app loading 1`] = `
+<div
+  className="profile-page"
+>
+  <div
+    className="profile-page-bg-banner bg-primary d-none d-md-block p-relative"
+  />
+  <div>
+    <div
+      className="d-flex justify-content-center align-items-center flex-column"
+      style={
+        Object {
+          "height": "50vh",
+        }
+      }
+    >
+      <div
+        className="spinner-border text-primary"
+        role="status"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ProfilePage /> Renders correctly in various states viewing other profile 1`] = `
+<div
+  className="profile-page"
+>
+  <div
+    className="profile-page-bg-banner bg-primary d-none d-md-block p-relative"
+  />
+  <div
+    className="container-fluid"
+  >
+    <div
+      className="row align-items-center pt-4 mb-4 pt-md-0 mb-md-0"
+    >
+      <div
+        className="col-auto col-md-4 col-lg-3"
+      >
+        <div
+          className="d-flex align-items-center d-md-block"
+        >
+          <div
+            className="profile-avatar-wrap position-relative"
+          >
+            <div
+              className="profile-avatar rounded-circle bg-light"
+            >
+              <IconMock
+                aria-hidden={true}
+                className="text-muted"
+                focusable="false"
+                role="img"
+                viewBox="0 0 24 24"
+              />
+            </div>
+            <form
+              encType="multipart/form-data"
+              onSubmit={[Function]}
+            >
+              <input
+                accept=".jpg, .jpeg, .png"
+                className="d-none form-control-file"
+                id="photo-file"
+                name="file"
+                onChange={[Function]}
+                type="file"
+              />
+            </form>
+          </div>
+        </div>
+      </div>
+      <div
+        className="col pl-0"
+      >
+        <div
+          className="d-md-none"
+        >
+          <h1
+            className="h2 mb-0 font-weight-bold"
+          >
+            verified
+          </h1>
+          <p
+            className="mb-0"
+          >
+            <span>
+              Member since 
+              <span>
+                2017
+              </span>
+            </span>
+          </p>
+          <hr
+            className="d-none d-md-block"
+          />
+        </div>
+        <div
+          className="d-none d-md-block float-right"
+        />
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="col-md-4 col-lg-4"
+      >
+        <div
+          className="d-none d-md-block mb-4"
+        >
+          <h1
+            className="h2 mb-0 font-weight-bold"
+          >
+            verified
+          </h1>
+          <p
+            className="mb-0"
+          >
+            <span>
+              Member since 
+              <span>
+                2017
+              </span>
+            </span>
+          </p>
+          <hr
+            className="d-none d-md-block"
+          />
+        </div>
+        <div
+          className="d-md-none mb-4"
+        />
+        <div
+          className="pgn-transition-replace-group position-relative mb-5"
+          style={
+            Object {
+              "height": null,
+            }
+          }
+        />
+        <div
+          className="pgn-transition-replace-group position-relative mb-5"
+          style={
+            Object {
+              "height": null,
+            }
+          }
+        />
+        <div
+          className="pgn-transition-replace-group position-relative mb-5"
+          style={
+            Object {
+              "height": null,
+            }
+          }
+        />
+        <div
+          className="pgn-transition-replace-group position-relative mb-5"
+          style={
+            Object {
+              "height": null,
+            }
+          }
+        />
+        <div
+          className="pgn-transition-replace-group position-relative mb-5"
+          style={
+            Object {
+              "height": null,
+            }
+          }
+        />
+      </div>
+      <div
+        className="pt-md-3 col-md-8 col-lg-7 offset-lg-1"
+      >
+        <div
+          className="pgn-transition-replace-group position-relative mb-5"
+          style={
+            Object {
+              "height": null,
+            }
+          }
+        />
+        <div
+          className="pgn-transition-replace-group position-relative mb-4"
+          style={
+            Object {
+              "height": null,
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ProfilePage /> Renders correctly in various states viewing own profile 1`] = `
+<div
+  className="profile-page"
+>
+  <div
+    className="profile-page-bg-banner bg-primary d-none d-md-block p-relative"
+  />
+  <div
+    className="container-fluid"
+  >
+    <div
+      className="row align-items-center pt-4 mb-4 pt-md-0 mb-md-0"
+    >
+      <div
+        className="col-auto col-md-4 col-lg-3"
+      >
+        <div
+          className="d-flex align-items-center d-md-block"
+        >
+          <div
+            className="profile-avatar-wrap position-relative"
+          >
+            <div
+              className="profile-avatar rounded-circle bg-light"
+            >
+              <div
+                className="profile-avatar-menu-container"
+              >
+                <div
+                  className="dropdown"
+                >
+                  <button
+                    aria-expanded={false}
+                    aria-haspopup="true"
+                    className="btn dropdown-toggle btn-primary"
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    type="button"
+                  >
+                    <span>
+                      Change
+                    </span>
+                  </button>
+                  <div
+                    aria-hidden={true}
+                    aria-label={
+                      <FormattedMessage
+                        defaultMessage="Change"
+                        description="Change photo button"
+                        id="profile.profileavatar.change-button"
+                        values={Object {}}
+                      />
+                    }
+                    className="dropdown-menu"
+                    role="menu"
+                  >
+                    <button
+                      className="dropdown-item"
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                    >
+                      <span>
+                        Upload Photo
+                      </span>
+                    </button>
+                    <button
+                      className="dropdown-item"
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                    >
+                      <span>
+                        Remove
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <img
+                alt="profile avatar"
+                className="w-100 h-100 d-block rounded-circle overflow-hidden"
+                src="http://localhost:18000/media/profile-images/d2a9bdc2ba165dcefc73265c54bf9a20_500.jpg?v=1552495012"
+                style={
+                  Object {
+                    "objectFit": "cover",
+                  }
+                }
+              />
+            </div>
+            <form
+              encType="multipart/form-data"
+              onSubmit={[Function]}
+            >
+              <input
+                accept=".jpg, .jpeg, .png"
+                className="d-none form-control-file"
+                id="photo-file"
+                name="file"
+                onChange={[Function]}
+                type="file"
+              />
+            </form>
+          </div>
+        </div>
+      </div>
+      <div
+        className="col pl-0"
+      >
+        <div
+          className="d-md-none"
+        >
+          <h1
+            className="h2 mb-0 font-weight-bold"
+          >
+            staff
+          </h1>
+          <p
+            className="mb-0"
+          >
+            <span>
+              Member since 
+              <span>
+                2017
+              </span>
+            </span>
+          </p>
+          <hr
+            className="d-none d-md-block"
+          />
+        </div>
+        <div
+          className="d-none d-md-block float-right"
+        >
+          <a
+            className="btn btn-primary"
+            href="http://localhost:18150/records"
+            onClick={[Function]}
+            rel="noopener"
+            target="_blank"
+          >
+            View My Records
+            <span>
+               
+              <span
+                aria-hidden={false}
+                aria-label="Opens in a new window"
+                className="fa fa-external-link"
+                title="Opens in a new window"
+              />
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="col-md-4 col-lg-4"
+      >
+        <div
+          className="d-none d-md-block mb-4"
+        >
+          <h1
+            className="h2 mb-0 font-weight-bold"
+          >
+            staff
+          </h1>
+          <p
+            className="mb-0"
+          >
+            <span>
+              Member since 
+              <span>
+                2017
+              </span>
+            </span>
+          </p>
+          <hr
+            className="d-none d-md-block"
+          />
+        </div>
+        <div
+          className="d-md-none mb-4"
+        >
+          <a
+            className="btn btn-primary"
+            href="http://localhost:18150/records"
+            onClick={[Function]}
+            rel="noopener"
+            target="_blank"
+          >
+            View My Records
+            <span>
+               
+              <span
+                aria-hidden={false}
+                aria-label="Opens in a new window"
+                className="fa fa-external-link"
+                title="Opens in a new window"
+              />
+            </span>
+          </a>
+        </div>
+        <div
+          className="pgn-transition-replace-group position-relative mb-5"
+          style={
+            Object {
+              "height": null,
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "padding": ".1px 0",
+              }
+            }
+          >
+            <div
+              className="editable-item-header mb-2"
+            >
+              <h2
+                className="edit-section-header"
+                id={null}
+              >
+                Full Name
+                <button
+                  className="btn btn-sm btn-link float-right px-0"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  style={
+                    Object {
+                      "marginTop": "-.35rem",
+                    }
+                  }
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-pencil-alt fa-w-16 mr-1"
+                    data-icon="pencil-alt"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                  Edit
+                </button>
+              </h2>
+              <p
+                className="mb-0"
+              >
+                <span
+                  className="ml-auto small text-muted"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-eye-slash fa-w-20 "
+                    data-icon="eye-slash"
+                    data-prefix="far"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 640 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M634 471L36 3.51A16 16 0 0 0 13.51 6l-10 12.49A16 16 0 0 0 6 41l598 467.49a16 16 0 0 0 22.49-2.49l10-12.49A16 16 0 0 0 634 471zM296.79 146.47l134.79 105.38C429.36 191.91 380.48 144 320 144a112.26 112.26 0 0 0-23.21 2.47zm46.42 219.07L208.42 260.16C210.65 320.09 259.53 368 320 368a113 113 0 0 0 23.21-2.46zM320 112c98.65 0 189.09 55 237.93 144a285.53 285.53 0 0 1-44 60.2l37.74 29.5a333.7 333.7 0 0 0 52.9-75.11 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64c-36.7 0-71.71 7-104.63 18.81l46.41 36.29c18.94-4.3 38.34-7.1 58.22-7.1zm0 288c-98.65 0-189.08-55-237.93-144a285.47 285.47 0 0 1 44.05-60.19l-37.74-29.5a333.6 333.6 0 0 0-52.89 75.1 32.35 32.35 0 0 0 0 29.19C89.72 376.41 197.08 448 320 448c36.7 0 71.71-7.05 104.63-18.81l-46.41-36.28C359.28 397.2 339.89 400 320 400z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                   
+                  Just me
+                </span>
+              </p>
+            </div>
+            <p
+              className="h5"
+            >
+              Lemon Seltzer
+            </p>
+            <small
+              className="form-text text-muted"
+            >
+              This is the name that appears in your account and on your certificates.
+            </small>
+          </div>
+        </div>
+        <div
+          className="pgn-transition-replace-group position-relative mb-5"
+          style={
+            Object {
+              "height": null,
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "padding": ".1px 0",
+              }
+            }
+          >
+            <div
+              className="editable-item-header mb-2"
+            >
+              <h2
+                className="edit-section-header"
+                id={null}
+              >
+                Location
+                <button
+                  className="btn btn-sm btn-link float-right px-0"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  style={
+                    Object {
+                      "marginTop": "-.35rem",
+                    }
+                  }
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-pencil-alt fa-w-16 mr-1"
+                    data-icon="pencil-alt"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                  Edit
+                </button>
+              </h2>
+              <p
+                className="mb-0"
+              >
+                <span
+                  className="ml-auto small text-muted"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-eye fa-w-18 "
+                    data-icon="eye"
+                    data-prefix="far"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 576 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                   
+                  Everyone on edX
+                </span>
+              </p>
+            </div>
+            <p
+              className="h5"
+            >
+              Montenegro
+            </p>
+          </div>
+        </div>
+        <div
+          className="pgn-transition-replace-group position-relative mb-5"
+          style={
+            Object {
+              "height": null,
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "padding": ".1px 0",
+              }
+            }
+          >
+            <div
+              className="editable-item-header mb-2"
+            >
+              <h2
+                className="edit-section-header"
+                id={null}
+              >
+                Primary Language Spoken
+                <button
+                  className="btn btn-sm btn-link float-right px-0"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  style={
+                    Object {
+                      "marginTop": "-.35rem",
+                    }
+                  }
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-pencil-alt fa-w-16 mr-1"
+                    data-icon="pencil-alt"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                  Edit
+                </button>
+              </h2>
+              <p
+                className="mb-0"
+              >
+                <span
+                  className="ml-auto small text-muted"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-eye fa-w-18 "
+                    data-icon="eye"
+                    data-prefix="far"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 576 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                   
+                  Everyone on edX
+                </span>
+              </p>
+            </div>
+            <p
+              className="h5"
+            >
+              Yoruba
+            </p>
+          </div>
+        </div>
+        <div
+          className="pgn-transition-replace-group position-relative mb-5"
+          style={
+            Object {
+              "height": null,
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "padding": ".1px 0",
+              }
+            }
+          >
+            <div
+              className="editable-item-header mb-2"
+            >
+              <h2
+                className="edit-section-header"
+                id={null}
+              >
+                Education
+                <button
+                  className="btn btn-sm btn-link float-right px-0"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  style={
+                    Object {
+                      "marginTop": "-.35rem",
+                    }
+                  }
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-pencil-alt fa-w-16 mr-1"
+                    data-icon="pencil-alt"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                  Edit
+                </button>
+              </h2>
+              <p
+                className="mb-0"
+              >
+                <span
+                  className="ml-auto small text-muted"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-eye-slash fa-w-20 "
+                    data-icon="eye-slash"
+                    data-prefix="far"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 640 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M634 471L36 3.51A16 16 0 0 0 13.51 6l-10 12.49A16 16 0 0 0 6 41l598 467.49a16 16 0 0 0 22.49-2.49l10-12.49A16 16 0 0 0 634 471zM296.79 146.47l134.79 105.38C429.36 191.91 380.48 144 320 144a112.26 112.26 0 0 0-23.21 2.47zm46.42 219.07L208.42 260.16C210.65 320.09 259.53 368 320 368a113 113 0 0 0 23.21-2.46zM320 112c98.65 0 189.09 55 237.93 144a285.53 285.53 0 0 1-44 60.2l37.74 29.5a333.7 333.7 0 0 0 52.9-75.11 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64c-36.7 0-71.71 7-104.63 18.81l46.41 36.29c18.94-4.3 38.34-7.1 58.22-7.1zm0 288c-98.65 0-189.08-55-237.93-144a285.47 285.47 0 0 1 44.05-60.19l-37.74-29.5a333.6 333.6 0 0 0-52.89 75.1 32.35 32.35 0 0 0 0 29.19C89.72 376.41 197.08 448 320 448c36.7 0 71.71-7.05 104.63-18.81l-46.41-36.28C359.28 397.2 339.89 400 320 400z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                   
+                  Just me
+                </span>
+              </p>
+            </div>
+            <p
+              className="h5"
+            >
+              Elementary/primary school
+            </p>
+          </div>
+        </div>
+        <div
+          className="pgn-transition-replace-group position-relative mb-5"
+          style={
+            Object {
+              "height": null,
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "padding": ".1px 0",
+              }
+            }
+          >
+            <div
+              className="editable-item-header mb-2"
+            >
+              <h2
+                className="edit-section-header"
+                id={null}
+              >
+                Social Links
+                <button
+                  className="btn btn-sm btn-link float-right px-0"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  style={
+                    Object {
+                      "marginTop": "-.35rem",
+                    }
+                  }
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-pencil-alt fa-w-16 mr-1"
+                    data-icon="pencil-alt"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                  Edit
+                </button>
+              </h2>
+              <p
+                className="mb-0"
+              >
+                <span
+                  className="ml-auto small text-muted"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-eye fa-w-18 "
+                    data-icon="eye"
+                    data-prefix="far"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 576 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                   
+                  Everyone on edX
+                </span>
+              </p>
+            </div>
+            <ul
+              className="list-unstyled"
+            >
+              <li
+                className="form-group"
+              >
+                <a
+                  className="font-weight-bold"
+                  href="https://www.twitter.com/ALOHA"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-twitter fa-w-16 mr-2"
+                    data-icon="twitter"
+                    data-prefix="fab"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                  Twitter
+                </a>
+              </li>
+              <li
+                className="form-group"
+              >
+                <a
+                  className="font-weight-bold"
+                  href="https://www.facebook.com/aloha"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-facebook fa-w-14 mr-2"
+                    data-icon="facebook"
+                    data-prefix="fab"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M448 56.7v398.5c0 13.7-11.1 24.7-24.7 24.7H309.1V306.5h58.2l8.7-67.6h-67v-43.2c0-19.6 5.4-32.9 33.5-32.9h35.8v-60.5c-6.2-.8-27.4-2.7-52.2-2.7-51.6 0-87 31.5-87 89.4v49.9h-58.4v67.6h58.4V480H24.7C11.1 480 0 468.9 0 455.3V56.7C0 43.1 11.1 32 24.7 32h398.5c13.7 0 24.8 11.1 24.8 24.7z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                  Facebook
+                </a>
+              </li>
+              <li
+                className="form-group"
+              >
+                <div>
+                  <button
+                    className="pl-0 text-left btn btn-link"
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex={0}
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="svg-inline--fa fa-plus fa-w-14 fa-xs mr-2"
+                      data-icon="plus"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      style={Object {}}
+                      viewBox="0 0 448 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                        fill="currentColor"
+                        style={Object {}}
+                      />
+                    </svg>
+                    Add 
+                    LinkedIn
+                  </button>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
+        className="pt-md-3 col-md-8 col-lg-7 offset-lg-1"
+      >
+        <div
+          className="pgn-transition-replace-group position-relative mb-5"
+          style={
+            Object {
+              "height": null,
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "padding": ".1px 0",
+              }
+            }
+          >
+            <div
+              className="editable-item-header mb-2"
+            >
+              <h2
+                className="edit-section-header"
+                id={null}
+              >
+                About Me
+                <button
+                  className="btn btn-sm btn-link float-right px-0"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  style={
+                    Object {
+                      "marginTop": "-.35rem",
+                    }
+                  }
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-pencil-alt fa-w-16 mr-1"
+                    data-icon="pencil-alt"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                  Edit
+                </button>
+              </h2>
+              <p
+                className="mb-0"
+              >
+                <span
+                  className="ml-auto small text-muted"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-eye fa-w-18 "
+                    data-icon="eye"
+                    data-prefix="far"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 576 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                   
+                  Everyone on edX
+                </span>
+              </p>
+            </div>
+            <p
+              className="lead"
+            >
+              This is my bio
+            </p>
+          </div>
+        </div>
+        <div
+          className="pgn-transition-replace-group position-relative mb-4"
+          style={
+            Object {
+              "height": null,
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "padding": ".1px 0",
+              }
+            }
+          >
+            <div
+              className="editable-item-header mb-2"
+            >
+              <h2
+                className="edit-section-header"
+                id={null}
+              >
+                My Certificates
+                <button
+                  className="btn btn-sm btn-link float-right px-0"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  style={
+                    Object {
+                      "marginTop": "-.35rem",
+                    }
+                  }
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-pencil-alt fa-w-16 mr-1"
+                    data-icon="pencil-alt"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                  Edit
+                </button>
+              </h2>
+              <p
+                className="mb-0"
+              >
+                <span
+                  className="ml-auto small text-muted"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-eye fa-w-18 "
+                    data-icon="eye"
+                    data-prefix="far"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 576 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                   
+                  Everyone on edX
+                </span>
+              </p>
+            </div>
+            <div
+              className="row align-items-stretch"
+            >
+              <div
+                className="col col-sm-6 d-flex align-items-stretch"
+              >
+                <div
+                  className="card mb-4 certificate flex-grow-1"
+                >
+                  <div
+                    className="certificate-type-illustration"
+                    style={
+                      Object {
+                        "backgroundImage": "url(null)",
+                      }
+                    }
+                  />
+                  <div
+                    className="card-body d-flex flex-column"
+                  >
+                    <div
+                      className="card-title"
+                    >
+                      <p
+                        className="small mb-0"
+                      >
+                        Verified Certificate
+                      </p>
+                      <h4
+                        className="certificate-title"
+                      >
+                        edX Demonstration Course
+                      </h4>
+                    </div>
+                    <p
+                      className="small mb-0"
+                    >
+                      <span>
+                        From
+                      </span>
+                    </p>
+                    <p
+                      className="h6 mb-4"
+                    >
+                      edX
+                    </p>
+                    <div
+                      className="flex-grow-1"
+                    />
+                    <p
+                      className="small mb-2"
+                    >
+                      <span>
+                        Completed on 
+                        <span>
+                          3/4/2019
+                        </span>
+                      </span>
+                    </p>
+                    <div>
+                      <a
+                        className="btn btn-outline-primary"
+                        href="http://www.example.com/"
+                        onClick={[Function]}
+                        rel="noopener"
+                        target="_blank"
+                      >
+                        View Certificate
+                        <span>
+                           
+                          <span
+                            aria-hidden={false}
+                            aria-label="Opens in a new window"
+                            className="fa fa-external-link"
+                            title="Opens in a new window"
+                          />
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ProfilePage /> Renders correctly in various states while saving an edited bio 1`] = `
+<div
+  className="profile-page"
+>
+  <div
+    className="profile-page-bg-banner bg-primary d-none d-md-block p-relative"
+  />
+  <div
+    className="container-fluid"
+  >
+    <div
+      className="row align-items-center pt-4 mb-4 pt-md-0 mb-md-0"
+    >
+      <div
+        className="col-auto col-md-4 col-lg-3"
+      >
+        <div
+          className="d-flex align-items-center d-md-block"
+        >
+          <div
+            className="profile-avatar-wrap position-relative"
+          >
+            <div
+              className="profile-avatar rounded-circle bg-light"
+            >
+              <div
+                className="profile-avatar-menu-container"
+              >
+                <div
+                  className="dropdown"
+                >
+                  <button
+                    aria-expanded={false}
+                    aria-haspopup="true"
+                    className="btn dropdown-toggle btn-primary"
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    type="button"
+                  >
+                    <span>
+                      Change
+                    </span>
+                  </button>
+                  <div
+                    aria-hidden={true}
+                    aria-label={
+                      <FormattedMessage
+                        defaultMessage="Change"
+                        description="Change photo button"
+                        id="profile.profileavatar.change-button"
+                        values={Object {}}
+                      />
+                    }
+                    className="dropdown-menu"
+                    role="menu"
+                  >
+                    <button
+                      className="dropdown-item"
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                    >
+                      <span>
+                        Upload Photo
+                      </span>
+                    </button>
+                    <button
+                      className="dropdown-item"
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                    >
+                      <span>
+                        Remove
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <img
+                alt="profile avatar"
+                className="w-100 h-100 d-block rounded-circle overflow-hidden"
+                src="http://localhost:18000/media/profile-images/d2a9bdc2ba165dcefc73265c54bf9a20_500.jpg?v=1552495012"
+                style={
+                  Object {
+                    "objectFit": "cover",
+                  }
+                }
+              />
+            </div>
+            <form
+              encType="multipart/form-data"
+              onSubmit={[Function]}
+            >
+              <input
+                accept=".jpg, .jpeg, .png"
+                className="d-none form-control-file"
+                id="photo-file"
+                name="file"
+                onChange={[Function]}
+                type="file"
+              />
+            </form>
+          </div>
+        </div>
+      </div>
+      <div
+        className="col pl-0"
+      >
+        <div
+          className="d-md-none"
+        >
+          <h1
+            className="h2 mb-0 font-weight-bold"
+          >
+            staff
+          </h1>
+          <p
+            className="mb-0"
+          >
+            <span>
+              Member since 
+              <span>
+                2017
+              </span>
+            </span>
+          </p>
+          <hr
+            className="d-none d-md-block"
+          />
+        </div>
+        <div
+          className="d-none d-md-block float-right"
+        >
+          <a
+            className="btn btn-primary"
+            href="http://localhost:18150/records"
+            onClick={[Function]}
+            rel="noopener"
+            target="_blank"
+          >
+            View My Records
+            <span>
+               
+              <span
+                aria-hidden={false}
+                aria-label="Opens in a new window"
+                className="fa fa-external-link"
+                title="Opens in a new window"
+              />
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="col-md-4 col-lg-4"
+      >
+        <div
+          className="d-none d-md-block mb-4"
+        >
+          <h1
+            className="h2 mb-0 font-weight-bold"
+          >
+            staff
+          </h1>
+          <p
+            className="mb-0"
+          >
+            <span>
+              Member since 
+              <span>
+                2017
+              </span>
+            </span>
+          </p>
+          <hr
+            className="d-none d-md-block"
+          />
+        </div>
+        <div
+          className="d-md-none mb-4"
+        >
+          <a
+            className="btn btn-primary"
+            href="http://localhost:18150/records"
+            onClick={[Function]}
+            rel="noopener"
+            target="_blank"
+          >
+            View My Records
+            <span>
+               
+              <span
+                aria-hidden={false}
+                aria-label="Opens in a new window"
+                className="fa fa-external-link"
+                title="Opens in a new window"
+              />
+            </span>
+          </a>
+        </div>
+        <div
+          className="pgn-transition-replace-group position-relative mb-5"
+          style={
+            Object {
+              "height": null,
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "padding": ".1px 0",
+              }
+            }
+          >
+            <div
+              className="editable-item-header mb-2"
+            >
+              <h2
+                className="edit-section-header"
+                id={null}
+              >
+                Full Name
+                <button
+                  className="btn btn-sm btn-link float-right px-0"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  style={
+                    Object {
+                      "marginTop": "-.35rem",
+                    }
+                  }
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-pencil-alt fa-w-16 mr-1"
+                    data-icon="pencil-alt"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                  Edit
+                </button>
+              </h2>
+              <p
+                className="mb-0"
+              >
+                <span
+                  className="ml-auto small text-muted"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-eye-slash fa-w-20 "
+                    data-icon="eye-slash"
+                    data-prefix="far"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 640 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M634 471L36 3.51A16 16 0 0 0 13.51 6l-10 12.49A16 16 0 0 0 6 41l598 467.49a16 16 0 0 0 22.49-2.49l10-12.49A16 16 0 0 0 634 471zM296.79 146.47l134.79 105.38C429.36 191.91 380.48 144 320 144a112.26 112.26 0 0 0-23.21 2.47zm46.42 219.07L208.42 260.16C210.65 320.09 259.53 368 320 368a113 113 0 0 0 23.21-2.46zM320 112c98.65 0 189.09 55 237.93 144a285.53 285.53 0 0 1-44 60.2l37.74 29.5a333.7 333.7 0 0 0 52.9-75.11 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64c-36.7 0-71.71 7-104.63 18.81l46.41 36.29c18.94-4.3 38.34-7.1 58.22-7.1zm0 288c-98.65 0-189.08-55-237.93-144a285.47 285.47 0 0 1 44.05-60.19l-37.74-29.5a333.6 333.6 0 0 0-52.89 75.1 32.35 32.35 0 0 0 0 29.19C89.72 376.41 197.08 448 320 448c36.7 0 71.71-7.05 104.63-18.81l-46.41-36.28C359.28 397.2 339.89 400 320 400z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                   
+                  Just me
+                </span>
+              </p>
+            </div>
+            <p
+              className="h5"
+            >
+              Lemon Seltzer
+            </p>
+            <small
+              className="form-text text-muted"
+            >
+              This is the name that appears in your account and on your certificates.
+            </small>
+          </div>
+        </div>
+        <div
+          className="pgn-transition-replace-group position-relative mb-5"
+          style={
+            Object {
+              "height": null,
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "padding": ".1px 0",
+              }
+            }
+          >
+            <div
+              className="editable-item-header mb-2"
+            >
+              <h2
+                className="edit-section-header"
+                id={null}
+              >
+                Location
+                <button
+                  className="btn btn-sm btn-link float-right px-0"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  style={
+                    Object {
+                      "marginTop": "-.35rem",
+                    }
+                  }
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-pencil-alt fa-w-16 mr-1"
+                    data-icon="pencil-alt"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                  Edit
+                </button>
+              </h2>
+              <p
+                className="mb-0"
+              >
+                <span
+                  className="ml-auto small text-muted"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-eye fa-w-18 "
+                    data-icon="eye"
+                    data-prefix="far"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 576 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                   
+                  Everyone on edX
+                </span>
+              </p>
+            </div>
+            <p
+              className="h5"
+            >
+              Montenegro
+            </p>
+          </div>
+        </div>
+        <div
+          className="pgn-transition-replace-group position-relative mb-5"
+          style={
+            Object {
+              "height": null,
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "padding": ".1px 0",
+              }
+            }
+          >
+            <div
+              className="editable-item-header mb-2"
+            >
+              <h2
+                className="edit-section-header"
+                id={null}
+              >
+                Primary Language Spoken
+                <button
+                  className="btn btn-sm btn-link float-right px-0"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  style={
+                    Object {
+                      "marginTop": "-.35rem",
+                    }
+                  }
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-pencil-alt fa-w-16 mr-1"
+                    data-icon="pencil-alt"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                  Edit
+                </button>
+              </h2>
+              <p
+                className="mb-0"
+              >
+                <span
+                  className="ml-auto small text-muted"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-eye fa-w-18 "
+                    data-icon="eye"
+                    data-prefix="far"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 576 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                   
+                  Everyone on edX
+                </span>
+              </p>
+            </div>
+            <p
+              className="h5"
+            >
+              Yoruba
+            </p>
+          </div>
+        </div>
+        <div
+          className="pgn-transition-replace-group position-relative mb-5"
+          style={
+            Object {
+              "height": null,
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "padding": ".1px 0",
+              }
+            }
+          >
+            <div
+              className="editable-item-header mb-2"
+            >
+              <h2
+                className="edit-section-header"
+                id={null}
+              >
+                Education
+                <button
+                  className="btn btn-sm btn-link float-right px-0"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  style={
+                    Object {
+                      "marginTop": "-.35rem",
+                    }
+                  }
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-pencil-alt fa-w-16 mr-1"
+                    data-icon="pencil-alt"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                  Edit
+                </button>
+              </h2>
+              <p
+                className="mb-0"
+              >
+                <span
+                  className="ml-auto small text-muted"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-eye-slash fa-w-20 "
+                    data-icon="eye-slash"
+                    data-prefix="far"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 640 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M634 471L36 3.51A16 16 0 0 0 13.51 6l-10 12.49A16 16 0 0 0 6 41l598 467.49a16 16 0 0 0 22.49-2.49l10-12.49A16 16 0 0 0 634 471zM296.79 146.47l134.79 105.38C429.36 191.91 380.48 144 320 144a112.26 112.26 0 0 0-23.21 2.47zm46.42 219.07L208.42 260.16C210.65 320.09 259.53 368 320 368a113 113 0 0 0 23.21-2.46zM320 112c98.65 0 189.09 55 237.93 144a285.53 285.53 0 0 1-44 60.2l37.74 29.5a333.7 333.7 0 0 0 52.9-75.11 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64c-36.7 0-71.71 7-104.63 18.81l46.41 36.29c18.94-4.3 38.34-7.1 58.22-7.1zm0 288c-98.65 0-189.08-55-237.93-144a285.47 285.47 0 0 1 44.05-60.19l-37.74-29.5a333.6 333.6 0 0 0-52.89 75.1 32.35 32.35 0 0 0 0 29.19C89.72 376.41 197.08 448 320 448c36.7 0 71.71-7.05 104.63-18.81l-46.41-36.28C359.28 397.2 339.89 400 320 400z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                   
+                  Just me
+                </span>
+              </p>
+            </div>
+            <p
+              className="h5"
+            >
+              Elementary/primary school
+            </p>
+          </div>
+        </div>
+        <div
+          className="pgn-transition-replace-group position-relative mb-5"
+          style={
+            Object {
+              "height": null,
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "padding": ".1px 0",
+              }
+            }
+          >
+            <div
+              className="editable-item-header mb-2"
+            >
+              <h2
+                className="edit-section-header"
+                id={null}
+              >
+                Social Links
+                <button
+                  className="btn btn-sm btn-link float-right px-0"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  style={
+                    Object {
+                      "marginTop": "-.35rem",
+                    }
+                  }
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-pencil-alt fa-w-16 mr-1"
+                    data-icon="pencil-alt"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                  Edit
+                </button>
+              </h2>
+              <p
+                className="mb-0"
+              >
+                <span
+                  className="ml-auto small text-muted"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-eye fa-w-18 "
+                    data-icon="eye"
+                    data-prefix="far"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 576 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                   
+                  Everyone on edX
+                </span>
+              </p>
+            </div>
+            <ul
+              className="list-unstyled"
+            >
+              <li
+                className="form-group"
+              >
+                <a
+                  className="font-weight-bold"
+                  href="https://www.twitter.com/ALOHA"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-twitter fa-w-16 mr-2"
+                    data-icon="twitter"
+                    data-prefix="fab"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                  Twitter
+                </a>
+              </li>
+              <li
+                className="form-group"
+              >
+                <a
+                  className="font-weight-bold"
+                  href="https://www.facebook.com/aloha"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-facebook fa-w-14 mr-2"
+                    data-icon="facebook"
+                    data-prefix="fab"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M448 56.7v398.5c0 13.7-11.1 24.7-24.7 24.7H309.1V306.5h58.2l8.7-67.6h-67v-43.2c0-19.6 5.4-32.9 33.5-32.9h35.8v-60.5c-6.2-.8-27.4-2.7-52.2-2.7-51.6 0-87 31.5-87 89.4v49.9h-58.4v67.6h58.4V480H24.7C11.1 480 0 468.9 0 455.3V56.7C0 43.1 11.1 32 24.7 32h398.5c13.7 0 24.8 11.1 24.8 24.7z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                  Facebook
+                </a>
+              </li>
+              <li
+                className="form-group"
+              >
+                <div>
+                  <button
+                    className="pl-0 text-left btn btn-link"
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex={0}
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="svg-inline--fa fa-plus fa-w-14 fa-xs mr-2"
+                      data-icon="plus"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      style={Object {}}
+                      viewBox="0 0 448 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                        fill="currentColor"
+                        style={Object {}}
+                      />
+                    </svg>
+                    Add 
+                    LinkedIn
+                  </button>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
+        className="pt-md-3 col-md-8 col-lg-7 offset-lg-1"
+      >
+        <div
+          className="pgn-transition-replace-group position-relative mb-5"
+          style={
+            Object {
+              "height": null,
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "padding": ".1px 0",
+              }
+            }
+          >
+            <div
+              aria-labelledby="bio-label"
+              role="dialog"
+            >
+              <form
+                onSubmit={[Function]}
+              >
+                <div
+                  className="form-group"
+                >
+                  <label
+                    className="edit-section-header"
+                    htmlFor="bio"
+                  >
+                    About Me
+                  </label>
+                  <textarea
+                    aria-describedby=""
+                    className="form-control"
+                    id="bio"
+                    name="bio"
+                    onChange={[Function]}
+                    value="This is my bio"
+                  />
+                </div>
+                <div
+                  className="d-flex flex-row-reverse flex-wrap justify-content-end align-items-center"
+                >
+                  <div
+                    className="form-group d-flex flex-wrap"
+                  >
+                    <label
+                      className="col-form-label"
+                      htmlFor="visibilityBio"
+                    >
+                      Who can see this:
+                    </label>
+                    <span
+                      className="d-flex align-items-center"
+                    >
+                      <span
+                        className="d-inline-block ml-1 mr-2"
+                        style={
+                          Object {
+                            "width": "1.5rem",
+                          }
+                        }
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="svg-inline--fa fa-eye fa-w-18 "
+                          data-icon="eye"
+                          data-prefix="far"
+                          focusable="false"
+                          role="img"
+                          style={Object {}}
+                          viewBox="0 0 576 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
+                            fill="currentColor"
+                            style={Object {}}
+                          />
+                        </svg>
+                      </span>
+                      <select
+                        className="d-inline-block w-auto form-control"
+                        id="visibilityBio"
+                        name="visibilityBio"
+                        onChange={[Function]}
+                        type="select"
+                        value="all_users"
+                      >
+                        <option
+                          value="private"
+                        >
+                          Just me
+                        </option>
+                        <option
+                          value="all_users"
+                        >
+                          Everyone on edX
+                        </option>
+                      </select>
+                    </span>
+                  </div>
+                  <div
+                    className="form-group flex-shrink-0 mr-auto"
+                  >
+                    <button
+                      aria-live="assertive"
+                      className="btn pgn__stateful-btn pgn__stateful-btn-state-pending btn-primary"
+                      disabled={false}
+                      onBlur={[Function]}
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                      type="submit"
+                    >
+                      <span
+                        className="d-flex align-items-center justify-content-center"
+                      >
+                        <span
+                          className="pgn__stateful-btn-icon"
+                        >
+                          <span
+                            aria-hidden={true}
+                            className="icon fa fa-spinner fa-spin"
+                            id="Icon1"
+                          />
+                        </span>
+                        Saving
+                      </span>
+                    </button>
+                    <button
+                      className="btn btn-link"
+                      onBlur={[Function]}
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                      type="button"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div
+          className="pgn-transition-replace-group position-relative mb-4"
+          style={
+            Object {
+              "height": null,
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "padding": ".1px 0",
+              }
+            }
+          >
+            <div
+              className="editable-item-header mb-2"
+            >
+              <h2
+                className="edit-section-header"
+                id={null}
+              >
+                My Certificates
+                <button
+                  className="btn btn-sm btn-link float-right px-0"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  style={
+                    Object {
+                      "marginTop": "-.35rem",
+                    }
+                  }
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-pencil-alt fa-w-16 mr-1"
+                    data-icon="pencil-alt"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                  Edit
+                </button>
+              </h2>
+              <p
+                className="mb-0"
+              >
+                <span
+                  className="ml-auto small text-muted"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-eye fa-w-18 "
+                    data-icon="eye"
+                    data-prefix="far"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 576 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                   
+                  Everyone on edX
+                </span>
+              </p>
+            </div>
+            <div
+              className="row align-items-stretch"
+            >
+              <div
+                className="col col-sm-6 d-flex align-items-stretch"
+              >
+                <div
+                  className="card mb-4 certificate flex-grow-1"
+                >
+                  <div
+                    className="certificate-type-illustration"
+                    style={
+                      Object {
+                        "backgroundImage": "url(null)",
+                      }
+                    }
+                  />
+                  <div
+                    className="card-body d-flex flex-column"
+                  >
+                    <div
+                      className="card-title"
+                    >
+                      <p
+                        className="small mb-0"
+                      >
+                        Verified Certificate
+                      </p>
+                      <h4
+                        className="certificate-title"
+                      >
+                        edX Demonstration Course
+                      </h4>
+                    </div>
+                    <p
+                      className="small mb-0"
+                    >
+                      <span>
+                        From
+                      </span>
+                    </p>
+                    <p
+                      className="h6 mb-4"
+                    >
+                      edX
+                    </p>
+                    <div
+                      className="flex-grow-1"
+                    />
+                    <p
+                      className="small mb-2"
+                    >
+                      <span>
+                        Completed on 
+                        <span>
+                          3/4/2019
+                        </span>
+                      </span>
+                    </p>
+                    <div>
+                      <a
+                        className="btn btn-outline-primary"
+                        href="http://www.example.com/"
+                        onClick={[Function]}
+                        rel="noopener"
+                        target="_blank"
+                      >
+                        View Certificate
+                        <span>
+                           
+                          <span
+                            aria-hidden={false}
+                            aria-label="Opens in a new window"
+                            className="fa fa-external-link"
+                            title="Opens in a new window"
+                          />
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

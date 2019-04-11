@@ -7,13 +7,13 @@
     "url": "git+https://github.com/edx/frontend-app-profile.git"
   },
   "scripts": {
-    "build": "NODE_ENV=production BABEL_ENV=production webpack --config=config/webpack.prod.config.js",
+    "build": "NODE_ENV=production BABEL_ENV=production webpack --config=webpack/webpack.prod.config.js",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "i18n_extract": "BABEL_ENV=i18n babel src --quiet > /dev/null",
     "is-es5": "es-check es5 ./dist/*.js",
     "lint": "eslint --ext .js --ext .jsx .",
     "precommit": "npm run lint",
-    "start": "NODE_ENV=development BABEL_ENV=development webpack-dev-server --config=config/webpack.dev.config.js --progress",
+    "start": "NODE_ENV=development BABEL_ENV=development webpack-dev-server --config=webpack/webpack.dev.config.js --progress",
     "test": "jest --coverage --passWithNoTests",
     "travis-deploy-once": "travis-deploy-once"
   },
@@ -38,7 +38,6 @@
     "@fortawesome/free-solid-svg-icons": "^5.7.1",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "babel-polyfill": "^6.26.0",
-    "bootstrap": "^4.2.1",
     "classnames": "^2.2.6",
     "connected-react-router": "^5.0.1",
     "email-prop-type": "^1.1.5",
@@ -50,10 +49,10 @@
     "iso-countries-languages": "^0.2.1",
     "lodash.camelcase": "^4.3.0",
     "lodash.get": "^4.4.2",
+    "lodash.pick": "^4.4.0",
     "lodash.snakecase": "^4.1.1",
     "newrelic": "^5.5.0",
     "prop-types": "^15.5.10",
-    "query-string": "^5.1.1",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-intl": "^2.8.0",
@@ -68,8 +67,7 @@
     "redux-thunk": "^2.2.0",
     "reselect": "^4.0.0",
     "universal-cookie": "^3.1.0",
-    "webpack-rtl-plugin": "^2.0.0",
-    "whatwg-fetch": "^2.0.3"
+    "webpack-rtl-plugin": "^2.0.0"
   },
   "devDependencies": {
     "@svgr/webpack": "^4.1.0",

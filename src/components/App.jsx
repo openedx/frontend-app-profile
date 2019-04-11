@@ -1,67 +1,167 @@
 import React, { Component } from 'react';
 import { connect, Provider } from 'react-redux';
 import PropTypes from 'prop-types';
-import { IntlProvider } from 'react-intl';
+import { IntlProvider, injectIntl, intlShape } from 'react-intl';
 import { Route, Switch } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import { sendTrackEvent } from '@edx/frontend-analytics';
+import SiteHeader from '@edx/frontend-component-site-header';
 import SiteFooter from '@edx/frontend-component-footer';
-import { fetchUserAccount, UserAccountApiService } from '@edx/frontend-auth';
-
-import apiClient from '../config/apiClient';
 import { getLocale, getMessages } from '@edx/frontend-i18n'; // eslint-disable-line
-import SiteHeader from './common/SiteHeader';
-import ConnectedProfilePage from './ProfilePage';
 
-import FooterLogo from '../../assets/edx-footer.png';
+import { PageLoading, fetchUserAccount } from '../common';
+import { ConnectedProfilePage } from '../profile';
+
+import FooterLogo from '../assets/edx-footer.png';
+import HeaderLogo from '../assets/logo.svg';
 import ErrorPage from './ErrorPage';
 import NotFoundPage from './NotFoundPage';
-import PageLoading from './common/PageLoading';
+
+import messages from './App.messages';
+
+
+function PageContent({
+  ready,
+  configuration,
+  username,
+  avatar,
+  intl,
+}) {
+  if (!ready) {
+    return <PageLoading />;
+  }
+
+  const mainMenu = [
+    {
+      type: 'item',
+      href: `${process.env.MARKETING_SITE_BASE_URL}/course`,
+      content: intl.formatMessage(messages['siteheader.links.courses']),
+    },
+    {
+      type: 'item',
+      href: `${process.env.MARKETING_SITE_BASE_URL}/course?program=all`,
+      content: intl.formatMessage(messages['siteheader.links.programs']),
+    },
+    {
+      type: 'item',
+      href: `${process.env.MARKETING_SITE_BASE_URL}/schools-partners`,
+      content: intl.formatMessage(messages['siteheader.links.schools']),
+    },
+  ];
+  const userMenu = [
+    {
+      type: 'item',
+      href: `${process.env.LMS_BASE_URL}`,
+      content: intl.formatMessage(messages['siteheader.user.menu.dashboard']),
+    },
+    {
+      type: 'item',
+      href: `${process.env.BASE_URL}/u/${username}`,
+      content: intl.formatMessage(messages['siteheader.user.menu.profile']),
+    },
+    {
+      type: 'item',
+      href: `${process.env.LMS_BASE_URL}/account/settings`,
+      content: intl.formatMessage(messages['siteheader.user.menu.account.settings']),
+    },
+    {
+      type: 'item',
+      href: process.env.LOGOUT_URL,
+      content: intl.formatMessage(messages['siteheader.user.menu.logout']),
+    },
+  ];
+  const loggedOutItems = [
+    {
+      type: 'item',
+      href: `${process.env.LMS_BASE_URL}/login`,
+      content: intl.formatMessage(messages['siteheader.user.menu.login']),
+    },
+    {
+      type: 'item',
+      href: `${process.env.LMS_BASE_URL}/register`,
+      content: intl.formatMessage(messages['siteheader.user.menu.register']),
+    },
+  ];
+
+  return (
+    <div>
+      <SiteHeader
+        logo={HeaderLogo}
+        loggedIn
+        username={username}
+        avatar={avatar}
+        logoAltText={configuration.SITE_NAME}
+        logoDestination={configuration.MARKETING_SITE_BASE_URL}
+        mainMenu={mainMenu}
+        userMenu={userMenu}
+        loggedOutItems={loggedOutItems}
+      />
+      <main>
+        <Switch>
+          <Route path="/u/:username" component={ConnectedProfilePage} />
+          <Route path="/error" component={ErrorPage} />
+          <Route path="/notfound" component={NotFoundPage} />
+          <Route path="*" component={NotFoundPage} />
+        </Switch>
+      </main>
+      <SiteFooter
+        siteName={configuration.SITE_NAME}
+        siteLogo={FooterLogo}
+        marketingSiteBaseUrl={configuration.MARKETING_SITE_BASE_URL}
+        supportUrl={configuration.SUPPORT_URL}
+        contactUrl={configuration.CONTACT_URL}
+        openSourceUrl={configuration.OPEN_SOURCE_URL}
+        termsOfServiceUrl={configuration.TERMS_OF_SERVICE_URL}
+        privacyPolicyUrl={configuration.PRIVACY_POLICY_URL}
+        facebookUrl={configuration.FACEBOOK_URL}
+        twitterUrl={configuration.TWITTER_URL}
+        youTubeUrl={configuration.YOU_TUBE_URL}
+        linkedInUrl={configuration.LINKED_IN_URL}
+        googlePlusUrl={configuration.GOOGLE_PLUS_URL}
+        redditUrl={configuration.REDDIT_URL}
+        appleAppStoreUrl={configuration.APPLE_APP_STORE_URL}
+        googlePlayUrl={configuration.GOOGLE_PLAY_URL}
+        handleAllTrackEvents={sendTrackEvent}
+      />
+    </div>
+  );
+}
+
+PageContent.propTypes = {
+  username: PropTypes.string.isRequired,
+  avatar: PropTypes.string,
+  ready: PropTypes.bool,
+  configuration: PropTypes.shape({
+    SITE_NAME: PropTypes.string.isRequired,
+    MARKETING_SITE_BASE_URL: PropTypes.string.isRequired,
+    SUPPORT_URL: PropTypes.string.isRequired,
+    CONTACT_URL: PropTypes.string.isRequired,
+    OPEN_SOURCE_URL: PropTypes.string.isRequired,
+    TERMS_OF_SERVICE_URL: PropTypes.string.isRequired,
+    PRIVACY_POLICY_URL: PropTypes.string.isRequired,
+    FACEBOOK_URL: PropTypes.string.isRequired,
+    TWITTER_URL: PropTypes.string.isRequired,
+    YOU_TUBE_URL: PropTypes.string.isRequired,
+    LINKED_IN_URL: PropTypes.string.isRequired,
+    GOOGLE_PLUS_URL: PropTypes.string.isRequired,
+    REDDIT_URL: PropTypes.string.isRequired,
+    APPLE_APP_STORE_URL: PropTypes.string.isRequired,
+    GOOGLE_PLAY_URL: PropTypes.string.isRequired,
+  }).isRequired,
+  intl: intlShape.isRequired,
+};
+
+PageContent.defaultProps = {
+  ready: false,
+  avatar: null,
+};
+
+const IntlPageContent = injectIntl(PageContent);
 
 class App extends Component {
   componentDidMount() {
     const { username } = this.props;
-    const userAccountApiService = new UserAccountApiService(apiClient, process.env.LMS_BASE_URL);
-    this.props.fetchUserAccount(userAccountApiService, username);
-  }
-
-  renderContent() {
-    if (!this.props.ready) {
-      return <PageLoading />;
-    }
-
-    return (
-      <div>
-        <SiteHeader />
-        <main>
-          <Switch>
-            <Route path="/u/:username" component={ConnectedProfilePage} />
-            <Route path="/error" component={ErrorPage} />
-            <Route path="/notfound" component={NotFoundPage} />
-            <Route path="*" component={NotFoundPage} />
-          </Switch>
-        </main>
-        <SiteFooter
-          siteName={process.env.SITE_NAME}
-          siteLogo={FooterLogo}
-          marketingSiteBaseUrl={process.env.MARKETING_SITE_BASE_URL}
-          supportUrl={process.env.SUPPORT_URL}
-          contactUrl={process.env.CONTACT_URL}
-          openSourceUrl={process.env.OPEN_SOURCE_URL}
-          termsOfServiceUrl={process.env.TERMS_OF_SERVICE_URL}
-          privacyPolicyUrl={process.env.PRIVACY_POLICY_URL}
-          facebookUrl={process.env.FACEBOOK_URL}
-          twitterUrl={process.env.TWITTER_URL}
-          youTubeUrl={process.env.YOU_TUBE_URL}
-          linkedInUrl={process.env.LINKED_IN_URL}
-          googlePlusUrl={process.env.GOOGLE_PLUS_URL}
-          redditUrl={process.env.REDDIT_URL}
-          appleAppStoreUrl={process.env.APPLE_APP_STORE_URL}
-          googlePlayUrl={process.env.GOOGLE_PLAY_URL}
-          handleAllTrackEvents={sendTrackEvent}
-        />
-      </div>
-    );
+    this.props.fetchUserAccount(username);
   }
 
   render() {
@@ -69,7 +169,12 @@ class App extends Component {
       <IntlProvider locale={getLocale()} messages={getMessages()}>
         <Provider store={this.props.store}>
           <ConnectedRouter history={this.props.history}>
-            {this.renderContent()}
+            <IntlPageContent
+              ready={this.props.ready}
+              configuration={this.props.configuration}
+              username={this.props.username}
+              avatar={this.props.avatar}
+            />
           </ConnectedRouter>
         </Provider>
       </IntlProvider>
@@ -80,13 +185,32 @@ class App extends Component {
 App.propTypes = {
   fetchUserAccount: PropTypes.func.isRequired,
   username: PropTypes.string.isRequired,
+  avatar: PropTypes.string,
   store: PropTypes.object.isRequired, // eslint-disable-line
   history: PropTypes.object.isRequired, // eslint-disable-line
   ready: PropTypes.bool,
+  configuration: PropTypes.shape({
+    SITE_NAME: PropTypes.string.isRequired,
+    MARKETING_SITE_BASE_URL: PropTypes.string.isRequired,
+    SUPPORT_URL: PropTypes.string.isRequired,
+    CONTACT_URL: PropTypes.string.isRequired,
+    OPEN_SOURCE_URL: PropTypes.string.isRequired,
+    TERMS_OF_SERVICE_URL: PropTypes.string.isRequired,
+    PRIVACY_POLICY_URL: PropTypes.string.isRequired,
+    FACEBOOK_URL: PropTypes.string.isRequired,
+    TWITTER_URL: PropTypes.string.isRequired,
+    YOU_TUBE_URL: PropTypes.string.isRequired,
+    LINKED_IN_URL: PropTypes.string.isRequired,
+    GOOGLE_PLUS_URL: PropTypes.string.isRequired,
+    REDDIT_URL: PropTypes.string.isRequired,
+    APPLE_APP_STORE_URL: PropTypes.string.isRequired,
+    GOOGLE_PLAY_URL: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 App.defaultProps = {
   ready: false,
+  avatar: null,
 };
 
 const mapStateToProps = state => ({
@@ -94,6 +218,10 @@ const mapStateToProps = state => ({
   // An error means that we tried to load the user account and failed,
   // which also means we're ready to display something.
   ready: state.userAccount.loaded || state.userAccount.error != null,
+  configuration: state.configuration,
+  avatar: state.userAccount.profileImage.hasImage
+    ? state.userAccount.profileImage.imageUrlMedium
+    : null,
 });
 
 export default connect(
