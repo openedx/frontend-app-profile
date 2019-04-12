@@ -9,7 +9,6 @@ import {
   fetchProfileBegin,
   fetchProfileSuccess,
   fetchProfileReset,
-  fetchProfile,
   SAVE_PROFILE,
   saveProfileBegin,
   saveProfileSuccess,
@@ -155,12 +154,8 @@ export function* handleSaveProfilePhoto(action) {
 
   try {
     yield put(saveProfilePhotoBegin());
-    yield call(ProfileApiService.postProfilePhoto, username, formData);
-
-    // Get the account data. Saving doesn't return anything on success.
-    yield handleFetchProfile(fetchProfile(username));
-
-    yield put(saveProfilePhotoSuccess());
+    const photoResult = yield call(ProfileApiService.postProfilePhoto, username, formData);
+    yield put(saveProfilePhotoSuccess(photoResult));
     yield put(saveProfilePhotoReset());
   } catch (e) {
     if (e.processedData) {
@@ -178,12 +173,8 @@ export function* handleDeleteProfilePhoto(action) {
 
   try {
     yield put(deleteProfilePhotoBegin());
-    yield call(ProfileApiService.deleteProfilePhoto, username);
-
-    // Get the account data. Saving doesn't return anything on success.
-    yield handleFetchProfile(fetchProfile(username));
-
-    yield put(deleteProfilePhotoSuccess());
+    const photoResult = yield call(ProfileApiService.deleteProfilePhoto, username);
+    yield put(deleteProfilePhotoSuccess(photoResult));
     yield put(deleteProfilePhotoReset());
   } catch (e) {
     LoggingService.logAPIErrorResponse(e);

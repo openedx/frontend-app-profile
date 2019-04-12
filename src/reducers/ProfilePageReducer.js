@@ -79,6 +79,8 @@ const profilePage = (state = initialState, action) => {
     case SAVE_PROFILE_PHOTO.SUCCESS:
       return {
         ...state,
+        // Merge in new profile image data
+        account: Object.assign({}, state.account, { profileImage: action.payload.profileImage }),
         savePhotoState: 'complete',
         errors: {},
       };
@@ -104,6 +106,8 @@ const profilePage = (state = initialState, action) => {
     case DELETE_PROFILE_PHOTO.SUCCESS:
       return {
         ...state,
+        // Merge in new profile image data (should be empty or default image)
+        account: Object.assign({}, state.account, { profileImage: action.payload.profileImage }),
         savePhotoState: 'complete',
         errors: {},
       };

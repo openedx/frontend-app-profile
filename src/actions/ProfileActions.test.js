@@ -114,10 +114,14 @@ describe('SAVE profile photo actions', () => {
   });
 
   it('should create an action to signal user profile photo save success', () => {
+    const newPhotoData = { hasImage: true };
     const expectedAction = {
       type: SAVE_PROFILE_PHOTO.SUCCESS,
+      payload: {
+        profileImage: newPhotoData,
+      },
     };
-    expect(saveProfilePhotoSuccess()).toEqual(expectedAction);
+    expect(saveProfilePhotoSuccess(newPhotoData)).toEqual(expectedAction);
   });
 
   it('should create an action to signal user profile photo save success', () => {
@@ -157,10 +161,14 @@ describe('DELETE profile photo actions', () => {
   });
 
   it('should create an action to signal user profile photo deletion success', () => {
+    const defaultPhotoData = { hasImage: false };
     const expectedAction = {
       type: DELETE_PROFILE_PHOTO.SUCCESS,
+      payload: {
+        profileImage: defaultPhotoData,
+      },
     };
-    expect(deleteProfilePhotoSuccess()).toEqual(expectedAction);
+    expect(deleteProfilePhotoSuccess(defaultPhotoData)).toEqual(expectedAction);
   });
 
   it('should create an action to signal user profile photo deletion success', () => {
