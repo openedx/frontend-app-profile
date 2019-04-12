@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import SiteHeader from '@edx/frontend-component-site-header';
-import { injectIntl } from 'react-intl';
+import { injectIntl } from '@edx/frontend-i18n'; // eslint-disable-line
 
 import messages from './SiteHeader.messages';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { injectIntl, intlShape } from 'react-intl';
+import { injectIntl, intlShape } from '@edx/frontend-i18n'; // eslint-disable-line
 import { ValidationFormGroup } from '@edx/paragon';
 
 import messages from './Country.messages';

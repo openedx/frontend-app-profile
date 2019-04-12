@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, StatefulButton } from '@edx/paragon';
-import { injectIntl, intlShape } from 'react-intl';
+import { injectIntl, intlShape } from '@edx/frontend-i18n'; // eslint-disable-line
 
 import messages from './FormControls.messages';
 

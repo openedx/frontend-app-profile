@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { getLocale, getLanguageList, getCountryList, getCountryMessages, getLanguageMessages } from '../i18n/i18n-loader';
+import { getLocale, getLanguageList, getCountryList, getCountryMessages, getLanguageMessages } from '@edx/frontend-i18n'; // eslint-disable-line
 
 export const formIdSelector = (state, props) => props.formId;
 export const userAccountSelector = state => state.userAccount;

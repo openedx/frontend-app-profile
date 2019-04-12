@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { injectIntl, intlShape } from 'react-intl';
+import { injectIntl, intlShape } from '@edx/frontend-i18n'; // eslint-disable-line
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEyeSlash, faEye } from '@fortawesome/free-regular-svg-icons';
 

@@ -9,7 +9,7 @@ import SiteFooter from '@edx/frontend-component-footer';
 import { fetchUserAccount, UserAccountApiService } from '@edx/frontend-auth';
 
 import apiClient from '../config/apiClient';
-import { getLocale, getMessages } from '../i18n/i18n-loader';
+import { getLocale, getMessages } from '@edx/frontend-i18n'; // eslint-disable-line
 import SiteHeader from './common/SiteHeader';
 import ConnectedProfilePage from './ProfilePage';
 
