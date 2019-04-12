@@ -53,6 +53,7 @@ export async function patchProfile(username, params) {
 // POST PROFILE PHOTO
 
 export async function postProfilePhoto(username, formData) {
+  // eslint-disable-next-line no-unused-vars
   const { data } = await apiClient.post(
     `${configuration.ACCOUNTS_API_BASE_URL}/${username}/image`,
     formData,
@@ -65,14 +66,28 @@ export async function postProfilePhoto(username, formData) {
     processAndThrowError(error, camelCaseObject);
   });
 
-  return camelCaseObject(data);
+  // TODO: Someday in the future the POST photo endpoint
+  // will return the new values. At that time we should
+  // use the commented line below instead of the separate
+  // getAccount request that follows.
+  // return camelCaseObject(data);
+  const updatedData = await getAccount(username);
+  return updatedData.profileImage;
 }
 
 // DELETE PROFILE PHOTO
 
 export async function deleteProfilePhoto(username) {
+  // eslint-disable-next-line no-unused-vars
   const { data } = await apiClient.delete(`${configuration.ACCOUNTS_API_BASE_URL}/${username}/image`);
-  return camelCaseObject(data);
+
+  // TODO: Someday in the future the POST photo endpoint
+  // will return the new values. At that time we should
+  // use the commented line below instead of the separate
+  // getAccount request that follows.
+  // return camelCaseObject(data);
+  const updatedData = await getAccount(username);
+  return updatedData.profileImage;
 }
 
 // GET PREFERENCES

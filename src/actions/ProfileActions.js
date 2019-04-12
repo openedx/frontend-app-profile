@@ -75,8 +75,9 @@ export const saveProfilePhotoBegin = () => ({
   type: SAVE_PROFILE_PHOTO.BEGIN,
 });
 
-export const saveProfilePhotoSuccess = () => ({
+export const saveProfilePhotoSuccess = profileImage => ({
   type: SAVE_PROFILE_PHOTO.SUCCESS,
+  payload: { profileImage },
 });
 
 export const saveProfilePhotoReset = () => ({
@@ -101,8 +102,9 @@ export const deleteProfilePhotoBegin = () => ({
   type: DELETE_PROFILE_PHOTO.BEGIN,
 });
 
-export const deleteProfilePhotoSuccess = () => ({
+export const deleteProfilePhotoSuccess = profileImage => ({
   type: DELETE_PROFILE_PHOTO.SUCCESS,
+  payload: { profileImage },
 });
 
 export const deleteProfilePhotoReset = () => ({
