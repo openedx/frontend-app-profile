@@ -1,5 +1,6 @@
 import React from 'react';
 import { injectIntl, intlShape } from 'react-intl';
+import LoggingService from '@edx/frontend-logging';
 
 
 const injectIntlWithShim = (WrappedComponent) => {
@@ -13,12 +14,13 @@ const injectIntlWithShim = (WrappedComponent) => {
       this.shimmedIntl = Object.create(this.props.intl, {
         formatMessage: {
           value: (definition) => {
-            if (definition === undefined) {
+            if (definition === undefined || definition.id === undefined) {
+              const error = new Error('i18n error: An undefined message was supplied to intl.formatMessage.');
               if (process.env.NODE_ENV !== 'production') {
-                // eslint-disable-next-line no-console
-                console.error('i18n error: An undefined message was supplied to intl.formatMessage.');
+                console.error(error); // eslint-disable-line no-console
                 return '!!! Missing message supplied to intl.formatMessage !!!';
               }
+              LoggingService.logError(error);
               return ''; // Fail silent in production
             }
             return this.props.intl.formatMessage(definition);
