@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { injectIntl, intlShape, FormattedDate, FormattedMessage } from 'react-intl';
+import { FormattedDate, FormattedMessage } from 'react-intl';
+import { injectIntl, intlShape } from '@edx/frontend-i18n'; // eslint-disable-line
 import { Hyperlink } from '@edx/paragon';
 import { connect } from 'react-redux';
 import get from 'lodash.get';

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StatusAlert, Hyperlink } from '@edx/paragon';
 import { connect } from 'react-redux';
-import { injectIntl, intlShape } from 'react-intl';
+import { injectIntl, intlShape } from '@edx/frontend-i18n'; // eslint-disable-line
 
 // Analytics
 import { sendTrackingLogEvent } from '@edx/frontend-analytics';
