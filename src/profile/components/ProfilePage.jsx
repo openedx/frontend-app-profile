@@ -126,7 +126,7 @@ export class ProfilePage extends React.Component {
     if (!shouldShowAgeMessage) {
       return null;
     }
-    return <AgeMessage accountSettingsURL={this.props.configuration.ACCOUNT_SETTINGS_URL} />;
+    return <AgeMessage accountSettingsUrl={this.props.configuration.ACCOUNT_SETTINGS_URL} />;
   }
 
   renderContent() {
