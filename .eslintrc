@@ -6,7 +6,7 @@
       "error",
       {
         "devDependencies": [
-          "config/*.js",
+          "webpack/*.js",
           "**/*.test.jsx",
           "**/*.test.js"
         ]
