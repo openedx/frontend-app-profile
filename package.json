@@ -70,7 +70,7 @@
     "webpack-rtl-plugin": "^2.0.0"
   },
   "devDependencies": {
-    "@svgr/webpack": "^4.1.0",
+    "@svgr/webpack": "^4.2.0",
     "autoprefixer": "^9.4.2",
     "axios-mock-adapter": "^1.15.0",
     "babel-cli": "^6.26.0",

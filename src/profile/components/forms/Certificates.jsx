@@ -14,7 +14,6 @@ import EditableItemHeader from './elements/EditableItemHeader';
 import SwitchContent from './elements/SwitchContent';
 
 // Assets
-import microMastersSVG from '../../assets/micro-masters.svg';
 import professionalCertificateSVG from '../../assets/professional-certificate.svg';
 import verifiedCertificateSVG from '../../assets/verified-certificate.svg';
 
@@ -50,24 +49,25 @@ class Certificates extends React.Component {
   }
 
   renderCertificate({
-    certificateType, courseDisplayName, courseOrganization, modifiedDate, downloadUrl,
+    certificateType, courseDisplayName, courseOrganization, modifiedDate, downloadUrl, courseId,
   }) {
     const { intl } = this.props;
-    const certificateIllustration = ((type) => {
-      switch (type) {
-        case 'Professional Certificate':
+    const certificateIllustration = (() => {
+      switch (certificateType) {
+        case 'professional':
+        case 'no-id-professional':
           return professionalCertificateSVG;
-        case 'MicroMasters Certificate':
-          return microMastersSVG;
-        case 'Verified Certificate':
+        case 'verified':
           return verifiedCertificateSVG;
+        case 'honor':
+        case 'audit':
         default:
           return null;
       }
-    })(certificateType);
+    })();
 
     return (
-      <div key={downloadUrl} className="col col-sm-6 d-flex align-items-stretch">
+      <div key={`${modifiedDate}-${courseId}`} className="col col-sm-6 d-flex align-items-stretch">
         <div className="card mb-4 certificate flex-grow-1">
           <div
             className="certificate-type-illustration"
