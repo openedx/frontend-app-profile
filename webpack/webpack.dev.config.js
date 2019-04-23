@@ -63,10 +63,7 @@ module.exports = Merge.smart(commonConfig, {
         issuer: {
           test: /\.jsx?$/,
         },
-        exclude: [
-          path.resolve(__dirname, '../src/assets/logo.svg'),
-        ],
-        use: ['@svgr/webpack', 'url-loader'],
+        loader: '@svgr/webpack',
       },
       // Webpack, by default, uses the url-loader for images and fonts that are required/included by
       // files it processes, which just base64 encodes them and inlines them in the javascript
