@@ -151,7 +151,7 @@ export class ProfilePage extends React.Component {
     } = this.props;
 
     if (isLoadingProfile) {
-      return <PageLoading />;
+      return <PageLoading srMessage={this.props.intl.formatMessage(messages['profile.loading'])} />;
     }
 
     const commonFormProps = {

@@ -19,7 +19,13 @@ exports[`<ProfilePage /> Renders correctly in various states app loading 1`] = `
       <div
         className="spinner-border text-primary"
         role="status"
-      />
+      >
+        <span
+          className="sr-only"
+        >
+          Profile loading...
+        </span>
+      </div>
     </div>
   </div>
 </div>

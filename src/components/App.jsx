@@ -28,7 +28,7 @@ function PageContent({
   intl,
 }) {
   if (!ready) {
-    return <PageLoading />;
+    return <PageLoading srMessage={intl.formatMessage(messages['app.loading.message'])} />;
   }
 
   const mainMenu = [
@@ -56,7 +56,7 @@ function PageContent({
     },
     {
       type: 'item',
-      href: `${process.env.BASE_URL}/u/${username}`,
+      href: `${process.env.LMS_BASE_URL}/u/${username}`,
       content: intl.formatMessage(messages['siteheader.user.menu.profile']),
     },
     {

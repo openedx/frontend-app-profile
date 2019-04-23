@@ -46,6 +46,11 @@ const messages = defineMessages({
     defaultMessage: 'Sign Up',
     description: 'Link to registration',
   },
+  'app.loading.message': {
+    id: 'app.loading.message',
+    defaultMessage: 'Loading',
+    description: 'Message shown when page content is loading.',
+  },
 });
 
 export default messages;
