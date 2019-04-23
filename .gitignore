@@ -12,3 +12,5 @@ dist/
 
 ### Emacs ###
 *~
+/.vscode
+/temp
