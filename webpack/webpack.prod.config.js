@@ -30,6 +30,11 @@ module.exports = Merge.smart(commonConfig, {
         ],
         loader: 'babel-loader',
       },
+      {
+        test: /\.js$/,
+        use: ['source-map-loader'],
+        enforce: 'pre',
+      },
       // Webpack, by default, includes all CSS in the javascript bundles. Unfortunately, that means:
       // a) The CSS won't be cached by browsers separately (a javascript change will force CSS
       // re-download).  b) Since CSS is applied asyncronously, it causes an ugly
