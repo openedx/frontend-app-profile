@@ -100,7 +100,7 @@
     "image-webpack-loader": "^4.2.0",
     "jest": "^22.4.0",
     "mini-css-extract-plugin": "^0.4.0",
-    "new-relic-source-map-webpack-plugin": "1.1.0",
+    "new-relic-source-map-webpack-plugin": "git://github.com/robrap/new-relic-source-map-webpack-plugin.git#update-newrelic-plugin",
     "node-sass": "^4.7.2",
     "postcss-loader": "^3.0.0",
     "react-dev-utils": "^5.0.0",
