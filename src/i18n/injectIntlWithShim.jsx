@@ -1,6 +1,6 @@
 import React from 'react';
 import { injectIntl, intlShape } from 'react-intl';
-import LoggingService from '@edx/frontend-logging';
+import { logError } from '@edx/frontend-logging';
 
 
 const injectIntlWithShim = (WrappedComponent) => {
@@ -20,7 +20,7 @@ const injectIntlWithShim = (WrappedComponent) => {
                 console.error(error); // eslint-disable-line no-console
                 return '!!! Missing message supplied to intl.formatMessage !!!';
               }
-              LoggingService.logError(error);
+              logError(error);
               return ''; // Fail silent in production
             }
             return this.props.intl.formatMessage(definition);

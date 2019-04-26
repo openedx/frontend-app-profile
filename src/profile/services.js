@@ -1,4 +1,4 @@
-import LoggingService from '@edx/frontend-logging';
+import { logAPIErrorResponse } from '@edx/frontend-logging';
 import pick from 'lodash.pick';
 
 import { utils } from '../common';
@@ -166,7 +166,7 @@ export async function getCourseCertificates(username) {
     const { data } = await apiClient.get(url);
     return transformCertificateData(data);
   } catch (e) {
-    LoggingService.logAPIErrorResponse(e);
+    logAPIErrorResponse(e);
     return [];
   }
 }

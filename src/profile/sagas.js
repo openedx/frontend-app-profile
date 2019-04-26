@@ -1,6 +1,6 @@
 import { push } from 'connected-react-router';
 import { all, call, delay, put, select, takeEvery } from 'redux-saga/effects';
-import LoggingService from '@edx/frontend-logging';
+import { logAPIErrorResponse } from '@edx/frontend-logging';
 import { FETCH_USER_ACCOUNT_FAILURE } from '@edx/frontend-auth';
 
 // Actions
@@ -78,7 +78,7 @@ export function* handleFetchProfile(action) {
 
     yield put(fetchProfileReset());
   } catch (e) {
-    LoggingService.logAPIErrorResponse(e);
+    logAPIErrorResponse(e);
     if (e.response.status === 404) {
       yield put(push('/notfound'));
     } else {
@@ -144,7 +144,7 @@ export function* handleSaveProfile(action) {
     if (e.processedData && e.processedData.fieldErrors) {
       yield put(saveProfileFailure(e.processedData.fieldErrors));
     } else {
-      LoggingService.logAPIErrorResponse(e);
+      logAPIErrorResponse(e);
       yield put(saveProfileReset());
       yield put(push('/error'));
     }
@@ -163,7 +163,7 @@ export function* handleSaveProfilePhoto(action) {
     if (e.processedData) {
       yield put(saveProfilePhotoFailure(e.processedData));
     } else {
-      LoggingService.logAPIErrorResponse(e);
+      logAPIErrorResponse(e);
       yield put(saveProfilePhotoReset());
       yield put(push('/error'));
     }
@@ -179,14 +179,14 @@ export function* handleDeleteProfilePhoto(action) {
     yield put(deleteProfilePhotoSuccess(photoResult));
     yield put(deleteProfilePhotoReset());
   } catch (e) {
-    LoggingService.logAPIErrorResponse(e);
+    logAPIErrorResponse(e);
     yield put(deleteProfilePhotoReset());
     yield put(push('/error'));
   }
 }
 
 export function* handleFetchUserAccountFailure(action) {
-  LoggingService.logAPIErrorResponse(action.payload.error);
+  logAPIErrorResponse(action.payload.error);
   yield put(push('/error'));
 }
 
