@@ -135,7 +135,7 @@ export function* handleSaveProfile(action) {
     // The preferences draft is valid if the server didn't complain, so
     // pass it through directly.
     yield put(saveProfileSuccess(accountResult, preferencesResult));
-    yield delay(300);
+    yield delay(1000);
     yield put(closeForm(action.payload.formId));
     yield delay(300);
     yield put(saveProfileReset());
