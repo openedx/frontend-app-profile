@@ -126,7 +126,7 @@ describe('RootSaga', () => {
       // The library would supply the result of the above call
       // as the parameter to the NEXT yield.  Here:
       expect(gen.next(profile).value).toEqual(put(profileActions.saveProfileSuccess(profile, {})));
-      expect(gen.next().value).toEqual(delay(300));
+      expect(gen.next().value).toEqual(delay(1000));
       expect(gen.next().value).toEqual(put(profileActions.closeForm('ze form id')));
       expect(gen.next().value).toEqual(delay(300));
       expect(gen.next().value).toEqual(put(profileActions.saveProfileReset()));
