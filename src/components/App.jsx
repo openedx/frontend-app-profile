@@ -13,7 +13,6 @@ import {
   faTwitterSquare,
   faYoutubeSquare,
   faLinkedin,
-  faGooglePlusSquare,
   faRedditSquare,
 } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -122,18 +121,20 @@ function PageContent({
       screenReaderText: 'Follow edX on LinkedIn',
     },
     {
-      title: 'Google+',
-      url: configuration.GOOGLE_PLUS_URL,
-      icon: <FontAwesomeIcon icon={faGooglePlusSquare} className="social-icon" size="2x" />,
-      screenReaderText: 'Follow edX on Google+',
-    },
-    {
       title: 'Reddit',
       url: configuration.REDDIT_URL,
       icon: <FontAwesomeIcon icon={faRedditSquare} className="social-icon" size="2x" />,
       screenReaderText: 'Subscribe to the edX subreddit',
     },
   ];
+  const enterpriseMarketingLinkData = {
+    url: configuration.ENTERPRISE_MARKETING_URL,
+    queryParams: {
+      utm_campaign: configuration.ENTERPRISE_MARKETING_UTM_CAMPAIGN,
+      utm_source: configuration.ENTERPRISE_MARKETING_UTM_SOURCE,
+      utm_medium: configuration.ENTERPRISE_MARKETING_FOOTER_UTM_MEDIUM,
+    },
+  };
 
   return (
     <div>
@@ -160,6 +161,7 @@ function PageContent({
         siteName={configuration.SITE_NAME}
         siteLogo={FooterLogo}
         marketingSiteBaseUrl={configuration.MARKETING_SITE_BASE_URL}
+        enterpriseMarketingLink={enterpriseMarketingLinkData}
         supportUrl={configuration.SUPPORT_URL}
         contactUrl={configuration.CONTACT_URL}
         openSourceUrl={configuration.OPEN_SOURCE_URL}
@@ -190,7 +192,6 @@ PageContent.propTypes = {
     TWITTER_URL: PropTypes.string.isRequired,
     YOU_TUBE_URL: PropTypes.string.isRequired,
     LINKED_IN_URL: PropTypes.string.isRequired,
-    GOOGLE_PLUS_URL: PropTypes.string.isRequired,
     REDDIT_URL: PropTypes.string.isRequired,
     APPLE_APP_STORE_URL: PropTypes.string.isRequired,
     GOOGLE_PLAY_URL: PropTypes.string.isRequired,
@@ -248,7 +249,6 @@ App.propTypes = {
     TWITTER_URL: PropTypes.string.isRequired,
     YOU_TUBE_URL: PropTypes.string.isRequired,
     LINKED_IN_URL: PropTypes.string.isRequired,
-    GOOGLE_PLUS_URL: PropTypes.string.isRequired,
     REDDIT_URL: PropTypes.string.isRequired,
     APPLE_APP_STORE_URL: PropTypes.string.isRequired,
     GOOGLE_PLAY_URL: PropTypes.string.isRequired,
