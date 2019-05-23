@@ -6,6 +6,11 @@ const messages = defineMessages({
     defaultMessage: 'profile avatar',
     description: 'Alt attribute for a profile photo',
   },
+  'profile.profileavatar.change-button': {
+    id: 'profile.profileavatar.change-button',
+    defaultMessage: 'Change',
+    description: 'Change photo button',
+  },
 });
 
 export default messages;

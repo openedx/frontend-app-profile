@@ -51,6 +51,8 @@ class ProfileAvatar extends React.Component {
   }
 
   renderMenuContent() {
+    const { intl } = this.props;
+
     if (this.props.isDefault) {
       return (
         <Button
@@ -69,13 +71,7 @@ class ProfileAvatar extends React.Component {
     return (
       <Dropdown
         buttonType="primary"
-        title={(
-          <FormattedMessage
-            id="profile.profileavatar.change-button"
-            defaultMessage="Change"
-            description="Change photo button"
-          />
-        )}
+        title={intl.formatMessage(messages['profile.profileavatar.change-button'])}
         menuItems={[
           (
             <button className="dropdown-item" onClick={this.onClickUpload}>

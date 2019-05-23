@@ -247,20 +247,11 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     onKeyDown={[Function]}
                     type="button"
                   >
-                    <span>
-                      Change
-                    </span>
+                    Change
                   </button>
                   <div
                     aria-hidden={true}
-                    aria-label={
-                      <FormattedMessage
-                        defaultMessage="Change"
-                        description="Change photo button"
-                        id="profile.profileavatar.change-button"
-                        values={Object {}}
-                      />
-                    }
+                    aria-label="Change"
                     className="dropdown-menu"
                     role="menu"
                   >
@@ -1259,20 +1250,11 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     onKeyDown={[Function]}
                     type="button"
                   >
-                    <span>
-                      Change
-                    </span>
+                    Change
                   </button>
                   <div
                     aria-hidden={true}
-                    aria-label={
-                      <FormattedMessage
-                        defaultMessage="Change"
-                        description="Change photo button"
-                        id="profile.profileavatar.change-button"
-                        values={Object {}}
-                      />
-                    }
+                    aria-label="Change"
                     className="dropdown-menu"
                     role="menu"
                   >
@@ -2073,9 +2055,9 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     className="form-group flex-shrink-0 mr-auto"
                   >
                     <button
+                      aria-disabled={false}
                       aria-live="assertive"
                       className="btn pgn__stateful-btn pgn__stateful-btn-state-pending btn-primary"
-                      disabled={false}
                       onBlur={[Function]}
                       onClick={[Function]}
                       onKeyDown={[Function]}
