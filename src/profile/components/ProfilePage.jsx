@@ -84,7 +84,7 @@ export class ProfilePage extends React.Component {
     }
 
     return (
-      <Hyperlink className="btn btn-primary" href={this.props.configuration.VIEW_MY_RECORDS_URL} target="_blank">
+      <Hyperlink className="btn btn-primary" destination={this.props.configuration.VIEW_MY_RECORDS_URL} target="_blank">
         {this.props.intl.formatMessage(messages['profile.viewMyRecords'])}
       </Hyperlink>
     );
