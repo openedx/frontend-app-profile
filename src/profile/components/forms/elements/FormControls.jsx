@@ -28,7 +28,7 @@ function FormControls({
           onChange={changeHandler}
         />
       </div>
-      <div className="form-group flex-shrink-0 mr-auto">
+      <div className="form-group flex-shrink-0 flex-grow-1">
         <StatefulButton
           type="submit"
           className="btn-primary"
