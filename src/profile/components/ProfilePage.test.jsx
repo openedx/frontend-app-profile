@@ -3,11 +3,13 @@ import React from 'react';
 import { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
 import { Provider } from 'react-redux';
-import { IntlProvider } from 'react-intl';
+import { IntlProvider, configure as configureI18n } from '@edx/frontend-i18n';
 import configureMockStore from 'redux-mock-store';
 
 import * as analytics from '@edx/frontend-analytics';
 import ConnectedProfilePage from './ProfilePage';
+import { configuration } from '../../environment';
+import messages from '../../i18n';
 
 const mockStore = configureMockStore();
 const storeMocks = {
@@ -27,6 +29,13 @@ const requiredProfilePageProps = {
   match: { params: { username: 'staff' } },
 };
 
+// Mock language cookie
+Object.defineProperty(global.document, 'cookie', {
+  writable: true,
+  value: `${configuration.LANGUAGE_PREFERENCE_COOKIE_NAME}=en`,
+});
+
+configureI18n(configuration, messages);
 
 describe('<ProfilePage />', () => {
   describe('Renders correctly in various states', () => {

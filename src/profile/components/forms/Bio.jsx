@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
-import { injectIntl, intlShape } from '@edx/frontend-i18n'; // eslint-disable-line
+import { FormattedMessage, injectIntl, intlShape } from '@edx/frontend-i18n';
 import { ValidationFormGroup } from '@edx/paragon';
 
 import messages from './Bio.messages';

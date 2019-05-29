@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Button } from '@edx/paragon';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage } from '@edx/frontend-i18n';
 import { Link } from 'react-router-dom';
 
 function ErrorPage({ username }) {

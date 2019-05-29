@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage, FormattedDate } from 'react-intl';
+import { FormattedMessage, FormattedDate } from '@edx/frontend-i18n';
 
 function DateJoined({ date }) {
   if (date == null) return null;
