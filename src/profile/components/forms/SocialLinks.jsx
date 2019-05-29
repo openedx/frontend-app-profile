@@ -4,8 +4,7 @@ import { StatusAlert } from '@edx/paragon';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { FormattedMessage } from 'react-intl';
-import { injectIntl, intlShape } from '@edx/frontend-i18n'; // eslint-disable-line
+import { FormattedMessage, injectIntl, intlShape } from '@edx/frontend-i18n';
 import classNames from 'classnames';
 
 import messages from './SocialLinks.messages';

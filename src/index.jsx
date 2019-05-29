@@ -4,12 +4,13 @@ import ReactDOM from 'react-dom';
 import { identifyAuthenticatedUser, sendPageEvent, configureAnalytics, initializeSegment } from '@edx/frontend-analytics';
 import { configureLoggingService, NewRelicLoggingService } from '@edx/frontend-logging';
 import { getAuthenticatedAPIClient } from '@edx/frontend-auth';
+import { handleRtl, configure as configureI18n } from '@edx/frontend-i18n';
 
 import { configuration } from './environment';
-import { handleRtl } from './i18n/i18n-loader';
 import configureStore from './store';
 import { configureProfileApiService } from './profile';
 import { configureUserAccountApiService } from './common';
+import messages from './i18n';
 
 import './index.scss';
 import App from './components/App';
@@ -36,6 +37,8 @@ function createInitialState() {
 }
 
 function configure() {
+  configureI18n(configuration, messages);
+
   const { store, history } = configureStore(createInitialState(), configuration.ENVIRONMENT);
 
   configureLoggingService(NewRelicLoggingService);

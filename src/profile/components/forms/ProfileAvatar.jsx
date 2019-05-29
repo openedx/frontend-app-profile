@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Dropdown } from '@edx/paragon';
-import { FormattedMessage } from 'react-intl';
-import { injectIntl, intlShape } from '@edx/frontend-i18n'; // eslint-disable-line
+import { FormattedMessage, injectIntl, intlShape } from '@edx/frontend-i18n';
 
 import { ReactComponent as DefaultAvatar } from '../../assets/avatar.svg';
 
