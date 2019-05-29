@@ -2052,7 +2052,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     </span>
                   </div>
                   <div
-                    className="form-group flex-shrink-0 mr-auto"
+                    className="form-group flex-shrink-0 flex-grow-1"
                   >
                     <button
                       aria-disabled={false}
