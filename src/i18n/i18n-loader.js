@@ -105,18 +105,6 @@ const getLanguageMessages = (locale) => {
   return LANGUAGES.getNames(finalLocale);
 };
 
-const sortFunction = (a, b) => {
-  // If localeCompare exists, use that.  (Not supported in some older browsers)
-  if (typeof String.prototype.localeCompare === 'function') {
-    return a[1].localeCompare(b[1], getLocale());
-  }
-  if (a[1] === b[1]) {
-    return 0;
-  }
-  // Otherwise make a best effort.
-  return a[1] > b[1] ? 1 : -1;
-};
-
 /**
  * Provides a list of countries represented as objects of the following shape:
  *
@@ -130,9 +118,7 @@ const sortFunction = (a, b) => {
  */
 const getCountryList = (locale) => {
   const countryMessages = getCountryMessages(locale);
-  return Object.entries(countryMessages)
-    .sort(sortFunction)
-    .map(([code, name]) => ({ code, name }));
+  return Object.entries(countryMessages).map(([code, name]) => ({ code, name }));
 };
 
 /**
@@ -148,9 +134,7 @@ const getCountryList = (locale) => {
  */
 const getLanguageList = (locale) => {
   const languageMessages = getLanguageMessages(locale);
-  return Object.entries(languageMessages)
-    .sort(sortFunction)
-    .map(([code, name]) => ({ code, name }));
+  return Object.entries(languageMessages).map(([code, name]) => ({ code, name }));
 };
 
 export {
