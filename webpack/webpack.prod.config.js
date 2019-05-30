@@ -132,8 +132,16 @@ module.exports = Merge.smart(commonConfig, {
     new WebpackRTLPlugin({
       filename: '[name].[contenthash].rtl.css',
     }),
+    // Scan files for class names and ids and remove unused css
     new PurgecssPlugin({
-      paths: glob.sync(`${path.resolve(__dirname, '../src')}/**/*`, { nodir: true }),
+      paths: [].concat(
+        // Scan files in this app
+        glob.sync(`${path.resolve(__dirname, '../src')}/**/*`, { nodir: true }),
+        // Scan files in any edx frontend-component
+        glob.sync(`${path.resolve(__dirname, '../node_modules/@edx/frontend-component')}*/**/*`, { nodir: true }),
+      ),
+      // Protect react-css-transition class names
+      whitelistPatterns: [/-enter/, /-appear/, /-exit/],
     }),
     // Generates an HTML file in the output directory.
     new HtmlWebpackPlugin({
