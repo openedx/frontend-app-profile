@@ -139,6 +139,8 @@ module.exports = Merge.smart(commonConfig, {
         glob.sync(`${path.resolve(__dirname, '../src')}/**/*`, { nodir: true }),
         // Scan files in any edx frontend-component
         glob.sync(`${path.resolve(__dirname, '../node_modules/@edx/frontend-component')}*/**/*`, { nodir: true }),
+        // Scan files in paragon
+        glob.sync(`${path.resolve(__dirname, '../node_modules/@edx/paragon')}/**/*`, { nodir: true }),
       ),
       // Protect react-css-transition class names
       whitelistPatterns: [/-enter/, /-appear/, /-exit/],
