@@ -3,11 +3,13 @@
 const Merge = require('webpack-merge');
 const commonConfig = require('./webpack.common.config.js');
 const path = require('path');
+const glob = require('glob');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackNewRelicPlugin = require('html-webpack-new-relic-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const PurgecssPlugin = require('purgecss-webpack-plugin');
 const NewRelicSourceMapPlugin = require('new-relic-source-map-webpack-plugin');
 const WebpackRTLPlugin = require('webpack-rtl-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin; // eslint-disable-line prefer-destructuring
@@ -129,6 +131,9 @@ module.exports = Merge.smart(commonConfig, {
     }),
     new WebpackRTLPlugin({
       filename: '[name].[contenthash].rtl.css',
+    }),
+    new PurgecssPlugin({
+      paths: glob.sync(`${path.resolve(__dirname, '../src')}/**/*`, { nodir: true }),
     }),
     // Generates an HTML file in the output directory.
     new HtmlWebpackPlugin({
