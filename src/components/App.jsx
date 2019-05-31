@@ -22,7 +22,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { PageLoading, fetchUserAccount } from '../common';
+import { fetchUserAccount } from '../common';
 import { ConnectedProfilePage } from '../profile';
 
 import FooterLogo from '../assets/edx-footer.png';
@@ -34,16 +34,11 @@ import messages from './App.messages';
 
 
 function PageContent({
-  ready,
   configuration,
   username,
   avatar,
   intl,
 }) {
-  if (!ready) {
-    return <PageLoading srMessage={intl.formatMessage(messages['app.loading.message'])} />;
-  }
-
   const mainMenu = [
     {
       type: 'item',
@@ -184,7 +179,6 @@ function PageContent({
 PageContent.propTypes = {
   username: PropTypes.string.isRequired,
   avatar: PropTypes.string,
-  ready: PropTypes.bool,
   configuration: PropTypes.shape({
     SITE_NAME: PropTypes.string.isRequired,
     MARKETING_SITE_BASE_URL: PropTypes.string.isRequired,
@@ -205,7 +199,6 @@ PageContent.propTypes = {
 };
 
 PageContent.defaultProps = {
-  ready: false,
   avatar: null,
 };
 
@@ -223,7 +216,6 @@ class App extends Component {
         <Provider store={this.props.store}>
           <ConnectedRouter history={this.props.history}>
             <IntlPageContent
-              ready={this.props.ready}
               configuration={this.props.configuration}
               username={this.props.username}
               avatar={this.props.avatar}
@@ -241,7 +233,6 @@ App.propTypes = {
   avatar: PropTypes.string,
   store: PropTypes.object.isRequired, // eslint-disable-line
   history: PropTypes.object.isRequired, // eslint-disable-line
-  ready: PropTypes.bool,
   configuration: PropTypes.shape({
     SITE_NAME: PropTypes.string.isRequired,
     MARKETING_SITE_BASE_URL: PropTypes.string.isRequired,
@@ -261,15 +252,11 @@ App.propTypes = {
 };
 
 App.defaultProps = {
-  ready: false,
   avatar: null,
 };
 
 const mapStateToProps = state => ({
   username: state.authentication.username,
-  // An error means that we tried to load the user account and failed,
-  // which also means we're ready to display something.
-  ready: state.userAccount.loaded || state.userAccount.error != null,
   configuration: state.configuration,
   avatar: state.userAccount.profileImage.hasImage
     ? state.userAccount.profileImage.imageUrlMedium

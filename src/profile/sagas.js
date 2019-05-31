@@ -52,7 +52,7 @@ export function* handleFetchProfile(action) {
 
     // Depending on which profile we're loading, we need to make different calls.
     const calls = [
-      // We'll always make a call for certificates.
+      call(ProfileApiService.getAccount, username),
       call(ProfileApiService.getCourseCertificates, username),
     ];
 
@@ -60,19 +60,15 @@ export function* handleFetchProfile(action) {
       // If the profile is for the current user, get their preferences.
       // We don't need them for other users.
       calls.push(call(ProfileApiService.getPreferences, username));
-    } else {
-      // If the profile is not for the current user, get that user's account data
-      // since we don't already have it.
-      calls.push(call(ProfileApiService.getAccount, username));
     }
 
     // Make all the calls in parallel.
     const result = yield all(calls);
 
     if (username === authenticationUsername) {
-      [courseCertificates, preferences] = result;
+      [account, courseCertificates, preferences] = result;
     } else {
-      [courseCertificates, account] = result;
+      [account, courseCertificates] = result;
     }
     yield put(fetchProfileSuccess(account, preferences, courseCertificates));
 
