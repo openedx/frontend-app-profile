@@ -11,8 +11,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PurgecssPlugin = require('purgecss-webpack-plugin');
 const NewRelicSourceMapPlugin = require('new-relic-source-map-webpack-plugin');
-const WebpackRTLPlugin = require('webpack-rtl-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin; // eslint-disable-line prefer-destructuring
+const PostCssRtlPlugin = require('postcss-rtl');
 
 module.exports = Merge.smart(commonConfig, {
   mode: 'production',
@@ -59,7 +59,12 @@ module.exports = Merge.smart(commonConfig, {
               minimize: true,
             },
           },
-          'postcss-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [PostCssRtlPlugin()],
+            },
+          },
           {
             loader: 'sass-loader', // compiles Sass to CSS
             options: {
@@ -128,9 +133,6 @@ module.exports = Merge.smart(commonConfig, {
     // Writes the extracted CSS from each entry to a file in the output directory.
     new MiniCssExtractPlugin({
       filename: '[name].[chunkhash].css',
-    }),
-    new WebpackRTLPlugin({
-      filename: '[name].[contenthash].rtl.css',
     }),
     // Scan files for class names and ids and remove unused css
     new PurgecssPlugin({
