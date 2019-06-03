@@ -13,6 +13,7 @@ const PurgecssPlugin = require('purgecss-webpack-plugin');
 const NewRelicSourceMapPlugin = require('new-relic-source-map-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin; // eslint-disable-line prefer-destructuring
 const PostCssRtlPlugin = require('postcss-rtl');
+const PostCssAutoprefixerPlugin = require('autoprefixer');
 
 module.exports = Merge.smart(commonConfig, {
   mode: 'production',
@@ -62,7 +63,10 @@ module.exports = Merge.smart(commonConfig, {
           {
             loader: 'postcss-loader',
             options: {
-              plugins: () => [PostCssRtlPlugin()],
+              plugins: () => [
+                PostCssRtlPlugin(),
+                PostCssAutoprefixerPlugin({ grid: true, browsers: ['>1%'] }),
+              ],
             },
           },
           {
