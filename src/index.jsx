@@ -57,10 +57,30 @@ function configure() {
   };
 }
 
+/*
+  ARCH-904
+  Attempts to protect against browser extension manipulation of the DOM which
+  causes React to break. See the following link:
+  https://github.com/facebook/react/issues/11538#issuecomment-417504600
+*/
+function monkeyPatchDOMManipulation() {
+  if (typeof Node === 'function' && Node.prototype) {
+    const originalInsertBefore = Node.prototype.insertBefore;
+    Node.prototype.insertBefore = function (newNode, referenceNode, ...args) {
+      if (referenceNode && referenceNode.parentNode !== this) {
+        NewRelicLoggingService.logError(`Cannot insert before a reference node from a different parent: ${referenceNode} ${this}`);
+        return newNode;
+      }
+      return originalInsertBefore.apply(this, [newNode, referenceNode, ...args]);
+    };
+  }
+}
+
 apiClient.ensurePublicOrAuthenticationAndCookies(
   window.location.pathname,
   () => {
     const { store, history } = configure();
+    monkeyPatchDOMManipulation();
 
     ReactDOM.render(<App store={store} history={history} />, document.getElementById('root'));
 
