@@ -15,24 +15,6 @@ import messages from './i18n';
 import './index.scss';
 import App from './components/App';
 
-/*
-  ARCH-904
-  Attempts to protect against browser extension manipulation of the DOM which
-  causes React to break. See the following link:
-  https://github.com/facebook/react/issues/11538#issuecomment-417504600
-*/
-if (typeof Node === 'function' && Node.prototype) {
-  const originalInsertBefore = Node.prototype.insertBefore;
-  // eslint-disable-next-line func-names
-  Node.prototype.insertBefore = function (newNode, referenceNode) {
-    if (referenceNode && referenceNode.parentNode !== this) {
-      NewRelicLoggingService.logError(`Cannot insert before a reference node from a different parent: ${newNode} ${referenceNode} ${this}`);
-      return newNode;
-    }
-    return originalInsertBefore.apply(this, arguments); // eslint-disable-line prefer-rest-params
-  };
-}
-
 const apiClient = getAuthenticatedAPIClient({
   appBaseUrl: configuration.BASE_URL,
   authBaseUrl: configuration.LMS_BASE_URL,

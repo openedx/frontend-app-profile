@@ -22,7 +22,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { fetchUserAccount } from '../common';
+import { ReloadOnError, fetchUserAccount } from '../common';
 import { ConnectedProfilePage } from '../profile';
 
 import FooterLogo from '../assets/edx-footer.png';
@@ -212,17 +212,19 @@ class App extends Component {
 
   render() {
     return (
-      <IntlProvider locale={getLocale()} messages={getMessages()}>
-        <Provider store={this.props.store}>
-          <ConnectedRouter history={this.props.history}>
-            <IntlPageContent
-              configuration={this.props.configuration}
-              username={this.props.username}
-              avatar={this.props.avatar}
-            />
-          </ConnectedRouter>
-        </Provider>
-      </IntlProvider>
+      <ReloadOnError>
+        <IntlProvider locale={getLocale()} messages={getMessages()}>
+          <Provider store={this.props.store}>
+            <ConnectedRouter history={this.props.history}>
+              <IntlPageContent
+                configuration={this.props.configuration}
+                username={this.props.username}
+                avatar={this.props.avatar}
+              />
+            </ConnectedRouter>
+          </Provider>
+        </IntlProvider>
+      </ReloadOnError>
     );
   }
 }
