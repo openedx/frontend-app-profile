@@ -1,11 +1,11 @@
 import * as utils from './utils';
 import PageLoading from './components/PageLoading';
-import ReloadOnError from './components/ReloadOnError';
+import ErrorBoundary from './components/ErrorBoundary';
 import { configureUserAccountApiService, fetchUserAccount } from './actions';
 
 export {
+  ErrorBoundary,
   PageLoading,
-  ReloadOnError,
   utils,
   configureUserAccountApiService,
   fetchUserAccount,
