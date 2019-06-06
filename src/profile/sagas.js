@@ -74,11 +74,10 @@ export function* handleFetchProfile(action) {
 
     yield put(fetchProfileReset());
   } catch (e) {
-    logAPIErrorResponse(e);
     if (e.response.status === 404) {
       yield put(push('/notfound'));
     } else {
-      yield put(push('/error'));
+      throw e;
     }
   }
 }
@@ -140,9 +139,8 @@ export function* handleSaveProfile(action) {
     if (e.processedData && e.processedData.fieldErrors) {
       yield put(saveProfileFailure(e.processedData.fieldErrors));
     } else {
-      logAPIErrorResponse(e);
       yield put(saveProfileReset());
-      yield put(push('/error'));
+      throw e;
     }
   }
 }
@@ -159,9 +157,8 @@ export function* handleSaveProfilePhoto(action) {
     if (e.processedData) {
       yield put(saveProfilePhotoFailure(e.processedData));
     } else {
-      logAPIErrorResponse(e);
       yield put(saveProfilePhotoReset());
-      yield put(push('/error'));
+      throw e;
     }
   }
 }
@@ -175,15 +172,14 @@ export function* handleDeleteProfilePhoto(action) {
     yield put(deleteProfilePhotoSuccess(photoResult));
     yield put(deleteProfilePhotoReset());
   } catch (e) {
-    logAPIErrorResponse(e);
     yield put(deleteProfilePhotoReset());
-    yield put(push('/error'));
+    throw e;
   }
 }
 
-export function* handleFetchUserAccountFailure(action) {
+export function handleFetchUserAccountFailure(action) {
   logAPIErrorResponse(action.payload.error);
-  yield put(push('/error'));
+  throw action.payload.error;
 }
 
 export default function* profileSaga() {
