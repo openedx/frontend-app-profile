@@ -1,4 +1,6 @@
 {
+  "unexpected.error.message.text": "An unexpected error occurred. Please click the button below to return to refresh the page.",
+  "unexpected.error.button.text": "Try Again",
   "siteheader.links.courses": "Cursos",
   "siteheader.links.programs": "Programas y Titulos",
   "siteheader.links.schools": "Escuelas y Socios",
@@ -10,8 +12,6 @@
   "siteheader.user.menu.login": "Iniciar Sesión",
   "siteheader.user.menu.register": "Registrarse",
   "app.loading.message": "Loading",
-  "profile.error.message.text": "An unexpected error occurred. Please click the button below to return to your profile and try again.",
-  "profile.error.button.text": "Return to Your Profile",
   "profile.notfound.message": "La página que estas buscando no está disponible o hay un error en la URL. Por favor, comprueba la URL y vuelve a intentarlo.",
   "profile.age.headline": "Tu perfil no puede ser compartido.",
   "profile.age.details": "Para compartir tu perfil con otros estudiantes de edX, debes confirmar que tienes más de 13 años.",
