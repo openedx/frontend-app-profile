@@ -1,7 +1,13 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { identifyAuthenticatedUser, sendPageEvent, configureAnalytics, initializeSegment } from '@edx/frontend-analytics';
+import {
+  identifyAnonymousUser,
+  identifyAuthenticatedUser,
+  sendPageEvent,
+  configureAnalytics,
+  initializeSegment,
+} from '@edx/frontend-analytics';
 import { configureLoggingService, NewRelicLoggingService } from '@edx/frontend-logging';
 import { getAuthenticatedAPIClient } from '@edx/frontend-auth';
 import { configure as configureI18n } from '@edx/frontend-i18n';
@@ -59,13 +65,16 @@ function configure() {
 
 apiClient.ensurePublicOrAuthenticationAndCookies(
   window.location.pathname,
-  () => {
+  (accessToken) => {
     const { store, history } = configure();
 
     ReactDOM.render(<App store={store} history={history} />, document.getElementById('root'));
 
-    identifyAuthenticatedUser();
+    if (accessToken) {
+      identifyAuthenticatedUser(accessToken.userId);
+    } else {
+      identifyAnonymousUser();
+    }
     sendPageEvent();
   },
 );
-
