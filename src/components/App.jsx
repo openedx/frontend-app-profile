@@ -53,6 +53,12 @@ function PageContent({
       type: 'item',
       href: `${configuration.MARKETING_SITE_BASE_URL}/course`,
       content: intl.formatMessage(messages['siteheader.links.content.search']),
+      onClick: () => {
+        sendTrackEvent(
+          'edx.bi.dashboard.find_courses_button.clicked',
+          { category: 'profile', label: 'header' },
+        );
+      },
     },
   ];
   const userMenu = [
