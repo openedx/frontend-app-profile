@@ -34,12 +34,36 @@ const apiClient = getAuthenticatedAPIClient({
   loggingService: NewRelicLoggingService,
 });
 
+let callbackAccessToken = null;
+
+/**
+ * Temporary check of auth state vs callback access token to help debug and fix any
+ * potential problems.
+ */
+function checkAuthState(functionName, authenticationState) {
+  const userIdsMatch = !!(
+    callbackAccessToken && callbackAccessToken.user_id &&
+    authenticationState && authenticationState.authentication &&
+    authenticationState.authentication.userId &&
+    callbackAccessToken.user_id === authenticationState.authentication.userId
+  );
+  const customAttributes = {
+    functionName,
+    callbackAccessToken,
+    authenticationState,
+    userIdsMatch,
+  };
+  NewRelicLoggingService.logInfo(`checkAuthState: ${functionName}: userIdsMatch=${userIdsMatch}`, customAttributes);
+}
+
 /**
  * We need to merge the application configuration with the authentication state
  * so that we can hand it all to the redux store's initializer.
  */
 function createInitialState() {
-  return Object.assign({}, { configuration }, apiClient.getAuthenticationState());
+  const authenticationState = apiClient.getAuthenticationState();
+  checkAuthState('createInitialState', authenticationState);
+  return Object.assign({}, { configuration }, authenticationState);
 }
 
 function configure() {
@@ -66,6 +90,9 @@ function configure() {
 apiClient.ensurePublicOrAuthenticationAndCookies(
   window.location.pathname,
   (accessToken) => {
+    callbackAccessToken = accessToken;
+    checkAuthState('ensurePublicOrAuthenticationAndCookies:callback', apiClient.getAuthenticationState());
+
     const { store, history } = configure();
 
     ReactDOM.render(<App store={store} history={history} />, document.getElementById('root'));
@@ -73,6 +100,11 @@ apiClient.ensurePublicOrAuthenticationAndCookies(
     if (accessToken) {
       identifyAuthenticatedUser(accessToken.userId);
     } else {
+      // TODO: Could this ever happen?
+      // - If this did happen, wouldn't we want to raise an error?
+      // - Adding error logging for now.
+      NewRelicLoggingService.logError('Empty accessToken returned from ' +
+        'ensurePublicOrAuthenticationAndCookies callback.');
       identifyAnonymousUser();
     }
     sendPageEvent();
