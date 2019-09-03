@@ -22,6 +22,42 @@ module.exports = Merge.smart(commonConfig, {
     filename: '[name].[chunkhash].js',
     path: path.resolve(__dirname, '../dist'),
   },
+  externals: {
+    react: {
+      commonjs: 'react',
+      commonjs2: 'react',
+      amd: 'React',
+      root: 'React',
+    },
+    'react-dom': {
+      commonjs: 'react-dom',
+      commonjs2: 'react-dom',
+      amd: 'ReactDOM',
+      root: 'ReactDOM',
+    },
+    'prop-types': {
+      commonjs: 'prop-types',
+      commonjs2: 'prop-types',
+      amd: 'PropTypes',
+      root: 'PropTypes',
+    },
+    '@edx/frontend-analytics': {
+      commonjs: '@edx/frontend-analytics',
+      commonjs2: '@edx/frontend-analytics',
+    },
+    '@edx/frontend-auth': {
+      commonjs: '@edx/frontend-auth',
+      commonjs2: '@edx/frontend-auth',
+    },
+    '@edx/frontend-i18n': {
+      commonjs: '@edx/frontend-i18n',
+      commonjs2: '@edx/frontend-i18n',
+    },
+    '@edx/frontend-logging': {
+      commonjs: '@edx/frontend-logging',
+      commonjs2: '@edx/frontend-logging',
+    },
+  },
   module: {
     // Specify file-by-file rules to Webpack. Some file-types need a particular kind of loader.
     rules: [

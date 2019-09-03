@@ -47,9 +47,9 @@ export class ProfilePage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchProfile(this.props.match.params.username);
+    this.props.fetchProfile(this.props.user);
     sendTrackingLogEvent('edx.profile.viewed', {
-      username: this.props.match.params.username,
+      username: this.props.user,
     });
   }
 
@@ -330,11 +330,11 @@ ProfilePage.propTypes = {
   updateDraft: PropTypes.func.isRequired,
 
   // Router
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      username: PropTypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
+  // match: PropTypes.shape({
+  //   params: PropTypes.shape({
+  //     username: PropTypes.string.isRequired,
+  //   }).isRequired,
+  // }).isRequired,
 
   // i18n
   intl: intlShape.isRequired,

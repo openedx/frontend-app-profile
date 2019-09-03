@@ -74,6 +74,7 @@ export function* handleFetchProfile(action) {
 
     yield put(fetchProfileReset());
   } catch (e) {
+    console.log(e);
     if (e.response.status === 404) {
       yield put(push('/notfound'));
     } else {
