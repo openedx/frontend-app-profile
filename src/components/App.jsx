@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import { sendTrackEvent } from '@edx/frontend-analytics';
-import SiteHeader from '@edx/frontend-component-site-header';
+import SiteHeader from '@edx-dynamic/header';
 import SiteFooter from '@edx/frontend-component-footer';
 import {
   getLocale,
