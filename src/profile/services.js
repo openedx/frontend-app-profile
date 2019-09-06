@@ -1,12 +1,11 @@
 import { logAPIErrorResponse } from '@edx/frontend-logging';
 
 import { utils } from '../common';
-import validateConfig from '../../frontend-core/validateConfig';
 import App from '../../frontend-core/App';
 
 const { camelCaseObject, convertKeyNames, snakeCaseObject } = utils;
 
-validateConfig(
+App.validateConfig(
   'ACCOUNTS_API_BASE_URL',
   'CERTIFICATES_API_BASE_URL',
   'LMS_BASE_URL',

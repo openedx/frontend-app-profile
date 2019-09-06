@@ -14,7 +14,6 @@ export const defaultAuthentication = {
 /* eslint no-underscore-dangle: "off" */
 export default class App {
   static _config = null;
-  static registeredApis = [];
   static _ready = false;
   static history = createBrowserHistory();
   static authentication = defaultAuthentication;
@@ -53,5 +52,15 @@ export default class App {
 
   static get queryParams() {
     return getQueryParameters(global.location.search);
+  }
+
+  static validateConfig(...keys) {
+    this.subscribe(APP_READY, () => {
+      keys.forEach((key) => {
+        if (this.config[key] === undefined) {
+          throw new Error(`Configuration error: ${key} is required.`);
+        }
+      });
+    });
   }
 }

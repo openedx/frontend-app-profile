@@ -14,7 +14,7 @@ function ProfileMain(props) {
 
   useEffect(() => {
     props.fetchUserAccount(authentication.username);
-  }, authentication.username);
+  }, [authentication.username]);
 
   return (
     <main>
