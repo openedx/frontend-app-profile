@@ -28,7 +28,7 @@
     "@cospired/i18n-iso-languages": "2.0.2",
     "@edx/edx-bootstrap": "2.2.2",
     "@edx/frontend-analytics": "2.0.0",
-    "@edx/frontend-auth": "5.3.5",
+    "@edx/frontend-auth": "6.0.0",
     "@edx/frontend-component-footer": "6.0.2",
     "@edx/frontend-component-site-header": "2.4.0",
     "@edx/frontend-i18n": "2.1.0",
@@ -51,10 +51,12 @@
     "iso-countries-languages": "0.2.1",
     "lodash.camelcase": "4.3.0",
     "lodash.get": "4.4.2",
+    "lodash.memoize": "^4.1.2",
     "lodash.pick": "4.4.0",
     "lodash.snakecase": "4.1.1",
     "newrelic": "5.5.0",
     "prop-types": "15.6.2",
+    "pubsub-js": "^1.7.0",
     "react": "16.8.3",
     "react-dom": "16.8.3",
     "react-redux": "5.1.1",
@@ -137,7 +139,7 @@
     "coveragePathIgnorePatterns": [
       "/node_modules/",
       "src/setupTest.js",
-      "src/index.js",
+      "src/index.jsx",
       "/tests/"
     ],
     "transformIgnorePatterns": [

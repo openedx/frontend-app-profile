@@ -21,6 +21,7 @@ export const initialState = {
   courseCertificates: [],
   drafts: {},
   isLoadingProfile: true,
+  isAuthenticatedUserProfile: false,
 };
 
 const profilePage = (state = initialState, action) => {
@@ -40,6 +41,7 @@ const profilePage = (state = initialState, action) => {
         preferences: action.preferences,
         courseCertificates: action.courseCertificates,
         isLoadingProfile: false,
+        isAuthenticatedUserProfile: action.isAuthenticatedUserProfile,
       };
     case SAVE_PROFILE.BEGIN:
       return {

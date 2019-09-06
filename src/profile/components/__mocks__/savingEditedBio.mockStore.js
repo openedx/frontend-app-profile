@@ -1,12 +1,4 @@
 module.exports = {
-  authentication: {
-    userId: 9,
-    username: 'staff'
-  },
-  configuration: {
-    VIEW_MY_RECORDS_URL: 'http://localhost:18150/records',
-    ACCOUNT_SETTINGS_URL: 'http://localhost:18000/account/settings',
-  },
   userAccount: {
     loading: false,
     error: null,
@@ -57,6 +49,7 @@ module.exports = {
     saveState: 'pending',
     savePhotoState: null,
     currentlyEditingField: 'bio',
+    isAuthenticatedUserProfile: true,
     account: {
       mailingAddress: null,
       profileImage: {

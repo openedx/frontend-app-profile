@@ -1,4 +1,3 @@
-import { push } from 'connected-react-router';
 import { all, call, delay, put, select, takeEvery } from 'redux-saga/effects';
 import { logAPIErrorResponse } from '@edx/frontend-logging';
 import { FETCH_USER_ACCOUNT_FAILURE } from '@edx/frontend-auth';
@@ -28,19 +27,20 @@ import {
 } from './actions';
 
 // Selectors
-import { handleSaveProfileSelector, handleFetchProfileSelector } from './selectors';
+import { handleSaveProfileSelector, userAccountSelector } from './selectors';
 
 // Services
 import * as ProfileApiService from './services';
 
 // Utils
 import { utils } from '../common';
+import App from '../../frontend-core/App';
 
 const { keepKeys } = utils;
 
 export function* handleFetchProfile(action) {
-  const { username } = action.payload;
-  const { authenticationUsername, userAccount } = yield select(handleFetchProfileSelector);
+  const { username, isAuthenticatedUserProfile } = action.payload;
+  const userAccount = yield select(userAccountSelector);
 
   // Default our data assuming the account is the current user's account.
   let preferences = {};
@@ -56,7 +56,7 @@ export function* handleFetchProfile(action) {
       call(ProfileApiService.getCourseCertificates, username),
     ];
 
-    if (username === authenticationUsername) {
+    if (isAuthenticatedUserProfile) {
       // If the profile is for the current user, get their preferences.
       // We don't need them for other users.
       calls.push(call(ProfileApiService.getPreferences, username));
@@ -65,17 +65,22 @@ export function* handleFetchProfile(action) {
     // Make all the calls in parallel.
     const result = yield all(calls);
 
-    if (username === authenticationUsername) {
+    if (isAuthenticatedUserProfile) {
       [account, courseCertificates, preferences] = result;
     } else {
       [account, courseCertificates] = result;
     }
-    yield put(fetchProfileSuccess(account, preferences, courseCertificates));
+    yield put(fetchProfileSuccess(
+      account,
+      preferences,
+      courseCertificates,
+      isAuthenticatedUserProfile,
+    ));
 
     yield put(fetchProfileReset());
   } catch (e) {
     if (e.response.status === 404) {
-      yield put(push('/notfound'));
+      App.history.push('/notfound');
     } else {
       throw e;
     }
@@ -84,7 +89,7 @@ export function* handleFetchProfile(action) {
 
 export function* handleSaveProfile(action) {
   try {
-    const { username, drafts, preferences } = yield select(handleSaveProfileSelector);
+    const { drafts, preferences } = yield select(handleSaveProfileSelector);
 
     const accountDrafts = keepKeys(drafts, [
       'bio',
@@ -115,15 +120,19 @@ export function* handleSaveProfile(action) {
     // Build the visibility drafts into a structure the API expects.
 
     if (Object.keys(accountDrafts).length > 0) {
-      accountResult = yield call(ProfileApiService.patchProfile, username, accountDrafts);
+      accountResult = yield call(
+        ProfileApiService.patchProfile,
+        action.payload.username,
+        accountDrafts,
+      );
     }
 
     let preferencesResult = preferences; // assume it hasn't changed.
     if (Object.keys(preferencesDrafts).length > 0) {
-      yield call(ProfileApiService.patchPreferences, username, preferencesDrafts);
+      yield call(ProfileApiService.patchPreferences, action.payload.username, preferencesDrafts);
       // TODO: Temporary deoptimization since the patchPreferences call doesn't return anything.
       // Remove this second call once we can get a result from the one above.
-      preferencesResult = yield call(ProfileApiService.getPreferences, username);
+      preferencesResult = yield call(ProfileApiService.getPreferences, action.payload.username);
     }
 
     // The account result is returned from the server.
