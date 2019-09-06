@@ -1,32 +1,17 @@
 import { logAPIErrorResponse } from '@edx/frontend-logging';
-import pick from 'lodash.pick';
 
 import { utils } from '../common';
+import validateConfig from '../../frontend-core/validateConfig';
+import App from '../../frontend-core/App';
 
 const { camelCaseObject, convertKeyNames, snakeCaseObject } = utils;
 
-let config = {
-  ACCOUNTS_API_BASE_URL: null,
-  CERTIFICATES_API_BASE_URL: null,
-  LMS_BASE_URL: null,
-  PREFERENCES_API_BASE_URL: null,
-};
-
-let apiClient = null;
-
-function validateConfiguration(newConfig) {
-  Object.keys(config).forEach((key) => {
-    if (newConfig[key] === undefined) {
-      throw new Error(`Service configuration error: ${key} is required.`);
-    }
-  });
-}
-
-export default function configure(newConfig, newApiClient) {
-  validateConfiguration(newConfig);
-  config = pick(newConfig, Object.keys(config));
-  apiClient = newApiClient;
-}
+validateConfig(
+  'ACCOUNTS_API_BASE_URL',
+  'CERTIFICATES_API_BASE_URL',
+  'LMS_BASE_URL',
+  'PREFERENCES_API_BASE_URL',
+);
 
 function processAccountData(data) {
   return camelCaseObject(data);
@@ -44,7 +29,7 @@ function processAndThrowError(error, errorDataProcessor) {
 
 // GET ACCOUNT
 export async function getAccount(username) {
-  const { data } = await apiClient.get(`${config.ACCOUNTS_API_BASE_URL}/${username}`);
+  const { data } = await App.apiClient.get(`${App.config.ACCOUNTS_API_BASE_URL}/${username}`);
 
   // Process response data
   return processAccountData(data);
@@ -54,8 +39,8 @@ export async function getAccount(username) {
 export async function patchProfile(username, params) {
   const processedParams = snakeCaseObject(params);
 
-  const { data } = await apiClient
-    .patch(`${config.ACCOUNTS_API_BASE_URL}/${username}`, processedParams, {
+  const { data } = await App.apiClient
+    .patch(`${App.config.ACCOUNTS_API_BASE_URL}/${username}`, processedParams, {
       headers: {
         'Content-Type': 'application/merge-patch+json',
       },
@@ -72,8 +57,8 @@ export async function patchProfile(username, params) {
 
 export async function postProfilePhoto(username, formData) {
   // eslint-disable-next-line no-unused-vars
-  const { data } = await apiClient.post(
-    `${config.ACCOUNTS_API_BASE_URL}/${username}/image`,
+  const { data } = await App.apiClient.post(
+    `${App.config.ACCOUNTS_API_BASE_URL}/${username}/image`,
     formData,
     {
       headers: {
@@ -97,7 +82,7 @@ export async function postProfilePhoto(username, formData) {
 
 export async function deleteProfilePhoto(username) {
   // eslint-disable-next-line no-unused-vars
-  const { data } = await apiClient.delete(`${config.ACCOUNTS_API_BASE_URL}/${username}/image`);
+  const { data } = await App.apiClient.delete(`${App.config.ACCOUNTS_API_BASE_URL}/${username}/image`);
 
   // TODO: Someday in the future the POST photo endpoint
   // will return the new values. At that time we should
@@ -110,7 +95,7 @@ export async function deleteProfilePhoto(username) {
 
 // GET PREFERENCES
 export async function getPreferences(username) {
-  const { data } = await apiClient.get(`${config.PREFERENCES_API_BASE_URL}/${username}`);
+  const { data } = await App.apiClient.get(`${App.config.PREFERENCES_API_BASE_URL}/${username}`);
 
   return camelCaseObject(data);
 }
@@ -130,7 +115,7 @@ export async function patchPreferences(username, params) {
     visibility_time_zone: 'visibility.time_zone',
   });
 
-  await apiClient.patch(`${config.PREFERENCES_API_BASE_URL}/${username}`, processedParams, {
+  await App.apiClient.patch(`${App.config.PREFERENCES_API_BASE_URL}/${username}`, processedParams, {
     headers: { 'Content-Type': 'application/merge-patch+json' },
   });
 
@@ -148,7 +133,7 @@ function transformCertificateData(data) {
       cert.download_url.search(/http[s]?:\/\//) !== 0;
 
     const downloadUrl = urlIsPath ?
-      `${config.LMS_BASE_URL}${cert.download_url}` :
+      `${App.config.LMS_BASE_URL}${cert.download_url}` :
       cert.download_url;
 
     transformedData.push({
@@ -161,9 +146,9 @@ function transformCertificateData(data) {
 }
 
 export async function getCourseCertificates(username) {
-  const url = `${config.CERTIFICATES_API_BASE_URL}/${username}/`;
+  const url = `${App.config.CERTIFICATES_API_BASE_URL}/${username}/`;
   try {
-    const { data } = await apiClient.get(url);
+    const { data } = await App.apiClient.get(url);
     return transformCertificateData(data);
   } catch (e) {
     logAPIErrorResponse(e);

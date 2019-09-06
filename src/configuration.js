@@ -1,4 +1,4 @@
-export const configuration = {
+const configuration = {
   BASE_URL: process.env.BASE_URL,
   LMS_BASE_URL: process.env.LMS_BASE_URL,
   CREDENTIALS_BASE_URL: process.env.CREDENTIALS_BASE_URL,
@@ -39,4 +39,4 @@ export const configuration = {
   VIEW_MY_RECORDS_URL: `${process.env.CREDENTIALS_BASE_URL}/records`,
 };
 
-export const features = {};
+export default configuration;

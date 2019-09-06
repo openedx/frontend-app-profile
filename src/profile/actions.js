@@ -13,20 +13,26 @@ export const RESET_DRAFTS = 'RESET_DRAFTS';
 
 // FETCH PROFILE ACTIONS
 
-export const fetchProfile = username => ({
+export const fetchProfile = (username, isAuthenticatedUserProfile) => ({
   type: FETCH_PROFILE.BASE,
-  payload: { username },
+  payload: { username, isAuthenticatedUserProfile },
 });
 
 export const fetchProfileBegin = () => ({
   type: FETCH_PROFILE.BEGIN,
 });
 
-export const fetchProfileSuccess = (account, preferences, courseCertificates) => ({
+export const fetchProfileSuccess = (
+  account,
+  preferences,
+  courseCertificates,
+  isAuthenticatedUserProfile,
+) => ({
   type: FETCH_PROFILE.SUCCESS,
   account,
   preferences,
   courseCertificates,
+  isAuthenticatedUserProfile,
 });
 
 export const fetchProfileReset = () => ({
@@ -35,10 +41,11 @@ export const fetchProfileReset = () => ({
 
 // SAVE PROFILE ACTIONS
 
-export const saveProfile = formId => ({
+export const saveProfile = (formId, username) => ({
   type: SAVE_PROFILE.BASE,
   payload: {
     formId,
+    username,
   },
 });
 
