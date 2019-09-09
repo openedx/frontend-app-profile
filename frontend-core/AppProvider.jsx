@@ -8,9 +8,9 @@ import App from './App';
 import ErrorBoundary from './ErrorBoundary';
 import AuthenticationContext from './AuthenticationContext';
 
-const AppProvider = ({ authentication, store, children }) => (
+const AppProvider = ({ store, children }) => (
   <ErrorBoundary>
-    <AuthenticationContext.Provider value={authentication}>
+    <AuthenticationContext.Provider value={App.authentication}>
       <IntlProvider locale={getLocale()} messages={getMessages()}>
         <Provider store={store}>
           <Router history={App.history}>

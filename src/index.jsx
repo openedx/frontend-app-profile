@@ -16,7 +16,7 @@ import './index.scss';
 
 App.subscribe(APP_READY, () => {
   ReactDOM.render(
-    <AppProvider store={configureStore()} authentication={App.authentication}>
+    <AppProvider store={configureStore()}>
       <Header />
       <ProfileMain />
       <Footer />
