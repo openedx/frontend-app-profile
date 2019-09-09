@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Switch, Route } from 'react-router-dom';
 
-import AuthenticationContext from '../../../frontend-core/AuthenticationContext';
-import { fetchUserAccount } from '../../../frontend-core/frontendAuthWrapper';
+import { AuthenticationContext, fetchUserAccount } from '../../../frontend-core';
 
 import NotFoundPage from './NotFoundPage';
 import ConnectedProfilePage from './ProfilePage';

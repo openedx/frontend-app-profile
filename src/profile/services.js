@@ -1,7 +1,7 @@
 import { logAPIErrorResponse } from '@edx/frontend-logging';
 
 import { utils } from '../common';
-import App from '../../frontend-core/App';
+import { App } from '../../frontend-core';
 
 const { camelCaseObject, convertKeyNames, snakeCaseObject } = utils;
 

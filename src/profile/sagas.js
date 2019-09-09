@@ -34,7 +34,7 @@ import * as ProfileApiService from './services';
 
 // Utils
 import { utils } from '../common';
-import App from '../../frontend-core/App';
+import { App } from '../../frontend-core';
 
 const { keepKeys } = utils;
 

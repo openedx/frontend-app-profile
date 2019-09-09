@@ -5,8 +5,7 @@ import SiteHeader from '@edx/frontend-component-site-header';
 import { sendTrackEvent } from '@edx/frontend-analytics';
 import { intlShape, injectIntl } from '@edx/frontend-i18n';
 
-import App from '../../frontend-core/App';
-import AuthenticationContext from '../../frontend-core/AuthenticationContext';
+import { App, AuthenticationContext } from '../../frontend-core';
 
 import messages from './ProfileHeader.messages';
 import HeaderLogo from '../assets/logo.svg';

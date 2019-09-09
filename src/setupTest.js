@@ -2,7 +2,7 @@
 
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import App from '../frontend-core/App';
+import { App } from '../frontend-core';
 
 Enzyme.configure({ adapter: new Adapter() });
 

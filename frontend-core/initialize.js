@@ -8,7 +8,7 @@ import {
 import { configure as configureI18n } from '@edx/frontend-i18n';
 import { configureLoggingService } from '@edx/frontend-logging';
 
-import App from '../frontend-core/App';
+import App from './App';
 import { configureUserAccountApiService, getAuthentication } from './frontendAuthWrapper';
 
 export default async function initialize(configuration, messages, loggingService) {

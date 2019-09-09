@@ -10,7 +10,7 @@ import * as analytics from '@edx/frontend-analytics';
 import ConnectedProfilePage from './ProfilePage';
 import configuration from '../../configuration';
 import messages from '../../i18n';
-import AuthenticationContext from '../../../frontend-core/AuthenticationContext';
+import { AuthenticationContext } from '../../../frontend-core';
 
 const mockStore = configureMockStore();
 const storeMocks = {

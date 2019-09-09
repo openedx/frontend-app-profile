@@ -10,8 +10,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import App from '../../frontend-core/App';
-import validateConfig from '../../frontend-core/validateConfig';
+import { App, validateConfig } from '../../frontend-core';
 
 import FooterLogo from '../assets/edx-footer.png';
 

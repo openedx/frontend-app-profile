@@ -33,8 +33,7 @@ import { profilePageSelector } from '../selectors';
 
 // i18n
 import messages from './ProfilePage.messages';
-import App from '../../../frontend-core/App';
-import AuthenticationContext from '../../../frontend-core/AuthenticationContext';
+import { App, AuthenticationContext } from '../../../frontend-core';
 
 App.requireConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL'], 'ProfilePage');
 

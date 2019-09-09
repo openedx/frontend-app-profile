@@ -1,6 +1,7 @@
 import PubSub from 'pubsub-js';
 import { createBrowserHistory } from 'history';
 import memoize from 'lodash.memoize';
+
 import getQueryParameters from './getQueryParameters';
 import { defaultAuthentication } from './frontendAuthWrapper';
 import validateConfig from './validateConfig';
