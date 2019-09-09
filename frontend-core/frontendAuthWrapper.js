@@ -1,5 +1,11 @@
 import { fetchUserAccount as _fetchUserAccount, UserAccountApiService } from '@edx/frontend-auth';
 
+export const defaultAuthentication = {
+  userId: null,
+  username: null,
+  administrator: false,
+};
+
 let userAccountApiService = null;
 
 export const configureUserAccountApiService = (configuration, apiClient) => {
@@ -10,7 +16,7 @@ export const fetchUserAccount = username => _fetchUserAccount(userAccountApiServ
 
 export const getAuthentication = (apiClient) => {
   const { authentication } = apiClient.getAuthenticationState();
-  return {
+  return authentication === undefined ? defaultAuthentication : {
     userId: authentication.userId,
     username: authentication.username,
     administrator: authentication.administrator,

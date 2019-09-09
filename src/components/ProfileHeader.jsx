@@ -8,10 +8,18 @@ import { intlShape, injectIntl } from '@edx/frontend-i18n';
 import App from '../../frontend-core/App';
 import AuthenticationContext from '../../frontend-core/AuthenticationContext';
 
-import messages from './ProfileSiteHeader.messages';
+import messages from './ProfileHeader.messages';
 import HeaderLogo from '../assets/logo.svg';
 
-function ProfileSiteHeader({ avatar, intl }) {
+App.requireConfig([
+  'LMS_BASE_URL',
+  'LOGOUT_URL',
+  'MARKETING_SITE_BASE_URL',
+  'ORDER_HISTORY_URL',
+  'SITE_NAME',
+], 'ProfilePage');
+
+function ProfileHeader({ avatar, intl }) {
   const authentication = useContext(AuthenticationContext);
 
   const mainMenu = [
@@ -41,39 +49,39 @@ function ProfileSiteHeader({ avatar, intl }) {
   const userMenu = [
     {
       type: 'item',
-      href: `${process.env.LMS_BASE_URL}`,
+      href: `${App.config.LMS_BASE_URL}`,
       content: intl.formatMessage(messages['siteheader.user.menu.dashboard']),
     },
     {
       type: 'item',
-      href: `${process.env.LMS_BASE_URL}/u/${authentication.username}`,
+      href: `${App.config.LMS_BASE_URL}/u/${authentication.username}`,
       content: intl.formatMessage(messages['siteheader.user.menu.profile']),
     },
     {
       type: 'item',
-      href: `${process.env.LMS_BASE_URL}/account/settings`,
+      href: `${App.config.LMS_BASE_URL}/account/settings`,
       content: intl.formatMessage(messages['siteheader.user.menu.account.settings']),
     },
     {
       type: 'item',
-      href: process.env.ORDER_HISTORY_URL,
+      href: App.config.ORDER_HISTORY_URL,
       content: intl.formatMessage(messages['siteheader.user.menu.order.history']),
     },
     {
       type: 'item',
-      href: process.env.LOGOUT_URL,
+      href: App.config.LOGOUT_URL,
       content: intl.formatMessage(messages['siteheader.user.menu.logout']),
     },
   ];
   const loggedOutItems = [
     {
       type: 'item',
-      href: `${process.env.LMS_BASE_URL}/login`,
+      href: `${App.config.LMS_BASE_URL}/login`,
       content: intl.formatMessage(messages['siteheader.user.menu.login']),
     },
     {
       type: 'item',
-      href: `${process.env.LMS_BASE_URL}/register`,
+      href: `${App.config.LMS_BASE_URL}/register`,
       content: intl.formatMessage(messages['siteheader.user.menu.register']),
     },
   ];
@@ -93,12 +101,12 @@ function ProfileSiteHeader({ avatar, intl }) {
   );
 }
 
-ProfileSiteHeader.propTypes = {
+ProfileHeader.propTypes = {
   avatar: PropTypes.string,
   intl: intlShape.isRequired,
 };
 
-ProfileSiteHeader.defaultProps = {
+ProfileHeader.defaultProps = {
   avatar: null,
 };
 
@@ -111,4 +119,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {},
-)(injectIntl(ProfileSiteHeader));
+)(injectIntl(ProfileHeader));

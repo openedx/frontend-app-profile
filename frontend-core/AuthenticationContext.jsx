@@ -1,5 +1,5 @@
 import React from 'react';
-import { defaultAuthentication } from './App';
+import { defaultAuthentication } from './frontendAuthWrapper';
 
 const AuthenticationContext = React.createContext(defaultAuthentication);
 

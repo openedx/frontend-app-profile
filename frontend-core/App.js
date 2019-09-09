@@ -2,14 +2,11 @@ import PubSub from 'pubsub-js';
 import { createBrowserHistory } from 'history';
 import memoize from 'lodash.memoize';
 import getQueryParameters from './getQueryParameters';
+import { defaultAuthentication } from './frontendAuthWrapper';
+import validateConfig from './validateConfig';
 
 export const APP_READY = 'APP.READY';
-
-export const defaultAuthentication = {
-  userId: null,
-  username: null,
-  administrator: false,
-};
+export const APP_ERROR = 'APP.ERROR';
 
 /* eslint no-underscore-dangle: "off" */
 export default class App {
@@ -20,6 +17,7 @@ export default class App {
   static getQueryParameters = memoize(getQueryParameters);
 
   static set config(newConfiguration) {
+    validateConfig(newConfiguration, 'App');
     this._config = newConfiguration;
   }
 
@@ -39,6 +37,12 @@ export default class App {
     PubSub.publish(APP_READY);
   }
 
+  static error(error) {
+    this._ready = false;
+    this.error = error;
+    PubSub.publish(APP_ERROR);
+  }
+
   static set apiClient(apiClient) {
     this._apiClient = apiClient;
   }
@@ -54,11 +58,11 @@ export default class App {
     return getQueryParameters(global.location.search);
   }
 
-  static validateConfig(...keys) {
+  static requireConfig(keys, requester) {
     this.subscribe(APP_READY, () => {
       keys.forEach((key) => {
         if (this.config[key] === undefined) {
-          throw new Error(`Configuration error: ${key} is required.`);
+          throw new Error(`App configuration error: ${key} is required by ${requester}.`);
         }
       });
     });

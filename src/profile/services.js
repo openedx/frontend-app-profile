@@ -5,12 +5,7 @@ import App from '../../frontend-core/App';
 
 const { camelCaseObject, convertKeyNames, snakeCaseObject } = utils;
 
-App.validateConfig(
-  'ACCOUNTS_API_BASE_URL',
-  'CERTIFICATES_API_BASE_URL',
-  'LMS_BASE_URL',
-  'PREFERENCES_API_BASE_URL',
-);
+App.requireConfig(['LMS_BASE_URL'], 'Profile API service');
 
 function processAccountData(data) {
   return camelCaseObject(data);
@@ -28,7 +23,7 @@ function processAndThrowError(error, errorDataProcessor) {
 
 // GET ACCOUNT
 export async function getAccount(username) {
-  const { data } = await App.apiClient.get(`${App.config.ACCOUNTS_API_BASE_URL}/${username}`);
+  const { data } = await App.apiClient.get(`${App.config.LMS_BASE_URL}/api/user/v1/accounts/${username}`);
 
   // Process response data
   return processAccountData(data);
@@ -39,7 +34,7 @@ export async function patchProfile(username, params) {
   const processedParams = snakeCaseObject(params);
 
   const { data } = await App.apiClient
-    .patch(`${App.config.ACCOUNTS_API_BASE_URL}/${username}`, processedParams, {
+    .patch(`${App.config.LMS_BASE_URL}/api/user/v1/accounts/${username}`, processedParams, {
       headers: {
         'Content-Type': 'application/merge-patch+json',
       },
@@ -57,7 +52,7 @@ export async function patchProfile(username, params) {
 export async function postProfilePhoto(username, formData) {
   // eslint-disable-next-line no-unused-vars
   const { data } = await App.apiClient.post(
-    `${App.config.ACCOUNTS_API_BASE_URL}/${username}/image`,
+    `${App.config.LMS_BASE_URL}/api/user/v1/accounts/${username}/image`,
     formData,
     {
       headers: {
@@ -81,7 +76,7 @@ export async function postProfilePhoto(username, formData) {
 
 export async function deleteProfilePhoto(username) {
   // eslint-disable-next-line no-unused-vars
-  const { data } = await App.apiClient.delete(`${App.config.ACCOUNTS_API_BASE_URL}/${username}/image`);
+  const { data } = await App.apiClient.delete(`${App.config.LMS_BASE_URL}/api/user/v1/accounts/${username}/image`);
 
   // TODO: Someday in the future the POST photo endpoint
   // will return the new values. At that time we should
@@ -94,7 +89,7 @@ export async function deleteProfilePhoto(username) {
 
 // GET PREFERENCES
 export async function getPreferences(username) {
-  const { data } = await App.apiClient.get(`${App.config.PREFERENCES_API_BASE_URL}/${username}`);
+  const { data } = await App.apiClient.get(`${App.config.LMS_BASE_URL}/api/user/v1/preferences/${username}`);
 
   return camelCaseObject(data);
 }
@@ -114,7 +109,7 @@ export async function patchPreferences(username, params) {
     visibility_time_zone: 'visibility.time_zone',
   });
 
-  await App.apiClient.patch(`${App.config.PREFERENCES_API_BASE_URL}/${username}`, processedParams, {
+  await App.apiClient.patch(`${App.config.LMS_BASE_URL}/api/user/v1/preferences/${username}`, processedParams, {
     headers: { 'Content-Type': 'application/merge-patch+json' },
   });
 
@@ -145,7 +140,7 @@ function transformCertificateData(data) {
 }
 
 export async function getCourseCertificates(username) {
-  const url = `${App.config.CERTIFICATES_API_BASE_URL}/${username}/`;
+  const url = `${App.config.LMS_BASE_URL}/api/certificates/v0/certificates/${username}/`;
   try {
     const { data } = await App.apiClient.get(url);
     return transformCertificateData(data);

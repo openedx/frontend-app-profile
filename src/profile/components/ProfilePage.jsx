@@ -36,9 +36,16 @@ import messages from './ProfilePage.messages';
 import App from '../../../frontend-core/App';
 import AuthenticationContext from '../../../frontend-core/AuthenticationContext';
 
+App.requireConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL'], 'ProfilePage');
+
 export class ProfilePage extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      viewMyRecordsUrl: `${App.config.CREDENTIALS_BASE_URL}/records`,
+      accountSettingsUrl: `${App.config.LMS_BASE_URL}/account/settings`,
+    };
 
     this.handleSaveProfilePhoto = this.handleSaveProfilePhoto.bind(this);
     this.handleDeleteProfilePhoto = this.handleDeleteProfilePhoto.bind(this);
@@ -90,7 +97,7 @@ export class ProfilePage extends React.Component {
     }
 
     return (
-      <Hyperlink className="btn btn-primary" destination={App.config.VIEW_MY_RECORDS_URL} target="_blank">
+      <Hyperlink className="btn btn-primary" destination={this.state.viewMyRecordsUrl} target="_blank">
         {this.props.intl.formatMessage(messages['profile.viewMyRecords'])}
       </Hyperlink>
     );
@@ -132,7 +139,7 @@ export class ProfilePage extends React.Component {
     if (!shouldShowAgeMessage) {
       return null;
     }
-    return <AgeMessage accountSettingsUrl={App.config.ACCOUNT_SETTINGS_URL} />;
+    return <AgeMessage accountSettingsUrl={this.state.accountSettingsUrl} />;
   }
 
   renderContent() {
