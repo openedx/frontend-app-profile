@@ -5,10 +5,10 @@ import SiteHeader from '@edx/frontend-component-site-header';
 import { sendTrackEvent } from '@edx/frontend-analytics';
 import { intlShape, injectIntl } from '@edx/frontend-i18n';
 
-import { App, AuthenticationContext } from '../../frontend-core';
+import { App, AuthenticationContext } from '../frontend-core';
 
-import messages from './ProfileHeader.messages';
-import HeaderLogo from '../assets/logo.svg';
+import messages from './Header.messages';
+import HeaderLogo from './logo.svg';
 
 App.requireConfig([
   'LMS_BASE_URL',

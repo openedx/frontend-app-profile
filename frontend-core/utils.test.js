@@ -1,4 +1,4 @@
-import { AsyncActionType, modifyObjectKeys, camelCaseObject, snakeCaseObject, convertKeyNames, keepKeys } from './utils';
+import { AsyncActionType, modifyObjectKeys, camelCaseObject, snakeCaseObject, convertKeyNames } from './utils';
 
 describe('modifyObjectKeys', () => {
   it('should use the provided modify function to change all keys in and object and its children', () => {
@@ -84,35 +84,14 @@ describe('convertKeyNames', () => {
   });
 });
 
-describe('keepKeys', () => {
-  it('should keep the specified keys only', () => {
-    const result = keepKeys({
-      one: 123,
-      two: { three: 'skip me' },
-      four: 'five',
-      six: null,
-      8: 'sneaky',
-    }, [
-      'one', 'three', 'six', 'seven', '8', // yup, the 8 integer will be converted to a string.
-    ]);
+describe('AsyncActionType', () => {
+  it('should return well formatted action strings', () => {
+    const actionType = new AsyncActionType('HOUSE_CATS', 'START_THE_RACE');
 
-    expect(result).toEqual({
-      one: 123,
-      six: null,
-      8: 'sneaky',
-    });
-  });
-
-
-  describe('AsyncActionType', () => {
-    it('should return well formatted action strings', () => {
-      const actionType = new AsyncActionType('HOUSE_CATS', 'START_THE_RACE');
-
-      expect(actionType.BASE).toBe('HOUSE_CATS__START_THE_RACE');
-      expect(actionType.BEGIN).toBe('HOUSE_CATS__START_THE_RACE__BEGIN');
-      expect(actionType.SUCCESS).toBe('HOUSE_CATS__START_THE_RACE__SUCCESS');
-      expect(actionType.FAILURE).toBe('HOUSE_CATS__START_THE_RACE__FAILURE');
-      expect(actionType.RESET).toBe('HOUSE_CATS__START_THE_RACE__RESET');
-    });
+    expect(actionType.BASE).toBe('HOUSE_CATS__START_THE_RACE');
+    expect(actionType.BEGIN).toBe('HOUSE_CATS__START_THE_RACE__BEGIN');
+    expect(actionType.SUCCESS).toBe('HOUSE_CATS__START_THE_RACE__SUCCESS');
+    expect(actionType.FAILURE).toBe('HOUSE_CATS__START_THE_RACE__FAILURE');
+    expect(actionType.RESET).toBe('HOUSE_CATS__START_THE_RACE__RESET');
   });
 });

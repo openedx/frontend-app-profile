@@ -1,6 +1,7 @@
 import { all, call, delay, put, select, takeEvery } from 'redux-saga/effects';
 import { logAPIErrorResponse } from '@edx/frontend-logging';
 import { FETCH_USER_ACCOUNT_FAILURE } from '@edx/frontend-auth';
+import pick from 'lodash.pick';
 
 // Actions
 import {
@@ -33,10 +34,7 @@ import { handleSaveProfileSelector, userAccountSelector } from './selectors';
 import * as ProfileApiService from './services';
 
 // Utils
-import { utils } from '../common';
 import { App } from '../../frontend-core';
-
-const { keepKeys } = utils;
 
 export function* handleFetchProfile(action) {
   const { username, isAuthenticatedUserProfile } = action.payload;
@@ -91,7 +89,7 @@ export function* handleSaveProfile(action) {
   try {
     const { drafts, preferences } = yield select(handleSaveProfileSelector);
 
-    const accountDrafts = keepKeys(drafts, [
+    const accountDrafts = pick(drafts, [
       'bio',
       'courseCertificates',
       'country',
@@ -101,7 +99,7 @@ export function* handleSaveProfile(action) {
       'socialLinks',
     ]);
 
-    const preferencesDrafts = keepKeys(drafts, [
+    const preferencesDrafts = pick(drafts, [
       'visibilityBio',
       'visibilityCourseCertificates',
       'visibilityCountry',

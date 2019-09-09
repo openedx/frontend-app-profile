@@ -27,7 +27,7 @@ import Bio from './forms/Bio';
 import Certificates from './forms/Certificates';
 import AgeMessage from './AgeMessage';
 import DateJoined from './DateJoined';
-import { PageLoading } from '../../common';
+import PageLoading from './PageLoading';
 import Banner from './Banner';
 import { profilePageSelector } from '../selectors';
 

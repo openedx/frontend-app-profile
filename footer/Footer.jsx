@@ -10,9 +10,9 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { App, validateConfig } from '../../frontend-core';
+import { App, validateConfig } from '../frontend-core';
 
-import FooterLogo from '../assets/edx-footer.png';
+import FooterLogo from './edx-footer.png';
 
 const config = {
   APPLE_APP_STORE_URL: process.env.APPLE_APP_STORE_URL,

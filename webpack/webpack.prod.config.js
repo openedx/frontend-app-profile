@@ -31,6 +31,9 @@ module.exports = Merge.smart(commonConfig, {
         test: /\.(js|jsx)$/,
         include: [
           path.resolve(__dirname, '../src'),
+          path.resolve(__dirname, '../footer'),
+          path.resolve(__dirname, '../frontend-core'),
+          path.resolve(__dirname, '../header'),
         ],
         loader: 'babel-loader',
       },
