@@ -11,38 +11,45 @@
 // https://github.com/npm/cli/pull/3
 
 const pkg = require('./package.json');
-const { exec } = require('child_process');
+const { spawn } = require('child_process');
 
-const dynamicDependencies = Object.entries(pkg.dependencies)
-  .filter(([name]) => name.includes('@edx-dynamic/'))
-  .map(([alias, target]) => ({ alias, target }));
 
-const getEnvKeyFromAlias = alias => alias
-  .replace(/[^a-z]/g, '_') // swap all non a-z characters to _
-  .replace(/^_+/g, '') // trim first _ if exists
-  .toUpperCase();
+const getPackageTargetForAlias = (alias) => {
+  // Key's should be in SCREAMING_SNAKE_CASE: process.env.EDX_DYNAMIC_*
+  const aliasEnvKey = alias
+    .replace(/[^a-z]/g, '_') // swap all non a-z characters to _
+    .replace(/^_+/g, '') // trim first _ if exists
+    .toUpperCase();
 
-console.log('Performing default install followed by dynamic dependency overrides.');
+  // TODO: Should we sanitize this input?
+  return process.env[aliasEnvKey];
+};
 
-const firstInstallProcess = exec('npm install', { env: process.env }, () => {
-  // Install overrides
-  const installTargets = dynamicDependencies
-    .filter(({ alias }) => !!process.env[getEnvKeyFromAlias(alias)])
-    .map(({ alias }) => {
-      const target = process.env[getEnvKeyFromAlias(alias)];
-      console.log(`Resolved dynamic dependency ${alias} to: ${target}.`);
-      return `${alias}@${target}`;
-    })
-    .join(' ');
+const packageOverrides = Object.keys(pkg.dependencies)
+  // Only scan for overridden packages named @edx-dynamic/*
+  .filter(packageName => packageName.includes('@edx-dynamic/'))
 
-  if (installTargets.length === 0) {
-    return;
-  }
+  // Get package targets for alias from process.env
+  .map(packageName => ({
+    alias: packageName,
+    overrideTarget: getPackageTargetForAlias(packageName),
+  }))
 
-  const secondInstallProcess = exec(`npm install ${installTargets}`);
-  secondInstallProcess.stdout.pipe(process.stdout);
-  secondInstallProcess.stderr.pipe(process.stderr);
+  // Remove aliases that haven't been defined
+  .filter(({ overrideTarget }) => overrideTarget !== undefined)
+
+  // Prepare override installs for command line install
+  .map(({ alias, overrideTarget }) => {
+    console.log(`Resolved dynamic dependency ${alias} to: ${overrideTarget}.`);
+    return `${alias}@${overrideTarget}`;
+  })
+  .join(' ');
+
+
+console.log('Install with defaults...');
+
+spawn('npm install', { stdio: 'inherit', shell: true }, () => {
+  console.log('Install with overrides...');
+
+  spawn(`npm install ${packageOverrides}`, { stdio: 'inherit', shell: true });
 });
-
-firstInstallProcess.stdout.pipe(process.stdout);
-firstInstallProcess.stderr.pipe(process.stderr);
