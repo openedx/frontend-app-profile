@@ -71,7 +71,7 @@
   },
   "devDependencies": {
     "@svgr/webpack": "4.3.2",
-    "autoprefixer": "9.4.7",
+    "autoprefixer": "9.6.1",
     "axios-mock-adapter": "1.16.0",
     "babel-cli": "6.26.0",
     "babel-eslint": "8.2.6",
