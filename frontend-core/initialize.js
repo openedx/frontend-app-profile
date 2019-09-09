@@ -58,6 +58,6 @@ export default async function initialize(configuration, messages, loggingService
     sendPageEvent();
   } catch (error) {
     loggingService.logError(error.message);
-    throw error;
+    App.error(error);
   }
 }
