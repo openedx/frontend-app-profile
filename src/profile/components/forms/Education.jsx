@@ -78,6 +78,7 @@ class Education extends React.Component {
                     value={levelOfEducation}
                     onChange={this.handleChange}
                   >
+                    <option value="" />
                     {EDUCATION_LEVELS.map(level => (
                       <option key={level} value={level}>
                         {intl.formatMessage(get(

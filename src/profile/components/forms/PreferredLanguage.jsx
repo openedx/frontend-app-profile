@@ -26,19 +26,17 @@ class PreferredLanguage extends React.Component {
   }
 
   handleChange(e) {
-    const {
-      name,
-      value: rawValue,
-    } = e.target;
-    let value = rawValue;
+    const { name, value } = e.target;
     // Restructure the data.
     // We deconstruct our value prop in render() so this
     // changes our data's shape back to match what came in
     if (name === this.props.formId) {
-      value = [{ code: rawValue }];
+      if (value !== '') {
+        this.props.changeHandler(name, [{ code: value }]);
+      } else {
+        this.props.changeHandler(name, []);
+      }
     }
-
-    this.props.changeHandler(name, value);
   }
 
   handleSubmit(e) {
@@ -92,6 +90,7 @@ class PreferredLanguage extends React.Component {
                     value={value}
                     onChange={this.handleChange}
                   >
+                    <option value="" />
                     {sortedLanguages.map(({ code, name }) => (
                       <option key={code} value={code}>{name}</option>
                     ))}
