@@ -1,18 +1,17 @@
 import 'babel-polyfill';
+
+import { App, AppProvider, APP_ERROR, APP_READY, ErrorPage, initialize } from '@edx/frontend-base';
+import { NewRelicLoggingService } from '@edx/frontend-logging';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { NewRelicLoggingService } from '@edx/frontend-logging';
 
-import { App, APP_READY, APP_ERROR, AppProvider, ErrorPage, initialize } from '../frontend-core';
-import Header from '../header/Header';
 import Footer from '../footer/Footer';
+import Header from '../header/Header';
 
-import configuration from './configuration';
-import configureStore from './store';
 import messages from './i18n';
-import ProfileMain from './profile/components/ProfileMain';
-
 import './index.scss';
+import ProfileMain from './profile/components/ProfileMain';
+import configureStore from './store';
 
 App.subscribe(APP_READY, () => {
   ReactDOM.render(
@@ -29,4 +28,4 @@ App.subscribe(APP_ERROR, () => {
   ReactDOM.render(<ErrorPage message={App.error.message} />, document.getElementById('root'));
 });
 
-initialize(configuration, messages, NewRelicLoggingService);
+initialize({ messages, loggingService: NewRelicLoggingService });

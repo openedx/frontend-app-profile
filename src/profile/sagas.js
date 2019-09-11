@@ -1,40 +1,32 @@
-import { all, call, delay, put, select, takeEvery } from 'redux-saga/effects';
-import { logAPIErrorResponse } from '@edx/frontend-logging';
 import { FETCH_USER_ACCOUNT_FAILURE } from '@edx/frontend-auth';
+import { App } from '@edx/frontend-base';
+import { logAPIErrorResponse } from '@edx/frontend-logging';
 import pick from 'lodash.pick';
-
-// Actions
+import { all, call, delay, put, select, takeEvery } from 'redux-saga/effects';
 import {
-  FETCH_PROFILE,
-  fetchProfileBegin,
-  fetchProfileSuccess,
-  fetchProfileReset,
-  SAVE_PROFILE,
-  saveProfileBegin,
-  saveProfileSuccess,
-  saveProfileFailure,
-  saveProfileReset,
   closeForm,
-  SAVE_PROFILE_PHOTO,
+  deleteProfilePhotoBegin,
+  deleteProfilePhotoReset,
+  deleteProfilePhotoSuccess,
+  DELETE_PROFILE_PHOTO,
+  fetchProfileBegin,
+  fetchProfileReset,
+  fetchProfileSuccess,
+  FETCH_PROFILE,
+  resetDrafts,
+  saveProfileBegin,
+  saveProfileFailure,
   saveProfilePhotoBegin,
-  saveProfilePhotoSuccess,
   saveProfilePhotoFailure,
   saveProfilePhotoReset,
-  DELETE_PROFILE_PHOTO,
-  deleteProfilePhotoBegin,
-  deleteProfilePhotoSuccess,
-  deleteProfilePhotoReset,
-  resetDrafts,
+  saveProfilePhotoSuccess,
+  saveProfileReset,
+  saveProfileSuccess,
+  SAVE_PROFILE,
+  SAVE_PROFILE_PHOTO,
 } from './actions';
-
-// Selectors
 import { handleSaveProfileSelector, userAccountSelector } from './selectors';
-
-// Services
 import * as ProfileApiService from './services';
-
-// Utils
-import { App } from '../../frontend-core';
 
 export function* handleFetchProfile(action) {
   const { username, isAuthenticatedUserProfile } = action.payload;

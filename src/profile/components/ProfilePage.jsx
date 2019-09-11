@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StatusAlert, Hyperlink } from '@edx/paragon';
 import { connect } from 'react-redux';
-import { injectIntl, intlShape } from '@edx/frontend-i18n'; // eslint-disable-line
+
 import { sendTrackingLogEvent } from '@edx/frontend-analytics';
+import { App, AuthenticationContext } from '@edx/frontend-base';
+import { injectIntl, intlShape } from '@edx/frontend-i18n'; // eslint-disable-line
+import { StatusAlert, Hyperlink } from '@edx/paragon';
 
 // Actions
 import {
@@ -29,11 +31,12 @@ import AgeMessage from './AgeMessage';
 import DateJoined from './DateJoined';
 import PageLoading from './PageLoading';
 import Banner from './Banner';
+
+// Selectors
 import { profilePageSelector } from '../selectors';
 
 // i18n
 import messages from './ProfilePage.messages';
-import { App, AuthenticationContext } from '../../../frontend-core';
 
 App.requireConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL'], 'ProfilePage');
 

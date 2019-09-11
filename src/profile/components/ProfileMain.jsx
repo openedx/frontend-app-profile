@@ -1,9 +1,8 @@
+import { AuthenticationContext, fetchUserAccount } from '@edx/frontend-base';
+import PropTypes from 'prop-types';
 import React, { useContext, useEffect } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { Switch, Route } from 'react-router-dom';
-
-import { AuthenticationContext, fetchUserAccount } from '../../../frontend-core';
+import { Route, Switch } from 'react-router-dom';
 
 import NotFoundPage from './NotFoundPage';
 import ConnectedProfilePage from './ProfilePage';

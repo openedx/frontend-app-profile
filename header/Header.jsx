@@ -1,11 +1,10 @@
-import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import SiteHeader from '@edx/frontend-component-site-header';
 import { sendTrackEvent } from '@edx/frontend-analytics';
-import { intlShape, injectIntl } from '@edx/frontend-i18n';
-
-import { App, AuthenticationContext } from '../frontend-core';
+import { App, AuthenticationContext } from '@edx/frontend-base';
+import SiteHeader from '@edx/frontend-component-site-header';
+import { injectIntl, intlShape } from '@edx/frontend-i18n';
+import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
+import { connect } from 'react-redux';
 
 import messages from './Header.messages';
 import HeaderLogo from './logo.svg';

@@ -1,16 +1,15 @@
 /* eslint-disable global-require */
-import React from 'react';
+import * as analytics from '@edx/frontend-analytics';
+import { App, AuthenticationContext } from '@edx/frontend-base';
+import { configure as configureI18n, IntlProvider } from '@edx/frontend-i18n';
 import { mount } from 'enzyme';
-import renderer from 'react-test-renderer';
+import React from 'react';
 import { Provider } from 'react-redux';
-import { IntlProvider, configure as configureI18n } from '@edx/frontend-i18n';
+import renderer from 'react-test-renderer';
 import configureMockStore from 'redux-mock-store';
 
-import * as analytics from '@edx/frontend-analytics';
-import ConnectedProfilePage from './ProfilePage';
-import configuration from '../../configuration';
 import messages from '../../i18n';
-import { AuthenticationContext } from '../../../frontend-core';
+import ConnectedProfilePage from './ProfilePage';
 
 const mockStore = configureMockStore();
 const storeMocks = {
@@ -32,10 +31,10 @@ const requiredProfilePageProps = {
 // Mock language cookie
 Object.defineProperty(global.document, 'cookie', {
   writable: true,
-  value: `${configuration.LANGUAGE_PREFERENCE_COOKIE_NAME}=en`,
+  value: `${App.config.LANGUAGE_PREFERENCE_COOKIE_NAME}=en`,
 });
 
-configureI18n(configuration, messages);
+configureI18n(App.config, messages);
 
 describe('<ProfilePage />', () => {
   describe('Renders correctly in various states', () => {

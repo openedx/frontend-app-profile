@@ -1,6 +1,7 @@
 import React from 'react';
 import SiteFooter from '@edx/frontend-component-footer';
 import { sendTrackEvent } from '@edx/frontend-analytics';
+import { App, validateConfig } from '@edx/frontend-base';
 import {
   faFacebookSquare,
   faTwitterSquare,
@@ -10,7 +11,6 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { App, validateConfig } from '../frontend-core';
 
 import FooterLogo from './edx-footer.png';
 

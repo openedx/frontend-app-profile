@@ -1,7 +1,6 @@
+import { App } from '@edx/frontend-base';
 import { logAPIErrorResponse } from '@edx/frontend-logging';
-
-import { camelCaseObject, convertKeyNames, snakeCaseObject } from '../../frontend-core/utils';
-import { App } from '../../frontend-core';
+import { camelCaseObject, convertKeyNames, snakeCaseObject } from '../utils';
 
 App.requireConfig(['LMS_BASE_URL'], 'Profile API service');
 

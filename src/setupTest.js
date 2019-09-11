@@ -1,8 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
-
+import { App } from '@edx/frontend-base';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import { App } from '../frontend-core';
 
 Enzyme.configure({ adapter: new Adapter() });
 

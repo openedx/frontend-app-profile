@@ -1,4 +1,4 @@
-import { AsyncActionType } from '../../frontend-core/utils';
+import { AsyncActionType } from '../utils';
 
 export const FETCH_PROFILE = new AsyncActionType('PROFILE', 'FETCH_PROFILE');
 export const SAVE_PROFILE = new AsyncActionType('PROFILE', 'SAVE_PROFILE');
