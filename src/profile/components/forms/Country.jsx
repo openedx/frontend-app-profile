@@ -83,6 +83,7 @@ class Country extends React.Component {
                     value={country}
                     onChange={this.handleChange}
                   >
+                    <option value="" />
                     {sortedCountries.map(({ code, name }) => (
                       <option key={code} value={code}>{name}</option>
                     ))}
