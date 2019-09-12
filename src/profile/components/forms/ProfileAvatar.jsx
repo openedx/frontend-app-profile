@@ -68,30 +68,27 @@ class ProfileAvatar extends React.Component {
     }
 
     return (
-      <Dropdown
-        buttonType="primary"
-        title={intl.formatMessage(messages['profile.profileavatar.change-button'])}
-        menuItems={[
-          (
-            <button className="dropdown-item" onClick={this.onClickUpload}>
-              <FormattedMessage
-                id="profile.profileavatar.upload-button"
-                defaultMessage="Upload Photo"
-                description="Upload photo button"
-              />
-            </button>
-          ),
-          (
-            <button className="dropdown-item" onClick={this.onClickDelete}>
-              <FormattedMessage
-                id="profile.profileavatar.remove.button"
-                defaultMessage="Remove"
-                description="Remove photo button"
-              />
-            </button>
-          ),
-        ]}
-      />
+      <Dropdown>
+        <Dropdown.Button type="btn-outline">
+          {intl.formatMessage(messages['profile.profileavatar.change-button'])}
+        </Dropdown.Button>
+        <Dropdown.Menu>
+          <Dropdown.Item type="button" onClick={this.onClickUpload}>
+            <FormattedMessage
+              id="profile.profileavatar.upload-button"
+              defaultMessage="Upload Photo"
+              description="Upload photo button"
+            />
+          </Dropdown.Item>
+          <Dropdown.Item type="button" onClick={this.onClickDelete}>
+            <FormattedMessage
+              id="profile.profileavatar.remove.button"
+              defaultMessage="Remove"
+              description="Remove photo button"
+            />
+          </Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
     );
   }
 

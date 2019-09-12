@@ -240,25 +240,24 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                 >
                   <button
                     aria-expanded={false}
-                    aria-haspopup="true"
-                    className="btn dropdown-toggle btn-primary"
-                    onBlur={[Function]}
+                    aria-haspopup={true}
+                    className="dropdown-toggle btn btn-light"
+                    id="pgn__dropdown-trigger-0"
                     onClick={[Function]}
-                    onKeyDown={[Function]}
-                    type="button"
+                    type="btn-outline"
                   >
                     Change
                   </button>
                   <div
                     aria-hidden={true}
-                    aria-label="Change"
+                    aria-labelledby="pgn__dropdown-trigger-0"
                     className="dropdown-menu"
+                    onKeyDown={[Function]}
                     role="menu"
                   >
                     <button
                       className="dropdown-item"
                       onClick={[Function]}
-                      onKeyDown={[Function]}
                     >
                       <span>
                         Upload Photo
@@ -267,7 +266,6 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     <button
                       className="dropdown-item"
                       onClick={[Function]}
-                      onKeyDown={[Function]}
                     >
                       <span>
                         Remove
@@ -1243,25 +1241,24 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                 >
                   <button
                     aria-expanded={false}
-                    aria-haspopup="true"
-                    className="btn dropdown-toggle btn-primary"
-                    onBlur={[Function]}
+                    aria-haspopup={true}
+                    className="dropdown-toggle btn btn-light"
+                    id="pgn__dropdown-trigger-1"
                     onClick={[Function]}
-                    onKeyDown={[Function]}
-                    type="button"
+                    type="btn-outline"
                   >
                     Change
                   </button>
                   <div
                     aria-hidden={true}
-                    aria-label="Change"
+                    aria-labelledby="pgn__dropdown-trigger-1"
                     className="dropdown-menu"
+                    onKeyDown={[Function]}
                     role="menu"
                   >
                     <button
                       className="dropdown-item"
                       onClick={[Function]}
-                      onKeyDown={[Function]}
                     >
                       <span>
                         Upload Photo
@@ -1270,7 +1267,6 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     <button
                       className="dropdown-item"
                       onClick={[Function]}
-                      onKeyDown={[Function]}
                     >
                       <span>
                         Remove
@@ -2072,7 +2068,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                           <span
                             aria-hidden={true}
                             className="icon fa fa-spinner fa-spin"
-                            id="Icon1"
+                            id="Icon2"
                           />
                         </span>
                         Saving
