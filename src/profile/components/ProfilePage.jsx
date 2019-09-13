@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { sendTrackingLogEvent } from '@edx/frontend-analytics';
 import { App, AuthenticationContext } from '@edx/frontend-base';
-import { injectIntl, intlShape } from '@edx/frontend-i18n'; // eslint-disable-line
+import { injectIntl, intlShape } from '@edx/frontend-i18n';
 import { StatusAlert, Hyperlink } from '@edx/paragon';
 
 // Actions
