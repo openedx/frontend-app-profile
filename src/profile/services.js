@@ -1,5 +1,5 @@
 import { App } from '@edx/frontend-base';
-import { logAPIErrorResponse } from '@edx/frontend-logging';
+import { logApiClientError } from '@edx/frontend-logging';
 import { camelCaseObject, convertKeyNames, snakeCaseObject } from '../utils';
 
 const { LMS_BASE_URL } = App.requireConfig(['LMS_BASE_URL'], 'Profile API service');
@@ -142,7 +142,7 @@ export async function getCourseCertificates(username) {
     const { data } = await App.apiClient.get(url);
     return transformCertificateData(data);
   } catch (e) {
-    logAPIErrorResponse(e);
+    logApiClientError(e);
     return [];
   }
 }

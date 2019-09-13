@@ -1,6 +1,6 @@
 import { FETCH_USER_ACCOUNT_FAILURE } from '@edx/frontend-auth';
 import { App } from '@edx/frontend-base';
-import { logAPIErrorResponse } from '@edx/frontend-logging';
+import { logApiClientError } from '@edx/frontend-logging';
 import pick from 'lodash.pick';
 import { all, call, delay, put, select, takeEvery } from 'redux-saga/effects';
 import {
@@ -177,7 +177,7 @@ export function* handleDeleteProfilePhoto(action) {
 }
 
 export function handleFetchUserAccountFailure(action) {
-  logAPIErrorResponse(action.payload.error);
+  logApiClientError(action.payload.error);
   throw action.payload.error;
 }
 
