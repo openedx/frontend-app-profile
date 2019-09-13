@@ -24,6 +24,7 @@ import profileSaga, {
   handleFetchUserAccountFailure,
 } from './sagas';
 import * as ProfileApiService from './services';
+import { App } from '@edx/frontend-base';
 /* eslint-enable import/first */
 
 describe('RootSaga', () => {
@@ -56,7 +57,8 @@ describe('RootSaga', () => {
         userAccount,
       };
 
-      const action = profileActions.fetchProfile('gonzo', true);
+      App.authentication.username = 'gonzo';
+      const action = profileActions.fetchProfile('gonzo');
       const gen = handleFetchProfile(action);
 
       const result = [userAccount, [1, 2, 3], { preferences: 'stuff' }];
@@ -83,7 +85,8 @@ describe('RootSaga', () => {
         userAccount,
       };
 
-      const action = profileActions.fetchProfile('booyah', false);
+      App.authentication.username = 'gonzo';
+      const action = profileActions.fetchProfile('booyah');
       const gen = handleFetchProfile(action);
 
       const result = [{}, [1, 2, 3]];

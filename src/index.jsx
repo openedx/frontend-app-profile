@@ -24,8 +24,8 @@ App.subscribe(APP_READY, () => {
   );
 });
 
-App.subscribe(APP_ERROR, () => {
-  ReactDOM.render(<ErrorPage message={App.error.message} />, document.getElementById('root'));
+App.subscribe(APP_ERROR, (error) => {
+  ReactDOM.render(<ErrorPage message={error.message} />, document.getElementById('root'));
 });
 
 initialize({ messages, loggingService: NewRelicLoggingService });

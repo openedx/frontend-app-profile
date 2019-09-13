@@ -11,9 +11,9 @@ export const RESET_DRAFTS = 'RESET_DRAFTS';
 
 // FETCH PROFILE ACTIONS
 
-export const fetchProfile = (username, isAuthenticatedUserProfile) => ({
+export const fetchProfile = username => ({
   type: FETCH_PROFILE.BASE,
-  payload: { username, isAuthenticatedUserProfile },
+  payload: { username },
 });
 
 export const fetchProfileBegin = () => ({

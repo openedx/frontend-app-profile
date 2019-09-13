@@ -58,7 +58,7 @@ export class ProfilePage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchProfile(this.props.match.params.username, this.isAuthenticatedUserProfile());
+    this.props.fetchProfile(this.props.match.params.username);
     sendTrackingLogEvent('edx.profile.viewed', {
       username: this.props.match.params.username,
     });
