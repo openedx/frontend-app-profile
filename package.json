@@ -90,6 +90,7 @@
     "codecov": "3.1.0",
     "copy-webpack-plugin": "4.6.0",
     "css-loader": "^3.2.0",
+    "cssnano": "^4.1.10",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "es-check": "5.0.0",
