@@ -36,6 +36,8 @@ class PreferredLanguage extends React.Component {
       } else {
         this.props.changeHandler(name, []);
       }
+    } else {
+      this.props.changeHandler(name, value);
     }
   }
 
