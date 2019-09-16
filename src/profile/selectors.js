@@ -1,9 +1,15 @@
 import { createSelector } from 'reselect';
-import { getLocale, getLanguageList, getCountryList, getCountryMessages, getLanguageMessages } from '@edx/frontend-i18n'; // eslint-disable-line
+import {
+  getLocale,
+  getLanguageList,
+  getCountryList,
+  getCountryMessages,
+  getLanguageMessages,
+} from '@edx/frontend-i18n'; // eslint-disable-line
 
 export const formIdSelector = (state, props) => props.formId;
 export const userAccountSelector = state => state.userAccount;
-export const authenticationUsernameSelector = state => state.authentication.username;
+
 export const profileAccountSelector = state => state.profilePage.account;
 export const profileDraftsSelector = state => state.profilePage.drafts;
 export const accountPrivacySelector = state => state.profilePage.preferences.accountPrivacy;
@@ -16,21 +22,16 @@ export const savePhotoStateSelector = state => state.profilePage.savePhotoState;
 export const isLoadingProfileSelector = state => state.profilePage.isLoadingProfile;
 export const currentlyEditingFieldSelector = state => state.profilePage.currentlyEditingField;
 export const accountErrorsSelector = state => state.profilePage.errors;
-export const configurationSelector = state => state.configuration;
-
-export const isAuthenticatedUserProfileSelector = createSelector(
-  authenticationUsernameSelector,
-  profileAccountSelector,
-  (username, profileAccount) => username === profileAccount.username,
-);
+export const isAuthenticatedUserProfileSelector = state =>
+  state.profilePage.isAuthenticatedUserProfile;
 
 export const editableFormModeSelector = createSelector(
   profileAccountSelector,
+  isAuthenticatedUserProfileSelector,
   profileCourseCertificatesSelector,
   formIdSelector,
-  isAuthenticatedUserProfileSelector,
   currentlyEditingFieldSelector,
-  (account, certificates, formId, isAuthenticatedUserProfile, currentlyEditingField) => {
+  (account, isAuthenticatedUserProfile, certificates, formId, currentlyEditingField) => {
     // If the prop doesn't exist, that means it hasn't been set (for the current user's profile)
     // or is being hidden from us (for other users' profiles)
     let propExists = account[formId] != null && account[formId].length > 0;
@@ -146,32 +147,24 @@ export const certificatesSelector = createSelector(
 
 export const profileImageSelector = createSelector(
   profileAccountSelector,
-  account => (account.profileImage != null ? {
-    src: account.profileImage.imageUrlFull,
-    isDefault: !account.profileImage.hasImage,
-  } : {}),
+  account =>
+    (account.profileImage != null
+      ? {
+        src: account.profileImage.imageUrlFull,
+        isDefault: !account.profileImage.hasImage,
+      }
+      : {}),
 );
 
 /**
  * This is used by a saga to pull out data to process.
  */
 export const handleSaveProfileSelector = createSelector(
-  authenticationUsernameSelector,
   profileDraftsSelector,
   profilePreferencesSelector,
-  (username, drafts, preferences) => ({
-    username,
+  (drafts, preferences) => ({
     drafts,
     preferences,
-  }),
-);
-
-export const handleFetchProfileSelector = createSelector(
-  authenticationUsernameSelector,
-  userAccountSelector,
-  (authenticationUsername, userAccount) => ({
-    authenticationUsername,
-    userAccount,
   }),
 );
 
@@ -327,10 +320,8 @@ export const profilePageSelector = createSelector(
   saveStateSelector,
   savePhotoStateSelector,
   isLoadingProfileSelector,
-  isAuthenticatedUserProfileSelector,
   draftSocialLinksByPlatformSelector,
   accountErrorsSelector,
-  configurationSelector,
   (
     account,
     formValues,
@@ -338,10 +329,8 @@ export const profilePageSelector = createSelector(
     saveState,
     savePhotoState,
     isLoadingProfile,
-    isAuthenticatedUserProfile,
     draftSocialLinksByPlatform,
     errors,
-    configuration,
   ) => ({
     // Account data we need
     username: account.username,
@@ -382,8 +371,6 @@ export const profilePageSelector = createSelector(
     saveState,
     savePhotoState,
     isLoadingProfile,
-    isAuthenticatedUserProfile,
     photoUploadError: errors.photo || null,
-    configuration,
   }),
 );

@@ -1,47 +1,37 @@
-import { push } from 'connected-react-router';
-import { all, call, delay, put, select, takeEvery } from 'redux-saga/effects';
-import { logAPIErrorResponse } from '@edx/frontend-logging';
 import { FETCH_USER_ACCOUNT_FAILURE } from '@edx/frontend-auth';
-
-// Actions
+import { App } from '@edx/frontend-base';
+import { logApiClientError } from '@edx/frontend-logging';
+import pick from 'lodash.pick';
+import { all, call, delay, put, select, takeEvery } from 'redux-saga/effects';
 import {
-  FETCH_PROFILE,
-  fetchProfileBegin,
-  fetchProfileSuccess,
-  fetchProfileReset,
-  SAVE_PROFILE,
-  saveProfileBegin,
-  saveProfileSuccess,
-  saveProfileFailure,
-  saveProfileReset,
   closeForm,
-  SAVE_PROFILE_PHOTO,
+  deleteProfilePhotoBegin,
+  deleteProfilePhotoReset,
+  deleteProfilePhotoSuccess,
+  DELETE_PROFILE_PHOTO,
+  fetchProfileBegin,
+  fetchProfileReset,
+  fetchProfileSuccess,
+  FETCH_PROFILE,
+  resetDrafts,
+  saveProfileBegin,
+  saveProfileFailure,
   saveProfilePhotoBegin,
-  saveProfilePhotoSuccess,
   saveProfilePhotoFailure,
   saveProfilePhotoReset,
-  DELETE_PROFILE_PHOTO,
-  deleteProfilePhotoBegin,
-  deleteProfilePhotoSuccess,
-  deleteProfilePhotoReset,
-  resetDrafts,
+  saveProfilePhotoSuccess,
+  saveProfileReset,
+  saveProfileSuccess,
+  SAVE_PROFILE,
+  SAVE_PROFILE_PHOTO,
 } from './actions';
-
-// Selectors
-import { handleSaveProfileSelector, handleFetchProfileSelector } from './selectors';
-
-// Services
+import { handleSaveProfileSelector, userAccountSelector } from './selectors';
 import * as ProfileApiService from './services';
-
-// Utils
-import { utils } from '../common';
-
-const { keepKeys } = utils;
 
 export function* handleFetchProfile(action) {
   const { username } = action.payload;
-  const { authenticationUsername, userAccount } = yield select(handleFetchProfileSelector);
-
+  const userAccount = yield select(userAccountSelector);
+  const isAuthenticatedUserProfile = username === App.authentication.username;
   // Default our data assuming the account is the current user's account.
   let preferences = {};
   let account = userAccount;
@@ -56,7 +46,7 @@ export function* handleFetchProfile(action) {
       call(ProfileApiService.getCourseCertificates, username),
     ];
 
-    if (username === authenticationUsername) {
+    if (isAuthenticatedUserProfile) {
       // If the profile is for the current user, get their preferences.
       // We don't need them for other users.
       calls.push(call(ProfileApiService.getPreferences, username));
@@ -65,17 +55,22 @@ export function* handleFetchProfile(action) {
     // Make all the calls in parallel.
     const result = yield all(calls);
 
-    if (username === authenticationUsername) {
+    if (isAuthenticatedUserProfile) {
       [account, courseCertificates, preferences] = result;
     } else {
       [account, courseCertificates] = result;
     }
-    yield put(fetchProfileSuccess(account, preferences, courseCertificates));
+    yield put(fetchProfileSuccess(
+      account,
+      preferences,
+      courseCertificates,
+      isAuthenticatedUserProfile,
+    ));
 
     yield put(fetchProfileReset());
   } catch (e) {
     if (e.response.status === 404) {
-      yield put(push('/notfound'));
+      App.history.push('/notfound');
     } else {
       throw e;
     }
@@ -84,9 +79,9 @@ export function* handleFetchProfile(action) {
 
 export function* handleSaveProfile(action) {
   try {
-    const { username, drafts, preferences } = yield select(handleSaveProfileSelector);
+    const { drafts, preferences } = yield select(handleSaveProfileSelector);
 
-    const accountDrafts = keepKeys(drafts, [
+    const accountDrafts = pick(drafts, [
       'bio',
       'courseCertificates',
       'country',
@@ -96,7 +91,7 @@ export function* handleSaveProfile(action) {
       'socialLinks',
     ]);
 
-    const preferencesDrafts = keepKeys(drafts, [
+    const preferencesDrafts = pick(drafts, [
       'visibilityBio',
       'visibilityCourseCertificates',
       'visibilityCountry',
@@ -115,15 +110,19 @@ export function* handleSaveProfile(action) {
     // Build the visibility drafts into a structure the API expects.
 
     if (Object.keys(accountDrafts).length > 0) {
-      accountResult = yield call(ProfileApiService.patchProfile, username, accountDrafts);
+      accountResult = yield call(
+        ProfileApiService.patchProfile,
+        action.payload.username,
+        accountDrafts,
+      );
     }
 
     let preferencesResult = preferences; // assume it hasn't changed.
     if (Object.keys(preferencesDrafts).length > 0) {
-      yield call(ProfileApiService.patchPreferences, username, preferencesDrafts);
+      yield call(ProfileApiService.patchPreferences, action.payload.username, preferencesDrafts);
       // TODO: Temporary deoptimization since the patchPreferences call doesn't return anything.
       // Remove this second call once we can get a result from the one above.
-      preferencesResult = yield call(ProfileApiService.getPreferences, username);
+      preferencesResult = yield call(ProfileApiService.getPreferences, action.payload.username);
     }
 
     // The account result is returned from the server.
@@ -178,7 +177,7 @@ export function* handleDeleteProfilePhoto(action) {
 }
 
 export function handleFetchUserAccountFailure(action) {
-  logAPIErrorResponse(action.payload.error);
+  logApiClientError(action.payload.error);
   throw action.payload.error;
 }
 

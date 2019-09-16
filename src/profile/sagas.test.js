@@ -2,7 +2,7 @@ import { takeEvery, put, call, delay, select, all } from 'redux-saga/effects';
 import { FETCH_USER_ACCOUNT_FAILURE } from '@edx/frontend-auth';
 
 import * as profileActions from './actions';
-import { handleSaveProfileSelector, handleFetchProfileSelector } from './selectors';
+import { handleSaveProfileSelector, userAccountSelector } from './selectors';
 
 jest.mock('./services', () => ({
   getProfile: jest.fn(),
@@ -24,6 +24,7 @@ import profileSaga, {
   handleFetchUserAccountFailure,
 } from './sagas';
 import * as ProfileApiService from './services';
+import { App } from '@edx/frontend-base';
 /* eslint-enable import/first */
 
 describe('RootSaga', () => {
@@ -53,16 +54,16 @@ describe('RootSaga', () => {
         other: 'data',
       };
       const selectorData = {
-        authenticationUsername: 'gonzo',
         userAccount,
       };
 
+      App.authentication.username = 'gonzo';
       const action = profileActions.fetchProfile('gonzo');
       const gen = handleFetchProfile(action);
 
       const result = [userAccount, [1, 2, 3], { preferences: 'stuff' }];
 
-      expect(gen.next().value).toEqual(select(handleFetchProfileSelector));
+      expect(gen.next().value).toEqual(select(userAccountSelector));
       expect(gen.next(selectorData).value).toEqual(put(profileActions.fetchProfileBegin()));
       expect(gen.next().value).toEqual(all([
         call(ProfileApiService.getAccount, 'gonzo'),
@@ -70,7 +71,7 @@ describe('RootSaga', () => {
         call(ProfileApiService.getPreferences, 'gonzo'),
       ]));
       expect(gen.next(result).value)
-        .toEqual(put(profileActions.fetchProfileSuccess(userAccount, result[2], result[1])));
+        .toEqual(put(profileActions.fetchProfileSuccess(userAccount, result[2], result[1], true)));
       expect(gen.next().value).toEqual(put(profileActions.fetchProfileReset()));
       expect(gen.next().value).toBeUndefined();
     });
@@ -81,23 +82,23 @@ describe('RootSaga', () => {
         other: 'data',
       };
       const selectorData = {
-        authenticationUsername: 'gonzo',
         userAccount,
       };
 
+      App.authentication.username = 'gonzo';
       const action = profileActions.fetchProfile('booyah');
       const gen = handleFetchProfile(action);
 
       const result = [{}, [1, 2, 3]];
 
-      expect(gen.next().value).toEqual(select(handleFetchProfileSelector));
+      expect(gen.next().value).toEqual(select(userAccountSelector));
       expect(gen.next(selectorData).value).toEqual(put(profileActions.fetchProfileBegin()));
       expect(gen.next().value).toEqual(all([
         call(ProfileApiService.getAccount, 'booyah'),
         call(ProfileApiService.getCourseCertificates, 'booyah'),
       ]));
       expect(gen.next(result).value)
-        .toEqual(put(profileActions.fetchProfileSuccess(result[0], {}, result[1])));
+        .toEqual(put(profileActions.fetchProfileSuccess(result[0], {}, result[1], false)));
       expect(gen.next().value).toEqual(put(profileActions.fetchProfileReset()));
       expect(gen.next().value).toBeUndefined();
     });
@@ -113,7 +114,7 @@ describe('RootSaga', () => {
     };
 
     it('should successfully process a saveProfile request if there are no exceptions', () => {
-      const action = profileActions.saveProfile('ze form id');
+      const action = profileActions.saveProfile('ze form id', 'my username');
       const gen = handleSaveProfile(action);
       const profile = {
         name: 'Full Name',
@@ -143,12 +144,8 @@ describe('RootSaga', () => {
         },
       };
       const action = profileActions.saveProfile(
-        'my username',
-        {
-          name: 'Full Name',
-          levelOfEducation: 'b',
-        },
         'ze form id',
+        'my username',
       );
       const gen = handleSaveProfile(action);
 

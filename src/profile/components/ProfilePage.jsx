@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StatusAlert, Hyperlink } from '@edx/paragon';
 import { connect } from 'react-redux';
-import { injectIntl, intlShape } from '@edx/frontend-i18n'; // eslint-disable-line
+
 import { sendTrackingLogEvent } from '@edx/frontend-analytics';
+import { App, AuthenticationContext } from '@edx/frontend-base';
+import { injectIntl, intlShape } from '@edx/frontend-i18n';
+import { StatusAlert, Hyperlink } from '@edx/paragon';
 
 // Actions
 import {
@@ -27,16 +29,25 @@ import Bio from './forms/Bio';
 import Certificates from './forms/Certificates';
 import AgeMessage from './AgeMessage';
 import DateJoined from './DateJoined';
-import { PageLoading } from '../../common';
+import PageLoading from './PageLoading';
 import Banner from './Banner';
+
+// Selectors
 import { profilePageSelector } from '../selectors';
 
 // i18n
 import messages from './ProfilePage.messages';
 
+App.requireConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL'], 'ProfilePage');
+
 export class ProfilePage extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      viewMyRecordsUrl: `${App.config.CREDENTIALS_BASE_URL}/records`,
+      accountSettingsUrl: `${App.config.LMS_BASE_URL}/account/settings`,
+    };
 
     this.handleSaveProfilePhoto = this.handleSaveProfilePhoto.bind(this);
     this.handleDeleteProfilePhoto = this.handleDeleteProfilePhoto.bind(this);
@@ -53,12 +64,16 @@ export class ProfilePage extends React.Component {
     });
   }
 
+  isAuthenticatedUserProfile() {
+    return this.props.match.params.username === this.context.username;
+  }
+
   handleSaveProfilePhoto(formData) {
-    this.props.saveProfilePhoto(this.props.username, formData);
+    this.props.saveProfilePhoto(this.context.username, formData);
   }
 
   handleDeleteProfilePhoto() {
-    this.props.deleteProfilePhoto(this.props.username);
+    this.props.deleteProfilePhoto(this.context.username);
   }
 
   handleClose(formId) {
@@ -70,7 +85,7 @@ export class ProfilePage extends React.Component {
   }
 
   handleSubmit(formId) {
-    this.props.saveProfile(formId);
+    this.props.saveProfile(formId, this.context.username);
   }
 
   handleChange(name, value) {
@@ -79,12 +94,12 @@ export class ProfilePage extends React.Component {
 
   // Inserted into the DOM in two places (for responsive layout)
   renderViewMyRecordsButton() {
-    if (!this.props.isAuthenticatedUserProfile) {
+    if (!this.isAuthenticatedUserProfile()) {
       return null;
     }
 
     return (
-      <Hyperlink className="btn btn-primary" destination={this.props.configuration.VIEW_MY_RECORDS_URL} target="_blank">
+      <Hyperlink className="btn btn-primary" destination={this.state.viewMyRecordsUrl} target="_blank">
         {this.props.intl.formatMessage(messages['profile.viewMyRecords'])}
       </Hyperlink>
     );
@@ -92,11 +107,11 @@ export class ProfilePage extends React.Component {
 
   // Inserted into the DOM in two places (for responsive layout)
   renderHeadingLockup() {
-    const { username, dateJoined } = this.props;
+    const { dateJoined } = this.props;
 
     return (
       <React.Fragment>
-        <h1 className="h2 mb-0 font-weight-bold">{username}</h1>
+        <h1 className="h2 mb-0 font-weight-bold">{this.props.match.params.username}</h1>
         <DateJoined date={dateJoined} />
         <hr className="d-none d-md-block" />
       </React.Fragment>
@@ -120,13 +135,13 @@ export class ProfilePage extends React.Component {
   }
 
   renderAgeMessage() {
-    const { requiresParentalConsent, isAuthenticatedUserProfile } = this.props;
-    const shouldShowAgeMessage = requiresParentalConsent && isAuthenticatedUserProfile;
+    const { requiresParentalConsent } = this.props;
+    const shouldShowAgeMessage = requiresParentalConsent && this.isAuthenticatedUserProfile();
 
     if (!shouldShowAgeMessage) {
       return null;
     }
-    return <AgeMessage accountSettingsUrl={this.props.configuration.ACCOUNT_SETTINGS_URL} />;
+    return <AgeMessage accountSettingsUrl={this.state.accountSettingsUrl} />;
   }
 
   renderContent() {
@@ -174,7 +189,7 @@ export class ProfilePage extends React.Component {
                 onSave={this.handleSaveProfilePhoto}
                 onDelete={this.handleDeleteProfilePhoto}
                 savePhotoState={this.props.savePhotoState}
-                isEditable={this.props.isAuthenticatedUserProfile && !requiresParentalConsent}
+                isEditable={this.isAuthenticatedUserProfile() && !requiresParentalConsent}
               />
             </div>
           </div>
@@ -257,17 +272,12 @@ export class ProfilePage extends React.Component {
   }
 }
 
+ProfilePage.contextType = AuthenticationContext;
+
 ProfilePage.propTypes = {
-  // Config
-  configuration: PropTypes.shape({
-    VIEW_MY_RECORDS_URL: PropTypes.string.isRequired,
-    ACCOUNT_SETTINGS_URL: PropTypes.string.isRequired,
-  }).isRequired,
   // Account data
-  username: PropTypes.string,
   requiresParentalConsent: PropTypes.bool,
   dateJoined: PropTypes.string,
-  isAuthenticatedUserProfile: PropTypes.bool.isRequired,
 
   // Bio form data
   bio: PropTypes.string,
@@ -346,7 +356,6 @@ ProfilePage.defaultProps = {
   photoUploadError: {},
   profileImage: {},
   name: null,
-  username: null,
   levelOfEducation: null,
   country: null,
   socialLinks: [],

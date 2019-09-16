@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { injectIntl, intlShape } from '@edx/frontend-i18n'; // eslint-disable-line
+import { injectIntl, intlShape } from '@edx/frontend-i18n';
 
 import messages from './Name.messages';
 

@@ -1,6 +1,4 @@
-import { utils } from '../common';
-
-const { AsyncActionType } = utils;
+import { AsyncActionType } from '../utils';
 
 export const FETCH_PROFILE = new AsyncActionType('PROFILE', 'FETCH_PROFILE');
 export const SAVE_PROFILE = new AsyncActionType('PROFILE', 'SAVE_PROFILE');
@@ -22,11 +20,17 @@ export const fetchProfileBegin = () => ({
   type: FETCH_PROFILE.BEGIN,
 });
 
-export const fetchProfileSuccess = (account, preferences, courseCertificates) => ({
+export const fetchProfileSuccess = (
+  account,
+  preferences,
+  courseCertificates,
+  isAuthenticatedUserProfile,
+) => ({
   type: FETCH_PROFILE.SUCCESS,
   account,
   preferences,
   courseCertificates,
+  isAuthenticatedUserProfile,
 });
 
 export const fetchProfileReset = () => ({
@@ -35,10 +39,11 @@ export const fetchProfileReset = () => ({
 
 // SAVE PROFILE ACTIONS
 
-export const saveProfile = formId => ({
+export const saveProfile = (formId, username) => ({
   type: SAVE_PROFILE.BASE,
   payload: {
     formId,
+    username,
   },
 });
 

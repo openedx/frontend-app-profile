@@ -1,15 +1,15 @@
 /* eslint-disable global-require */
-import React from 'react';
+import * as analytics from '@edx/frontend-analytics';
+import { App, AuthenticationContext } from '@edx/frontend-base';
+import { configure as configureI18n, IntlProvider } from '@edx/frontend-i18n';
 import { mount } from 'enzyme';
-import renderer from 'react-test-renderer';
+import React from 'react';
 import { Provider } from 'react-redux';
-import { IntlProvider, configure as configureI18n } from '@edx/frontend-i18n';
+import renderer from 'react-test-renderer';
 import configureMockStore from 'redux-mock-store';
 
-import * as analytics from '@edx/frontend-analytics';
-import ConnectedProfilePage from './ProfilePage';
-import { configuration } from '../../environment';
 import messages from '../../i18n';
+import ConnectedProfilePage from './ProfilePage';
 
 const mockStore = configureMockStore();
 const storeMocks = {
@@ -19,7 +19,6 @@ const storeMocks = {
   savingEditedBio: require('./__mocks__/savingEditedBio.mockStore.js'),
 };
 const requiredProfilePageProps = {
-  isAuthenticatedUserProfile: true,
   fetchProfile: () => {},
   saveProfile: () => {},
   saveProfilePhoto: () => {},
@@ -32,84 +31,103 @@ const requiredProfilePageProps = {
 // Mock language cookie
 Object.defineProperty(global.document, 'cookie', {
   writable: true,
-  value: `${configuration.LANGUAGE_PREFERENCE_COOKIE_NAME}=en`,
+  value: `${App.config.LANGUAGE_PREFERENCE_COOKIE_NAME}=en`,
 });
 
-configureI18n(configuration, messages);
+configureI18n(App.config, messages);
 
 describe('<ProfilePage />', () => {
   describe('Renders correctly in various states', () => {
     it('app loading', () => {
       analytics.sendTrackingLogEvent = jest.fn();
-      const tree = renderer
-        .create((
+      const component = (
+        <AuthenticationContext.Provider
+          value={{ userId: null, username: null, administrator: false }}
+        >
           <IntlProvider locale="en">
             <Provider store={mockStore(storeMocks.loadingApp)}>
               <ConnectedProfilePage {...requiredProfilePageProps} />
             </Provider>
           </IntlProvider>
-        ))
-        .toJSON();
+        </AuthenticationContext.Provider>
+      );
+      const tree = renderer.create(component).toJSON();
       expect(tree).toMatchSnapshot();
     });
 
     it('viewing own profile', () => {
       analytics.sendTrackingLogEvent = jest.fn();
-      const tree = renderer
-        .create((
+      const component = (
+        <AuthenticationContext.Provider
+          value={{ userId: 123, username: 'staff', administrator: true }}
+        >
           <IntlProvider locale="en">
             <Provider store={mockStore(storeMocks.viewOwnProfile)}>
               <ConnectedProfilePage {...requiredProfilePageProps} />
             </Provider>
           </IntlProvider>
-        ))
-        .toJSON();
+        </AuthenticationContext.Provider>
+      );
+      const tree = renderer.create(component).toJSON();
       expect(tree).toMatchSnapshot();
     });
 
     it('viewing other profile', () => {
       analytics.sendTrackingLogEvent = jest.fn();
-      const tree = renderer
-        .create((
+      const component = (
+        <AuthenticationContext.Provider
+          value={{ userId: 123, username: 'staff', administrator: true }}
+        >
           <IntlProvider locale="en">
             <Provider store={mockStore(storeMocks.viewOtherProfile)}>
-              <ConnectedProfilePage {...requiredProfilePageProps} />
+              <ConnectedProfilePage
+                {...requiredProfilePageProps}
+                match={{ params: { username: 'verified' } }} // Override default match
+              />
             </Provider>
           </IntlProvider>
-        ))
-        .toJSON();
+        </AuthenticationContext.Provider>
+      );
+      const tree = renderer.create(component).toJSON();
       expect(tree).toMatchSnapshot();
     });
 
     it('while saving an edited bio', () => {
       analytics.sendTrackingLogEvent = jest.fn();
-      const tree = renderer
-        .create((
+      const component = (
+        <AuthenticationContext.Provider
+          value={{ userId: 123, username: 'staff', administrator: true }}
+        >
           <IntlProvider locale="en">
             <Provider store={mockStore(storeMocks.savingEditedBio)}>
               <ConnectedProfilePage {...requiredProfilePageProps} />
             </Provider>
           </IntlProvider>
-        ))
-        .toJSON();
+        </AuthenticationContext.Provider>
+      );
+      const tree = renderer.create(component).toJSON();
       expect(tree).toMatchSnapshot();
     });
   });
 
-
   describe('handles analytics', () => {
     it('calls sendTrackingLogEvent when mounting', () => {
       analytics.sendTrackingLogEvent = jest.fn();
-      mount((
-        <IntlProvider locale="en">
-          <Provider store={mockStore(storeMocks.loadingApp)}>
-            <ConnectedProfilePage
-              {...requiredProfilePageProps}
-              match={{ params: { username: 'test-username' } }}
-            />
-          </Provider>
-        </IntlProvider>
-      ));
+      const component = (
+        <AuthenticationContext.Provider
+          value={{ userId: 123, username: 'staff', administrator: true }}
+        >
+          <IntlProvider locale="en">
+            <Provider store={mockStore(storeMocks.loadingApp)}>
+              <ConnectedProfilePage
+                {...requiredProfilePageProps}
+                match={{ params: { username: 'test-username' } }}
+              />
+            </Provider>
+          </IntlProvider>
+        </AuthenticationContext.Provider>
+      );
+      mount(component);
 
       expect(analytics.sendTrackingLogEvent.mock.calls.length).toBe(1);
       expect(analytics.sendTrackingLogEvent.mock.calls[0][0]).toEqual('edx.profile.viewed');

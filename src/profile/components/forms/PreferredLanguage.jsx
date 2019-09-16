@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { injectIntl, intlShape } from '@edx/frontend-i18n'; // eslint-disable-line
+import { injectIntl, intlShape } from '@edx/frontend-i18n';
 import { ValidationFormGroup } from '@edx/paragon';
 
 import messages from './PreferredLanguage.messages';
@@ -36,6 +36,8 @@ class PreferredLanguage extends React.Component {
       } else {
         this.props.changeHandler(name, []);
       }
+    } else {
+      this.props.changeHandler(name, value);
     }
   }
 
