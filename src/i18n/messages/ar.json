@@ -1,19 +1,4 @@
 {
-  "unexpected.error.message.text": "An unexpected error occurred. Please click the button below to return to refresh the page.",
-  "unexpected.error.button.text": "Try Again",
-  "siteheader.links.courses": "Courses",
-  "siteheader.links.programs": "Programs",
-  "siteheader.links.content.search": "Discover New",
-  "siteheader.links.schools": "Schools & Partners",
-  "siteheader.user.menu.dashboard": "Dashboard",
-  "siteheader.user.menu.profile": "Profile",
-  "siteheader.user.menu.account.settings": "Account",
-  "siteheader.user.menu.order.history": "Order History",
-  "siteheader.user.menu.logout": "Logout",
-  "siteheader.user.menu.login": "Login",
-  "siteheader.user.menu.register": "Sign Up",
-  "app.loading.message": "Loading",
-  "profile.notfound.message": "The page you're looking for is unavailable or there's an error in the URL. Please check the URL and try again.",
   "profile.age.headline": "Your profile cannot be shared.",
   "profile.age.details": "To share your profile with other edX learners, you must confirm that you are over the age of 13.",
   "profile.age.set.date": "Set your date of birth",
@@ -60,6 +45,7 @@
   "profile.profileavatar.change-button": "Change",
   "profile.sociallinks.add": "Add {network}",
   "profile.sociallinks.social.links": "Social Links",
+  "profile.notfound.message": "The page you're looking for is unavailable or there's an error in the URL. Please check the URL and try again.",
   "profile.viewMyRecords": "View My Records",
   "profile.loading": "Profile loading..."
 }
