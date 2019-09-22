@@ -1,19 +1,4 @@
 {
-  "unexpected.error.message.text": "Une erreur inattendue s'est produite. Veuillez cliquer sur le bouton ci-dessous pour rafraîchir la page.",
-  "unexpected.error.button.text": "Essayer encore",
-  "siteheader.links.courses": "Cours",
-  "siteheader.links.programs": "Programmes",
-  "siteheader.links.content.search": "Explorer les cours",
-  "siteheader.links.schools": "Écoles et partenaires",
-  "siteheader.user.menu.dashboard": "Tableau de bord",
-  "siteheader.user.menu.profile": "Profil",
-  "siteheader.user.menu.account.settings": "Compte",
-  "siteheader.user.menu.order.history": "Historique des commandes",
-  "siteheader.user.menu.logout": "Déconnexion",
-  "siteheader.user.menu.login": "Connexion",
-  "siteheader.user.menu.register": "S'inscrire",
-  "app.loading.message": "Chargement en cours",
-  "profile.notfound.message": "La page que vous recherchez n'est pas disponible ou il y a une erreur dans l'URL. Veuillez vérifier l'URL et réessayer.",
   "profile.age.headline": "Votre profil ne peut pas être partagé.",
   "profile.age.details": "Pour partager votre profil avec d'autres apprenants edX, vous devez confirmer que vous avez plus de 13 ans.",
   "profile.age.set.date": "Définissez votre date de naissance",
@@ -60,6 +45,7 @@
   "profile.profileavatar.change-button": "Modifier",
   "profile.sociallinks.add": "Ajouter {network}",
   "profile.sociallinks.social.links": "Liens vers les réseaux sociaux",
+  "profile.notfound.message": "La page que vous recherchez n'est pas disponible ou il y a une erreur dans l'URL. Veuillez vérifier l'URL et réessayer.",
   "profile.viewMyRecords": "Voir mes succès",
   "profile.loading": "Chargement du profil...."
 }

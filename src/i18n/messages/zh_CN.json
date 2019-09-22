@@ -1,19 +1,4 @@
 {
-  "unexpected.error.message.text": "An unexpected error occurred. Please click the button below to return to refresh the page.",
-  "unexpected.error.button.text": "Try Again",
-  "siteheader.links.courses": "课程",
-  "siteheader.links.programs": "Programs",
-  "siteheader.links.content.search": "Discover New",
-  "siteheader.links.schools": "学校 & 伙伴",
-  "siteheader.user.menu.dashboard": "课程面板",
-  "siteheader.user.menu.profile": "个人主页",
-  "siteheader.user.menu.account.settings": "账号",
-  "siteheader.user.menu.order.history": "Order History",
-  "siteheader.user.menu.logout": "退出",
-  "siteheader.user.menu.login": "登录",
-  "siteheader.user.menu.register": "注册",
-  "app.loading.message": "Loading",
-  "profile.notfound.message": "您访问的地址不存在或有误。请检查URL后重新尝试访问。",
   "profile.age.headline": "您的个人资料无法共享",
   "profile.age.details": "您必须确认您已年满13岁才能其他edX学员分享您的个人资料",
   "profile.age.set.date": "设置您的出生日期",
@@ -60,6 +45,7 @@
   "profile.profileavatar.change-button": "更改",
   "profile.sociallinks.add": "添加{network}",
   "profile.sociallinks.social.links": "社交链接",
+  "profile.notfound.message": "您访问的地址不存在或有误。请检查URL后重新尝试访问。",
   "profile.viewMyRecords": "View My Records",
   "profile.loading": "Profile loading..."
 }
