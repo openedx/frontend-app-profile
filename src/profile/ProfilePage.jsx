@@ -40,7 +40,7 @@ import messages from './ProfilePage.messages';
 
 App.requireConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL'], 'ProfilePage');
 
-export class ProfilePage extends React.Component {
+class ProfilePage extends React.Component {
   constructor(props, context) {
     super(props, context);
 
