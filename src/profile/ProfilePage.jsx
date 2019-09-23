@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { sendTrackingLogEvent } from '@edx/frontend-analytics';
-import { App, AppContext } from '@edx/frontend-base';
+import { App, AppContext, fetchUserAccount } from '@edx/frontend-base';
 import { injectIntl, intlShape } from '@edx/frontend-i18n';
 import { StatusAlert, Hyperlink } from '@edx/paragon';
 
@@ -58,6 +58,7 @@ export class ProfilePage extends React.Component {
   }
 
   componentDidMount() {
+    this.props.fetchUserAccount(this.context.authenticatedUser.username);
     this.props.fetchProfile(this.props.match.params.username);
     sendTrackingLogEvent('edx.profile.viewed', {
       username: this.props.match.params.username,
@@ -331,6 +332,7 @@ ProfilePage.propTypes = {
   photoUploadError: PropTypes.objectOf(PropTypes.string),
 
   // Actions
+  fetchUserAccount: PropTypes.func.isRequired,
   fetchProfile: PropTypes.func.isRequired,
   saveProfile: PropTypes.func.isRequired,
   saveProfilePhoto: PropTypes.func.isRequired,
@@ -370,6 +372,7 @@ ProfilePage.defaultProps = {
 export default connect(
   profilePageSelector,
   {
+    fetchUserAccount,
     fetchProfile,
     saveProfilePhoto,
     deleteProfilePhoto,
