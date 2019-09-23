@@ -6,6 +6,10 @@
     "type": "git",
     "url": "git+https://github.com/edx/frontend-app-profile.git"
   },
+  "browserslist": [
+    "last 2 versions",
+    "ie 11"
+  ],
   "scripts": {
     "build": "NODE_ENV=production BABEL_ENV=production webpack --config=webpack/webpack.prod.config.js",
     "i18n_extract": "BABEL_ENV=i18n babel src --quiet > /dev/null",
