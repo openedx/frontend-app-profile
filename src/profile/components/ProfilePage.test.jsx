@@ -1,6 +1,6 @@
 /* eslint-disable global-require */
 import * as analytics from '@edx/frontend-analytics';
-import { App, AuthenticationContext } from '@edx/frontend-base';
+import { App, AppContext } from '@edx/frontend-base';
 import { configure as configureI18n, IntlProvider } from '@edx/frontend-i18n';
 import { mount } from 'enzyme';
 import React from 'react';
@@ -41,15 +41,18 @@ describe('<ProfilePage />', () => {
     it('app loading', () => {
       analytics.sendTrackingLogEvent = jest.fn();
       const component = (
-        <AuthenticationContext.Provider
-          value={{ userId: null, username: null, administrator: false }}
+        <AppContext.Provider
+          value={{
+            authenticatedUser: { userId: null, username: null, administrator: false },
+            config: App.config,
+          }}
         >
           <IntlProvider locale="en">
             <Provider store={mockStore(storeMocks.loadingApp)}>
               <ConnectedProfilePage {...requiredProfilePageProps} />
             </Provider>
           </IntlProvider>
-        </AuthenticationContext.Provider>
+        </AppContext.Provider>
       );
       const tree = renderer.create(component).toJSON();
       expect(tree).toMatchSnapshot();
@@ -58,15 +61,18 @@ describe('<ProfilePage />', () => {
     it('viewing own profile', () => {
       analytics.sendTrackingLogEvent = jest.fn();
       const component = (
-        <AuthenticationContext.Provider
-          value={{ userId: 123, username: 'staff', administrator: true }}
+        <AppContext.Provider
+          value={{
+            authenticatedUser: { userId: 123, username: 'staff', administrator: true },
+            config: App.config,
+          }}
         >
           <IntlProvider locale="en">
             <Provider store={mockStore(storeMocks.viewOwnProfile)}>
               <ConnectedProfilePage {...requiredProfilePageProps} />
             </Provider>
           </IntlProvider>
-        </AuthenticationContext.Provider>
+        </AppContext.Provider>
       );
       const tree = renderer.create(component).toJSON();
       expect(tree).toMatchSnapshot();
@@ -75,8 +81,11 @@ describe('<ProfilePage />', () => {
     it('viewing other profile', () => {
       analytics.sendTrackingLogEvent = jest.fn();
       const component = (
-        <AuthenticationContext.Provider
-          value={{ userId: 123, username: 'staff', administrator: true }}
+        <AppContext.Provider
+          value={{
+            authenticatedUser: { userId: 123, username: 'staff', administrator: true },
+            config: App.config,
+          }}
         >
           <IntlProvider locale="en">
             <Provider store={mockStore(storeMocks.viewOtherProfile)}>
@@ -86,7 +95,7 @@ describe('<ProfilePage />', () => {
               />
             </Provider>
           </IntlProvider>
-        </AuthenticationContext.Provider>
+        </AppContext.Provider>
       );
       const tree = renderer.create(component).toJSON();
       expect(tree).toMatchSnapshot();
@@ -95,15 +104,18 @@ describe('<ProfilePage />', () => {
     it('while saving an edited bio', () => {
       analytics.sendTrackingLogEvent = jest.fn();
       const component = (
-        <AuthenticationContext.Provider
-          value={{ userId: 123, username: 'staff', administrator: true }}
+        <AppContext.Provider
+          value={{
+            authenticatedUser: { userId: 123, username: 'staff', administrator: true },
+            config: App.config,
+          }}
         >
           <IntlProvider locale="en">
             <Provider store={mockStore(storeMocks.savingEditedBio)}>
               <ConnectedProfilePage {...requiredProfilePageProps} />
             </Provider>
           </IntlProvider>
-        </AuthenticationContext.Provider>
+        </AppContext.Provider>
       );
       const tree = renderer.create(component).toJSON();
       expect(tree).toMatchSnapshot();
@@ -114,8 +126,11 @@ describe('<ProfilePage />', () => {
     it('calls sendTrackingLogEvent when mounting', () => {
       analytics.sendTrackingLogEvent = jest.fn();
       const component = (
-        <AuthenticationContext.Provider
-          value={{ userId: 123, username: 'staff', administrator: true }}
+        <AppContext.Provider
+          value={{
+            authenticatedUser: { userId: 123, username: 'staff', administrator: true },
+            config: App.config,
+          }}
         >
           <IntlProvider locale="en">
             <Provider store={mockStore(storeMocks.loadingApp)}>
@@ -125,7 +140,7 @@ describe('<ProfilePage />', () => {
               />
             </Provider>
           </IntlProvider>
-        </AuthenticationContext.Provider>
+        </AppContext.Provider>
       );
       mount(component);
 

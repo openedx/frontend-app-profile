@@ -1,6 +1,6 @@
 import 'babel-polyfill';
 
-import { App, AppProvider, APP_ERROR, APP_READY, ErrorPage, initialize } from '@edx/frontend-base';
+import { App, AppProvider, APP_ERROR, APP_READY, ErrorPage } from '@edx/frontend-base';
 import { NewRelicLoggingService } from '@edx/frontend-logging';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -28,7 +28,5 @@ App.subscribe(APP_ERROR, (error) => {
   ReactDOM.render(<ErrorPage message={error.message} />, document.getElementById('root'));
 });
 
-initialize({
-  messages: [appMessages, headerMessages],
-  loggingService: NewRelicLoggingService,
-});
+App.initialize({ messages: [appMessages, headerMessages], loggingService: NewRelicLoggingService });
+

@@ -31,7 +31,7 @@ import * as ProfileApiService from './services';
 export function* handleFetchProfile(action) {
   const { username } = action.payload;
   const userAccount = yield select(userAccountSelector);
-  const isAuthenticatedUserProfile = username === App.authentication.username;
+  const isAuthenticatedUserProfile = username === App.authenticatedUser.username;
   // Default our data assuming the account is the current user's account.
   let preferences = {};
   let account = userAccount;

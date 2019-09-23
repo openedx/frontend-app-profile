@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { sendTrackingLogEvent } from '@edx/frontend-analytics';
-import { App, AuthenticationContext } from '@edx/frontend-base';
+import { App, AppContext } from '@edx/frontend-base';
 import { injectIntl, intlShape } from '@edx/frontend-i18n';
 import { StatusAlert, Hyperlink } from '@edx/paragon';
 
@@ -41,12 +41,12 @@ import messages from './ProfilePage.messages';
 App.requireConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL'], 'ProfilePage');
 
 export class ProfilePage extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
 
     this.state = {
-      viewMyRecordsUrl: `${App.config.CREDENTIALS_BASE_URL}/records`,
-      accountSettingsUrl: `${App.config.LMS_BASE_URL}/account/settings`,
+      viewMyRecordsUrl: `${context.config.CREDENTIALS_BASE_URL}/records`,
+      accountSettingsUrl: `${context.config.LMS_BASE_URL}/account/settings`,
     };
 
     this.handleSaveProfilePhoto = this.handleSaveProfilePhoto.bind(this);
@@ -65,15 +65,15 @@ export class ProfilePage extends React.Component {
   }
 
   isAuthenticatedUserProfile() {
-    return this.props.match.params.username === this.context.username;
+    return this.props.match.params.username === this.context.authenticatedUser.username;
   }
 
   handleSaveProfilePhoto(formData) {
-    this.props.saveProfilePhoto(this.context.username, formData);
+    this.props.saveProfilePhoto(this.context.authenticatedUser.username, formData);
   }
 
   handleDeleteProfilePhoto() {
-    this.props.deleteProfilePhoto(this.context.username);
+    this.props.deleteProfilePhoto(this.context.authenticatedUser.username);
   }
 
   handleClose(formId) {
@@ -85,7 +85,7 @@ export class ProfilePage extends React.Component {
   }
 
   handleSubmit(formId) {
-    this.props.saveProfile(formId, this.context.username);
+    this.props.saveProfile(formId, this.context.authenticatedUser.username);
   }
 
   handleChange(name, value) {
@@ -272,7 +272,7 @@ export class ProfilePage extends React.Component {
   }
 }
 
-ProfilePage.contextType = AuthenticationContext;
+ProfilePage.contextType = AppContext;
 
 ProfilePage.propTypes = {
   // Account data
