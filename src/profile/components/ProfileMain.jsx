@@ -1,4 +1,4 @@
-import { AuthenticationContext, fetchUserAccount } from '@edx/frontend-base';
+import { AppContext, fetchUserAccount } from '@edx/frontend-base';
 import PropTypes from 'prop-types';
 import React, { useContext, useEffect } from 'react';
 import { connect } from 'react-redux';
@@ -8,11 +8,11 @@ import NotFoundPage from './NotFoundPage';
 import ConnectedProfilePage from './ProfilePage';
 
 function ProfileMain(props) {
-  const authentication = useContext(AuthenticationContext);
+  const { authenticatedUser } = useContext(AppContext);
 
   useEffect(() => {
-    props.fetchUserAccount(authentication.username);
-  }, [authentication.username]);
+    props.fetchUserAccount(authenticatedUser.username);
+  }, [authenticatedUser.username]);
 
   return (
     <main>

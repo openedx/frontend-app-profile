@@ -57,7 +57,7 @@ describe('RootSaga', () => {
         userAccount,
       };
 
-      App.authentication.username = 'gonzo';
+      App.authenticatedUser.username = 'gonzo';
       const action = profileActions.fetchProfile('gonzo');
       const gen = handleFetchProfile(action);
 
@@ -85,7 +85,7 @@ describe('RootSaga', () => {
         userAccount,
       };
 
-      App.authentication.username = 'gonzo';
+      App.authenticatedUser.username = 'gonzo';
       const action = profileActions.fetchProfile('booyah');
       const gen = handleFetchProfile(action);
 
