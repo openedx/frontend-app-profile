@@ -24,7 +24,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@cospired/i18n-iso-languages": "2.0.2",
+    "@cospired/i18n-iso-languages": "2.0.5",
     "@edx/frontend-analytics": "3.0.0",
     "@edx/frontend-auth": "7.0.1",
     "@edx/frontend-base": "2.1.4",
