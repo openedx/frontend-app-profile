@@ -12,7 +12,7 @@ import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
 
 // Selectors
-import { editableFormSelector } from '../../selectors';
+import { editableFormSelector } from '../data/selectors';
 
 class Name extends React.Component {
   constructor(props) {

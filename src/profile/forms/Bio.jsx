@@ -13,7 +13,7 @@ import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
 
 // Selectors
-import { editableFormSelector } from '../../selectors';
+import { editableFormSelector } from '../data/selectors';
 
 class Bio extends React.Component {
   constructor(props) {

@@ -16,7 +16,7 @@ import {
   openForm,
   closeForm,
   updateDraft,
-} from '../actions';
+} from './data/actions';
 
 // Components
 import ProfileAvatar from './forms/ProfileAvatar';
@@ -33,7 +33,7 @@ import PageLoading from './PageLoading';
 import Banner from './Banner';
 
 // Selectors
-import { profilePageSelector } from '../selectors';
+import { profilePageSelector } from './data/selectors';
 
 // i18n
 import messages from './ProfilePage.messages';

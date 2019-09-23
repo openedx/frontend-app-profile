@@ -13,7 +13,7 @@ import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
 
 // Selectors
-import { countrySelector } from '../../selectors';
+import { countrySelector } from '../data/selectors';
 
 class Country extends React.Component {
   constructor(props) {

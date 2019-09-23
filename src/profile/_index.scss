@@ -1,0 +1,141 @@
+
+
+$fa-font-path: "~font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome";
+
+.word-break-all {
+  word-break: break-all !important;
+}
+
+// TODO: Update edx-bootstrap theme to incorporate these edits.
+.btn, a.btn {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+.btn-link {
+  text-decoration: underline;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.profile-page-bg-banner {
+  height: 12rem;
+  background-image: url('./assets/dot-pattern-light.png');
+  background-repeat: repeat-x;
+  background-size: auto 85%;
+}
+
+.profile-page {
+  .edit-section-header {
+    @extend .h6;
+    display: block;
+    font-weight: normal;
+    letter-spacing: 0;
+    margin: 0;
+  }
+  label.edit-section-header {
+    margin-bottom: $spacer * .5;
+  }
+  .profile-avatar-wrap {
+    @include media-breakpoint-up(md) {
+      max-width: 12rem;
+      margin-right: 0;
+      margin-top: -8rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  .profile-avatar-menu-container {
+    background: rgba(0,0,0,.65);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    @include media-breakpoint-up(md) {
+      background: linear-gradient(to top, rgba(0,0,0,.65) 4rem, rgba(0,0,0,0) 4rem);
+      align-items: flex-end;
+    }
+    .btn {
+      text-decoration: none;
+      @include media-breakpoint-up(md) {
+        margin-bottom: 1.2rem;
+      }
+    }
+
+    .dropdown {
+      @include media-breakpoint-up(md) {
+        margin-bottom: 1.2rem;
+      }
+      .btn {
+        color: $white;
+        background: transparent;
+        border-color: transparent;
+        margin: 0;
+      }
+    }
+  }
+
+  .profile-avatar {
+    width: 5rem;
+    height: 5rem;
+    position: relative;
+
+    @include media-breakpoint-up(md) {
+      width: 12rem;
+      height: 12rem;
+    }
+
+    .profile-avatar-edit-button {
+      border: none;
+      position: absolute;
+      height: 100%;
+      left: 0;
+      width: 100%;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      padding-top: .1rem;
+      font-weight: 600;
+      background: rgba(0,0,0,.5);
+      border-radius:0;
+      transition: opacity 200ms ease;
+
+      @include media-breakpoint-up(md) {
+        height: 4rem;
+      }
+
+      &:focus, &:hover, &:active, &.active {
+        opacity: 1;
+      }
+    }
+  }
+
+  .certificate {
+    position: relative;
+    .certificate-title {
+      font-family: $font-family-serif;
+      font-weight: 400;
+    }
+    .certificate-type-illustration {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      bottom: 0;
+      width: 12rem;
+      opacity: .06;
+      background-size: 90%;
+      background-repeat: no-repeat;
+      background-position: right top;
+    }
+    .card-body {
+      position: relative;
+    }
+  }
+}
+

@@ -13,7 +13,7 @@ import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
 
 // Selectors
-import { preferredLanguageSelector } from '../../selectors';
+import { preferredLanguageSelector } from '../data/selectors';
 
 class PreferredLanguage extends React.Component {
   constructor(props) {

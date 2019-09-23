@@ -10,7 +10,7 @@ import Footer from '../footer/Footer';
 
 import appMessages from './i18n';
 import './index.scss';
-import ProfileMain from './profile/components/ProfileMain';
+import { ProfileMain } from './profile';
 import configureStore from './store';
 
 App.subscribe(APP_READY, () => {
