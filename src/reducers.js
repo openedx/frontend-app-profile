@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { userAccount } from '@edx/frontend-auth';
 
-import { profileReducer } from './profile';
+import { reducer as profileReducer } from './profile';
 
 const createRootReducer = () =>
   combineReducers({

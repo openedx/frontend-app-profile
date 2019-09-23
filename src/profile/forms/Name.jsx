@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { FormattedMessage, injectIntl, intlShape } from '@edx/frontend-i18n';
-import { ValidationFormGroup } from '@edx/paragon';
+import { injectIntl, intlShape } from '@edx/frontend-i18n';
 
-import messages from './Bio.messages';
+import messages from './Name.messages';
 
 // Components
 import FormControls from './elements/FormControls';
@@ -13,9 +12,9 @@ import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
 
 // Selectors
-import { editableFormSelector } from '../../selectors';
+import { editableFormSelector } from '../data/selectors';
 
-class Bio extends React.Component {
+class Name extends React.Component {
   constructor(props) {
     super(props);
 
@@ -26,7 +25,10 @@ class Bio extends React.Component {
   }
 
   handleChange(e) {
-    const { name, value } = e.target;
+    const {
+      name,
+      value,
+    } = e.target;
     this.props.changeHandler(name, value);
   }
 
@@ -45,7 +47,7 @@ class Bio extends React.Component {
 
   render() {
     const {
-      formId, bio, visibilityBio, editMode, saveState, error, intl,
+      formId, name, visibilityName, editMode, saveState, intl,
     } = this.props;
 
     return (
@@ -56,26 +58,25 @@ class Bio extends React.Component {
           editing: (
             <div role="dialog" aria-labelledby={`${formId}-label`}>
               <form onSubmit={this.handleSubmit}>
-                <ValidationFormGroup
-                  for={formId}
-                  invalid={error !== null}
-                  invalidMessage={error}
-                >
-                  <label className="edit-section-header" htmlFor={formId}>
-                    {intl.formatMessage(messages['profile.bio.about.me'])}
-                  </label>
-                  <textarea
-                    className="form-control"
-                    id={formId}
-                    name={formId}
-                    value={bio}
-                    onChange={this.handleChange}
-                  />
-                </ValidationFormGroup>
+                <div className="form-group">
+                  <EditableItemHeader content={intl.formatMessage(messages['profile.name.full.name'])} />
+                  {/*
+                  This isn't a mistake - the name field should not be editable.  But if it were,
+                  you'd find the original code got deleted in the commit which added this comment.
+                  -djoy
+                  TODO: Relatedly, the plumbing for editing the name field is still in place.
+                  Once we're super sure we don't want it back, you could delete the name props and
+                  such to fully get rid of it.
+                  */}
+                  <p className="h5">{name}</p>
+                  <small className="form-text text-muted" id={`${formId}-help-text`}>
+                    {intl.formatMessage(messages['profile.name.details'])}
+                  </small>
+                </div>
                 <FormControls
-                  visibilityId="visibilityBio"
+                  visibilityId="visibilityName"
                   saveState={saveState}
-                  visibility={visibilityBio}
+                  visibility={visibilityName}
                   cancelHandler={this.handleClose}
                   changeHandler={this.handleChange}
                 />
@@ -85,31 +86,33 @@ class Bio extends React.Component {
           editable: (
             <React.Fragment>
               <EditableItemHeader
-                content={intl.formatMessage(messages['profile.bio.about.me'])}
+                content={intl.formatMessage(messages['profile.name.full.name'])}
                 showEditButton
                 onClickEdit={this.handleOpen}
-                showVisibility={visibilityBio !== null}
-                visibility={visibilityBio}
+                showVisibility={visibilityName !== null}
+                visibility={visibilityName}
               />
-              <p className="lead">{bio}</p>
+              <p className="h5">{name}</p>
+              <small className="form-text text-muted">
+                {intl.formatMessage(messages['profile.name.details'])}
+              </small>
             </React.Fragment>
           ),
           empty: (
             <React.Fragment>
-              <EditableItemHeader content={intl.formatMessage(messages['profile.bio.about.me'])} />
+              <EditableItemHeader content={intl.formatMessage(messages['profile.name.full.name'])} />
               <EmptyContent onClick={this.handleOpen}>
-                <FormattedMessage
-                  id="profile.bio.empty"
-                  defaultMessage="Add a short bio"
-                  description="instructions when the user hasn't written an About Me"
-                />
+                {intl.formatMessage(messages['profile.name.empty'])}
               </EmptyContent>
+              <small className="form-text text-muted">
+                {intl.formatMessage(messages['profile.name.details'])}
+              </small>
             </React.Fragment>
           ),
           static: (
             <React.Fragment>
-              <EditableItemHeader content={intl.formatMessage(messages['profile.bio.about.me'])} />
-              <p className="lead">{bio}</p>
+              <EditableItemHeader content={intl.formatMessage(messages['profile.name.full.name'])} />
+              <p className="h5">{name}</p>
             </React.Fragment>
           ),
         }}
@@ -118,7 +121,7 @@ class Bio extends React.Component {
   }
 }
 
-Bio.propTypes = {
+Name.propTypes = {
   // It'd be nice to just set this as a defaultProps...
   // except the class that comes out on the other side of react-redux's
   // connect() method won't have it anymore. Static properties won't survive
@@ -126,11 +129,10 @@ Bio.propTypes = {
   formId: PropTypes.string.isRequired,
 
   // From Selector
-  bio: PropTypes.string,
-  visibilityBio: PropTypes.oneOf(['private', 'all_users']),
+  name: PropTypes.string,
+  visibilityName: PropTypes.oneOf(['private', 'all_users']),
   editMode: PropTypes.oneOf(['editing', 'editable', 'empty', 'static']),
   saveState: PropTypes.string,
-  error: PropTypes.string,
 
   // Actions
   changeHandler: PropTypes.func.isRequired,
@@ -142,15 +144,14 @@ Bio.propTypes = {
   intl: intlShape.isRequired,
 };
 
-Bio.defaultProps = {
+Name.defaultProps = {
   editMode: 'static',
   saveState: null,
-  bio: null,
-  visibilityBio: 'private',
-  error: null,
+  name: null,
+  visibilityName: 'private',
 };
 
 export default connect(
   editableFormSelector,
   {},
-)(injectIntl(Bio));
+)(injectIntl(Name));

@@ -13,11 +13,11 @@ import EditableItemHeader from './elements/EditableItemHeader';
 import SwitchContent from './elements/SwitchContent';
 
 // Assets
-import professionalCertificateSVG from '../../assets/professional-certificate.svg';
-import verifiedCertificateSVG from '../../assets/verified-certificate.svg';
+import professionalCertificateSVG from '../assets/professional-certificate.svg';
+import verifiedCertificateSVG from '../assets/verified-certificate.svg';
 
 // Selectors
-import { certificatesSelector } from '../../selectors';
+import { certificatesSelector } from '../data/selectors';
 
 class Certificates extends React.Component {
   constructor(props) {

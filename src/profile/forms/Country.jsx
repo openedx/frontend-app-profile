@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { injectIntl, intlShape } from '@edx/frontend-i18n';
+import { ValidationFormGroup } from '@edx/paragon';
 
-import messages from './Name.messages';
+import messages from './Country.messages';
 
 // Components
 import FormControls from './elements/FormControls';
@@ -12,9 +13,9 @@ import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
 
 // Selectors
-import { editableFormSelector } from '../../selectors';
+import { countrySelector } from '../data/selectors';
 
-class Name extends React.Component {
+class Country extends React.Component {
   constructor(props) {
     super(props);
 
@@ -47,7 +48,15 @@ class Name extends React.Component {
 
   render() {
     const {
-      formId, name, visibilityName, editMode, saveState, intl,
+      formId,
+      country,
+      visibilityCountry,
+      editMode,
+      saveState,
+      error,
+      intl,
+      sortedCountries,
+      countryMessages,
     } = this.props;
 
     return (
@@ -58,25 +67,32 @@ class Name extends React.Component {
           editing: (
             <div role="dialog" aria-labelledby={`${formId}-label`}>
               <form onSubmit={this.handleSubmit}>
-                <div className="form-group">
-                  <EditableItemHeader content={intl.formatMessage(messages['profile.name.full.name'])} />
-                  {/*
-                  This isn't a mistake - the name field should not be editable.  But if it were,
-                  you'd find the original code got deleted in the commit which added this comment.
-                  -djoy
-                  TODO: Relatedly, the plumbing for editing the name field is still in place.
-                  Once we're super sure we don't want it back, you could delete the name props and
-                  such to fully get rid of it.
-                  */}
-                  <p className="h5">{name}</p>
-                  <small className="form-text text-muted" id={`${formId}-help-text`}>
-                    {intl.formatMessage(messages['profile.name.details'])}
-                  </small>
-                </div>
+                <ValidationFormGroup
+                  for={formId}
+                  invalid={error !== null}
+                  invalidMessage={error}
+                >
+                  <label className="edit-section-header" htmlFor={formId}>
+                    {intl.formatMessage(messages['profile.country.label'])}
+                  </label>
+                  <select
+                    className="form-control"
+                    type="select"
+                    id={formId}
+                    name={formId}
+                    value={country}
+                    onChange={this.handleChange}
+                  >
+                    <option value="" />
+                    {sortedCountries.map(({ code, name }) => (
+                      <option key={code} value={code}>{name}</option>
+                    ))}
+                  </select>
+                </ValidationFormGroup>
                 <FormControls
-                  visibilityId="visibilityName"
+                  visibilityId="visibilityCountry"
                   saveState={saveState}
-                  visibility={visibilityName}
+                  visibility={visibilityCountry}
                   cancelHandler={this.handleClose}
                   changeHandler={this.handleChange}
                 />
@@ -86,33 +102,31 @@ class Name extends React.Component {
           editable: (
             <React.Fragment>
               <EditableItemHeader
-                content={intl.formatMessage(messages['profile.name.full.name'])}
+                content={intl.formatMessage(messages['profile.country.label'])}
                 showEditButton
                 onClickEdit={this.handleOpen}
-                showVisibility={visibilityName !== null}
-                visibility={visibilityName}
+                showVisibility={visibilityCountry !== null}
+                visibility={visibilityCountry}
               />
-              <p className="h5">{name}</p>
-              <small className="form-text text-muted">
-                {intl.formatMessage(messages['profile.name.details'])}
-              </small>
+              <p className="h5">{countryMessages[country]}</p>
             </React.Fragment>
           ),
           empty: (
             <React.Fragment>
-              <EditableItemHeader content={intl.formatMessage(messages['profile.name.full.name'])} />
+              <EditableItemHeader
+                content={intl.formatMessage(messages['profile.country.label'])}
+              />
               <EmptyContent onClick={this.handleOpen}>
-                {intl.formatMessage(messages['profile.name.empty'])}
+                {intl.formatMessage(messages['profile.country.empty'])}
               </EmptyContent>
-              <small className="form-text text-muted">
-                {intl.formatMessage(messages['profile.name.details'])}
-              </small>
             </React.Fragment>
           ),
           static: (
             <React.Fragment>
-              <EditableItemHeader content={intl.formatMessage(messages['profile.name.full.name'])} />
-              <p className="h5">{name}</p>
+              <EditableItemHeader
+                content={intl.formatMessage(messages['profile.country.label'])}
+              />
+              <p className="h5">{countryMessages[country]}</p>
             </React.Fragment>
           ),
         }}
@@ -121,7 +135,7 @@ class Name extends React.Component {
   }
 }
 
-Name.propTypes = {
+Country.propTypes = {
   // It'd be nice to just set this as a defaultProps...
   // except the class that comes out on the other side of react-redux's
   // connect() method won't have it anymore. Static properties won't survive
@@ -129,10 +143,16 @@ Name.propTypes = {
   formId: PropTypes.string.isRequired,
 
   // From Selector
-  name: PropTypes.string,
-  visibilityName: PropTypes.oneOf(['private', 'all_users']),
+  country: PropTypes.string,
+  visibilityCountry: PropTypes.oneOf(['private', 'all_users']),
   editMode: PropTypes.oneOf(['editing', 'editable', 'empty', 'static']),
   saveState: PropTypes.string,
+  error: PropTypes.string,
+  sortedCountries: PropTypes.arrayOf(PropTypes.shape({
+    code: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  })).isRequired,
+  countryMessages: PropTypes.objectOf(PropTypes.string).isRequired,
 
   // Actions
   changeHandler: PropTypes.func.isRequired,
@@ -144,14 +164,15 @@ Name.propTypes = {
   intl: intlShape.isRequired,
 };
 
-Name.defaultProps = {
+Country.defaultProps = {
   editMode: 'static',
   saveState: null,
-  name: null,
-  visibilityName: 'private',
+  country: null,
+  visibilityCountry: 'private',
+  error: null,
 };
 
 export default connect(
-  editableFormSelector,
+  countrySelector,
   {},
-)(injectIntl(Name));
+)(injectIntl(Country));

@@ -56,6 +56,9 @@ module.exports = Merge.smart(commonConfig, {
             },
           },
           {
+            loader: 'resolve-url-loader',
+          },
+          {
             loader: 'sass-loader', // compiles Sass to CSS
             options: {
               sourceMap: true,

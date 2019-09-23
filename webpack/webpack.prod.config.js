@@ -67,10 +67,13 @@ module.exports = Merge.smart(commonConfig, {
             options: {
               plugins: () => [
                 PostCssRtlPlugin(),
-                PostCssAutoprefixerPlugin({ grid: true, browsers: ['>1%'] }),
+                PostCssAutoprefixerPlugin({ grid: true }),
                 CssNano(),
               ],
             },
+          },
+          {
+            loader: 'resolve-url-loader',
           },
           {
             loader: 'sass-loader', // compiles Sass to CSS

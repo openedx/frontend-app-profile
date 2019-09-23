@@ -4,20 +4,27 @@ import { App, AppProvider, APP_ERROR, APP_READY, ErrorPage } from '@edx/frontend
 import { NewRelicLoggingService } from '@edx/frontend-logging';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import Header, { messages as headerMessages } from '@edx/frontend-component-header';
 import Footer from '../footer/Footer';
 
 import appMessages from './i18n';
 import './index.scss';
-import ProfileMain from './profile/components/ProfileMain';
+import { ProfilePage, NotFoundPage } from './profile';
 import configureStore from './store';
 
 App.subscribe(APP_READY, () => {
   ReactDOM.render(
     <AppProvider store={configureStore()}>
       <Header />
-      <ProfileMain />
+      <main>
+        <Switch>
+          <Route path="/u/:username" component={ProfilePage} />
+          <Route path="/notfound" component={NotFoundPage} />
+          <Route path="*" component={NotFoundPage} />
+        </Switch>
+      </main>
       <Footer />
     </AppProvider>,
     document.getElementById('root'),
@@ -29,4 +36,3 @@ App.subscribe(APP_ERROR, (error) => {
 });
 
 App.initialize({ messages: [appMessages, headerMessages], loggingService: NewRelicLoggingService });
-

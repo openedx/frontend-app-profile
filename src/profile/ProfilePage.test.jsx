@@ -7,11 +7,12 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
 import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 
-import messages from '../../i18n';
-import ConnectedProfilePage from './ProfilePage';
+import messages from '../i18n';
+import ProfilePage from './ProfilePage';
 
-const mockStore = configureMockStore();
+const mockStore = configureMockStore([thunk]);
 const storeMocks = {
   loadingApp: require('./__mocks__/loadingApp.mockStore.js'),
   viewOwnProfile: require('./__mocks__/viewOwnProfile.mockStore.js'),
@@ -19,6 +20,7 @@ const storeMocks = {
   savingEditedBio: require('./__mocks__/savingEditedBio.mockStore.js'),
 };
 const requiredProfilePageProps = {
+  fetchUserAccount: () => {},
   fetchProfile: () => {},
   saveProfile: () => {},
   saveProfilePhoto: () => {},
@@ -33,6 +35,7 @@ Object.defineProperty(global.document, 'cookie', {
   writable: true,
   value: `${App.config.LANGUAGE_PREFERENCE_COOKIE_NAME}=en`,
 });
+App.apiClient = jest.fn();
 
 configureI18n(App.config, messages);
 
@@ -49,7 +52,7 @@ describe('<ProfilePage />', () => {
         >
           <IntlProvider locale="en">
             <Provider store={mockStore(storeMocks.loadingApp)}>
-              <ConnectedProfilePage {...requiredProfilePageProps} />
+              <ProfilePage {...requiredProfilePageProps} />
             </Provider>
           </IntlProvider>
         </AppContext.Provider>
@@ -69,7 +72,7 @@ describe('<ProfilePage />', () => {
         >
           <IntlProvider locale="en">
             <Provider store={mockStore(storeMocks.viewOwnProfile)}>
-              <ConnectedProfilePage {...requiredProfilePageProps} />
+              <ProfilePage {...requiredProfilePageProps} />
             </Provider>
           </IntlProvider>
         </AppContext.Provider>
@@ -89,7 +92,7 @@ describe('<ProfilePage />', () => {
         >
           <IntlProvider locale="en">
             <Provider store={mockStore(storeMocks.viewOtherProfile)}>
-              <ConnectedProfilePage
+              <ProfilePage
                 {...requiredProfilePageProps}
                 match={{ params: { username: 'verified' } }} // Override default match
               />
@@ -112,7 +115,7 @@ describe('<ProfilePage />', () => {
         >
           <IntlProvider locale="en">
             <Provider store={mockStore(storeMocks.savingEditedBio)}>
-              <ConnectedProfilePage {...requiredProfilePageProps} />
+              <ProfilePage {...requiredProfilePageProps} />
             </Provider>
           </IntlProvider>
         </AppContext.Provider>
@@ -134,7 +137,7 @@ describe('<ProfilePage />', () => {
         >
           <IntlProvider locale="en">
             <Provider store={mockStore(storeMocks.loadingApp)}>
-              <ConnectedProfilePage
+              <ProfilePage
                 {...requiredProfilePageProps}
                 match={{ params: { username: 'test-username' } }}
               />

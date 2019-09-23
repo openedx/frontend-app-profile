@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { injectIntl, intlShape } from '@edx/frontend-i18n';
+import { FormattedMessage, injectIntl, intlShape } from '@edx/frontend-i18n';
 import { ValidationFormGroup } from '@edx/paragon';
 
-import messages from './Country.messages';
+import messages from './Bio.messages';
 
 // Components
 import FormControls from './elements/FormControls';
@@ -13,9 +13,9 @@ import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
 
 // Selectors
-import { countrySelector } from '../../selectors';
+import { editableFormSelector } from '../data/selectors';
 
-class Country extends React.Component {
+class Bio extends React.Component {
   constructor(props) {
     super(props);
 
@@ -26,10 +26,7 @@ class Country extends React.Component {
   }
 
   handleChange(e) {
-    const {
-      name,
-      value,
-    } = e.target;
+    const { name, value } = e.target;
     this.props.changeHandler(name, value);
   }
 
@@ -48,15 +45,7 @@ class Country extends React.Component {
 
   render() {
     const {
-      formId,
-      country,
-      visibilityCountry,
-      editMode,
-      saveState,
-      error,
-      intl,
-      sortedCountries,
-      countryMessages,
+      formId, bio, visibilityBio, editMode, saveState, error, intl,
     } = this.props;
 
     return (
@@ -73,26 +62,20 @@ class Country extends React.Component {
                   invalidMessage={error}
                 >
                   <label className="edit-section-header" htmlFor={formId}>
-                    {intl.formatMessage(messages['profile.country.label'])}
+                    {intl.formatMessage(messages['profile.bio.about.me'])}
                   </label>
-                  <select
+                  <textarea
                     className="form-control"
-                    type="select"
                     id={formId}
                     name={formId}
-                    value={country}
+                    value={bio}
                     onChange={this.handleChange}
-                  >
-                    <option value="" />
-                    {sortedCountries.map(({ code, name }) => (
-                      <option key={code} value={code}>{name}</option>
-                    ))}
-                  </select>
+                  />
                 </ValidationFormGroup>
                 <FormControls
-                  visibilityId="visibilityCountry"
+                  visibilityId="visibilityBio"
                   saveState={saveState}
-                  visibility={visibilityCountry}
+                  visibility={visibilityBio}
                   cancelHandler={this.handleClose}
                   changeHandler={this.handleChange}
                 />
@@ -102,31 +85,31 @@ class Country extends React.Component {
           editable: (
             <React.Fragment>
               <EditableItemHeader
-                content={intl.formatMessage(messages['profile.country.label'])}
+                content={intl.formatMessage(messages['profile.bio.about.me'])}
                 showEditButton
                 onClickEdit={this.handleOpen}
-                showVisibility={visibilityCountry !== null}
-                visibility={visibilityCountry}
+                showVisibility={visibilityBio !== null}
+                visibility={visibilityBio}
               />
-              <p className="h5">{countryMessages[country]}</p>
+              <p className="lead">{bio}</p>
             </React.Fragment>
           ),
           empty: (
             <React.Fragment>
-              <EditableItemHeader
-                content={intl.formatMessage(messages['profile.country.label'])}
-              />
+              <EditableItemHeader content={intl.formatMessage(messages['profile.bio.about.me'])} />
               <EmptyContent onClick={this.handleOpen}>
-                {intl.formatMessage(messages['profile.country.empty'])}
+                <FormattedMessage
+                  id="profile.bio.empty"
+                  defaultMessage="Add a short bio"
+                  description="instructions when the user hasn't written an About Me"
+                />
               </EmptyContent>
             </React.Fragment>
           ),
           static: (
             <React.Fragment>
-              <EditableItemHeader
-                content={intl.formatMessage(messages['profile.country.label'])}
-              />
-              <p className="h5">{countryMessages[country]}</p>
+              <EditableItemHeader content={intl.formatMessage(messages['profile.bio.about.me'])} />
+              <p className="lead">{bio}</p>
             </React.Fragment>
           ),
         }}
@@ -135,7 +118,7 @@ class Country extends React.Component {
   }
 }
 
-Country.propTypes = {
+Bio.propTypes = {
   // It'd be nice to just set this as a defaultProps...
   // except the class that comes out on the other side of react-redux's
   // connect() method won't have it anymore. Static properties won't survive
@@ -143,16 +126,11 @@ Country.propTypes = {
   formId: PropTypes.string.isRequired,
 
   // From Selector
-  country: PropTypes.string,
-  visibilityCountry: PropTypes.oneOf(['private', 'all_users']),
+  bio: PropTypes.string,
+  visibilityBio: PropTypes.oneOf(['private', 'all_users']),
   editMode: PropTypes.oneOf(['editing', 'editable', 'empty', 'static']),
   saveState: PropTypes.string,
   error: PropTypes.string,
-  sortedCountries: PropTypes.arrayOf(PropTypes.shape({
-    code: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-  })).isRequired,
-  countryMessages: PropTypes.objectOf(PropTypes.string).isRequired,
 
   // Actions
   changeHandler: PropTypes.func.isRequired,
@@ -164,15 +142,15 @@ Country.propTypes = {
   intl: intlShape.isRequired,
 };
 
-Country.defaultProps = {
+Bio.defaultProps = {
   editMode: 'static',
   saveState: null,
-  country: null,
-  visibilityCountry: 'private',
+  bio: null,
+  visibilityBio: 'private',
   error: null,
 };
 
 export default connect(
-  countrySelector,
+  editableFormSelector,
   {},
-)(injectIntl(Country));
+)(injectIntl(Bio));

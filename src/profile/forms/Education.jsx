@@ -14,10 +14,10 @@ import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
 
 // Constants
-import { EDUCATION_LEVELS } from '../../constants';
+import { EDUCATION_LEVELS } from '../data/constants';
 
 // Selectors
-import { editableFormSelector } from '../../selectors';
+import { editableFormSelector } from '../data/selectors';
 
 class Education extends React.Component {
   constructor(props) {
