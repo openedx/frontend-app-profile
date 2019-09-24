@@ -133,7 +133,7 @@
     "sass-loader": "6.0.7",
     "semantic-release": "^15.13.24",
     "source-map-loader": "0.2.4",
-    "style-loader": "0.20.3",
+    "style-loader": "0.23.1",
     "url-loader": "1.1.2",
     "webpack": "4.29.2",
     "webpack-bundle-analyzer": "3.3.2",
