@@ -1,15 +1,23 @@
 language: node_js
 node_js: 12
 before_install:
-  - npm install -g npm@latest
+- npm install -g npm@latest
 install:
-  - npm ci
+- npm ci
 script:
-  - make validate-no-uncommitted-package-lock-changes
-  - npm run i18n_extract
-  - npm run lint
-  - npm run test
-  - npm run build
-  - npm run is-es5
+- make validate-no-uncommitted-package-lock-changes
+- npm run i18n_extract
+- npm run lint
+- npm run test
+- npm run build
+- npm run npm-build
+- npm run is-es5
 after_success:
-  - codecov
+- npm run semantic-release
+- codecov
+env:
+  global:
+  # Github Token
+  - secure: aZ5E+CAuUtLFtAfo71nmoeeN5gvo/Z3YiJBLmsX9e9lDyqFHQIEz87fKjka/4fcNjHPsnd/i20gy0MtOiejprwQAxiXnHRVAL6tkgzqpfzAS0UV/X9FJXAwBHmcrqbrwrN8ClBNcAw80QJL9R7K5kHfl79Snjzi6Bu4C/UZSIRCHZBBFAXMPB99Lk9A8z/l5yt9IjxQ+1I5XS0YCPHV5Qk2uyJIZBY03HGVKoaH5FQ8oscR0/KW40eSiBwrfSUzdyny998W1hs6dM9F4nOyuGE1eUVgVV42PXYvHhUZ7h3r6oDvrNl4M7dYTwkXrOZLWfddDt/GQ18chEVxS4mNQpko6x3EIDu3Ew97jzIWYqApd3vBas8UD6JNK3qA9XnOiKbsqjWTSF2LCDj2ztK2XsQRuXokjLdnfFANHF1vGZuSha5prkhhZY0T9ks6ZNjj1N+hCbvBfsKIMH4lzw78+4VsknX6qp8wjW+6tZVJ5gYSMZnNo6jW4zrEAXR6fhdEsC7Rp12YwS7QTBSYz5IDJOC+jqJMQNZtLXYMp+Hmn6glWZtkfxUbSkAdPylUr3U7taqtGtUf9PF8b+ZU3Myznv961C8bFtvItezBopBY+1JXGu+xUJWmmBtIgTCF8sRhf8Vbw2WBIdBd0zcxfO2d8fNQuHGLLbWoICvBYEThSjxI=
+  # NPM Token
+  - secure: vLkNtkyREOJh1GNpIOv633B835dT/9e+OdsvlO99yOZkUrFTMabz8mVKfMJhrzOJtG3PieSVPT88UywqEHWcbpX083QthndYSoeqXHRsrXqArIp6cA+762o1iqrWfCP7pRtdj3ZDpeUebrP9wssHeKCnZULDbAJd66ervq7/e2xbSFWGAGxNXctaR6zoK9PbGaxChW99es76gxylzr+Sqtm/l7SarK4pAoy2FcyYgthRvCfGVErgyMlV7lO67SFq1R3kRpROV0MkjRiXmAV9MVOhjIxC7CuHg9y8kylnVW3i6kw0ES9L1jQNikfYK+Ha4GwmITe0NCqfsIGHGiSmUwyIyZ5+9re51xdFiAvvPSsGKoa8QcpUwPMfxKRh4ITO1PuudpEdB9K7WlNq+UBwksX45w/+N+Hp6qW4DSdixv+TxfEAa2oDAa+YG2/3/ifdcP0t98slYAFm1DeONwfSXkHztcrg9vwbfqfTMF+UEUHS5JRbDmgswXLdtSb1kF2+qrbzGiVcwzYlK0kyJy2PLAkXo6JaNjfpIE6pLsn3mijci4T8cqXeHTT1taYugSBciSgLuSwSVItSQst9+JnV4Rp3ADWrpfVZhrH6JsIvEEi8hjRoGdPO6RJlliZn4map8ivQD1N9Vrp7TcnGMLxKnHLqhV+4rV+MC6k6OXtggeU=

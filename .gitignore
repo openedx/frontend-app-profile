@@ -16,3 +16,4 @@ temp/babel-plugin-react-intl
 *~
 /.vscode
 /temp
+/npm-dist
