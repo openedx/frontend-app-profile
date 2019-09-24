@@ -1,9 +1,9 @@
-|Build Status| |Coveralls| |npm_version| |npm_downloads| |license|
+|Build Status| |Codecov| |npm_version| |npm_downloads| |license| |semantic-release|
 
 frontend-app-profile
-=========================
+====================
 
-Please tag **@edx/arch-team** on any PRs or issues.
+Please tag **@edx/arch-fed** on any PRs or issues.
 
 Introduction
 ------------
@@ -22,11 +22,13 @@ must add it to the Purgecss configuration or it will be unstyled in the producti
 
 .. |Build Status| image:: https://api.travis-ci.org/edx/frontend-app-profile.svg?branch=master
    :target: https://travis-ci.org/edx/frontend-app-profile
-.. |Coveralls| image:: https://img.shields.io/coveralls/edx/frontend-app-profile.svg?branch=master
-   :target: https://coveralls.io/github/edx/frontend-app-profile
+.. |Codecov| image:: https://img.shields.io/codecov/c/github/edx/frontend-app-profile
+   :target: https://codecov.io/gh/edx/frontend-app-profile
 .. |npm_version| image:: https://img.shields.io/npm/v/@edx/frontend-app-profile.svg
-   :target: @edx/frontend-app-profile
+   :target: https://www.npmjs.com/package/@edx/frontend-app-profile
 .. |npm_downloads| image:: https://img.shields.io/npm/dt/@edx/frontend-app-profile.svg
-   :target: @edx/frontend-app-profile
+   :target: https://www.npmjs.com/package/@edx/frontend-app-profile
 .. |license| image:: https://img.shields.io/npm/l/@edx/frontend-app-profile.svg
    :target: @edx/frontend-app-profile
+.. |semantic-release| image:: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
+   :target: https://github.com/semantic-release/semantic-release
