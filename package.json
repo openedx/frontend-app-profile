@@ -1,10 +1,10 @@
 {
   "name": "@edx/frontend-app-profile",
-  "version": "0.1.0",
-  "description": "User account React app",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/edx/frontend-app-profile.git"
+  "version": "1.0.0-semantically-released",
+  "description": "User profile micro-frontend for edX",
+  "main": "npm-dist/index.js",
+  "publishConfig": {
+    "access": "public"
   },
   "browserslist": [
     "last 2 versions",
@@ -12,21 +12,33 @@
   ],
   "scripts": {
     "build": "NODE_ENV=production BABEL_ENV=production webpack --config=webpack/webpack.prod.config.js",
+    "npm-build": "make npm-build",
+    "lint": "eslint --ext .js --ext .jsx .",
     "i18n_extract": "BABEL_ENV=i18n babel src --quiet > /dev/null",
     "is-es5": "es-check es5 ./dist/*.js",
-    "lint": "eslint --ext .js --ext .jsx .",
-    "precommit": "npm run lint",
     "snapshot": "jest --updateSnapshot",
     "start": "NODE_ENV=development BABEL_ENV=development webpack-dev-server --config=webpack/webpack.dev.config.js --progress",
-    "test": "jest --coverage --passWithNoTests",
-    "travis-deploy-once": "travis-deploy-once"
+    "test": "jest --coverage --passWithNoTests"
+  },
+  "files": [
+    "/npm-dist"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "commit-msg": "commitlint -e $GIT_PARAMS"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edx/frontend-app-profile.git"
   },
   "author": "edX",
   "license": "AGPL-3.0",
-  "homepage": "https://github.com/edx/frontend-app-profile#readme",
-  "publishConfig": {
-    "access": "public"
+  "bugs": {
+    "url": "https://github.com/edx/frontend-app-profile/issues"
   },
+  "homepage": "https://github.com/edx/frontend-app-profile#readme",
   "dependencies": {
     "@cospired/i18n-iso-languages": "2.0.2",
     "@edx/frontend-analytics": "3.0.0",
@@ -119,9 +131,9 @@
     "redux-mock-store": "1.5.3",
     "resolve-url-loader": "^3.1.0",
     "sass-loader": "6.0.7",
+    "semantic-release": "^15.13.24",
     "source-map-loader": "0.2.4",
     "style-loader": "0.20.3",
-    "travis-deploy-once": "5.0.11",
     "url-loader": "1.1.2",
     "webpack": "4.29.2",
     "webpack-bundle-analyzer": "3.3.2",
@@ -130,9 +142,10 @@
     "webpack-merge": "4.2.1"
   },
   "jest": {
+    "rootDir": "./src",
     "testURL": "http://localhost/",
     "setupFiles": [
-      "./src/setupTest.js"
+      "./setupTest.js"
     ],
     "moduleNameMapper": {
       "\\.svg": "<rootDir>/__mocks__/svgrMock.js",
@@ -140,13 +153,11 @@
       "\\.(css|scss)$": "identity-obj-proxy"
     },
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx}"
+      "**/*.{js,jsx}"
     ],
     "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "src/setupTest.js",
-      "src/index.jsx",
-      "/tests/"
+      "setupTest.js",
+      "index.jsx"
     ],
     "transformIgnorePatterns": [
       "/node_modules/(?!((@edx/paragon)|(@edx/frontend-base))/).*/"
