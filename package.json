@@ -131,6 +131,7 @@
     "redux-mock-store": "1.5.3",
     "resolve-url-loader": "^3.1.0",
     "sass-loader": "6.0.7",
+    "semantic-release": "^15.13.24",
     "source-map-loader": "0.2.4",
     "style-loader": "0.20.3",
     "url-loader": "1.1.2",
