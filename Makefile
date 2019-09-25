@@ -51,7 +51,7 @@ validate-no-uncommitted-package-lock-changes:
 
 npm-build:
 	rm -rf ./npm-dist
-	./node_modules/.bin/babel src/profile --out-dir npm-dist --source-maps --ignore **/*.test.jsx,**/*.test.js,**/setupTest.js --copy-files
+	./node_modules/.bin/fedx-scripts babel src/profile --out-dir npm-dist --source-maps --ignore **/*.test.jsx,**/*.test.js,**/setupTest.js --copy-files
 	@# --copy-files will bring in everything else that wasn't processed by babel. Remove what we don't want.
 	@find npm-dist -name '*.test.js*' -delete
 	@rm -rf ./npm-dist/__mocks__

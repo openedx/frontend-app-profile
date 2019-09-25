@@ -11,15 +11,15 @@
     "ie 11"
   ],
   "scripts": {
-    "build": "NODE_ENV=production BABEL_ENV=production webpack --config=webpack/webpack.prod.config.js",
+    "build": "fedx-scripts webpack",
     "npm-build": "make npm-build",
-    "lint": "eslint --ext .js --ext .jsx .",
-    "i18n_extract": "BABEL_ENV=i18n babel src --quiet > /dev/null",
+    "i18n_extract": "BABEL_ENV=i18n fedx-scripts babel src --quiet > /dev/null",
     "is-es5": "es-check es5 ./dist/*.js",
-    "semantic-release": "semantic-release",
-    "snapshot": "jest --updateSnapshot",
-    "start": "NODE_ENV=development BABEL_ENV=development webpack-dev-server --config=webpack/webpack.dev.config.js --progress",
-    "test": "jest --coverage --passWithNoTests"
+    "lint": "fedx-scripts eslint",
+    "precommit": "npm run lint",
+    "snapshot": "fedx-scripts jest --updateSnapshot",
+    "start": "fedx-scripts webpack-dev-server --progress",
+    "test": "fedx-scripts jest --coverage --passWithNoTests"
   },
   "files": [
     "/npm-dist"
@@ -82,82 +82,15 @@
     "universal-cookie": "3.1.0"
   },
   "devDependencies": {
-    "@babel/cli": "7.6.0",
-    "@babel/core": "7.6.0",
-    "@babel/plugin-proposal-class-properties": "7.5.5",
-    "@babel/plugin-proposal-object-rest-spread": "7.5.5",
-    "@babel/plugin-syntax-dynamic-import": "7.2.0",
-    "@babel/preset-env": "7.6.0",
-    "@babel/preset-react": "7.0.0",
-    "@svgr/webpack": "4.3.2",
-    "autoprefixer": "9.6.1",
-    "axios-mock-adapter": "1.16.0",
-    "babel-eslint": "10.0.3",
-    "babel-jest": "24.9.0",
-    "babel-loader": "8.0.6",
-    "babel-plugin-react-intl": "4.1.16",
-    "babel-plugin-transform-imports": "2.0.0",
-    "clean-webpack-plugin": "0.1.19",
+    "@edx/frontend-build": "^1.0.0",
     "codecov": "3.1.0",
-    "copy-webpack-plugin": "4.6.0",
-    "css-loader": "3.2.0",
-    "cssnano": "4.1.10",
-    "enzyme": "3.10.0",
-    "enzyme-adapter-react-16": "1.14.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
     "es-check": "5.0.0",
-    "eslint-config-edx": "4.0.4",
-    "fetch-mock": "6.5.2",
-    "file-loader": "1.1.11",
-    "glob": "7.1.3",
-    "html-webpack-harddisk-plugin": "0.2.0",
-    "html-webpack-new-relic-plugin": "1.1.0",
-    "html-webpack-plugin": "3.2.0",
-    "husky": "0.14.3",
-    "identity-obj-proxy": "3.0.0",
-    "image-webpack-loader": "4.6.0",
-    "jest": "24.9.0",
-    "mini-css-extract-plugin": "0.4.5",
-    "new-relic-source-map-webpack-plugin": "1.2.0",
-    "node-sass": "4.12.0",
-    "postcss-loader": "3.0.0",
-    "postcss-rtl": "1.3.3",
-    "purgecss-webpack-plugin": "1.5.0",
-    "react-dev-utils": "9.0.3",
+    "glob": "^7.1.3",
+    "purgecss-webpack-plugin": "^1.6.0",
     "react-test-renderer": "16.9.0",
     "reactifex": "1.1.1",
-    "redux-mock-store": "1.5.3",
-    "resolve-url-loader": "3.1.0",
-    "sass-loader": "6.0.7",
-    "semantic-release": "15.13.24",
-    "source-map-loader": "0.2.4",
-    "style-loader": "0.20.3",
-    "url-loader": "1.1.2",
-    "webpack": "4.29.2",
-    "webpack-bundle-analyzer": "3.3.2",
-    "webpack-cli": "3.2.3",
-    "webpack-dev-server": "3.1.14",
-    "webpack-merge": "4.2.1"
-  },
-  "jest": {
-    "rootDir": "./src",
-    "testURL": "http://localhost/",
-    "setupFiles": [
-      "./setupTest.js"
-    ],
-    "moduleNameMapper": {
-      "\\.svg": "<rootDir>/__mocks__/svgrMock.js",
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-      "\\.(css|scss)$": "identity-obj-proxy"
-    },
-    "collectCoverageFrom": [
-      "**/*.{js,jsx}"
-    ],
-    "coveragePathIgnorePatterns": [
-      "setupTest.js",
-      "index.jsx"
-    ],
-    "transformIgnorePatterns": [
-      "/node_modules/(?!((@edx/paragon)|(@edx/frontend-base))/).*/"
-    ]
+    "redux-mock-store": "1.5.3"
   }
 }
