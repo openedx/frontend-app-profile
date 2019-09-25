@@ -91,7 +91,6 @@
     "purgecss-webpack-plugin": "^1.6.0",
     "react-test-renderer": "16.9.0",
     "reactifex": "1.1.1",
-    "redux-mock-store": "1.5.3",
-    "semantic-release": "15.13.24"
+    "redux-mock-store": "1.5.3"
   }
 }
