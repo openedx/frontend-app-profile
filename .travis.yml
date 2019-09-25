@@ -13,7 +13,7 @@ script:
 - npm run npm-build
 - npm run is-es5
 after_success:
-- npm run semantic-release
+- npx semantic-release
 - codecov
 env:
   global:
