@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 import { Route, Switch } from 'react-router-dom';
 
 import Header, { messages as headerMessages } from '@edx/frontend-component-header';
-import Footer from '../footer/Footer';
+import Footer, { messages as footerMessages } from '@edx/frontend-component-footer';
 
 import appMessages from './i18n';
 import './index.scss';
@@ -34,4 +34,10 @@ App.subscribe(APP_ERROR, (error) => {
   ReactDOM.render(<ErrorPage message={error.message} />, document.getElementById('root'));
 });
 
-App.initialize({ messages: [appMessages, headerMessages] });
+App.initialize({
+  messages: [
+    appMessages,
+    headerMessages,
+    footerMessages,
+  ],
+});
