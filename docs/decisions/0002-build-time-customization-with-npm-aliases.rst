@@ -55,7 +55,7 @@ After installing overrides using npm aliases, we build the project normally:
 
   npm run build
 
-Using this mechanism branded packages are subsituted for the default unbranded packages at build
+Using this mechanism branded packages are substituted for the default unbranded packages at build
 and deployment time.
 
 .. _npm alias syntax introduced in version 6.9.0: https://github.com/npm/rfcs/blob/latest/implemented/0001-package-aliases.md
