@@ -30,9 +30,11 @@ interfaces will be defined in the README for each npm package repository.
 
 To build a frontend application for a specific brand (edX or other Open edX implementation) we
 will leverage npm aliases to swap these npm packages with branded packages that implement the
-same interface. For example, ``frontend-component-header`` will be swapped with
+same interface before build. For example, ``frontend-component-header`` will be swapped with
 ``frontend-component-header-edx``. This is done using the 
-`npm alias syntax introduced in version 6.9.0`_. We install aliases using the syntax below:
+`npm alias syntax introduced in version 6.9.0`_. 
+
+We install aliases using the syntax below:
 
 .. code-block:: bash
   
@@ -46,6 +48,12 @@ same interface. For example, ``frontend-component-header`` will be swapped with
   
   # local folder
   npm install @edx/frontend-component-header@file:../path/to/local/module/during/build
+
+After installing overrides using npm aliases, we build the project normally:
+
+.. code-block:: bash
+
+  npm run build
 
 Using this mechanism branded packages are subsituted for the default unbranded packages at build
 and deployment time.
