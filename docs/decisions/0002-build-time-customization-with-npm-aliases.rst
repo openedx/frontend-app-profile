@@ -10,18 +10,18 @@ Context
 -------
 
 Frontend applications created throughout FY2019 contain hardcoded edX brand specific elements
-such as a the site's header, footer, logo, visual style, and navigational links. This enabled
+such as the site's header, footer, logo, visual style, and navigational links. This enabled
 teams to move more quickly in efforts to adopt a micro-frontend architecture to enable more
 rapid UI innovation in the future. There was no easy path for these new applications to be
-incorporated into the Open edX platform where they would be branded and themed properly.
+incorporated into the Open edX platform where they need to be branded properly.
 
 Decision
 --------
 
 In order to make frontend applications brand agnostic, we will split branded elements into
-npm packages such as ``frontend-brand`` or ``frontend-component-header``. Frontend applications
-will expect to find components or other exports according to a defined interface. Package
-interfaces will be defined in the README for each npm package repository.
+npm packages such as ``frontend-component-header``. Frontend applications will expect to
+find components or other exports according to a defined interface. Package interfaces will
+be defined in the README for each npm package repository.
 
 .. code-block:: javascript
 
@@ -29,8 +29,8 @@ interfaces will be defined in the README for each npm package repository.
   import Header, { messages } from '@edx/frontend-component-header';
 
 To build a frontend application for a specific brand (edX or other Open edX implementation) we
-will leverage npm aliases to swap these npm packages with branded packages that implement the
-same interface before build. For example, ``frontend-component-header`` will be swapped with
+will leverage npm aliases to override these npm packages with branded packages that implement the
+same interface before build. For example, ``frontend-component-header`` will be overriden with
 ``frontend-component-header-edx``. This is done using the 
 `npm alias syntax introduced in version 6.9.0`_. 
 
