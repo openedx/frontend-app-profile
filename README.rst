@@ -40,8 +40,14 @@ Once the dev server is up visit http://localhost:1995/u/staff.
 Configuration and Deployment
 ----------------------------
 
-For information on configuration and deployment see the documentation:
-`Micro-frontend applications in Open
+This MFE is configured via node environment variables supplied at build time. See .env.development for the list of required environment variables. Example build syntax:
+
+.. code:: bash
+
+   NODE_ENV=development ACCESS_TOKEN_COOKIE_NAME='edx-jwt-cookie-header-payload' npm run build
+
+
+For more information see the document: `Micro-frontend applications in Open
 edX <https://github.com/edx/edx-developer-docs/blob/5191e800bf16cf42f25c58c58f983bdaf7f9305d/docs/micro-frontends-in-open-edx.rst>`__.
 
 ----------
