@@ -7,6 +7,8 @@ This is a micro-frontend application responsible for the display and
 updating of user profiles. Please tag **@edx/arch-fed** on any PRs or
 issues.
 
+----------
+
 Development
 -----------
 
@@ -32,12 +34,17 @@ by running:
 
 Once the dev server is up visit http://localhost:1995/u/staff.
 
+----------
+
+
 Configuration and Deployment
 ----------------------------
 
 For information on configuration and deployment see the documentation:
 `Micro-frontend applications in Open
 edX <https://github.com/edx/edx-developer-docs/blob/5191e800bf16cf42f25c58c58f983bdaf7f9305d/docs/micro-frontends-in-open-edx.rst>`__.
+
+----------
 
 Notes
 -----
