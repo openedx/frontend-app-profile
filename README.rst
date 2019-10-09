@@ -14,6 +14,9 @@ edX <https://github.com/edx/edx-developer-docs/blob/5191e800bf16cf42f25c58c58f98
 Development
 -----------
 
+Start Devstack
+^^^^^^^^^^^^^^
+
 To use this application `devstack <https://github.com/edx/devstack>`__
 must be running and you must be logged into it.
 
