@@ -9,9 +9,11 @@ import Header, { messages as headerMessages } from '@edx/frontend-component-head
 import Footer, { messages as footerMessages } from '@edx/frontend-component-footer';
 
 import appMessages from './i18n';
-import './index.scss';
 import { ProfilePage, NotFoundPage } from './profile';
 import configureStore from './store';
+
+import './index.scss';
+import './assets/favicon.ico';
 
 App.subscribe(APP_READY, () => {
   ReactDOM.render(
