@@ -3,22 +3,58 @@
 frontend-app-profile
 ====================
 
-Please tag **@edx/arch-fed** on any PRs or issues.
+This is a micro-frontend application responsible for the display and updating of user profiles. Please tag **@edx/arch-fed** on any PRs or issues.
 
-Introduction
-------------
+When a user views their own profile, they're given fields to edit their full name, location, primary spoken language, education, social links, and bio.  Each field also has a dropdown to select the visibility of that field - i.e., whether it can be viewed by other learners.
 
-React app for user account management.
+When a user views someone else's profile, they see all those fields that that user set as public.
 
-Important Note
---------------
+----------
 
-The production Webpack configuration for this repo uses `Purgecss <https://www.purgecss.com/>`_ 
-to remove unused CSS from the production css file. In webpack/webpack.prod.config.js the Purgecss
-plugin is configured to scan directories to determine what css selectors should remain. Currently
-the src/ directory is scanned along with all @edx/frontend-component* node modules and paragon.
-If you add and use a component in this repo that relies on HTML classes or ids for styling you
-must add it to the Purgecss configuration or it will be unstyled in the production build. 
+Development
+-----------
+
+Start Devstack
+^^^^^^^^^^^^^^
+
+To use this application `devstack <https://github.com/edx/devstack>`__ must be running and you must be logged into it.
+
+-  Start devstack
+-  Log in (http://localhost:18000/login)
+
+Start the development server
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In this project, install requirements and start the development server by running:
+
+.. code:: bash
+
+   npm install
+   npm start # The server will run on port 1995
+
+Once the dev server is up visit http://localhost:1995/u/staff.
+
+----------
+
+Configuration and Deployment
+----------------------------
+
+This MFE is configured via node environment variables supplied at build time. See the .env file for the list of required environment variables. Example build syntax with a single environment variable:
+
+.. code:: bash
+
+   NODE_ENV=production ACCESS_TOKEN_COOKIE_NAME='edx-jwt-cookie-header-payload' npm run build
+
+
+For more information see the document: `Micro-frontend applications in Open
+edX <https://github.com/edx/edx-developer-docs/blob/5191e800bf16cf42f25c58c58f983bdaf7f9305d/docs/micro-frontends-in-open-edx.rst>`__.
+
+----------
+
+Notes
+-----
+
+The production Webpack configuration for this repo uses `Purgecss <https://www.purgecss.com/>`__ to remove unused CSS from the production css file. In ``webpack.prod.config.js`` the Purgecss plugin is configured to scan directories to determine what css selectors should remain. Currently the src/ directory is scanned along with all ``@edx/frontend-component*`` node modules and ``@edx/paragon``. **If you add and use a component in this repo that relies on HTML classes or ids for styling you must add it to the Purgecss configuration or it will be unstyled in the production build.**
 
 .. |Build Status| image:: https://api.travis-ci.org/edx/frontend-app-profile.svg?branch=master
    :target: https://travis-ci.org/edx/frontend-app-profile
