@@ -43,7 +43,7 @@ This MFE is configured via node environment variables supplied at build time. Se
 
 .. code:: bash
 
-   NODE_ENV=development ACCESS_TOKEN_COOKIE_NAME='edx-jwt-cookie-header-payload' npm run build
+   NODE_ENV=production ACCESS_TOKEN_COOKIE_NAME='edx-jwt-cookie-header-payload' npm run build
 
 
 For more information see the document: `Micro-frontend applications in Open
