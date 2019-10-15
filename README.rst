@@ -47,7 +47,7 @@ This MFE is configured via node environment variables supplied at build time. Se
 
 
 For more information see the document: `Micro-frontend applications in Open
-edX <https://github.com/edx/edx-developer-docs/blob/5191e800bf16cf42f25c58c58f983bdaf7f9305d/docs/micro-frontends-in-open-edx.rst>`__.
+edX <https://edx.readthedocs.io/projects/edx-developer-docs/en/latest/micro-frontends-in-open-edx.html>`__.
 
 ----------
 
