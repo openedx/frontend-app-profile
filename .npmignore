@@ -1,11 +1,9 @@
 .tx
 coverage
 dist
-footer
 node_modules
 public
 src
-webpack
 .dockerignore
 .eslintignore
 .eslintrc
