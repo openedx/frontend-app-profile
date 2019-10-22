@@ -1,22 +1,20 @@
 {
   "name": "@edx/frontend-app-profile",
   "version": "1.0.0-semantically-released",
-  "description": "User profile micro-frontend for edX",
+  "description": "User profile micro-frontend for Open edX",
+  "author": "edX",
+  "license": "AGPL-3.0",
   "main": "npm-dist/index.js",
-  "publishConfig": {
-    "access": "public"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edx/frontend-app-profile.git"
   },
-  "browserslist": [
-    "last 2 versions",
-    "ie 11"
-  ],
   "scripts": {
     "build": "fedx-scripts webpack",
     "npm-build": "make npm-build",
     "i18n_extract": "BABEL_ENV=i18n fedx-scripts babel src --quiet > /dev/null",
     "is-es5": "es-check es5 ./dist/*.js",
     "lint": "fedx-scripts eslint",
-    "precommit": "npm run lint",
     "snapshot": "fedx-scripts jest --updateSnapshot",
     "start": "fedx-scripts webpack-dev-server --progress",
     "test": "fedx-scripts jest --coverage --passWithNoTests"
@@ -30,16 +28,17 @@
       "commit-msg": "commitlint -e $GIT_PARAMS"
     }
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/edx/frontend-app-profile.git"
-  },
-  "author": "edX",
-  "license": "AGPL-3.0",
   "bugs": {
     "url": "https://github.com/edx/frontend-app-profile/issues"
   },
   "homepage": "https://github.com/edx/frontend-app-profile#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "ie 11"
+  ],
   "dependencies": {
     "@edx/frontend-analytics": "3.0.0",
     "@edx/frontend-auth": "7.0.1",
@@ -82,12 +81,17 @@
     "universal-cookie": "3.1.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-angular": "^8.2.0",
+    "@commitlint/prompt": "^8.2.0",
+    "@commitlint/prompt-cli": "^8.2.0",
     "@edx/frontend-build": "1.2.2",
     "codecov": "3.1.0",
     "enzyme": "3.10.0",
     "enzyme-adapter-react-16": "1.14.0",
     "es-check": "5.0.0",
     "glob": "7.1.3",
+    "husky": "^3.0.9",
     "purgecss-webpack-plugin": "1.6.0",
     "react-test-renderer": "16.9.0",
     "reactifex": "1.1.1",
