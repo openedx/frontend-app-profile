@@ -1,6 +1,6 @@
-import { FETCH_USER_ACCOUNT_FAILURE } from '@edx/frontend-auth';
-import { App } from '@edx/frontend-base';
-import { logApiClientError } from '@edx/frontend-logging';
+import { history } from '@edx/frontend-platform/init';
+import { logError } from '@edx/frontend-platform/logging';
+import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
 import pick from 'lodash.pick';
 import { all, call, delay, put, select, takeEvery } from 'redux-saga/effects';
 import {
@@ -31,7 +31,7 @@ import * as ProfileApiService from './services';
 export function* handleFetchProfile(action) {
   const { username } = action.payload;
   const userAccount = yield select(userAccountSelector);
-  const isAuthenticatedUserProfile = username === App.authenticatedUser.username;
+  const isAuthenticatedUserProfile = username === getAuthenticatedUser().username;
   // Default our data assuming the account is the current user's account.
   let preferences = {};
   let account = userAccount;
@@ -70,7 +70,7 @@ export function* handleFetchProfile(action) {
     yield put(fetchProfileReset());
   } catch (e) {
     if (e.response.status === 404) {
-      App.history.push('/notfound');
+      history.push('/notfound');
     } else {
       throw e;
     }
@@ -177,7 +177,7 @@ export function* handleDeleteProfilePhoto(action) {
 }
 
 export function handleFetchUserAccountFailure(action) {
-  logApiClientError(action.payload.error);
+  logError(action.payload.error);
   throw action.payload.error;
 }
 
@@ -186,5 +186,5 @@ export default function* profileSaga() {
   yield takeEvery(SAVE_PROFILE.BASE, handleSaveProfile);
   yield takeEvery(SAVE_PROFILE_PHOTO.BASE, handleSaveProfilePhoto);
   yield takeEvery(DELETE_PROFILE_PHOTO.BASE, handleDeleteProfilePhoto);
-  yield takeEvery(FETCH_USER_ACCOUNT_FAILURE, handleFetchUserAccountFailure);
+  // yield takeEvery(FETCH_USER_ACCOUNT_FAILURE, handleFetchUserAccountFailure);
 }

@@ -1,12 +1,15 @@
 import 'babel-polyfill';
 
-import { App, AppProvider, APP_ERROR, APP_READY, ErrorPage } from '@edx/frontend-base';
+import { AppProvider, ErrorPage } from '@edx/frontend-platform/react';
+import { APP_INIT_ERROR, APP_READY, initialize } from '@edx/frontend-platform/init';
+import { subscribe } from '@edx/frontend-platform/pubSub';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Switch } from 'react-router-dom';
 
-import Header, { messages as headerMessages } from '@edx/frontend-component-header';
-import Footer, { messages as footerMessages } from '@edx/frontend-component-footer';
+// import Header, { messages as headerMessages } from '@edx/frontend-component-header';
+// import Footer, { messages as footerMessages } from '@edx/frontend-component-footer';
 
 import appMessages from './i18n';
 import { ProfilePage, NotFoundPage } from './profile';
@@ -15,10 +18,12 @@ import configureStore from './data/configureStore';
 import './index.scss';
 import './assets/favicon.ico';
 
-App.subscribe(APP_READY, () => {
+
+
+subscribe(APP_READY, () => {
   ReactDOM.render(
     <AppProvider store={configureStore()}>
-      <Header />
+      
       <main>
         <Switch>
           <Route path="/u/:username" component={ProfilePage} />
@@ -26,20 +31,22 @@ App.subscribe(APP_READY, () => {
           <Route path="*" component={NotFoundPage} />
         </Switch>
       </main>
-      <Footer />
+      
     </AppProvider>,
     document.getElementById('root'),
   );
 });
 
-App.subscribe(APP_ERROR, (error) => {
+subscribe(APP_INIT_ERROR, (error) => {
   ReactDOM.render(<ErrorPage message={error.message} />, document.getElementById('root'));
 });
 
-App.initialize({
+initialize({
   messages: [
     appMessages,
-    headerMessages,
-    footerMessages,
+    // headerMessages,
+    // footerMessages,
   ],
+  requireAuthenticatedUser: true,
+  hydrateAuthenticatedUser: true,
 });

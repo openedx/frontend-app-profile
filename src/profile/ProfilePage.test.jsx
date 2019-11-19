@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
-import * as analytics from '@edx/frontend-analytics';
+import * as analytics from '@edx/frontend-platform/analytics';
 import { App, AppContext } from '@edx/frontend-base';
-import { configure as configureI18n, IntlProvider } from '@edx/frontend-i18n';
+import { configure as configureI18n, IntlProvider } from '@edx/frontend-platform/i18n';
 import { mount } from 'enzyme';
 import React from 'react';
 import { Provider } from 'react-redux';

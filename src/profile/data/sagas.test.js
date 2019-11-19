@@ -1,5 +1,5 @@
 import { takeEvery, put, call, delay, select, all } from 'redux-saga/effects';
-import { FETCH_USER_ACCOUNT_FAILURE } from '@edx/frontend-auth';
+import { FETCH_USER_ACCOUNT_FAILURE } from '@edx/frontend-platform/auth';
 
 import * as profileActions from './actions';
 import { handleSaveProfileSelector, userAccountSelector } from './selectors';
@@ -24,7 +24,7 @@ import profileSaga, {
   handleFetchUserAccountFailure,
 } from './sagas';
 import * as ProfileApiService from './services';
-import { App } from '@edx/frontend-base';
+// import { App } from '@edx/frontend-base';
 /* eslint-enable import/first */
 
 describe('RootSaga', () => {
@@ -57,7 +57,7 @@ describe('RootSaga', () => {
         userAccount,
       };
 
-      App.authenticatedUser.username = 'gonzo';
+      // App.authenticatedUser.username = 'gonzo';
       const action = profileActions.fetchProfile('gonzo');
       const gen = handleFetchProfile(action);
 
@@ -85,7 +85,7 @@ describe('RootSaga', () => {
         userAccount,
       };
 
-      App.authenticatedUser.username = 'gonzo';
+      // App.authenticatedUser.username = 'gonzo';
       const action = profileActions.fetchProfile('booyah');
       const gen = handleFetchProfile(action);
 

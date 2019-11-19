@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Dropdown } from '@edx/paragon';
-import { FormattedMessage, injectIntl, intlShape } from '@edx/frontend-i18n';
+import { FormattedMessage, injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 
 import { ReactComponent as DefaultAvatar } from '../assets/avatar.svg';
 
