@@ -1130,7 +1130,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     className="certificate-type-illustration"
                     style={
                       Object {
-                        "backgroundImage": "url([object Object])",
+                        "backgroundImage": "url(icon/mock/path)",
                       }
                     }
                   />
@@ -2185,7 +2185,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     className="certificate-type-illustration"
                     style={
                       Object {
-                        "backgroundImage": "url([object Object])",
+                        "backgroundImage": "url(icon/mock/path)",
                       }
                     }
                   />

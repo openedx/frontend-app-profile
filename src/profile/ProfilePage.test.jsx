@@ -1,6 +1,7 @@
 /* eslint-disable global-require */
 import * as analytics from '@edx/frontend-platform/analytics';
-import { App, AppContext } from '@edx/frontend-base';
+import { AppContext } from '@edx/frontend-platform/react';
+import { getConfig } from '@edx/frontend-platform/config';
 import { configure as configureI18n, IntlProvider } from '@edx/frontend-platform/i18n';
 import { mount } from 'enzyme';
 import React from 'react';
@@ -8,6 +9,8 @@ import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+import axios from 'axios';
+import MockAdapter from 'axios-mock-adapter';
 
 import messages from '../i18n';
 import ProfilePage from './ProfilePage';
@@ -33,21 +36,51 @@ const requiredProfilePageProps = {
 // Mock language cookie
 Object.defineProperty(global.document, 'cookie', {
   writable: true,
-  value: `${App.config.LANGUAGE_PREFERENCE_COOKIE_NAME}=en`,
+  value: `${getConfig().LANGUAGE_PREFERENCE_COOKIE_NAME}=en`,
 });
-App.apiClient = jest.fn();
 
-configureI18n(App.config, messages);
+const mockAxios = new MockAdapter(axios);
+mockAxios.reset();
+mockAxios.onAny().reply(200);
+
+jest.mock('@edx/frontend-platform/src/auth', () => ({
+  configure: () => {},
+  getAuthenticatedUser: () => null,
+  fetchAuthenticatedUser: () => null,
+  getAuthenticatedHttpClient: () => mockAxios,
+  AUTHENTICATED_USER_CHANGED: 'user_changed',
+}));
+
+jest.mock('@edx/frontend-platform/src/analytics', () => ({
+  configure: () => {},
+  identifyAnonymousUser: jest.fn(),
+  identifyAuthenticatedUser: jest.fn(),
+  sendTrackingLogEvent: jest.fn(),
+}));
+
+configureI18n({
+  loggingService: { logError: jest.fn() },
+  configService: {
+    getConfig: () => ({
+      ENVIRONMENT: 'production',
+      LANGUAGE_PREFERENCE_COOKIE_NAME: 'yum',
+    }),
+  },
+  messages,
+});
+
+beforeEach(() => {
+  analytics.sendTrackingLogEvent.mockReset();
+});
 
 describe('<ProfilePage />', () => {
   describe('Renders correctly in various states', () => {
     it('app loading', () => {
-      analytics.sendTrackingLogEvent = jest.fn();
       const component = (
         <AppContext.Provider
           value={{
             authenticatedUser: { userId: null, username: null, administrator: false },
-            config: App.config,
+            config: getConfig(),
           }}
         >
           <IntlProvider locale="en">
@@ -62,12 +95,11 @@ describe('<ProfilePage />', () => {
     });
 
     it('viewing own profile', () => {
-      analytics.sendTrackingLogEvent = jest.fn();
       const component = (
         <AppContext.Provider
           value={{
             authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-            config: App.config,
+            config: getConfig(),
           }}
         >
           <IntlProvider locale="en">
@@ -82,12 +114,11 @@ describe('<ProfilePage />', () => {
     });
 
     it('viewing other profile', () => {
-      analytics.sendTrackingLogEvent = jest.fn();
       const component = (
         <AppContext.Provider
           value={{
             authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-            config: App.config,
+            config: getConfig(),
           }}
         >
           <IntlProvider locale="en">
@@ -105,12 +136,11 @@ describe('<ProfilePage />', () => {
     });
 
     it('while saving an edited bio', () => {
-      analytics.sendTrackingLogEvent = jest.fn();
       const component = (
         <AppContext.Provider
           value={{
             authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-            config: App.config,
+            config: getConfig(),
           }}
         >
           <IntlProvider locale="en">
@@ -127,12 +157,11 @@ describe('<ProfilePage />', () => {
 
   describe('handles analytics', () => {
     it('calls sendTrackingLogEvent when mounting', () => {
-      analytics.sendTrackingLogEvent = jest.fn();
       const component = (
         <AppContext.Provider
           value={{
             authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-            config: App.config,
+            config: getConfig(),
           }}
         >
           <IntlProvider locale="en">
@@ -145,7 +174,8 @@ describe('<ProfilePage />', () => {
           </IntlProvider>
         </AppContext.Provider>
       );
-      mount(component);
+      const wrapper = mount(component);
+      wrapper.update();
 
       expect(analytics.sendTrackingLogEvent.mock.calls.length).toBe(1);
       expect(analytics.sendTrackingLogEvent.mock.calls[0][0]).toEqual('edx.profile.viewed');

@@ -42,7 +42,7 @@
   "dependencies": {
     "@edx/frontend-component-footer": "^9.0.1",
     "@edx/frontend-component-header": "^1.1.5",
-    "@edx/frontend-platform": "git+https://github.com/edx/frontend-platform.git",
+    "@edx/frontend-platform": "git+https://github.com/edx/frontend-platform.git#9cc05a3293692033b34c66bebe334584837ee332",
     "@edx/paragon": "7.1.3",
     "@fortawesome/fontawesome-svg-core": "1.2.14",
     "@fortawesome/free-brands-svg-icons": "5.7.2",
@@ -82,6 +82,7 @@
     "@commitlint/prompt": "8.2.0",
     "@commitlint/prompt-cli": "8.2.0",
     "@edx/frontend-build": "^2.0.1",
+    "axios-mock-adapter": "^1.17.0",
     "codecov": "3.1.0",
     "enzyme": "3.10.0",
     "enzyme-adapter-react-16": "1.14.0",

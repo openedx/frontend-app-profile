@@ -1,5 +1,5 @@
 import { takeEvery, put, call, delay, select, all } from 'redux-saga/effects';
-import { FETCH_USER_ACCOUNT_FAILURE } from '@edx/frontend-platform/auth';
+import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
 
 import * as profileActions from './actions';
 import { handleSaveProfileSelector, userAccountSelector } from './selectors';
@@ -14,6 +14,10 @@ jest.mock('./services', () => ({
   getCourseCertificates: jest.fn(),
 }));
 
+jest.mock('@edx/frontend-platform/auth', () => ({
+  getAuthenticatedUser: jest.fn(),
+}));
+
 // RootSaga and ProfileApiService must be imported AFTER the mock above.
 /* eslint-disable import/first */
 import profileSaga, {
@@ -21,10 +25,8 @@ import profileSaga, {
   handleSaveProfile,
   handleSaveProfilePhoto,
   handleDeleteProfilePhoto,
-  handleFetchUserAccountFailure,
 } from './sagas';
 import * as ProfileApiService from './services';
-// import { App } from '@edx/frontend-base';
 /* eslint-enable import/first */
 
 describe('RootSaga', () => {
@@ -40,8 +42,6 @@ describe('RootSaga', () => {
         .toEqual(takeEvery(profileActions.SAVE_PROFILE_PHOTO.BASE, handleSaveProfilePhoto));
       expect(gen.next().value)
         .toEqual(takeEvery(profileActions.DELETE_PROFILE_PHOTO.BASE, handleDeleteProfilePhoto));
-      expect(gen.next().value)
-        .toEqual(takeEvery(FETCH_USER_ACCOUNT_FAILURE, handleFetchUserAccountFailure));
 
       expect(gen.next().value).toBeUndefined();
     });
@@ -53,11 +53,11 @@ describe('RootSaga', () => {
         username: 'gonzo',
         other: 'data',
       };
+      getAuthenticatedUser.mockReturnValue(userAccount);
       const selectorData = {
         userAccount,
       };
 
-      // App.authenticatedUser.username = 'gonzo';
       const action = profileActions.fetchProfile('gonzo');
       const gen = handleFetchProfile(action);
 
@@ -81,6 +81,7 @@ describe('RootSaga', () => {
         username: 'gonzo',
         other: 'data',
       };
+      getAuthenticatedUser.mockReturnValue(userAccount);
       const selectorData = {
         userAccount,
       };
