@@ -1,5 +1,4 @@
 import { history } from '@edx/frontend-platform/init';
-import { logError } from '@edx/frontend-platform/logging';
 import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
 import pick from 'lodash.pick';
 import { all, call, delay, put, select, takeEvery } from 'redux-saga/effects';
@@ -176,15 +175,9 @@ export function* handleDeleteProfilePhoto(action) {
   }
 }
 
-export function handleFetchUserAccountFailure(action) {
-  logError(action.payload.error);
-  throw action.payload.error;
-}
-
 export default function* profileSaga() {
   yield takeEvery(FETCH_PROFILE.BASE, handleFetchProfile);
   yield takeEvery(SAVE_PROFILE.BASE, handleSaveProfile);
   yield takeEvery(SAVE_PROFILE_PHOTO.BASE, handleSaveProfilePhoto);
   yield takeEvery(DELETE_PROFILE_PHOTO.BASE, handleDeleteProfilePhoto);
-  // yield takeEvery(FETCH_USER_ACCOUNT_FAILURE, handleFetchUserAccountFailure);
 }

@@ -9,8 +9,6 @@ import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
 
 import messages from '../i18n';
 import ProfilePage from './ProfilePage';
@@ -39,15 +37,11 @@ Object.defineProperty(global.document, 'cookie', {
   value: `${getConfig().LANGUAGE_PREFERENCE_COOKIE_NAME}=en`,
 });
 
-const mockAxios = new MockAdapter(axios);
-mockAxios.reset();
-mockAxios.onAny().reply(200);
-
 jest.mock('@edx/frontend-platform/src/auth', () => ({
   configure: () => {},
   getAuthenticatedUser: () => null,
   fetchAuthenticatedUser: () => null,
-  getAuthenticatedHttpClient: () => mockAxios,
+  getAuthenticatedHttpClient: jest.fn(),
   AUTHENTICATED_USER_CHANGED: 'user_changed',
 }));
 

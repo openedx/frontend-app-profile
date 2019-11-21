@@ -86,7 +86,6 @@ describe('RootSaga', () => {
         userAccount,
       };
 
-      // App.authenticatedUser.username = 'gonzo';
       const action = profileActions.fetchProfile('booyah');
       const gen = handleFetchProfile(action);
 
