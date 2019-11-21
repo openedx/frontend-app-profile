@@ -8,8 +8,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Switch } from 'react-router-dom';
 
-import Header, { messages as headerMessages } from '@edx/frontend-component-header/src/';
-import Footer, { messages as footerMessages } from '@edx/frontend-component-footer/src/';
+import Header, { messages as headerMessages } from '@edx/frontend-component-header';
+import Footer, { messages as footerMessages } from '@edx/frontend-component-footer';
 
 import appMessages from './i18n';
 import { ProfilePage, NotFoundPage } from './profile';
