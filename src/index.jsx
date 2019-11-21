@@ -28,8 +28,8 @@ subscribe(APP_READY, () => {
           <Route path="/notfound" component={NotFoundPage} />
           <Route path="*" component={NotFoundPage} />
         </Switch>
-        <Footer />
       </main>
+      <Footer />
     </AppProvider>,
     document.getElementById('root'),
   );
