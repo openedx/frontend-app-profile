@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { sendTrackingLogEvent } from '@edx/frontend-analytics';
-import { App, AppContext, fetchUserAccount } from '@edx/frontend-base';
-import { injectIntl, intlShape } from '@edx/frontend-i18n';
+import { sendTrackingLogEvent } from '@edx/frontend-platform/analytics';
+import { ensureConfig } from '@edx/frontend-platform/config';
+import { AppContext } from '@edx/frontend-platform/react';
+import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { StatusAlert, Hyperlink } from '@edx/paragon';
 
 // Actions
@@ -38,7 +39,7 @@ import { profilePageSelector } from './data/selectors';
 // i18n
 import messages from './ProfilePage.messages';
 
-App.ensureConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL'], 'ProfilePage');
+ensureConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL'], 'ProfilePage');
 
 class ProfilePage extends React.Component {
   constructor(props, context) {
@@ -58,7 +59,6 @@ class ProfilePage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchUserAccount(this.context.authenticatedUser.username);
     this.props.fetchProfile(this.props.match.params.username);
     sendTrackingLogEvent('edx.profile.viewed', {
       username: this.props.match.params.username,
@@ -332,7 +332,6 @@ ProfilePage.propTypes = {
   photoUploadError: PropTypes.objectOf(PropTypes.string),
 
   // Actions
-  fetchUserAccount: PropTypes.func.isRequired,
   fetchProfile: PropTypes.func.isRequired,
   saveProfile: PropTypes.func.isRequired,
   saveProfilePhoto: PropTypes.func.isRequired,
@@ -372,7 +371,6 @@ ProfilePage.defaultProps = {
 export default connect(
   profilePageSelector,
   {
-    fetchUserAccount,
     fetchProfile,
     saveProfilePhoto,
     deleteProfilePhoto,

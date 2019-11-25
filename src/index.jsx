@@ -1,6 +1,9 @@
 import 'babel-polyfill';
 
-import { App, AppProvider, APP_ERROR, APP_READY, ErrorPage } from '@edx/frontend-base';
+import { AppProvider, ErrorPage } from '@edx/frontend-platform/react';
+import { APP_INIT_ERROR, APP_READY, initialize } from '@edx/frontend-platform/init';
+import { subscribe } from '@edx/frontend-platform/pubSub';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Switch } from 'react-router-dom';
@@ -15,7 +18,7 @@ import configureStore from './data/configureStore';
 import './index.scss';
 import './assets/favicon.ico';
 
-App.subscribe(APP_READY, () => {
+subscribe(APP_READY, () => {
   ReactDOM.render(
     <AppProvider store={configureStore()}>
       <Header />
@@ -32,14 +35,16 @@ App.subscribe(APP_READY, () => {
   );
 });
 
-App.subscribe(APP_ERROR, (error) => {
+subscribe(APP_INIT_ERROR, (error) => {
   ReactDOM.render(<ErrorPage message={error.message} />, document.getElementById('root'));
 });
 
-App.initialize({
+initialize({
   messages: [
     appMessages,
     headerMessages,
     footerMessages,
   ],
+  requireAuthenticatedUser: true,
+  hydrateAuthenticatedUser: true,
 });
