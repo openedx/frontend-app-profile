@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
+import { getConfig } from '@edx/frontend-platform';
 import * as analytics from '@edx/frontend-platform/analytics';
 import { AppContext } from '@edx/frontend-platform/react';
-import { getConfig } from '@edx/frontend-platform/config';
 import { configure as configureI18n, IntlProvider } from '@edx/frontend-platform/i18n';
 import { mount } from 'enzyme';
 import React from 'react';
@@ -37,7 +37,7 @@ Object.defineProperty(global.document, 'cookie', {
   value: `${getConfig().LANGUAGE_PREFERENCE_COOKIE_NAME}=en`,
 });
 
-jest.mock('@edx/frontend-platform/src/auth', () => ({
+jest.mock('@edx/frontend-platform/auth', () => ({
   configure: () => {},
   getAuthenticatedUser: () => null,
   fetchAuthenticatedUser: () => null,
@@ -45,7 +45,7 @@ jest.mock('@edx/frontend-platform/src/auth', () => ({
   AUTHENTICATED_USER_CHANGED: 'user_changed',
 }));
 
-jest.mock('@edx/frontend-platform/src/analytics', () => ({
+jest.mock('@edx/frontend-platform/analytics', () => ({
   configure: () => {},
   identifyAnonymousUser: jest.fn(),
   identifyAuthenticatedUser: jest.fn(),
@@ -54,11 +54,9 @@ jest.mock('@edx/frontend-platform/src/analytics', () => ({
 
 configureI18n({
   loggingService: { logError: jest.fn() },
-  configService: {
-    getConfig: () => ({
-      ENVIRONMENT: 'production',
-      LANGUAGE_PREFERENCE_COOKIE_NAME: 'yum',
-    }),
+  config: {
+    ENVIRONMENT: 'production',
+    LANGUAGE_PREFERENCE_COOKIE_NAME: 'yum',
   },
   messages,
 });
