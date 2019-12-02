@@ -81,7 +81,7 @@
     "@commitlint/config-angular": "8.2.0",
     "@commitlint/prompt": "8.2.0",
     "@commitlint/prompt-cli": "8.2.0",
-    "@edx/frontend-build": "^2.0.1",
+    "@edx/frontend-build": "github:edx/frontend-build#djoy/pin-dependencies",
     "codecov": "3.1.0",
     "enzyme": "3.10.0",
     "enzyme-adapter-react-16": "1.14.0",
