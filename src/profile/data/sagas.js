@@ -87,6 +87,7 @@ export function* handleSaveProfile(action) {
       'levelOfEducation',
       'languageProficiencies',
       'name',
+      'displayName',
       'socialLinks',
     ]);
 

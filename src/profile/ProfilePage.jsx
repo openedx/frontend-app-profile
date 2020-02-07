@@ -21,6 +21,7 @@ import {
 
 // Components
 import ProfileAvatar from './forms/ProfileAvatar';
+import DisplayName from './forms/DisplayName';
 import Name from './forms/Name';
 import Country from './forms/Country';
 import PreferredLanguage from './forms/PreferredLanguage';
@@ -108,10 +109,27 @@ class ProfilePage extends React.Component {
 
   // Inserted into the DOM in two places (for responsive layout)
   renderHeadingLockup() {
-    const { dateJoined } = this.props;
+    const {
+	visibilityName,
+	dateJoined
+    } = this.props;
+
+    const commonFormProps = {
+      openHandler: this.handleOpen,
+      closeHandler: this.handleClose,
+      submitHandler: this.handleSubmit,
+      changeHandler: this.handleChange,
+    };
 
     return (
       <React.Fragment>
+        <DisplayName
+	  displayName={this.props.match.params.username}
+	  dateJoined={dateJoined}
+	  visibilityName={visibilityName}
+          formId="display_name"
+          {...commonFormProps}
+        />
         <h1 className="h2 mb-0 font-weight-bold">{this.props.match.params.username}</h1>
         <DateJoined date={dateJoined} />
         <hr className="d-none d-md-block" />
