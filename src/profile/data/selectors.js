@@ -281,6 +281,7 @@ export const formValuesSelector = createSelector(
   profileCourseCertificatesSelector,
   formSocialLinksSelector,
   (account, visibilities, drafts, courseCertificates, socialLinks) => ({
+    displayName: chooseFormValue(drafts.displayName, account.displayName),
     bio: chooseFormValue(drafts.bio, account.bio),
     visibilityBio: chooseFormValue(drafts.visibilityBio, visibilities.visibilityBio),
     courseCertificates,
@@ -338,6 +339,7 @@ export const profilePageSelector = createSelector(
     requiresParentalConsent: account.requiresParentalConsent,
     dateJoined: account.dateJoined,
 
+    // DisplayName form data
     displayName: formValues.displayName,
 
     // Bio form data

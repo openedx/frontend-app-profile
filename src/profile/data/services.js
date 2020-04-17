@@ -88,7 +88,6 @@ export async function deleteProfilePhoto(username) {
 // GET PREFERENCES
 export async function getPreferences(username) {
   const { data } = await getHttpClient().get(`${getConfig().LMS_BASE_URL}/api/user/v1/preferences/${username}`);
-
   return camelCaseObject(data);
 }
 
@@ -96,6 +95,7 @@ export async function getPreferences(username) {
 export async function patchPreferences(username, params) {
   let processedParams = snakeCaseObject(params);
   processedParams = convertKeyNames(processedParams, {
+    visibility_display_name: 'visibility.display_name',
     visibility_bio: 'visibility.bio',
     visibility_course_certificates: 'visibility.course_certificates',
     visibility_country: 'visibility.country',

@@ -8,13 +8,13 @@ const messages = defineMessages({
   },
   'profile.displayname.details': {
     id: 'profile.name.details',
-    defaultMessage: 'This is the name that appears in your account and on your certificates.',
-    description: 'Describes the area for a user to update their name.',
+    defaultMessage: 'This is your public display name used throughout the site.',
+    description: 'Describes the area for a user to update their display name.',
   },
   'profile.displayname.empty': {
     id: 'profile.name.empty',
-    defaultMessage: 'Add name',
-    description: 'The affordance to add a name to a user’s profile.',
+    defaultMessage: 'Add display name',
+    description: 'The affordance to add a display name to a user’s profile.',
   },
 });
 

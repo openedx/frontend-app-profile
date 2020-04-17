@@ -13,6 +13,8 @@ import SwitchContent from './elements/SwitchContent';
 
 // Selectors
 import { editableFormSelector } from '../data/selectors';
+import DateJoined from "../DateJoined";
+import {ValidationFormGroup} from "@edx/paragon";
 
 class DisplayName extends React.Component {
   constructor(props) {
@@ -47,7 +49,7 @@ class DisplayName extends React.Component {
 
   render() {
     const {
-      formId, displayName, visibilityName, editMode, saveState, intl,
+      formId, displayName, dateJoined, editMode, error, saveState, intl,
     } = this.props;
 
     return (
@@ -58,25 +60,24 @@ class DisplayName extends React.Component {
           editing: (
             <div role="dialog" aria-labelledby={`${formId}-label`}>
               <form onSubmit={this.handleSubmit}>
-                <div className="form-group">
-                  <EditableItemHeader content={intl.formatMessage(messages['profile.displayname.name'])} />
-                  {/*
-                  This isn't a mistake - the name field should not be editable.  But if it were,
-                  you'd find the original code got deleted in the commit which added this comment.
-                  -djoy
-                  TODO: Relatedly, the plumbing for editing the name field is still in place.
-                  Once we're super sure we don't want it back, you could delete the name props and
-                  such to fully get rid of it.
-                  */}
-                  <p className="h5">{displayName}</p>
-                  <small className="form-text text-muted" id={`${formId}-help-text`}>
-                    {intl.formatMessage(messages['profile.displayname.details'])}
-                  </small>
-                </div>
+                <ValidationFormGroup
+                  for={formId}
+                  invalid={error !== null}
+                  invalidMessage={error}
+                >
+                  <label className="edit-section-header" htmlFor={formId}>
+                    {intl.formatMessage(messages['profile.displayname.name'])}
+                  </label>
+                  <textarea
+                    className="form-control"
+                    id={formId}
+                    name={formId}
+                    value={displayName}
+                    onChange={this.handleChange}
+                  />
+                </ValidationFormGroup>
                 <FormControls
-                  visibilityId="visibilityName"
                   saveState={saveState}
-                  visibility={visibilityName}
                   cancelHandler={this.handleClose}
                   changeHandler={this.handleChange}
                 />
@@ -89,13 +90,13 @@ class DisplayName extends React.Component {
                 content={intl.formatMessage(messages['profile.displayname.name'])}
                 showEditButton
                 onClickEdit={this.handleOpen}
-                showVisibility={visibilityName !== null}
-                visibility={visibilityName}
+                showVisibility={false}
               />
-              <p className="h5">{displayName}</p>
+              <h1 className="h2 mb-0 font-weight-bold">{displayName}</h1>
               <small className="form-text text-muted">
                 {intl.formatMessage(messages['profile.displayname.details'])}
               </small>
+              <DateJoined date={dateJoined} />
             </React.Fragment>
           ),
           empty: (
@@ -113,7 +114,8 @@ class DisplayName extends React.Component {
           static: (
             <React.Fragment>
               <EditableItemHeader content={intl.formatMessage(messages['profile.displayname.name'])} />
-              <p className="h5">{displayName}</p>
+              <h1 className="h2 mb-0 font-weight-bold">{displayName}</h1>
+              <DateJoined date={dateJoined} />
             </React.Fragment>
           ),
         }}
@@ -131,9 +133,10 @@ DisplayName.propTypes = {
 
   // From Selector
   displayName: PropTypes.string,
-  //visibilityName: PropTypes.oneOf(['private', 'all_users']),
+  dateJoined: PropTypes.string,
   editMode: PropTypes.oneOf(['editing', 'editable', 'empty', 'static']),
   saveState: PropTypes.string,
+  error: PropTypes.string,
 
   // Actions
   changeHandler: PropTypes.func.isRequired,
@@ -148,8 +151,8 @@ DisplayName.propTypes = {
 DisplayName.defaultProps = {
   editMode: 'static',
   saveState: null,
-  name: null,
-  visibilityName: 'private',
+  displayName: null,
+  dateJoined: null,
 };
 
 export default connect(

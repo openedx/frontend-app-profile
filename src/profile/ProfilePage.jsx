@@ -110,8 +110,8 @@ class ProfilePage extends React.Component {
   // Inserted into the DOM in two places (for responsive layout)
   renderHeadingLockup() {
     const {
-	visibilityName,
-	dateJoined
+      displayName,
+      dateJoined
     } = this.props;
 
     const commonFormProps = {
@@ -124,14 +124,11 @@ class ProfilePage extends React.Component {
     return (
       <React.Fragment>
         <DisplayName
-	  displayName={this.props.match.params.username}
-	  dateJoined={dateJoined}
-	  visibilityName={visibilityName}
-          formId="display_name"
+          displayName={displayName}
+          dateJoined={dateJoined}
+          formId="displayName"
           {...commonFormProps}
         />
-        <h1 className="h2 mb-0 font-weight-bold">{this.props.match.params.username}</h1>
-        <DateJoined date={dateJoined} />
         <hr className="d-none d-md-block" />
       </React.Fragment>
     );
@@ -296,6 +293,7 @@ ProfilePage.contextType = AppContext;
 ProfilePage.propTypes = {
   // Account data
   requiresParentalConsent: PropTypes.bool,
+  displayName: PropTypes.string,
   dateJoined: PropTypes.string,
 
   // Bio form data
@@ -370,6 +368,7 @@ ProfilePage.propTypes = {
 };
 
 ProfilePage.defaultProps = {
+  displayName: null,
   saveState: null,
   savePhotoState: null,
   photoUploadError: {},
