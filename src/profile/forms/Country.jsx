@@ -76,6 +76,7 @@ class Country extends React.Component {
                     {intl.formatMessage(messages['profile.country.label'])}
                   </label>
                   <select
+                    data-hj-suppress
                     className="form-control"
                     type="select"
                     id={formId}
@@ -108,7 +109,7 @@ class Country extends React.Component {
                 showVisibility={visibilityCountry !== null}
                 visibility={visibilityCountry}
               />
-              <p className="h5">{countryMessages[country]}</p>
+              <p data-hj-suppress className="h5">{countryMessages[country]}</p>
             </React.Fragment>
           ),
           empty: (
@@ -126,7 +127,7 @@ class Country extends React.Component {
               <EditableItemHeader
                 content={intl.formatMessage(messages['profile.country.label'])}
               />
-              <p className="h5">{countryMessages[country]}</p>
+              <p data-hj-suppress className="h5">{countryMessages[country]}</p>
             </React.Fragment>
           ),
         }}

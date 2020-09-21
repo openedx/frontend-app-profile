@@ -109,6 +109,7 @@ class ProfileAvatar extends React.Component {
       <DefaultAvatar className="text-muted" role="img" aria-hidden focusable="false" viewBox="0 0 24 24" />
     ) : (
       <img
+        data-hj-suppress
         className="w-100 h-100 d-block rounded-circle overflow-hidden"
         style={{ objectFit: 'cover' }}
         alt={intl.formatMessage(messages['profile.image.alt.attribute'])}

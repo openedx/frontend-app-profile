@@ -91,7 +91,7 @@ class Bio extends React.Component {
                 showVisibility={visibilityBio !== null}
                 visibility={visibilityBio}
               />
-              <p className="lead">{bio}</p>
+              <p data-hj-suppress className="lead">{bio}</p>
             </React.Fragment>
           ),
           empty: (
@@ -109,7 +109,7 @@ class Bio extends React.Component {
           static: (
             <React.Fragment>
               <EditableItemHeader content={intl.formatMessage(messages['profile.bio.about.me'])} />
-              <p className="lead">{bio}</p>
+              <p data-hj-suppress className="lead">{bio}</p>
             </React.Fragment>
           ),
         }}

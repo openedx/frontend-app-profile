@@ -86,6 +86,7 @@ class PreferredLanguage extends React.Component {
                     {intl.formatMessage(messages['profile.preferredlanguage.label'])}
                   </label>
                   <select
+                    data-hj-suppress
                     id={formId}
                     name={formId}
                     className="form-control"
@@ -117,7 +118,7 @@ class PreferredLanguage extends React.Component {
                 showVisibility={visibilityLanguageProficiencies !== null}
                 visibility={visibilityLanguageProficiencies}
               />
-              <p className="h5">{languageMessages[value]}</p>
+              <p data-hj-suppress className="h5">{languageMessages[value]}</p>
             </React.Fragment>
           ),
           empty: (
@@ -135,7 +136,7 @@ class PreferredLanguage extends React.Component {
               <EditableItemHeader
                 content={intl.formatMessage(messages['profile.preferredlanguage.label'])}
               />
-              <p className="h5">{languageMessages[value]}</p>
+              <p data-hj-suppress className="h5">{languageMessages[value]}</p>
             </React.Fragment>
           ),
         }}
