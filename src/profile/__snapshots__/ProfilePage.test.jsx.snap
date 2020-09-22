@@ -86,24 +86,28 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
         <div
           className="d-md-none"
         >
-          <h1
-            className="h2 mb-0 font-weight-bold"
+          <span
+            data-hj-suppress={true}
           >
-            verified
-          </h1>
-          <p
-            className="mb-0"
-          >
-            <span>
-              Member since 
+            <h1
+              className="h2 mb-0 font-weight-bold"
+            >
+              verified
+            </h1>
+            <p
+              className="mb-0"
+            >
               <span>
-                2017
+                Member since 
+                <span>
+                  2017
+                </span>
               </span>
-            </span>
-          </p>
-          <hr
-            className="d-none d-md-block"
-          />
+            </p>
+            <hr
+              className="d-none d-md-block"
+            />
+          </span>
         </div>
         <div
           className="d-none d-md-block float-right"
@@ -119,24 +123,28 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
         <div
           className="d-none d-md-block mb-4"
         >
-          <h1
-            className="h2 mb-0 font-weight-bold"
+          <span
+            data-hj-suppress={true}
           >
-            verified
-          </h1>
-          <p
-            className="mb-0"
-          >
-            <span>
-              Member since 
+            <h1
+              className="h2 mb-0 font-weight-bold"
+            >
+              verified
+            </h1>
+            <p
+              className="mb-0"
+            >
               <span>
-                2017
+                Member since 
+                <span>
+                  2017
+                </span>
               </span>
-            </span>
-          </p>
-          <hr
-            className="d-none d-md-block"
-          />
+            </p>
+            <hr
+              className="d-none d-md-block"
+            />
+          </span>
         </div>
         <div
           className="d-md-none mb-4"
@@ -277,6 +285,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               <img
                 alt="profile avatar"
                 className="w-100 h-100 d-block rounded-circle overflow-hidden"
+                data-hj-suppress={true}
                 src="http://localhost:18000/media/profile-images/d2a9bdc2ba165dcefc73265c54bf9a20_500.jpg?v=1552495012"
                 style={
                   Object {
@@ -307,24 +316,28 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
         <div
           className="d-md-none"
         >
-          <h1
-            className="h2 mb-0 font-weight-bold"
+          <span
+            data-hj-suppress={true}
           >
-            staff
-          </h1>
-          <p
-            className="mb-0"
-          >
-            <span>
-              Member since 
+            <h1
+              className="h2 mb-0 font-weight-bold"
+            >
+              staff
+            </h1>
+            <p
+              className="mb-0"
+            >
               <span>
-                2017
+                Member since 
+                <span>
+                  2017
+                </span>
               </span>
-            </span>
-          </p>
-          <hr
-            className="d-none d-md-block"
-          />
+            </p>
+            <hr
+              className="d-none d-md-block"
+            />
+          </span>
         </div>
         <div
           className="d-none d-md-block float-right"
@@ -359,24 +372,28 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
         <div
           className="d-none d-md-block mb-4"
         >
-          <h1
-            className="h2 mb-0 font-weight-bold"
+          <span
+            data-hj-suppress={true}
           >
-            staff
-          </h1>
-          <p
-            className="mb-0"
-          >
-            <span>
-              Member since 
+            <h1
+              className="h2 mb-0 font-weight-bold"
+            >
+              staff
+            </h1>
+            <p
+              className="mb-0"
+            >
               <span>
-                2017
+                Member since 
+                <span>
+                  2017
+                </span>
               </span>
-            </span>
-          </p>
-          <hr
-            className="d-none d-md-block"
-          />
+            </p>
+            <hr
+              className="d-none d-md-block"
+            />
+          </span>
         </div>
         <div
           className="d-md-none mb-4"
@@ -485,6 +502,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
             </div>
             <p
               className="h5"
+              data-hj-suppress={true}
             >
               Lemon Seltzer
             </p>
@@ -580,6 +598,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
             </div>
             <p
               className="h5"
+              data-hj-suppress={true}
             >
               Montenegro
             </p>
@@ -670,6 +689,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
             </div>
             <p
               className="h5"
+              data-hj-suppress={true}
             >
               Yoruba
             </p>
@@ -760,6 +780,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
             </div>
             <p
               className="h5"
+              data-hj-suppress={true}
             >
               Elementary/primary school
             </p>
@@ -1029,6 +1050,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
             </div>
             <p
               className="lead"
+              data-hj-suppress={true}
             >
               This is my bio
             </p>
@@ -1278,6 +1300,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               <img
                 alt="profile avatar"
                 className="w-100 h-100 d-block rounded-circle overflow-hidden"
+                data-hj-suppress={true}
                 src="http://localhost:18000/media/profile-images/d2a9bdc2ba165dcefc73265c54bf9a20_500.jpg?v=1552495012"
                 style={
                   Object {
@@ -1308,24 +1331,28 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
         <div
           className="d-md-none"
         >
-          <h1
-            className="h2 mb-0 font-weight-bold"
+          <span
+            data-hj-suppress={true}
           >
-            staff
-          </h1>
-          <p
-            className="mb-0"
-          >
-            <span>
-              Member since 
+            <h1
+              className="h2 mb-0 font-weight-bold"
+            >
+              staff
+            </h1>
+            <p
+              className="mb-0"
+            >
               <span>
-                2017
+                Member since 
+                <span>
+                  2017
+                </span>
               </span>
-            </span>
-          </p>
-          <hr
-            className="d-none d-md-block"
-          />
+            </p>
+            <hr
+              className="d-none d-md-block"
+            />
+          </span>
         </div>
         <div
           className="d-none d-md-block float-right"
@@ -1360,24 +1387,28 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
         <div
           className="d-none d-md-block mb-4"
         >
-          <h1
-            className="h2 mb-0 font-weight-bold"
+          <span
+            data-hj-suppress={true}
           >
-            staff
-          </h1>
-          <p
-            className="mb-0"
-          >
-            <span>
-              Member since 
+            <h1
+              className="h2 mb-0 font-weight-bold"
+            >
+              staff
+            </h1>
+            <p
+              className="mb-0"
+            >
               <span>
-                2017
+                Member since 
+                <span>
+                  2017
+                </span>
               </span>
-            </span>
-          </p>
-          <hr
-            className="d-none d-md-block"
-          />
+            </p>
+            <hr
+              className="d-none d-md-block"
+            />
+          </span>
         </div>
         <div
           className="d-md-none mb-4"
@@ -1486,6 +1517,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
             </div>
             <p
               className="h5"
+              data-hj-suppress={true}
             >
               Lemon Seltzer
             </p>
@@ -1581,6 +1613,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
             </div>
             <p
               className="h5"
+              data-hj-suppress={true}
             >
               Montenegro
             </p>
@@ -1671,6 +1704,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
             </div>
             <p
               className="h5"
+              data-hj-suppress={true}
             >
               Yoruba
             </p>
@@ -1761,6 +1795,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
             </div>
             <p
               className="h5"
+              data-hj-suppress={true}
             >
               Elementary/primary school
             </p>

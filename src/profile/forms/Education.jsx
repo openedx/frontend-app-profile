@@ -72,6 +72,7 @@ class Education extends React.Component {
                     {intl.formatMessage(messages['profile.education.education'])}
                   </label>
                   <select
+                    data-hj-suppress
                     className="form-control"
                     id={formId}
                     name={formId}
@@ -109,7 +110,7 @@ class Education extends React.Component {
                 showVisibility={visibilityLevelOfEducation !== null}
                 visibility={visibilityLevelOfEducation}
               />
-              <p className="h5">
+              <p data-hj-suppress className="h5">
                 {intl.formatMessage(get(
                   messages,
                   `profile.education.levels.${levelOfEducation}`,
@@ -133,7 +134,7 @@ class Education extends React.Component {
           static: (
             <React.Fragment>
               <EditableItemHeader content={intl.formatMessage(messages['profile.education.education'])} />
-              <p className="h5">
+              <p data-hj-suppress className="h5">
                 {intl.formatMessage(get(
                   messages,
                   `profile.education.levels.${levelOfEducation}`,
