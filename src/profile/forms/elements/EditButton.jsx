@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
@@ -14,7 +13,8 @@ function EditButton({
   return (
     <Button
       variant="link"
-      className={classNames('btn-sm', className)}
+      size="sm"
+      className={className}
       onClick={onClick}
       style={style}
     >

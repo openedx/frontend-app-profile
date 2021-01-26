@@ -58,7 +58,8 @@ class ProfileAvatar extends React.Component {
       return (
         <Button
           variant="link"
-          className="text-white btn-block btn-sm"
+          size="sm"
+          className="text-white btn-block"
           onClick={this.onClickUpload}
         >
           <FormattedMessage
