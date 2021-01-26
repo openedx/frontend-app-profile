@@ -253,7 +253,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     className="dropdown-toggle btn btn-primary"
                     disabled={false}
                     onClick={[Function]}
-                    type="btn-outline"
+                    type="button"
                   >
                     Change
                   </button>
@@ -1239,7 +1239,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     className="dropdown-toggle btn btn-primary"
                     disabled={false}
                     onClick={[Function]}
-                    type="btn-outline"
+                    type="button"
                   >
                     Change
                   </button>
