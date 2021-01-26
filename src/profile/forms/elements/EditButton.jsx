@@ -13,7 +13,8 @@ function EditButton({
 }) {
   return (
     <Button
-      className={classNames('btn-sm btn-link', className)}
+      variant="link"
+      className={classNames('btn-sm', className)}
       onClick={onClick}
       style={style}
     >

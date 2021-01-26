@@ -31,7 +31,7 @@ function FormControls({
       <div className="form-group flex-shrink-0 flex-grow-1">
         <StatefulButton
           type="submit"
-          className="btn-primary"
+          variant="primary"
           state={buttonState}
           labels={{
             default: intl.formatMessage(messages['profile.formcontrols.button.save']),
@@ -52,7 +52,7 @@ function FormControls({
           }}
           disabledStates={[]}
         />
-        <Button className="btn-link" onClick={cancelHandler}>
+        <Button variant="link" onClick={cancelHandler}>
           {intl.formatMessage(messages['profile.formcontrols.button.cancel'])}
         </Button>
       </div>
