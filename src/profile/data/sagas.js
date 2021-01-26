@@ -1,7 +1,14 @@
 import { history } from '@edx/frontend-platform';
 import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
 import pick from 'lodash.pick';
-import { all, call, delay, put, select, takeEvery } from 'redux-saga/effects';
+import {
+  all,
+  call,
+  delay,
+  put,
+  select,
+  takeEvery,
+} from 'redux-saga/effects';
 import {
   closeForm,
   deleteProfilePhotoBegin,

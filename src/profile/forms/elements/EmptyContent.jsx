@@ -8,9 +8,10 @@ function EmptyContent({ children, onClick, showPlusIcon }) {
     <div>
       {onClick ? (
         <button
+          type="button"
           className="pl-0 text-left btn btn-link"
           onClick={onClick}
-          onKeyDown={(e) => { if (e.key === 'Enter') onClick(); }}
+          onKeyDown={(e) => { if (e.key === 'Enter') { onClick(); } }}
           tabIndex={0}
         >
           {showPlusIcon ? <FontAwesomeIcon size="xs" className="mr-2" icon={faPlus} /> : null}
@@ -20,7 +21,6 @@ function EmptyContent({ children, onClick, showPlusIcon }) {
     </div>
   );
 }
-
 
 export default EmptyContent;
 

@@ -13,7 +13,7 @@ function EditableItemHeader({
   headingId,
 }) {
   return (
-    <React.Fragment>
+    <>
       <div className="editable-item-header mb-2">
         <h2 className="edit-section-header" id={headingId}>
           {content}
@@ -21,7 +21,7 @@ function EditableItemHeader({
         </h2>
         {showVisibility ? <p className="mb-0"><Visibility to={visibility} /></p> : null}
       </div>
-    </React.Fragment>
+    </>
   );
 }
 

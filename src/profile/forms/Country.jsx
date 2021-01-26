@@ -84,7 +84,7 @@ class Country extends React.Component {
                     value={country}
                     onChange={this.handleChange}
                   >
-                    <option value="" />
+                    <option value="">&nbsp;</option>
                     {sortedCountries.map(({ code, name }) => (
                       <option key={code} value={code}>{name}</option>
                     ))}
@@ -101,7 +101,7 @@ class Country extends React.Component {
             </div>
           ),
           editable: (
-            <React.Fragment>
+            <>
               <EditableItemHeader
                 content={intl.formatMessage(messages['profile.country.label'])}
                 showEditButton
@@ -110,25 +110,25 @@ class Country extends React.Component {
                 visibility={visibilityCountry}
               />
               <p data-hj-suppress className="h5">{countryMessages[country]}</p>
-            </React.Fragment>
+            </>
           ),
           empty: (
-            <React.Fragment>
+            <>
               <EditableItemHeader
                 content={intl.formatMessage(messages['profile.country.label'])}
               />
               <EmptyContent onClick={this.handleOpen}>
                 {intl.formatMessage(messages['profile.country.empty'])}
               </EmptyContent>
-            </React.Fragment>
+            </>
           ),
           static: (
-            <React.Fragment>
+            <>
               <EditableItemHeader
                 content={intl.formatMessage(messages['profile.country.label'])}
               />
               <p data-hj-suppress className="h5">{countryMessages[country]}</p>
-            </React.Fragment>
+            </>
           ),
         }}
       />

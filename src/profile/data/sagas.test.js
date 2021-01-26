@@ -1,4 +1,11 @@
-import { takeEvery, put, call, delay, select, all } from 'redux-saga/effects';
+import {
+  takeEvery,
+  put,
+  call,
+  delay,
+  select,
+  all,
+} from 'redux-saga/effects';
 import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
 
 import * as profileActions from './actions';

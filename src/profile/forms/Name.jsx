@@ -84,7 +84,7 @@ class Name extends React.Component {
             </div>
           ),
           editable: (
-            <React.Fragment>
+            <>
               <EditableItemHeader
                 content={intl.formatMessage(messages['profile.name.full.name'])}
                 showEditButton
@@ -96,10 +96,10 @@ class Name extends React.Component {
               <small className="form-text text-muted">
                 {intl.formatMessage(messages['profile.name.details'])}
               </small>
-            </React.Fragment>
+            </>
           ),
           empty: (
-            <React.Fragment>
+            <>
               <EditableItemHeader content={intl.formatMessage(messages['profile.name.full.name'])} />
               <EmptyContent onClick={this.handleOpen}>
                 {intl.formatMessage(messages['profile.name.empty'])}
@@ -107,13 +107,13 @@ class Name extends React.Component {
               <small className="form-text text-muted">
                 {intl.formatMessage(messages['profile.name.details'])}
               </small>
-            </React.Fragment>
+            </>
           ),
           static: (
-            <React.Fragment>
+            <>
               <EditableItemHeader content={intl.formatMessage(messages['profile.name.full.name'])} />
               <p data-hj-suppress className="h5">{name}</p>
-            </React.Fragment>
+            </>
           ),
         }}
       />

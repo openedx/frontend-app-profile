@@ -46,7 +46,9 @@ function FormControls({
             // Swallowing the onSubmit event on the form would be better, but
             // we would have to add that logic for every field given our
             // current structure of the application.
-            if (buttonState === 'pending') e.preventDefault();
+            if (buttonState === 'pending') {
+              e.preventDefault();
+            }
           }}
           disabledStates={[]}
         />

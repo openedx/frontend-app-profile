@@ -33,7 +33,9 @@ class ProfileAvatar extends React.Component {
   }
 
   onSubmit(e) {
-    if (e) e.preventDefault();
+    if (e) {
+      e.preventDefault();
+    }
     this.props.onSave(new FormData(this.form.current));
     this.form.current.reset();
   }
@@ -93,7 +95,9 @@ class ProfileAvatar extends React.Component {
   }
 
   renderMenu() {
-    if (!this.props.isEditable) return null;
+    if (!this.props.isEditable) {
+      return null;
+    }
 
     return (
       <div className="profile-avatar-menu-container">

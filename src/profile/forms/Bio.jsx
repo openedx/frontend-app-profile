@@ -83,7 +83,7 @@ class Bio extends React.Component {
             </div>
           ),
           editable: (
-            <React.Fragment>
+            <>
               <EditableItemHeader
                 content={intl.formatMessage(messages['profile.bio.about.me'])}
                 showEditButton
@@ -92,10 +92,10 @@ class Bio extends React.Component {
                 visibility={visibilityBio}
               />
               <p data-hj-suppress className="lead">{bio}</p>
-            </React.Fragment>
+            </>
           ),
           empty: (
-            <React.Fragment>
+            <>
               <EditableItemHeader content={intl.formatMessage(messages['profile.bio.about.me'])} />
               <EmptyContent onClick={this.handleOpen}>
                 <FormattedMessage
@@ -104,13 +104,13 @@ class Bio extends React.Component {
                   description="instructions when the user hasn't written an About Me"
                 />
               </EmptyContent>
-            </React.Fragment>
+            </>
           ),
           static: (
-            <React.Fragment>
+            <>
               <EditableItemHeader content={intl.formatMessage(messages['profile.bio.about.me'])} />
               <p data-hj-suppress className="lead">{bio}</p>
-            </React.Fragment>
+            </>
           ),
         }}
       />

@@ -6,12 +6,11 @@ import { faEyeSlash, faEye } from '@fortawesome/free-regular-svg-icons';
 
 import messages from './Visibility.messages';
 
-
 function Visibility({ to, intl }) {
   const icon = to === 'private' ? faEyeSlash : faEye;
-  const label = to === 'private' ?
-    intl.formatMessage(messages['profile.visibility.who.just.me']) :
-    intl.formatMessage(messages['profile.visibility.who.everyone']);
+  const label = to === 'private'
+    ? intl.formatMessage(messages['profile.visibility.who.just.me'])
+    : intl.formatMessage(messages['profile.visibility.who.everyone']);
 
   return (
     <span className="ml-auto small text-muted">
@@ -29,7 +28,6 @@ Visibility.propTypes = {
 Visibility.defaultProps = {
   to: 'private',
 };
-
 
 function VisibilitySelect({ intl, className, ...props }) {
   const { value } = props;
@@ -72,7 +70,6 @@ VisibilitySelect.defaultProps = {
 
 const intlVisibility = injectIntl(Visibility);
 const intlVisibilitySelect = injectIntl(VisibilitySelect);
-
 
 export {
   intlVisibility as Visibility,

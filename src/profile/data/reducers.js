@@ -57,13 +57,13 @@ const profilePage = (state = initialState, action) => {
         // Account is always replaced completely.
         account: action.payload.account !== null ? action.payload.account : state.account,
         // Preferences changes get merged in.
-        preferences: Object.assign({}, state.preferences, action.payload.preferences),
+        preferences: { ...state.preferences, ...action.payload.preferences },
       };
     case SAVE_PROFILE.FAILURE:
       return {
         ...state,
         saveState: 'error',
-        errors: Object.assign({}, state.errors, action.payload.errors),
+        errors: { ...state.errors, ...action.payload.errors },
       };
     case SAVE_PROFILE.RESET:
       return {
@@ -82,7 +82,7 @@ const profilePage = (state = initialState, action) => {
       return {
         ...state,
         // Merge in new profile image data
-        account: Object.assign({}, state.account, { profileImage: action.payload.profileImage }),
+        account: { ...state.account, profileImage: action.payload.profileImage },
         savePhotoState: 'complete',
         errors: {},
       };
@@ -90,7 +90,7 @@ const profilePage = (state = initialState, action) => {
       return {
         ...state,
         savePhotoState: 'error',
-        errors: Object.assign({}, state.errors, { photo: action.payload.error }),
+        errors: { ...state.errors, photo: action.payload.error },
       };
     case SAVE_PROFILE_PHOTO.RESET:
       return {
@@ -109,7 +109,7 @@ const profilePage = (state = initialState, action) => {
       return {
         ...state,
         // Merge in new profile image data (should be empty or default image)
-        account: Object.assign({}, state.account, { profileImage: action.payload.profileImage }),
+        account: { ...state.account, profileImage: action.payload.profileImage },
         savePhotoState: 'complete',
         errors: {},
       };
@@ -117,7 +117,7 @@ const profilePage = (state = initialState, action) => {
       return {
         ...state,
         savePhotoState: 'error',
-        errors: Object.assign({}, state.errors, action.payload.errors),
+        errors: { ...state.errors, ...action.payload.errors },
       };
     case DELETE_PROFILE_PHOTO.RESET:
       return {
@@ -129,9 +129,7 @@ const profilePage = (state = initialState, action) => {
     case UPDATE_DRAFT:
       return {
         ...state,
-        drafts: Object.assign({}, state.drafts, {
-          [action.payload.name]: action.payload.value,
-        }),
+        drafts: { ...state.drafts, [action.payload.name]: action.payload.value },
       };
 
     case RESET_DRAFTS:

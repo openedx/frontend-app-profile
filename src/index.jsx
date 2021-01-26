@@ -1,7 +1,15 @@
 import 'babel-polyfill';
 
-import { APP_INIT_ERROR, APP_READY, initialize, subscribe } from '@edx/frontend-platform';
-import { AppProvider, ErrorPage } from '@edx/frontend-platform/react';
+import {
+  APP_INIT_ERROR,
+  APP_READY,
+  initialize,
+  subscribe,
+} from '@edx/frontend-platform';
+import {
+  AppProvider,
+  ErrorPage,
+} from '@edx/frontend-platform/react';
 
 import React from 'react';
 import ReactDOM from 'react-dom';

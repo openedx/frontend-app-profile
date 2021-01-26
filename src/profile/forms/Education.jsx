@@ -79,7 +79,7 @@ class Education extends React.Component {
                     value={levelOfEducation}
                     onChange={this.handleChange}
                   >
-                    <option value="" />
+                    <option value="">&nbsp;</option>
                     {EDUCATION_LEVELS.map(level => (
                       <option key={level} value={level}>
                         {intl.formatMessage(get(
@@ -102,7 +102,7 @@ class Education extends React.Component {
             </div>
           ),
           editable: (
-            <React.Fragment>
+            <>
               <EditableItemHeader
                 content={intl.formatMessage(messages['profile.education.education'])}
                 showEditButton
@@ -117,10 +117,10 @@ class Education extends React.Component {
                   messages['profile.education.levels.o'],
                 ))}
               </p>
-            </React.Fragment>
+            </>
           ),
           empty: (
-            <React.Fragment>
+            <>
               <EditableItemHeader content={intl.formatMessage(messages['profile.education.education'])} />
               <EmptyContent onClick={this.handleOpen}>
                 <FormattedMessage
@@ -129,10 +129,10 @@ class Education extends React.Component {
                   description="instructions when the user doesn't have their level of education set"
                 />
               </EmptyContent>
-            </React.Fragment>
+            </>
           ),
           static: (
-            <React.Fragment>
+            <>
               <EditableItemHeader content={intl.formatMessage(messages['profile.education.education'])} />
               <p data-hj-suppress className="h5">
                 {intl.formatMessage(get(
@@ -141,7 +141,7 @@ class Education extends React.Component {
                   messages['profile.education.levels.o'],
                 ))}
               </p>
-            </React.Fragment>
+            </>
           ),
         }}
       />
