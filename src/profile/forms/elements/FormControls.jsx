@@ -31,7 +31,6 @@ function FormControls({
       <div className="form-group flex-shrink-0 flex-grow-1">
         <StatefulButton
           type="submit"
-          variant="primary"
           state={buttonState}
           labels={{
             default: intl.formatMessage(messages['profile.formcontrols.button.save']),
