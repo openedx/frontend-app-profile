@@ -39,7 +39,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
     className="profile-page-bg-banner bg-primary d-none d-md-block p-relative"
   />
   <div
-    className="container"
+    className="container-fluid"
   >
     <div
       className="row align-items-center pt-4 mb-4 pt-md-0 mb-md-0"
@@ -223,7 +223,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
     className="profile-page-bg-banner bg-primary d-none d-md-block p-relative"
   />
   <div
-    className="container"
+    className="container-fluid"
   >
     <div
       className="row align-items-center pt-4 mb-4 pt-md-0 mb-md-0"
@@ -1209,7 +1209,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
     className="profile-page-bg-banner bg-primary d-none d-md-block p-relative"
   />
   <div
-    className="container"
+    className="container-fluid"
   >
     <div
       className="row align-items-center pt-4 mb-4 pt-md-0 mb-md-0"
