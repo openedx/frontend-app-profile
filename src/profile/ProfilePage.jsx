@@ -111,13 +111,13 @@ class ProfilePage extends React.Component {
     const { dateJoined } = this.props;
 
     return (
-      <React.Fragment>
+      <>
         <span data-hj-suppress>
           <h1 className="h2 mb-0 font-weight-bold">{this.props.match.params.username}</h1>
           <DateJoined date={dateJoined} />
           <hr className="d-none d-md-block" />
         </span>
-      </React.Fragment>
+      </>
     );
   }
 
@@ -178,7 +178,6 @@ class ProfilePage extends React.Component {
       submitHandler: this.handleSubmit,
       changeHandler: this.handleChange,
     };
-
 
     return (
       <div className="container-fluid">

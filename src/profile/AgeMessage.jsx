@@ -7,8 +7,8 @@ function AgeMessage({ accountSettingsUrl }) {
   return (
     <StatusAlert
       alertType="info"
-      dialog={
-        <React.Fragment>
+      dialog={(
+        <>
           <FormattedMessage
             id="profile.age.headline"
             defaultMessage="Your profile cannot be shared."
@@ -28,8 +28,8 @@ function AgeMessage({ accountSettingsUrl }) {
               description="label on a link to set birthday"
             />
           </a>
-        </React.Fragment>
-      }
+        </>
+      )}
       dismissible={false}
       open
     />

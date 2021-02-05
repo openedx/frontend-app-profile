@@ -31,7 +31,6 @@ function FormControls({
       <div className="form-group flex-shrink-0 flex-grow-1">
         <StatefulButton
           type="submit"
-          className="btn-primary"
           state={buttonState}
           labels={{
             default: intl.formatMessage(messages['profile.formcontrols.button.save']),
@@ -46,11 +45,13 @@ function FormControls({
             // Swallowing the onSubmit event on the form would be better, but
             // we would have to add that logic for every field given our
             // current structure of the application.
-            if (buttonState === 'pending') e.preventDefault();
+            if (buttonState === 'pending') {
+              e.preventDefault();
+            }
           }}
           disabledStates={[]}
         />
-        <Button className="btn-link" onClick={cancelHandler}>
+        <Button variant="link" onClick={cancelHandler}>
           {intl.formatMessage(messages['profile.formcontrols.button.cancel'])}
         </Button>
       </div>

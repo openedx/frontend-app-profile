@@ -121,12 +121,12 @@ function transformCertificateData(data) {
   data.forEach((cert) => {
     // download_url may be full url or absolute path.
     // note: using the URL() api breaks in ie 11
-    const urlIsPath = typeof cert.download_url === 'string' &&
-      cert.download_url.search(/http[s]?:\/\//) !== 0;
+    const urlIsPath = typeof cert.download_url === 'string'
+      && cert.download_url.search(/http[s]?:\/\//) !== 0;
 
-    const downloadUrl = urlIsPath ?
-      `${getConfig().LMS_BASE_URL}${cert.download_url}` :
-      cert.download_url;
+    const downloadUrl = urlIsPath
+      ? `${getConfig().LMS_BASE_URL}${cert.download_url}`
+      : cert.download_url;
 
     transformedData.push({
       ...camelCaseObject(cert),

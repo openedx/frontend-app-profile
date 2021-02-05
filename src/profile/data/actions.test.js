@@ -92,7 +92,6 @@ describe('SAVE profile actions', () => {
   });
 });
 
-
 describe('SAVE profile photo actions', () => {
   it('should create an action to signal the start of a profile photo save', () => {
     const formData = 'multipart form data';
@@ -141,7 +140,6 @@ describe('SAVE profile photo actions', () => {
   });
 });
 
-
 describe('DELETE profile photo actions', () => {
   it('should create an action to signal the start of a profile photo deletion', () => {
     const expectedAction = {
@@ -178,7 +176,6 @@ describe('DELETE profile photo actions', () => {
     expect(deleteProfilePhotoReset()).toEqual(expectedAction);
   });
 });
-
 
 describe('Editable field opening and closing actions', () => {
   const formId = 'name';

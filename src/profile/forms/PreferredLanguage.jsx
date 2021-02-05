@@ -93,7 +93,7 @@ class PreferredLanguage extends React.Component {
                     value={value}
                     onChange={this.handleChange}
                   >
-                    <option value="" />
+                    <option value="">&nbsp;</option>
                     {sortedLanguages.map(({ code, name }) => (
                       <option key={code} value={code}>{name}</option>
                     ))}
@@ -110,7 +110,7 @@ class PreferredLanguage extends React.Component {
             </div>
           ),
           editable: (
-            <React.Fragment>
+            <>
               <EditableItemHeader
                 content={intl.formatMessage(messages['profile.preferredlanguage.label'])}
                 showEditButton
@@ -119,25 +119,25 @@ class PreferredLanguage extends React.Component {
                 visibility={visibilityLanguageProficiencies}
               />
               <p data-hj-suppress className="h5">{languageMessages[value]}</p>
-            </React.Fragment>
+            </>
           ),
           empty: (
-            <React.Fragment>
+            <>
               <EditableItemHeader
                 content={intl.formatMessage(messages['profile.preferredlanguage.label'])}
               />
               <EmptyContent onClick={this.handleOpen}>
                 {intl.formatMessage(messages['profile.preferredlanguage.empty'])}
               </EmptyContent>
-            </React.Fragment>
+            </>
           ),
           static: (
-            <React.Fragment>
+            <>
               <EditableItemHeader
                 content={intl.formatMessage(messages['profile.preferredlanguage.label'])}
               />
               <p data-hj-suppress className="h5">{languageMessages[value]}</p>
-            </React.Fragment>
+            </>
           ),
         }}
       />

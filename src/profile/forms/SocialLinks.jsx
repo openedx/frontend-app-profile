@@ -102,7 +102,7 @@ class SocialLinks extends React.Component {
         expression={editMode}
         cases={{
           empty: (
-            <React.Fragment>
+            <>
               <EditableItemHeader content={intl.formatMessage(messages['profile.sociallinks.social.links'])} />
               <ul className="list-unstyled">
                 {socialLinks.map(({ platform }) => (
@@ -113,10 +113,10 @@ class SocialLinks extends React.Component {
                   />
                 ))}
               </ul>
-            </React.Fragment>
+            </>
           ),
           static: (
-            <React.Fragment>
+            <>
               <EditableItemHeader
                 content={intl.formatMessage(messages['profile.sociallinks.social.links'])}
               />
@@ -130,13 +130,12 @@ class SocialLinks extends React.Component {
                       url={socialLink}
                       platform={platform}
                     />
-                  ))
-                }
+                  ))}
               </ul>
-            </React.Fragment>
+            </>
           ),
           editable: (
-            <React.Fragment>
+            <>
               <EditableItemHeader
                 content={intl.formatMessage(messages['profile.sociallinks.social.links'])}
                 showEditButton
@@ -155,7 +154,7 @@ class SocialLinks extends React.Component {
                   />
                 ))}
               </ul>
-            </React.Fragment>
+            </>
           ),
           editing: (
             <div role="dialog" aria-labelledby="social-links-label">

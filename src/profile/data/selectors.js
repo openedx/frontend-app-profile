@@ -22,8 +22,7 @@ export const savePhotoStateSelector = state => state.profilePage.savePhotoState;
 export const isLoadingProfileSelector = state => state.profilePage.isLoadingProfile;
 export const currentlyEditingFieldSelector = state => state.profilePage.currentlyEditingField;
 export const accountErrorsSelector = state => state.profilePage.errors;
-export const isAuthenticatedUserProfileSelector = state =>
-  state.profilePage.isAuthenticatedUserProfile;
+export const isAuthenticatedUserProfileSelector = state => state.profilePage.isAuthenticatedUserProfile;
 
 export const editableFormModeSelector = createSelector(
   profileAccountSelector,
@@ -147,13 +146,12 @@ export const certificatesSelector = createSelector(
 
 export const profileImageSelector = createSelector(
   profileAccountSelector,
-  account =>
-    (account.profileImage != null
-      ? {
-        src: account.profileImage.imageUrlFull,
-        isDefault: !account.profileImage.hasImage,
-      }
-      : {}),
+  account => (account.profileImage != null
+    ? {
+      src: account.profileImage.imageUrlFull,
+      isDefault: !account.profileImage.hasImage,
+    }
+    : {}),
 );
 
 /**

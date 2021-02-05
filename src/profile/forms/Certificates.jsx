@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormattedDate, FormattedMessage, injectIntl, intlShape } from '@edx/frontend-platform/i18n';
+import {
+  FormattedDate, FormattedMessage, injectIntl, intlShape,
+} from '@edx/frontend-platform/i18n';
 import { Hyperlink } from '@edx/paragon';
 import { connect } from 'react-redux';
 import get from 'lodash.get';
@@ -113,11 +115,13 @@ class Certificates extends React.Component {
 
   renderCertificates() {
     if (this.props.certificates === null || this.props.certificates.length === 0) {
-      return (<FormattedMessage
-        id="profile.no.certificates"
-        defaultMessage="You don't have any certificates yet."
-        description="displays when user has no course completion certificates"
-      />);
+      return (
+        <FormattedMessage
+          id="profile.no.certificates"
+          defaultMessage="You don't have any certificates yet."
+          description="displays when user has no course completion certificates"
+        />
+      );
     }
 
     return (
@@ -154,7 +158,7 @@ class Certificates extends React.Component {
             </div>
           ),
           editable: (
-            <React.Fragment>
+            <>
               <EditableItemHeader
                 content={intl.formatMessage(messages['profile.certificates.my.certificates'])}
                 showEditButton
@@ -163,10 +167,10 @@ class Certificates extends React.Component {
                 visibility={visibilityCourseCertificates}
               />
               {this.renderCertificates()}
-            </React.Fragment>
+            </>
           ),
           empty: (
-            <React.Fragment>
+            <>
               <EditableItemHeader
                 content={intl.formatMessage(messages['profile.certificates.my.certificates'])}
                 showEditButton
@@ -175,13 +179,13 @@ class Certificates extends React.Component {
                 visibility={visibilityCourseCertificates}
               />
               {this.renderCertificates()}
-            </React.Fragment>
+            </>
           ),
           static: (
-            <React.Fragment>
+            <>
               <EditableItemHeader content={intl.formatMessage(messages['profile.certificates.my.certificates'])} />
               {this.renderCertificates()}
-            </React.Fragment>
+            </>
           ),
         }}
       />

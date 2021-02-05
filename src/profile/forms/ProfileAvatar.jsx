@@ -33,7 +33,9 @@ class ProfileAvatar extends React.Component {
   }
 
   onSubmit(e) {
-    if (e) e.preventDefault();
+    if (e) {
+      e.preventDefault();
+    }
     this.props.onSave(new FormData(this.form.current));
     this.form.current.reset();
   }
@@ -55,7 +57,9 @@ class ProfileAvatar extends React.Component {
     if (this.props.isDefault) {
       return (
         <Button
-          className="text-white btn-block btn-sm btn-link"
+          variant="link"
+          size="sm"
+          className="text-white btn-block"
           onClick={this.onClickUpload}
         >
           <FormattedMessage
@@ -69,9 +73,9 @@ class ProfileAvatar extends React.Component {
 
     return (
       <Dropdown>
-        <Dropdown.Button type="btn-outline">
+        <Dropdown.Toggle>
           {intl.formatMessage(messages['profile.profileavatar.change-button'])}
-        </Dropdown.Button>
+        </Dropdown.Toggle>
         <Dropdown.Menu>
           <Dropdown.Item type="button" onClick={this.onClickUpload}>
             <FormattedMessage
@@ -93,7 +97,9 @@ class ProfileAvatar extends React.Component {
   }
 
   renderMenu() {
-    if (!this.props.isEditable) return null;
+    if (!this.props.isEditable) {
+      return null;
+    }
 
     return (
       <div className="profile-avatar-menu-container">
