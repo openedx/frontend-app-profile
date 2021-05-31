@@ -44,9 +44,10 @@ ensureConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL'], 'ProfilePage');
 class ProfilePage extends React.Component {
   constructor(props, context) {
     super(props, context);
+    const credentialsBaseUrl = context.config.CREDENTIALS_BASE_URL;
 
     this.state = {
-      viewMyRecordsUrl: `${context.config.CREDENTIALS_BASE_URL}/records`,
+      viewMyRecordsUrl: credentialsBaseUrl ? `${credentialsBaseUrl}/records` : null,
       accountSettingsUrl: `${context.config.LMS_BASE_URL}/account/settings`,
     };
 
@@ -95,7 +96,7 @@ class ProfilePage extends React.Component {
 
   // Inserted into the DOM in two places (for responsive layout)
   renderViewMyRecordsButton() {
-    if (!this.isAuthenticatedUserProfile()) {
+    if (!(this.state.viewMyRecordsUrl && this.isAuthenticatedUserProfile())) {
       return null;
     }
 

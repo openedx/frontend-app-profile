@@ -145,6 +145,28 @@ describe('<ProfilePage />', () => {
       const tree = renderer.create(component).toJSON();
       expect(tree).toMatchSnapshot();
     });
+
+    it('without credentials service', () => {
+      const config = getConfig();
+      config.CREDENTIALS_BASE_URL = '';
+
+      const component = (
+        <AppContext.Provider
+          value={{
+            authenticatedUser: { userId: 123, username: 'staff', administrator: true },
+            config,
+          }}
+        >
+          <IntlProvider locale="en">
+            <Provider store={mockStore(storeMocks.viewOwnProfile)}>
+              <ProfilePage {...requiredProfilePageProps} />
+            </Provider>
+          </IntlProvider>
+        </AppContext.Provider>
+      );
+      const tree = renderer.create(component).toJSON();
+      expect(tree).toMatchSnapshot();
+    });
   });
 
   describe('handles analytics', () => {
