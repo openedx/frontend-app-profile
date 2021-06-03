@@ -85,7 +85,7 @@
     "codecov": "3.8.2",
     "enzyme": "3.10.0",
     "enzyme-adapter-react-16": "1.15.6",
-    "es-check": "5.0.0",
+    "es-check": "5.2.3",
     "glob": "7.1.6",
     "husky": "3.1.0",
     "purgecss-webpack-plugin": "1.6.0",
