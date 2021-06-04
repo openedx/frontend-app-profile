@@ -61,7 +61,7 @@
     "lodash.memoize": "4.1.2",
     "lodash.pick": "4.4.0",
     "lodash.snakecase": "4.1.1",
-    "newrelic": "5.5.0",
+    "newrelic": "5.13.1",
     "prop-types": "15.7.2",
     "react": "16.14.0",
     "react-dom": "16.14.0",
