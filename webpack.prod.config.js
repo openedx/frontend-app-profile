@@ -15,7 +15,7 @@ module.exports = createConfig('webpack-prod', {
         glob.sync('node_modules/@edx/paragon/**/*', { nodir: true }),
       ),
       // Protect react-css-transition class names
-      whitelistPatterns: [/-enter/, /-appear/, /-exit/],
+      safelist: [/-enter/, /-appear/, /-exit/],
     }),
   ],
 });

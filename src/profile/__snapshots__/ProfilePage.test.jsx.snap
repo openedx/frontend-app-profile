@@ -245,7 +245,6 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               >
                 <div
                   className="dropdown"
-                  onKeyDown={[Function]}
                 >
                   <button
                     aria-expanded={false}
@@ -327,14 +326,36 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
             target="_blank"
           >
             View My Records
-            <span>
+            <span
+              className="d-inline-block align-text-top"
+            >
                
               <span
-                aria-hidden={false}
-                aria-label="Opens in a new window"
-                className="fa fa-external-link"
-                title="Opens in a new window"
-              />
+                className="pgn__icon"
+                style={
+                  Object {
+                    "height": "1em",
+                    "width": "1em",
+                  }
+                }
+              >
+                <svg
+                  aria-hidden={true}
+                  aria-label=""
+                  fill="none"
+                  focusable={false}
+                  height={24}
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width={24}
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M19 19H5V5h7V3H3v18h18v-9h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
             </span>
           </a>
         </div>
@@ -383,14 +404,36 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
             target="_blank"
           >
             View My Records
-            <span>
+            <span
+              className="d-inline-block align-text-top"
+            >
                
               <span
-                aria-hidden={false}
-                aria-label="Opens in a new window"
-                className="fa fa-external-link"
-                title="Opens in a new window"
-              />
+                className="pgn__icon"
+                style={
+                  Object {
+                    "height": "1em",
+                    "width": "1em",
+                  }
+                }
+              >
+                <svg
+                  aria-hidden={true}
+                  aria-label=""
+                  fill="none"
+                  focusable={false}
+                  height={24}
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width={24}
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M19 19H5V5h7V3H3v18h18v-9h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
             </span>
           </a>
         </div>
@@ -1178,14 +1221,36 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                         target="_blank"
                       >
                         View Certificate
-                        <span>
+                        <span
+                          className="d-inline-block align-text-top"
+                        >
                            
                           <span
-                            aria-hidden={false}
-                            aria-label="Opens in a new window"
-                            className="fa fa-external-link"
-                            title="Opens in a new window"
-                          />
+                            className="pgn__icon"
+                            style={
+                              Object {
+                                "height": "1em",
+                                "width": "1em",
+                              }
+                            }
+                          >
+                            <svg
+                              aria-hidden={true}
+                              aria-label=""
+                              fill="none"
+                              focusable={false}
+                              height={24}
+                              role="img"
+                              viewBox="0 0 24 24"
+                              width={24}
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M19 19H5V5h7V3H3v18h18v-9h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+                                fill="currentColor"
+                              />
+                            </svg>
+                          </span>
                         </span>
                       </a>
                     </div>
@@ -1231,7 +1296,6 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               >
                 <div
                   className="dropdown"
-                  onKeyDown={[Function]}
                 >
                   <button
                     aria-expanded={false}
@@ -1313,14 +1377,36 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
             target="_blank"
           >
             View My Records
-            <span>
+            <span
+              className="d-inline-block align-text-top"
+            >
                
               <span
-                aria-hidden={false}
-                aria-label="Opens in a new window"
-                className="fa fa-external-link"
-                title="Opens in a new window"
-              />
+                className="pgn__icon"
+                style={
+                  Object {
+                    "height": "1em",
+                    "width": "1em",
+                  }
+                }
+              >
+                <svg
+                  aria-hidden={true}
+                  aria-label=""
+                  fill="none"
+                  focusable={false}
+                  height={24}
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width={24}
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M19 19H5V5h7V3H3v18h18v-9h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
             </span>
           </a>
         </div>
@@ -1369,14 +1455,36 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
             target="_blank"
           >
             View My Records
-            <span>
+            <span
+              className="d-inline-block align-text-top"
+            >
                
               <span
-                aria-hidden={false}
-                aria-label="Opens in a new window"
-                className="fa fa-external-link"
-                title="Opens in a new window"
-              />
+                className="pgn__icon"
+                style={
+                  Object {
+                    "height": "1em",
+                    "width": "1em",
+                  }
+                }
+              >
+                <svg
+                  aria-hidden={true}
+                  aria-label=""
+                  fill="none"
+                  focusable={false}
+                  height={24}
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width={24}
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M19 19H5V5h7V3H3v18h18v-9h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
             </span>
           </a>
         </div>
@@ -2044,12 +2152,31 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                           className="pgn__stateful-btn-icon"
                         >
                           <span
-                            aria-hidden={true}
-                            className="icon fa fa-spinner fa-spin"
-                            id="Icon1"
-                          />
+                            className="pgn__icon icon-spin"
+                          >
+                            <svg
+                              aria-hidden={true}
+                              aria-label=""
+                              fill="none"
+                              focusable={false}
+                              height={24}
+                              role="img"
+                              viewBox="0 0 24 24"
+                              width={24}
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M22 12A10 10 0 116.122 3.91l1.176 1.618A8 8 0 1020 12h2z"
+                                fill="currentColor"
+                              />
+                            </svg>
+                          </span>
                         </span>
-                        Saving
+                        <span
+                          className=""
+                        >
+                          Saving
+                        </span>
                       </span>
                     </button>
                     <button
@@ -2216,14 +2343,36 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                         target="_blank"
                       >
                         View Certificate
-                        <span>
+                        <span
+                          className="d-inline-block align-text-top"
+                        >
                            
                           <span
-                            aria-hidden={false}
-                            aria-label="Opens in a new window"
-                            className="fa fa-external-link"
-                            title="Opens in a new window"
-                          />
+                            className="pgn__icon"
+                            style={
+                              Object {
+                                "height": "1em",
+                                "width": "1em",
+                              }
+                            }
+                          >
+                            <svg
+                              aria-hidden={true}
+                              aria-label=""
+                              fill="none"
+                              focusable={false}
+                              height={24}
+                              role="img"
+                              viewBox="0 0 24 24"
+                              width={24}
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M19 19H5V5h7V3H3v18h18v-9h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+                                fill="currentColor"
+                              />
+                            </svg>
+                          </span>
                         </span>
                       </a>
                     </div>
@@ -2269,7 +2418,6 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
               >
                 <div
                   className="dropdown"
-                  onKeyDown={[Function]}
                 >
                   <button
                     aria-expanded={false}
@@ -3164,14 +3312,36 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                         target="_blank"
                       >
                         View Certificate
-                        <span>
+                        <span
+                          className="d-inline-block align-text-top"
+                        >
                            
                           <span
-                            aria-hidden={false}
-                            aria-label="Opens in a new window"
-                            className="fa fa-external-link"
-                            title="Opens in a new window"
-                          />
+                            className="pgn__icon"
+                            style={
+                              Object {
+                                "height": "1em",
+                                "width": "1em",
+                              }
+                            }
+                          >
+                            <svg
+                              aria-hidden={true}
+                              aria-label=""
+                              fill="none"
+                              focusable={false}
+                              height={24}
+                              role="img"
+                              viewBox="0 0 24 24"
+                              width={24}
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M19 19H5V5h7V3H3v18h18v-9h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+                                fill="currentColor"
+                              />
+                            </svg>
+                          </span>
                         </span>
                       </a>
                     </div>
