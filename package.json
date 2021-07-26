@@ -82,7 +82,7 @@
     "@commitlint/cli": "12.1.4",
     "@commitlint/config-angular": "12.1.4",
     "@edx/frontend-build": "7.0.6",
-    "codecov": "3.8.2",
+    "codecov": "3.8.3",
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.6",
     "es-check": "5.2.4",
