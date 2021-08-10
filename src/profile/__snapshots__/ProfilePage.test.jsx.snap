@@ -327,9 +327,8 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
           >
             View My Records
             <span
-              className="d-inline-block align-text-top"
+              className="d-inline-block align-middle ml-2"
             >
-               
               <span
                 className="pgn__icon"
                 style={
@@ -405,9 +404,8 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
           >
             View My Records
             <span
-              className="d-inline-block align-text-top"
+              className="d-inline-block align-middle ml-2"
             >
-               
               <span
                 className="pgn__icon"
                 style={
@@ -1222,9 +1220,8 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                       >
                         View Certificate
                         <span
-                          className="d-inline-block align-text-top"
+                          className="d-inline-block align-middle ml-2"
                         >
-                           
                           <span
                             className="pgn__icon"
                             style={
@@ -1378,9 +1375,8 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
           >
             View My Records
             <span
-              className="d-inline-block align-text-top"
+              className="d-inline-block align-middle ml-2"
             >
-               
               <span
                 className="pgn__icon"
                 style={
@@ -1456,9 +1452,8 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
           >
             View My Records
             <span
-              className="d-inline-block align-text-top"
+              className="d-inline-block align-middle ml-2"
             >
-               
               <span
                 className="pgn__icon"
                 style={
@@ -2344,9 +2339,8 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                       >
                         View Certificate
                         <span
-                          className="d-inline-block align-text-top"
+                          className="d-inline-block align-middle ml-2"
                         >
-                           
                           <span
                             className="pgn__icon"
                             style={
@@ -3313,9 +3307,8 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                       >
                         View Certificate
                         <span
-                          className="d-inline-block align-text-top"
+                          className="d-inline-block align-middle ml-2"
                         >
-                           
                           <span
                             className="pgn__icon"
                             style={
