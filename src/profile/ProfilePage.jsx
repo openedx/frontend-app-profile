@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { sendTrackingLogEvent } from '@edx/frontend-platform/analytics';
-import { ensureConfig } from '@edx/frontend-platform';
+import { ensureConfig, getConfig } from '@edx/frontend-platform';
 import { AppContext } from '@edx/frontend-platform/react';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { StatusAlert, Hyperlink } from '@edx/paragon';
@@ -44,10 +44,11 @@ ensureConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL'], 'ProfilePage');
 class ProfilePage extends React.Component {
   constructor(props, context) {
     super(props, context);
-    const credentialsBaseUrl = context.config.CREDENTIALS_BASE_URL;
+
+    const recordsUrl = this.getRecordsUrl(context);
 
     this.state = {
-      viewMyRecordsUrl: credentialsBaseUrl ? `${credentialsBaseUrl}/records` : null,
+      viewMyRecordsUrl: recordsUrl,
       accountSettingsUrl: `${context.config.LMS_BASE_URL}/account/settings`,
     };
 
@@ -64,6 +65,19 @@ class ProfilePage extends React.Component {
     sendTrackingLogEvent('edx.profile.viewed', {
       username: this.props.match.params.username,
     });
+  }
+
+  getRecordsUrl(context) {
+    let recordsUrl = null;
+
+    if (getConfig().ENABLE_LEARNER_RECORD_MFE) {
+      recordsUrl = getConfig().LEARNER_RECORD_MFE_BASE_URL;
+    } else {
+      const credentialsBaseUrl = context.config.CREDENTIALS_BASE_URL;
+      recordsUrl = credentialsBaseUrl ? `${credentialsBaseUrl}/records` : null;
+    }
+
+    return recordsUrl;
   }
 
   isAuthenticatedUserProfile() {

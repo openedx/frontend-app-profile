@@ -5,6 +5,7 @@ import {
   APP_INIT_ERROR,
   APP_READY,
   initialize,
+  mergeConfig,
   subscribe,
 } from '@edx/frontend-platform';
 import {
@@ -55,4 +56,12 @@ initialize({
   ],
   requireAuthenticatedUser: true,
   hydrateAuthenticatedUser: true,
+  handlers: {
+    config: () => {
+      mergeConfig({
+        ENABLE_LEARNER_RECORD_MFE: (process.env.ENABLE_LEARNER_RECORD_MFE || false),
+        LEARNER_RECORD_MFE_BASE_URL: process.env.LEARNER_RECORD_MFE_BASE_URL,
+      }, 'App loadConfig override handler');
+    },
+  },
 });
