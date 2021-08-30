@@ -59,10 +59,3 @@ pull_translations:
 validate-no-uncommitted-package-lock-changes:
 	# Checking for package-lock.json changes...
 	git diff --exit-code package-lock.json
-
-npm-build:
-	rm -rf ./npm-dist
-	./node_modules/.bin/fedx-scripts babel src/profile --out-dir npm-dist --source-maps --ignore **/*.test.jsx,**/*.test.js,**/setupTest.js --copy-files
-	@# --copy-files will bring in everything else that wasn't processed by babel. Remove what we don't want.
-	@find npm-dist -name '*.test.js*' -delete
-	@rm -rf ./npm-dist/__mocks__

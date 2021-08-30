@@ -1,4 +1,4 @@
-|Build Status| |Codecov| |npm_version| |npm_downloads| |license| |semantic-release|
+|Build Status| |Codecov| |license|
 
 frontend-app-profile
 ====================
@@ -53,11 +53,5 @@ edX <https://edx.readthedocs.io/projects/edx-developer-docs/en/latest/micro-fron
    :target: https://travis-ci.org/edx/frontend-app-profile
 .. |Codecov| image:: https://img.shields.io/codecov/c/github/edx/frontend-app-profile
    :target: https://codecov.io/gh/edx/frontend-app-profile
-.. |npm_version| image:: https://img.shields.io/npm/v/@edx/frontend-app-profile.svg
-   :target: https://www.npmjs.com/package/@edx/frontend-app-profile
-.. |npm_downloads| image:: https://img.shields.io/npm/dt/@edx/frontend-app-profile.svg
-   :target: https://www.npmjs.com/package/@edx/frontend-app-profile
 .. |license| image:: https://img.shields.io/npm/l/@edx/frontend-app-profile.svg
    :target: @edx/frontend-app-profile
-.. |semantic-release| image:: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
-   :target: https://github.com/semantic-release/semantic-release

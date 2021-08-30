@@ -14,7 +14,6 @@ temp/babel-plugin-react-intl
 
 ### Emacs ###
 *~
-/.vscode
 /temp
-/npm-dist
+/.vscode
 /module.config.js
