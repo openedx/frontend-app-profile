@@ -25,7 +25,6 @@ import { ProfilePage, NotFoundPage } from './profile';
 import configureStore from './data/configureStore';
 
 import './index.scss';
-import './assets/favicon.ico';
 
 subscribe(APP_READY, () => {
   ReactDOM.render(
