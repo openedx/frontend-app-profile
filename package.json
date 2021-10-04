@@ -61,8 +61,8 @@
     "universal-cookie": "3.1.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "13.1.0",
-    "@commitlint/config-angular": "13.1.0",
+    "@commitlint/cli": "13.2.0",
+    "@commitlint/config-angular": "13.2.0",
     "@edx/frontend-build": "8.0.4",
     "codecov": "3.8.3",
     "enzyme": "3.11.0",
