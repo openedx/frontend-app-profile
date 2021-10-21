@@ -335,6 +335,7 @@ export const profilePageSelector = createSelector(
     profileImage,
     requiresParentalConsent: account.requiresParentalConsent,
     dateJoined: account.dateJoined,
+    yearOfBirth: account.yearOfBirth,
 
     // Bio form data
     bio: formValues.bio,

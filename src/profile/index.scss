@@ -23,6 +23,28 @@
   background-size: auto 85%;
 }
 
+.username-description {
+  width: auto;
+  position: absolute;
+  left: 1.5rem;
+  top: 5.25rem;
+  color: $gray-500;
+  line-height: 0.9rem;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 400;
+  margin-left: 0.9rem;
+}
+
+.mb-2rem {
+  margin-bottom: 2rem;
+}
+
+.icon-visibility-off {
+  height: 1rem;
+  color: $gray-500;
+}
+
 .profile-page {
   .edit-section-header {
     @extend .h6;
