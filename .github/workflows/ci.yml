@@ -8,21 +8,16 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version:
-        - 12
-        npm-test:
-        - i18n_extract
-        - is-es5
-        - lint
-        - test
-    steps:
+   steps:
     - uses: actions/checkout@v2
-    - uses: dcodeIO/setup-node-nvm@master
+    - run: echo "NODE_VER=`cat .nvmrc`" >> $GITHUB_ENV
+    - name: setup node
+      uses: dcodeIO/setup-node-nvm@master
+      with:
+       node-version: "${{ NODE_VER }}"
     - run: make requirements
     - run: make test NPM_TESTS=build
-    - run: make test NPM_TESTS=${{ matrix.npm-test }}
+    - run: make test NPM_TESTS="i18n_extract is-es5 lint test"
     - name: upload coverage
       uses: codecov/codecov-action@v2
       with:
