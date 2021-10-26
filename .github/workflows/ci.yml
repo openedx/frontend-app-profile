@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-   steps:
+    steps:
     - uses: actions/checkout@v2
     - run: echo "NODE_VER=`cat .nvmrc`" >> $GITHUB_ENV
     - name: setup node
