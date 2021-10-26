@@ -19,10 +19,7 @@ jobs:
         - test
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm install -g npm@6
+    - uses: dcodeIO/setup-node-nvm@master
     - run: make requirements
     - run: make test NPM_TESTS=build
     - run: make test NPM_TESTS=${{ matrix.npm-test }}
