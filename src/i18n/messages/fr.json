@@ -47,5 +47,6 @@
   "profile.sociallinks.social.links": "Liens vers les réseaux sociaux",
   "profile.notfound.message": "La page que vous recherchez n'est pas disponible ou il y a une erreur dans l'URL. Veuillez vérifier l'URL et réessayer.",
   "profile.viewMyRecords": "Voir mes succès",
-  "profile.loading": "Chargement du profil...."
+  "profile.loading": "Chargement du profil....",
+  "profile.username.description": "Les informations de ton profil ne sont visibles que par toi. Seul votre nom d'utilisateur est visible par les autres utilisateurs d'edX."
 }

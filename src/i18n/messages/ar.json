@@ -47,5 +47,6 @@
   "profile.sociallinks.social.links": "روابط قنوات التواصل الاجتماعي",
   "profile.notfound.message": "الصفحة التي تبحث عنها غير متوفرة أو هناك خطأ في نص الرابط. الرجاء التحقق من الرابط والمحاولة مجددا.",
   "profile.viewMyRecords": "عرض سجلّاتي",
-  "profile.loading": "جاري تحميل الملف الشخصي ..."
+  "profile.loading": "جاري تحميل الملف الشخصي ...",
+  "profile.username.description": "Your profile information is only visible to you. Only your username is visible to others on edX."
 }
