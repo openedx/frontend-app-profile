@@ -3,22 +3,22 @@ name: ci
 on:
   push:
     branches:
-    - master
+      - master
   pull_request:
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - run: echo "NODE_VER=`cat .nvmrc`" >> $GITHUB_ENV
-    - name: setup node
-      uses: dcodeIO/setup-node-nvm@master
-      with:
-       node-version: "${{ env.NODE_VER }}"
-    - run: make requirements
-    - run: make test NPM_TESTS=build
-    - run: make test NPM_TESTS="i18n_extract is-es5 lint test"
-    - name: upload coverage
-      uses: codecov/codecov-action@v2
-      with:
-        fail_ci_if_error: false
+      - uses: actions/checkout@v2
+      - run: echo "NODE_VER=`cat .nvmrc`" >> $GITHUB_ENV
+      - name: setup node
+        uses: dcodeIO/setup-node-nvm@v4
+        with:
+          node-version: "${{ env.NODE_VER }}"
+      - run: make requirements
+      - run: make test NPM_TESTS=build
+      - run: make test NPM_TESTS="i18n_extract is-es5 lint test"
+      - name: upload coverage
+        uses: codecov/codecov-action@v2
+        with:
+          fail_ci_if_error: false
