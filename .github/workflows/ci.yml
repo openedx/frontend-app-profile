@@ -17,7 +17,7 @@ jobs:
           node-version: "${{ env.NODE_VER }}"
       - run: make requirements
       - run: make test NPM_TESTS=build
-      - run: make test NPM_TESTS="i18n_extract is-es5 lint test"
+      - run: make test NPM_TESTS="i18n_extract lint test"
       - name: upload coverage
         uses: codecov/codecov-action@v2
         with:
