@@ -18,14 +18,14 @@ function AgeMessage({ accountSettingsUrl }) {
           <FormattedMessage
             id="profile.age.details"
             defaultMessage="To share your profile with other edX learners, you must confirm that you are over the age of 13."
-            description="error message"
+            description="Error message"
             tagName="p"
           />
           <a href={accountSettingsUrl}>
             <FormattedMessage
               id="profile.age.set.date"
               defaultMessage="Set your date of birth"
-              description="label on a link to set birthday"
+              description="Label on a link to set birthday"
             />
           </a>
         </>
