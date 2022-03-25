@@ -112,7 +112,6 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               >
                 <svg
                   aria-hidden={true}
-                  aria-label=""
                   fill="none"
                   focusable={false}
                   height={24}
@@ -180,7 +179,6 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               >
                 <svg
                   aria-hidden={true}
-                  aria-label=""
                   fill="none"
                   focusable={false}
                   height={24}
@@ -381,17 +379,17 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
           className="d-none d-md-block float-right"
         >
           <a
-            className="btn btn-primary"
+            className="pgn__hyperlink default-link standalone-link btn btn-primary"
             href="http://localhost:18150/records"
             onClick={[Function]}
-            rel="noopener"
+            rel="noopener noreferrer"
             target="_blank"
           >
             View My Records
             <span
-              className="d-inline-block align-text-top"
+              className="pgn__hyperlink__external-icon"
+              title="Opens in a new tab"
             >
-               
               <span
                 className="pgn__icon"
                 style={
@@ -403,7 +401,6 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               >
                 <svg
                   aria-hidden={true}
-                  aria-label=""
                   fill="none"
                   focusable={false}
                   height={24}
@@ -417,6 +414,11 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     fill="currentColor"
                   />
                 </svg>
+                <span
+                  className="sr-only"
+                >
+                  in a new tab
+                </span>
               </span>
             </span>
           </a>
@@ -459,17 +461,17 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
           className="d-md-none mb-4"
         >
           <a
-            className="btn btn-primary"
+            className="pgn__hyperlink default-link standalone-link btn btn-primary"
             href="http://localhost:18150/records"
             onClick={[Function]}
-            rel="noopener"
+            rel="noopener noreferrer"
             target="_blank"
           >
             View My Records
             <span
-              className="d-inline-block align-text-top"
+              className="pgn__hyperlink__external-icon"
+              title="Opens in a new tab"
             >
-               
               <span
                 className="pgn__icon"
                 style={
@@ -481,7 +483,6 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               >
                 <svg
                   aria-hidden={true}
-                  aria-label=""
                   fill="none"
                   focusable={false}
                   height={24}
@@ -495,6 +496,11 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     fill="currentColor"
                   />
                 </svg>
+                <span
+                  className="sr-only"
+                >
+                  in a new tab
+                </span>
               </span>
             </span>
           </a>
@@ -1276,17 +1282,17 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     </p>
                     <div>
                       <a
-                        className="btn btn-outline-primary"
+                        className="pgn__hyperlink default-link standalone-link btn btn-outline-primary"
                         href="http://www.example.com/"
                         onClick={[Function]}
-                        rel="noopener"
+                        rel="noopener noreferrer"
                         target="_blank"
                       >
                         View Certificate
                         <span
-                          className="d-inline-block align-text-top"
+                          className="pgn__hyperlink__external-icon"
+                          title="Opens in a new tab"
                         >
-                           
                           <span
                             className="pgn__icon"
                             style={
@@ -1298,7 +1304,6 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                           >
                             <svg
                               aria-hidden={true}
-                              aria-label=""
                               fill="none"
                               focusable={false}
                               height={24}
@@ -1312,6 +1317,11 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                                 fill="currentColor"
                               />
                             </svg>
+                            <span
+                              className="sr-only"
+                            >
+                              in a new tab
+                            </span>
                           </span>
                         </span>
                       </a>
@@ -1432,17 +1442,17 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
           className="d-none d-md-block float-right"
         >
           <a
-            className="btn btn-primary"
+            className="pgn__hyperlink default-link standalone-link btn btn-primary"
             href="http://localhost:18150/records"
             onClick={[Function]}
-            rel="noopener"
+            rel="noopener noreferrer"
             target="_blank"
           >
             View My Records
             <span
-              className="d-inline-block align-text-top"
+              className="pgn__hyperlink__external-icon"
+              title="Opens in a new tab"
             >
-               
               <span
                 className="pgn__icon"
                 style={
@@ -1454,7 +1464,6 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               >
                 <svg
                   aria-hidden={true}
-                  aria-label=""
                   fill="none"
                   focusable={false}
                   height={24}
@@ -1468,6 +1477,11 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     fill="currentColor"
                   />
                 </svg>
+                <span
+                  className="sr-only"
+                >
+                  in a new tab
+                </span>
               </span>
             </span>
           </a>
@@ -1510,17 +1524,17 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
           className="d-md-none mb-4"
         >
           <a
-            className="btn btn-primary"
+            className="pgn__hyperlink default-link standalone-link btn btn-primary"
             href="http://localhost:18150/records"
             onClick={[Function]}
-            rel="noopener"
+            rel="noopener noreferrer"
             target="_blank"
           >
             View My Records
             <span
-              className="d-inline-block align-text-top"
+              className="pgn__hyperlink__external-icon"
+              title="Opens in a new tab"
             >
-               
               <span
                 className="pgn__icon"
                 style={
@@ -1532,7 +1546,6 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               >
                 <svg
                   aria-hidden={true}
-                  aria-label=""
                   fill="none"
                   focusable={false}
                   height={24}
@@ -1546,6 +1559,11 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     fill="currentColor"
                   />
                 </svg>
+                <span
+                  className="sr-only"
+                >
+                  in a new tab
+                </span>
               </span>
             </span>
           </a>
@@ -2218,7 +2236,6 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                           >
                             <svg
                               aria-hidden={true}
-                              aria-label=""
                               fill="none"
                               focusable={false}
                               height={24}
@@ -2234,9 +2251,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                             </svg>
                           </span>
                         </span>
-                        <span
-                          className=""
-                        >
+                        <span>
                           Saving
                         </span>
                       </span>
@@ -2398,17 +2413,17 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     </p>
                     <div>
                       <a
-                        className="btn btn-outline-primary"
+                        className="pgn__hyperlink default-link standalone-link btn btn-outline-primary"
                         href="http://www.example.com/"
                         onClick={[Function]}
-                        rel="noopener"
+                        rel="noopener noreferrer"
                         target="_blank"
                       >
                         View Certificate
                         <span
-                          className="d-inline-block align-text-top"
+                          className="pgn__hyperlink__external-icon"
+                          title="Opens in a new tab"
                         >
-                           
                           <span
                             className="pgn__icon"
                             style={
@@ -2420,7 +2435,6 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                           >
                             <svg
                               aria-hidden={true}
-                              aria-label=""
                               fill="none"
                               focusable={false}
                               height={24}
@@ -2434,6 +2448,11 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                                 fill="currentColor"
                               />
                             </svg>
+                            <span
+                              className="sr-only"
+                            >
+                              in a new tab
+                            </span>
                           </span>
                         </span>
                       </a>
@@ -3367,17 +3386,17 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                     </p>
                     <div>
                       <a
-                        className="btn btn-outline-primary"
+                        className="pgn__hyperlink default-link standalone-link btn btn-outline-primary"
                         href="http://www.example.com/"
                         onClick={[Function]}
-                        rel="noopener"
+                        rel="noopener noreferrer"
                         target="_blank"
                       >
                         View Certificate
                         <span
-                          className="d-inline-block align-text-top"
+                          className="pgn__hyperlink__external-icon"
+                          title="Opens in a new tab"
                         >
-                           
                           <span
                             className="pgn__icon"
                             style={
@@ -3389,7 +3408,6 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                           >
                             <svg
                               aria-hidden={true}
-                              aria-label=""
                               fill="none"
                               focusable={false}
                               height={24}
@@ -3403,6 +3421,11 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                                 fill="currentColor"
                               />
                             </svg>
+                            <span
+                              className="sr-only"
+                            >
+                              in a new tab
+                            </span>
                           </span>
                         </span>
                       </a>
