@@ -8,7 +8,7 @@ const messages = defineMessages({
   },
   'profile.visibility.who.everyone': {
     id: 'profile.visibility.who.everyone',
-    defaultMessage: 'Everyone on edX',
+    defaultMessage: 'Everyone on {siteName}',
     description: 'What users can see this area?',
   },
 });
