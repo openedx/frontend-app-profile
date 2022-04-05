@@ -2,6 +2,7 @@ import React from 'react';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { VisibilityOff } from '@edx/paragon/icons';
 import { Icon } from '@edx/paragon';
+import { getConfig } from '@edx/frontend-platform';
 
 function UsernameDescription() {
   return (
@@ -10,8 +11,11 @@ function UsernameDescription() {
       <div className="username-description">
         <FormattedMessage
           id="profile.username.description"
-          defaultMessage="Your profile information is only visible to you. Only your username is visible to others on edX."
+          defaultMessage="Your profile information is only visible to you. Only your username is visible to others on {siteName}."
           description="A description of the username field"
+          values={{
+            siteName: getConfig().SITE_NAME,
+          }}
         />
       </div>
     </div>

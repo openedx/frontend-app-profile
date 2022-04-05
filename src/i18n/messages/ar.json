@@ -1,6 +1,6 @@
 {
   "profile.age.headline": "لا يمكن مشاركة ملفك الشخصي",
-  "profile.age.details": "لمشاركة ملفك الشخصي مع متعلمي edX الآخرين يجب التحقق من أن يكون عمرك أكثر من ١٣ سنة",
+  "profile.age.details": "لمشاركة ملفك الشخصي مع متعلمي {siteName} الآخرين يجب التحقق من أن يكون عمرك أكثر من ١٣ سنة",
   "profile.age.set.date": "اضبط تاريخ ميلاك",
   "profile.datejoined.member.since": "عضو منذُ {year}",
   "profile.bio.empty": "أضف نبذة قصيرة",
@@ -33,7 +33,7 @@
   "profile.formcontrols.button.saving": "جاري الحفظ",
   "profile.formcontrols.button.saved": "تم الحفظ",
   "profile.visibility.who.just.me": "أنا فقط",
-  "profile.visibility.who.everyone": "جميع أعضاء edX",
+  "profile.visibility.who.everyone": "جميع أعضاء {siteName}",
   "profile.name.full.name": "الاسم الكامل",
   "profile.name.details": "هذا هو الاسم الذي سيظهر في حسابك وفي شهاداتك",
   "profile.name.empty": "إضافة اسم",
@@ -48,5 +48,5 @@
   "profile.notfound.message": "الصفحة التي تبحث عنها غير متوفرة أو هناك خطأ في نص الرابط. الرجاء التحقق من الرابط والمحاولة مجددا.",
   "profile.viewMyRecords": "عرض سجلّاتي",
   "profile.loading": "جاري تحميل الملف الشخصي ...",
-  "profile.username.description": "Your profile information is only visible to you. Only your username is visible to others on edX."
+  "profile.username.description": "Your profile information is only visible to you. Only your username is visible to others on {siteName}."
 }
