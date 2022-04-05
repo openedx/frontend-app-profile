@@ -1,6 +1,6 @@
 {
   "profile.age.headline": "Your profile cannot be shared.",
-  "profile.age.details": "To share your profile with other edX learners, you must confirm that you are over the age of 13.",
+  "profile.age.details": "To share your profile with other {siteName} learners, you must confirm that you are over the age of 13.",
   "profile.age.set.date": "Set your date of birth",
   "profile.datejoined.member.since": "Member since {year}",
   "profile.bio.empty": "Add a short bio",
@@ -33,7 +33,7 @@
   "profile.formcontrols.button.saving": "Saving",
   "profile.formcontrols.button.saved": "Saved",
   "profile.visibility.who.just.me": "Just me",
-  "profile.visibility.who.everyone": "Everyone on edX",
+  "profile.visibility.who.everyone": "Everyone on {siteName}",
   "profile.name.full.name": "Full Name",
   "profile.name.details": "This is the name that appears in your account and on your certificates.",
   "profile.name.empty": "Add name",
@@ -48,5 +48,5 @@
   "profile.notfound.message": "The page you're looking for is unavailable or there's an error in the URL. Please check the URL and try again.",
   "profile.viewMyRecords": "View My Records",
   "profile.loading": "Profile loading...",
-  "profile.username.description": "Your profile information is only visible to you. Only your username is visible to others on edX."
+  "profile.username.description": "Your profile information is only visible to you. Only your username is visible to others on {siteName}."
 }

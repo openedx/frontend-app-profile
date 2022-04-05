@@ -130,7 +130,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
                 className="username-description"
               >
                 <span>
-                  Your profile information is only visible to you. Only your username is visible to others on edX.
+                  Your profile information is only visible to you. Only your username is visible to others on localhost.
                 </span>
               </div>
             </div>
@@ -197,7 +197,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
                 className="username-description"
               >
                 <span>
-                  Your profile information is only visible to you. Only your username is visible to others on edX.
+                  Your profile information is only visible to you. Only your username is visible to others on localhost.
                 </span>
               </div>
             </div>
@@ -679,7 +679,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     />
                   </svg>
                    
-                  Everyone on edX
+                  Everyone on localhost
                 </span>
               </p>
             </div>
@@ -769,7 +769,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     />
                   </svg>
                    
-                  Everyone on edX
+                  Everyone on localhost
                 </span>
               </p>
             </div>
@@ -949,7 +949,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     />
                   </svg>
                    
-                  Everyone on edX
+                  Everyone on localhost
                 </span>
               </p>
             </div>
@@ -1128,7 +1128,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     />
                   </svg>
                    
-                  Everyone on edX
+                  Everyone on localhost
                 </span>
               </p>
             </div>
@@ -1218,7 +1218,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     />
                   </svg>
                    
-                  Everyone on edX
+                  Everyone on localhost
                 </span>
               </p>
             </div>
@@ -1743,7 +1743,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     />
                   </svg>
                    
-                  Everyone on edX
+                  Everyone on localhost
                 </span>
               </p>
             </div>
@@ -1833,7 +1833,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     />
                   </svg>
                    
-                  Everyone on edX
+                  Everyone on localhost
                 </span>
               </p>
             </div>
@@ -2013,7 +2013,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     />
                   </svg>
                    
-                  Everyone on edX
+                  Everyone on localhost
                 </span>
               </p>
             </div>
@@ -2211,7 +2211,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                         <option
                           value="all_users"
                         >
-                          Everyone on edX
+                          Everyone on localhost
                         </option>
                       </select>
                     </span>
@@ -2350,7 +2350,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     />
                   </svg>
                    
-                  Everyone on edX
+                  Everyone on localhost
                 </span>
               </p>
             </div>
@@ -2785,7 +2785,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                     />
                   </svg>
                    
-                  Everyone on edX
+                  Everyone on localhost
                 </span>
               </p>
             </div>
@@ -2875,7 +2875,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                     />
                   </svg>
                    
-                  Everyone on edX
+                  Everyone on localhost
                 </span>
               </p>
             </div>
@@ -3055,7 +3055,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                     />
                   </svg>
                    
-                  Everyone on edX
+                  Everyone on localhost
                 </span>
               </p>
             </div>
@@ -3234,7 +3234,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                     />
                   </svg>
                    
-                  Everyone on edX
+                  Everyone on localhost
                 </span>
               </p>
             </div>
@@ -3324,7 +3324,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                     />
                   </svg>
                    
-                  Everyone on edX
+                  Everyone on localhost
                 </span>
               </p>
             </div>
