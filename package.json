@@ -64,7 +64,7 @@
     "@commitlint/cli": "13.2.1",
     "@commitlint/config-angular": "13.2.0",
     "@edx/reactifex": "1.0.3",
-    "@edx/frontend-build": "9.1.1",
+    "@edx/frontend-build": "9.1.4",
     "codecov": "3.8.3",
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.6",
