@@ -305,6 +305,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               >
                 <div
                   className="dropdown"
+                  data-testid="dropdown"
                 >
                   <button
                     aria-expanded={false}
@@ -1368,6 +1369,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               >
                 <div
                   className="dropdown"
+                  data-testid="dropdown"
                 >
                   <button
                     aria-expanded={false}
@@ -2499,6 +2501,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
               >
                 <div
                   className="dropdown"
+                  data-testid="dropdown"
                 >
                   <button
                     aria-expanded={false}
