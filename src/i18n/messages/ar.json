@@ -1,6 +1,6 @@
 {
   "profile.age.headline": "لا يمكن مشاركة ملفك الشخصي",
-  "profile.age.details": "لمشاركة ملفك الشخصي مع متعلمي {siteName} الآخرين يجب التحقق من أن يكون عمرك أكثر من ١٣ سنة",
+  "profile.age.details": "To share your profile with other {siteName} learners, you must confirm that you are over the age of 13.",
   "profile.age.set.date": "اضبط تاريخ ميلاك",
   "profile.datejoined.member.since": "عضو منذُ {year}",
   "profile.bio.empty": "أضف نبذة قصيرة",
@@ -33,7 +33,7 @@
   "profile.formcontrols.button.saving": "جاري الحفظ",
   "profile.formcontrols.button.saved": "تم الحفظ",
   "profile.visibility.who.just.me": "أنا فقط",
-  "profile.visibility.who.everyone": "جميع أعضاء {siteName}",
+  "profile.visibility.who.everyone": "Everyone on {siteName}",
   "profile.name.full.name": "الاسم الكامل",
   "profile.name.details": "هذا هو الاسم الذي سيظهر في حسابك وفي شهاداتك",
   "profile.name.empty": "إضافة اسم",
