@@ -1,42 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StatusAlert } from '@edx/paragon';
+import { Alert } from '@edx/paragon';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { getConfig } from '@edx/frontend-platform';
 
 function AgeMessage({ accountSettingsUrl }) {
   return (
-    <StatusAlert
-      alertType="info"
-      dialog={(
-        <>
-          <FormattedMessage
-            id="profile.age.headline"
-            defaultMessage="Your profile cannot be shared."
-            description="error message"
-            tagName="h6"
-          />
-          <FormattedMessage
-            id="profile.age.details"
-            defaultMessage="To share your profile with other {siteName} learners, you must confirm that you are over the age of 13."
-            description="Error message"
-            tagName="p"
-            values={{
-              siteName: getConfig().SITE_NAME,
-            }}
-          />
-          <a href={accountSettingsUrl}>
-            <FormattedMessage
-              id="profile.age.set.date"
-              defaultMessage="Set your date of birth"
-              description="Label on a link to set birthday"
-            />
-          </a>
-        </>
-      )}
+    <Alert
+      variant="info"
       dismissible={false}
-      open
-    />
+      show
+    >
+      <Alert.Heading id="profile.age.headline">
+        Your profile cannot be shared.
+      </Alert.Heading>
+      <FormattedMessage
+        id="profile.age.details"
+        defaultMessage="To share your profile with other {siteName} learners, you must confirm that you are over the age of 13."
+        description="Error message"
+        tagName="p"
+        values={{
+          siteName: getConfig().SITE_NAME,
+        }}
+      />
+      <Alert.Link href={accountSettingsUrl}>
+        <FormattedMessage
+          id="profile.age.set.date"
+          defaultMessage="Set your date of birth"
+          description="Label on a link to set birthday"
+        />
+      </Alert.Link>
+    </Alert>
   );
 }
 
