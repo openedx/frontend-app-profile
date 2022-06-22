@@ -156,7 +156,7 @@ class ProfilePage extends React.Component {
     return (
       <div className="row">
         <div className="col-md-4 col-lg-3">
-          <Alert alertType="danger" dismissible={false} show>
+          <Alert variant="danger" dismissible={false} show>
             {photoUploadError.userMessage}
           </Alert>
         </div>

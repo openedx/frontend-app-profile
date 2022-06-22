@@ -185,10 +185,12 @@ describe('<ProfilePage />', () => {
           </IntlProvider>
         </AppContext.Provider>
       );
-      const tree = renderer.create(component).toJSON();
-      expect(tree).toMatchSnapshot();
+      const wrapper = mount(component);
+      wrapper.update();
+
+      expect(wrapper.find('.alert-info').hasClass('show')).toBe(true);
     });
-    it('test age message alert', () => {
+    it('test photo error alert', () => {
       const storeData = JSON.parse(JSON.stringify(storeMocks.viewOwnProfile));
       storeData.profilePage.errors.photo = { userMessage: 'error' };
       const component = (
@@ -205,8 +207,10 @@ describe('<ProfilePage />', () => {
           </IntlProvider>
         </AppContext.Provider>
       );
-      const tree = renderer.create(component).toJSON();
-      expect(tree).toMatchSnapshot();
+      const wrapper = mount(component);
+      wrapper.update();
+
+      expect(wrapper.find('.alert-danger').hasClass('show')).toBe(true);
     });
   });
 
