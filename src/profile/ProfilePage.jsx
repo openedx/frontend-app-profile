@@ -6,7 +6,7 @@ import { sendTrackingLogEvent } from '@edx/frontend-platform/analytics';
 import { ensureConfig, getConfig } from '@edx/frontend-platform';
 import { AppContext } from '@edx/frontend-platform/react';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
-import { StatusAlert, Hyperlink } from '@edx/paragon';
+import { Alert, Hyperlink } from '@edx/paragon';
 
 // Actions
 import {
@@ -156,7 +156,9 @@ class ProfilePage extends React.Component {
     return (
       <div className="row">
         <div className="col-md-4 col-lg-3">
-          <StatusAlert alertType="danger" dialog={photoUploadError.userMessage} dismissible={false} open />
+          <Alert alertType="danger" dismissible={false} show>
+            {photoUploadError.userMessage}
+          </Alert>
         </div>
       </div>
     );

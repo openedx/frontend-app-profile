@@ -188,6 +188,26 @@ describe('<ProfilePage />', () => {
       const tree = renderer.create(component).toJSON();
       expect(tree).toMatchSnapshot();
     });
+    it('test age message alert', () => {
+      const storeData = JSON.parse(JSON.stringify(storeMocks.viewOwnProfile));
+      storeData.profilePage.errors.photo = { userMessage: 'error' };
+      const component = (
+        <AppContext.Provider
+          value={{
+            authenticatedUser: { userId: 123, username: 'staff', administrator: true },
+            config: { ...getConfig(), COLLECT_YEAR_OF_BIRTH: true },
+          }}
+        >
+          <IntlProvider locale="en">
+            <Provider store={mockStore(storeData)}>
+              <ProfilePage {...requiredProfilePageProps} />
+            </Provider>
+          </IntlProvider>
+        </AppContext.Provider>
+      );
+      const tree = renderer.create(component).toJSON();
+      expect(tree).toMatchSnapshot();
+    });
   });
 
   describe('handles analytics', () => {
