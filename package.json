@@ -45,7 +45,7 @@
     "lodash.get": "4.4.2",
     "lodash.pick": "4.4.0",
     "lodash.snakecase": "4.1.1",
-    "prop-types": "15.7.2",
+    "prop-types": "15.8.1",
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "react-redux": "7.2.8",
