@@ -1,6 +1,6 @@
 {
   "profile.age.headline": "Votre profil ne peut pas être partagé.",
-  "profile.age.details": "Pour partager votre profil avec d'autres apprenants {siteName}, vous devez confirmer que vous avez plus de 13 ans.",
+  "profile.age.details": "Pour partager votre profil avec d'autres étudiants {siteName}, vous devez confirmer que vous avez plus de 13 ans.",
   "profile.age.set.date": "Définissez votre date de naissance",
   "profile.datejoined.member.since": "Membre depuis {year}",
   "profile.bio.empty": "Ajouter une courte biographie",
@@ -48,5 +48,5 @@
   "profile.notfound.message": "La page que vous recherchez n'est pas disponible ou il y a une erreur dans l'URL. Veuillez vérifier l'URL et réessayer.",
   "profile.viewMyRecords": "Voir mes succès",
   "profile.loading": "Chargement du profil....",
-  "profile.username.description": "Les informations de ton profil ne sont visibles que par toi. Seul votre nom d'utilisateur est visible par les autres utilisateurs d'{siteName}."
+  "profile.username.description": "Les informations de votre profil ne sont visibles que par vous. Seul votre nom d'utilisateur est visible par les autres sur {siteName}."
 }
