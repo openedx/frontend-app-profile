@@ -158,7 +158,7 @@ class SocialLinks extends React.Component {
           ),
           editing: (
             <div role="dialog" aria-labelledby="social-links-label">
-              <form id="editing-form" onSubmit={this.handleSubmit}>
+              <form aria-labelledby="editing-form" onSubmit={this.handleSubmit}>
                 <EditableItemHeader
                   headingId="social-links-label"
                   content={intl.formatMessage(messages['profile.sociallinks.social.links'])}

@@ -21,7 +21,7 @@ exports[`<SocialLinks /> calls social links with edit mode bio 1`] = `
       role="dialog"
     >
       <form
-        id="editing-form"
+        aria-labelledby="editing-form"
         onSubmit={[Function]}
       >
         <div

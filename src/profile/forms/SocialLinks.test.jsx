@@ -104,10 +104,10 @@ describe('<SocialLinks />', () => {
     socialLink.find('#visibilitySocialLinks select').simulate('change', event);
     expect(changeHandler).toHaveBeenCalledTimes(2);
 
-    socialLink.find('#editing-form').simulate('submit');
+    socialLink.find('[aria-labelledby="editing-form"]').simulate('submit');
     expect(submitHandler).toHaveBeenCalledTimes(1);
 
-    socialLink.find('#editing-form').find('Button .btn-link').simulate('click');
+    socialLink.find('[aria-labelledby="editing-form"]').find('Button .btn-link').simulate('click');
     expect(closeHandler).toHaveBeenCalledTimes(1);
   });
 
