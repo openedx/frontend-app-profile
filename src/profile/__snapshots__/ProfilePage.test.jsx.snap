@@ -6925,7 +6925,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                       <span>
                         Completed on 
                         <span>
-                          3/5/2019
+                          3/4/2019
                         </span>
                       </span>
                     </p>
@@ -8056,7 +8056,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                       <span>
                         Completed on 
                         <span>
-                          3/5/2019
+                          3/4/2019
                         </span>
                       </span>
                     </p>
@@ -9030,7 +9030,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                       <span>
                         Completed on 
                         <span>
-                          3/5/2019
+                          3/4/2019
                         </span>
                       </span>
                     </p>
