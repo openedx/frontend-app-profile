@@ -65,19 +65,6 @@ class SocialLinks extends React.Component {
     }
   }
 
-  mergeWithDrafts(newSocialLink) {
-    const knownPlatforms = ['twitter', 'facebook', 'linkedin'];
-    const updated = [];
-    knownPlatforms.forEach((platform) => {
-      if (newSocialLink.platform === platform) {
-        updated.push(newSocialLink);
-      } else if (this.props.draftSocialLinksByPlatform[platform] !== undefined) {
-        updated.push(this.props.draftSocialLinksByPlatform[platform]);
-      }
-    });
-    return updated;
-  }
-
   handleSubmit(e) {
     e.preventDefault();
     this.props.submitHandler(this.props.formId);
@@ -89,6 +76,19 @@ class SocialLinks extends React.Component {
 
   handleOpen() {
     this.props.openHandler(this.props.formId);
+  }
+
+  mergeWithDrafts(newSocialLink) {
+    const knownPlatforms = ['twitter', 'facebook', 'linkedin'];
+    const updated = [];
+    knownPlatforms.forEach((platform) => {
+      if (newSocialLink.platform === platform) {
+        updated.push(newSocialLink);
+      } else if (this.props.draftSocialLinksByPlatform[platform] !== undefined) {
+        updated.push(this.props.draftSocialLinksByPlatform[platform]);
+      }
+    });
+    return updated;
   }
 
   render() {

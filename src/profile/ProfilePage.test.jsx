@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-constructed-context-values */
 /* eslint-disable global-require */
 import { getConfig } from '@edx/frontend-platform';
 import * as analytics from '@edx/frontend-platform/analytics';
@@ -15,10 +16,10 @@ import ProfilePage from './ProfilePage';
 
 const mockStore = configureMockStore([thunk]);
 const storeMocks = {
-  loadingApp: require('./__mocks__/loadingApp.mockStore.js'),
-  viewOwnProfile: require('./__mocks__/viewOwnProfile.mockStore.js'),
-  viewOtherProfile: require('./__mocks__/viewOtherProfile.mockStore.js'),
-  savingEditedBio: require('./__mocks__/savingEditedBio.mockStore.js'),
+  loadingApp: require('./__mocks__/loadingApp.mockStore'),
+  viewOwnProfile: require('./__mocks__/viewOwnProfile.mockStore'),
+  viewOtherProfile: require('./__mocks__/viewOtherProfile.mockStore'),
+  savingEditedBio: require('./__mocks__/savingEditedBio.mockStore'),
 };
 const requiredProfilePageProps = {
   fetchUserAccount: () => {},

@@ -24,7 +24,7 @@ export const initialState = {
   isAuthenticatedUserProfile: false,
 };
 
-const profilePage = (state = initialState, action) => {
+const profilePage = (state = initialState, action = {}) => {
   switch (action.type) {
     case FETCH_PROFILE.BEGIN:
       return {
