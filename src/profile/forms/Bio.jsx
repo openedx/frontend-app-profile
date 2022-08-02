@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl, intlShape } from '@edx/frontend-platform/i18n';
-import { ValidationFormGroup } from '@edx/paragon';
+import { Form } from '@edx/paragon';
 
 import messages from './Bio.messages';
 
@@ -56,10 +56,9 @@ class Bio extends React.Component {
           editing: (
             <div role="dialog" aria-labelledby={`${formId}-label`}>
               <form onSubmit={this.handleSubmit}>
-                <ValidationFormGroup
-                  for={formId}
-                  invalid={error !== null}
-                  invalidMessage={error}
+                <Form.Group
+                  controlId={formId}
+                  isInvalid={error !== null}
                 >
                   <label className="edit-section-header" htmlFor={formId}>
                     {intl.formatMessage(messages['profile.bio.about.me'])}
@@ -71,7 +70,12 @@ class Bio extends React.Component {
                     value={bio}
                     onChange={this.handleChange}
                   />
-                </ValidationFormGroup>
+                  {error !== null && (
+                    <Form.Control.Feedback hasIcon={false} >
+                      {error}
+                    </Form.Control.Feedback>
+                  )}
+                </Form.Group>
                 <FormControls
                   visibilityId="visibilityBio"
                   saveState={saveState}

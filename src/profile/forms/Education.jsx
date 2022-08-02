@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import get from 'lodash.get';
-import { ValidationFormGroup } from '@edx/paragon';
+import { Form } from '@edx/paragon';
 
 import messages from './Education.messages';
 
@@ -63,10 +63,9 @@ class Education extends React.Component {
           editing: (
             <div role="dialog" aria-labelledby={`${formId}-label`}>
               <form onSubmit={this.handleSubmit}>
-                <ValidationFormGroup
-                  for={formId}
-                  invalid={error !== null}
-                  invalidMessage={error}
+                <Form.Group
+                  controlId={formId}
+                  isInvalid={error !== null}
                 >
                   <label className="edit-section-header" htmlFor={formId}>
                     {intl.formatMessage(messages['profile.education.education'])}
@@ -90,7 +89,12 @@ class Education extends React.Component {
                       </option>
                     ))}
                   </select>
-                </ValidationFormGroup>
+                  {error !== null && (
+                    <Form.Control.Feedback hasIcon={false} >
+                      {error}
+                    </Form.Control.Feedback>
+                  )}
+                </Form.Group>
                 <FormControls
                   visibilityId="visibilityLevelOfEducation"
                   saveState={saveState}
