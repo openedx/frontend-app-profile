@@ -89,7 +89,7 @@ class Country extends React.Component {
                     ))}
                   </select>
                   {error !== null && (
-                    <Form.Control.Feedback hasIcon={false} >
+                    <Form.Control.Feedback hasIcon={false}>
                       {error}
                     </Form.Control.Feedback>
                   )}

@@ -71,7 +71,7 @@ class Bio extends React.Component {
                     onChange={this.handleChange}
                   />
                   {error !== null && (
-                    <Form.Control.Feedback hasIcon={false} >
+                    <Form.Control.Feedback hasIcon={false}>
                       {error}
                     </Form.Control.Feedback>
                   )}
