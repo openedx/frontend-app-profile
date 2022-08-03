@@ -2137,7 +2137,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                 onSubmit={[Function]}
               >
                 <div
-                  className="form-group"
+                  className="pgn__form-group"
                 >
                   <label
                     className="edit-section-header"
@@ -2146,7 +2146,6 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     About Me
                   </label>
                   <textarea
-                    aria-describedby=""
                     className="form-control"
                     id="bio"
                     name="bio"
