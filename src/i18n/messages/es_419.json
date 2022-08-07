@@ -1,6 +1,6 @@
 {
   "profile.age.headline": "Tu perfil no puede ser compartido.",
-  "profile.age.details": "To share your profile with other {siteName} learners, you must confirm that you are over the age of 13.",
+  "profile.age.details": "Para compartir el perfil con otros {siteName} estudiantes, debe confirmar que es mayor de 13 años.",
   "profile.age.set.date": "Establece tu fecha de nacimiento",
   "profile.datejoined.member.since": "Miembro desde {year}",
   "profile.bio.empty": "Añade una breve biografía",
@@ -33,7 +33,7 @@
   "profile.formcontrols.button.saving": "Guardando",
   "profile.formcontrols.button.saved": "Guardado",
   "profile.visibility.who.just.me": "Solo yo",
-  "profile.visibility.who.everyone": "Everyone on {siteName}",
+  "profile.visibility.who.everyone": "Todos en {siteName}",
   "profile.name.full.name": "Nombre completo",
   "profile.name.details": "Este es el nombre que aparecerá en tu cuenta y en tus certificados.",
   "profile.name.empty": "Añade nombre",
@@ -48,5 +48,5 @@
   "profile.notfound.message": "La página que estas buscando no está disponible o hay un error en la URL. Por favor, comprueba la URL y vuelve a intentarlo.",
   "profile.viewMyRecords": "Ver mis registros",
   "profile.loading": "Cargando perfil...",
-  "profile.username.description": "Your profile information is only visible to you. Only your username is visible to others on {siteName}."
+  "profile.username.description": "La información del perfil solo la visualiza usted. Solo el nombre de usuario es visible para los demás en {siteName}."
 }
