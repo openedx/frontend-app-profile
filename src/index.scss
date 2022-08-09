@@ -5,4 +5,14 @@
 @import "~@edx/frontend-component-header/dist/index";
 @import "~@edx/frontend-component-footer/dist/footer";
 
-@import './profile/index';
+@import "./profile/index";
+
+@import url("http://fonts.cdnfonts.com/css/work-sans");
+
+body {
+  font-family: "work sans", sans-serif;
+}
+
+.theme-primary {
+  background-color: #25a78e;
+}

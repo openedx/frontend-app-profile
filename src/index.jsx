@@ -1,5 +1,5 @@
-import 'core-js/stable';
-import 'regenerator-runtime/runtime';
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 
 import {
   APP_INIT_ERROR,
@@ -7,18 +7,18 @@ import {
   initialize,
   mergeConfig,
   subscribe,
-} from '@edx/frontend-platform';
-import {
-  AppProvider,
-  ErrorPage,
-} from '@edx/frontend-platform/react';
+} from "@edx/frontend-platform";
+import { AppProvider, ErrorPage } from "@edx/frontend-platform/react";
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Route, Switch } from 'react-router-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Route, Switch } from "react-router-dom";
+import Header from "./profile/Header/Header";
+import Footer from "./profile/Footer/Footer";
 
-import Header, { messages as headerMessages } from '@edx/frontend-component-header';
-import Footer, { messages as footerMessages } from '@edx/frontend-component-footer';
+import appMessages from "./i18n";
+import { ProfilePage, NotFoundPage } from "./profile";
+import configureStore from "./data/configureStore";
 
 import appMessages from './i18n';
 import { ProfilePage, NotFoundPage } from './profile';
@@ -41,20 +41,19 @@ subscribe(APP_READY, () => {
       </main>
       <Footer />
     </AppProvider>,
-    document.getElementById('root'),
+    document.getElementById("root")
   );
 });
 
 subscribe(APP_INIT_ERROR, (error) => {
-  ReactDOM.render(<ErrorPage message={error.message} />, document.getElementById('root'));
+  ReactDOM.render(
+    <ErrorPage message={error.message} />,
+    document.getElementById("root")
+  );
 });
 
 initialize({
-  messages: [
-    appMessages,
-    headerMessages,
-    footerMessages,
-  ],
+  messages: [appMessages],
   requireAuthenticatedUser: true,
   hydrateAuthenticatedUser: true,
   handlers: {
