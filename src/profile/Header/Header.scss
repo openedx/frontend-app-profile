@@ -1,0 +1,80 @@
+a.register-button.btn.btn-outline-primary {
+  border-radius: 4px;
+  background-color: #121212;
+  color: #fff;
+}
+
+a.login-button.btn.btn-primary {
+  background-color: transparent !important;
+  color: #121212;
+  border: none !important;
+  &:focus,
+  &:active {
+    border: none !important;
+    color: #121212;
+  }
+}
+
+a.courses-link {
+  color: #121212;
+  margin-left: 15px;
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
+}
+
+img.eye-icon {
+  margin-right: 15px;
+}
+
+header.header .user-dropdown button.dropdown-toggle.btn.btn-outline-primary {
+  border: none;
+  height: auto;
+  &::after {
+    display: none;
+  }
+  &:hover,
+  &:focus::before,
+  &:focus,
+  &:active {
+    background-color: transparent;
+    border: none;
+  }
+
+  svg {
+    margin-right: 10px;
+    color: #25a78e;
+  }
+}
+
+img.logo {
+  width: 200px;
+}
+
+div.header-desktop {
+  @media screen and(max-width:600px) {
+    display: none;
+  }
+}
+
+div.header-mobile {
+  display: none;
+  svg {
+    color: #25a78e;
+  }
+  @media screen and(max-width:600px) {
+    display: block;
+  }
+}
+
+a.login-button.btn-primary:not(:disabled):not(.disabled):hover {
+  color: #121212;
+}
+
+div.header-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  position: fixed;
+  right: 0;
+  left: 0;
+}

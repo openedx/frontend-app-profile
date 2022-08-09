@@ -1,0 +1,158 @@
+@import url("http://fonts.cdnfonts.com/css/work-sans");
+
+.colophon > .nav-colophon {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30px;
+  @media screen and (max-width:600px){
+    padding: 10px;
+  }
+  li {
+    padding-right: 15px;
+    list-style-type: none;
+    a {
+      margin: 6px 2px 66px 1px;
+      font-size: 16px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-family: "Work Sans", sans-serif;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: #121212;
+    }
+  }
+}
+.Line {
+  width: 90%;
+  height: 2px;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  opacity: 0.15;
+  border: solid 1px #121212;
+}
+
+div.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.privacy-items {
+  padding: 15px;
+  .privacy-links > ul {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    li {
+      padding-right: 15px;
+      margin: 6px 2px 0 1px;
+      margin-left: 15px;
+      list-style-type: none;
+      font-size: 12px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      font-family: "Work Sans", sans-serif;
+      letter-spacing: normal;
+      border-right: 1px solid #121212;
+      a {
+        color: #121212;
+      }
+      &:last-of-type {
+        border: none;
+      }
+    }
+  }
+}
+.flex.icons {
+  display: flex;
+  justify-content: center;
+  margin: 15px;
+  @media screen and (max-width: 850px) {
+    justify-content: start;
+    margin-left: 0;
+  }
+  svg {
+    margin: 0 15px;
+    width: 25px;
+  }
+}
+
+.logos-section {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  .partnership-logos {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  img {
+    width: 200px;
+    padding-left: 30px;
+    &:nth-child(2) {
+      width: 125px;
+      padding-left: 15px;
+    }
+    @media screen and (max-width: 600px) {
+      margin-bottom: 15px;
+    }
+  }
+  div.left-section, div.right-section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+}
+
+.Theme-licensed-under,
+.edX-Open-edX-and-th {
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #121212;
+  width: 300px;
+  margin: 0 15px;
+  font-family: "Work Sans", sans-serif;
+}
+
+.Name-All-rights {
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: right;
+  color: #121212;
+  font-family: "Work Sans", sans-serif;
+}
+
+
+header.site-header-desktop {
+  border: none;
+  position: absolute;
+  box-shadow: none;
+  width: 100%;
+  background: none;
+}
+
+nav.nav.secondary-menu-container.align-items-center.ml-auto {
+  .btn {
+    font-size: 14px;
+    color: #121212;
+  }
+  .btn-outline-primary {
+    border-radius: 4px;
+    background-color: #121212;
+    color: #fff;
+    font-size: 14px;
+  }
+}
