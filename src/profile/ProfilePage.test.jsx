@@ -146,6 +146,93 @@ describe('<ProfilePage />', () => {
       expect(tree).toMatchSnapshot();
     });
 
+    it('while saving an edited bio with error', () => {
+      const storeData = JSON.parse(JSON.stringify(storeMocks.savingEditedBio));
+      storeData.profilePage.errors.bio = { userMessage: 'bio error' };
+      const component = (
+        <AppContext.Provider
+          value={{
+            authenticatedUser: { userId: 123, username: 'staff', administrator: true },
+            config: getConfig(),
+          }}
+        >
+          <IntlProvider locale="en">
+            <Provider store={mockStore(storeData)}>
+              <ProfilePage {...requiredProfilePageProps} />
+            </Provider>
+          </IntlProvider>
+        </AppContext.Provider>
+      );
+      const tree = renderer.create(component).toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+
+    it('test country edit with error', () => {
+      const storeData = JSON.parse(JSON.stringify(storeMocks.savingEditedBio));
+      storeData.profilePage.errors.country = { userMessage: 'country error' };
+      storeData.profilePage.currentlyEditingField = 'country';
+      const component = (
+        <AppContext.Provider
+          value={{
+            authenticatedUser: { userId: 123, username: 'staff', administrator: true },
+            config: getConfig(),
+          }}
+        >
+          <IntlProvider locale="en">
+            <Provider store={mockStore(storeData)}>
+              <ProfilePage {...requiredProfilePageProps} />
+            </Provider>
+          </IntlProvider>
+        </AppContext.Provider>
+      );
+      const tree = renderer.create(component).toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+
+    it('test education edit with error', () => {
+      const storeData = JSON.parse(JSON.stringify(storeMocks.savingEditedBio));
+      storeData.profilePage.errors.levelOfEducation = { userMessage: 'education error' };
+      storeData.profilePage.currentlyEditingField = 'levelOfEducation';
+      const component = (
+        <AppContext.Provider
+          value={{
+            authenticatedUser: { userId: 123, username: 'staff', administrator: true },
+            config: getConfig(),
+          }}
+        >
+          <IntlProvider locale="en">
+            <Provider store={mockStore(storeData)}>
+              <ProfilePage {...requiredProfilePageProps} />
+            </Provider>
+          </IntlProvider>
+        </AppContext.Provider>
+      );
+      const tree = renderer.create(component).toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+
+    it('test preferreded language edit with error', () => {
+      const storeData = JSON.parse(JSON.stringify(storeMocks.savingEditedBio));
+      storeData.profilePage.errors.languageProficiencies = { userMessage: 'preferred language error' };
+      storeData.profilePage.currentlyEditingField = 'languageProficiencies';
+      const component = (
+        <AppContext.Provider
+          value={{
+            authenticatedUser: { userId: 123, username: 'staff', administrator: true },
+            config: getConfig(),
+          }}
+        >
+          <IntlProvider locale="en">
+            <Provider store={mockStore(storeData)}>
+              <ProfilePage {...requiredProfilePageProps} />
+            </Provider>
+          </IntlProvider>
+        </AppContext.Provider>
+      );
+      const tree = renderer.create(component).toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+
     it('without credentials service', () => {
       const config = getConfig();
       config.CREDENTIALS_BASE_URL = '';
