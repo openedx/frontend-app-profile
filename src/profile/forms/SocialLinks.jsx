@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StatusAlert } from '@edx/paragon';
+import { Alert } from '@edx/paragon';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
@@ -158,14 +158,19 @@ class SocialLinks extends React.Component {
           ),
           editing: (
             <div role="dialog" aria-labelledby="social-links-label">
-              <form onSubmit={this.handleSubmit}>
+              <form aria-labelledby="editing-form" onSubmit={this.handleSubmit}>
                 <EditableItemHeader
                   headingId="social-links-label"
                   content={intl.formatMessage(messages['profile.sociallinks.social.links'])}
                 />
                 {/* TODO: Replace this alert with per-field errors. Needs API update. */}
                 <div id="social-error-feedback">
-                  {error !== null ? <StatusAlert alertType="danger" dialog={error} dismissible={false} open /> : null}
+                  {error !== null
+                    ? (
+                      <Alert variant="danger" dismissible={false} show>
+                        {error}
+                      </Alert>
+                    ) : null}
                 </div>
                 <ul className="list-unstyled">
                   {socialLinks.map(({ platform, socialLink }) => (
