@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-constructed-context-values */
 import { mount } from 'enzyme';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -47,20 +48,22 @@ configureI18n({
   messages,
 });
 
-const SocialLinksWrapper = props => (
-  <AppContext.Provider
-    value={{
-      authenticatedUser: { userId: null, username: null, administrator: false },
-      config: getConfig(),
-    }}
-  >
-    <IntlProvider locale="en">
-      <Provider store={props.store}>
-        <SocialLinks {...props} />
-      </Provider>
-    </IntlProvider>
-  </AppContext.Provider>
-);
+function SocialLinksWrapper(props) {
+  return (
+    <AppContext.Provider
+      value={{
+        authenticatedUser: { userId: null, username: null, administrator: false },
+        config: getConfig(),
+      }}
+    >
+      <IntlProvider locale="en">
+        <Provider store={props.store}>
+          <SocialLinks {...props} />
+        </Provider>
+      </IntlProvider>
+    </AppContext.Provider>
+  );
+}
 
 SocialLinksWrapper.defaultProps = {
   store: mockStore(savingEditedBio),
