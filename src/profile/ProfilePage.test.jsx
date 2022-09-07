@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-constructed-context-values */
 /* eslint-disable global-require */
 import { getConfig } from '@edx/frontend-platform';
 import * as analytics from '@edx/frontend-platform/analytics';

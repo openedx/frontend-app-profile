@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-constructed-context-values */
 import { mount } from 'enzyme';
 import PropTypes from 'prop-types';
 import React from 'react';
