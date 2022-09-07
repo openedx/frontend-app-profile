@@ -17,7 +17,7 @@ Development
 Start Devstack
 ^^^^^^^^^^^^^^
 
-To use this application `devstack <https://github.com/edx/devstack>`__ must be running and you must be logged into it.
+To use this application `devstack <https://github.com/openedx/devstack>`__ must be running and you must be logged into it.
 
 -  Start devstack
 -  Log in (http://localhost:18000/login)
