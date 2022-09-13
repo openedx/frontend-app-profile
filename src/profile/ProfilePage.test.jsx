@@ -5,6 +5,7 @@ import { AppContext } from '@edx/frontend-platform/react';
 import { configure as configureI18n, IntlProvider } from '@edx/frontend-platform/i18n';
 import { mount } from 'enzyme';
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
 import configureMockStore from 'redux-mock-store';
@@ -65,82 +66,83 @@ beforeEach(() => {
   analytics.sendTrackingLogEvent.mockReset();
 });
 
+function ProfilePageWrapper({
+  contextValue, store, match, requiresParentalConsent,
+}) {
+  return (
+    <AppContext.Provider
+      value={contextValue}
+    >
+      <IntlProvider locale="en">
+        <Provider store={store}>
+          <ProfilePage {...requiredProfilePageProps} match={match} requiresParentalConsent={requiresParentalConsent} />
+        </Provider>
+      </IntlProvider>
+    </AppContext.Provider>
+  );
+}
+
+ProfilePageWrapper.defaultProps = {
+  match: { params: { username: 'staff' } },
+  requiresParentalConsent: null,
+
+};
+
+ProfilePageWrapper.propTypes = {
+  contextValue: PropTypes.shape({}).isRequired,
+  store: PropTypes.shape({}).isRequired,
+  match: PropTypes.shape({}),
+  requiresParentalConsent: PropTypes.bool,
+};
+
 describe('<ProfilePage />', () => {
   describe('Renders correctly in various states', () => {
     it('app loading', () => {
-      const component = (
-        <AppContext.Provider
-          value={{
-            authenticatedUser: { userId: null, username: null, administrator: false },
-            config: getConfig(),
-          }}
-        >
-          <IntlProvider locale="en">
-            <Provider store={mockStore(storeMocks.loadingApp)}>
-              <ProfilePage {...requiredProfilePageProps} />
-            </Provider>
-          </IntlProvider>
-        </AppContext.Provider>
-      );
+      const contextValue = {
+        authenticatedUser: { userId: null, username: null, administrator: false },
+        config: getConfig(),
+      };
+      const component = <ProfilePageWrapper contextValue={contextValue} store={mockStore(storeMocks.loadingApp)} />;
       const tree = renderer.create(component).toJSON();
       expect(tree).toMatchSnapshot();
     });
 
     it('viewing own profile', () => {
-      const component = (
-        <AppContext.Provider
-          value={{
-            authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-            config: getConfig(),
-          }}
-        >
-          <IntlProvider locale="en">
-            <Provider store={mockStore(storeMocks.viewOwnProfile)}>
-              <ProfilePage {...requiredProfilePageProps} />
-            </Provider>
-          </IntlProvider>
-        </AppContext.Provider>
-      );
+      const contextValue = {
+        authenticatedUser: { userId: 123, username: 'staff', administrator: true },
+        config: getConfig(),
+      };
+      const component = <ProfilePageWrapper contextValue={contextValue} store={mockStore(storeMocks.viewOwnProfile)} />;
       const tree = renderer.create(component).toJSON();
       expect(tree).toMatchSnapshot();
     });
 
     it('viewing other profile', () => {
+      const contextValue = {
+        authenticatedUser: { userId: 123, username: 'staff', administrator: true },
+        config: getConfig(),
+      };
       const component = (
-        <AppContext.Provider
-          value={{
-            authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-            config: getConfig(),
-          }}
-        >
-          <IntlProvider locale="en">
-            <Provider store={mockStore(storeMocks.viewOtherProfile)}>
-              <ProfilePage
-                {...requiredProfilePageProps}
-                match={{ params: { username: 'verified' } }} // Override default match
-              />
-            </Provider>
-          </IntlProvider>
-        </AppContext.Provider>
+        <ProfilePageWrapper
+          contextValue={contextValue}
+          store={mockStore(storeMocks.viewOtherProfile)}
+          match={{ params: { username: 'verified' } }} // Override default match
+        />
       );
       const tree = renderer.create(component).toJSON();
       expect(tree).toMatchSnapshot();
     });
 
     it('while saving an edited bio', () => {
+      const contextValue = {
+        authenticatedUser: { userId: 123, username: 'staff', administrator: true },
+        config: getConfig(),
+      };
       const component = (
-        <AppContext.Provider
-          value={{
-            authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-            config: getConfig(),
-          }}
-        >
-          <IntlProvider locale="en">
-            <Provider store={mockStore(storeMocks.savingEditedBio)}>
-              <ProfilePage {...requiredProfilePageProps} />
-            </Provider>
-          </IntlProvider>
-        </AppContext.Provider>
+        <ProfilePageWrapper
+          contextValue={contextValue}
+          store={mockStore(storeMocks.savingEditedBio)}
+        />
       );
       const tree = renderer.create(component).toJSON();
       expect(tree).toMatchSnapshot();
@@ -149,19 +151,15 @@ describe('<ProfilePage />', () => {
     it('while saving an edited bio with error', () => {
       const storeData = JSON.parse(JSON.stringify(storeMocks.savingEditedBio));
       storeData.profilePage.errors.bio = { userMessage: 'bio error' };
+      const contextValue = {
+        authenticatedUser: { userId: 123, username: 'staff', administrator: true },
+        config: getConfig(),
+      };
       const component = (
-        <AppContext.Provider
-          value={{
-            authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-            config: getConfig(),
-          }}
-        >
-          <IntlProvider locale="en">
-            <Provider store={mockStore(storeData)}>
-              <ProfilePage {...requiredProfilePageProps} />
-            </Provider>
-          </IntlProvider>
-        </AppContext.Provider>
+        <ProfilePageWrapper
+          contextValue={contextValue}
+          store={mockStore(storeData)}
+        />
       );
       const tree = renderer.create(component).toJSON();
       expect(tree).toMatchSnapshot();
@@ -171,19 +169,15 @@ describe('<ProfilePage />', () => {
       const storeData = JSON.parse(JSON.stringify(storeMocks.savingEditedBio));
       storeData.profilePage.errors.country = { userMessage: 'country error' };
       storeData.profilePage.currentlyEditingField = 'country';
+      const contextValue = {
+        authenticatedUser: { userId: 123, username: 'staff', administrator: true },
+        config: getConfig(),
+      };
       const component = (
-        <AppContext.Provider
-          value={{
-            authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-            config: getConfig(),
-          }}
-        >
-          <IntlProvider locale="en">
-            <Provider store={mockStore(storeData)}>
-              <ProfilePage {...requiredProfilePageProps} />
-            </Provider>
-          </IntlProvider>
-        </AppContext.Provider>
+        <ProfilePageWrapper
+          contextValue={contextValue}
+          store={mockStore(storeData)}
+        />
       );
       const tree = renderer.create(component).toJSON();
       expect(tree).toMatchSnapshot();
@@ -193,19 +187,15 @@ describe('<ProfilePage />', () => {
       const storeData = JSON.parse(JSON.stringify(storeMocks.savingEditedBio));
       storeData.profilePage.errors.levelOfEducation = { userMessage: 'education error' };
       storeData.profilePage.currentlyEditingField = 'levelOfEducation';
+      const contextValue = {
+        authenticatedUser: { userId: 123, username: 'staff', administrator: true },
+        config: getConfig(),
+      };
       const component = (
-        <AppContext.Provider
-          value={{
-            authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-            config: getConfig(),
-          }}
-        >
-          <IntlProvider locale="en">
-            <Provider store={mockStore(storeData)}>
-              <ProfilePage {...requiredProfilePageProps} />
-            </Provider>
-          </IntlProvider>
-        </AppContext.Provider>
+        <ProfilePageWrapper
+          contextValue={contextValue}
+          store={mockStore(storeData)}
+        />
       );
       const tree = renderer.create(component).toJSON();
       expect(tree).toMatchSnapshot();
@@ -215,19 +205,15 @@ describe('<ProfilePage />', () => {
       const storeData = JSON.parse(JSON.stringify(storeMocks.savingEditedBio));
       storeData.profilePage.errors.languageProficiencies = { userMessage: 'preferred language error' };
       storeData.profilePage.currentlyEditingField = 'languageProficiencies';
+      const contextValue = {
+        authenticatedUser: { userId: 123, username: 'staff', administrator: true },
+        config: getConfig(),
+      };
       const component = (
-        <AppContext.Provider
-          value={{
-            authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-            config: getConfig(),
-          }}
-        >
-          <IntlProvider locale="en">
-            <Provider store={mockStore(storeData)}>
-              <ProfilePage {...requiredProfilePageProps} />
-            </Provider>
-          </IntlProvider>
-        </AppContext.Provider>
+        <ProfilePageWrapper
+          contextValue={contextValue}
+          store={mockStore(storeData)}
+        />
       );
       const tree = renderer.create(component).toJSON();
       expect(tree).toMatchSnapshot();
@@ -237,19 +223,15 @@ describe('<ProfilePage />', () => {
       const config = getConfig();
       config.CREDENTIALS_BASE_URL = '';
 
+      const contextValue = {
+        authenticatedUser: { userId: 123, username: 'staff', administrator: true },
+        config: getConfig(),
+      };
       const component = (
-        <AppContext.Provider
-          value={{
-            authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-            config,
-          }}
-        >
-          <IntlProvider locale="en">
-            <Provider store={mockStore(storeMocks.viewOwnProfile)}>
-              <ProfilePage {...requiredProfilePageProps} />
-            </Provider>
-          </IntlProvider>
-        </AppContext.Provider>
+        <ProfilePageWrapper
+          contextValue={contextValue}
+          store={mockStore(storeMocks.viewOwnProfile)}
+        />
       );
       const tree = renderer.create(component).toJSON();
       expect(tree).toMatchSnapshot();
@@ -258,19 +240,16 @@ describe('<ProfilePage />', () => {
       const storeData = JSON.parse(JSON.stringify(storeMocks.viewOwnProfile));
       storeData.userAccount.requiresParentalConsent = true;
       storeData.profilePage.account.requiresParentalConsent = true;
+      const contextValue = {
+        authenticatedUser: { userId: 123, username: 'staff', administrator: true },
+        config: { ...getConfig(), COLLECT_YEAR_OF_BIRTH: true },
+      };
       const component = (
-        <AppContext.Provider
-          value={{
-            authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-            config: { ...getConfig(), COLLECT_YEAR_OF_BIRTH: true },
-          }}
-        >
-          <IntlProvider locale="en">
-            <Provider store={mockStore(storeData)}>
-              <ProfilePage {...requiredProfilePageProps} requiresParentalConsent />
-            </Provider>
-          </IntlProvider>
-        </AppContext.Provider>
+        <ProfilePageWrapper
+          contextValue={contextValue}
+          store={mockStore(storeData)}
+          requiresParentalConsent
+        />
       );
       const wrapper = mount(component);
       wrapper.update();
@@ -280,20 +259,11 @@ describe('<ProfilePage />', () => {
     it('test photo error alert', () => {
       const storeData = JSON.parse(JSON.stringify(storeMocks.viewOwnProfile));
       storeData.profilePage.errors.photo = { userMessage: 'error' };
-      const component = (
-        <AppContext.Provider
-          value={{
-            authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-            config: { ...getConfig(), COLLECT_YEAR_OF_BIRTH: true },
-          }}
-        >
-          <IntlProvider locale="en">
-            <Provider store={mockStore(storeData)}>
-              <ProfilePage {...requiredProfilePageProps} />
-            </Provider>
-          </IntlProvider>
-        </AppContext.Provider>
-      );
+      const contextValue = {
+        authenticatedUser: { userId: 123, username: 'staff', administrator: true },
+        config: { ...getConfig(), COLLECT_YEAR_OF_BIRTH: true },
+      };
+      const component = <ProfilePageWrapper contextValue={contextValue} store={mockStore(storeData)} />;
       const wrapper = mount(component);
       wrapper.update();
 
@@ -303,22 +273,16 @@ describe('<ProfilePage />', () => {
 
   describe('handles analytics', () => {
     it('calls sendTrackingLogEvent when mounting', () => {
+      const contextValue = {
+        authenticatedUser: { userId: 123, username: 'staff', administrator: true },
+        config: getConfig(),
+      };
       const component = (
-        <AppContext.Provider
-          value={{
-            authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-            config: getConfig(),
-          }}
-        >
-          <IntlProvider locale="en">
-            <Provider store={mockStore(storeMocks.loadingApp)}>
-              <ProfilePage
-                {...requiredProfilePageProps}
-                match={{ params: { username: 'test-username' } }}
-              />
-            </Provider>
-          </IntlProvider>
-        </AppContext.Provider>
+        <ProfilePageWrapper
+          contextValue={contextValue}
+          store={mockStore(storeMocks.loadingApp)}
+          match={{ params: { username: 'test-username' } }}
+        />
       );
       const wrapper = mount(component);
       wrapper.update();
