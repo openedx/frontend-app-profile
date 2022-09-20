@@ -1,6 +1,6 @@
 import { mount } from 'enzyme';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
 import configureMockStore from 'redux-mock-store';
@@ -47,26 +47,55 @@ configureI18n({
   messages,
 });
 
-const SocialLinksWrapper = props => (
-  <AppContext.Provider
-    value={{
-      authenticatedUser: { userId: null, username: null, administrator: false },
-      config: getConfig(),
-    }}
-  >
-    <IntlProvider locale="en">
-      <Provider store={props.store}>
-        <SocialLinks {...props} />
-      </Provider>
-    </IntlProvider>
-  </AppContext.Provider>
-);
+function SocialLinksWrapper(props) {
+  const contextValue = useMemo(() => ({
+    authenticatedUser: { userId: null, username: null, administrator: false },
+    config: getConfig(),
+  }), []);
+  return (
+    <AppContext.Provider
+      value={contextValue}
+    >
+      <IntlProvider locale="en">
+        <Provider store={props.store}>
+          <SocialLinks {...props} />
+        </Provider>
+      </IntlProvider>
+    </AppContext.Provider>
+  );
+}
 
 SocialLinksWrapper.defaultProps = {
   store: mockStore(savingEditedBio),
 };
 
 SocialLinksWrapper.propTypes = {
+  store: PropTypes.shape({}),
+};
+
+function SocialLinksWrapperWithStore({ store }) {
+  const contextValue = useMemo(() => ({
+    authenticatedUser: { userId: null, username: null, administrator: false },
+    config: getConfig(),
+  }), []);
+  return (
+    <AppContext.Provider
+      value={contextValue}
+    >
+      <IntlProvider locale="en">
+        <Provider store={mockStore(store)}>
+          <SocialLinks {...defaultProps} formId="bio" />
+        </Provider>
+      </IntlProvider>
+    </AppContext.Provider>
+  );
+}
+
+SocialLinksWrapperWithStore.defaultProps = {
+  store: mockStore(savingEditedBio),
+};
+
+SocialLinksWrapperWithStore.propTypes = {
   store: PropTypes.shape({}),
 };
 
@@ -130,20 +159,8 @@ describe('<SocialLinks />', () => {
   it('calls social links with error', () => {
     const newStore = JSON.parse(JSON.stringify(savingEditedBio));
     newStore.profilePage.errors.bio = { userMessage: 'error' };
-    const component = (
-      <AppContext.Provider
-        value={{
-          authenticatedUser: { userId: null, username: null, administrator: false },
-          config: getConfig(),
-        }}
-      >
-        <IntlProvider locale="en">
-          <Provider store={mockStore(newStore)}>
-            <SocialLinks {...defaultProps} formId="bio" />
-          </Provider>
-        </IntlProvider>
-      </AppContext.Provider>
-    );
+
+    const component = <SocialLinksWrapperWithStore store={newStore} />;
     const wrapper = mount(component);
     const socialLink = wrapper.find(SocialLinks);
 
