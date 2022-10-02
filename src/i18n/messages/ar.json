@@ -1,5 +1,5 @@
 {
-  "profile.age.details": "To share your profile with other {siteName} learners, you must confirm that you are over the age of 13.",
+  "profile.age.details": "لمشاركة ملفك الشخصي مع بقية متعلمي {siteName}، يجب أن تؤكد أنك عمرك يفوق 13 عامًا.",
   "profile.age.set.date": "ضيط تاريخ ميلادك",
   "profile.datejoined.member.since": "عضو منذ {year}",
   "profile.bio.empty": "إضافة نبذة قصيرة",
@@ -19,7 +19,7 @@
   "profile.education.levels.p": "دكتوراه",
   "profile.education.levels.m": "ماجستير / ماستر أو شهادة مهنيّة",
   "profile.education.levels.b": "بكالوريوس / ليسانس",
-  "profile.education.levels.a": "Associate's degree",
+  "profile.education.levels.a": "درجة الزمالة / دبلوم الدراسات الجامعية",
   "profile.education.levels.hs": "الثانوية العامة / البكالوريا",
   "profile.education.levels.jhs": "المدرسة الإعدادية / المتوسطة",
   "profile.education.levels.el": "المدرسة الابتدائية / الأساسية",
@@ -44,7 +44,7 @@
   "profile.profileavatar.change-button": "تغيير",
   "profile.sociallinks.add": "إضافة {network}",
   "profile.sociallinks.social.links": "روابط التواصل الاجتماعي",
-  "profile.notfound.message": "The page you're looking for is unavailable or there's an error in the URL. Please check the URL and try again.",
+  "profile.notfound.message": "الصفحة التي تبحث عنها غير متوفرة أو هناك خطأ في العنوان. رجاءً تحقق من العنوان و حاول مجدّدًا.",
   "profile.viewMyRecords": "عرض سجلّاتي",
   "profile.loading": "يتم تحميل الملف الشخصي...",
   "profile.username.description": "معلومات ملفك الشخصي تظهر لك فقط. وحده اسم المستخدم الخاص بك يظهر للآخرين على {siteName}."
