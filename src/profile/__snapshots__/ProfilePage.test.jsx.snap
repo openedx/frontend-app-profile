@@ -120,12 +120,8 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
             <p
               className="mb-0"
             >
-              <span>
-                Member since 
-                <span>
-                  2017
-                </span>
-              </span>
+              Member since 
+              2017
             </p>
             <hr
               className="d-none d-md-block"
@@ -202,12 +198,8 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
             <p
               className="mb-0"
             >
-              <span>
-                Member since 
-                <span>
-                  2017
-                </span>
-              </span>
+              Member since 
+              2017
             </p>
             <hr
               className="d-none d-md-block"
@@ -2346,9 +2338,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                     <p
                       className="small mb-0"
                     >
-                      <span>
-                        From
-                      </span>
+                      From
                     </p>
                     <p
                       className="h6 mb-4"
@@ -2361,12 +2351,8 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                     <p
                       className="small mb-2"
                     >
-                      <span>
-                        Completed on 
-                        <span>
-                          3/4/2019
-                        </span>
-                      </span>
+                      Completed on 
+                      3/4/2019
                     </p>
                     <div>
                       <a
@@ -2515,12 +2501,8 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
             <p
               className="mb-0"
             >
-              <span>
-                Member since 
-                <span>
-                  2017
-                </span>
-              </span>
+              Member since 
+              2017
             </p>
             <hr
               className="d-none d-md-block"
@@ -2597,12 +2579,8 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
             <p
               className="mb-0"
             >
-              <span>
-                Member since 
-                <span>
-                  2017
-                </span>
-              </span>
+              Member since 
+              2017
             </p>
             <hr
               className="d-none d-md-block"
@@ -3535,9 +3513,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                     <p
                       className="small mb-0"
                     >
-                      <span>
-                        From
-                      </span>
+                      From
                     </p>
                     <p
                       className="h6 mb-4"
@@ -3550,12 +3526,8 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                     <p
                       className="small mb-2"
                     >
-                      <span>
-                        Completed on 
-                        <span>
-                          3/4/2019
-                        </span>
-                      </span>
+                      Completed on 
+                      3/4/2019
                     </p>
                     <div>
                       <a
@@ -3704,12 +3676,8 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
             <p
               className="mb-0"
             >
-              <span>
-                Member since 
-                <span>
-                  2017
-                </span>
-              </span>
+              Member since 
+              2017
             </p>
             <hr
               className="d-none d-md-block"
@@ -3786,12 +3754,8 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
             <p
               className="mb-0"
             >
-              <span>
-                Member since 
-                <span>
-                  2017
-                </span>
-              </span>
+              Member since 
+              2017
             </p>
             <hr
               className="d-none d-md-block"
@@ -5599,9 +5563,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                     <p
                       className="small mb-0"
                     >
-                      <span>
-                        From
-                      </span>
+                      From
                     </p>
                     <p
                       className="h6 mb-4"
@@ -5614,12 +5576,8 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                     <p
                       className="small mb-2"
                     >
-                      <span>
-                        Completed on 
-                        <span>
-                          3/4/2019
-                        </span>
-                      </span>
+                      Completed on 
+                      3/4/2019
                     </p>
                     <div>
                       <a
@@ -5745,12 +5703,8 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
             <p
               className="mb-0"
             >
-              <span>
-                Member since 
-                <span>
-                  2017
-                </span>
-              </span>
+              Member since 
+              2017
             </p>
             <div
               className="d-flex align-items-center mt-3 mb-2rem"
@@ -5777,9 +5731,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               <div
                 className="username-description"
               >
-                <span>
-                  Your profile information is only visible to you. Only your username is visible to others on localhost.
-                </span>
+                Your profile information is only visible to you. Only your username is visible to others on localhost.
               </div>
             </div>
             <hr
@@ -5812,12 +5764,8 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
             <p
               className="mb-0"
             >
-              <span>
-                Member since 
-                <span>
-                  2017
-                </span>
-              </span>
+              Member since 
+              2017
             </p>
             <div
               className="d-flex align-items-center mt-3 mb-2rem"
@@ -5844,9 +5792,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               <div
                 className="username-description"
               >
-                <span>
-                  Your profile information is only visible to you. Only your username is visible to others on localhost.
-                </span>
+                Your profile information is only visible to you. Only your username is visible to others on localhost.
               </div>
             </div>
             <hr
@@ -6012,12 +5958,8 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
             <p
               className="mb-0"
             >
-              <span>
-                Member since 
-                <span>
-                  2017
-                </span>
-              </span>
+              Member since 
+              2017
             </p>
             <hr
               className="d-none d-md-block"
@@ -6094,12 +6036,8 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
             <p
               className="mb-0"
             >
-              <span>
-                Member since 
-                <span>
-                  2017
-                </span>
-              </span>
+              Member since 
+              2017
             </p>
             <hr
               className="d-none d-md-block"
@@ -6907,9 +6845,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     <p
                       className="small mb-0"
                     >
-                      <span>
-                        From
-                      </span>
+                      From
                     </p>
                     <p
                       className="h6 mb-4"
@@ -6922,12 +6858,8 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     <p
                       className="small mb-2"
                     >
-                      <span>
-                        Completed on 
-                        <span>
-                          3/4/2019
-                        </span>
-                      </span>
+                      Completed on 
+                      3/4/2019
                     </p>
                     <div>
                       <a
@@ -7076,12 +7008,8 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
             <p
               className="mb-0"
             >
-              <span>
-                Member since 
-                <span>
-                  2017
-                </span>
-              </span>
+              Member since 
+              2017
             </p>
             <hr
               className="d-none d-md-block"
@@ -7158,12 +7086,8 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
             <p
               className="mb-0"
             >
-              <span>
-                Member since 
-                <span>
-                  2017
-                </span>
-              </span>
+              Member since 
+              2017
             </p>
             <hr
               className="d-none d-md-block"
@@ -8038,9 +7962,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     <p
                       className="small mb-0"
                     >
-                      <span>
-                        From
-                      </span>
+                      From
                     </p>
                     <p
                       className="h6 mb-4"
@@ -8053,12 +7975,8 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     <p
                       className="small mb-2"
                     >
-                      <span>
-                        Completed on 
-                        <span>
-                          3/4/2019
-                        </span>
-                      </span>
+                      Completed on 
+                      3/4/2019
                     </p>
                     <div>
                       <a
@@ -8207,12 +8125,8 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
             <p
               className="mb-0"
             >
-              <span>
-                Member since 
-                <span>
-                  2017
-                </span>
-              </span>
+              Member since 
+              2017
             </p>
             <hr
               className="d-none d-md-block"
@@ -8289,12 +8203,8 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
             <p
               className="mb-0"
             >
-              <span>
-                Member since 
-                <span>
-                  2017
-                </span>
-              </span>
+              Member since 
+              2017
             </p>
             <hr
               className="d-none d-md-block"
@@ -9175,9 +9085,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     <p
                       className="small mb-0"
                     >
-                      <span>
-                        From
-                      </span>
+                      From
                     </p>
                     <p
                       className="h6 mb-4"
@@ -9190,12 +9098,8 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     <p
                       className="small mb-2"
                     >
-                      <span>
-                        Completed on 
-                        <span>
-                          3/4/2019
-                        </span>
-                      </span>
+                      Completed on 
+                      3/4/2019
                     </p>
                     <div>
                       <a
@@ -9344,12 +9248,8 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
             <p
               className="mb-0"
             >
-              <span>
-                Member since 
-                <span>
-                  2017
-                </span>
-              </span>
+              Member since 
+              2017
             </p>
             <hr
               className="d-none d-md-block"
@@ -9381,12 +9281,8 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
             <p
               className="mb-0"
             >
-              <span>
-                Member since 
-                <span>
-                  2017
-                </span>
-              </span>
+              Member since 
+              2017
             </p>
             <hr
               className="d-none d-md-block"
@@ -10149,9 +10045,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                     <p
                       className="small mb-0"
                     >
-                      <span>
-                        From
-                      </span>
+                      From
                     </p>
                     <p
                       className="h6 mb-4"
@@ -10164,12 +10058,8 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                     <p
                       className="small mb-2"
                     >
-                      <span>
-                        Completed on 
-                        <span>
-                          3/4/2019
-                        </span>
-                      </span>
+                      Completed on 
+                      3/4/2019
                     </p>
                     <div>
                       <a
