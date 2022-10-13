@@ -7,7 +7,7 @@ import Head from './Head';
 
 describe('Head', () => {
   const props = {};
-  it('should match render title tag and fivicon with the site configuration values', () => {
+  it('should match render title tag and favicon with the site configuration values', () => {
     mount(<IntlProvider locale="en"><Head {...props} /></IntlProvider>);
     const helmet = Helmet.peek();
     expect(helmet.title).toEqual(`Profile | ${getConfig().SITE_NAME}`);
