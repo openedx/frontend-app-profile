@@ -399,9 +399,7 @@ exports[`<SocialLinks /> calls social links with edit mode goals 1`] = `
                 style={Object {}}
               />
             </svg>
-            <span>
-              Add Facebook
-            </span>
+            Add Facebook
           </button>
         </div>
       </li>
@@ -433,9 +431,7 @@ exports[`<SocialLinks /> calls social links with edit mode goals 1`] = `
                 style={Object {}}
               />
             </svg>
-            <span>
-              Add Twitter
-            </span>
+            Add Twitter
           </button>
         </div>
       </li>
