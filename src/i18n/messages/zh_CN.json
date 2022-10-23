@@ -1,4 +1,5 @@
 {
+  "profile.page.title": "Profile | {siteName}",
   "profile.age.details": "To share your profile with other {siteName} learners, you must confirm that you are over the age of 13.",
   "profile.age.set.date": "Set your date of birth",
   "profile.datejoined.member.since": "Member since {year}",
