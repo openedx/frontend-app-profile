@@ -7,9 +7,9 @@ import messages from './FormControls.messages';
 
 import { VisibilitySelect } from './Visibility';
 
-function FormControls({
+const FormControls = ({
   cancelHandler, changeHandler, visibility, visibilityId, saveState, intl,
-}) {
+}) => {
   // Eliminate error/failed state for save button
   const buttonState = saveState === 'error' ? null : saveState;
 
@@ -57,7 +57,7 @@ function FormControls({
       </div>
     </div>
   );
-}
+};
 
 export default injectIntl(FormControls);
 

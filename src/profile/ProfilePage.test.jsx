@@ -66,21 +66,19 @@ beforeEach(() => {
   analytics.sendTrackingLogEvent.mockReset();
 });
 
-function ProfilePageWrapper({
+const ProfilePageWrapper = ({
   contextValue, store, match, requiresParentalConsent,
-}) {
-  return (
-    <AppContext.Provider
-      value={contextValue}
-    >
-      <IntlProvider locale="en">
-        <Provider store={store}>
-          <ProfilePage {...requiredProfilePageProps} match={match} requiresParentalConsent={requiresParentalConsent} />
-        </Provider>
-      </IntlProvider>
-    </AppContext.Provider>
-  );
-}
+}) => (
+  <AppContext.Provider
+    value={contextValue}
+  >
+    <IntlProvider locale="en">
+      <Provider store={store}>
+        <ProfilePage {...requiredProfilePageProps} match={match} requiresParentalConsent={requiresParentalConsent} />
+      </Provider>
+    </IntlProvider>
+  </AppContext.Provider>
+);
 
 ProfilePageWrapper.defaultProps = {
   match: { params: { username: 'staff' } },

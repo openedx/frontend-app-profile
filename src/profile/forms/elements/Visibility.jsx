@@ -7,7 +7,7 @@ import { faEyeSlash, faEye } from '@fortawesome/free-regular-svg-icons';
 
 import messages from './Visibility.messages';
 
-function Visibility({ to, intl }) {
+const Visibility = ({ to, intl }) => {
   const icon = to === 'private' ? faEyeSlash : faEye;
   const label = to === 'private'
     ? intl.formatMessage(messages['profile.visibility.who.just.me'])
@@ -18,7 +18,7 @@ function Visibility({ to, intl }) {
       <FontAwesomeIcon icon={icon} /> {label}
     </span>
   );
-}
+};
 
 Visibility.propTypes = {
   to: PropTypes.oneOf(['private', 'all_users']),
@@ -30,7 +30,7 @@ Visibility.defaultProps = {
   to: 'private',
 };
 
-function VisibilitySelect({ intl, className, ...props }) {
+const VisibilitySelect = ({ intl, className, ...props }) => {
   const { value } = props;
   const icon = value === 'private' ? faEyeSlash : faEye;
 
@@ -49,7 +49,7 @@ function VisibilitySelect({ intl, className, ...props }) {
       </select>
     </span>
   );
-}
+};
 
 VisibilitySelect.propTypes = {
   id: PropTypes.string,
