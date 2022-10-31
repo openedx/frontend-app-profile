@@ -3,24 +3,22 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
-function EmptyContent({ children, onClick, showPlusIcon }) {
-  return (
-    <div>
-      {onClick ? (
-        <button
-          type="button"
-          className="pl-0 text-left btn btn-link"
-          onClick={onClick}
-          onKeyDown={(e) => { if (e.key === 'Enter') { onClick(); } }}
-          tabIndex={0}
-        >
-          {showPlusIcon ? <FontAwesomeIcon size="xs" className="mr-2" icon={faPlus} /> : null}
-          {children}
-        </button>
-      ) : children}
-    </div>
-  );
-}
+const EmptyContent = ({ children, onClick, showPlusIcon }) => (
+  <div>
+    {onClick ? (
+      <button
+        type="button"
+        className="pl-0 text-left btn btn-link"
+        onClick={onClick}
+        onKeyDown={(e) => { if (e.key === 'Enter') { onClick(); } }}
+        tabIndex={0}
+      >
+        {showPlusIcon ? <FontAwesomeIcon size="xs" className="mr-2" icon={faPlus} /> : null}
+        {children}
+      </button>
+    ) : children}
+  </div>
+);
 
 export default EmptyContent;
 
