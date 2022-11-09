@@ -283,7 +283,7 @@ export const formValuesSelector = createSelector(
   profileCourseCertificatesSelector,
   formSocialLinksSelector,
   skillsQuizSelector,
-  (account, visibilities, drafts, courseCertificates, socialLinks, skillsQuiz) => ({
+  (account, visibilities, drafts, courseCertificates, socialLinks) => ({
     bio: chooseFormValue(drafts.bio, account.bio),
     visibilityBio: chooseFormValue(drafts.visibilityBio, visibilities.visibilityBio),
     courseCertificates,

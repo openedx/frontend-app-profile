@@ -51,101 +51,25 @@ class SkillsQuiz extends React.Component {
   }
 
   render() {
+    console.log("render in SkillsQuiz.jsx");
+    console.log(this.props);
     const {
-      goal, visibilitySkillsQuiz, formId, editMode, saveState, error, intl,
+      skillsQuiz, formId, editMode, saveState, error, intl,
     } = this.props;
 
     return (
-      <SwitchContent
-        className="mb-5"
-        expression={editMode}
-        cases={{
-          editing: (
-            <div role="dialog" aria-labelledby={`${formId}-label`}>
-              <p>{console.log(goal)}</p>
-              <form onSubmit={this.handleSubmit}>
-                <Form.Group
-                  controlId={formId}
-                  isInvalid={error !== null}
-                >
-                  <label className="edit-section-header" htmlFor={formId}>
-                    {intl.formatMessage(messages['profile.recommendations.goals.label'])}
-                  </label>
-                  <select
-                    data-hj-suppress
-                    className="form-control"
-                    id={formId}
-                    name={formId}
-                    value={goal}
-                    onChange={this.handleChange}
-                  >
-                    <option value="">&nbsp;</option>
-                    {GOALS.map(level => (
-                        <option key={level} value={level}>
-                          {intl.formatMessage(get(
-                            messages,
-                            `profile.recommendations.goals.${goal}`,
-                            messages['profile.recommendations.goals.other'],
-                          ))}
-                        </option>
-                    ))}
-                  </select>
-                  {error !== null && (
-                    <Form.Control.Feedback hasIcon={false}>
-                      {error}
-                    </Form.Control.Feedback>
-                  )}
-                </Form.Group>
-                <FormControls
-                  visibilityId="visibilitySkillsQuiz"
-                  saveState={saveState}
-                  visibility={visibilitySkillsQuiz}
-                  cancelHandler={this.handleClose}
-                  changeHandler={this.handleChange}
-                />
-              </form>
-            </div>
-          ),
-          editable: (
-            <>
-              <EditableItemHeader
-                content={intl.formatMessage(messages['profile.recommendations.goals.label'])}
-              />
-              <p data-hj-suppress className="h5">
-                {intl.formatMessage(get(
-                  messages,
-                  `profile.recommendations.goals.${goal}`,
-                  messages['profile.recommendations.goals.other'],
-                ))}
-              </p>
-            </>
-          ),
-          empty: (
-            <>
-              <EditableItemHeader
-                content={intl.formatMessage(messages['profile.recommendations.goals.label'])}
-              />
-              <EmptyContent onClick={this.handleOpen}>
-                {intl.formatMessage(messages['profile.recommendations.goals.empty'])}
-              </EmptyContent>
-            </>
-          ),
-          static: (
-            <>
-              <EditableItemHeader
-                content={intl.formatMessage(messages['profile.recommendations.goals.label'])}
-              />
-              <p data-hj-suppress className="h5">
-                {intl.formatMessage(get(
-                  messages,
-                  `profile.recommendations.goals.other`,
-                  messages['profile.recommendations.goals.other'],
-                ))}
-              </p>
-            </>
-          ),
-        }}
-      />
+      <div className="mb-5">
+        <label className="edit-section-header">
+          {intl.formatMessage(messages['profile.recommendations.goals.label'])}
+        </label>
+        <p classname="h5">
+          {intl.formatMessage(get(
+            messages,
+            `profile.recommendations.goals.${skillsQuiz.goal}`,
+            messages['profile.recommendations.goals.empty'],
+          ))}
+        </p>
+      </div>
     );
   }
 }
@@ -154,7 +78,7 @@ SkillsQuiz.propTypes = {
   formId: PropTypes.string.isRequired,
 
   // From Selector
-  goal: PropTypes.string,
+  skillsQuiz: PropTypes.object,
   visibilitySkillsQuiz: PropTypes.oneOf(['private', 'all_users']),
   editMode: PropTypes.oneOf(['editing', 'editable', 'empty', 'static']),
   saveState: PropTypes.string,
@@ -173,7 +97,7 @@ SkillsQuiz.propTypes = {
 SkillsQuiz.defaultProps = {
   editMode: 'static',
   saveState: null,
-  goal: null,
+  skillsQuiz: {},
   visibilitySkillsQuiz: null,
   error: null,
 };

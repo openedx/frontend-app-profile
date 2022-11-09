@@ -267,7 +267,7 @@ class ProfilePage extends React.Component {
               {...commonFormProps}
             />
             <SkillsQuiz
-              goal=""
+              skillsQuiz={skillsQuiz}
               visibilitySkillsQuiz='private'
               formId="skillsQuiz"
               {...commonFormProps}
@@ -409,7 +409,6 @@ ProfilePage.defaultProps = {
 
 export default connect(
   profilePageSelector,
-  //skillsQuizSelector,
   {
     fetchProfile,
     saveProfilePhoto,
