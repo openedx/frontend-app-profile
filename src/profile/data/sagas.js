@@ -31,17 +31,19 @@ import {
   SAVE_PROFILE,
   SAVE_PROFILE_PHOTO,
 } from './actions';
-import { handleSaveProfileSelector, userAccountSelector } from './selectors';
+import { handleSaveProfileSelector, userAccountSelector, skillsQuizSelector } from './selectors';
 import * as ProfileApiService from './services';
 
 export function* handleFetchProfile(action) {
   const { username } = action.payload;
   const userAccount = yield select(userAccountSelector);
+  const userSkillsQuiz = yield select(skillsQuizSelector);
   const isAuthenticatedUserProfile = username === getAuthenticatedUser().username;
   // Default our data assuming the account is the current user's account.
   let preferences = {};
   let account = userAccount;
   let courseCertificates = null;
+  let skillsQuiz = userSkillsQuiz;
 
   try {
     yield put(fetchProfileBegin());
@@ -56,13 +58,16 @@ export function* handleFetchProfile(action) {
       // If the profile is for the current user, get their preferences.
       // We don't need them for other users.
       calls.push(call(ProfileApiService.getPreferences, username));
+      calls.push(call(ProfileApiService.getSkillsQuizData, username));
     }
 
     // Make all the calls in parallel.
     const result = yield all(calls);
 
     if (isAuthenticatedUserProfile) {
-      [account, courseCertificates, preferences] = result;
+      console.log("handleFetchProfile() in sagas.js")
+      console.log(result);
+      [account, courseCertificates, preferences, skillsQuiz] = result;
     } else {
       [account, courseCertificates] = result;
     }
@@ -70,6 +75,7 @@ export function* handleFetchProfile(action) {
       account,
       preferences,
       courseCertificates,
+      skillsQuiz,
       isAuthenticatedUserProfile,
     ));
 

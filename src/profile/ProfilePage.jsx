@@ -28,6 +28,7 @@ import Education from './forms/Education';
 import SocialLinks from './forms/SocialLinks';
 import Bio from './forms/Bio';
 import Certificates from './forms/Certificates';
+import SkillsQuiz from './forms/SkillsQuiz';
 import AgeMessage from './AgeMessage';
 import DateJoined from './DateJoined';
 import UsernameDescription from './UsernameDescription';
@@ -35,12 +36,12 @@ import PageLoading from './PageLoading';
 import Banner from './Banner';
 
 // Selectors
-import { profilePageSelector } from './data/selectors';
+import { profilePageSelector, skillsQuizSelector } from './data/selectors';
 
 // i18n
 import messages from './ProfilePage.messages';
 
-ensureConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL'], 'ProfilePage');
+ensureConfig(['CREDENTIALS_BASE_URL', 'DISCOVERY_BASE_URL', 'LMS_BASE_URL'], 'ProfilePage');
 
 class ProfilePage extends React.Component {
   constructor(props, context) {
@@ -173,6 +174,8 @@ class ProfilePage extends React.Component {
   }
 
   renderContent() {
+    console.log("renderContent() dumping props in ProfilePage.jsx");
+    console.log(this.props);
     const {
       profileImage,
       name,
@@ -191,6 +194,7 @@ class ProfilePage extends React.Component {
       visibilityBio,
       requiresParentalConsent,
       isLoadingProfile,
+      skillsQuiz,
     } = this.props;
 
     if (isLoadingProfile) {
@@ -260,6 +264,12 @@ class ProfilePage extends React.Component {
               levelOfEducation={levelOfEducation}
               visibilityLevelOfEducation={visibilityLevelOfEducation}
               formId="levelOfEducation"
+              {...commonFormProps}
+            />
+            <SkillsQuiz
+              goal=""
+              visibilitySkillsQuiz='private'
+              formId="skillsQuiz"
               {...commonFormProps}
             />
             <SocialLinks
@@ -394,10 +404,12 @@ ProfilePage.defaultProps = {
   courseCertificates: null,
   requiresParentalConsent: null,
   dateJoined: null,
+  skillsQuiz: {},
 };
 
 export default connect(
   profilePageSelector,
+  //skillsQuizSelector,
   {
     fetchProfile,
     saveProfilePhoto,

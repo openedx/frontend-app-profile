@@ -24,12 +24,14 @@ export const fetchProfileSuccess = (
   account,
   preferences,
   courseCertificates,
+  skillsQuiz,
   isAuthenticatedUserProfile,
 ) => ({
   type: FETCH_PROFILE.SUCCESS,
   account,
   preferences,
   courseCertificates,
+  skillsQuiz,
   isAuthenticatedUserProfile,
 });
 

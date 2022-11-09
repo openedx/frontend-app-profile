@@ -22,7 +22,15 @@ const SOCIAL = {
   },
 };
 
+const GOALS = [
+  "change_careers",
+  "get_promoted",
+  "improve_current_role",
+  "other",
+];
+
 export {
   EDUCATION_LEVELS,
   SOCIAL,
+  GOALS,
 };

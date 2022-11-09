@@ -9,6 +9,7 @@ import {
 
 export const formIdSelector = (state, props) => props.formId;
 export const userAccountSelector = state => state.userAccount;
+export const skillsQuizSelector = state => state.profilePage.skillsQuiz;
 
 export const profileAccountSelector = state => state.profilePage.account;
 export const profileDraftsSelector = state => state.profilePage.drafts;
@@ -235,6 +236,7 @@ export const visibilitiesSelector = createSelector(
           visibilityLanguageProficiencies: preferences.visibilityLanguageProficiencies || 'private',
           visibilityName: preferences.visibilityName || 'private',
           visibilitySocialLinks: preferences.visibilitySocialLinks || 'private',
+          visibilityGoal: preferences.visibilityGoal || 'private',
         };
       case 'private':
         return {
@@ -245,6 +247,7 @@ export const visibilitiesSelector = createSelector(
           visibilityLanguageProficiencies: 'private',
           visibilityName: 'private',
           visibilitySocialLinks: 'private',
+          visibilityGoal: 'private',
         };
       case 'all_users':
       default:
@@ -260,6 +263,7 @@ export const visibilitiesSelector = createSelector(
           visibilityLanguageProficiencies: 'all_users',
           visibilityName: 'all_users',
           visibilitySocialLinks: 'all_users',
+          visibilityGoal: 'all_users',
         };
     }
   },
@@ -278,7 +282,8 @@ export const formValuesSelector = createSelector(
   profileDraftsSelector,
   profileCourseCertificatesSelector,
   formSocialLinksSelector,
-  (account, visibilities, drafts, courseCertificates, socialLinks) => ({
+  skillsQuizSelector,
+  (account, visibilities, drafts, courseCertificates, socialLinks, skillsQuiz) => ({
     bio: chooseFormValue(drafts.bio, account.bio),
     visibilityBio: chooseFormValue(drafts.visibilityBio, visibilities.visibilityBio),
     courseCertificates,
@@ -320,6 +325,7 @@ export const profilePageSelector = createSelector(
   isLoadingProfileSelector,
   draftSocialLinksByPlatformSelector,
   accountErrorsSelector,
+  skillsQuizSelector,
   (
     account,
     formValues,
@@ -329,6 +335,7 @@ export const profilePageSelector = createSelector(
     isLoadingProfile,
     draftSocialLinksByPlatform,
     errors,
+    skillsQuiz,
   ) => ({
     // Account data we need
     username: account.username,
@@ -371,5 +378,8 @@ export const profilePageSelector = createSelector(
     savePhotoState,
     isLoadingProfile,
     photoUploadError: errors.photo || null,
+
+    // Skills quiz data
+    skillsQuiz,
   }),
 );

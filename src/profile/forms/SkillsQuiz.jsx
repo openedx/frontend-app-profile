@@ -5,7 +5,7 @@ import { FormattedMessage, injectIntl, intlShape } from '@edx/frontend-platform/
 import get from 'lodash.get';
 import { Form } from '@edx/paragon';
 
-import messages from './Education.messages';
+import messages from './SkillsQuiz.messages';
 
 // Components
 import FormControls from './elements/FormControls';
@@ -14,12 +14,12 @@ import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
 
 // Constants
-import { EDUCATION_LEVELS } from '../data/constants';
+import { GOALS } from '../data/constants';
 
 // Selectors
 import { editableFormSelector } from '../data/selectors';
 
-class Education extends React.Component {
+class SkillsQuiz extends React.Component {
   constructor(props) {
     super(props);
 
@@ -52,7 +52,7 @@ class Education extends React.Component {
 
   render() {
     const {
-      formId, levelOfEducation, visibilityLevelOfEducation, editMode, saveState, error, intl,
+      goal, visibilitySkillsQuiz, formId, editMode, saveState, error, intl,
     } = this.props;
 
     return (
@@ -62,31 +62,32 @@ class Education extends React.Component {
         cases={{
           editing: (
             <div role="dialog" aria-labelledby={`${formId}-label`}>
+              <p>{console.log(goal)}</p>
               <form onSubmit={this.handleSubmit}>
                 <Form.Group
                   controlId={formId}
                   isInvalid={error !== null}
                 >
                   <label className="edit-section-header" htmlFor={formId}>
-                    {intl.formatMessage(messages['profile.education.education'])}
+                    {intl.formatMessage(messages['profile.recommendations.goals.label'])}
                   </label>
                   <select
                     data-hj-suppress
                     className="form-control"
                     id={formId}
                     name={formId}
-                    value={levelOfEducation}
+                    value={goal}
                     onChange={this.handleChange}
                   >
-                    <option value="">&nbsp;</option> 
-                    {EDUCATION_LEVELS.map(level => (
-                      <option key={level} value={level}>
-                        {intl.formatMessage(get(
-                          messages,
-                          `profile.education.levels.${level}`,
-                          messages['profile.education.levels.o'],
-                        ))}
-                      </option>
+                    <option value="">&nbsp;</option>
+                    {GOALS.map(level => (
+                        <option key={level} value={level}>
+                          {intl.formatMessage(get(
+                            messages,
+                            `profile.recommendations.goals.${goal}`,
+                            messages['profile.recommendations.goals.other'],
+                          ))}
+                        </option>
                     ))}
                   </select>
                   {error !== null && (
@@ -96,9 +97,9 @@ class Education extends React.Component {
                   )}
                 </Form.Group>
                 <FormControls
-                  visibilityId="visibilityLevelOfEducation"
+                  visibilityId="visibilitySkillsQuiz"
                   saveState={saveState}
-                  visibility={visibilityLevelOfEducation}
+                  visibility={visibilitySkillsQuiz}
                   cancelHandler={this.handleClose}
                   changeHandler={this.handleChange}
                 />
@@ -108,41 +109,37 @@ class Education extends React.Component {
           editable: (
             <>
               <EditableItemHeader
-                content={intl.formatMessage(messages['profile.education.education'])}
-                showEditButton
-                onClickEdit={this.handleOpen}
-                showVisibility={visibilityLevelOfEducation !== null}
-                visibility={visibilityLevelOfEducation}
+                content={intl.formatMessage(messages['profile.recommendations.goals.label'])}
               />
               <p data-hj-suppress className="h5">
                 {intl.formatMessage(get(
                   messages,
-                  `profile.education.levels.${levelOfEducation}`,
-                  messages['profile.education.levels.o'],
+                  `profile.recommendations.goals.${goal}`,
+                  messages['profile.recommendations.goals.other'],
                 ))}
               </p>
             </>
           ),
           empty: (
             <>
-              <EditableItemHeader content={intl.formatMessage(messages['profile.education.education'])} />
+              <EditableItemHeader
+                content={intl.formatMessage(messages['profile.recommendations.goals.label'])}
+              />
               <EmptyContent onClick={this.handleOpen}>
-                <FormattedMessage
-                  id="profile.education.empty"
-                  defaultMessage="Add education"
-                  description="instructions when the user doesn't have their level of education set"
-                />
+                {intl.formatMessage(messages['profile.recommendations.goals.empty'])}
               </EmptyContent>
             </>
           ),
           static: (
             <>
-              <EditableItemHeader content={intl.formatMessage(messages['profile.education.education'])} />
+              <EditableItemHeader
+                content={intl.formatMessage(messages['profile.recommendations.goals.label'])}
+              />
               <p data-hj-suppress className="h5">
                 {intl.formatMessage(get(
                   messages,
-                  `profile.education.levels.${levelOfEducation}`,
-                  messages['profile.education.levels.o'],
+                  `profile.recommendations.goals.other`,
+                  messages['profile.recommendations.goals.other'],
                 ))}
               </p>
             </>
@@ -153,16 +150,12 @@ class Education extends React.Component {
   }
 }
 
-Education.propTypes = {
-  // It'd be nice to just set this as a defaultProps...
-  // except the class that comes out on the other side of react-redux's
-  // connect() method won't have it anymore. Static properties won't survive
-  // through the higher order function.
+SkillsQuiz.propTypes = {
   formId: PropTypes.string.isRequired,
 
   // From Selector
-  levelOfEducation: PropTypes.string,
-  visibilityLevelOfEducation: PropTypes.oneOf(['private', 'all_users']),
+  goal: PropTypes.string,
+  visibilitySkillsQuiz: PropTypes.oneOf(['private', 'all_users']),
   editMode: PropTypes.oneOf(['editing', 'editable', 'empty', 'static']),
   saveState: PropTypes.string,
   error: PropTypes.string,
@@ -177,15 +170,15 @@ Education.propTypes = {
   intl: intlShape.isRequired,
 };
 
-Education.defaultProps = {
+SkillsQuiz.defaultProps = {
   editMode: 'static',
   saveState: null,
-  levelOfEducation: null,
-  visibilityLevelOfEducation: 'private',
+  goal: null,
+  visibilitySkillsQuiz: null,
   error: null,
 };
 
 export default connect(
   editableFormSelector,
   {},
-)(injectIntl(Education));
+)(injectIntl(SkillsQuiz));
