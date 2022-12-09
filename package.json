@@ -64,7 +64,7 @@
   "devDependencies": {
     "@commitlint/cli": "17.3.0",
     "@commitlint/config-angular": "17.3.0",
-    "@edx/frontend-build": "12.4.14",
+    "@edx/frontend-build": "12.3.0",
     "@edx/reactifex": "2.1.1",
     "codecov": "3.8.3",
     "enzyme": "3.11.0",
