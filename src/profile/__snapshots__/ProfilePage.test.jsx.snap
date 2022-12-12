@@ -60,7 +60,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                 className="profile-avatar-menu-container"
               >
                 <div
-                  className="dropdown"
+                  className="pgn__dropdown pgn__dropdown-light dropdown"
                   data-testid="dropdown"
                 >
                   <button
@@ -2441,7 +2441,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                 className="profile-avatar-menu-container"
               >
                 <div
-                  className="dropdown"
+                  className="pgn__dropdown pgn__dropdown-light dropdown"
                   data-testid="dropdown"
                 >
                   <button
@@ -3616,7 +3616,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                 className="profile-avatar-menu-container"
               >
                 <div
-                  className="dropdown"
+                  className="pgn__dropdown pgn__dropdown-light dropdown"
                   data-testid="dropdown"
                 >
                   <button
@@ -5898,7 +5898,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                 className="profile-avatar-menu-container"
               >
                 <div
-                  className="dropdown"
+                  className="pgn__dropdown pgn__dropdown-light dropdown"
                   data-testid="dropdown"
                 >
                   <button
@@ -6948,7 +6948,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                 className="profile-avatar-menu-container"
               >
                 <div
-                  className="dropdown"
+                  className="pgn__dropdown pgn__dropdown-light dropdown"
                   data-testid="dropdown"
                 >
                   <button
@@ -8065,7 +8065,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                 className="profile-avatar-menu-container"
               >
                 <div
-                  className="dropdown"
+                  className="pgn__dropdown pgn__dropdown-light dropdown"
                   data-testid="dropdown"
                 >
                   <button
@@ -9188,7 +9188,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                 className="profile-avatar-menu-container"
               >
                 <div
-                  className="dropdown"
+                  className="pgn__dropdown pgn__dropdown-light dropdown"
                   data-testid="dropdown"
                 >
                   <button
