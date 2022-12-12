@@ -11,7 +11,7 @@ jobs:
       matrix:
         npm-test:
         - i18n_extract
-        - is-es5
+        - is-es6
         - lint
         - test
         node: [16]
