@@ -20,6 +20,7 @@ import { Route, Switch } from 'react-router-dom';
 import Header, { messages as headerMessages } from '@edx/frontend-component-header';
 import Footer, { messages as footerMessages } from '@edx/frontend-component-footer';
 
+import { messages as paragonMessages } from '@edx/paragon';
 import appMessages from './i18n';
 import { ProfilePage, NotFoundPage } from './profile';
 import configureStore from './data/configureStore';
@@ -52,6 +53,7 @@ subscribe(APP_INIT_ERROR, (error) => {
 initialize({
   messages: [
     appMessages,
+    paragonMessages,
     headerMessages,
     footerMessages,
   ],
