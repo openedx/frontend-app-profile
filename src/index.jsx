@@ -25,10 +25,12 @@ import { ProfilePage, NotFoundPage } from './profile';
 import configureStore from './data/configureStore';
 
 import './index.scss';
+import Head from './head/Head';
 
 subscribe(APP_READY, () => {
   ReactDOM.render(
     <AppProvider store={configureStore()}>
+      <Head />
       <Header />
       <main>
         <Switch>

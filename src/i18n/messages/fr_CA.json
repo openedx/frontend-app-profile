@@ -1,4 +1,5 @@
 {
+  "profile.page.title": "Profil | {siteName}",
   "profile.age.details": "Pour partager votre profil avec d'autres apprenants {siteName}, vous devez confirmer que vous avez plus de 13 ans.",
   "profile.age.set.date": "Entrez votre date de naissance",
   "profile.datejoined.member.since": "Membre depuis {year}",
