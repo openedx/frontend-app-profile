@@ -57,7 +57,7 @@
     "redux-thunk": "2.4.2",
     "regenerator-runtime": "0.13.11",
     "reselect": "4.1.7",
-    "universal-cookie": "3.1.0"
+    "universal-cookie": "4.0.4"
   },
   "devDependencies": {
     "@commitlint/cli": "17.3.0",
