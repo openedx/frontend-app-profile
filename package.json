@@ -60,8 +60,8 @@
     "universal-cookie": "4.0.4"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.3.0",
-    "@commitlint/config-angular": "17.3.0",
+    "@commitlint/cli": "17.4.0",
+    "@commitlint/config-angular": "17.4.0",
     "@edx/browserslist-config": "^1.1.1",
     "@edx/frontend-build": "12.4.15",
     "@edx/reactifex": "2.1.1",
