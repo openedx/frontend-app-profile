@@ -4,6 +4,7 @@ import 'regenerator-runtime/runtime';
 import {
   APP_INIT_ERROR,
   APP_READY,
+  getConfig,
   initialize,
   mergeConfig,
   subscribe,
@@ -22,6 +23,7 @@ import Footer, { messages as footerMessages } from '@edx/frontend-component-foot
 
 import appMessages from './i18n';
 import { ProfilePage, NotFoundPage } from './profile';
+import { SkillsBuilder } from './skills';
 import configureStore from './data/configureStore';
 
 import './index.scss';
@@ -34,6 +36,9 @@ subscribe(APP_READY, () => {
       <Header />
       <main>
         <Switch>
+          {getConfig().ENABLE_SKILLS_BUILDER && (
+            <Route path="/skills" component={SkillsBuilder} />
+          )}
           <Route path="/u/:username" component={ProfilePage} />
           <Route path="/notfound" component={NotFoundPage} />
           <Route path="*" component={NotFoundPage} />
@@ -63,6 +68,7 @@ initialize({
         ENABLE_LEARNER_RECORD_MFE: (process.env.ENABLE_LEARNER_RECORD_MFE || false),
         LEARNER_RECORD_MFE_BASE_URL: process.env.LEARNER_RECORD_MFE_BASE_URL,
         COLLECT_YEAR_OF_BIRTH: process.env.COLLECT_YEAR_OF_BIRTH,
+        ENABLE_SKILLS_BUILDER: process.env.ENABLE_SKILLS_BUILDER,
       }, 'App loadConfig override handler');
     },
   },
