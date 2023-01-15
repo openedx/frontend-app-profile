@@ -48,5 +48,7 @@
   "profile.notfound.message": "الصفحة التي تبحث عنها غير متوفرة أو هناك خطأ في العنوان. رجاءً تحقق من العنوان و حاول مجدّدًا.",
   "profile.viewMyRecords": "عرض سجلّاتي",
   "profile.loading": "يتم تحميل الملف الشخصي...",
-  "profile.username.description": "معلومات ملفك الشخصي تظهر لك فقط. وحده اسم المستخدم الخاص بك يظهر للآخرين على {siteName}."
+  "profile.username.description": "معلومات ملفك الشخصي تظهر لك فقط. وحده اسم المستخدم الخاص بك يظهر للآخرين على {siteName}.",
+  "go.back.button": "Go Back",
+  "next.step.button": "Next Step"
 }
