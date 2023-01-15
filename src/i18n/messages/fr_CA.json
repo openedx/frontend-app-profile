@@ -48,5 +48,7 @@
   "profile.notfound.message": "La page que vous recherchez n'est pas disponible ou il y a une erreur dans l'URL. Veuillez vérifier l'URL et réessayer.",
   "profile.viewMyRecords": "Afficher mes dossiers",
   "profile.loading": "Chargement du profil...",
-  "profile.username.description": "Les informations de votre profil ne sont visibles que par vous. Seul votre nom d'utilisateur est visible par les autres sur {siteName}."
+  "profile.username.description": "Les informations de votre profil ne sont visibles que par vous. Seul votre nom d'utilisateur est visible par les autres sur {siteName}.",
+  "go.back.button": "Retour",
+  "next.step.button": "Prochaine étape"
 }
