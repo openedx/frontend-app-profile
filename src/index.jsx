@@ -23,7 +23,7 @@ import Footer, { messages as footerMessages } from '@edx/frontend-component-foot
 
 import appMessages from './i18n';
 import { ProfilePage, NotFoundPage } from './profile';
-import { SkillsBuilder } from './skills';
+import { SkillsBuilder } from './skills-builder';
 import configureStore from './data/configureStore';
 
 import './index.scss';
