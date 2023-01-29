@@ -1,5 +1,5 @@
 {
-  "profile.page.title": "Profile | {siteName}",
+  "profile.page.title": "Perfil | {siteName}",
   "profile.age.details": "Para compartir el perfil con otros {siteName} estudiantes, debe confirmar que es mayor de 13 años.",
   "profile.age.set.date": "Establece tu fecha de nacimiento",
   "profile.datejoined.member.since": "Miembro desde {year}",
@@ -49,6 +49,6 @@
   "profile.viewMyRecords": "Ver mis registros",
   "profile.loading": "Cargando perfil...",
   "profile.username.description": "La información del perfil solo la visualiza usted. Solo el nombre de usuario es visible para los demás en {siteName}.",
-  "go.back.button": "Go Back",
-  "next.step.button": "Next Step"
+  "go.back.button": "Volver Atrás",
+  "next.step.button": "Próximo paso"
 }
