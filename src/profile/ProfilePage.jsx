@@ -46,10 +46,10 @@ class ProfilePage extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    const recordsUrl = this.getRecordsUrl(context);
+    const credentialsBaseUrl = context.config.CREDENTIALS_BASE_URL;
 
     this.state = {
-      viewMyRecordsUrl: recordsUrl,
+      viewMyRecordsUrl: credentialsBaseUrl ? `${credentialsBaseUrl}/records` : null,
       accountSettingsUrl: `${context.config.LMS_BASE_URL}/account/settings`,
     };
 
@@ -90,19 +90,6 @@ class ProfilePage extends React.Component {
 
   handleChange(name, value) {
     this.props.updateDraft(name, value);
-  }
-
-  getRecordsUrl(context) {
-    let recordsUrl = null;
-
-    if (getConfig().ENABLE_LEARNER_RECORD_MFE) {
-      recordsUrl = getConfig().LEARNER_RECORD_MFE_BASE_URL;
-    } else {
-      const credentialsBaseUrl = context.config.CREDENTIALS_BASE_URL;
-      recordsUrl = credentialsBaseUrl ? `${credentialsBaseUrl}/records` : null;
-    }
-
-    return recordsUrl;
   }
 
   isYOBDisabled() {
