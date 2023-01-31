@@ -22,6 +22,13 @@ const SOCIAL = {
   },
 };
 
+const LEARNING_GOALS = [
+  'I want to advance my career',
+  'I want to change careers',
+  'I want to learn something new',
+  'Something else',
+]
+
 export {
   EDUCATION_LEVELS,
   SOCIAL,

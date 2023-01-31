@@ -42,7 +42,8 @@ module.exports = {
     secondaryEmail: null,
     timeZone: null,
     gender: null,
-    accountPrivacy: 'custom'
+    accountPrivacy: 'custom',
+    learningGoal: null,
   },
   profilePage: {
     errors: {},
@@ -83,7 +84,8 @@ module.exports = {
     preferences: {},
     courseCertificates: [],
     drafts: {},
-    isLoadingProfile: false
+    isLoadingProfile: false,
+    learningGoal: null,
   },
   router: {
     location: {

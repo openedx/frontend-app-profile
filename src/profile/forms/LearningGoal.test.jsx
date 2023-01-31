@@ -16,6 +16,7 @@ import savingEditedBioMockStore from '../__mocks__/savingEditedBio.mockStore';
 
 import LearningGoal from './LearningGoal';
 import SkillsBuilder from '../../skills/SkillsBuilder';
+import { Container } from '@edx/paragon';
 
 const mockStore = configureMockStore([thunk]);
 const storeMocks = {
