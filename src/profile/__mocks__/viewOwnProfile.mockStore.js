@@ -42,7 +42,8 @@ module.exports = {
     secondaryEmail: null,
     timeZone: null,
     gender: null,
-    accountPrivacy: 'custom'
+    accountPrivacy: 'custom',
+    learningGoal: 'I want to advance my career'
   },
   profilePage: {
     errors: {},
@@ -91,7 +92,8 @@ module.exports = {
       timeZone: null,
       levelOfEducation: 'el',
       gender: null,
-      accountPrivacy: 'custom'
+      accountPrivacy: 'custom',
+      learningGoal: 'I want to advance my career'
     },
     preferences: {
       visibilityUserLocation: 'all_users',

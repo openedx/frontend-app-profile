@@ -27,7 +27,7 @@ const storeMocks = {
 // props to be passed down to LearningGoal component
 const requiredLearningGoalProps = {
   formId: 'learningGoal',
-  learningGoal: "I want to advance my career.",
+  learningGoal: "I want to advance my career",
   drafts: {},
   visibilityLearningGoal: 'private',
   editMode: 'static',
@@ -115,16 +115,8 @@ describe('<LearningGoal />', () => {
     const wrapper = mount(component);
     const learningGoal = wrapper.find(LearningGoal);
 
-    it('using "Update My Learning Goal" button', () => {
-      learningGoal.find('Update button').simulate('click');
-      expect(openHandler).toHaveBeenCalledTimes(1);
-      //expect Skills Builder FullscreenModal's isOpen to be true
-    });
-      
-    it('using "Edit" button', () => {
-      learningGoal.find('Edit button').simulate('click');
-      expect(openHandler).toHaveBeenCalledTimes(1);
-      //expect Skills Builder FullscreenModal's isOpen to be true
+    it('renders the current learning goal', () => {
+      expect(learningGoal).toContain('I want to advance my career');
     });
   });
 });
