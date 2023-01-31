@@ -106,7 +106,8 @@ module.exports = {
       visibilityName: 'private',
       visibilityLanguageProficiencies: 'all_users',
       visibilityCountry: 'all_users',
-      accountPrivacy: 'custom'
+      accountPrivacy: 'custom',
+      visibilityLearningGoal: 'private',
     },
     courseCertificates: [
       {
