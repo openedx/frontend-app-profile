@@ -28,7 +28,7 @@ const storeMocks = {
 // props to be passed down to LearningGoal component
 const requiredLearningGoalProps = {
   formId: 'learningGoal',
-  learningGoal: "I want to advance my career",
+  learningGoal: "advance_career",
   drafts: {},
   visibilityLearningGoal: 'private',
   editMode: 'static',
@@ -105,12 +105,10 @@ LearningGoalWrapperWithStore.propTypes = {
 
 describe('<LearningGoal />', () => {
   describe('Opens Skills Builder modal', () => {
-    const openHandler = jest.fn();
     const component = (
-      <LearningGoal 
+      <LearningGoalWrapper
       {...requiredLearningGoalProps}
       formId="learningGoal"
-      openHandler={openHandler}
       />
     );
     const wrapper = mount(component);
