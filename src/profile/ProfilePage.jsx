@@ -33,6 +33,7 @@ import DateJoined from './DateJoined';
 import UsernameDescription from './UsernameDescription';
 import PageLoading from './PageLoading';
 import Banner from './Banner';
+import LearningGoal from './forms/LearningGoal';
 
 // Selectors
 import { profilePageSelector } from './data/selectors';
@@ -184,6 +185,8 @@ class ProfilePage extends React.Component {
       socialLinks,
       draftSocialLinksByPlatform,
       visibilitySocialLinks,
+      learningGoal,
+      visibilityLearningGoal,
       languageProficiencies,
       visibilityLanguageProficiencies,
       visibilityCourseCertificates,
@@ -276,6 +279,12 @@ class ProfilePage extends React.Component {
               bio={bio}
               visibilityBio={visibilityBio}
               formId="bio"
+              {...commonFormProps}
+            />
+            <LearningGoal
+              learningGoal={learningGoal}
+              visibilityLearningGoal={visibilityLearningGoal}
+              formId="learningGoal"
               {...commonFormProps}
             />
             <Certificates
