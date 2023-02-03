@@ -268,12 +268,14 @@ class ProfilePage extends React.Component {
               formId="bio"
               {...commonFormProps}
             />
-            <LearningGoal
+            {getConfig().ENABLE_LEARNING_GOAL && (
+              <LearningGoal
               learningGoal={learningGoal}
               visibilityLearningGoal={visibilityLearningGoal}
               formId="learningGoal"
               {...commonFormProps}
-            />
+              />
+            )}
             <Certificates
               visibilityCourseCertificates={visibilityCourseCertificates}
               formId="certificates"
