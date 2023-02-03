@@ -76,7 +76,6 @@ LearningGoalWrapper.propTypes = {
   store: PropTypes.shape({}),
 };
 
-// in the case of an error occurring while saving new Learning Goal
 const LearningGoalWrapperWithStore = ({ store }) => {
   const contextValue = useMemo(() => ({
     authenticatedUser: { userId: null, username: null, administrator: false },
@@ -88,7 +87,7 @@ const LearningGoalWrapperWithStore = ({ store }) => {
     >
       <IntlProvider locale="en">
         <Provider store={mockStore(store)}>
-          <LearningGoal {...defaultProps} />
+          <LearningGoal {...requiredLearningGoalProps} formId='learningGoal' />
         </Provider>
       </IntlProvider>
     </AppContext.Provider>
@@ -105,17 +104,17 @@ LearningGoalWrapperWithStore.propTypes = {
 
 describe('<LearningGoal />', () => {
   describe('Opens Skills Builder modal', () => {
-    const component = (
-      <LearningGoalWrapper
-      {...requiredLearningGoalProps}
-      formId="learningGoal"
-      />
-    );
-    const wrapper = mount(component);
-    const learningGoal = wrapper.find(LearningGoal);
-
     it('renders the current learning goal', () => {
-      expect(learningGoal).toContain('I want to advance my career');
+      const learningGoalRenderer = renderer.create(
+        <LearningGoalWrapper
+        {...requiredLearningGoalProps}
+        formId="learningGoal"
+        />
+      );
+
+      const learningGoalInstance = learningGoalRenderer.root;
+
+      expect(learningGoalInstance.findByProps({className: "lead"}).children).toEqual(['I want to advance my career']);
     });
   });
 });

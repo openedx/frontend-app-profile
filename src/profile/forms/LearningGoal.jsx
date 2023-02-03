@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import get from 'lodash.get';
 
+// Mock Data
+import mockData from '../data/mock_data';
+
 import messages from './LearningGoal.messages';
 
 // Components
@@ -16,8 +19,14 @@ import { editableFormSelector } from '../data/selectors';
 const LearningGoal = (props) => {  
   let { learningGoal, editMode } = props;
   const { visibilityLearningGoal, intl } = props
-  learningGoal = 'advance_career';
-  editMode = 'editable'
+
+  if (!learningGoal) {
+    learningGoal = mockData.learningGoal;
+  } 
+
+  if (!editMode || editMode === 'empty') { //editMode defaults to 'empty', not sure why yet
+    editMode = mockData.editMode;
+  }
 
   return (
     <SwitchContent
@@ -34,8 +43,20 @@ const LearningGoal = (props) => {
             <p data-hj-suppress className="lead">
               {intl.formatMessage(get(
                 messages,
-                `profile.learningGoal.${learningGoal}`,
-                messages[`profile.learningGoal.options.${learningGoal}`]
+                `profile.learningGoal.options.${learningGoal}`,
+                messages['profile.learningGoal.options.something_else']
+              ))}
+            </p>
+          </>
+        ),
+        static: (
+          <>
+            <EditableItemHeader content={intl.formatMessage(messages['profile.learningGoal.learningGoal'])} />
+            <p data-hj-suppress className="lead">
+              {intl.formatMessage(get(
+                messages,
+                `profile.learningGoal.options.${learningGoal}`,
+                messages['profile.learningGoal.options.something_else']
               ))}
             </p>
           </>
@@ -63,7 +84,7 @@ LearningGoal.propTypes = {
 };
 
 LearningGoal.defaultProps = {
-  editMode: 'editable',
+  editMode: 'static',
   saveState: null,
   learningGoal: null,
   visibilityLearningGoal: 'private',
