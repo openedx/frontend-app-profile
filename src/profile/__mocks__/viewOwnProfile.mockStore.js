@@ -43,7 +43,7 @@ module.exports = {
     timeZone: null,
     gender: null,
     accountPrivacy: 'custom',
-    learningGoal: 'I want to advance my career'
+    learningGoal: 'advance_career'
   },
   profilePage: {
     errors: {},
@@ -93,7 +93,7 @@ module.exports = {
       levelOfEducation: 'el',
       gender: null,
       accountPrivacy: 'custom',
-      learningGoal: 'I want to advance my career'
+      learningGoal: 'advance_career'
     },
     preferences: {
       visibilityUserLocation: 'all_users',
