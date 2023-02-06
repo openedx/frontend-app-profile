@@ -3,8 +3,8 @@ import {
   ActionRow,
   Button,
   Container,
-  FullscreenModal,
   Form,
+  ModalDialog,
 } from '@edx/paragon';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import {
@@ -12,6 +12,9 @@ import {
 } from '../data/actions';
 import messages from './messages';
 import { SkillsBuilderContext } from '../skills-builder-context';
+import { SkillsBuilderHeader } from '../skills-builder-header';
+
+import headerImage from '../images/headerImage.png';
 
 const SkillsBuilderModal = () => {
   const onCloseHandle = () => {
@@ -19,15 +22,42 @@ const SkillsBuilderModal = () => {
   };
 
   const [state, dispatch] = useContext(SkillsBuilderContext);
-
   const [learnerGoal, setLearnerGoal] = useState('');
 
   return (
-    <FullscreenModal
+    <ModalDialog
       title="Skills Builder"
+      size="fullscreen"
+      className="skills-builder-modal"
       isOpen
       onClose={onCloseHandle}
-      footerNode={(
+    >
+      <ModalDialog.Hero>
+        <ModalDialog.Hero.Background className="bg-primary-500">
+          <img src={headerImage} alt="" className="h-100" />
+        </ModalDialog.Hero.Background>
+        <ModalDialog.Hero.Content>
+          <SkillsBuilderHeader />
+        </ModalDialog.Hero.Content>
+      </ModalDialog.Hero>
+      <ModalDialog.Body>
+        <Container>
+          <h3>Your current goal: {state.currentGoal}</h3>
+          <br />
+          <Form.Group controlId="currentLearnerGoal">
+            <Form.Control
+              type="text"
+              floatingLabel="Goal"
+              value={learnerGoal}
+              onChange={(e) => setLearnerGoal(e.target.value)}
+            />
+          </Form.Group>
+          <Button onClick={() => dispatch(setGoal(learnerGoal))}>
+            Submit
+          </Button>
+        </Container>
+      </ModalDialog.Body>
+      <ModalDialog.Footer>
         <ActionRow>
           <Button variant="tertiary">
             <FormattedMessage {...messages.goBackButton} />
@@ -37,26 +67,8 @@ const SkillsBuilderModal = () => {
             <FormattedMessage {...messages.nextStepButton} />
           </Button>
         </ActionRow>
-          )}
-    >
-      <Container>
-        <h3>Your current goal: {state.currentGoal}</h3>
-        <br />
-        <Form.Group controlId="currentLearnerGoal">
-          <Form.Control
-            type="text"
-            floatingLabel="Goal"
-            value={learnerGoal}
-            onChange={(e) => setLearnerGoal(e.target.value)}
-          />
-        </Form.Group>
-        <Button
-          onClick={() => dispatch(setGoal(learnerGoal))}
-        >
-          Submit
-        </Button>
-      </Container>
-    </FullscreenModal>
+      </ModalDialog.Footer>
+    </ModalDialog>
   );
 };
 

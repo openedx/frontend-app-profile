@@ -1,6 +1,6 @@
 import { IntlProvider } from '@edx/frontend-platform/i18n';
-import { mount } from 'enzyme';
 import React from 'react';
+import { screen, render } from '@testing-library/react';
 import { SkillsBuilder } from '..';
 
 const SkillsBuilderWrapper = () => (
@@ -11,9 +11,9 @@ const SkillsBuilderWrapper = () => (
 
 describe('skills-builder', () => {
   it('should render a Skills Builder modal', () => {
-    const component = <SkillsBuilderWrapper />;
-    const wrapper = mount(component);
-    const modal = wrapper.find(SkillsBuilder);
-    expect(modal.find('h2').text()).toBe('Skills Builder');
+    render(
+      <SkillsBuilderWrapper />,
+    );
+    expect(screen.getByText('Skills Builder')).toBeTruthy();
   });
 });
