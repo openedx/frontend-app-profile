@@ -281,14 +281,14 @@ class ProfilePage extends React.Component {
               formId="bio"
               {...commonFormProps}
             />
-            {getConfig().ENABLE_LEARNING_GOAL && (
-              <LearningGoal
+            {/* {getConfig().ENABLE_LEARNING_GOAL && learningGoal && ( */}
+            <LearningGoal
               learningGoal={learningGoal}
               visibilityLearningGoal={visibilityLearningGoal}
               formId="learningGoal"
               {...commonFormProps}
-              />
-            )}
+            />
+            {/* )} */}
             <Certificates
               visibilityCourseCertificates={visibilityCourseCertificates}
               formId="certificates"
@@ -357,6 +357,10 @@ ProfilePage.propTypes = {
   })),
   visibilitySocialLinks: PropTypes.string.isRequired,
 
+  // Learning Goal form data
+  learningGoal: PropTypes.string,
+  visibilityLearningGoal: PropTypes.string.isRequired,
+
   // Other data we need
   profileImage: PropTypes.shape({
     src: PropTypes.string,
@@ -401,6 +405,7 @@ ProfilePage.defaultProps = {
   socialLinks: [],
   draftSocialLinksByPlatform: {},
   bio: null,
+  learningGoal: null,
   languageProficiencies: [],
   courseCertificates: null,
   requiresParentalConsent: null,

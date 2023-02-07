@@ -16,15 +16,15 @@ import SwitchContent from './elements/SwitchContent';
 // Selectors
 import { editableFormSelector } from '../data/selectors';
 
-const LearningGoal = (props) => {  
+const LearningGoal = (props) => {
   let { learningGoal, editMode } = props;
   const { visibilityLearningGoal, intl } = props
 
   if (!learningGoal) {
     learningGoal = mockData.learningGoal;
-  } 
+  }
 
-  if (!editMode || editMode === 'empty') { //editMode defaults to 'empty', not sure why yet
+  if (!editMode || editMode === 'empty') { // editMode defaults to 'empty', not sure why yet
     editMode = mockData.editMode;
   }
 
@@ -35,7 +35,7 @@ const LearningGoal = (props) => {
       cases={{
         editable: (
           <>
-            <EditableItemHeader 
+            <EditableItemHeader
               content={intl.formatMessage(messages['profile.learningGoal.learningGoal'])}
               showVisibility={visibilityLearningGoal !== null}
               visibility={visibilityLearningGoal}
@@ -56,7 +56,7 @@ const LearningGoal = (props) => {
               {intl.formatMessage(get(
                 messages,
                 `profile.learningGoal.options.${learningGoal}`,
-                messages['profile.learningGoal.options.something_else']
+                messages['profile.learningGoal.options.something_else'],
               ))}
             </p>
           </>
