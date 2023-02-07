@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
@@ -18,7 +18,7 @@ import { editableFormSelector } from '../data/selectors';
 
 const LearningGoal = (props) => {
   let { learningGoal, editMode } = props;
-  const { visibilityLearningGoal, intl } = props
+  const { visibilityLearningGoal, intl } = props;
 
   if (!learningGoal) {
     learningGoal = mockData.learningGoal;
@@ -44,7 +44,7 @@ const LearningGoal = (props) => {
               {intl.formatMessage(get(
                 messages,
                 `profile.learningGoal.options.${learningGoal}`,
-                messages['profile.learningGoal.options.something_else']
+                messages['profile.learningGoal.options.something_else'],
               ))}
             </p>
           </>
@@ -60,24 +60,17 @@ const LearningGoal = (props) => {
               ))}
             </p>
           </>
-        )
+        ),
       }}
     />
   );
 };
 
 LearningGoal.propTypes = {
-  formId: PropTypes.string.isRequired,
-
   // From Selector
   learningGoal: PropTypes.string,
   visibilityLearningGoal: PropTypes.oneOf(['private', 'all_users']),
   editMode: PropTypes.oneOf(['editable']),
-  saveState: PropTypes.string,
-  error: PropTypes.string,
-
-  // Actions
-  openHandler: PropTypes.func.isRequired,
 
   // i18n
   intl: intlShape.isRequired,
@@ -85,11 +78,9 @@ LearningGoal.propTypes = {
 
 LearningGoal.defaultProps = {
   editMode: 'static',
-  saveState: null,
   learningGoal: null,
   visibilityLearningGoal: 'private',
-  error: null,
-}
+};
 
 export default connect(
   editableFormSelector,

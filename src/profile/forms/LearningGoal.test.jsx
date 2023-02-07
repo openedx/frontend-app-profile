@@ -1,4 +1,3 @@
-import { mount } from 'enzyme';
 import PropTypes from 'prop-types';
 import React, { useMemo } from 'react';
 import { Provider } from 'react-redux';
@@ -11,24 +10,16 @@ import { AppContext } from '@edx/frontend-platform/react';
 import messages from '../../i18n';
 
 import viewOwnProfileMockStore from '../__mocks__/viewOwnProfile.mockStore';
-import viewOtherProfileMockStore from '../__mocks__/viewOtherProfile.mockStore';
 import savingEditedBioMockStore from '../__mocks__/savingEditedBio.mockStore';
 
 import LearningGoal from './LearningGoal';
-import SkillsBuilder from '../../skills/SkillsBuilder';
-import { Container } from '@edx/paragon';
 
 const mockStore = configureMockStore([thunk]);
-const storeMocks = {
-  viewOwnProfile: viewOwnProfileMockStore,
-  viewOtherProfile: viewOtherProfileMockStore,
-  savingEditedBio: savingEditedBioMockStore,
-};
 
 // props to be passed down to LearningGoal component
 const requiredLearningGoalProps = {
   formId: 'learningGoal',
-  learningGoal: "advance_career",
+  learningGoal: 'advance_career',
   drafts: {},
   visibilityLearningGoal: 'private',
   editMode: 'static',
@@ -87,7 +78,7 @@ const LearningGoalWrapperWithStore = ({ store }) => {
     >
       <IntlProvider locale="en">
         <Provider store={mockStore(store)}>
-          <LearningGoal {...requiredLearningGoalProps} formId='learningGoal' />
+          <LearningGoal {...requiredLearningGoalProps} formId="learningGoal" />
         </Provider>
       </IntlProvider>
     </AppContext.Provider>
@@ -107,14 +98,14 @@ describe('<LearningGoal />', () => {
     it('renders the current learning goal', () => {
       const learningGoalRenderer = renderer.create(
         <LearningGoalWrapper
-        {...requiredLearningGoalProps}
-        formId="learningGoal"
-        />
+          {...requiredLearningGoalProps}
+          formId="learningGoal"
+        />,
       );
 
       const learningGoalInstance = learningGoalRenderer.root;
 
-      expect(learningGoalInstance.findByProps({className: "lead"}).children).toEqual(['I want to advance my career']);
+      expect(learningGoalInstance.findByProps({ className: 'lead' }).children).toEqual(['I want to advance my career']);
     });
   });
 });
