@@ -7,17 +7,17 @@ const messages = defineMessages({
     description: 'A section of a user profile that displays their current learning goal.',
   },
   'profile.learningGoal.options.start_career': {
-    id: 'profile.learningGoal.options.s',
+    id: 'profile.learningGoal.options.start_career',
     defaultMessage: 'I want to start my career',
     description: 'Selected by user if their goal is to start their career.',
   },
   'profile.learningGoal.options.advance_career': {
-    id: 'profile.learningGoal.options.a',
+    id: 'profile.learningGoal.options.advance_career',
     defaultMessage: 'I want to advance my career',
     description: 'Selected by user if their goal is to advance their career.',
   },
   'profile.learningGoal.options.learn_something_new': {
-    id: 'profile.learningGoal.options.l',
+    id: 'profile.learningGoal.options.learn_something_new',
     defaultMessage: 'I want to learn something new',
     description: 'Selected by user if their goal is to learn something new.',
   },

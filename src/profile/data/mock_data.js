@@ -1,6 +1,7 @@
 const mockData = {
   learningGoal: 'advance_career',
-  editMode: 'editable',
+  editMode: 'static',
+  visibilityLearningGoal: 'private',
 };
 
 export default mockData;

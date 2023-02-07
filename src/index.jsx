@@ -67,6 +67,7 @@ initialize({
       mergeConfig({
         COLLECT_YEAR_OF_BIRTH: process.env.COLLECT_YEAR_OF_BIRTH,
         ENABLE_SKILLS_BUILDER: process.env.ENABLE_SKILLS_BUILDER,
+        ENABLE_SKILLS_BUILDER_PROFILE: process.env.ENABLE_SKILLS_BUILDER_PROFILE,
       }, 'App loadConfig override handler');
     },
   },

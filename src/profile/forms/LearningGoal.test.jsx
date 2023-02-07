@@ -37,10 +37,6 @@ configureI18n({
   messages,
 });
 
-beforeEach(() => {
-
-});
-
 const LearningGoalWrapper = (props) => {
   const contextValue = useMemo(() => ({
     authenticatedUser: { userId: null, username: null, administrator: false },
@@ -94,8 +90,8 @@ LearningGoalWrapperWithStore.propTypes = {
 };
 
 describe('<LearningGoal />', () => {
-  describe('Opens Skills Builder modal', () => {
-    it('renders the current learning goal', () => {
+  describe('renders the current learning goal', () => {
+    it('renders "I want to advance my career"', () => {
       const learningGoalRenderer = renderer.create(
         <LearningGoalWrapper
           {...requiredLearningGoalProps}
@@ -106,6 +102,21 @@ describe('<LearningGoal />', () => {
       const learningGoalInstance = learningGoalRenderer.root;
 
       expect(learningGoalInstance.findByProps({ className: 'lead' }).children).toEqual(['I want to advance my career']);
+    });
+
+    it('renders "Something else"', () => {
+      requiredLearningGoalProps.learningGoal = 'something_else';
+
+      const learningGoalRenderer = renderer.create(
+        <LearningGoalWrapper
+          {...requiredLearningGoalProps}
+          formId="learningGoal"
+        />,
+      );
+
+      const learningGoalInstance = learningGoalRenderer.root;
+
+      expect(learningGoalInstance.findByProps({ className: 'lead' }).children).toEqual(['Something else']);
     });
   });
 });

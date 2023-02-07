@@ -17,8 +17,8 @@ import SwitchContent from './elements/SwitchContent';
 import { editableFormSelector } from '../data/selectors';
 
 const LearningGoal = (props) => {
-  let { learningGoal, editMode } = props;
-  const { visibilityLearningGoal, intl } = props;
+  let { learningGoal, editMode, visibilityLearningGoal } = props;
+  const { intl } = props;
 
   if (!learningGoal) {
     learningGoal = mockData.learningGoal;
@@ -26,6 +26,10 @@ const LearningGoal = (props) => {
 
   if (!editMode || editMode === 'empty') { // editMode defaults to 'empty', not sure why yet
     editMode = mockData.editMode;
+  }
+
+  if (!visibilityLearningGoal) {
+    visibilityLearningGoal = mockData.visibilityLearningGoal;
   }
 
   return (
@@ -68,9 +72,9 @@ const LearningGoal = (props) => {
 
 LearningGoal.propTypes = {
   // From Selector
-  learningGoal: PropTypes.string,
+  learningGoal: PropTypes.oneOf(['advance_career', 'start_career', 'learn_something_new', 'something_else']),
   visibilityLearningGoal: PropTypes.oneOf(['private', 'all_users']),
-  editMode: PropTypes.oneOf(['editable']),
+  editMode: PropTypes.oneOf(['editable', 'static']),
 
   // i18n
   intl: intlShape.isRequired,
