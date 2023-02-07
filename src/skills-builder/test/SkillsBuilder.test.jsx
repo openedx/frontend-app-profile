@@ -1,7 +1,7 @@
 import { IntlProvider } from '@edx/frontend-platform/i18n';
 import { mount } from 'enzyme';
 import React from 'react';
-import SkillsBuilder from '../SkillsBuilder';
+import { SkillsBuilder } from '..';
 
 const SkillsBuilderWrapper = () => (
   <IntlProvider locale="en">
