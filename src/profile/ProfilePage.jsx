@@ -33,6 +33,7 @@ import DateJoined from './DateJoined';
 import UsernameDescription from './UsernameDescription';
 import PageLoading from './PageLoading';
 import Banner from './Banner';
+import LearningGoal from './forms/LearningGoal';
 
 // Selectors
 import { profilePageSelector } from './data/selectors';
@@ -171,6 +172,8 @@ class ProfilePage extends React.Component {
       socialLinks,
       draftSocialLinksByPlatform,
       visibilitySocialLinks,
+      learningGoal,
+      visibilityLearningGoal,
       languageProficiencies,
       visibilityLanguageProficiencies,
       visibilityCourseCertificates,
@@ -265,6 +268,14 @@ class ProfilePage extends React.Component {
               formId="bio"
               {...commonFormProps}
             />
+            {getConfig().ENABLE_SKILLS_BUILDER_PROFILE && (
+              <LearningGoal
+                learningGoal={learningGoal}
+                visibilityLearningGoal={visibilityLearningGoal}
+                formId="learningGoal"
+                {...commonFormProps}
+              />
+            )}
             <Certificates
               visibilityCourseCertificates={visibilityCourseCertificates}
               formId="certificates"
@@ -333,6 +344,10 @@ ProfilePage.propTypes = {
   })),
   visibilitySocialLinks: PropTypes.string.isRequired,
 
+  // Learning Goal form data
+  learningGoal: PropTypes.string,
+  visibilityLearningGoal: PropTypes.string.isRequired,
+
   // Other data we need
   profileImage: PropTypes.shape({
     src: PropTypes.string,
@@ -377,6 +392,7 @@ ProfilePage.defaultProps = {
   socialLinks: [],
   draftSocialLinksByPlatform: {},
   bio: null,
+  learningGoal: null,
   languageProficiencies: [],
   courseCertificates: null,
   requiresParentalConsent: null,
