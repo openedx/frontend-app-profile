@@ -34,6 +34,11 @@
   "profile.formcontrols.button.saved": "Enregistré",
   "profile.visibility.who.just.me": "Juste moi",
   "profile.visibility.who.everyone": "Tout le monde sur {siteName}",
+  "profile.learningGoal.learningGoal": "Learning Goal",
+  "profile.learningGoal.options.start_career": "I want to start my career",
+  "profile.learningGoal.options.advance_career": "I want to advance my career",
+  "profile.learningGoal.options.learn_something_new": "I want to learn something new",
+  "profile.learningGoal.options.something_else": "Something else",
   "profile.name.full.name": "Nom complet",
   "profile.name.details": "C'est le nom qui apparaît dans votre compte et sur vos certificats.",
   "profile.name.empty": "Ajouter un nom",
@@ -49,6 +54,8 @@
   "profile.viewMyRecords": "Voir mes succès",
   "profile.loading": "Chargement du profil....",
   "profile.username.description": "Les informations de votre profil ne sont visibles que par vous. Seul votre nom d'utilisateur est visible par les autres sur {siteName}.",
+  "skills.builder.header.title": "Skills Builder",
+  "skills.builder.header.subheading": "Let edX be your guide",
   "go.back.button": "Go Back",
   "next.step.button": "Next Step"
 }

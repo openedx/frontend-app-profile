@@ -34,6 +34,11 @@
   "profile.formcontrols.button.saved": "تم الحفظ",
   "profile.visibility.who.just.me": "أنا فقط",
   "profile.visibility.who.everyone": "جميع من على {siteName}",
+  "profile.learningGoal.learningGoal": "Learning Goal",
+  "profile.learningGoal.options.start_career": "I want to start my career",
+  "profile.learningGoal.options.advance_career": "I want to advance my career",
+  "profile.learningGoal.options.learn_something_new": "I want to learn something new",
+  "profile.learningGoal.options.something_else": "Something else",
   "profile.name.full.name": "الاسم الكامل",
   "profile.name.details": "هذا هو الاسم الذي يظهر في حسابك وفي شهاداتك",
   "profile.name.empty": "إضافة الاسم",
@@ -49,6 +54,8 @@
   "profile.viewMyRecords": "عرض سجلّاتي",
   "profile.loading": "يتم تحميل الملف الشخصي...",
   "profile.username.description": "معلومات ملفك الشخصي تظهر لك فقط. وحده اسم المستخدم الخاص بك يظهر للآخرين على {siteName}.",
+  "skills.builder.header.title": "Skills Builder",
+  "skills.builder.header.subheading": "Let edX be your guide",
   "go.back.button": "Go Back",
   "next.step.button": "Next Step"
 }

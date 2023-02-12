@@ -34,6 +34,11 @@
   "profile.formcontrols.button.saved": "Sauvegardé",
   "profile.visibility.who.just.me": "Juste moi",
   "profile.visibility.who.everyone": "Tout le monde sur {siteName}",
+  "profile.learningGoal.learningGoal": "Objectif d'apprentissage",
+  "profile.learningGoal.options.start_career": "Je veux commencer ma carrière",
+  "profile.learningGoal.options.advance_career": "Je veux faire progresser ma carrière",
+  "profile.learningGoal.options.learn_something_new": "Je veux apprendre quelque chose de nouveau",
+  "profile.learningGoal.options.something_else": "Autre chose",
   "profile.name.full.name": "Nom complet",
   "profile.name.details": "C'est le nom qui apparaît dans votre compte et sur vos attestations.",
   "profile.name.empty": "Ajouter un nom",
@@ -49,6 +54,8 @@
   "profile.viewMyRecords": "Afficher mes dossiers",
   "profile.loading": "Chargement du profil...",
   "profile.username.description": "Les informations de votre profil ne sont visibles que par vous. Seul votre nom d'utilisateur est visible par les autres sur {siteName}.",
+  "skills.builder.header.title": "Constructeur de compétences",
+  "skills.builder.header.subheading": "Laissez EDUlib être votre guide",
   "go.back.button": "Retour",
   "next.step.button": "Prochaine étape"
 }
