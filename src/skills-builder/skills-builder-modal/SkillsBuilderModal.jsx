@@ -16,13 +16,18 @@ import { SkillsBuilderHeader } from '../skills-builder-header';
 
 import headerImage from '../images/headerImage.png';
 
+import { useAlgoliaSearch } from '../utils/hooks';
+
 const SkillsBuilderModal = () => {
+  const [state, dispatch] = useContext(SkillsBuilderContext);
+  const [learnerGoal, setLearnerGoal] = useState('');
+  // TODO: Temporarily disable the no-unused-vars check, we'll see these later
+  // eslint-disable-next-line no-unused-vars
+  const [algoliaClient, productSearchIndex, jobSearchIndex] = useAlgoliaSearch();
+
   const onCloseHandle = () => {
     window.history.back();
   };
-
-  const [state, dispatch] = useContext(SkillsBuilderContext);
-  const [learnerGoal, setLearnerGoal] = useState('');
 
   return (
     <ModalDialog
