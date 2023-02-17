@@ -9,7 +9,7 @@ import {
   removeCareerInterest,
 } from '../data/actions';
 import { SkillsBuilderContext } from '../skills-builder-context';
-import { useAlgoliaSearch } from '../utils/hooks';
+import { useAlgoliaSearch } from '../utils/search';
 
 const SelectPreferences = () => {
   // TODO: Temporarily disable the no-unused-vars check, we'll see these later
