@@ -175,6 +175,7 @@ class SocialLinks extends React.Component {
                 <ul className="list-unstyled">
                   {socialLinks.map(({ platform, socialLink }) => (
                     <EditingListItem
+                      id="socialLink"
                       key={platform}
                       name={platformDisplayInfo[platform].name}
                       platform={platform}
@@ -245,8 +246,8 @@ export default connect(
 )(injectIntl(SocialLinks));
 
 const SocialLink = ({ url, name, platform }) => (
-  <a href={url} className="font-weight-bold">
-    <FontAwesomeIcon className="mr-2" icon={platformDisplayInfo[platform].icon} />
+  <a href={url} className="font-weight-bold socialLinks">
+    <FontAwesomeIcon className="mr-2 socialIcon" icon={platformDisplayInfo[platform].icon} />
     {name}
   </a>
 );

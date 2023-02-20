@@ -14,7 +14,7 @@ const FormControls = ({
   const buttonState = saveState === 'error' ? null : saveState;
 
   return (
-    <div className="d-flex flex-row-reverse flex-wrap justify-content-end align-items-center">
+    <div className="d-flex flex-row-reverse flex-wrap justify-content-end align-items-center save-btn">
       <div className="form-group d-flex flex-wrap">
         <label className="col-form-label" htmlFor={visibilityId}>
           {intl.formatMessage(messages['profile.formcontrols.who.can.see'])}
@@ -29,7 +29,9 @@ const FormControls = ({
         />
       </div>
       <div className="form-group flex-shrink-0 flex-grow-1">
+
         <StatefulButton
+          id="btnsave"
           type="submit"
           state={buttonState}
           labels={{
@@ -37,6 +39,7 @@ const FormControls = ({
             pending: intl.formatMessage(messages['profile.formcontrols.button.saving']),
             complete: intl.formatMessage(messages['profile.formcontrols.button.saved']),
           }}
+          // style={{ color: '#fff' }}
           onClick={(e) => {
             // Swallow clicks if the state is pending.
             // We do this instead of disabling the button to prevent
