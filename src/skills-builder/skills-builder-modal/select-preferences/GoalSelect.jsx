@@ -21,6 +21,7 @@ const GoalDropdown = () => {
           as="select"
           value={currentGoal}
           onChange={(e) => dispatch(setGoal(e.target.value))}
+          data-testid="goal-select-dropdown"
         >
           <option value="">{intl.formatMessage(messages.selectLearningGoal)}</option>
           <option>{intl.formatMessage(messages.learningGoalStartCareer)}</option>

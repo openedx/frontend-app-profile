@@ -33,7 +33,7 @@ const SkillsBuilderModal = () => {
       <ModalDialog
         title="Skills Builder"
         size="fullscreen"
-        className="skills-builder-modal"
+        className="skills-builder-modal bg-light-200"
         isOpen
         onClose={onCloseHandle}
       >

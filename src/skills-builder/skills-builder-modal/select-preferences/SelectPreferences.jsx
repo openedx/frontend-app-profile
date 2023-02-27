@@ -4,7 +4,6 @@ import {
 } from '@edx/paragon';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { SkillsBuilderContext } from '../../skills-builder-context';
-
 import GoalSelect from './GoalSelect';
 import JobTitleSelect from './JobTitleSelect';
 import CareerInterestSelect from './CareerInterestSelect';
@@ -15,21 +14,23 @@ const SelectPreferences = () => {
   const { currentGoal, currentJobTitle } = state;
 
   return (
-    <Stack gap={5}>
-      <p className="lead">
+    <>
+      <p className="lead mb-5">
         <FormattedMessage {...messages.skillsBuilderDescription} />
       </p>
+      <Stack gap={4}>
 
-      <GoalSelect />
+        <GoalSelect />
 
-      {currentGoal && (
-        <JobTitleSelect />
-      )}
+        {currentGoal && (
+          <JobTitleSelect />
+        )}
 
-      {currentJobTitle && (
-        <CareerInterestSelect />
-      )}
-    </Stack>
+        {currentJobTitle && (
+          <CareerInterestSelect />
+        )}
+      </Stack>
+    </>
   );
 };
 
