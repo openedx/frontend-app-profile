@@ -17,6 +17,16 @@ const messages = defineMessages({
     defaultMessage: 'Exit',
     description: 'Button that exits the Skills Builder.',
   },
+  selectPreferences: {
+    id: 'select.preferences',
+    defaultMessage: 'Select preferences',
+    description: 'The first step of the Skills Builder for selecting a goal, a current job/occupation, and career interests',
+  },
+  reviewResults: {
+    id: 'review.results',
+    defaultMessage: 'Review results',
+    description: 'The second step of the Skills Builder for rendering results from learner input',
+  },
 });
 
 export default messages;
