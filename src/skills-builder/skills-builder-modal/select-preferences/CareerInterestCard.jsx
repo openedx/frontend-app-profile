@@ -10,7 +10,7 @@ import { removeCareerInterest } from '../../data/actions';
 import messages from './messages';
 
 const CareerInterestCard = ({ interest }) => {
-  const intl = useIntl();
+  const { formatMessage } = useIntl();
   const { dispatch } = useContext(SkillsBuilderContext);
 
   return (
@@ -21,7 +21,7 @@ const CareerInterestCard = ({ interest }) => {
       <IconButton
         iconAs={Icon}
         src={Close}
-        alt={`${intl.formatMessage(messages.removeCareerInterestButtonAltText)} ${interest}`}
+        alt={`${formatMessage(messages.removeCareerInterestButtonAltText)} ${interest}`}
         onClick={() => dispatch(removeCareerInterest(interest))}
       />
     </div>

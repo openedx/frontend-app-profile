@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import {
   Stack,
 } from '@edx/paragon';
-import { FormattedMessage } from '@edx/frontend-platform/i18n';
+import { useIntl } from '@edx/frontend-platform/i18n';
 import { SkillsBuilderContext } from '../../skills-builder-context';
 import GoalSelect from './GoalSelect';
 import JobTitleSelect from './JobTitleSelect';
@@ -10,13 +10,14 @@ import CareerInterestSelect from './CareerInterestSelect';
 import messages from './messages';
 
 const SelectPreferences = () => {
+  const { formatMessage } = useIntl();
   const { state } = useContext(SkillsBuilderContext);
   const { currentGoal, currentJobTitle } = state;
 
   return (
-    <>
-      <p className="lead mb-5">
-        <FormattedMessage {...messages.skillsBuilderDescription} />
+    <Stack gap={4}>
+      <p className="lead">
+        {formatMessage(messages.skillsBuilderDescription)}
       </p>
       <Stack gap={4}>
 
@@ -30,7 +31,7 @@ const SelectPreferences = () => {
           <CareerInterestSelect />
         )}
       </Stack>
-    </>
+    </Stack>
   );
 };
 

@@ -61,6 +61,11 @@ const messages = defineMessages({
     defaultMessage: 'What careers are you interested in?',
     description: 'Prompts the user to select careers they are interested in pursuing.',
   },
+  careerInterestInputPlaceholder: {
+    id: 'career.interest.input.placeholder',
+    defaultMessage: 'Select up to 3 new job titles',
+    description: 'Placeholder text for the career interest input control.',
+  },
   removeCareerInterestButtonAltText: {
     id: 'career.interest.remove.button.alt.text',
     defaultMessage: 'Remove career interest: ',

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { getConfig } from '@edx/frontend-platform';
-import { FormattedMessage } from '@edx/frontend-platform/i18n';
+import { useIntl } from '@edx/frontend-platform/i18n';
 import { Stack, Row, Col } from '@edx/paragon';
 import { InstantSearch } from 'react-instantsearch-hooks-web';
 import JobTitleInstantSearch from './JobTitleInstantSearch';
@@ -10,6 +10,7 @@ import { SkillsBuilderContext } from '../../skills-builder-context';
 import messages from './messages';
 
 const CareerInterestSelect = () => {
+  const { formatMessage } = useIntl();
   const { state, dispatch, algolia } = useContext(SkillsBuilderContext);
   const { careerInterests } = state;
   const { searchClient } = algolia;
@@ -26,10 +27,13 @@ const CareerInterestSelect = () => {
   return (
     <Stack gap={2}>
       <h4>
-        <FormattedMessage {...messages.careerInterestPrompt} />
+        {formatMessage(messages.careerInterestPrompt)}
       </h4>
       <InstantSearch searchClient={searchClient} indexName={getConfig().ALGOLIA_JOBS_INDEX_NAME}>
-        <JobTitleInstantSearch onSelected={handleCareerInterestSelect} />
+        <JobTitleInstantSearch
+          onSelected={handleCareerInterestSelect}
+          placeholder={formatMessage(messages.careerInterestInputPlaceholder)}
+        />
       </InstantSearch>
       <Row>
         {careerInterests.map((interest, index) => (
