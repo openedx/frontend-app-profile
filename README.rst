@@ -3,7 +3,7 @@
 frontend-app-profile
 ====================
 
-This is a micro-frontend application responsible for the display and updating of user profiles. Please tag **@edx/arch-fed** on any PRs or issues.
+This is a micro-frontend application responsible for the display and updating of user profiles. Please tag **@openedx/2u-aperture** on any PRs or issues.
 
 When a user views their own profile, they're given fields to edit their full name, location, primary spoken language, education, social links, and bio.  Each field also has a dropdown to select the visibility of that field - i.e., whether it can be viewed by other learners.
 
