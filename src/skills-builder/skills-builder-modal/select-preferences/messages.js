@@ -61,6 +61,10 @@ const messages = defineMessages({
     defaultMessage: 'What careers are you interested in?',
     description: 'Prompts the user to select careers they are interested in pursuing.',
   },
+  removeCareerInterestButtonAltText: {
+    id: 'career.interest.remove.button.alt.text',
+    defaultMessage: 'Remove career interest: ',
+  },
 });
 
 export default messages;

@@ -2,7 +2,7 @@ import {
   SET_GOAL,
   SET_CURRENT_JOB_TITLE,
   ADD_CAREER_INTEREST,
-  REMOVE_CAREER_INTEREEST,
+  REMOVE_CAREER_INTEREST,
 } from './constants';
 
 export function skillsReducer(state, action) {
@@ -22,7 +22,7 @@ export function skillsReducer(state, action) {
         ...state,
         careerInterests: [...state.careerInterests, action.payload],
       };
-    case REMOVE_CAREER_INTEREEST:
+    case REMOVE_CAREER_INTEREST:
       return {
         ...state,
         careerInterests: state.careerInterests.filter(interest => interest !== action.payload),

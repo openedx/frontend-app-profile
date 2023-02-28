@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Form,
@@ -13,8 +13,11 @@ const JobTitleInstantSearch = (props) => {
 
   const handleAutosuggestChange = (value) => {
     setJobInput(value);
-    refine(value);
   };
+
+  useEffect(() => {
+    refine(jobInput);
+  }, [jobInput, refine]);
 
   return (
     <Form.Autosuggest
