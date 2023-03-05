@@ -1,6 +1,7 @@
 .socialLinks {
   color: red;
 
+
   &:hover {
     color: #006DAA;
   }
@@ -13,6 +14,7 @@
     color: black;
   }
 }
+
 
 .form-group {
   .save-btn {
@@ -36,12 +38,12 @@
 .btn,
 a.btn {
   text-decoration: none;
-  color: #006DAA;
+  color: #FF0000;
   padding: 10px;
 
   &:hover {
     color: #000000;
-    background-color: #ffffff;
+    background-color: #fd9d9d;
   }
 }
 

@@ -18,8 +18,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Switch } from 'react-router-dom';
 
-import Header, { messages as headerMessages } from '@edx/frontend-component-header';
-import Footer, { messages as footerMessages } from '@edx/frontend-component-footer';
+import Header, { messages as headerMessages } from './Header/dist';
+import Footer, { messages as footerMessages } from './Footer/dist';
 
 import appMessages from './i18n';
 import { ProfilePage, NotFoundPage } from './profile';
@@ -45,6 +45,7 @@ subscribe(APP_READY, () => {
         </Switch>
       </main>
       <Footer />
+
     </AppProvider>,
     document.getElementById('root'),
   );
