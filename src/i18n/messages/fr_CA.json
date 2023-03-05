@@ -57,5 +57,6 @@
   "skills.builder.header.title": "Constructeur de compétences",
   "skills.builder.header.subheading": "Laissez EDUlib être votre guide",
   "go.back.button": "Retour",
-  "next.step.button": "Prochaine étape"
+  "next.step.button": "Prochaine étape",
+  "exit.button": "Sortie"
 }

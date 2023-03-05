@@ -57,5 +57,6 @@
   "skills.builder.header.title": "Skills Builder",
   "skills.builder.header.subheading": "Let edX be your guide",
   "go.back.button": "Go Back",
-  "next.step.button": "Next Step"
+  "next.step.button": "Next Step",
+  "exit.button": "Exit"
 }

@@ -3,7 +3,7 @@ import {
   SET_GOAL,
   SET_CURRENT_JOB_TITLE,
   ADD_CAREER_INTEREST,
-  REMOVE_CAREER_INTEREEST,
+  REMOVE_CAREER_INTEREST,
 } from '../constants';
 
 describe('skillsReducer', () => {
@@ -48,7 +48,7 @@ describe('skillsReducer', () => {
     };
     const returnedState = skillsReducer(
       testStateWithInterest,
-      { type: REMOVE_CAREER_INTEREEST, payload: newCareerInterestPayload },
+      { type: REMOVE_CAREER_INTEREST, payload: newCareerInterestPayload },
     );
     const finalState = {
       ...testStateWithInterest,

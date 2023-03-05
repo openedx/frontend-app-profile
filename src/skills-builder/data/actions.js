@@ -2,7 +2,7 @@ import {
   SET_GOAL,
   SET_CURRENT_JOB_TITLE,
   ADD_CAREER_INTEREST,
-  REMOVE_CAREER_INTEREEST,
+  REMOVE_CAREER_INTEREST,
 } from './constants';
 
 export const setGoal = (payload) => ({
@@ -21,6 +21,6 @@ export const addCareerInterest = (payload) => ({
 });
 
 export const removeCareerInterest = (payload) => ({
-  type: REMOVE_CAREER_INTEREEST,
+  type: REMOVE_CAREER_INTEREST,
   payload,
 });

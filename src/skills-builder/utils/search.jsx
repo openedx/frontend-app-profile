@@ -41,44 +41,70 @@ export const useAlgoliaSearch = () => {
 };
 
 /*
- * Utility function used to reformat incoming job names to match the syntax Algolia expects when querying index data.
+ * Utility function used to format a list of data so it matches syntax Algolia expects.
  *
- * @param {Array[String]} jobNames - A list of job names a learner is interested in
+ * @param {String} facetFilterType - A string declaring the facet filter type to prepend each search item (e.g. `name`)
+ * @param {Array[String]} data - An array of job or skills used to query data in Algolia.
  *
- * @return formattedJobNames - The transformed array of job names
+ * @return {Array[String]} formattedData - The transformed array of data to search prepended with the facet filter type
  */
-export function formatJobNames(jobNames) {
-  const formattedJobNames = [];
-  if (jobNames) {
-    jobNames.forEach(job => formattedJobNames.push(`name:${job}`));
+export function formatFacetFilterData(facetFilterType, data) {
+  const formattedData = [];
+  if (data) {
+    data.forEach(item => formattedData.push(`${facetFilterType}:${item}`));
   }
-  return formattedJobNames;
+
+  return formattedData;
 }
 
 /*
  * Utility function responsible for querying and returning job information based on input received from a learner.
  *
- * @param {SearchIndex} jobIndex - An Algolia index of job taxonomy data. Used to retrieve job metadata that a
- *  learner is interested in.
+ * @param {SearchIndex} jobIndex - An Algolia index of taxonomy connector data used to retrieve job information a
+ *  learner is interested in
  * @param {Array[String]} jobNames - A list of job names a learner is interested in
  *
- * @return Job information retrieved from Algolia
+ * @return {Array[Object]} results - Job information retrieved from Algolia
  */
-export const searchJobs = async (jobSearchIndex, jobNames) => {
-  let results = null;
-
-  const formattedJobNames = formatJobNames(jobNames);
+export const searchJobs = async (jobIndex, jobNames) => {
+  const formattedJobNames = formatFacetFilterData('name', jobNames);
   try {
-    const { hits } = await jobSearchIndex.search('', {
+    const { hits } = await jobIndex.search('', {
       facetFilters: [
         formattedJobNames,
       ],
     });
-    results = hits;
+    return hits;
   } catch (error) {
     logError(error);
-    results = [];
   }
 
-  return results;
+  return [];
+};
+
+/*
+ * Utility function responsible for returning recommendations on products based on the skills of a job a learner is
+ * interested in.
+ *
+ * @param {SearchIndex} productIndex - An Algolia index of product data used to retrieve recommendations for learners.
+ * @param {String} productType - The type of product information you are trying to retrieve (e.g. `course` or `program`)
+ * @param {Array[String]} skills - An array of skill names related to a job/career a learner expressed interest in
+ *
+ * @return {Array[Object]} results - Product information retrieved from Algolia
+ */
+export const getProductRecommendations = async (productIndex, productType, skills) => {
+  const formattedSkillNames = formatFacetFilterData('skills.skill', skills);
+  try {
+    const { hits } = await productIndex.search('', {
+      filters: `product:${productType}`,
+      facetFilters: [
+        formattedSkillNames,
+      ],
+    });
+    return hits;
+  } catch (error) {
+    logError(error);
+  }
+
+  return [];
 };

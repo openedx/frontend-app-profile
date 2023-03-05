@@ -28,7 +28,7 @@
   ],
   "dependencies": {
     "@edx/brand": "npm:@edx/brand-openedx@1.2.0",
-    "@edx/frontend-platform": "2.6.2",
+    "@edx/frontend-platform": "3.3.1",
     "@edx/paragon": "^20.28.4",
     "@fortawesome/fontawesome-svg-core": "1.2.36",
     "@fortawesome/free-brands-svg-icons": "5.15.4",
@@ -46,6 +46,7 @@
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "react-helmet": "6.1.0",
+    "react-instantsearch-hooks-web": "^6.40.1",
     "react-redux": "7.2.9",
     "react-router": "5.3.4",
     "react-router-dom": "5.3.4",
@@ -59,8 +60,8 @@
     "universal-cookie": "4.0.4"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.4.2",
-    "@commitlint/config-angular": "17.4.2",
+    "@commitlint/cli": "17.4.4",
+    "@commitlint/config-angular": "17.4.4",
     "@edx/browserslist-config": "^1.1.1",
     "@edx/frontend-build": "12.4.19",
     "@edx/reactifex": "2.1.1",
