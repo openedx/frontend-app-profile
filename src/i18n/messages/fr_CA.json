@@ -58,5 +58,20 @@
   "skills.builder.header.subheading": "Laissez EDUlib être votre guide",
   "go.back.button": "Retour",
   "next.step.button": "Prochaine étape",
-  "exit.button": "Sortie"
+  "exit.button": "Sortie",
+  "select.preferences": "Sélectionnez les préférences",
+  "review.results": "Examiner les résultats",
+  "skills.builder.description": "Trouvez les bons cours et programmes qui vous aideront à atteindre vos objectifs.",
+  "learning.goal.prompt": "Tout d&#39;abord, dites-nous ce que vous voulez réaliser",
+  "select.learning.goal": "Sélectionnez un objectif",
+  "learning.goal.start_career": "Je veux commencer ma carrière",
+  "learning.goal.advance_career": "Je veux faire progresser ma carrière",
+  "learning.goal.change_career": "Je veux changer de métier",
+  "learning.goal.something.new": "Je veux apprendre quelque chose de nouveau",
+  "learning.goal.something.else": "Autre chose",
+  "job.title.prompt": "Ensuite, recherchez et sélectionnez votre titre de poste actuel",
+  "student.checkbox.prompt": "Je suis étudiant.e",
+  "currently.looking.checkbox.prompt": "Je suis actuellement à la recherche d&#39;un emploi",
+  "career.interest.prompt": "Quels métiers vous intéressent ?",
+  "career.interest.remove.button.alt.text": "Supprimer l'intérêt professionnel :"
 }
