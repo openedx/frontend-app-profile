@@ -58,5 +58,20 @@
   "skills.builder.header.subheading": "Let edX be your guide",
   "go.back.button": "Go Back",
   "next.step.button": "Next Step",
-  "exit.button": "Exit"
+  "exit.button": "Exit",
+  "select.preferences": "Select preferences",
+  "review.results": "Review results",
+  "skills.builder.description": "Find the right courses and programs that help you reach your goals.",
+  "learning.goal.prompt": "First, tell us what you want to achieve",
+  "select.learning.goal": "Select a goal",
+  "learning.goal.start_career": "I want to start my career",
+  "learning.goal.advance_career": "I want to advance my career",
+  "learning.goal.change_career": "I want to change careers",
+  "learning.goal.something.new": "I want to learn something new",
+  "learning.goal.something.else": "Something else",
+  "job.title.prompt": "Next, search and select your current job title",
+  "student.checkbox.prompt": "I'm a student",
+  "currently.looking.checkbox.prompt": "I'm currently looking for work",
+  "career.interest.prompt": "What careers are you interested in?",
+  "career.interest.remove.button.alt.text": "Remove career interest: "
 }
