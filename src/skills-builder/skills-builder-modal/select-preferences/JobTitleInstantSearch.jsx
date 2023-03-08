@@ -25,6 +25,8 @@ const JobTitleInstantSearch = (props) => {
       onChange={handleAutosuggestChange}
       name="job-title-suggest"
       onSelected={props.onSelected}
+      autoComplete="off"
+      placeholder={props.placeholder}
     >
       {hits.map(job => (
         <Form.AutosuggestOption key={job.id}>
@@ -35,8 +37,13 @@ const JobTitleInstantSearch = (props) => {
   );
 };
 
+JobTitleInstantSearch.defaultProps = {
+  placeholder: '',
+};
+
 JobTitleInstantSearch.propTypes = {
   onSelected: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
 };
 
 export default JobTitleInstantSearch;

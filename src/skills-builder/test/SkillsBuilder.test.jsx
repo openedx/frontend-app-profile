@@ -8,15 +8,29 @@ import { SkillsBuilder } from '..';
 import { SkillsBuilderModal } from '../skills-builder-modal';
 import { SkillsBuilderProvider, SkillsBuilderContext } from '../skills-builder-context';
 import { skillsInitialState } from '../data/reducer';
+import { mockData } from './__mocks__/jobSkills.mockData';
+import { getProductRecommendations, searchJobs, useAlgoliaSearch } from '../utils/search';
+
+const dispatchMock = jest.fn();
+
+jest.mock('@edx/frontend-platform/logging');
 
 jest.mock('react-instantsearch-hooks-web', () => ({
   // eslint-disable-next-line react/prop-types
   InstantSearch: ({ children }) => (<div>{children}</div>),
   useSearchBox: jest.fn(() => ({ refine: jest.fn() })),
-  useHits: jest.fn(() => ({ hits: [{ name: 'Text File Engineer' }, { name: 'Screen Viewer' }] })),
+  useHits: jest.fn(() => ({ hits: mockData.hits })),
 }));
 
-const dispatchMock = jest.fn();
+jest.mock('../utils/search', () => ({
+  searchJobs: jest.fn(),
+  getProductRecommendations: jest.fn(),
+  useAlgoliaSearch: jest.fn(),
+}));
+
+searchJobs.mockReturnValue(mockData.searchJobs);
+getProductRecommendations.mockReturnValue(mockData.productRecommendations);
+useAlgoliaSearch.mockReturnValue(mockData.useAlgoliaSearch);
 
 const contextValue = {
   state: {
@@ -26,6 +40,8 @@ const contextValue = {
   algolia: {
     // Without this, tests would fail to destructure `searchClient` in the <JobTitleSelect> component
     searchClient: {},
+    productSearchIndex: {},
+    jobSearchIndex: {},
   },
 };
 
@@ -76,7 +92,7 @@ describe('skills-builder', () => {
       type: 'SET_GOAL',
     };
     const expectedJobTitle = {
-      payload: 'student',
+      payload: 'Student',
       type: 'SET_CURRENT_JOB_TITLE',
     };
 
@@ -148,5 +164,30 @@ describe('skills-builder', () => {
 
     fireEvent.click(screen.getByLabelText('Remove career interest: Prospector'));
     expect(dispatchMock).toHaveBeenCalledWith(expected);
+  });
+
+  it('should render a <JobSillsSelectableBox> for each career interest the learner has submitted', async () => {
+    render(
+      SkillsBuilderWrapperWithContext(
+        {
+          ...contextValue,
+          state: {
+            ...contextValue.state,
+            currentGoal: 'I want to start my career',
+            currentJobTitle: 'Goblin Lackey',
+            careerInterests: ['Prospector'],
+          },
+        },
+      ),
+    );
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: 'Next Step' }));
+    });
+
+    const chipComponents = document.querySelectorAll('.pgn__chip');
+    expect(chipComponents[0].textContent).toEqual('finding shiny things');
+    expect(chipComponents[1].textContent).toEqual('mining');
+
+    expect(screen.getByText('Prospector')).toBeTruthy();
   });
 });
