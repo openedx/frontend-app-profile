@@ -73,5 +73,9 @@
   "student.checkbox.prompt": "Je suis étudiant.e",
   "currently.looking.checkbox.prompt": "Je suis actuellement à la recherche d&#39;un emploi",
   "career.interest.prompt": "Quels métiers vous intéressent ?",
-  "career.interest.remove.button.alt.text": "Supprimer l'intérêt professionnel :"
+  "career.interest.input.placeholder": "Sélectionnez jusqu'à 3 nouveaux intitulés de poste",
+  "career.interest.remove.button.alt.text": "Supprimer l'intérêt professionnel :",
+  "matches.found.success.alert": "Nous avons trouvé des compétences et des cours qui correspondent à vos préférences !",
+  "related.skills.heading": "Compétences connexes",
+  "related.skills.selectable.box.label.text": "Compétences connexes:"
 }
