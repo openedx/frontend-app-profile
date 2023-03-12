@@ -73,5 +73,9 @@
   "student.checkbox.prompt": "I'm a student",
   "currently.looking.checkbox.prompt": "I'm currently looking for work",
   "career.interest.prompt": "What careers are you interested in?",
-  "career.interest.remove.button.alt.text": "Remove career interest: "
+  "career.interest.input.placeholder": "Select up to 3 new job titles",
+  "career.interest.remove.button.alt.text": "Remove career interest: ",
+  "matches.found.success.alert": "We found skills and courses that match your preferences!",
+  "related.skills.heading": "Related Skills",
+  "related.skills.selectable.box.label.text": "Related skills:"
 }
