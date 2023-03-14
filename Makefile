@@ -1,6 +1,6 @@
 export TRANSIFEX_RESOURCE = frontend-app-profile
 transifex_resource = frontend-app-profile
-transifex_langs = "ar,fr,es_419,zh_CN,pt,it,de,uk,ru,hi,fr_CA"
+transifex_langs = "ar,fr,es_419,zh_CN,pt,it,de,uk,ru,hi,fr_CA, pt_br"
 
 transifex_utils = ./node_modules/.bin/transifex-utils.js
 i18n = ./src/i18n
