@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
-import { useEnterpriseConfig } from "@edx/frontend-enterprise";
+// import { useEnterpriseConfig } from "@edx/frontend-enterprise";
 import { getConfig } from "@edx/frontend-platform";
 import { injectIntl, intlShape } from "@edx/frontend-platform/i18n";
 import { AppContext } from "@edx/frontend-platform/react";
@@ -30,34 +30,34 @@ function Header({ courseOrg, courseNumber, courseTitle, intl }) {
   const [colorChange, setColorchange] = useState(false);
   const { authenticatedUser } = useContext(AppContext);
 
-  const { enterpriseLearnerPortalLink, enterpriseCustomerBrandingConfig } =
-    useEnterpriseConfig(
-      authenticatedUser,
-      getConfig().ENTERPRISE_LEARNER_PORTAL_HOSTNAME,
-      getConfig().LMS_BASE_URL
-    );
+  // const { enterpriseLearnerPortalLink, enterpriseCustomerBrandingConfig } =
+  //   useEnterpriseConfig(
+  //     authenticatedUser,
+  //     getConfig().ENTERPRISE_LEARNER_PORTAL_HOSTNAME,
+  //     getConfig().LMS_BASE_URL
+  //   );
 
-  let headerLogo = (
-    <LinkedLogo
-      className="logo"
-      href={`${getConfig().LMS_BASE_URL}/dashboard`}
-      src={getConfig().LOGO_URL}
-      alt={getConfig().SITE_NAME}
-    />
-  );
-  if (
-    enterpriseCustomerBrandingConfig &&
-    Object.keys(enterpriseCustomerBrandingConfig).length > 0
-  ) {
-    headerLogo = (
-      <LinkedLogo
-        className="logo"
-        href={enterpriseCustomerBrandingConfig.logoDestination}
-        src={enterpriseCustomerBrandingConfig.logo}
-        alt={enterpriseCustomerBrandingConfig.logoAltText}
-      />
-    );
-  }
+  // let headerLogo = (
+  //   <LinkedLogo
+  //     className="logo"
+  //     href={`${getConfig().LMS_BASE_URL}/dashboard`}
+  //     src={getConfig().LOGO_URL}
+  //     alt={getConfig().SITE_NAME}
+  //   />
+  // );
+  // if (
+  //   enterpriseCustomerBrandingConfig &&
+  //   Object.keys(enterpriseCustomerBrandingConfig).length > 0
+  // ) {
+  //   headerLogo = (
+  //     <LinkedLogo
+  //       className="logo"
+  //       href={enterpriseCustomerBrandingConfig.logoDestination}
+  //       src={enterpriseCustomerBrandingConfig.logo}
+  //       alt={enterpriseCustomerBrandingConfig.logoAltText}
+  //     />
+  //   );
+  // }
 
   const changeNavbarColor = () => {
     if (window.scrollY >= 400) {
@@ -75,14 +75,14 @@ function Header({ courseOrg, courseNumber, courseTitle, intl }) {
             {intl.formatMessage(messages.skipNavLink)}
           </a>
           <div className="py-2 d-flex align-items-center ">
-            {headerLogo}
-            {authenticatedUser && (
+            {/* {headerLogo} */}
+            {/* {authenticatedUser && (
               <AuthenticatedUserDropdown
                 enterpriseLearnerPortalLink={enterpriseLearnerPortalLink}
                 username={authenticatedUser.username}
               />
             )}
-            {!authenticatedUser && <AnonymousUserMenu />}
+            {!authenticatedUser && <AnonymousUserMenu />} */}
           </div>
         </header>
       </Container>
