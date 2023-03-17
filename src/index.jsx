@@ -16,10 +16,6 @@ import { Route, Switch } from "react-router-dom";
 import Header from "./profile/Header/Header";
 import Footer from "./profile/Footer/Footer";
 
-import appMessages from "./i18n";
-import { ProfilePage, NotFoundPage } from "./profile";
-import configureStore from "./data/configureStore";
-
 import appMessages from './i18n';
 import { ProfilePage, NotFoundPage } from './profile';
 import configureStore from './data/configureStore';
