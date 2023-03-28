@@ -96,7 +96,7 @@ export const getProductRecommendations = async (productIndex, productType, skill
   const formattedSkillNames = formatFacetFilterData('skills.skill', skills);
   try {
     const { hits } = await productIndex.search('', {
-      filters: `product: "${productType}"`,
+      filters: `product:${productType}`,
       facetFilters: [
         formattedSkillNames,
       ],

@@ -12,8 +12,9 @@ import messages from './messages';
 
 const JobTitleSelect = () => {
   const { formatMessage } = useIntl();
-  const { dispatch, algolia } = useContext(SkillsBuilderContext);
+  const { state, dispatch, algolia } = useContext(SkillsBuilderContext);
   const { searchClient } = algolia;
+  const { currentJobTitle } = state;
 
   const handleCurrentJobTitleSelect = (value) => {
     dispatch(setCurrentJobTitle(value));
@@ -24,18 +25,16 @@ const JobTitleSelect = () => {
   const handleCheckboxChange = (e) => dispatch(setCurrentJobTitle(e.target.value));
 
   return (
-    <Stack>
-      <Form.Label>
-        <h4 className="mb-3">
-          {formatMessage(messages.jobTitlePrompt)}
-        </h4>
-        <InstantSearch searchClient={searchClient} indexName={getConfig().ALGOLIA_JOBS_INDEX_NAME}>
-          <JobTitleInstantSearch
-            onSelected={handleCurrentJobTitleSelect}
-            placeholder={formatMessage(messages.jobTitleInputPlaceholderText)}
-          />
-        </InstantSearch>
-      </Form.Label>
+    <Stack gap={2}>
+      <h4>
+        {formatMessage(messages.jobTitlePrompt)}
+      </h4>
+      <InstantSearch searchClient={searchClient} indexName={getConfig().ALGOLIA_JOBS_INDEX_NAME}>
+        <JobTitleInstantSearch
+          onSelected={handleCurrentJobTitleSelect}
+          placeholder={currentJobTitle}
+        />
+      </InstantSearch>
       <Form.Group>
         <Form.CheckboxSet
           name="other-occupations"
