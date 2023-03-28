@@ -46,11 +46,6 @@ const messages = defineMessages({
     defaultMessage: 'Next, search and select your current job title',
     description: 'Prompts the user to select their current job title or occupation.',
   },
-  jobTitleInputPlaceholderText: {
-    id: 'job.title.input.placeholder.text',
-    defaultMessage: 'Search and select a job title',
-    description: 'Placeholder text for the job title input control.',
-  },
   studentCheckboxPrompt: {
     id: 'student.checkbox.prompt',
     defaultMessage: 'I\'m a student',
@@ -66,8 +61,8 @@ const messages = defineMessages({
     defaultMessage: 'What careers are you interested in?',
     description: 'Prompts the user to select careers they are interested in pursuing.',
   },
-  careerInterestInputPlaceholderText: {
-    id: 'career.interest.input.placeholder.text',
+  careerInterestInputPlaceholder: {
+    id: 'career.interest.input.placeholder',
     defaultMessage: 'Select up to 3 new job titles',
     description: 'Placeholder text for the career interest input control.',
   },

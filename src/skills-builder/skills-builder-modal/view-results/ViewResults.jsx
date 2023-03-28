@@ -3,13 +3,11 @@ import {
   Stack, Row, Alert, Spinner,
 } from '@edx/paragon';
 import { useIntl } from '@edx/frontend-platform/i18n';
-import { CheckCircle, ErrorOutline } from '@edx/paragon/icons';
+import { CheckCircle } from '@edx/paragon/icons';
 import { SkillsBuilderContext } from '../../skills-builder-context';
 import RelatedSkillsSelectableBoxSet from './RelatedSkillsSelectableBoxSet';
 import { searchJobs, getProductRecommendations } from '../../utils/search';
 import messages from './messages';
-import { productTypes } from './data/constants';
-import CarouselStack from './CarouselStack';
 
 const ViewResults = () => {
   const { formatMessage } = useIntl();
@@ -19,13 +17,12 @@ const ViewResults = () => {
 
   const [selectedJobTitle, setSelectedJobTitle] = useState('');
   const [jobSkillsList, setJobSkillsList] = useState([]);
-  const [productRecommendations, setProductRecommendations] = useState([]);
-  const [selectedRecommendations, setSelectedRecommendations] = useState({});
+  // eslint-disable-next-line no-unused-vars
+  const [courseRecommendations, setCourseRecommendations] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [fetchError, setFetchError] = useState(false);
 
   useEffect(() => {
-    const getRecommendations = async () => {
+    const getJobs = async () => {
       // fetch list of jobs with related skills
       const jobInfo = await searchJobs(jobSearchIndex, careerInterests);
 
@@ -33,55 +30,24 @@ const ViewResults = () => {
       const results = await Promise.all(jobInfo.map(async (job) => {
         const formattedSkills = job.skills.map(skill => skill.name);
 
-        // create a data object for each job
+        const recommendations = await getProductRecommendations(productSearchIndex, 'course', formattedSkills);
+
         const data = {
           id: job.id,
           name: job.name,
-          recommendations: {},
+          recommendations,
         };
-
-        // get recommendations for each product type based on the skills for the current job
-        await Promise.all(productTypes.map(async (productType) => {
-          const response = await getProductRecommendations(productSearchIndex, productType, formattedSkills);
-
-          // replace all white spaces with an underscore
-          const formattedProductType = productType.replace(' ', '_');
-
-          // add a new key to the recommendations object and set the value to the response
-          data.recommendations[formattedProductType] = response;
-        }));
 
         return data;
       }));
 
       setJobSkillsList(jobInfo);
       setSelectedJobTitle(jobInfo[0].name);
-      setProductRecommendations(results);
+      setCourseRecommendations(results);
       setIsLoading(false);
     };
-    getRecommendations()
-      .catch(() => {
-        setFetchError(true);
-        setIsLoading(false);
-      });
+    getJobs();
   }, [careerInterests, jobSearchIndex, productSearchIndex]);
-
-  useEffect(() => {
-    setSelectedRecommendations(productRecommendations.find(rec => rec.name === selectedJobTitle));
-  }, [productRecommendations, selectedJobTitle]);
-
-  if (fetchError) {
-    return (
-      <Alert
-        variant="danger"
-        icon={ErrorOutline}
-      >
-        <Alert.Heading>
-          {formatMessage(messages.matchesNotFoundDangerAlert)}
-        </Alert.Heading>
-      </Alert>
-    );
-  }
 
   return (
     isLoading ? (
@@ -93,7 +59,7 @@ const ViewResults = () => {
         />
       </Row>
     ) : (
-      <Stack gap={4.5} className="pb-4.5">
+      <Stack gap={4.5}>
         <Alert
           variant="success"
           icon={CheckCircle}
@@ -108,8 +74,6 @@ const ViewResults = () => {
           selectedJobTitle={selectedJobTitle}
           onChange={(e) => setSelectedJobTitle(e.target.value)}
         />
-
-        <CarouselStack selectedRecommendations={selectedRecommendations} />
       </Stack>
     )
   );

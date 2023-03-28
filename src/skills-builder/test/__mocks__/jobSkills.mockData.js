@@ -14,24 +14,11 @@ export const mockData = {
       id: 0,
       name: 'Prospector',
       skills: [
-        { external_id: 0,
-          name: 'mining',
-          significance: 50,
-        },
-        { external_id: 1,
-          name: 'finding shiny things',
-          significance: 100,
-        }],
-    },
-    {
-      id: 1,
-      name: 'Mirror Breaker',
-      skills: [
-        { external_id: 0,
+        { id: 0, 
           name: 'mining',
           significance: 50,
         }, 
-        { external_id: 1,
+        { id: 1,
           name: 'finding shiny things',
           significance: 100,
         }],
@@ -39,28 +26,14 @@ export const mockData = {
   ],
   productRecommendations: [
     {
-      title: 'Mining with the Mons',
-      uuid: 'thisIsARandomString01',
-      partner: ['edx'],
-      card_image_url: 'https://thisIsAUrl.ForAnImage.01.jpeg',
-      marketing_url: 'https://thisIsAUrl.ForTheRecommendedContent.01.com',
-      owners: [
-        {
-          logoImageUrl: 'https://thisIsAUrl.ForALogoImage.01.jpeg',
-        }
-      ]
+      id: 0,
+      name: 'Prospector',
+      recommendations: [{ name: 'Mining with the Mons' }, { name: 'The Art of Warren Upkeep' }],
     },
     {
-      title: 'The Art of Warren Upkeep',
-      uuid: 'thisIsARandomString02',
-      partner: ['edx'],
-      card_image_url: 'https://thisIsAUrl.ForAnImage.02.jpeg',
-      marketing_url: 'https://thisIsAUrl.ForTheRecommendedContent.02.com',
-      owners: [
-        {
-          logoImageUrl: 'https://thisIsAUrl.ForALogoImage.02.jpeg',
-        }
-      ]
+      id: 1,
+      name: 'Mirror Breaker',
+      recommendations: [{ name: 'Mirror Breaking 101' }],
     },
   ],
   useAlgoliaSearch: [{}, {}, {}],

@@ -24,11 +24,12 @@ const JobTitleInstantSearch = (props) => {
       value={jobInput}
       onChange={handleAutosuggestChange}
       name="job-title-suggest"
+      onSelected={props.onSelected}
       autoComplete="off"
-      {...props}
+      placeholder={props.placeholder}
     >
       {hits.map(job => (
-        <Form.AutosuggestOption key={job.id} id={job.name.replaceAll(' ', '-').toLowerCase()}>
+        <Form.AutosuggestOption key={job.id}>
           {job.name}
         </Form.AutosuggestOption>
       ))}
@@ -36,8 +37,13 @@ const JobTitleInstantSearch = (props) => {
   );
 };
 
+JobTitleInstantSearch.defaultProps = {
+  placeholder: '',
+};
+
 JobTitleInstantSearch.propTypes = {
   onSelected: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
 };
 
 export default JobTitleInstantSearch;
