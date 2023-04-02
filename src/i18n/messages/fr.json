@@ -70,12 +70,15 @@
   "learning.goal.something.new": "I want to learn something new",
   "learning.goal.something.else": "Something else",
   "job.title.prompt": "Next, search and select your current job title",
+  "job.title.input.placeholder.text": "Search and select a job title",
   "student.checkbox.prompt": "I'm a student",
   "currently.looking.checkbox.prompt": "I'm currently looking for work",
   "career.interest.prompt": "What careers are you interested in?",
-  "career.interest.input.placeholder": "Select up to 3 new job titles",
+  "career.interest.input.placeholder.text": "Select up to 3 new job titles",
   "career.interest.remove.button.alt.text": "Remove career interest: ",
   "matches.found.success.alert": "We found skills and courses that match your preferences!",
+  "matches.not.found.danger.alert": "We were not able to retrieve recommendations at this time. Please try again later.",
   "related.skills.heading": "Related Skills",
-  "related.skills.selectable.box.label.text": "Related skills:"
+  "related.skills.selectable.box.label.text": "Related skills:",
+  "product.recommendations.header.text": "{productType} recommendations for {jobName}"
 }
