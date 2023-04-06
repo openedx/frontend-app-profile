@@ -41,6 +41,8 @@ import { profilePageSelector } from './data/selectors';
 // i18n
 import messages from './ProfilePage.messages';
 
+import withParams from '../utils/hoc';
+
 ensureConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL'], 'ProfilePage');
 
 class ProfilePage extends React.Component {
@@ -63,9 +65,9 @@ class ProfilePage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchProfile(this.props.match.params.username);
+    this.props.fetchProfile(this.props.params.username);
     sendTrackingLogEvent('edx.profile.viewed', {
-      username: this.props.match.params.username,
+      username: this.props.params.username,
     });
   }
 
@@ -102,7 +104,7 @@ class ProfilePage extends React.Component {
   }
 
   isAuthenticatedUserProfile() {
-    return this.props.match.params.username === this.context.authenticatedUser.username;
+    return this.props.params.username === this.context.authenticatedUser.username;
   }
 
   // Inserted into the DOM in two places (for responsive layout)
@@ -124,7 +126,7 @@ class ProfilePage extends React.Component {
 
     return (
       <span data-hj-suppress>
-        <h1 className="h2 mb-0 font-weight-bold">{this.props.match.params.username}</h1>
+        <h1 className="h2 mb-0 font-weight-bold">{this.props.params.username}</h1>
         <DateJoined date={dateJoined} />
         {this.isYOBDisabled() && <UsernameDescription />}
         <hr className="d-none d-md-block" />
@@ -370,10 +372,8 @@ ProfilePage.propTypes = {
   updateDraft: PropTypes.func.isRequired,
 
   // Router
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      username: PropTypes.string.isRequired,
-    }).isRequired,
+  params: PropTypes.shape({
+    username: PropTypes.string.isRequired,
   }).isRequired,
 
   // i18n
@@ -410,4 +410,4 @@ export default connect(
     closeForm,
     updateDraft,
   },
-)(injectIntl(ProfilePage));
+)(injectIntl(withParams(ProfilePage)));
