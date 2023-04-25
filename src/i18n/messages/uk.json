@@ -8,7 +8,7 @@
   "profile.certificate.organization.label": "From",
   "profile.certificate.completion.date.label": "Completed on {date}",
   "profile.no.certificates": "You don't have any certificates yet.",
-  "profile.certificates.my.certificates": "My Certificates",
+  "profile.certificates.my.certificates": "Мої сертифікати",
   "profile.certificates.view.certificate": "View Certificate",
   "profile.certificates.types.verified": "Verified Certificate",
   "profile.certificates.types.professional": "Professional Certificate",
