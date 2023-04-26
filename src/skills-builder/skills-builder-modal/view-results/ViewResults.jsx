@@ -1,7 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {
+  useCallback, useContext, useEffect, useState,
+} from 'react';
 import {
   Stack, Row, Alert, Spinner,
 } from '@edx/paragon';
+import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 import { useIntl } from '@edx/frontend-platform/i18n';
 import { CheckCircle, ErrorOutline } from '@edx/paragon/icons';
 import { SkillsBuilderContext } from '../../skills-builder-context';
@@ -66,9 +69,35 @@ const ViewResults = () => {
       });
   }, [careerInterests, jobSearchIndex, productSearchIndex]);
 
+  const sendRecommendationShownEvent = useCallback((selectedJobName, isDefault) => {
+    sendTrackEvent('edx.skills_builder.recommendation.shown', {
+      app_name: 'skills_builder',
+      category: 'skills_builder',
+      page: 'skills_builder',
+      selected_recommendations: productRecommendations.find(rec => rec.name === selectedJobName),
+      is_default: isDefault,
+    });
+  }, [productRecommendations]);
+
   useEffect(() => {
-    setSelectedRecommendations(productRecommendations.find(rec => rec.name === selectedJobTitle));
-  }, [productRecommendations, selectedJobTitle]);
+    /*
+      This useEffect will fire when selectedJobTitle is changed
+      We initially setSelectedJobTitle when the recommendations are returned
+      We are sending an event with the is_default field set to true for the initial default selection
+    */
+    const newlySelectedRecommendations = productRecommendations.find(rec => rec.name === selectedJobTitle);
+    if (!selectedRecommendations && newlySelectedRecommendations) {
+      sendRecommendationShownEvent(selectedJobTitle, true);
+    }
+    setSelectedRecommendations(newlySelectedRecommendations);
+  }, [productRecommendations, selectedJobTitle, selectedRecommendations, sendRecommendationShownEvent]);
+
+  const handleJobTitleChange = (e) => {
+    const { value } = e.target;
+    setSelectedJobTitle(value);
+    // The is_default value will be set to false for any selections made by the user
+    sendRecommendationShownEvent(value, false);
+  };
 
   if (fetchError) {
     return (
@@ -106,7 +135,7 @@ const ViewResults = () => {
         <RelatedSkillsSelectableBoxSet
           jobSkillsList={jobSkillsList}
           selectedJobTitle={selectedJobTitle}
-          onChange={(e) => setSelectedJobTitle(e.target.value)}
+          onChange={handleJobTitleChange}
         />
 
         <CarouselStack selectedRecommendations={selectedRecommendations} />

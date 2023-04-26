@@ -2,11 +2,11 @@ export const mockData = {
   hits: [
     {
       id: 0,
-      name: 'Text File Engineer'
+      name: 'Prospector'
     },
     {
       id: 1,
-      name: 'Screen Viewer'
+      name: 'Mirror Breaker'
     },
   ],
   searchJobs: [
@@ -44,6 +44,7 @@ export const mockData = {
       partner: ['edx'],
       card_image_url: 'https://thisIsAUrl.ForAnImage.01.jpeg',
       marketing_url: 'https://thisIsAUrl.ForTheRecommendedContent.01.com',
+      active_run_key: 'MONS101',
       owners: [
         {
           logoImageUrl: 'https://thisIsAUrl.ForALogoImage.01.jpeg',
@@ -56,6 +57,7 @@ export const mockData = {
       partner: ['edx'],
       card_image_url: 'https://thisIsAUrl.ForAnImage.02.jpeg',
       marketing_url: 'https://thisIsAUrl.ForTheRecommendedContent.02.com',
+      active_run_key: 'WAR101',
       owners: [
         {
           logoImageUrl: 'https://thisIsAUrl.ForALogoImage.02.jpeg',

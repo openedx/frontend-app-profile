@@ -1,6 +1,7 @@
 import React from 'react';
 import { CardCarousel } from '@edx/paragon';
 import { useIntl } from '@edx/frontend-platform/i18n';
+import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 import RecommendationCard from './RecommendationCard';
 import messages from './messages';
 
@@ -35,6 +36,20 @@ const CarouselStack = ({ selectedRecommendations }) => {
     </h3>
   );
 
+  const handleCourseCardClick = (courseKey, productType) => {
+    sendTrackEvent(
+      'edx.skills_builder.recommendation.click',
+      {
+        app_name: 'skills_builder',
+        category: 'skills_builder',
+        page: 'skills_builder',
+        course_key: courseKey,
+        product_type: productType,
+        selected_recommendations: selectedRecommendations,
+      },
+    );
+  };
+
   return (
     productTypeNames.map(productType => (
       <CardCarousel
@@ -43,7 +58,12 @@ const CarouselStack = ({ selectedRecommendations }) => {
         title={renderCarouselTitle(productType)}
       >
         {recommendations[productType].map(rec => (
-          <RecommendationCard rec={rec} key={rec.uuid} />
+          <RecommendationCard
+            key={rec.uuid}
+            handleCourseCardClick={handleCourseCardClick}
+            rec={rec}
+            productType={productType}
+          />
         ))}
       </CardCarousel>
     )));

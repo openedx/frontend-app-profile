@@ -1,8 +1,9 @@
 import React, { useState, useContext } from 'react';
 import {
-  Button, Container, Stepper, ModalDialog,
+  Button, Container, Stepper, ModalDialog, Form,
 } from '@edx/paragon';
 import { useIntl } from '@edx/frontend-platform/i18n';
+import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 import { useHistory } from 'react-router';
 import {
   STEP1, STEP2,
@@ -19,13 +20,41 @@ import headerImage from '../images/headerImage.png';
 const SkillsBuilderModal = () => {
   const { formatMessage } = useIntl();
   const { state } = useContext(SkillsBuilderContext);
-  const { careerInterests } = state;
+  const { currentGoal, currentJobTitle, careerInterests } = state;
   const [currentStep, setCurrentStep] = useState(STEP1);
 
   const history = useHistory();
 
   const onCloseHandle = () => {
     history.goBack();
+  };
+
+  const sendActionButtonEvent = (eventSuffix) => {
+    sendTrackEvent(
+      `edx.skills_builder.${eventSuffix}`,
+      {
+        app_name: 'skills_builder',
+        category: 'skills_builder',
+        learner_data: {
+          current_goal: currentGoal,
+          current_job_title: currentJobTitle,
+          career_interests: careerInterests,
+        },
+      },
+    );
+  };
+
+  const nextStepHandle = () => {
+    setCurrentStep(STEP2);
+    sendActionButtonEvent('next_step');
+  };
+  const exitButtonHandle = () => {
+    sendActionButtonEvent('exit');
+    onCloseHandle();
+  };
+  const closeButtonHandle = () => {
+    sendActionButtonEvent('close');
+    onCloseHandle();
   };
 
   return (
@@ -35,7 +64,7 @@ const SkillsBuilderModal = () => {
         size="fullscreen"
         className="skills-builder-modal bg-light-200"
         isOpen
-        onClose={onCloseHandle}
+        onClose={closeButtonHandle}
       >
         <ModalDialog.Hero>
           <ModalDialog.Hero.Background className="bg-primary-500">
@@ -50,13 +79,15 @@ const SkillsBuilderModal = () => {
 
         <ModalDialog.Body>
           <Container size="md" className="p-4.5">
-            <Stepper.Step eventKey={STEP1} title={formatMessage(messages.selectPreferences)}>
-              <SelectPreferences />
-            </Stepper.Step>
+            <Form>
+              <Stepper.Step eventKey={STEP1} title={formatMessage(messages.selectPreferences)}>
+                <SelectPreferences />
+              </Stepper.Step>
 
-            <Stepper.Step eventKey={STEP2} title={formatMessage(messages.reviewResults)}>
-              <ViewResults />
-            </Stepper.Step>
+              <Stepper.Step eventKey={STEP2} title={formatMessage(messages.reviewResults)}>
+                <ViewResults />
+              </Stepper.Step>
+            </Form>
           </Container>
         </ModalDialog.Body>
 
@@ -67,7 +98,7 @@ const SkillsBuilderModal = () => {
             </Button>
             <Stepper.ActionRow.Spacer />
             <Button
-              onClick={() => setCurrentStep(STEP2)}
+              onClick={nextStepHandle}
               disabled={careerInterests.length === 0}
             >
               {formatMessage(messages.nextStepButton)}
@@ -81,7 +112,7 @@ const SkillsBuilderModal = () => {
               {formatMessage(messages.goBackButton)}
             </Button>
             <Stepper.ActionRow.Spacer />
-            <Button onClick={onCloseHandle}>
+            <Button onClick={exitButtonHandle}>
               {formatMessage(messages.exitButton)}
             </Button>
           </Stepper.ActionRow>
