@@ -11,6 +11,7 @@ jest.mock('@edx/frontend-platform/logging');
 jest.mock('react-instantsearch-hooks-web', () => ({
   // eslint-disable-next-line react/prop-types
   InstantSearch: ({ children }) => (<div>{children}</div>),
+  Configure: jest.fn(() => (null)),
   useSearchBox: jest.fn(() => ({ refine: jest.fn() })),
   useHits: jest.fn(() => ({ hits: mockData.hits })),
 }));

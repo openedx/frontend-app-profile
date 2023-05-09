@@ -5,7 +5,7 @@ import {
 } from '@edx/paragon';
 import { useIntl } from '@edx/frontend-platform/i18n';
 import { sendTrackEvent } from '@edx/frontend-platform/analytics';
-import { InstantSearch } from 'react-instantsearch-hooks-web';
+import { Configure, InstantSearch } from 'react-instantsearch-hooks-web';
 import { setCurrentJobTitle } from '../../data/actions';
 import { SkillsBuilderContext } from '../../skills-builder-context';
 import JobTitleInstantSearch from './JobTitleInstantSearch';
@@ -52,6 +52,7 @@ const JobTitleSelect = () => {
           {formatMessage(messages.jobTitlePrompt)}
         </h4>
         <InstantSearch searchClient={searchClient} indexName={getConfig().ALGOLIA_JOBS_INDEX_NAME}>
+          <Configure filters="b2c_opt_in:true" />
           <JobTitleInstantSearch
             onSelected={handleCurrentJobTitleSelect}
             placeholder={formatMessage(messages.jobTitleInputPlaceholderText)}

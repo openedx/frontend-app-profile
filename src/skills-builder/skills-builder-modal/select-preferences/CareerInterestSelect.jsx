@@ -5,7 +5,7 @@ import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 import {
   Stack, Row, Col, Form,
 } from '@edx/paragon';
-import { InstantSearch } from 'react-instantsearch-hooks-web';
+import { Configure, InstantSearch } from 'react-instantsearch-hooks-web';
 import JobTitleInstantSearch from './JobTitleInstantSearch';
 import CareerInterestCard from './CareerInterestCard';
 import { addCareerInterest } from '../../data/actions';
@@ -42,6 +42,7 @@ const CareerInterestSelect = () => {
           {formatMessage(messages.careerInterestPrompt)}
         </h4>
         <InstantSearch searchClient={searchClient} indexName={getConfig().ALGOLIA_JOBS_INDEX_NAME}>
+          <Configure filters="b2c_opt_in:true" />
           <JobTitleInstantSearch
             onSelected={handleCareerInterestSelect}
             placeholder={formatMessage(messages.careerInterestInputPlaceholderText)}
