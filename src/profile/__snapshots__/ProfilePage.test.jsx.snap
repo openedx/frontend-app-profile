@@ -1649,9 +1649,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                     className="pgn__form-control-description pgn__form-text pgn__form-text-invalid"
                     id="country-2"
                   >
-                    <div>
-                      country error
-                    </div>
+                    country error
                   </div>
                 </div>
                 <div
@@ -3006,9 +3004,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                     className="pgn__form-control-description pgn__form-text pgn__form-text-invalid"
                     id="levelOfEducation-3"
                   >
-                    <div>
-                      education error
-                    </div>
+                    education error
                   </div>
                 </div>
                 <div
@@ -4968,9 +4964,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                     className="pgn__form-control-description pgn__form-text pgn__form-text-invalid"
                     id="languageProficiencies-4"
                   >
-                    <div>
-                      preferred language error
-                    </div>
+                    preferred language error
                   </div>
                 </div>
                 <div
@@ -8851,9 +8845,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     className="pgn__form-control-description pgn__form-text pgn__form-text-invalid"
                     id="bio-1"
                   >
-                    <div>
-                      bio error
-                    </div>
+                    bio error
                   </div>
                 </div>
                 <div
