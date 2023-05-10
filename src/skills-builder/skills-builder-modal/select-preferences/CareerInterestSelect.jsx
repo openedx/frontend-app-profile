@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { getConfig } from '@edx/frontend-platform';
 import { useIntl } from '@edx/frontend-platform/i18n';
+import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 import {
   Stack, Row, Col, Form,
 } from '@edx/paragon';
@@ -20,6 +21,17 @@ const CareerInterestSelect = () => {
   const handleCareerInterestSelect = (value) => {
     if (!careerInterests.includes(value) && careerInterests.length < 3) {
       dispatch(addCareerInterest(value));
+
+      sendTrackEvent(
+        'edx.skills_builder.career_interest.added',
+        {
+          app_name: 'skills_builder',
+          category: 'skills_builder',
+          learner_data: {
+            career_interest: value,
+          },
+        },
+      );
     }
   };
 
@@ -33,6 +45,7 @@ const CareerInterestSelect = () => {
           <JobTitleInstantSearch
             onSelected={handleCareerInterestSelect}
             placeholder={formatMessage(messages.careerInterestInputPlaceholderText)}
+            data-testid="career-interest-select"
           />
         </InstantSearch>
       </Form.Label>

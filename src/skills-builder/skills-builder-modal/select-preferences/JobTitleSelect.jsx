@@ -4,6 +4,7 @@ import {
   Form, Stack,
 } from '@edx/paragon';
 import { useIntl } from '@edx/frontend-platform/i18n';
+import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 import { InstantSearch } from 'react-instantsearch-hooks-web';
 import { setCurrentJobTitle } from '../../data/actions';
 import { SkillsBuilderContext } from '../../skills-builder-context';
@@ -12,16 +13,37 @@ import messages from './messages';
 
 const JobTitleSelect = () => {
   const { formatMessage } = useIntl();
-  const { dispatch, algolia } = useContext(SkillsBuilderContext);
+  const { state, dispatch, algolia } = useContext(SkillsBuilderContext);
   const { searchClient } = algolia;
+  const { currentJobTitle } = state;
 
   const handleCurrentJobTitleSelect = (value) => {
     dispatch(setCurrentJobTitle(value));
+    sendTrackEvent(
+      'edx.skills_builder.current_job.select',
+      {
+        app_name: 'skills_builder',
+        category: 'skills_builder',
+        learner_data: {
+          current_job_title: value,
+        },
+      },
+    );
   };
 
-  // Below implementation sets the job title to "Student" or "Looking for work" — this overwrites any previous selection
-  // This will need to be revisited when we decide what to do with this data
-  const handleCheckboxChange = (e) => dispatch(setCurrentJobTitle(e.target.value));
+  const handleCheckboxChange = (e) => {
+    const { value } = e.target;
+    // only setCurrentJobTitle if the user hasn't selected a current job as we don't want to override their selection
+    if (!currentJobTitle) { dispatch(setCurrentJobTitle(value)); }
+
+    sendTrackEvent(
+      `edx.skills_builder.current_job.${value}`,
+      {
+        app_name: 'skills_builder',
+        category: 'skills_builder',
+      },
+    );
+  };
 
   return (
     <Stack>
@@ -33,6 +55,7 @@ const JobTitleSelect = () => {
           <JobTitleInstantSearch
             onSelected={handleCurrentJobTitleSelect}
             placeholder={formatMessage(messages.jobTitleInputPlaceholderText)}
+            data-testid="job-title-select"
           />
         </InstantSearch>
       </Form.Label>
@@ -41,10 +64,10 @@ const JobTitleSelect = () => {
           name="other-occupations"
           onChange={handleCheckboxChange}
         >
-          <Form.Checkbox value="Student">
+          <Form.Checkbox value="student">
             {formatMessage(messages.studentCheckboxPrompt)}
           </Form.Checkbox>
-          <Form.Checkbox value="Looking for work">
+          <Form.Checkbox value="looking_for_work">
             {formatMessage(messages.currentlyLookingCheckboxPrompt)}
           </Form.Checkbox>
         </Form.CheckboxSet>

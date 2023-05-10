@@ -1,13 +1,13 @@
 import React from 'react';
 import { Card, Chip, Hyperlink } from '@edx/paragon';
-import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import cardImageCapFallbackSrc from '../../images/card-imagecap-fallback.png';
 
-const RecommendationCard = ({ rec }) => {
+const RecommendationCard = ({ rec, productType, handleCourseCardClick }) => {
   const {
     card_image_url: cardImageUrl,
     marketing_url: marketingUrl,
+    active_run_key: courseKey,
     owners,
     partner,
     title,
@@ -17,7 +17,10 @@ const RecommendationCard = ({ rec }) => {
 
   return (
     <Hyperlink destination={marketingUrl} target="_blank" showLaunchIcon={false}>
-      <Card className={classNames('carousel-card')}>
+      <Card
+        className="carousel-card"
+        onClick={() => handleCourseCardClick(courseKey, productType)}
+      >
         <Card.ImageCap
           src={cardImageUrl}
           logoSrc={logoImageUrl}
@@ -48,7 +51,10 @@ RecommendationCard.propTypes = {
       key: PropTypes.string,
       logoImageUrl: PropTypes.string,
     })),
+    active_run_key: PropTypes.string.isRequired,
   }).isRequired,
+  productType: PropTypes.string.isRequired,
+  handleCourseCardClick: PropTypes.func.isRequired,
 };
 
 export default RecommendationCard;

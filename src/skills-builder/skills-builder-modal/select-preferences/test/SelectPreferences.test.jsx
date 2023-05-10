@@ -2,7 +2,12 @@ import {
   screen, render, cleanup, fireEvent,
 } from '@testing-library/react';
 import { mergeConfig } from '@edx/frontend-platform';
+import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 import { SkillsBuilderWrapperWithContext, dispatchMock, contextValue } from '../../../test/setupSkillsBuilder';
+
+jest.mock('@edx/frontend-platform/analytics', () => ({
+  sendTrackEvent: jest.fn(),
+}));
 
 describe('select-preferences', () => {
   beforeAll(() => {
@@ -29,8 +34,13 @@ describe('select-preferences', () => {
         payload: 'I want to advance my career',
         type: 'SET_GOAL',
       };
+      const expectedStudent = {
+        payload: 'student',
+        type: 'SET_CURRENT_JOB_TITLE',
+      };
+
       const expectedJobTitle = {
-        payload: 'Student',
+        payload: 'Prospector',
         type: 'SET_CURRENT_JOB_TITLE',
       };
 
@@ -40,9 +50,41 @@ describe('select-preferences', () => {
       const checkbox = screen.getByRole('checkbox', { name: 'I\'m a student' });
       fireEvent.click(checkbox);
 
+      const jobTitleInput = screen.getByTestId('job-title-select');
+      fireEvent.change(jobTitleInput, { target: { value: 'Prospector' } });
+      fireEvent.click(screen.getByRole('button', { name: 'Prospector' }));
+
       expect(screen.getByText('Next, search and select your current job title')).toBeTruthy();
       expect(dispatchMock).toHaveBeenCalledWith(expectedGoal);
+      expect(dispatchMock).toHaveBeenCalledWith(expectedStudent);
       expect(dispatchMock).toHaveBeenCalledWith(expectedJobTitle);
+      expect(sendTrackEvent).toHaveBeenCalledWith(
+        'edx.skills_builder.goal.select',
+        {
+          app_name: 'skills_builder',
+          category: 'skills_builder',
+          learner_data: {
+            current_goal: 'I want to advance my career',
+          },
+        },
+      );
+      expect(sendTrackEvent).toHaveBeenCalledWith(
+        'edx.skills_builder.current_job.student',
+        {
+          app_name: 'skills_builder',
+          category: 'skills_builder',
+        },
+      );
+      expect(sendTrackEvent).toHaveBeenCalledWith(
+        'edx.skills_builder.current_job.select',
+        {
+          app_name: 'skills_builder',
+          category: 'skills_builder',
+          learner_data: {
+            current_job_title: 'Prospector',
+          },
+        },
+      );
     });
 
     it('should render the third prompt if a current job title is selected', () => {
@@ -70,14 +112,33 @@ describe('select-preferences', () => {
               ...contextValue.state,
               currentGoal: 'I want to start my career',
               currentJobTitle: 'Goblin Lackey',
-              careerInterests: ['Prospector', 'Mirror Breaker', 'Bombardment'],
+              careerInterests: ['Prospector'],
             },
           },
         ),
       );
       expect(screen.getByText('Prospector')).toBeTruthy();
-      expect(screen.getByText('Mirror Breaker')).toBeTruthy();
-      expect(screen.getByText('Bombardment')).toBeTruthy();
+
+      const careerInterestInput = screen.getByTestId('career-interest-select');
+      fireEvent.change(careerInterestInput, { target: { value: 'Mirror Breaker' } });
+      fireEvent.click(screen.getByRole('button', { name: 'Mirror Breaker' }));
+
+      expect(sendTrackEvent).toHaveBeenCalledWith(
+        'edx.skills_builder.career_interest.added',
+        {
+          app_name: 'skills_builder',
+          category: 'skills_builder',
+          learner_data: {
+            career_interest: 'Mirror Breaker',
+          },
+        },
+      );
+      expect(dispatchMock).toHaveBeenCalledWith(
+        {
+          payload: 'Mirror Breaker',
+          type: 'ADD_CAREER_INTEREST',
+        },
+      );
     });
   });
 
@@ -104,6 +165,16 @@ describe('select-preferences', () => {
 
       fireEvent.click(screen.getByLabelText('Remove career interest: Prospector'));
       expect(dispatchMock).toHaveBeenCalledWith(expected);
+      expect(sendTrackEvent).toHaveBeenCalledWith(
+        'edx.skills_builder.career_interest.removed',
+        {
+          app_name: 'skills_builder',
+          category: 'skills_builder',
+          learner_data: {
+            career_interest: 'Prospector',
+          },
+        },
+      );
     });
   });
 });
