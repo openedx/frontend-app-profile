@@ -5,7 +5,6 @@ import { mergeConfig } from '@edx/frontend-platform';
 import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 import { SkillsBuilderWrapperWithContext, contextValue } from '../../../test/setupSkillsBuilder';
 import { getProductRecommendations } from '../../../utils/search';
-import { mockData } from '../../../test/__mocks__/jobSkills.mockData';
 
 jest.mock('@edx/frontend-platform/analytics', () => ({
   sendTrackEvent: jest.fn(),
@@ -61,9 +60,18 @@ describe('view-results', () => {
           category: 'skills_builder',
           page: 'skills_builder',
           selected_recommendations: {
-            id: 0,
-            name: 'Prospector',
-            recommendations: { course: mockData.productRecommendations },
+            job_id: 0,
+            job_name: 'Prospector',
+            courserun_keys: [
+              {
+                title: 'Mining with the Mons',
+                courserun_key: 'MONS101',
+              },
+              {
+                title: 'The Art of Warren Upkeep',
+                courserun_key: 'WAR101',
+              },
+            ],
           },
           is_default: true,
         },
@@ -86,9 +94,18 @@ describe('view-results', () => {
           category: 'skills_builder',
           page: 'skills_builder',
           selected_recommendations: {
-            id: 1,
-            name: 'Mirror Breaker',
-            recommendations: { course: mockData.productRecommendations },
+            job_id: 1,
+            job_name: 'Mirror Breaker',
+            courserun_keys: [
+              {
+                title: 'Mining with the Mons',
+                courserun_key: 'MONS101',
+              },
+              {
+                title: 'The Art of Warren Upkeep',
+                courserun_key: 'WAR101',
+              },
+            ],
           },
           is_default: false,
         },
@@ -118,12 +135,21 @@ describe('view-results', () => {
           app_name: 'skills_builder',
           category: 'skills_builder',
           page: 'skills_builder',
-          course_key: 'MONS101',
+          courserun_key: 'MONS101',
           product_type: 'course',
           selected_recommendations: {
-            id: 0,
-            name: 'Prospector',
-            recommendations: { course: mockData.productRecommendations },
+            job_id: 0,
+            job_name: 'Prospector',
+            courserun_keys: [
+              {
+                title: 'Mining with the Mons',
+                courserun_key: 'MONS101',
+              },
+              {
+                title: 'The Art of Warren Upkeep',
+                courserun_key: 'WAR101',
+              },
+            ],
           },
         },
       );
