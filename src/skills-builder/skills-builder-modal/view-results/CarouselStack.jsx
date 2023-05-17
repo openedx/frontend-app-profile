@@ -7,8 +7,12 @@ import messages from './messages';
 
 const CarouselStack = ({ selectedRecommendations }) => {
   const { formatMessage } = useIntl();
-  const { name: jobName, recommendations } = selectedRecommendations;
+  const { id: jobId, name: jobName, recommendations } = selectedRecommendations;
   const productTypeNames = Object.keys(recommendations);
+  const courseKeys = recommendations.course?.map(rec => ({
+    title: rec.title,
+    courserun_key: rec.active_run_key,
+  }));
 
   const normalizeProductTypeName = (productType) => {
     // If the productType is more than one word (i.e. boot_camp)
@@ -43,9 +47,13 @@ const CarouselStack = ({ selectedRecommendations }) => {
         app_name: 'skills_builder',
         category: 'skills_builder',
         page: 'skills_builder',
-        course_key: courseKey,
+        courserun_key: courseKey,
         product_type: productType,
-        selected_recommendations: selectedRecommendations,
+        selected_recommendations: {
+          job_id: jobId,
+          job_name: jobName,
+          courserun_keys: courseKeys,
+        },
       },
     );
   };
