@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react';
 import {
-  Button, Container, Stepper, ModalDialog, Form,
+  Button, Container, Stepper, ModalDialog, Form, Hyperlink,
 } from '@edx/paragon';
+import { getConfig } from '@edx/frontend-platform';
 import { useIntl } from '@edx/frontend-platform/i18n';
 import { sendTrackEvent } from '@edx/frontend-platform/analytics';
-import { useHistory } from 'react-router';
 import {
   STEP1, STEP2,
 } from '../data/constants';
@@ -22,12 +22,6 @@ const SkillsBuilderModal = () => {
   const { state } = useContext(SkillsBuilderContext);
   const { currentGoal, currentJobTitle, careerInterests } = state;
   const [currentStep, setCurrentStep] = useState(STEP1);
-
-  const history = useHistory();
-
-  const onCloseHandle = () => {
-    history.goBack();
-  };
 
   const sendActionButtonEvent = (eventSuffix) => {
     sendTrackEvent(
@@ -50,11 +44,10 @@ const SkillsBuilderModal = () => {
   };
   const exitButtonHandle = () => {
     sendActionButtonEvent('exit');
-    onCloseHandle();
   };
   const closeButtonHandle = () => {
     sendActionButtonEvent('close');
-    onCloseHandle();
+    window.location.href = getConfig().MARKETING_SITE_SEARCH_URL;
   };
 
   return (
@@ -93,10 +86,6 @@ const SkillsBuilderModal = () => {
 
         <ModalDialog.Footer>
           <Stepper.ActionRow eventKey={STEP1}>
-            <Button variant="outline-primary" onClick={onCloseHandle}>
-              {formatMessage(messages.goBackButton)}
-            </Button>
-            <Stepper.ActionRow.Spacer />
             <Button
               onClick={nextStepHandle}
               disabled={careerInterests.length === 0}
@@ -105,16 +94,15 @@ const SkillsBuilderModal = () => {
             </Button>
           </Stepper.ActionRow>
           <Stepper.ActionRow eventKey={STEP2}>
-            <Button
-              variant="outline-primary"
-              onClick={() => setCurrentStep(STEP1)}
-            >
+            <Button variant="outline-primary" onClick={() => setCurrentStep(STEP1)}>
               {formatMessage(messages.goBackButton)}
             </Button>
             <Stepper.ActionRow.Spacer />
-            <Button onClick={exitButtonHandle}>
-              {formatMessage(messages.exitButton)}
-            </Button>
+            <Hyperlink destination={getConfig().MARKETING_SITE_SEARCH_URL}>
+              <Button onClick={exitButtonHandle}>
+                {formatMessage(messages.exitButton)}
+              </Button>
+            </Hyperlink>
           </Stepper.ActionRow>
         </ModalDialog.Footer>
       </ModalDialog>
