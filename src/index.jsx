@@ -58,6 +58,7 @@ initialize({
         ALGOLIA_JOBS_INDEX_NAME: process.env.ALGOLIA_JOBS_INDEX_NAME || null,
         ALGOLIA_PRODUCT_INDEX_NAME: process.env.ALGOLIA_PRODUCT_INDEX_NAME || null,
         ALGOLIA_SEARCH_API_KEY: process.env.ALGOLIA_SEARCH_API_KEY || null,
+        MARKETING_SITE_SEARCH_URL: process.env.SEARCH_CATALOG_URL || null,
       }, 'App loadConfig override handler');
     },
   },
