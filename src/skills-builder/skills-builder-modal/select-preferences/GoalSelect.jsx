@@ -42,7 +42,7 @@ const GoalDropdown = () => {
         onChange={handleGoalSelect}
         data-testid="goal-select-dropdown"
       >
-        <option value="">{formatMessage(messages.selectLearningGoal)}</option>
+        <option value="" disabled={currentGoal}>{formatMessage(messages.selectLearningGoal)}</option>
         <option>{formatMessage(messages.learningGoalStartCareer)}</option>
         <option>{formatMessage(messages.learningGoalAdvanceCareer)}</option>
         <option>{formatMessage(messages.learningGoalChangeCareer)}</option>
