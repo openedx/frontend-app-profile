@@ -55,7 +55,7 @@ describe('Algolias utility function', () => {
 
   it('getProductRecommendations() queries Algolia with the expected search parameters', async () => {
     const expectedSearchParameters = {
-      filters: 'product: "Course"',
+      filters: 'product: "Course" AND language: "English"',
       facetFilters: [
         ['skills.skill:Sword Lobbing'],
       ],
