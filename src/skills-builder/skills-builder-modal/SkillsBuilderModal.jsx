@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import {
-  Button, Container, Stepper, ModalDialog, Form, Hyperlink,
+  Button, Container, Stepper, ModalDialog, Form, Hyperlink, useMediaQuery, breakpoints,
 } from '@edx/paragon';
 import { getConfig } from '@edx/frontend-platform';
 import { useIntl } from '@edx/frontend-platform/i18n';
@@ -19,6 +19,7 @@ import headerImage from '../images/headerImage.png';
 
 const SkillsBuilderModal = () => {
   const { formatMessage } = useIntl();
+  const isMedium = useMediaQuery({ maxWidth: breakpoints.medium.maxWidth });
   const { state } = useContext(SkillsBuilderContext);
   const { currentGoal, currentJobTitle, careerInterests } = state;
   const [currentStep, setCurrentStep] = useState(STEP1);
@@ -59,9 +60,9 @@ const SkillsBuilderModal = () => {
         isOpen
         onClose={closeButtonHandle}
       >
-        <ModalDialog.Hero>
+        <ModalDialog.Hero className={isMedium ? 'med-min-height' : ''}>
           <ModalDialog.Hero.Background className="bg-primary-500">
-            <img src={headerImage} alt="" className="h-100" />
+            { !isMedium && <img src={headerImage} alt="" className="h-100" /> }
           </ModalDialog.Hero.Background>
           <ModalDialog.Hero.Content>
             <SkillsBuilderHeader />

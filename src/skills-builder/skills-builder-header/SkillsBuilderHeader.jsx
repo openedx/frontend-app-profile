@@ -1,11 +1,22 @@
 import React from 'react';
 import { useIntl } from '@edx/frontend-platform/i18n';
+import { breakpoints, useMediaQuery } from '@edx/paragon';
 import edXLogo from '../images/edX-logo.svg';
 import messages from './messages';
 
 const SkillsBuilderHeader = () => {
   const { formatMessage } = useIntl();
+  const isMedium = useMediaQuery({ maxWidth: breakpoints.medium.maxWidth });
 
+  if (isMedium) {
+    return (
+      <div className="d-flex">
+        <h1 className="h1 text-white">
+          {formatMessage(messages.skillsBuilderHeaderTitle)}
+        </h1>
+      </div>
+    );
+  }
   return (
     <div className="d-flex">
       <img src={edXLogo} alt="edx-logo" className="mt-2 h-50" />
