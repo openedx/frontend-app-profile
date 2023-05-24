@@ -12,7 +12,7 @@ const SkillsBuilderHeader = () => {
     return (
       <div className="d-flex">
         <h1 className="h1 text-white">
-          {formatMessage(messages.skillsBuilderHeaderTitle)}
+          {formatMessage(messages.skillsBuilderHeaderTitleIsMedium)}
         </h1>
       </div>
     );

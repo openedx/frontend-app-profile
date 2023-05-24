@@ -11,6 +11,11 @@ const messages = defineMessages({
     defaultMessage: 'Let edX be your guide',
     description: 'Subheading to the Skills Builder title in the header component',
   },
+  skillsBuilderHeaderTitleIsMedium: {
+    id: 'skills.builder.header.title.is.Medium',
+    defaultMessage: 'edX Skills builder',
+    description: 'Title for the Skills Builder feature when screen size is medium or less',
+  },
 });
 
 export default messages;
