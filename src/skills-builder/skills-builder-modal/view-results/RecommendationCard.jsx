@@ -24,8 +24,8 @@ const RecommendationCard = ({ rec, productType, handleCourseCardClick }) => {
         <Card.ImageCap
           src={cardImageUrl}
           logoSrc={logoImageUrl}
-          fallackSrc={cardImageCapFallbackSrc}
-          fallBackLogo={cardImageCapFallbackSrc}
+          fallbackSrc={cardImageCapFallbackSrc}
+          fallbackLogoSrc={cardImageCapFallbackSrc}
         />
         <Card.Header title={title} />
         <Card.Section>
