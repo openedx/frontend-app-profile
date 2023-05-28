@@ -59,7 +59,7 @@
   }
 
   .profile-avatar-wrap {
-    @media (--pgn-size-breakpoint-md) {
+    @media (--min-pgn-size-breakpoint-md) {
       max-width: 12rem;
       margin-right: 0;
       margin-top: -8rem;
@@ -77,20 +77,20 @@
     align-items: center;
     border-radius: 50%;
 
-    @media (--pgn-size-breakpoint-md) {
+    @media (--min-pgn-size-breakpoint-md) {
       background: linear-gradient(to top, rgba(0,0,0,.65) 4rem, rgba(0,0,0,0) 4rem);
       align-items: flex-end;
     }
 
     .btn {
       text-decoration: none;
-      @media (--pgn-size-breakpoint-md) {
+      @media (--min-pgn-size-breakpoint-md) {
         margin-bottom: 1.2rem;
       }
     }
 
     .dropdown {
-      @media (--pgn-size-breakpoint-md) {
+      @media (--min-pgn-size-breakpoint-md) {
         margin-bottom: 1.2rem;
       }
 
@@ -108,7 +108,7 @@
     height: 5rem;
     position: relative;
 
-    @media (--pgn-size-breakpoint-md) {
+    @media (--min-pgn-size-breakpoint-md) {
       width: 12rem;
       height: 12rem;
     }
@@ -128,7 +128,7 @@
       border-radius:0;
       transition: opacity 200ms ease;
 
-      @media (--pgn-size-breakpoint-md) {
+      @media (--min-pgn-size-breakpoint-md) {
         height: 4rem;
       }
 

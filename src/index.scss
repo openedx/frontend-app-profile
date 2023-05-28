@@ -3,6 +3,10 @@
 // @import "~@edx/paragon/scss/core/core";
 // @import "~@edx/brand/paragon/overrides";
 
+@use "@edx/paragon/styles/css/core/custom-media-breakpoints.css";
+// @use "@edx/paragon/dist/core.min.css";
+// @use "@edx/paragon/dist/light.min.css";
+
 @import "~@edx/frontend-component-header/dist/index";
 @import "~@edx/frontend-component-footer/dist/footer";
 

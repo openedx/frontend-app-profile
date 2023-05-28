@@ -4,7 +4,11 @@ import { connect } from 'react-redux';
 
 import { sendTrackingLogEvent } from '@edx/frontend-platform/analytics';
 import { ensureConfig, getConfig } from '@edx/frontend-platform';
-import { AppContext, PARAGON_THEME_VARIANT_LIGHT, paragonThemeActions } from '@edx/frontend-platform/react';
+import {
+  AppContext,
+  PARAGON_THEME_VARIANT_LIGHT,
+  paragonThemeActions,
+} from '@edx/frontend-platform/react';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { Alert, Button, Hyperlink } from '@edx/paragon';
 
@@ -95,9 +99,15 @@ class ProfilePage extends React.Component {
   }
 
   handleToggleParagonThemeVariant() {
-    const getNextThemeVariant = () => PARAGON_THEME_VARIANT_LIGHT;
+    const getNextThemeVariant = () => {
+      // if (this.context.paragonTheme.state.themeVariant === PARAGON_THEME_VARIANT_LIGHT) {
+      //   return PARAGON_THEME_VARIANT_DARK;
+      // }
+      return PARAGON_THEME_VARIANT_LIGHT;
+    };
+    const nextThemeVariant = getNextThemeVariant();
     this.context.paragonTheme.dispatch(
-      paragonThemeActions.setParagonThemeVariant(getNextThemeVariant(this.context.paragonTheme.themeVariant)),
+      paragonThemeActions.setParagonThemeVariant(nextThemeVariant),
     );
   }
 
@@ -289,7 +299,9 @@ class ProfilePage extends React.Component {
               formId="certificates"
               {...commonFormProps}
             />
-            <Button onClick={this.handleToggleParagonThemeVariant}>Toggle theme</Button>
+            <Button onClick={this.handleToggleParagonThemeVariant}>
+              Toggle theme
+            </Button>
           </div>
         </div>
       </div>
