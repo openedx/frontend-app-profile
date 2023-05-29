@@ -4,10 +4,7 @@ import { connect } from 'react-redux';
 
 import { sendTrackingLogEvent } from '@edx/frontend-platform/analytics';
 import { ensureConfig, getConfig } from '@edx/frontend-platform';
-import {
-  AppContext,
-  paragonThemeActions,
-} from '@edx/frontend-platform/react';
+import { AppContext } from '@edx/frontend-platform/react';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { Alert, Button, Hyperlink } from '@edx/paragon';
 
