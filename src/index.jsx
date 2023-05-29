@@ -4,7 +4,6 @@ import 'regenerator-runtime/runtime';
 import {
   APP_INIT_ERROR,
   APP_READY,
-  getConfig,
   initialize,
   mergeConfig,
   subscribe,
@@ -16,18 +15,17 @@ import {
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route, Switch } from 'react-router-dom';
 
-import Header, { messages as headerMessages } from '@edx/frontend-component-header';
-import Footer, { messages as footerMessages } from '@edx/frontend-component-footer';
+import Header from '@edx/frontend-component-header';
+import Footer from '@edx/frontend-component-footer';
 
-import appMessages from './i18n';
-import { ProfilePage, NotFoundPage } from './profile';
-import { SkillsBuilder } from './skills-builder';
+import messages from './i18n';
 import configureStore from './data/configureStore';
 
 import './index.scss';
 import Head from './head/Head';
+
+import AppRoutes from './routes/AppRoutes';
 
 subscribe(APP_READY, () => {
   ReactDOM.render(
@@ -35,14 +33,7 @@ subscribe(APP_READY, () => {
       <Head />
       <Header />
       <main>
-        <Switch>
-          {getConfig().ENABLE_SKILLS_BUILDER && (
-            <Route path="/skills" component={SkillsBuilder} />
-          )}
-          <Route path="/u/:username" component={ProfilePage} />
-          <Route path="/notfound" component={NotFoundPage} />
-          <Route path="*" component={NotFoundPage} />
-        </Switch>
+        <AppRoutes />
       </main>
       <Footer />
     </AppProvider>,
@@ -55,12 +46,7 @@ subscribe(APP_INIT_ERROR, (error) => {
 });
 
 initialize({
-  messages: [
-    appMessages,
-    headerMessages,
-    footerMessages,
-  ],
-  requireAuthenticatedUser: true,
+  messages,
   hydrateAuthenticatedUser: true,
   handlers: {
     config: () => {
@@ -68,6 +54,11 @@ initialize({
         COLLECT_YEAR_OF_BIRTH: process.env.COLLECT_YEAR_OF_BIRTH,
         ENABLE_SKILLS_BUILDER: process.env.ENABLE_SKILLS_BUILDER,
         ENABLE_SKILLS_BUILDER_PROFILE: process.env.ENABLE_SKILLS_BUILDER_PROFILE,
+        ALGOLIA_APP_ID: process.env.ALGOLIA_APP_ID || null,
+        ALGOLIA_JOBS_INDEX_NAME: process.env.ALGOLIA_JOBS_INDEX_NAME || null,
+        ALGOLIA_PRODUCT_INDEX_NAME: process.env.ALGOLIA_PRODUCT_INDEX_NAME || null,
+        ALGOLIA_SEARCH_API_KEY: process.env.ALGOLIA_SEARCH_API_KEY || null,
+        MARKETING_SITE_SEARCH_URL: process.env.SEARCH_CATALOG_URL || null,
       }, 'App loadConfig override handler');
     },
   },

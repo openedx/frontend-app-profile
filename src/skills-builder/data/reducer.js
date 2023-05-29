@@ -1,5 +1,8 @@
 import {
   SET_GOAL,
+  SET_CURRENT_JOB_TITLE,
+  ADD_CAREER_INTEREST,
+  REMOVE_CAREER_INTEREST,
 } from './constants';
 
 export function skillsReducer(state, action) {
@@ -9,6 +12,21 @@ export function skillsReducer(state, action) {
         ...state,
         currentGoal: action.payload,
       };
+    case SET_CURRENT_JOB_TITLE:
+      return {
+        ...state,
+        currentJobTitle: action.payload,
+      };
+    case ADD_CAREER_INTEREST:
+      return {
+        ...state,
+        careerInterests: [...state.careerInterests, action.payload],
+      };
+    case REMOVE_CAREER_INTEREST:
+      return {
+        ...state,
+        careerInterests: state.careerInterests.filter(interest => interest !== action.payload),
+      };
     default:
       return state;
   }
@@ -16,6 +34,8 @@ export function skillsReducer(state, action) {
 
 export const skillsInitialState = {
   currentGoal: '',
+  currentJobTitle: '',
+  careerInterests: [],
 };
 
 export default skillsReducer;
