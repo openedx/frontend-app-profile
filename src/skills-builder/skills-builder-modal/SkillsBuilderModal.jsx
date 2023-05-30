@@ -65,7 +65,7 @@ const SkillsBuilderModal = () => {
             { !isMedium && <img src={headerImage} alt="" className="h-100" /> }
           </ModalDialog.Hero.Background>
           <ModalDialog.Hero.Content>
-            <SkillsBuilderHeader />
+            <SkillsBuilderHeader isMedium={isMedium} />
           </ModalDialog.Hero.Content>
         </ModalDialog.Hero>
 

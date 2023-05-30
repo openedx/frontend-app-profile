@@ -1,12 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useIntl } from '@edx/frontend-platform/i18n';
-import { breakpoints, useMediaQuery } from '@edx/paragon';
 import edXLogo from '../images/edX-logo.svg';
 import messages from './messages';
 
-const SkillsBuilderHeader = () => {
+const SkillsBuilderHeader = ({ isMedium }) => {
   const { formatMessage } = useIntl();
-  const isMedium = useMediaQuery({ maxWidth: breakpoints.medium.maxWidth });
 
   if (isMedium) {
     return (
@@ -31,6 +30,10 @@ const SkillsBuilderHeader = () => {
       </div>
     </div>
   );
+};
+
+SkillsBuilderHeader.propTypes = {
+  isMedium: PropTypes.func.isRequired,
 };
 
 export default SkillsBuilderHeader;
