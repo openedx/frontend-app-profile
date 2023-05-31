@@ -60,7 +60,7 @@ const SkillsBuilderModal = () => {
         isOpen
         onClose={closeButtonHandle}
       >
-        <ModalDialog.Hero className={isMedium ? 'med-min-height' : ''}>
+        <ModalDialog.Hero className="med-min-height">
           <ModalDialog.Hero.Background className="bg-primary-500">
             { !isMedium && <img src={headerImage} alt="" className="h-100" /> }
           </ModalDialog.Hero.Background>
