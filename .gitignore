@@ -16,4 +16,7 @@ temp/babel-plugin-react-intl
 *~
 /temp
 /.vscode
-/module.config.js
+
+# Open edX
+module.config.js
+.env.development-stage
