@@ -69,7 +69,7 @@ const SkillsBuilderModal = () => {
           </ModalDialog.Hero.Content>
         </ModalDialog.Hero>
 
-        <Stepper.Header />
+        <Stepper.Header compactWidth="md" />
 
         <ModalDialog.Body>
           <Container size="md" className="p-4.5">
