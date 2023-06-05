@@ -10,9 +10,9 @@ const SkillsBuilderHeader = ({ isMedium }) => {
   if (isMedium) {
     return (
       <div className="d-flex">
-        <h3 className="mb-0 text-white">
+        <h1 className="h3 mb-0 text-white">
           {formatMessage(messages.skillsBuilderHeaderTitleIsMedium)}
-        </h3>
+        </h1>
       </div>
     );
   }
@@ -21,12 +21,12 @@ const SkillsBuilderHeader = ({ isMedium }) => {
       <img src={edXLogo} alt="edx-logo" className="mt-2 h-50" />
       <div className="ml-5 vertical-line" />
       <div className="w-100 ml-5">
-        <h1 className="text-warning-300">
+        <h1 className="h1 text-warning-300">
           {formatMessage(messages.skillsBuilderHeaderTitle)}
         </h1>
-        <h2 className="text-white">
+        <p className="h2 text-white">
           {formatMessage(messages.skillsBuilderHeaderSubheading)}
-        </h2>
+        </p>
       </div>
     </div>
   );
