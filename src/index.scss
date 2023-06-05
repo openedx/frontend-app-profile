@@ -3,7 +3,9 @@
 // @import "~@edx/paragon/scss/core/core";
 // @import "~@edx/brand/paragon/overrides";
 
-@use "@edx/paragon/styles/css/core/custom-media-breakpoints.css";
+@use "@edx/paragon/styles/css/core/custom-media-breakpoints.css" as paragonCustomMediaBreakpoints;
+@use "@edx/brand/paragon/css/core/custom-media-breakpoints.css" as brandCustomMediaBreakpoints;
+
 // @use "@edx/paragon/dist/core.min.css";
 // @use "@edx/paragon/dist/light.min.css";
 
