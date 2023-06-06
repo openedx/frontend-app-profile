@@ -1,5 +1,16 @@
 .skills-builder-modal {
   button[aria-label="Close"][type="button"]{
-    color: #ffffff;
+    color: $white;
+  }
+}
+
+
+$breakpoint-medium: 992px;
+@media (max-width: $breakpoint-medium) {
+  .med-min-height {
+    min-height: map-get($spacers, 6);
+  }
+  .pgn__modal-close-container {
+    top: 1rem;
   }
 }
