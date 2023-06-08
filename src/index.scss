@@ -1,14 +1,42 @@
+/**
+ * 1. Remove the prior @edx/paragon and @edx/brand imports:
+ */
+
 // @import "~@edx/brand/paragon/fonts";
 // @import "~@edx/brand/paragon/variables";
 // @import "~@edx/paragon/scss/core/core";
 // @import "~@edx/brand/paragon/overrides";
 
+/**
+ * 2. If using externally hosted CSS, include just the @custom-media breakpoints from @edx/paragon and
+ * @edx/brand. These will allow the use of CSS media queries such as `@media(--min-pgn-size-breakpoint-md) { ... }`
+ * throughout your MFE styles.
+ *
+ * Note: the @edx/brand breakpoints must be imported _after_ the @edx/paragon breakpoints.
+ */
 @use "@edx/paragon/styles/css/core/custom-media-breakpoints.css" as paragonCustomMediaBreakpoints;
 @use "@edx/brand/paragon/css/core/custom-media-breakpoints.css" as brandCustomMediaBreakpoints;
 
+/**
+ * 2(a). If using locally installed CSS, include the core.min.css and light.min.css files from @edx/paragon
+ * and @edx/brand.
+ * 
+ * Note: the light.min.css file should be imported _after_ the core.min.css file. Also, the @edx/brand files should be
+ * imported _after_ the @edx/paragon files.
+ */
+
 // @use "@edx/paragon/dist/core.min.css";
 // @use "@edx/paragon/dist/light.min.css";
+// @use "@edx/brand/dist/core.min.css";
+// @use "@edx/brand/dist/light.min.css";
 
+/**
+ * Note: `@edx/frontend-component-header` uses SCSS variables/mixins that are no longer available when using
+ * already compiled @edx/paragon and @edx/brand CSS styles. For this demo, the `node_module/@edx/frontend-component-header`
+ * styles were modified to use Paragon's new CSS variables instead.
+ * 
+ * See https://github.com/openedx/paragon/issues/2348 for more details.
+ */
 @import "~@edx/frontend-component-header/dist/index";
 @import "~@edx/frontend-component-footer/dist/footer";
 
@@ -16,11 +44,3 @@
 
 @import './skills-builder/skills-builder-modal/skillsBuilderModal.scss';
 @import './skills-builder/skills-builder-header/skillsBuilderHeader.scss';
-
-// :root {
-//   --pgn-color-body-bg: blue;
-// }
-
-// body {
-//   background-color: blue;
-// }
