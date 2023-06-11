@@ -56,6 +56,7 @@
   "profile.username.description": "معلومات ملفك الشخصي تظهر لك فقط. وحده اسم المستخدم الخاص بك يظهر للآخرين على {siteName}.",
   "skills.builder.header.title": "باني المهارات",
   "skills.builder.header.subheading": "دع (المنصة التعليمية أو edX) ان تكون دليلك",
+  "skills.builder.header.title.is.medium": "edX Skills builder",
   "go.back.button": "العودة إلى الخلف",
   "next.step.button": "الخطوة التالية",
   "exit.button": "خروج",
