@@ -56,6 +56,7 @@
   "profile.username.description": "La información del perfil solo la visualiza usted. Solo el nombre de usuario es visible para los demás en {siteName}.",
   "skills.builder.header.title": "Constructor de habilidades",
   "skills.builder.header.subheading": "Dejanos ser tu guía",
+  "skills.builder.header.title.is.medium": "edX Skills builder",
   "go.back.button": "Volver Atrás",
   "next.step.button": "Próximo paso",
   "exit.button": "Salida",
