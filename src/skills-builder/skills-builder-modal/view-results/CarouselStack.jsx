@@ -5,10 +5,9 @@ import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 import RecommendationCard from './RecommendationCard';
 import messages from './messages';
 
-const CarouselStack = ({ selectedRecommendations }) => {
+const CarouselStack = ({ selectedRecommendations, productTypeNames }) => {
   const { formatMessage } = useIntl();
   const { id: jobId, name: jobName, recommendations } = selectedRecommendations;
-  const productTypeNames = Object.keys(recommendations);
   const courseKeys = recommendations.course?.map(rec => ({
     title: rec.title,
     courserun_key: rec.active_run_key,
@@ -21,7 +20,7 @@ const CarouselStack = ({ selectedRecommendations }) => {
       const splitStrings = productType.split('_');
 
       // map through the array and normalize each string (i.e. ['Boot', 'Camp'])
-      const normalizeStrings = splitStrings.map(word => word[0].toUpperCase() + word.slice(1).toLowerCase());
+      const normalizeStrings = splitStrings.map(word => word[0].toUpperCase() + word.slice(1));
 
       // return the array as a string joined by white spaces (i.e. Boot Camp)
       return normalizeStrings.join(' ');

@@ -16,6 +16,11 @@ jest.mock('react-instantsearch-hooks-web', () => ({
   useHits: jest.fn(() => ({ hits: mockData.hits })),
 }));
 
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useLocation: jest.fn(() => ({ search: '?query_string=values' })),
+}));
+
 jest.mock('../utils/search', () => ({
   searchJobs: jest.fn(),
   getProductRecommendations: jest.fn(),

@@ -14,7 +14,7 @@ const RelatedSkillsSelectableBoxSet = ({ jobSkillsList, selectedJobTitle, onChan
     const topFiveSkills = skills.sort((a, b) => b.significance - a.significance).slice(0, 5);
     return (
       topFiveSkills.map(skill => (
-        <Chip key={skill.external_id}>
+        <Chip key={skill.external_id} className="chip-max-width">
           {skill.name}
         </Chip>
       ))
