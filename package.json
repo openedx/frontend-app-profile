@@ -66,7 +66,7 @@
     "@commitlint/cli": "17.6.5",
     "@commitlint/config-angular": "17.6.5",
     "@edx/browserslist-config": "^1.1.1",
-    "@edx/frontend-build": "12.8.40",
+    "@edx/frontend-build": "12.8.51",
     "@edx/reactifex": "2.2.0",
     "@testing-library/react": "11.2.7",
     "codecov": "3.8.3",
