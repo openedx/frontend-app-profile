@@ -1,0 +1,94 @@
+{
+  "consumer": {
+    "name": "frontend-app-profile"
+  },
+  "interactions": [
+    {
+      "description": "a request for a user's account information",
+      "providerStates": [
+        {
+          "name": "I have user account information"
+        }
+      ],
+      "request": {
+        "headers": {
+          "Accept": "application/json"
+        },
+        "method": "GET",
+        "path": "/api/user/v1/accounts/edx"
+      },
+      "response": {
+        "body": {
+          "accomplishments_shared": false,
+          "account_privacy": "private",
+          "activation_key": null,
+          "bio": null,
+          "country": null,
+          "course_certificates": null,
+          "date_joined": "2021-07-30T20:01:46Z",
+          "email": "edx@example.com",
+          "extended_profile": [],
+          "gender": null,
+          "goals": null,
+          "id": 3,
+          "is_active": true,
+          "language_proficiencies": [],
+          "last_login": "2023-04-10T18:28:01.771896Z",
+          "level_of_education": null,
+          "mailing_address": null,
+          "name": "",
+          "pending_name_change": null,
+          "phone_number": null,
+          "profile_image": {
+            "has_image": false,
+            "image_url_full": "http://localhost:18000/static/images/profiles/default_500.png",
+            "image_url_large": "http://localhost:18000/static/images/profiles/default_120.png",
+            "image_url_medium": "http://localhost:18000/static/images/profiles/default_50.png",
+            "image_url_small": "http://localhost:18000/static/images/profiles/default_30.png"
+          },
+          "requires_parental_consent": true,
+          "secondary_email": null,
+          "secondary_email_enabled": null,
+          "social_links": [],
+          "state": null,
+          "time_zone": null,
+          "username": "edx",
+          "verified_name": null,
+          "year_of_birth": null
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          },
+          "header": {}
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pact-js": {
+      "version": "11.0.2"
+    },
+    "pactRust": {
+      "ffi": "0.4.0",
+      "models": "1.0.4"
+    },
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  },
+  "provider": {
+    "name": "edx-platform"
+  }
+}
