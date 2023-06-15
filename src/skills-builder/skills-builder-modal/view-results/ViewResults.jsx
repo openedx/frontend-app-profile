@@ -9,10 +9,11 @@ import { useIntl } from '@edx/frontend-platform/i18n';
 import { CheckCircle, ErrorOutline } from '@edx/paragon/icons';
 import { SkillsBuilderContext } from '../../skills-builder-context';
 import RelatedSkillsSelectableBoxSet from './RelatedSkillsSelectableBoxSet';
-import { searchJobs, getProductRecommendations } from '../../utils/search';
 import messages from './messages';
-import { productTypes } from './data/constants';
 import CarouselStack from './CarouselStack';
+
+import { getRecommendations } from './data/service';
+import { useProductTypes } from './data/hooks';
 
 const ViewResults = () => {
   const { formatMessage } = useIntl();
@@ -27,35 +28,12 @@ const ViewResults = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [fetchError, setFetchError] = useState(false);
 
+  const productTypes = useProductTypes();
+
   useEffect(() => {
-    const getRecommendations = async () => {
-      // fetch list of jobs with related skills
-      const jobInfo = await searchJobs(jobSearchIndex, careerInterests);
-
-      // fetch course recommendations based on related skills for each job
-      const results = await Promise.all(jobInfo.map(async (job) => {
-        const formattedSkills = job.skills.map(skill => skill.name);
-
-        // create a data object for each job
-        const data = {
-          id: job.id,
-          name: job.name,
-          recommendations: {},
-        };
-
-        // get recommendations for each product type based on the skills for the current job
-        await Promise.all(productTypes.map(async (productType) => {
-          const response = await getProductRecommendations(productSearchIndex, productType, formattedSkills);
-
-          // replace all white spaces with an underscore
-          const formattedProductType = productType.replace(' ', '_');
-
-          // add a new key to the recommendations object and set the value to the response
-          data.recommendations[formattedProductType] = response;
-        }));
-
-        return data;
-      }));
+    const getAllRecommendations = async () => {
+      // eslint-disable-next-line max-len
+      const { jobInfo, results } = await getRecommendations(jobSearchIndex, productSearchIndex, careerInterests, productTypes);
 
       setJobSkillsList(jobInfo);
       setSelectedJobTitle(results[0].name);
@@ -77,11 +55,13 @@ const ViewResults = () => {
         is_default: true,
       });
     };
-    getRecommendations()
+
+    getAllRecommendations()
       .catch(() => {
         setFetchError(true);
         setIsLoading(false);
       });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [careerInterests, jobSearchIndex, productSearchIndex]);
 
   useEffect(() => {
@@ -156,7 +136,7 @@ const ViewResults = () => {
           onChange={handleJobTitleChange}
         />
 
-        <CarouselStack selectedRecommendations={selectedRecommendations} />
+        <CarouselStack selectedRecommendations={selectedRecommendations} productTypeNames={productTypes} />
       </Stack>
     )
   );

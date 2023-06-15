@@ -33,7 +33,7 @@ const SkillsBuilderHeader = ({ isMedium }) => {
 };
 
 SkillsBuilderHeader.propTypes = {
-  isMedium: PropTypes.func.isRequired,
+  isMedium: PropTypes.bool.isRequired,
 };
 
 export default SkillsBuilderHeader;

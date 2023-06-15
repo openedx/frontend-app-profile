@@ -1,5 +1,7 @@
 import React from 'react';
-import { Card, Chip, Hyperlink } from '@edx/paragon';
+import {
+  Card, Chip, Hyperlink,
+} from '@edx/paragon';
 import PropTypes from 'prop-types';
 import cardImageCapFallbackSrc from '../../images/card-imagecap-fallback.png';
 
@@ -31,7 +33,7 @@ const RecommendationCard = ({ rec, productType, handleCourseCardClick }) => {
         <Card.Section>
           {partner.map((orgName, index) => (
             // eslint-disable-next-line react/no-array-index-key
-            <Chip key={index}>
+            <Chip key={index} className="chip-max-width">
               {orgName}
             </Chip>
           ))}
