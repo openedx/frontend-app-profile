@@ -1,0 +1,215 @@
+{
+  "consumer": {
+    "name": "frontend-app-profile"
+  },
+  "interactions": [
+    {
+      "description": "A request for user's basic information",
+      "providerStates": [
+        {
+          "name": "Account does not exist"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/api/user/v1/accounts/staff"
+      },
+      "response": {
+        "status": 404
+      }
+    },
+    {
+      "description": "A request for a user's basic information",
+      "providerStates": [
+        {
+          "name": "I have a user's basic information"
+        }
+      ],
+      "request": {
+        "headers": {
+          "Accept": "application/json"
+        },
+        "method": "GET",
+        "path": "/api/user/v1/accounts/staff"
+      },
+      "response": {
+        "body": {
+          "accomplishmentsShared": false,
+          "accountPrivacy": "custom",
+          "bio": "This is my bio",
+          "country": "ME",
+          "courseCertificates": null,
+          "dateJoined": "2017-06-07T00:44:23Z",
+          "email": "staff@example.com",
+          "error": null,
+          "extendedProfile": [],
+          "gender": null,
+          "goals": null,
+          "isActive": true,
+          "languageProficiencies": [
+            {
+              "code": "yo"
+            }
+          ],
+          "learningGoal": "advance_career",
+          "levelOfEducation": "el",
+          "loading": false,
+          "mailingAddress": null,
+          "name": "Lemon Seltzer",
+          "profileImage": {
+            "hasImage": true,
+            "imageUrlFull": "http://localhost:18000/media/profile-images/d2a9bdc2ba165dcefc73265c54bf9a20_500.jpg?v=1552495012",
+            "imageUrlLarge": "http://localhost:18000/media/profile-images/d2a9bdc2ba165dcefc73265c54bf9a20_120.jpg?v=1552495012",
+            "imageUrlMedium": "http://localhost:18000/media/profile-images/d2a9bdc2ba165dcefc73265c54bf9a20_50.jpg?v=1552495012",
+            "imageUrlSmall": "http://localhost:18000/media/profile-images/d2a9bdc2ba165dcefc73265c54bf9a20_30.jpg?v=1552495012"
+          },
+          "requiresParentalConsent": false,
+          "secondaryEmail": null,
+          "socialLinks": [
+            {
+              "platform": "facebook",
+              "socialLink": "https://www.facebook.com/aloha"
+            },
+            {
+              "platform": "twitter",
+              "socialLink": "https://www.twitter.com/ALOHA"
+            }
+          ],
+          "timeZone": null,
+          "username": "staff",
+          "yearOfBirth": 1901
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          },
+          "header": {}
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "A request for user's basic information",
+      "providerStates": [
+        {
+          "name": "I have a user's basic information"
+        }
+      ],
+      "request": {
+        "headers": {
+          "Accept": "application/json"
+        },
+        "method": "GET",
+        "path": "/api/user/v1/accounts/staff"
+      },
+      "response": {
+        "body": {
+          "accomplishmentsShared": false,
+          "accountPrivacy": "custom",
+          "bio": "This is my bio",
+          "country": "ME",
+          "courseCertificates": null,
+          "dateJoined": "2017-06-07T00:44:23Z",
+          "email": "staff@example.com",
+          "error": null,
+          "extendedProfile": [],
+          "gender": null,
+          "goals": null,
+          "isActive": true,
+          "languageProficiencies": [
+            {
+              "code": "yo"
+            }
+          ],
+          "learningGoal": "advance_career",
+          "levelOfEducation": "el",
+          "loading": false,
+          "mailingAddress": null,
+          "name": "Lemon Seltzer",
+          "profileImage": {
+            "hasImage": true,
+            "imageUrlFull": "http://localhost:18000/media/profile-images/d2a9bdc2ba165dcefc73265c54bf9a20_500.jpg?v=1552495012",
+            "imageUrlLarge": "http://localhost:18000/media/profile-images/d2a9bdc2ba165dcefc73265c54bf9a20_120.jpg?v=1552495012",
+            "imageUrlMedium": "http://localhost:18000/media/profile-images/d2a9bdc2ba165dcefc73265c54bf9a20_50.jpg?v=1552495012",
+            "imageUrlSmall": "http://localhost:18000/media/profile-images/d2a9bdc2ba165dcefc73265c54bf9a20_30.jpg?v=1552495012"
+          },
+          "requiresParentalConsent": false,
+          "secondaryEmail": null,
+          "socialLinks": [
+            {
+              "platform": "facebook",
+              "socialLink": "https://www.facebook.com/aloha"
+            },
+            {
+              "platform": "twitter",
+              "socialLink": "https://www.twitter.com/ALOHA"
+            }
+          ],
+          "timeZone": null,
+          "username": "staff",
+          "yearOfBirth": 1901
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          },
+          "header": {}
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "A request for user's basic information",
+      "providerStates": [
+        {
+          "name": "I have a user's basic information"
+        },
+        {
+          "name": "Account does not exist"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/api/user/v1/accounts/staff"
+      },
+      "response": {
+        "status": 404
+      }
+    }
+  ],
+  "metadata": {
+    "pact-js": {
+      "version": "11.0.2"
+    },
+    "pactRust": {
+      "ffi": "0.4.0",
+      "models": "1.0.4"
+    },
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  },
+  "provider": {
+    "name": "edx-platform"
+  }
+}
