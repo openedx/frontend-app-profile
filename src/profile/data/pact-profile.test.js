@@ -26,7 +26,7 @@ const expectedUserInfo_200 = {
         "imageUrlFull": "http://localhost:18000/media/profile-images/d2a9bdc2ba165dcefc73265c54bf9a20_500.jpg?v=1552495012",
         "imageUrlLarge": "http://localhost:18000/media/profile-images/d2a9bdc2ba165dcefc73265c54bf9a20_120.jpg?v=1552495012",
         "imageUrlMedium": "http://localhost:18000/media/profile-images/d2a9bdc2ba165dcefc73265c54bf9a20_50.jpg?v=1552495012",
-        "imageUrlSmall": "http://localhost:18000/media/profile-images/d2a9bdc2ba165dcefc73265c54bf9a20_30.jpg?v=1552495012",
+        "imageUrlSmall": "http://localhost:18000/media/profile-im ages/d2a9bdc2ba165dcefc73265c54bf9a20_30.jpg?v=1552495012",
         "hasImage": true
     },
     "levelOfEducation": "el",
@@ -52,7 +52,6 @@ const expectedUserInfo_200 = {
 }
 
 import {initializeMockApp, getConfig, setConfig} from '@edx/frontend-platform'
-import { Console } from 'console'
 
 
 const provider = new PactV3({
@@ -62,7 +61,7 @@ const provider = new PactV3({
     provider: 'edx-platform',
   });
 
-  describe('getAccount for 1 username', () => {
+  describe('getAccount for one username', () => {
     beforeAll(async () => {
         initializeMockApp();
     });
@@ -94,9 +93,9 @@ const provider = new PactV3({
     });
 
     it('Account does not exist', async () => {
-        const username_edpt404 = 'staff'
+        const username_edpt404 = 'staff_not_found';
         await provider.addInteraction({
-            states: [{description: "Account does not exist"}],
+            states: [{description: "Account and user's information does not exist"}],
             uponReceiving: "A request for user's basic information",
             withRequest: {
                 method: "GET",

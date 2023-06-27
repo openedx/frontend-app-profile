@@ -7,21 +7,6 @@
       "description": "A request for user's basic information",
       "providerStates": [
         {
-          "name": "Account and user's information does not exist"
-        }
-      ],
-      "request": {
-        "method": "GET",
-        "path": "/api/user/v1/accounts/staff_not_found"
-      },
-      "response": {
-        "status": 404
-      }
-    },
-    {
-      "description": "A request for user's basic information",
-      "providerStates": [
-        {
           "name": "I have a user's basic information"
         }
       ],
@@ -96,6 +81,22 @@
           "header": {}
         },
         "status": 200
+      }
+    },
+    
+    {
+      "description": "A request for user's basic information",
+      "providerStates": [
+        {
+          "name": "Account and user's information does not exist"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/api/user/v1/accounts/staff_not_found"
+      },
+      "response": {
+        "status": 404
       }
     }
   ],
