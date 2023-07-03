@@ -2997,7 +2997,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                       No formal education
                     </option>
                     <option
-                      value="o"
+                      value="other"
                     >
                       Other education
                     </option>
