@@ -1,0 +1,24 @@
+# This file records information about this repo. Its use is described in OEP-55:
+# https://open-edx-proposals.readthedocs.io/en/latest/processes/oep-0055-proc-project-maintainers.html
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: 'Profile'
+  description: 'This is a micro-frontend application responsible for the display and updating of user profiles.'
+  links:
+    - url: 'https://github.com/openedx/frontend-app-profile/blob/master/README.rst'
+      title: 'Documentation'
+      icon: 'Article'
+  annotations:
+    # (Optional) Annotation keys and values can be whatever you want.
+    # We use it in Open edX repos to have a comma-separated list of GitHub user
+    # names that might be interested in changes to the architecture of this
+    # component.
+    openedx.org/arch-interest-groups: ""
+    # This can be multiple comma-separated projects.
+    openedx.org/add-to-projects: "openedx:23"
+spec:
+  type: 'service'
+  lifecycle: 'production'
+  owner: 2U-aperture
+# (Optional) An array of different components or resources.
