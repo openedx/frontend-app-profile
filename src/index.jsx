@@ -52,13 +52,7 @@ initialize({
     config: () => {
       mergeConfig({
         COLLECT_YEAR_OF_BIRTH: process.env.COLLECT_YEAR_OF_BIRTH,
-        ENABLE_SKILLS_BUILDER: process.env.ENABLE_SKILLS_BUILDER,
         ENABLE_SKILLS_BUILDER_PROFILE: process.env.ENABLE_SKILLS_BUILDER_PROFILE,
-        ALGOLIA_APP_ID: process.env.ALGOLIA_APP_ID || null,
-        ALGOLIA_JOBS_INDEX_NAME: process.env.ALGOLIA_JOBS_INDEX_NAME || null,
-        ALGOLIA_PRODUCT_INDEX_NAME: process.env.ALGOLIA_PRODUCT_INDEX_NAME || null,
-        ALGOLIA_SEARCH_API_KEY: process.env.ALGOLIA_SEARCH_API_KEY || null,
-        MARKETING_SITE_SEARCH_URL: process.env.SEARCH_CATALOG_URL || null,
       }, 'App loadConfig override handler');
     },
   },
