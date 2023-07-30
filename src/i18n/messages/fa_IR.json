@@ -1,4 +1,5 @@
 {
+  "profile.page.title": "پرونده کاربری {siteName}",
   "profile.age.details": "برای اشتراک‌گذاری پرونده کاربری خود با سایر یادگیرندگان {siteName}، باید تأیید کنید که  بیش از 13 سال سن دارید.",
   "profile.age.set.date": "تنظیم تاریخ تولد",
   "profile.datejoined.member.since": "عضو شده از {year}",
@@ -33,6 +34,11 @@
   "profile.formcontrols.button.saved": "ذخیره شد",
   "profile.visibility.who.just.me": "فقط من",
   "profile.visibility.who.everyone": "هرکسی در {siteName}",
+  "profile.learningGoal.learningGoal": "Learning Goal",
+  "profile.learningGoal.options.start_career": "I want to start my career",
+  "profile.learningGoal.options.advance_career": "I want to advance my career",
+  "profile.learningGoal.options.learn_something_new": "I want to learn something new",
+  "profile.learningGoal.options.something_else": "Something else",
   "profile.name.full.name": "نام و نام خانوادگی",
   "profile.name.details": "این همان نامی است که در حساب کاربری و گواهی‌های شما درج می‌شود.",
   "profile.name.empty": "افزودن نام",
