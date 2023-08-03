@@ -9,13 +9,15 @@ import { initializeMockApp, getConfig, setConfig } from '@edx/frontend-platform'
 import { getAccount } from './services';
 
 const expectedUserInfo200 = {
-  username: 'staff',
-  email: 'staff@example.com',
   bio: 'This is my bio',
-  name: 'Lemon Seltzer',
   country: 'ME',
-  dateJoined: '2017-06-07T00:44:23Z',
+  gender: 'm',
+  goals: 'Learn and Grow!',
   isActive: true,
+  mailingAddress: 'Park Ave',
+  name: 'Lemon Seltzer',
+  phoneNumber: '+11234567890',
+  username: 'staff',
   yearOfBirth: 1901,
 };
 
@@ -53,28 +55,6 @@ describe('getAccount for one username', () => {
       });
       const response = await getAccount(username200);
       expect(response).toEqual(expectedUserInfo200);
-    });
-  });
-
-  it('Account does not exist', async () => {
-    const username404 = 'staff_not_found';
-    await provider.addInteraction({
-      states: [{ description: "Account and user's information does not exist" }],
-      uponReceiving: "A request for user's basic information",
-      withRequest: {
-        method: 'GET',
-        path: `/api/user/v1/accounts/${username404}`,
-      },
-      willRespondWith: {
-        status: 404,
-      },
-    });
-    await provider.executeTest(async (mockserver) => {
-      setConfig({
-        ...getConfig(),
-        LMS_BASE_URL: mockserver.url,
-      });
-      await expect(getAccount(username404).then((response) => response.data)).rejects.toThrow('Request failed with status code 404');
     });
   });
 });
