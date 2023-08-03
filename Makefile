@@ -1,6 +1,6 @@
 export TRANSIFEX_RESOURCE = frontend-app-profile
 transifex_resource = frontend-app-profile
-transifex_langs = "ar,fr,es_419,zh_CN,pt,it,de,uk,ru,hi,fr_CA,it_IT,pt_PT,de_DE"
+transifex_langs = "ar,de,de_DE,es_419,fa_IR,fr,fr_CA,hi,it,it_IT,pt,pt_PT,ru,uk,zh_CN"
 
 intl_imports = ./node_modules/.bin/intl-imports.js
 transifex_utils = ./node_modules/.bin/transifex-utils.js
@@ -61,11 +61,12 @@ pull_translations:
 	mkdir src/i18n/messages
 	cd src/i18n/messages \
       && atlas pull --filter=$(transifex_langs) \
+               translations/paragon/src/i18n/messages:paragon \
                translations/frontend-component-header/src/i18n/messages:frontend-component-header \
                translations/frontend-component-footer/src/i18n/messages:frontend-component-footer \
                translations/frontend-app-profile/src/i18n/messages:frontend-app-profile
 
-	$(intl_imports) frontend-component-header frontend-component-footer frontend-app-profile
+	$(intl_imports) paragon frontend-component-header frontend-component-footer frontend-app-profile
 endif
 
 # This target is used by Travis.
