@@ -1,6 +1,6 @@
 {
-  "profile.page.title": "Profile | {siteName}",
-  "profile.age.details": "To share your profile with other {siteName} learners, you must confirm that you are over the age of 13.",
+  "profile.page.title": "Profil | {siteName}",
+  "profile.age.details": "Um Ihr Profil mit anderen {siteName}-Lernern zu teilen, müssen Sie bestätigen, dass Sie über 13 Jahre alt sind.",
   "profile.age.set.date": "Legen Sie Ihr Geburtsdatum fest",
   "profile.datejoined.member.since": "Mitglied seit {year}",
   "profile.bio.empty": "Fügen Sie Ihre Kurzbiografie hinzu",
@@ -33,12 +33,12 @@
   "profile.formcontrols.button.saving": "Speichert",
   "profile.formcontrols.button.saved": "Gespeichert",
   "profile.visibility.who.just.me": "Nur ich",
-  "profile.visibility.who.everyone": "Everyone on {siteName}",
-  "profile.learningGoal.learningGoal": "Learning Goal",
-  "profile.learningGoal.options.start_career": "I want to start my career",
-  "profile.learningGoal.options.advance_career": "I want to advance my career",
-  "profile.learningGoal.options.learn_something_new": "I want to learn something new",
-  "profile.learningGoal.options.something_else": "Something else",
+  "profile.visibility.who.everyone": "Alle auf {siteName}",
+  "profile.learningGoal.learningGoal": "Lernziel",
+  "profile.learningGoal.options.start_career": "Ich möchte meine Karriere starten",
+  "profile.learningGoal.options.advance_career": "Ich möchte mich beruflich weiterentwickeln",
+  "profile.learningGoal.options.learn_something_new": "Ich möchte etwas Neues lernen",
+  "profile.learningGoal.options.something_else": "Etwas anderes",
   "profile.name.full.name": "Vollständiger Name",
   "profile.name.details": "Dies ist der Name, der in Ihrem Konto und auf Ihren Zertifikaten erscheint.",
   "profile.name.empty": "Name hinzufügen",
@@ -53,9 +53,5 @@
   "profile.notfound.message": "Die gesuchte Seite ist nicht verfügbar oder es liegt ein Fehler in der URL vor. Bitte überprüfen Sie die URL und versuchen Sie es erneut.",
   "profile.viewMyRecords": "Meine Aufzeichnungen anzeigen",
   "profile.loading": "Profil lädt...",
-  "profile.username.description": "Your profile information is only visible to you. Only your username is visible to others on {siteName}.",
-  "skills.builder.header.title": "Skills Builder",
-  "skills.builder.header.subheading": "Let edX be your guide",
-  "go.back.button": "Go Back",
-  "next.step.button": "Next Step"
+  "profile.username.description": "Ihre Profilinformationen sind nur für Sie sichtbar. Nur Ihr Benutzername ist für andere auf {siteName} sichtbar."
 }
