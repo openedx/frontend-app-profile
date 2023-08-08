@@ -12,22 +12,12 @@ jest.mock('@edx/frontend-platform/auth', () => ({
   getLoginRedirectUrl: jest.fn(),
 }));
 
-jest.mock('@edx/frontend-platform', () => ({
-  getConfig: jest.fn(() => ({
-    ENABLE_SKILLS_BUILDER: true,
-  })),
-}));
-
 jest.mock('../profile', () => ({
   ProfilePage: () => (<div>Profile page</div>),
   NotFoundPage: () => (<div>Not found page</div>),
 }));
 
-jest.mock('../skills-builder', () => ({
-  SkillsBuilder: () => (<div>Skills Builder</div>),
-}));
-
-const RoutesWithProvider = (context, path) => (
+const RoutesWithProvider = (context, history) => (
   <AppContext.Provider value={context}>
     <Router initialEntries={[`${path}`]}>
       <AppRoutes />
@@ -62,13 +52,6 @@ describe('routes', () => {
       ),
     );
     expect(screen.getByText('Profile page')).toBeTruthy();
-  });
-
-  test('Skills Builder page should be accessible to unauthenticated users', () => {
-    render(
-      RoutesWithProvider(unauthenticatedUser, '/skills'),
-    );
-    expect(screen.getByText('Skills Builder')).toBeTruthy();
   });
 
   test('should show NotFound page for a bad route', () => {

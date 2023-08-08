@@ -7,7 +7,7 @@ const EDUCATION_LEVELS = [
   'jhs',
   'el',
   'none',
-  'o',
+  'other',
 ];
 
 const SOCIAL = {
