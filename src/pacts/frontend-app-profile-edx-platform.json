@@ -15,6 +15,7 @@
         "path": "/api/user/v1/accounts/staff"
       },
       "response": {
+        "status": 200,
         "body": {
           "bio": "This is my bio",
           "country": "ME",
@@ -31,18 +32,37 @@
           "Content-Type": "application/json"
         },
         "matchingRules": {
-          "body": {
-            "$": {
-              "combine": "AND",
-              "matchers": [
-                {
-                  "match": "type"
-                }
-              ]
-            }
+          "$.body.bio": {
+            "match": "type"
+          },
+          "$.body.country": {
+            "match": "type"
+          },
+          "$.body.gender": {
+            "match": "type"
+          },
+          "$.body.goals": {
+            "match": "type"
+          },
+          "$.body.isActive": {
+            "match": "type"
+          },
+          "$.body.mailingAddress": {
+            "match": "type"
+          },
+          "$.body.name": {
+            "match": "type"
+          },
+          "$.body.phoneNumber": {
+            "match": "type"
+          },
+          "$.body.username": {
+            "match": "type"
+          },
+          "$.body.yearOfBirth": {
+            "match": "type"
           }
-        },
-        "status": 200
+        }
       }
     }
   ],
