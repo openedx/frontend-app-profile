@@ -17,7 +17,7 @@ jest.mock('../profile', () => ({
   NotFoundPage: () => (<div>Not found page</div>),
 }));
 
-const RoutesWithProvider = (context, history) => (
+const RoutesWithProvider = (context, path) => (
   <AppContext.Provider value={context}>
     <Router initialEntries={[`${path}`]}>
       <AppRoutes />
