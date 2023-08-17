@@ -29,8 +29,8 @@
   ],
   "dependencies": {
     "@edx/brand": "npm:@edx/brand-openedx@1.2.0",
-    "@edx/frontend-component-footer": "12.1.2",
-    "@edx/frontend-component-header": "4.4.4",
+    "@edx/frontend-component-footer": "12.2.0",
+    "@edx/frontend-component-header": "4.6.0",
     "@edx/frontend-platform": "5.0.0",
     "@edx/paragon": "^20.44.0",
     "@fortawesome/fontawesome-svg-core": "1.2.36",
@@ -63,8 +63,8 @@
     "universal-cookie": "4.0.4"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.6.7",
-    "@commitlint/config-angular": "17.6.7",
+    "@commitlint/cli": "17.7.1",
+    "@commitlint/config-angular": "17.7.0",
     "@edx/browserslist-config": "^1.1.1",
     "@edx/frontend-build": "12.9.4",
     "@edx/reactifex": "2.2.0",
