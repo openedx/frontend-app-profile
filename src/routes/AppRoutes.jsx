@@ -1,17 +1,17 @@
 import React from 'react';
 import {
   AuthenticatedPageRoute,
-  PageRoute,
+  PageWrap,
 } from '@edx/frontend-platform/react';
-import { Switch } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { ProfilePage, NotFoundPage } from '../profile';
 
 const AppRoutes = () => (
-  <Switch>
-    <AuthenticatedPageRoute path="/u/:username" component={ProfilePage} />
-    <PageRoute path="/notfound" component={NotFoundPage} />
-    <PageRoute path="*" component={NotFoundPage} />
-  </Switch>
+  <Routes>
+    <Route path="/u/:username" element={<AuthenticatedPageRoute><ProfilePage /></AuthenticatedPageRoute>} />
+    <Route path="/notfound" element={<PageWrap><NotFoundPage /></PageWrap>} />
+    <Route path="*" element={<PageWrap><NotFoundPage /></PageWrap>} />
+  </Routes>
 );
 
 export default AppRoutes;
