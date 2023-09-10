@@ -45,7 +45,7 @@
   "profile.preferredlanguage.empty": "Ajouter une langue",
   "profile.preferredlanguage.label": "Langue principale parlée",
   "profile.profileavatar.upload-button": "Téléverser une photo",
-  "profile.profileavatar.remove.button": "Supprimer",
+  "profile.profileavatar.remove.button": "Retirer",
   "profile.image.alt.attribute": "avatar de profil",
   "profile.profileavatar.change-button": "Modifier",
   "profile.sociallinks.add": "Ajouter {network}",
