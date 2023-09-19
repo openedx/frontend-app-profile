@@ -32,7 +32,7 @@ subscribe(APP_READY, () => {
     <AppProvider store={configureStore()}>
       <Head />
       <Header />
-      <main>
+      <main id="main">
         <AppRoutes />
       </main>
       <Footer />
