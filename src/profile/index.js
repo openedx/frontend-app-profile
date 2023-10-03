@@ -3,3 +3,4 @@ export { default as saga } from './data/sagas';
 export { default as ProfilePage } from './ProfilePage';
 export { default as NotFoundPage } from './NotFoundPage';
 export { default as messages } from './ProfilePage.messages';
+export { default as ProfilePluginPage } from './ProfilePluginPage';
