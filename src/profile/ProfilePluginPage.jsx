@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { ensureConfig } from '@edx/frontend-platform';
-import { AppContext } from '@edx/frontend-platform/react';
+import { AppContext, ErrorBoundary } from '@edx/frontend-platform/react';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
+import { Plugin } from '../../plugins';
 
 // Actions
 import {
@@ -36,6 +37,12 @@ import messages from './ProfilePage.messages';
 import withParams from '../utils/hoc';
 
 ensureConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL'], 'ProfilePage');
+
+function Fallback() {
+  return (
+    <div>this is broken as all get</div>
+  );
+}
 
 class ProfilePluginPage extends React.Component {
   constructor(props, context) {
@@ -81,11 +88,13 @@ class ProfilePluginPage extends React.Component {
   renderHeadingLockup() {
     const { dateJoined } = this.props;
     return (
-      <span data-hj-suppress>
-        <h1 className="h2 mb-0 font-weight-bold">{this.props.params.username}</h1>
-        <DateJoined date={dateJoined} />
-        <hr className="d-none d-md-block" />
-      </span>
+      <ErrorBoundary fallbackComponent={<Fallback />}>
+        <span data-hj-suppress>
+          <h1 className="h2 mb-0 font-weight-bold">{this.props.params.username}</h1>
+          <DateJoined date={dateJoined} />
+          <hr className="d-none d-md-block" />
+        </span>
+      </ErrorBoundary>
     );
   }
 
@@ -117,60 +126,62 @@ class ProfilePluginPage extends React.Component {
     };
 
     return (
-      <div className="container-fluid">
-        <div className="row align-items-center pt-4 mb-4 pt-md-0 mb-md-0">
-          <div className="col-auto col-md-4 col-lg-3">
-            <div className="d-flex align-items-center d-md-block">
-              <ProfileAvatar
-                className="mb-md-3"
-                src={profileImage.src}
-                isDefault={profileImage.isDefault}
-              />
+      <Plugin>
+        <div className="container-fluid">
+          <div className="row align-items-center pt-4 mb-4 pt-md-0 mb-md-0">
+            <div className="col-auto col-md-4 col-lg-3">
+              <div className="d-flex align-items-center d-md-block">
+                <ProfileAvatar
+                  className="mb-md-3"
+                  src={profileImage.src}
+                  isDefault={profileImage.isDefault}
+                  />
+              </div>
+            </div>
+            <div className="col pl-0">
+              <div>
+                {this.renderHeadingLockup()}
+              </div>
             </div>
           </div>
-          <div className="col pl-0">
-            <div>
-              {this.renderHeadingLockup()}
+          <div className="row">
+            <div className="col-md-4 col-lg-4">
+              <Name
+                name={name}
+                visibilityName={visibilityName}
+                formId="name"
+                {...commonFormProps}
+                />
+              <Country
+                country={country}
+                visibilityCountry={visibilityCountry}
+                formId="country"
+                {...commonFormProps}
+                />
+              <Education
+                levelOfEducation={levelOfEducation}
+                visibilityLevelOfEducation={visibilityLevelOfEducation}
+                formId="levelOfEducation"
+                {...commonFormProps}
+                />
+              <SocialLinks
+                socialLinks={socialLinks}
+                visibilitySocialLinks={visibilitySocialLinks}
+                formId="socialLinks"
+                {...commonFormProps}
+                />
+            </div>
+            <div className="pt-md-3 col-md-8 col-lg-7 offset-lg-1">
+              <Bio
+                bio={bio}
+                visibilityBio={visibilityBio}
+                formId="bio"
+                {...commonFormProps}
+                />
             </div>
           </div>
         </div>
-        <div className="row">
-          <div className="col-md-4 col-lg-4">
-            <Name
-              name={name}
-              visibilityName={visibilityName}
-              formId="name"
-              {...commonFormProps}
-            />
-            <Country
-              country={country}
-              visibilityCountry={visibilityCountry}
-              formId="country"
-              {...commonFormProps}
-            />
-            <Education
-              levelOfEducation={levelOfEducation}
-              visibilityLevelOfEducation={visibilityLevelOfEducation}
-              formId="levelOfEducation"
-              {...commonFormProps}
-            />
-            <SocialLinks
-              socialLinks={socialLinks}
-              visibilitySocialLinks={visibilitySocialLinks}
-              formId="socialLinks"
-              {...commonFormProps}
-            />
-          </div>
-          <div className="pt-md-3 col-md-8 col-lg-7 offset-lg-1">
-            <Bio
-              bio={bio}
-              visibilityBio={visibilityBio}
-              formId="bio"
-              {...commonFormProps}
-            />
-          </div>
-        </div>
-      </div>
+      </Plugin>
     );
   }
 
