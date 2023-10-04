@@ -10,7 +10,7 @@
   },
   "scripts": {
     "build": "fedx-scripts webpack",
-    "i18n_extract": "BABEL_ENV=i18n fedx-scripts babel src --quiet > /dev/null",
+    "i18n_extract": "fedx-scripts formatjs extract",
     "lint": "fedx-scripts eslint --ext .js --ext .jsx .",
     "snapshot": "fedx-scripts jest --updateSnapshot",
     "start": "fedx-scripts webpack-dev-server --progress",
@@ -66,7 +66,7 @@
     "@commitlint/cli": "17.7.2",
     "@commitlint/config-angular": "17.7.0",
     "@edx/browserslist-config": "^1.1.1",
-    "@edx/frontend-build": "12.9.17",
+    "@edx/frontend-build": "13.0.0",
     "@edx/reactifex": "2.2.0",
     "@testing-library/react": "12.1.5",
     "@wojtekmaj/enzyme-adapter-react-17": "0.8.0",
