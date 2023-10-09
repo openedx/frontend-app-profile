@@ -186,6 +186,7 @@ class ProfilePage extends React.Component {
       visibilitySocialLinks,
       languageProficiencies,
       visibilityLanguageProficiencies,
+      courseCertificates,
       visibilityCourseCertificates,
       bio,
       visibilityBio,
