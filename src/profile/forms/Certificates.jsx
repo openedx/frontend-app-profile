@@ -68,7 +68,7 @@ class Certificates extends React.Component {
     })();
 
     return (
-      <div key={`${modifiedDate}-${courseId}`} className="col col-sm-6 d-flex align-items-stretch">
+      <div key={`${modifiedDate}-${courseId}`} className="col-12 col-sm-6 d-flex align-items-stretch">
         <div className="card mb-4 certificate flex-grow-1">
           <div
             className="certificate-type-illustration"
