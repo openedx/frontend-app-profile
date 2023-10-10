@@ -15,17 +15,17 @@ import {
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route, Switch } from 'react-router-dom';
 
 import Header, { messages as headerMessages } from '@edx/frontend-component-header';
 import Footer, { messages as footerMessages } from '@edx/frontend-component-footer';
 
 import appMessages from './i18n';
-import { ProfilePage, NotFoundPage } from './profile';
 import configureStore from './data/configureStore';
 
 import './index.scss';
 import Head from './head/Head';
+
+import AppRoutes from './routes/AppRoutes';
 
 subscribe(APP_READY, () => {
   ReactDOM.render(
@@ -33,11 +33,7 @@ subscribe(APP_READY, () => {
       <Head />
       <Header />
       <main>
-        <Switch>
-          <Route path="/u/:username" component={ProfilePage} />
-          <Route path="/notfound" component={NotFoundPage} />
-          <Route path="*" component={NotFoundPage} />
-        </Switch>
+        <AppRoutes />
       </main>
       <Footer />
     </AppProvider>,
@@ -55,14 +51,12 @@ initialize({
     headerMessages,
     footerMessages,
   ],
-  requireAuthenticatedUser: true,
   hydrateAuthenticatedUser: true,
   handlers: {
     config: () => {
       mergeConfig({
-        ENABLE_LEARNER_RECORD_MFE: (process.env.ENABLE_LEARNER_RECORD_MFE || false),
-        LEARNER_RECORD_MFE_BASE_URL: process.env.LEARNER_RECORD_MFE_BASE_URL,
         COLLECT_YEAR_OF_BIRTH: process.env.COLLECT_YEAR_OF_BIRTH,
+        ENABLE_SKILLS_BUILDER_PROFILE: process.env.ENABLE_SKILLS_BUILDER_PROFILE,
       }, 'App loadConfig override handler');
     },
   },

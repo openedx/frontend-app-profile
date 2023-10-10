@@ -33,6 +33,7 @@ import DateJoined from './DateJoined';
 import UsernameDescription from './UsernameDescription';
 import PageLoading from './PageLoading';
 import Banner from './Banner';
+import LearningGoal from './forms/LearningGoal';
 
 // Selectors
 import { profilePageSelector } from './data/selectors';
@@ -46,10 +47,10 @@ class ProfilePage extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    const recordsUrl = this.getRecordsUrl(context);
+    const credentialsBaseUrl = context.config.CREDENTIALS_BASE_URL;
 
     this.state = {
-      viewMyRecordsUrl: recordsUrl,
+      viewMyRecordsUrl: credentialsBaseUrl ? `${credentialsBaseUrl}/records` : null,
       accountSettingsUrl: `${context.config.LMS_BASE_URL}/account/settings`,
     };
 
@@ -90,19 +91,6 @@ class ProfilePage extends React.Component {
 
   handleChange(name, value) {
     this.props.updateDraft(name, value);
-  }
-
-  getRecordsUrl(context) {
-    let recordsUrl = null;
-
-    if (getConfig().ENABLE_LEARNER_RECORD_MFE) {
-      recordsUrl = getConfig().LEARNER_RECORD_MFE_BASE_URL;
-    } else {
-      const credentialsBaseUrl = context.config.CREDENTIALS_BASE_URL;
-      recordsUrl = credentialsBaseUrl ? `${credentialsBaseUrl}/records` : null;
-    }
-
-    return recordsUrl;
   }
 
   isYOBDisabled() {
@@ -184,6 +172,8 @@ class ProfilePage extends React.Component {
       socialLinks,
       draftSocialLinksByPlatform,
       visibilitySocialLinks,
+      learningGoal,
+      visibilityLearningGoal,
       languageProficiencies,
       visibilityLanguageProficiencies,
       courseCertificates,
@@ -302,6 +292,14 @@ class ProfilePage extends React.Component {
                 {...commonFormProps}
               />
             )}
+            {getConfig().ENABLE_SKILLS_BUILDER_PROFILE && (
+              <LearningGoal
+                learningGoal={learningGoal}
+                visibilityLearningGoal={visibilityLearningGoal}
+                formId="learningGoal"
+                {...commonFormProps}
+              />
+            )}
             {isCertificatesBlockVisible && (
               <Certificates
                 visibilityCourseCertificates={visibilityCourseCertificates}
@@ -372,6 +370,10 @@ ProfilePage.propTypes = {
   })),
   visibilitySocialLinks: PropTypes.string.isRequired,
 
+  // Learning Goal form data
+  learningGoal: PropTypes.string,
+  visibilityLearningGoal: PropTypes.string.isRequired,
+
   // Other data we need
   profileImage: PropTypes.shape({
     src: PropTypes.string,
@@ -416,6 +418,7 @@ ProfilePage.defaultProps = {
   socialLinks: [],
   draftSocialLinksByPlatform: {},
   bio: null,
+  learningGoal: null,
   languageProficiencies: [],
   courseCertificates: null,
   requiresParentalConsent: null,
