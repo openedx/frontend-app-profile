@@ -29,8 +29,8 @@
   ],
   "dependencies": {
     "@edx/brand": "npm:@edx/brand-openedx@1.2.0",
-    "@edx/frontend-component-footer": "12.3.0",
-    "@edx/frontend-component-header": "4.7.1",
+    "@edx/frontend-component-footer": "12.2.1",
+    "@edx/frontend-component-header": "4.6.1",
     "@edx/frontend-platform": "5.4.0",
     "@edx/paragon": "^20.44.0",
     "@fortawesome/fontawesome-svg-core": "1.2.36",
@@ -49,7 +49,6 @@
     "prop-types": "15.8.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-error-boundary": "^4.0.11",
     "react-helmet": "6.1.0",
     "react-redux": "7.2.9",
     "react-router": "6.16.0",
@@ -73,7 +72,7 @@
     "@wojtekmaj/enzyme-adapter-react-17": "0.8.0",
     "codecov": "3.8.3",
     "enzyme": "3.11.0",
-    "glob": "10.3.10",
+    "glob": "10.3.7",
     "react-test-renderer": "17.0.2",
     "reactifex": "1.1.1",
     "redux-mock-store": "1.5.4"
