@@ -15,6 +15,7 @@ jest.mock('@edx/frontend-platform/auth', () => ({
 jest.mock('../profile', () => ({
   ProfilePage: () => (<div>Profile page</div>),
   NotFoundPage: () => (<div>Not found page</div>),
+  ProfilePluginPage: () => (<div>Plugin page</div>),
 }));
 
 const RoutesWithProvider = (context, path) => (
@@ -52,6 +53,22 @@ describe('routes', () => {
       ),
     );
     expect(screen.getByText('Profile page')).toBeTruthy();
+  });
+
+  test('Profile Plugin page should be accessible for authenticated users', () => {
+    render(
+      RoutesWithProvider(
+        {
+          authenticatedUser: {
+            username: 'edx',
+            email: 'edx@example.com',
+          },
+          config: getConfig(),
+        },
+        '/u/edx/plugin',
+      ),
+    );
+    expect(screen.getByText('Plugin page')).toBeTruthy();
   });
 
   test('should show NotFound page for a bad route', () => {
