@@ -4,12 +4,11 @@ import {
   PageWrap,
 } from '@edx/frontend-platform/react';
 import { Routes, Route } from 'react-router-dom';
-import { ProfilePage, NotFoundPage, ProfilePluginPage } from '../profile';
+import { ProfilePage, NotFoundPage } from '../profile';
 
 const AppRoutes = () => (
   <Routes>
     <Route path="/u/:username" element={<AuthenticatedPageRoute><ProfilePage /></AuthenticatedPageRoute>} />
-    <Route path="/u/:username/plugin" element={<AuthenticatedPageRoute><ProfilePluginPage /></AuthenticatedPageRoute>} />
     <Route path="/notfound" element={<PageWrap><NotFoundPage /></PageWrap>} />
     <Route path="*" element={<PageWrap><NotFoundPage /></PageWrap>} />
   </Routes>

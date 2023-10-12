@@ -6,6 +6,7 @@ const DateJoined = ({ date }) => {
   if (date == null) {
     return null;
   }
+
   return (
     <p className="mb-0">
       <FormattedMessage

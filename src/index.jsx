@@ -15,7 +15,6 @@ import {
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { useLocation } from 'react-router-dom';
 
 import Header from '@edx/frontend-component-header';
 import Footer from '@edx/frontend-component-footer';
@@ -28,11 +27,6 @@ import Head from './head/Head';
 
 import AppRoutes from './routes/AppRoutes';
 
-const RealFooter = () => {
-  const location = useLocation();
-  return ['/u/edx/plugin'].includes(location.pathname) ? <></> : <Footer />;
-}
-
 subscribe(APP_READY, () => {
   ReactDOM.render(
     <AppProvider store={configureStore()}>
@@ -41,7 +35,7 @@ subscribe(APP_READY, () => {
       <main>
         <AppRoutes />
       </main>
-      <RealFooter />
+      <Footer />
     </AppProvider>,
     document.getElementById('root'),
   );
