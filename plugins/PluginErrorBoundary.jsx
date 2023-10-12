@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
-import { logError } from '../logging';
+import { logError } from '@edx/frontend-platform/logging';
 
 export default class PluginErrorBoundary extends Component {
   constructor(props) {
