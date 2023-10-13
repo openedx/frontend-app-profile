@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { forwardRef } from 'react';
 
 import classNames from 'classnames';
@@ -30,21 +31,21 @@ const PluginSlot = forwardRef(({
 
   let finalChildren = [];
   // if (plugins.length > 0) {
-    // if (keepDefault) {
-    //   finalChildren.push(children);
-    // }
-    // plugins.forEach((pluginConfig) => {
-    //   finalChildren.push(
-    //     <PluginContainer
-    //       key={pluginConfig.url}
-    //       config={pluginConfig}
-    //       fallback={finalFallback}
-    //       {...pluginProps}
-    //     />,
-    //   );
-    // });
+  // if (keepDefault) {
+  //   finalChildren.push(children);
+  // }
+  // plugins.forEach((pluginConfig) => {
+  //   finalChildren.push(
+  //     <PluginContainer
+  //       key={pluginConfig.url}
+  //       config={pluginConfig}
+  //       fallback={finalFallback}
+  //       {...pluginProps}
+  //     />,
+  //   );
+  // });
   // } else {
-    finalChildren = children;
+  finalChildren = children;
   // }
 
   return React.createElement(

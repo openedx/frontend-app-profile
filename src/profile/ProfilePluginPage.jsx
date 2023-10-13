@@ -38,6 +38,7 @@ import withParams from '../utils/hoc';
 
 ensureConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL'], 'ProfilePage');
 
+// eslint-disable-next-line react/function-component-definition
 function Fallback() {
   return (
     <div>this is broken as all get</div>
@@ -135,7 +136,7 @@ class ProfilePluginPage extends React.Component {
                   className="mb-md-3"
                   src={profileImage.src}
                   isDefault={profileImage.isDefault}
-                  />
+                />
               </div>
             </div>
             <div className="col pl-0">
@@ -151,25 +152,25 @@ class ProfilePluginPage extends React.Component {
                 visibilityName={visibilityName}
                 formId="name"
                 {...commonFormProps}
-                />
+              />
               <Country
                 country={country}
                 visibilityCountry={visibilityCountry}
                 formId="country"
                 {...commonFormProps}
-                />
+              />
               <Education
                 levelOfEducation={levelOfEducation}
                 visibilityLevelOfEducation={visibilityLevelOfEducation}
                 formId="levelOfEducation"
                 {...commonFormProps}
-                />
+              />
               <SocialLinks
                 socialLinks={socialLinks}
                 visibilitySocialLinks={visibilitySocialLinks}
                 formId="socialLinks"
                 {...commonFormProps}
-                />
+              />
             </div>
             <div className="pt-md-3 col-md-8 col-lg-7 offset-lg-1">
               <Bio
@@ -177,7 +178,7 @@ class ProfilePluginPage extends React.Component {
                 visibilityBio={visibilityBio}
                 formId="bio"
                 {...commonFormProps}
-                />
+              />
             </div>
           </div>
         </div>

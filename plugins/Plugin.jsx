@@ -22,6 +22,7 @@ function errorFallbackDefault() {
   );
 }
 
+// eslint-disable-next-line react/function-component-definition
 export default function Plugin({
   children, className, style, ready, errorFallbackProp,
 }) {

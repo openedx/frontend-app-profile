@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { FormattedMessage } from 'react-intl';
 
 import { logError } from '@edx/frontend-platform/logging';

@@ -30,6 +30,7 @@ export const IFRAME_FEATURE_POLICY = (
   'fullscreen; microphone *; camera *; midi *; geolocation *; encrypted-media *'
 );
 
+// eslint-disable-next-line react/function-component-definition
 export default function PluginContainerIframe({
   config, fallback, className, ...props
 }) {

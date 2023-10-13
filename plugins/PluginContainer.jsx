@@ -10,6 +10,7 @@ import {
 } from './data/constants';
 import { pluginConfigShape } from './data/shapes';
 
+// eslint-disable-next-line react/function-component-definition
 export default function PluginContainer({ config, ...props }) {
   if (config === null) {
     return null;

@@ -30,8 +30,8 @@ import AppRoutes from './routes/AppRoutes';
 
 const RealFooter = () => {
   const location = useLocation();
-  return ['/u/edx/plugin'].includes(location.pathname) ? <></> : <Footer />;
-}
+  return ['/u/edx/plugin'].includes(location.pathname) ? null : <Footer />;
+};
 
 subscribe(APP_READY, () => {
   ReactDOM.render(
