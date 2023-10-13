@@ -3,8 +3,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { ensureConfig } from '@edx/frontend-platform';
-import { AppContext, ErrorBoundary } from '@edx/frontend-platform/react';
+import { AppContext } from '@edx/frontend-platform/react';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTwitter, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { Card, ActionRow } from '@edx/paragon';
+
+import get from 'lodash.get';
 import { Plugin } from '../../plugins';
 
 // Actions
@@ -20,10 +26,7 @@ import {
 
 // Components
 import ProfileAvatar from './forms/ProfileAvatar';
-import Name from './forms/Name';
 import Country from './forms/Country';
-import Education from './forms/Education';
-import SocialLinks from './forms/SocialLinks';
 import Bio from './forms/Bio';
 import DateJoined from './DateJoined';
 import PageLoading from './PageLoading';
@@ -33,6 +36,8 @@ import { profilePageSelector } from './data/selectors';
 
 // i18n
 import messages from './ProfilePage.messages';
+import eduMessages from './forms/Education.messages';
+import countryMessages from './forms/Country.messages';
 
 import withParams from '../utils/hoc';
 
@@ -44,6 +49,21 @@ function Fallback() {
     <div>this is broken as all get</div>
   );
 }
+
+const platformDisplayInfo = {
+  facebook: {
+    icon: faFacebook,
+    name: '',
+  },
+  twitter: {
+    icon: faTwitter,
+    name: '',
+  },
+  linkedin: {
+    icon: faLinkedin,
+    name: '',
+  },
+};
 
 class ProfilePluginPage extends React.Component {
   constructor(props, context) {
@@ -89,30 +109,25 @@ class ProfilePluginPage extends React.Component {
   renderHeadingLockup() {
     const { dateJoined } = this.props;
     return (
-      <ErrorBoundary fallbackComponent={<Fallback />}>
-        <span data-hj-suppress>
-          <h1 className="h2 mb-0 font-weight-bold">{this.props.params.username}</h1>
-          <DateJoined date={dateJoined} />
-          <hr className="d-none d-md-block" />
-        </span>
-      </ErrorBoundary>
+      <span data-hj-suppress>
+        <h1 className="h2 mb-0 font-weight-bold">{this.props.params.username}</h1>
+        <DateJoined date={dateJoined} />
+        <hr className="d-none d-md-block" />
+      </span>
     );
   }
 
   renderContent() {
     const {
       profileImage,
-      name,
-      visibilityName,
       country,
-      visibilityCountry,
       levelOfEducation,
-      visibilityLevelOfEducation,
       socialLinks,
-      visibilitySocialLinks,
       bio,
       visibilityBio,
       isLoadingProfile,
+      dateJoined,
+      intl,
     } = this.props;
 
     if (isLoadingProfile) {
@@ -127,7 +142,32 @@ class ProfilePluginPage extends React.Component {
     };
 
     return (
-      <Plugin>
+      <Plugin fallbackComponent={<Fallback />}>
+        <Card className="mb-2">
+          <Card.Header
+            actions={
+              (
+                <ActionRow>
+                  <ul className="list-unstyled">
+                    {socialLinks
+                      .filter(({ socialLink }) => Boolean(socialLink))
+                      .map(({ platform, socialLink }) => (
+                        <StaticListItem
+                          key={platform}
+                          name={platformDisplayInfo[platform].name}
+                          url={socialLink}
+                          platform={platform}
+                        />
+                      ))}
+                  </ul>
+                </ActionRow>
+              )
+            }
+          />
+          {/* <Card.ImageCap
+
+          /> */}
+        </Card>
         <div className="container-fluid">
           <div className="row align-items-center pt-4 mb-4 pt-md-0 mb-md-0">
             <div className="col-auto col-md-4 col-lg-3">
@@ -137,40 +177,27 @@ class ProfilePluginPage extends React.Component {
                   src={profileImage.src}
                   isDefault={profileImage.isDefault}
                 />
-              </div>
-            </div>
-            <div className="col pl-0">
-              <div>
-                {this.renderHeadingLockup()}
+                <h1 className="h2 mb-0 font-weight-bold">{this.props.params.username}</h1>
+                <DateJoined date={dateJoined} />
+                <p data-hj-suppress className="h5">{countryMessages[country]}</p>
               </div>
             </div>
           </div>
           <div className="row">
             <div className="col-md-4 col-lg-4">
-              <Name
-                name={name}
-                visibilityName={visibilityName}
-                formId="name"
-                {...commonFormProps}
-              />
-              <Country
+              {/* <Country
                 country={country}
                 visibilityCountry={visibilityCountry}
                 formId="country"
                 {...commonFormProps}
-              />
-              <Education
-                levelOfEducation={levelOfEducation}
-                visibilityLevelOfEducation={visibilityLevelOfEducation}
-                formId="levelOfEducation"
-                {...commonFormProps}
-              />
-              <SocialLinks
-                socialLinks={socialLinks}
-                visibilitySocialLinks={visibilitySocialLinks}
-                formId="socialLinks"
-                {...commonFormProps}
-              />
+              /> */}
+              <p data-hj-suppress className="h5">
+                {intl.formatMessage(get(
+                  eduMessages,
+                  `profile.education.levels.${levelOfEducation}`,
+                  eduMessages['profile.education.levels.o'],
+                ))}
+              </p>
             </div>
             <div className="pt-md-3 col-md-8 col-lg-7 offset-lg-1">
               <Bio
@@ -194,6 +221,19 @@ class ProfilePluginPage extends React.Component {
     );
   }
 }
+
+const SocialLink = ({ url, name, platform }) => (
+  <a href={url} className="font-weight-bold">
+    <FontAwesomeIcon className="mr-2" icon={platformDisplayInfo[platform].icon} />
+    {name}
+  </a>
+);
+
+const StaticListItem = ({ url, name, platform }) => (
+  <li className="mb-2">
+    <SocialLink name={name} url={url} platform={platform} />
+  </li>
+);
 
 ProfilePluginPage.contextType = AppContext;
 
