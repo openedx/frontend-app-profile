@@ -9,9 +9,11 @@ import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { Card, ActionRow } from '@edx/paragon';
-
+import { ActionRow, Avatar, Card } from '@edx/paragon';
 import get from 'lodash.get';
+import Country from './forms/Country';
+
+import EditableItemHeader from './forms/elements/EditableItemHeader';
 import { Plugin } from '../../plugins';
 
 // Actions
@@ -26,7 +28,6 @@ import {
 } from './data/actions';
 
 // Components
-import ProfileAvatar from './forms/ProfileAvatar';
 import Bio from './forms/Bio';
 import DateJoined from './DateJoined';
 import PageLoading from './PageLoading';
@@ -113,6 +114,7 @@ class ProfilePluginPage extends React.Component {
       socialLinks,
       bio,
       visibilityBio,
+      visibilityCountry,
       isLoadingProfile,
       dateJoined,
       intl,
@@ -152,51 +154,47 @@ class ProfilePluginPage extends React.Component {
               )
             }
           />
-          {/* <Card.ImageCap
-
-          /> */}
-        </Card>
-        <div className="container-fluid">
-          <div className="row align-items-center pt-4 mb-4 pt-md-0 mb-md-0">
-            <div className="col-auto col-md-4 col-lg-3">
-              <div className="d-flex align-items-center d-md-block">
-                <ProfileAvatar
-                  className="mb-md-3"
-                  src={profileImage.src}
-                  isDefault={profileImage.isDefault}
-                />
-                <h1 className="h2 mb-0 font-weight-bold">{this.props.params.username}</h1>
+          <div className="container-fluid">
+            <div className="row align-items-center pt-4 mb-4 pt-md-0 mb-md-0">
+              <div className="col-auto col-md-4 col-lg-3">
+                <div className="d-flex align-items-center d-md-block">
+                  <Avatar
+                    size="lg"
+                    src={profileImage.src}
+                    alt="Profile image"
+                  />
+                </div>
+                <div className="d-flex align-items-center d-md-block">
+                  <h1 className="h2 mb-0 font-weight-bold">{this.props.params.username}</h1>
+                </div>
                 <DateJoined date={dateJoined} />
-                <p data-hj-suppress className="h5">{countryMessages[country]}</p>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-md-4 col-lg-4">
+                <Country
+                  country={country}
+                  visibilityCountry={visibilityCountry}
+                  formId="country"
+                  {...commonFormProps}
+                />
+                <p data-hj-suppress className="h5">
+                  {intl.formatMessage(get(
+                    eduMessages,
+                    `profile.education.levels.${levelOfEducation}`,
+                    eduMessages['profile.education.levels.o'],
+                  ))}
+                </p>
+                <Bio
+                  bio={bio}
+                  visibilityBio={visibilityBio}
+                  formId="bio"
+                  {...commonFormProps}
+                />
               </div>
             </div>
           </div>
-          <div className="row">
-            <div className="col-md-4 col-lg-4">
-              {/* <Country
-                country={country}
-                visibilityCountry={visibilityCountry}
-                formId="country"
-                {...commonFormProps}
-              /> */}
-              <p data-hj-suppress className="h5">
-                {intl.formatMessage(get(
-                  eduMessages,
-                  `profile.education.levels.${levelOfEducation}`,
-                  eduMessages['profile.education.levels.o'],
-                ))}
-              </p>
-            </div>
-            <div className="pt-md-3 col-md-8 col-lg-7 offset-lg-1">
-              <Bio
-                bio={bio}
-                visibilityBio={visibilityBio}
-                formId="bio"
-                {...commonFormProps}
-              />
-            </div>
-          </div>
-        </div>
+        </Card>
       </Plugin>
     );
   }
