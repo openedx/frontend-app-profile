@@ -28,20 +28,25 @@ import Head from './head/Head';
 
 import AppRoutes from './routes/AppRoutes';
 
-const RealFooter = () => {
+const RenderFooter = () => {
   const location = useLocation();
   return ['/u/edx/plugin'].includes(location.pathname) ? null : <Footer />;
+};
+
+const RenderHeader = () => {
+  const location = useLocation();
+  return ['/u/edx/plugin'].includes(location.pathname) ? null : <Header />;
 };
 
 subscribe(APP_READY, () => {
   ReactDOM.render(
     <AppProvider store={configureStore()}>
       <Head />
-      <Header />
+      <RenderHeader />
       <main>
         <AppRoutes />
       </main>
-      <RealFooter />
+      <RenderFooter />
     </AppProvider>,
     document.getElementById('root'),
   );
