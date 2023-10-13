@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -26,7 +27,6 @@ import {
 
 // Components
 import ProfileAvatar from './forms/ProfileAvatar';
-import Country from './forms/Country';
 import Bio from './forms/Bio';
 import DateJoined from './DateJoined';
 import PageLoading from './PageLoading';
@@ -103,18 +103,6 @@ class ProfilePluginPage extends React.Component {
 
   handleChange(name, value) {
     this.props.updateDraft(name, value);
-  }
-
-  // Inserted into the DOM in two places (for responsive layout)
-  renderHeadingLockup() {
-    const { dateJoined } = this.props;
-    return (
-      <span data-hj-suppress>
-        <h1 className="h2 mb-0 font-weight-bold">{this.props.params.username}</h1>
-        <DateJoined date={dateJoined} />
-        <hr className="d-none d-md-block" />
-      </span>
-    );
   }
 
   renderContent() {
