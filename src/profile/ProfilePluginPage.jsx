@@ -5,15 +5,18 @@ import { connect } from 'react-redux';
 
 import { ensureConfig } from '@edx/frontend-platform';
 import { AppContext } from '@edx/frontend-platform/react';
-import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
+import { injectIntl, intlShape, FormattedDate } from '@edx/frontend-platform/i18n';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { ActionRow, Avatar, Card } from '@edx/paragon';
-import get from 'lodash.get';
-import Country from './forms/Country';
+import {
+  ActionRow, Avatar, Card, Hyperlink, Icon,
+} from '@edx/paragon';
+import { HistoryEdu, VerifiedUser } from '@edx/paragon/icons';
 
-import EditableItemHeader from './forms/elements/EditableItemHeader';
+import get from 'lodash.get';
+
+import Country from './forms/Country';
 import { Plugin } from '../../plugins';
 
 // Actions
@@ -38,7 +41,6 @@ import { profilePageSelector } from './data/selectors';
 // i18n
 import messages from './ProfilePage.messages';
 import eduMessages from './forms/Education.messages';
-import countryMessages from './forms/Country.messages';
 
 import withParams from '../utils/hoc';
 
@@ -112,8 +114,6 @@ class ProfilePluginPage extends React.Component {
       country,
       levelOfEducation,
       socialLinks,
-      bio,
-      visibilityBio,
       visibilityCountry,
       isLoadingProfile,
       dateJoined,
@@ -135,65 +135,60 @@ class ProfilePluginPage extends React.Component {
       <Plugin fallbackComponent={<Fallback />}>
         <Card className="mb-2">
           <Card.Header
+            subtitle={(
+              <Hyperlink destination={`http://localhost:1995/u/${this.props.params.username}`}>
+                View public profile
+              </Hyperlink>
+            )}
             actions={
               (
-                <ActionRow>
-                  <ul className="list-unstyled">
-                    {socialLinks
-                      .filter(({ socialLink }) => Boolean(socialLink))
-                      .map(({ platform, socialLink }) => (
-                        <StaticListItem
-                          key={platform}
-                          name={platformDisplayInfo[platform].name}
-                          url={socialLink}
-                          platform={platform}
-                        />
-                      ))}
-                  </ul>
+                <ActionRow className="mt-3">
+                  {socialLinks
+                    .filter(({ socialLink }) => Boolean(socialLink))
+                    .map(({ platform, socialLink }) => (
+                      <StaticListItem
+                        key={platform}
+                        name={platformDisplayInfo[platform].name}
+                        url={socialLink}
+                        platform={platform}
+                      />
+                    ))}
                 </ActionRow>
               )
             }
           />
-          <div className="container-fluid">
-            <div className="row align-items-center pt-4 mb-4 pt-md-0 mb-md-0">
-              <div className="col-auto col-md-4 col-lg-3">
-                <div className="d-flex align-items-center d-md-block">
-                  <Avatar
-                    size="lg"
-                    src={profileImage.src}
-                    alt="Profile image"
-                  />
-                </div>
-                <div className="d-flex align-items-center d-md-block">
-                  <h1 className="h2 mb-0 font-weight-bold">{this.props.params.username}</h1>
-                </div>
-                <DateJoined date={dateJoined} />
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-4 col-lg-4">
-                <Country
-                  country={country}
-                  visibilityCountry={visibilityCountry}
-                  formId="country"
-                  {...commonFormProps}
-                />
-                <p data-hj-suppress className="h5">
-                  {intl.formatMessage(get(
-                    eduMessages,
-                    `profile.education.levels.${levelOfEducation}`,
-                    eduMessages['profile.education.levels.o'],
-                  ))}
-                </p>
-                <Bio
-                  bio={bio}
-                  visibilityBio={visibilityBio}
-                  formId="bio"
-                  {...commonFormProps}
-                />
-              </div>
-            </div>
-          </div>
+          <Card.Section className="text-center">
+            <Avatar
+              size="lg"
+              src={profileImage.src}
+              alt="Profile image"
+            />
+            <h1 className="h3 mb-0 font-weight-bold">{this.props.params.username}</h1>
+            <Country
+              country={country}
+              visibilityCountry={visibilityCountry}
+              formId="country"
+              {...commonFormProps}
+            />
+          </Card.Section>
+          <Card.Footer>
+            <Card.Section className="pgn-icons-cell">
+              <Icon src={VerifiedUser} />
+              <p>
+                since <FormattedDate value={new Date(dateJoined)} year="numeric" />
+              </p>
+            </Card.Section>
+            <Card.Section className="pgn-icons-cell">
+              <Icon src={HistoryEdu} />
+              <span>
+                {intl.formatMessage(get(
+                  eduMessages,
+                  `profile.education.levels.${levelOfEducation}`,
+                  eduMessages['profile.education.levels.o'],
+                ))}
+              </span>
+            </Card.Section>
+          </Card.Footer>
         </Card>
       </Plugin>
     );
@@ -216,9 +211,9 @@ const SocialLink = ({ url, name, platform }) => (
 );
 
 const StaticListItem = ({ url, name, platform }) => (
-  <li className="mb-2">
+  <ul className="list-inline">
     <SocialLink name={name} url={url} platform={platform} />
-  </li>
+  </ul>
 );
 
 ProfilePluginPage.contextType = AppContext;
