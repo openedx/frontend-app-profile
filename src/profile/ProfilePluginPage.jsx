@@ -12,22 +12,16 @@ import { faTwitter, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-
 import {
   ActionRow, Avatar, Card, Hyperlink, Icon,
 } from '@edx/paragon';
-import { HistoryEdu, LocationOn, VerifiedUser } from '@edx/paragon/icons';
+import { HistoryEdu, VerifiedUser } from '@edx/paragon/icons';
 
 import get from 'lodash.get';
 
-import Country from './forms/Country';
+import PluginCountry from './forms/PluginCountry';
 import { Plugin } from '../../plugins';
 
 // Actions
 import {
   fetchProfile,
-  saveProfile,
-  saveProfilePhoto,
-  deleteProfilePhoto,
-  openForm,
-  closeForm,
-  updateDraft,
 } from './data/actions';
 
 // Components
@@ -67,43 +61,8 @@ const platformDisplayInfo = {
 };
 
 class ProfilePluginPage extends React.Component {
-  constructor(props, context) {
-    super(props, context);
-
-    this.handleSaveProfilePhoto = this.handleSaveProfilePhoto.bind(this);
-    this.handleDeleteProfilePhoto = this.handleDeleteProfilePhoto.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-    this.handleOpen = this.handleOpen.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-  }
-
   componentDidMount() {
     this.props.fetchProfile(this.props.params.username);
-  }
-
-  handleSaveProfilePhoto(formData) {
-    this.props.saveProfilePhoto(this.context.authenticatedUser.username, formData);
-  }
-
-  handleDeleteProfilePhoto() {
-    this.props.deleteProfilePhoto(this.context.authenticatedUser.username);
-  }
-
-  handleClose(formId) {
-    this.props.closeForm(formId);
-  }
-
-  handleOpen(formId) {
-    this.props.openForm(formId);
-  }
-
-  handleSubmit(formId) {
-    this.props.saveProfile(formId, this.context.authenticatedUser.username);
-  }
-
-  handleChange(name, value) {
-    this.props.updateDraft(name, value);
   }
 
   renderContent() {
@@ -112,7 +71,6 @@ class ProfilePluginPage extends React.Component {
       country,
       levelOfEducation,
       socialLinks,
-      visibilityCountry,
       isLoadingProfile,
       dateJoined,
       intl,
@@ -121,13 +79,6 @@ class ProfilePluginPage extends React.Component {
     if (isLoadingProfile) {
       return <PageLoading srMessage={this.props.intl.formatMessage(messages['profile.loading'])} />;
     }
-
-    const commonFormProps = {
-      openHandler: this.handleOpen,
-      closeHandler: this.handleClose,
-      submitHandler: this.handleSubmit,
-      changeHandler: this.handleChange,
-    };
 
     return (
       <Plugin fallbackComponent={<Fallback />}>
@@ -156,7 +107,7 @@ class ProfilePluginPage extends React.Component {
               )
             }
           />
-          <Card.Section className="text-center" muted="true">
+          <Card.Section className="text-center" muted>
             <Avatar
               size="xl"
               className="profile-plugin-avatar"
@@ -164,11 +115,8 @@ class ProfilePluginPage extends React.Component {
               alt="Profile image"
             />
             <h1 className="h2 mb-0 font-weight-bold">{this.props.params.username}</h1>
-            <Country
+            <PluginCountry
               country={country}
-              visibilityCountry={visibilityCountry}
-              formId="country"
-              {...commonFormProps}
             />
           </Card.Section>
           <Card.Footer className="p-0">
@@ -222,46 +170,27 @@ ProfilePluginPage.propTypes = {
   // Account data
   dateJoined: PropTypes.string,
 
-  // Bio form data
-  bio: PropTypes.string,
-  yearOfBirth: PropTypes.number,
-  visibilityBio: PropTypes.string.isRequired,
-
   // Country form data
   country: PropTypes.string,
-  visibilityCountry: PropTypes.string.isRequired,
 
   // Education form data
   levelOfEducation: PropTypes.string,
-  visibilityLevelOfEducation: PropTypes.string.isRequired,
-
-  // Name form data
-  name: PropTypes.string,
-  visibilityName: PropTypes.string.isRequired,
 
   // Social links form data
   socialLinks: PropTypes.arrayOf(PropTypes.shape({
     platform: PropTypes.string,
     socialLink: PropTypes.string,
   })),
-  visibilitySocialLinks: PropTypes.string.isRequired,
 
   // Other data we need
   profileImage: PropTypes.shape({
     src: PropTypes.string,
     isDefault: PropTypes.bool,
   }),
-  saveState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
   isLoadingProfile: PropTypes.bool.isRequired,
 
   // Actions
   fetchProfile: PropTypes.func.isRequired,
-  saveProfile: PropTypes.func.isRequired,
-  saveProfilePhoto: PropTypes.func.isRequired,
-  deleteProfilePhoto: PropTypes.func.isRequired,
-  openForm: PropTypes.func.isRequired,
-  closeForm: PropTypes.func.isRequired,
-  updateDraft: PropTypes.func.isRequired,
 
   // Router
   params: PropTypes.shape({
@@ -273,14 +202,10 @@ ProfilePluginPage.propTypes = {
 };
 
 ProfilePluginPage.defaultProps = {
-  saveState: null,
   profileImage: {},
-  name: null,
-  yearOfBirth: null,
   levelOfEducation: null,
   country: null,
   socialLinks: [],
-  bio: null,
   dateJoined: null,
 };
 
@@ -288,11 +213,5 @@ export default connect(
   profilePageSelector,
   {
     fetchProfile,
-    saveProfilePhoto,
-    deleteProfilePhoto,
-    saveProfile,
-    openForm,
-    closeForm,
-    updateDraft,
   },
 )(injectIntl(withParams(ProfilePluginPage)));

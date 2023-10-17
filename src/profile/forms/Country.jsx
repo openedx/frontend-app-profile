@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
-import { Form, Icon } from '@edx/paragon';
-import { LocationOn } from '@edx/paragon/icons';
+import { Form } from '@edx/paragon';
 
 import messages from './Country.messages';
 
@@ -61,83 +60,82 @@ class Country extends React.Component {
     } = this.props;
 
     return (
-      // <SwitchContent
-      //   className="mb-5"
-      //   expression={editMode}
-      //   cases={{
-      //     editing: (
-      //       <div role="dialog" aria-labelledby={`${formId}-label`}>
-      //         <form onSubmit={this.handleSubmit}>
-      //           <Form.Group
-      //             controlId={formId}
-      //             isInvalid={error !== null}
-      //           >
-      //             <label className="edit-section-header" htmlFor={formId}>
-      //               {intl.formatMessage(messages['profile.country.label'])}
-      //             </label>
-      //             <select
-      //               data-hj-suppress
-      //               className="form-control"
-      //               type="select"
-      //               id={formId}
-      //               name={formId}
-      //               value={country}
-      //               onChange={this.handleChange}
-      //             >
-      //               <option value="">&nbsp;</option>
-      //               {sortedCountries.map(({ code, name }) => (
-      //                 <option key={code} value={code}>{name}</option>
-      //               ))}
-      //             </select>
-      //             {error !== null && (
-      //               <Form.Control.Feedback hasIcon={false}>
-      //                 {error}
-      //               </Form.Control.Feedback>
-      //             )}
-      //           </Form.Group>
-      //           <FormControls
-      //             visibilityId="visibilityCountry"
-      //             saveState={saveState}
-      //             visibility={visibilityCountry}
-      //             cancelHandler={this.handleClose}
-      //             changeHandler={this.handleChange}
-      //           />
-      //         </form>
-      //       </div>
-      //     ),
-      //     editable: (
-      //       <>
-      //         <EditableItemHeader
-      //           content={intl.formatMessage(messages['profile.country.label'])}
-      //           showEditButton
-      //           onClickEdit={this.handleOpen}
-      //           showVisibility={visibilityCountry !== null}
-      //           visibility={visibilityCountry}
-      //         />
-      //         <p data-hj-suppress className="h5">{countryMessages[country]}</p>
-      //       </>
-      //     ),
-      //     empty: (
-      //       <>
-      //         <EditableItemHeader
-      //           content={intl.formatMessage(messages['profile.country.label'])}
-      //         />
-      //         <EmptyContent onClick={this.handleOpen}>
-      //           {intl.formatMessage(messages['profile.country.empty'])}
-      //         </EmptyContent>
-      //       </>
-      //     ),
-      //     static: (
-      <div className="pgn-icons-cell-horizontal">
-        {/* <EditableItemHeader
-          content={intl.formatMessage(messages['profile.country.label'])}
-        /> */}
-        <Icon src={LocationOn} />
-        <p className="h5 mt-1 ml-1">{countryMessages[country]}</p>
-      </div>
-      //     ),
-      //   }}
-      // />
+      <SwitchContent
+        className="mb-5"
+        expression={editMode}
+        cases={{
+          editing: (
+            <div role="dialog" aria-labelledby={`${formId}-label`}>
+              <form onSubmit={this.handleSubmit}>
+                <Form.Group
+                  controlId={formId}
+                  isInvalid={error !== null}
+                >
+                  <label className="edit-section-header" htmlFor={formId}>
+                    {intl.formatMessage(messages['profile.country.label'])}
+                  </label>
+                  <select
+                    data-hj-suppress
+                    className="form-control"
+                    type="select"
+                    id={formId}
+                    name={formId}
+                    value={country}
+                    onChange={this.handleChange}
+                  >
+                    <option value="">&nbsp;</option>
+                    {sortedCountries.map(({ code, name }) => (
+                      <option key={code} value={code}>{name}</option>
+                    ))}
+                  </select>
+                  {error !== null && (
+                    <Form.Control.Feedback hasIcon={false}>
+                      {error}
+                    </Form.Control.Feedback>
+                  )}
+                </Form.Group>
+                <FormControls
+                  visibilityId="visibilityCountry"
+                  saveState={saveState}
+                  visibility={visibilityCountry}
+                  cancelHandler={this.handleClose}
+                  changeHandler={this.handleChange}
+                />
+              </form>
+            </div>
+          ),
+          editable: (
+            <>
+              <EditableItemHeader
+                content={intl.formatMessage(messages['profile.country.label'])}
+                showEditButton
+                onClickEdit={this.handleOpen}
+                showVisibility={visibilityCountry !== null}
+                visibility={visibilityCountry}
+              />
+              <p data-hj-suppress className="h5">{countryMessages[country]}</p>
+            </>
+          ),
+          empty: (
+            <>
+              <EditableItemHeader
+                content={intl.formatMessage(messages['profile.country.label'])}
+              />
+              <EmptyContent onClick={this.handleOpen}>
+                {intl.formatMessage(messages['profile.country.empty'])}
+              </EmptyContent>
+            </>
+          ),
+          static: (
+            <>
+              <EditableItemHeader
+                content={intl.formatMessage(messages['profile.country.label'])}
+              />
+              <p data-hj-suppress className="h5">{countryMessages[country]}</p>
+            </>
+          ),
+        }}
+      />
     );
   }
 }
