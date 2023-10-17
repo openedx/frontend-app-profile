@@ -13,3 +13,6 @@ export {
 export {
   IFRAME_PLUGIN,
 } from './data/constants';
+export {
+  default as PluginErrorBoundary,
+} from './PluginErrorBoundary';
