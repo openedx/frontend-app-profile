@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
-import { Form } from '@edx/paragon';
+import { Form, Icon } from '@edx/paragon';
+import { LocationOn } from '@edx/paragon/icons';
 
 import messages from './Country.messages';
 
@@ -127,12 +128,13 @@ class Country extends React.Component {
       //       </>
       //     ),
       //     static: (
-      <>
+      <div className="pgn-icons-cell-horizontal">
         {/* <EditableItemHeader
           content={intl.formatMessage(messages['profile.country.label'])}
         /> */}
-        <p data-hj-suppress className="h5">{countryMessages[country]}</p>
-      </>
+        <Icon src={LocationOn} />
+        <p className="h5">{countryMessages[country]}</p>
+      </div>
       //     ),
       //   }}
       // />

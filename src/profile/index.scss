@@ -163,26 +163,18 @@
     }
   }
 
-  .pgn-icons-cell {
-    padding-top: 15px;
+  .pgn-icons-cell-vertical {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 1px;
-    border-radius: 10px;
     width: 150px;
     height: 100px;
-
-    .pgn-icons-cell-text {
-      display: block;
-      font-size: $font-size-xs;
-      padding: 0 5px;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
-      width: 100%;
-      text-align: center;
-    }
+  }
+  .pgn-icons-cell-horizontal {
+    display: flex;
+    flex-direction: row;
+    margin: 1px;
   }
 
 }

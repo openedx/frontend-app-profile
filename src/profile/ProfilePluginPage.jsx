@@ -12,7 +12,7 @@ import { faTwitter, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-
 import {
   ActionRow, Avatar, Card, Hyperlink, Icon,
 } from '@edx/paragon';
-import { HistoryEdu, VerifiedUser } from '@edx/paragon/icons';
+import { HistoryEdu, LocationOn, VerifiedUser } from '@edx/paragon/icons';
 
 import get from 'lodash.get';
 
@@ -31,8 +31,6 @@ import {
 } from './data/actions';
 
 // Components
-import Bio from './forms/Bio';
-import DateJoined from './DateJoined';
 import PageLoading from './PageLoading';
 
 // Selectors
@@ -172,13 +170,13 @@ class ProfilePluginPage extends React.Component {
             />
           </Card.Section>
           <Card.Footer>
-            <Card.Section className="pgn-icons-cell">
+            <Card.Section className="pgn-icons-cell-vertical">
               <Icon src={VerifiedUser} />
               <p>
                 since <FormattedDate value={new Date(dateJoined)} year="numeric" />
               </p>
             </Card.Section>
-            <Card.Section className="pgn-icons-cell">
+            <Card.Section className="pgn-icons-cell-vertical">
               <Icon src={HistoryEdu} />
               <span>
                 {intl.formatMessage(get(
