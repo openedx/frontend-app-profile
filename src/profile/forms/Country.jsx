@@ -133,7 +133,7 @@ class Country extends React.Component {
           content={intl.formatMessage(messages['profile.country.label'])}
         /> */}
         <Icon src={LocationOn} />
-        <p className="h5">{countryMessages[country]}</p>
+        <p className="h5 mt-1 ml-1">{countryMessages[country]}</p>
       </div>
       //     ),
       //   }}

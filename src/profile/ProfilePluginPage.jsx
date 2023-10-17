@@ -133,6 +133,7 @@ class ProfilePluginPage extends React.Component {
       <Plugin fallbackComponent={<Fallback />}>
         <Card className="mb-2">
           <Card.Header
+            className="pb-5"
             subtitle={(
               <Hyperlink destination={`http://localhost:1995/u/${this.props.params.username}`}>
                 View public profile
@@ -155,13 +156,14 @@ class ProfilePluginPage extends React.Component {
               )
             }
           />
-          <Card.Section className="text-center">
+          <Card.Section className="text-center" muted="true">
             <Avatar
-              size="lg"
+              size="xl"
+              className="profile-plugin-avatar"
               src={profileImage.src}
               alt="Profile image"
             />
-            <h1 className="h3 mb-0 font-weight-bold">{this.props.params.username}</h1>
+            <h1 className="h2 mb-0 font-weight-bold">{this.props.params.username}</h1>
             <Country
               country={country}
               visibilityCountry={visibilityCountry}
@@ -169,7 +171,7 @@ class ProfilePluginPage extends React.Component {
               {...commonFormProps}
             />
           </Card.Section>
-          <Card.Footer>
+          <Card.Footer className="p-0">
             <Card.Section className="pgn-icons-cell-vertical">
               <Icon src={VerifiedUser} />
               <p>
@@ -178,13 +180,13 @@ class ProfilePluginPage extends React.Component {
             </Card.Section>
             <Card.Section className="pgn-icons-cell-vertical">
               <Icon src={HistoryEdu} />
-              <span>
+              <p>
                 {intl.formatMessage(get(
                   eduMessages,
                   `profile.education.levels.${levelOfEducation}`,
                   eduMessages['profile.education.levels.o'],
                 ))}
-              </span>
+              </p>
             </Card.Section>
           </Card.Footer>
         </Card>
