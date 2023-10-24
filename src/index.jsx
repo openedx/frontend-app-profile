@@ -30,12 +30,12 @@ import AppRoutes from './routes/AppRoutes';
 
 const RenderFooter = () => {
   const location = useLocation();
-  return ['/u/edx/plugin'].includes(location.pathname) ? null : <Footer />;
+  return location.pathname.includes('/plugin') ? null : <Footer />;
 };
 
 const RenderHeader = () => {
   const location = useLocation();
-  return ['/u/edx/plugin'].includes(location.pathname) ? null : <Header />;
+  return location.pathname.includes('/plugin') ? null : <Header />;
 };
 
 subscribe(APP_READY, () => {

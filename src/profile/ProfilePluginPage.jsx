@@ -73,6 +73,7 @@ class ProfilePluginPage extends React.Component {
       socialLinks,
       isLoadingProfile,
       dateJoined,
+      name,
       intl,
     } = this.props;
 
@@ -86,7 +87,7 @@ class ProfilePluginPage extends React.Component {
           <Card.Header
             className="pb-5"
             subtitle={(
-              <Hyperlink destination={`http://localhost:1995/u/${this.props.params.username}`}>
+              <Hyperlink destination={`/u/${this.props.params.username}`}>
                 View public profile
               </Hyperlink>
             )}
@@ -114,7 +115,8 @@ class ProfilePluginPage extends React.Component {
               src={profileImage.src}
               alt="Profile image"
             />
-            <h1 className="h2 mb-0 font-weight-bold">{this.props.params.username}</h1>
+            <p className="h2 mb-0 font-weight-bold">{name}</p>
+            <p className="h3 mb-0 font-weight-bold">{this.props.params.username}</p>
             <PluginCountry
               country={country}
             />
