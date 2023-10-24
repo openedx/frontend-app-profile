@@ -64,11 +64,11 @@
     "universal-cookie": "4.0.4"
   },
   "devDependencies": {
-    "@commitlint/cli": "19.3.0",
+    "@commitlint/cli": "19.4.0",
     "@commitlint/config-angular": "19.3.0",
     "@edx/browserslist-config": "^1.1.1",
     "@edx/reactifex": "2.2.0",
-    "@openedx/frontend-build": "14.0.14",
+    "@openedx/frontend-build": "14.0.15",
     "@testing-library/jest-dom": "6.4.8",
     "@testing-library/react": "12.1.5",
     "glob": "10.4.5",
