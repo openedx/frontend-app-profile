@@ -104,7 +104,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
         </div>
       </div>
       <div
-        className="col pl-0"
+        className="col"
       >
         <div
           className="d-md-none"
@@ -113,7 +113,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
             data-hj-suppress={true}
           >
             <h1
-              className="h2 mb-0 font-weight-bold"
+              className="h2 mb-0 font-weight-bold text-truncate"
             >
               staff
             </h1>
@@ -191,7 +191,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
             data-hj-suppress={true}
           >
             <h1
-              className="h2 mb-0 font-weight-bold"
+              className="h2 mb-0 font-weight-bold text-truncate"
             >
               staff
             </h1>
@@ -1694,7 +1694,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                         </svg>
                       </span>
                       <select
-                        className="d-inline-block w-auto form-control"
+                        className="d-inline-block form-control"
                         id="visibilityCountry"
                         name="visibilityCountry"
                         onChange={[Function]}
@@ -2485,7 +2485,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
         </div>
       </div>
       <div
-        className="col pl-0"
+        className="col"
       >
         <div
           className="d-md-none"
@@ -2494,7 +2494,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
             data-hj-suppress={true}
           >
             <h1
-              className="h2 mb-0 font-weight-bold"
+              className="h2 mb-0 font-weight-bold text-truncate"
             >
               staff
             </h1>
@@ -2572,7 +2572,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
             data-hj-suppress={true}
           >
             <h1
-              className="h2 mb-0 font-weight-bold"
+              className="h2 mb-0 font-weight-bold text-truncate"
             >
               staff
             </h1>
@@ -3049,7 +3049,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                         </svg>
                       </span>
                       <select
-                        className="d-inline-block w-auto form-control"
+                        className="d-inline-block form-control"
                         id="visibilityLevelOfEducation"
                         name="visibilityLevelOfEducation"
                         onChange={[Function]}
@@ -3660,7 +3660,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
         </div>
       </div>
       <div
-        className="col pl-0"
+        className="col"
       >
         <div
           className="d-md-none"
@@ -3669,7 +3669,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
             data-hj-suppress={true}
           >
             <h1
-              className="h2 mb-0 font-weight-bold"
+              className="h2 mb-0 font-weight-bold text-truncate"
             >
               staff
             </h1>
@@ -3747,7 +3747,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
             data-hj-suppress={true}
           >
             <h1
-              className="h2 mb-0 font-weight-bold"
+              className="h2 mb-0 font-weight-bold text-truncate"
             >
               staff
             </h1>
@@ -5009,7 +5009,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                         </svg>
                       </span>
                       <select
-                        className="d-inline-block w-auto form-control"
+                        className="d-inline-block form-control"
                         id="visibilityLanguageProficiencies"
                         name="visibilityLanguageProficiencies"
                         onChange={[Function]}
@@ -5687,7 +5687,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
         </div>
       </div>
       <div
-        className="col pl-0"
+        className="col"
       >
         <div
           className="d-md-none"
@@ -5696,7 +5696,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
             data-hj-suppress={true}
           >
             <h1
-              className="h2 mb-0 font-weight-bold"
+              className="h2 mb-0 font-weight-bold text-truncate"
             >
               verified
             </h1>
@@ -5757,7 +5757,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
             data-hj-suppress={true}
           >
             <h1
-              className="h2 mb-0 font-weight-bold"
+              className="h2 mb-0 font-weight-bold text-truncate"
             >
               verified
             </h1>
@@ -5942,7 +5942,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
         </div>
       </div>
       <div
-        className="col pl-0"
+        className="col"
       >
         <div
           className="d-md-none"
@@ -5951,7 +5951,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
             data-hj-suppress={true}
           >
             <h1
-              className="h2 mb-0 font-weight-bold"
+              className="h2 mb-0 font-weight-bold text-truncate"
             >
               staff
             </h1>
@@ -6029,7 +6029,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
             data-hj-suppress={true}
           >
             <h1
-              className="h2 mb-0 font-weight-bold"
+              className="h2 mb-0 font-weight-bold text-truncate"
             >
               staff
             </h1>
@@ -6992,7 +6992,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
         </div>
       </div>
       <div
-        className="col pl-0"
+        className="col"
       >
         <div
           className="d-md-none"
@@ -7001,7 +7001,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
             data-hj-suppress={true}
           >
             <h1
-              className="h2 mb-0 font-weight-bold"
+              className="h2 mb-0 font-weight-bold text-truncate"
             >
               staff
             </h1>
@@ -7079,7 +7079,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
             data-hj-suppress={true}
           >
             <h1
-              className="h2 mb-0 font-weight-bold"
+              className="h2 mb-0 font-weight-bold text-truncate"
             >
               staff
             </h1>
@@ -7767,7 +7767,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                         </svg>
                       </span>
                       <select
-                        className="d-inline-block w-auto form-control"
+                        className="d-inline-block form-control"
                         id="visibilityBio"
                         name="visibilityBio"
                         onChange={[Function]}
@@ -8109,7 +8109,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
         </div>
       </div>
       <div
-        className="col pl-0"
+        className="col"
       >
         <div
           className="d-md-none"
@@ -8118,7 +8118,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
             data-hj-suppress={true}
           >
             <h1
-              className="h2 mb-0 font-weight-bold"
+              className="h2 mb-0 font-weight-bold text-truncate"
             >
               staff
             </h1>
@@ -8196,7 +8196,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
             data-hj-suppress={true}
           >
             <h1
-              className="h2 mb-0 font-weight-bold"
+              className="h2 mb-0 font-weight-bold text-truncate"
             >
               staff
             </h1>
@@ -8890,7 +8890,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                         </svg>
                       </span>
                       <select
-                        className="d-inline-block w-auto form-control"
+                        className="d-inline-block form-control"
                         id="visibilityBio"
                         name="visibilityBio"
                         onChange={[Function]}
@@ -9232,7 +9232,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
         </div>
       </div>
       <div
-        className="col pl-0"
+        className="col"
       >
         <div
           className="d-md-none"
@@ -9241,7 +9241,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
             data-hj-suppress={true}
           >
             <h1
-              className="h2 mb-0 font-weight-bold"
+              className="h2 mb-0 font-weight-bold text-truncate"
             >
               staff
             </h1>
@@ -9274,7 +9274,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
             data-hj-suppress={true}
           >
             <h1
-              className="h2 mb-0 font-weight-bold"
+              className="h2 mb-0 font-weight-bold text-truncate"
             >
               staff
             </h1>
