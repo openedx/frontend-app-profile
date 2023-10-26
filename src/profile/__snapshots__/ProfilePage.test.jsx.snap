@@ -5637,7 +5637,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
 </div>
 `;
 
-exports[`<ProfilePage /> Renders correctly in various states viewing other profile 1`] = `
+exports[`<ProfilePage /> Renders correctly in various states viewing other profile with all fields 1`] = `
 <div
   className="profile-page"
 >
@@ -5810,7 +5810,32 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               "height": null,
             }
           }
-        />
+        >
+          <div
+            style={
+              Object {
+                "padding": ".1px 0",
+              }
+            }
+          >
+            <div
+              className="editable-item-header mb-2"
+            >
+              <h2
+                className="edit-section-header"
+                id={null}
+              >
+                Full Name
+              </h2>
+            </div>
+            <p
+              className="h5"
+              data-hj-suppress={true}
+            >
+              user
+            </p>
+          </div>
+        </div>
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
@@ -5818,7 +5843,30 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               "height": null,
             }
           }
-        />
+        >
+          <div
+            style={
+              Object {
+                "padding": ".1px 0",
+              }
+            }
+          >
+            <div
+              className="editable-item-header mb-2"
+            >
+              <h2
+                className="edit-section-header"
+                id={null}
+              >
+                Location
+              </h2>
+            </div>
+            <p
+              className="h5"
+              data-hj-suppress={true}
+            />
+          </div>
+        </div>
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
@@ -5826,7 +5874,30 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               "height": null,
             }
           }
-        />
+        >
+          <div
+            style={
+              Object {
+                "padding": ".1px 0",
+              }
+            }
+          >
+            <div
+              className="editable-item-header mb-2"
+            >
+              <h2
+                className="edit-section-header"
+                id={null}
+              >
+                Primary Language Spoken
+              </h2>
+            </div>
+            <p
+              className="h5"
+              data-hj-suppress={true}
+            />
+          </div>
+        </div>
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
@@ -5834,15 +5905,32 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               "height": null,
             }
           }
-        />
-        <div
-          className="pgn-transition-replace-group position-relative mb-5"
-          style={
-            Object {
-              "height": null,
+        >
+          <div
+            style={
+              Object {
+                "padding": ".1px 0",
+              }
             }
-          }
-        />
+          >
+            <div
+              className="editable-item-header mb-2"
+            >
+              <h2
+                className="edit-section-header"
+                id={null}
+              >
+                Education
+              </h2>
+            </div>
+            <p
+              className="h5"
+              data-hj-suppress={true}
+            >
+              Other education
+            </p>
+          </div>
+        </div>
       </div>
       <div
         className="pt-md-3 col-md-8 col-lg-7 offset-lg-1"
@@ -5854,15 +5942,32 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               "height": null,
             }
           }
-        />
-        <div
-          className="pgn-transition-replace-group position-relative mb-4"
-          style={
-            Object {
-              "height": null,
+        >
+          <div
+            style={
+              Object {
+                "padding": ".1px 0",
+              }
             }
-          }
-        />
+          >
+            <div
+              className="editable-item-header mb-2"
+            >
+              <h2
+                className="edit-section-header"
+                id={null}
+              >
+                About Me
+              </h2>
+            </div>
+            <p
+              className="lead"
+              data-hj-suppress={true}
+            >
+              bio
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
