@@ -29,7 +29,7 @@ const requiredProfilePageProps = {
   deleteProfilePhoto: () => {},
   openField: () => {},
   closeField: () => {},
-  params: { username: 'staff' },
+  match: { params: { username: 'staff' } },
 };
 
 // Mock language cookie
@@ -67,28 +67,29 @@ beforeEach(() => {
 });
 
 const ProfilePageWrapper = ({
-  contextValue, store, params, requiresParentalConsent,
+  contextValue, store, match, requiresParentalConsent,
 }) => (
   <AppContext.Provider
     value={contextValue}
   >
     <IntlProvider locale="en">
       <Provider store={store}>
-        <ProfilePage {...requiredProfilePageProps} params={params} requiresParentalConsent={requiresParentalConsent} />
+        <ProfilePage {...requiredProfilePageProps} match={match} requiresParentalConsent={requiresParentalConsent} />
       </Provider>
     </IntlProvider>
   </AppContext.Provider>
 );
 
 ProfilePageWrapper.defaultProps = {
-  params: { username: 'staff' },
+  match: { params: { username: 'staff' } },
   requiresParentalConsent: null,
+
 };
 
 ProfilePageWrapper.propTypes = {
   contextValue: PropTypes.shape({}).isRequired,
   store: PropTypes.shape({}).isRequired,
-  params: PropTypes.shape({}),
+  match: PropTypes.shape({}),
   requiresParentalConsent: PropTypes.bool,
 };
 
@@ -114,16 +115,34 @@ describe('<ProfilePage />', () => {
       expect(tree).toMatchSnapshot();
     });
 
-    it('viewing other profile', () => {
+    it('viewing other profile with all fields', () => {
       const contextValue = {
         authenticatedUser: { userId: 123, username: 'staff', administrator: true },
         config: getConfig(),
       };
+
       const component = (
         <ProfilePageWrapper
           contextValue={contextValue}
-          store={mockStore(storeMocks.viewOtherProfile)}
-          params={{ username: 'verified' }} // Override default params
+          store={mockStore({
+            ...storeMocks.viewOtherProfile,
+            profilePage: {
+              ...storeMocks.viewOtherProfile.profilePage,
+              account: {
+                ...storeMocks.viewOtherProfile.profilePage.account,
+                name: 'user',
+                country: 'EN',
+                bio: 'bio',
+                courseCertificates: ['course certificates'],
+                levelOfEducation: 'some level',
+                languageProficiencies: ['some lang'],
+                socialLinks: ['twitter'],
+                timeZone: 'time zone',
+                accountPrivacy: 'all_users',
+              },
+            },
+          })}
+          match={{ params: { username: 'verified' } }} // Override default match
         />
       );
       const tree = renderer.create(component).toJSON();
@@ -278,7 +297,7 @@ describe('<ProfilePage />', () => {
         <ProfilePageWrapper
           contextValue={contextValue}
           store={mockStore(storeMocks.loadingApp)}
-          params={{ username: 'test-username' }}
+          match={{ params: { username: 'test-username' } }}
         />
       );
       const wrapper = mount(component);
