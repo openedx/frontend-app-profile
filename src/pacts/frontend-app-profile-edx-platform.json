@@ -57,6 +57,79 @@
         },
         "status": 200
       }
+    },
+    {
+      "description": "A request for user's basic information",
+      "providerStates": [
+        {
+          "name": "I have a user's basic information"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/api/user/v1/accounts/edx"
+      },
+      "response": {
+        "body": {
+          "bio": "This is my bio",
+          "country": "ME",
+          "dateJoined": "2017-06-07T00:44:23Z",
+          "email": "edx@example.com",
+          "isActive": true,
+          "name": "Lemon Seltzer",
+          "username": "edx",
+          "yearOfBirth": 1901
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "A request for user's basic information",
+      "providerStates": [
+        {
+          "name": "I have a user's basic information"
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "path": "/login_refresh"
+      },
+      "response": {
+        "body": {
+          "login": "This is my login_refresh"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      }
     }
   ],
   "metadata": {
