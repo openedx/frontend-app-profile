@@ -48,6 +48,7 @@ subscribe(APP_INIT_ERROR, (error) => {
 initialize({
   messages,
   hydrateAuthenticatedUser: true,
+  isPactStubEnabled: process.env.ENABLE_PACT_STUBS,
   handlers: {
     config: () => {
       mergeConfig({

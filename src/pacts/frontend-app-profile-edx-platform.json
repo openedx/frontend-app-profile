@@ -78,7 +78,8 @@
           "isActive": true,
           "name": "Lemon Seltzer",
           "username": "edx",
-          "yearOfBirth": 1901
+          "yearOfBirth": 1901,
+          "language_proficiencies": [{"code": "en"}]
         },
         "headers": {
           "Content-Type": "application/json"
@@ -113,6 +114,134 @@
         "body": {
           "login": "This is my login_refresh"
         },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "A request for user's basic information",
+      "providerStates": [
+        {
+          "name": "I have a user's basic information"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/csrf/api/v1/token"
+      },
+      "response": {
+        "body": {
+          "csrfToken": "UYVGuFndy1sJPtAFtXPNQTnkZxZPKSYbvd3KKoKTyk6Vq9k01lg4vSsgjidWbnpt"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "A request for user's basic information",
+      "providerStates": [
+        {
+          "name": "I have a user's basic information"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/api/user/v1/preferences/edx"
+      },
+      "response": {
+        "body": {
+          "pref-lang": "en"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "A request for user's basic information",
+      "providerStates": [
+        {
+          "name": "I have a user's basic information"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/api/certificates/v0/certificates/edx/"
+      },
+      "response": {
+        "body": [],
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "A request for user's basic information",
+      "providerStates": [
+        {
+          "name": "I have a user's basic information"
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "path": "/event"
+      },
+      "response": {
+        "body": [],
         "headers": {
           "Content-Type": "application/json"
         },
