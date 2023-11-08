@@ -126,7 +126,7 @@ class ProfilePage extends React.Component {
 
     return (
       <span data-hj-suppress>
-        <h1 className="h2 mb-0 font-weight-bold">{this.props.params.username}</h1>
+        <h1 className="h2 mb-0 font-weight-bold text-truncate">{this.props.params.username}</h1>
         <DateJoined date={dateJoined} />
         {this.isYOBDisabled() && <UsernameDescription />}
         <hr className="d-none d-md-block" />
@@ -224,7 +224,7 @@ class ProfilePage extends React.Component {
               />
             </div>
           </div>
-          <div className="col pl-0">
+          <div className="col">
             <div className="d-md-none">
               {this.renderHeadingLockup()}
             </div>
