@@ -66,6 +66,25 @@ export function* handleFetchProfile(action) {
     } else {
       [account, courseCertificates] = result;
     }
+
+    // Set initial visibility values for account
+    // Set account_privacy as custom is necessary so that when viewing another user's profile,
+    // their full name is displayed and change visibility forms are worked correctly
+    if (isAuthenticatedUserProfile && result[0].accountPrivacy === 'all_users') {
+      yield call(ProfileApiService.patchPreferences, action.payload.username, {
+        account_privacy: 'custom',
+        'visibility.name': 'all_users',
+        'visibility.bio': 'all_users',
+        'visibility.course_certificates': 'all_users',
+        'visibility.country': 'all_users',
+        'visibility.date_joined': 'all_users',
+        'visibility.level_of_education': 'all_users',
+        'visibility.language_proficiencies': 'all_users',
+        'visibility.social_links': 'all_users',
+        'visibility.time_zone': 'all_users',
+      });
+    }
+
     yield put(fetchProfileSuccess(
       account,
       preferences,

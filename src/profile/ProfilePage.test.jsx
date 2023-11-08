@@ -114,16 +114,34 @@ describe('<ProfilePage />', () => {
       expect(tree).toMatchSnapshot();
     });
 
-    it('viewing other profile', () => {
+    it('viewing other profile with all fields', () => {
       const contextValue = {
         authenticatedUser: { userId: 123, username: 'staff', administrator: true },
         config: getConfig(),
       };
+
       const component = (
         <ProfilePageWrapper
           contextValue={contextValue}
-          store={mockStore(storeMocks.viewOtherProfile)}
-          params={{ username: 'verified' }} // Override default params
+          store={mockStore({
+            ...storeMocks.viewOtherProfile,
+            profilePage: {
+              ...storeMocks.viewOtherProfile.profilePage,
+              account: {
+                ...storeMocks.viewOtherProfile.profilePage.account,
+                name: 'user',
+                country: 'EN',
+                bio: 'bio',
+                courseCertificates: ['course certificates'],
+                levelOfEducation: 'some level',
+                languageProficiencies: ['some lang'],
+                socialLinks: ['twitter'],
+                timeZone: 'time zone',
+                accountPrivacy: 'all_users',
+              },
+            },
+          })}
+          match={{ params: { username: 'verified' } }} // Override default match
         />
       );
       const tree = renderer.create(component).toJSON();
