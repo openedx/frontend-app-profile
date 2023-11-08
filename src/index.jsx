@@ -15,6 +15,7 @@ import {
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { useLocation } from 'react-router-dom';
 
 import Header from '@edx/frontend-component-header';
 import Footer from '@edx/frontend-component-footer';
@@ -27,15 +28,25 @@ import Head from './head/Head';
 
 import AppRoutes from './routes/AppRoutes';
 
+const RenderFooter = () => {
+  const location = useLocation();
+  return location.pathname.includes('/plugin') ? null : <Footer />;
+};
+
+const RenderHeader = () => {
+  const location = useLocation();
+  return location.pathname.includes('/plugin') ? null : <Header />;
+};
+
 subscribe(APP_READY, () => {
   ReactDOM.render(
     <AppProvider store={configureStore()}>
       <Head />
-      <Header />
+      <RenderHeader />
       <main id="main">
         <AppRoutes />
       </main>
-      <Footer />
+      <RenderFooter />
     </AppProvider>,
     document.getElementById('root'),
   );
