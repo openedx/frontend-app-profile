@@ -176,6 +176,7 @@ class ProfilePage extends React.Component {
       visibilityLearningGoal,
       languageProficiencies,
       visibilityLanguageProficiencies,
+      courseCertificates,
       visibilityCourseCertificates,
       bio,
       visibilityBio,
@@ -193,6 +194,17 @@ class ProfilePage extends React.Component {
       submitHandler: this.handleSubmit,
       changeHandler: this.handleChange,
     };
+
+    const isBlockVisible = (blockInfo) => this.isAuthenticatedUserProfile()
+      || (!this.isAuthenticatedUserProfile() && Boolean(blockInfo));
+
+    const isLanguageBlockVisible = isBlockVisible(languageProficiencies.length);
+    const isEducationBlockVisible = isBlockVisible(levelOfEducation);
+    const isSocialLinksBLockVisible = isBlockVisible(socialLinks.some((link) => link.socialLink !== null));
+    const isBioBlockVisible = isBlockVisible(bio);
+    const isCertificatesBlockVisible = isBlockVisible(courseCertificates.length);
+    const isNameBlockVisible = isBlockVisible(name);
+    const isLocationBlockVisible = isBlockVisible(country);
 
     return (
       <div className="container-fluid">
@@ -228,46 +240,58 @@ class ProfilePage extends React.Component {
             <div className="d-md-none mb-4">
               {this.renderViewMyRecordsButton()}
             </div>
-            <Name
-              name={name}
-              visibilityName={visibilityName}
-              formId="name"
-              {...commonFormProps}
-            />
-            <Country
-              country={country}
-              visibilityCountry={visibilityCountry}
-              formId="country"
-              {...commonFormProps}
-            />
-            <PreferredLanguage
-              languageProficiencies={languageProficiencies}
-              visibilityLanguageProficiencies={visibilityLanguageProficiencies}
-              formId="languageProficiencies"
-              {...commonFormProps}
-            />
-            <Education
-              levelOfEducation={levelOfEducation}
-              visibilityLevelOfEducation={visibilityLevelOfEducation}
-              formId="levelOfEducation"
-              {...commonFormProps}
-            />
-            <SocialLinks
-              socialLinks={socialLinks}
-              draftSocialLinksByPlatform={draftSocialLinksByPlatform}
-              visibilitySocialLinks={visibilitySocialLinks}
-              formId="socialLinks"
-              {...commonFormProps}
-            />
+            {isNameBlockVisible && (
+              <Name
+                name={name}
+                visibilityName={visibilityName}
+                formId="name"
+                {...commonFormProps}
+              />
+            )}
+            {isLocationBlockVisible && (
+              <Country
+                country={country}
+                visibilityCountry={visibilityCountry}
+                formId="country"
+                {...commonFormProps}
+              />
+            )}
+            {isLanguageBlockVisible && (
+              <PreferredLanguage
+                languageProficiencies={languageProficiencies}
+                visibilityLanguageProficiencies={visibilityLanguageProficiencies}
+                formId="languageProficiencies"
+                {...commonFormProps}
+              />
+            )}
+            {isEducationBlockVisible && (
+              <Education
+                levelOfEducation={levelOfEducation}
+                visibilityLevelOfEducation={visibilityLevelOfEducation}
+                formId="levelOfEducation"
+                {...commonFormProps}
+              />
+            )}
+            {isSocialLinksBLockVisible && (
+              <SocialLinks
+                socialLinks={socialLinks}
+                draftSocialLinksByPlatform={draftSocialLinksByPlatform}
+                visibilitySocialLinks={visibilitySocialLinks}
+                formId="socialLinks"
+                {...commonFormProps}
+              />
+            )}
           </div>
           <div className="pt-md-3 col-md-8 col-lg-7 offset-lg-1">
             {!this.isYOBDisabled() && this.renderAgeMessage()}
-            <Bio
-              bio={bio}
-              visibilityBio={visibilityBio}
-              formId="bio"
-              {...commonFormProps}
-            />
+            {isBioBlockVisible && (
+              <Bio
+                bio={bio}
+                visibilityBio={visibilityBio}
+                formId="bio"
+                {...commonFormProps}
+              />
+            )}
             {getConfig().ENABLE_SKILLS_BUILDER_PROFILE && (
               <LearningGoal
                 learningGoal={learningGoal}
@@ -276,11 +300,13 @@ class ProfilePage extends React.Component {
                 {...commonFormProps}
               />
             )}
-            <Certificates
-              visibilityCourseCertificates={visibilityCourseCertificates}
-              formId="certificates"
-              {...commonFormProps}
-            />
+            {isCertificatesBlockVisible && (
+              <Certificates
+                visibilityCourseCertificates={visibilityCourseCertificates}
+                formId="certificates"
+                {...commonFormProps}
+              />
+            )}
           </div>
         </div>
       </div>
@@ -346,7 +372,7 @@ ProfilePage.propTypes = {
 
   // Learning Goal form data
   learningGoal: PropTypes.string,
-  visibilityLearningGoal: PropTypes.string.isRequired,
+  visibilityLearningGoal: PropTypes.string,
 
   // Other data we need
   profileImage: PropTypes.shape({
@@ -397,6 +423,7 @@ ProfilePage.defaultProps = {
   courseCertificates: null,
   requiresParentalConsent: null,
   dateJoined: null,
+  visibilityLearningGoal: null,
 };
 
 export default connect(
