@@ -16,8 +16,8 @@ import { HistoryEdu, VerifiedUser } from '@edx/paragon/icons';
 
 import get from 'lodash.get';
 
+import { Plugin } from '@edx/frontend-plugin-framework/src/plugins';
 import PluginCountry from './forms/PluginCountry';
-import { Plugin } from '../../plugins';
 
 // Actions
 import {
