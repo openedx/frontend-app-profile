@@ -29,7 +29,7 @@
   ],
   "dependencies": {
     "@edx/brand": "npm:@openedx/brand-openedx@^1.2.2",
-    "@edx/frontend-component-footer": "12.5.0",
+    "@edx/frontend-component-footer": "12.5.1",
     "@edx/frontend-component-header": "4.8.0",
     "@edx/frontend-platform": "5.6.1",
     "@edx/paragon": "^20.44.0",
@@ -67,7 +67,7 @@
     "@commitlint/cli": "17.8.1",
     "@commitlint/config-angular": "17.8.1",
     "@edx/browserslist-config": "^1.1.1",
-    "@edx/frontend-build": "13.0.1",
+    "@edx/frontend-build": "13.0.4",
     "@edx/reactifex": "2.2.0",
     "@testing-library/react": "12.1.5",
     "@wojtekmaj/enzyme-adapter-react-17": "0.8.0",
