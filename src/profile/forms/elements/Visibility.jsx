@@ -39,7 +39,7 @@ const VisibilitySelect = ({ intl, className, ...props }) => {
       <span className="d-inline-block ml-1 mr-2" style={{ width: '1.5rem' }}>
         <FontAwesomeIcon icon={icon} />
       </span>
-      <select className="d-inline-block w-auto form-control" {...props}>
+      <select className="d-inline-block form-control" {...props}>
         <option key="private" value="private">
           {intl.formatMessage(messages['profile.visibility.who.just.me'])}
         </option>
