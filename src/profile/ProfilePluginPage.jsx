@@ -87,7 +87,7 @@ class ProfilePluginPage extends React.Component {
           <Card.Header
             className="pb-5"
             subtitle={(
-              <Hyperlink destination={`/u/${this.props.params.username}`}>
+              <Hyperlink destination={`/u/${this.props.params.username}`} target="_parent">
                 View public profile
               </Hyperlink>
             )}
