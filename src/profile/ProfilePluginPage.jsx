@@ -154,7 +154,7 @@ class ProfilePluginPage extends React.Component {
 }
 
 const SocialLink = ({ url, name, platform }) => (
-  <a href={url} className="font-weight-bold">
+  <a href={url} className="font-weight-bold" target="_parent">
     <FontAwesomeIcon className="mr-2" icon={platformDisplayInfo[platform].icon} />
     {name}
   </a>
