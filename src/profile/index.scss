@@ -28,7 +28,7 @@
   position: absolute;
   left: 1.5rem;
   top: 5.25rem;
-  color: $gray-500;
+  color: var(--pgn-color-gray-500);
   line-height: 0.9rem;
   font-size: 0.8rem;
   font-style: normal;
@@ -42,12 +42,12 @@
 
 .icon-visibility-off {
   height: 1rem;
-  color: $gray-500;
+  color: var(--pgn-color-gray-500);
 }
 
 .profile-page {
   .edit-section-header {
-    @extend .h6;
+    font-size: var(--pgn-typography-font-size-h6);
     display: block;
     font-weight: normal;
     letter-spacing: 0;
@@ -55,11 +55,11 @@
   }
 
   label.edit-section-header {
-    margin-bottom: $spacer * .5;
+    margin-bottom: var(--pgn-spacing-spacer-2);
   }
 
   .profile-avatar-wrap {
-    @include media-breakpoint-up(md) {
+    @media (--min-pgn-size-breakpoint-md) {
       max-width: 12rem;
       margin-right: 0;
       margin-top: -8rem;
@@ -77,25 +77,25 @@
     align-items: center;
     border-radius: 50%;
 
-    @include media-breakpoint-up(md) {
+    @media (--min-pgn-size-breakpoint-md) {
       background: linear-gradient(to top, rgba(0,0,0,.65) 4rem, rgba(0,0,0,0) 4rem);
       align-items: flex-end;
     }
 
     .btn {
       text-decoration: none;
-      @include media-breakpoint-up(md) {
+      @media (--min-pgn-size-breakpoint-md) {
         margin-bottom: 1.2rem;
       }
     }
 
     .dropdown {
-      @include media-breakpoint-up(md) {
+      @media (--min-pgn-size-breakpoint-md) {
         margin-bottom: 1.2rem;
       }
 
       .btn {
-        color: $white;
+        color: var(--pgn-color-white);
         background: transparent;
         border-color: transparent;
         margin: 0;
@@ -108,7 +108,7 @@
     height: 5rem;
     position: relative;
 
-    @include media-breakpoint-up(md) {
+    @media (--min-pgn-size-breakpoint-md) {
       width: 12rem;
       height: 12rem;
     }
@@ -128,7 +128,7 @@
       border-radius:0;
       transition: opacity 200ms ease;
 
-      @include media-breakpoint-up(md) {
+      @media (--min-pgn-size-breakpoint-md) {
         height: 4rem;
       }
 
@@ -142,7 +142,7 @@
     position: relative;
 
     .certificate-title {
-      font-family: $font-family-serif;
+      font-family: var(--pgn-typography-font-family-serif);
       font-weight: 400;
     }
 
