@@ -31,7 +31,7 @@
     "@edx/brand": "npm:@edx/brand-openedx@1.2.0",
     "@edx/frontend-component-footer": "npm:@edunext/frontend-component-footer@13.0.0-alpha.5",
     "@edx/frontend-component-header": "npm:@edunext/frontend-component-header@5.0.0-alpha.5",
-    "@edx/frontend-platform": "npm:@edunext/frontend-platform@3.7.0-alpha.12",
+    "@edx/frontend-platform": "npm:@edunext/frontend-platform@3.7.0-alpha.14",
     "@edx/paragon": "22.0.0-alpha.13",
     "@fortawesome/fontawesome-svg-core": "1.2.36",
     "@fortawesome/free-brands-svg-icons": "5.15.4",
