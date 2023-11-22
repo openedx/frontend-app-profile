@@ -146,7 +146,7 @@ class ProfilePluginPage extends React.Component {
 
   render() {
     return (
-      <div className="profile-page">
+      <div className="profile-page overflow-hidden">
         {this.renderContent()}
       </div>
     );
