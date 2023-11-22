@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { ensureConfig } from '@edx/frontend-platform';
+import { ensureConfig, getConfig } from '@edx/frontend-platform';
 import { AppContext } from '@edx/frontend-platform/react';
 import { injectIntl, intlShape, FormattedDate } from '@edx/frontend-platform/i18n';
 
@@ -86,7 +86,7 @@ class ProfilePluginPage extends React.Component {
           <Card.Header
             className="pb-5"
             subtitle={(
-              <Hyperlink destination={`http://localhost:1995/u/${this.props.params.username}`}>
+              <Hyperlink destination={`${getConfig().BASE_URL}/u/${this.props.params.username}`} target="_blank" showLaunchIcon={false}>
                 View public profile
               </Hyperlink>
             )}
@@ -144,7 +144,7 @@ class ProfilePluginPage extends React.Component {
 
   render() {
     return (
-      <div className="profile-page">
+      <div className="profile-page overflow-hidden">
         {this.renderContent()}
       </div>
     );
