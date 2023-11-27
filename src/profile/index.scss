@@ -162,4 +162,28 @@
       position: relative;
     }
   }
+
+  .pgn-icons-cell-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 1px;
+  }
+  .pgn-icons-cell-horizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 1px;
+  }
+
+  .profile-plugin-avatar {
+    @include media-breakpoint-up(xs) {
+      max-width: 12rem;
+      margin-right: 0;
+      margin-top: -4rem;
+      margin-bottom: 1rem;
+    }
+  }
+
 }

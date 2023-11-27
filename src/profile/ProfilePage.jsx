@@ -224,6 +224,7 @@ class ProfilePage extends React.Component {
               />
             </div>
           </div>
+          <div>PluginPOC</div>
           <div className="col">
             <div className="d-md-none">
               {this.renderHeadingLockup()}

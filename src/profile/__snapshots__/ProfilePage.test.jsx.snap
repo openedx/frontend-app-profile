@@ -103,6 +103,9 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
           </div>
         </div>
       </div>
+      <div>
+        PluginPOC
+      </div>
       <div
         className="col"
       >
@@ -2486,6 +2489,9 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
           </div>
         </div>
       </div>
+      <div>
+        PluginPOC
+      </div>
       <div
         className="col"
       >
@@ -3662,6 +3668,9 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
             </form>
           </div>
         </div>
+      </div>
+      <div>
+        PluginPOC
       </div>
       <div
         className="col"
@@ -5692,6 +5701,9 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
           </div>
         </div>
       </div>
+      <div>
+        PluginPOC
+      </div>
       <div
         className="col"
       >
@@ -6199,6 +6211,9 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
             </form>
           </div>
         </div>
+      </div>
+      <div>
+        PluginPOC
       </div>
       <div
         className="col"
@@ -7249,6 +7264,9 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
             </form>
           </div>
         </div>
+      </div>
+      <div>
+        PluginPOC
       </div>
       <div
         className="col"
@@ -8366,6 +8384,9 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
             </form>
           </div>
         </div>
+      </div>
+      <div>
+        PluginPOC
       </div>
       <div
         className="col"
@@ -9491,6 +9512,9 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
             </form>
           </div>
         </div>
+      </div>
+      <div>
+        PluginPOC
       </div>
       <div
         className="col"
