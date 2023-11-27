@@ -119,7 +119,7 @@ exports[`<SocialLinks /> calls social links with edit mode bio 1`] = `
                 </svg>
               </span>
               <select
-                className="d-inline-block w-auto form-control"
+                className="d-inline-block form-control"
                 id="visibilitySocialLinks"
                 name="visibilitySocialLinks"
                 onChange={[Function]}
