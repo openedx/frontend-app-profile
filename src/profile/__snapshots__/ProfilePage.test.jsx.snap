@@ -56,25 +56,6 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
             <div
               className="profile-avatar rounded-circle bg-light"
             >
-              <div
-                className="profile-avatar-menu-container"
-              >
-                <div
-                  className="pgn__dropdown pgn__dropdown-light dropdown"
-                  data-testid="dropdown"
-                >
-                  <button
-                    aria-expanded={false}
-                    aria-haspopup={true}
-                    className="dropdown-toggle btn btn-primary"
-                    disabled={false}
-                    onClick={[Function]}
-                    type="button"
-                  >
-                    Change
-                  </button>
-                </div>
-              </div>
               <img
                 alt="profile avatar"
                 className="w-100 h-100 d-block rounded-circle overflow-hidden"
@@ -114,9 +95,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
           >
             <h1
               className="h2 mb-0 font-weight-bold text-truncate"
-            >
-              staff
-            </h1>
+            />
             <p
               className="mb-0"
             >
@@ -130,52 +109,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
         </div>
         <div
           className="d-none d-md-block float-right"
-        >
-          <a
-            className="pgn__hyperlink default-link standalone-link btn btn-primary"
-            href="http://localhost:18150/records"
-            onClick={[Function]}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            View My Records
-            <span
-              className="pgn__hyperlink__external-icon"
-              title="Opens in a new tab"
-            >
-              <span
-                className="pgn__icon"
-                style={
-                  Object {
-                    "height": "1em",
-                    "width": "1em",
-                  }
-                }
-              >
-                <svg
-                  aria-hidden={true}
-                  fill="none"
-                  focusable={false}
-                  height={24}
-                  role="img"
-                  viewBox="0 0 24 24"
-                  width={24}
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M19 19H5V5h7V3H3v18h18v-9h-2v7ZM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7Z"
-                    fill="currentColor"
-                  />
-                </svg>
-                <span
-                  className="sr-only"
-                >
-                  in a new tab
-                </span>
-              </span>
-            </span>
-          </a>
-        </div>
+        />
       </div>
     </div>
     <div
@@ -192,9 +126,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
           >
             <h1
               className="h2 mb-0 font-weight-bold text-truncate"
-            >
-              staff
-            </h1>
+            />
             <p
               className="mb-0"
             >
@@ -208,52 +140,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
         </div>
         <div
           className="d-md-none mb-4"
-        >
-          <a
-            className="pgn__hyperlink default-link standalone-link btn btn-primary"
-            href="http://localhost:18150/records"
-            onClick={[Function]}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            View My Records
-            <span
-              className="pgn__hyperlink__external-icon"
-              title="Opens in a new tab"
-            >
-              <span
-                className="pgn__icon"
-                style={
-                  Object {
-                    "height": "1em",
-                    "width": "1em",
-                  }
-                }
-              >
-                <svg
-                  aria-hidden={true}
-                  fill="none"
-                  focusable={false}
-                  height={24}
-                  role="img"
-                  viewBox="0 0 24 24"
-                  width={24}
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M19 19H5V5h7V3H3v18h18v-9h-2v7ZM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7Z"
-                    fill="currentColor"
-                  />
-                </svg>
-                <span
-                  className="sr-only"
-                >
-                  in a new tab
-                </span>
-              </span>
-            </span>
-          </a>
-        </div>
+        />
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
@@ -2439,25 +2326,6 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
             <div
               className="profile-avatar rounded-circle bg-light"
             >
-              <div
-                className="profile-avatar-menu-container"
-              >
-                <div
-                  className="pgn__dropdown pgn__dropdown-light dropdown"
-                  data-testid="dropdown"
-                >
-                  <button
-                    aria-expanded={false}
-                    aria-haspopup={true}
-                    className="dropdown-toggle btn btn-primary"
-                    disabled={false}
-                    onClick={[Function]}
-                    type="button"
-                  >
-                    Change
-                  </button>
-                </div>
-              </div>
               <img
                 alt="profile avatar"
                 className="w-100 h-100 d-block rounded-circle overflow-hidden"
@@ -2497,9 +2365,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
           >
             <h1
               className="h2 mb-0 font-weight-bold text-truncate"
-            >
-              staff
-            </h1>
+            />
             <p
               className="mb-0"
             >
@@ -2513,52 +2379,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
         </div>
         <div
           className="d-none d-md-block float-right"
-        >
-          <a
-            className="pgn__hyperlink default-link standalone-link btn btn-primary"
-            href="http://localhost:18150/records"
-            onClick={[Function]}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            View My Records
-            <span
-              className="pgn__hyperlink__external-icon"
-              title="Opens in a new tab"
-            >
-              <span
-                className="pgn__icon"
-                style={
-                  Object {
-                    "height": "1em",
-                    "width": "1em",
-                  }
-                }
-              >
-                <svg
-                  aria-hidden={true}
-                  fill="none"
-                  focusable={false}
-                  height={24}
-                  role="img"
-                  viewBox="0 0 24 24"
-                  width={24}
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M19 19H5V5h7V3H3v18h18v-9h-2v7ZM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7Z"
-                    fill="currentColor"
-                  />
-                </svg>
-                <span
-                  className="sr-only"
-                >
-                  in a new tab
-                </span>
-              </span>
-            </span>
-          </a>
-        </div>
+        />
       </div>
     </div>
     <div
@@ -2575,9 +2396,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
           >
             <h1
               className="h2 mb-0 font-weight-bold text-truncate"
-            >
-              staff
-            </h1>
+            />
             <p
               className="mb-0"
             >
@@ -2591,52 +2410,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
         </div>
         <div
           className="d-md-none mb-4"
-        >
-          <a
-            className="pgn__hyperlink default-link standalone-link btn btn-primary"
-            href="http://localhost:18150/records"
-            onClick={[Function]}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            View My Records
-            <span
-              className="pgn__hyperlink__external-icon"
-              title="Opens in a new tab"
-            >
-              <span
-                className="pgn__icon"
-                style={
-                  Object {
-                    "height": "1em",
-                    "width": "1em",
-                  }
-                }
-              >
-                <svg
-                  aria-hidden={true}
-                  fill="none"
-                  focusable={false}
-                  height={24}
-                  role="img"
-                  viewBox="0 0 24 24"
-                  width={24}
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M19 19H5V5h7V3H3v18h18v-9h-2v7ZM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7Z"
-                    fill="currentColor"
-                  />
-                </svg>
-                <span
-                  className="sr-only"
-                >
-                  in a new tab
-                </span>
-              </span>
-            </span>
-          </a>
-        </div>
+        />
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
@@ -3616,25 +3390,6 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
             <div
               className="profile-avatar rounded-circle bg-light"
             >
-              <div
-                className="profile-avatar-menu-container"
-              >
-                <div
-                  className="pgn__dropdown pgn__dropdown-light dropdown"
-                  data-testid="dropdown"
-                >
-                  <button
-                    aria-expanded={false}
-                    aria-haspopup={true}
-                    className="dropdown-toggle btn btn-primary"
-                    disabled={false}
-                    onClick={[Function]}
-                    type="button"
-                  >
-                    Change
-                  </button>
-                </div>
-              </div>
               <img
                 alt="profile avatar"
                 className="w-100 h-100 d-block rounded-circle overflow-hidden"
@@ -3674,9 +3429,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
           >
             <h1
               className="h2 mb-0 font-weight-bold text-truncate"
-            >
-              staff
-            </h1>
+            />
             <p
               className="mb-0"
             >
@@ -3690,52 +3443,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
         </div>
         <div
           className="d-none d-md-block float-right"
-        >
-          <a
-            className="pgn__hyperlink default-link standalone-link btn btn-primary"
-            href="http://localhost:18150/records"
-            onClick={[Function]}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            View My Records
-            <span
-              className="pgn__hyperlink__external-icon"
-              title="Opens in a new tab"
-            >
-              <span
-                className="pgn__icon"
-                style={
-                  Object {
-                    "height": "1em",
-                    "width": "1em",
-                  }
-                }
-              >
-                <svg
-                  aria-hidden={true}
-                  fill="none"
-                  focusable={false}
-                  height={24}
-                  role="img"
-                  viewBox="0 0 24 24"
-                  width={24}
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M19 19H5V5h7V3H3v18h18v-9h-2v7ZM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7Z"
-                    fill="currentColor"
-                  />
-                </svg>
-                <span
-                  className="sr-only"
-                >
-                  in a new tab
-                </span>
-              </span>
-            </span>
-          </a>
-        </div>
+        />
       </div>
     </div>
     <div
@@ -3752,9 +3460,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
           >
             <h1
               className="h2 mb-0 font-weight-bold text-truncate"
-            >
-              staff
-            </h1>
+            />
             <p
               className="mb-0"
             >
@@ -3768,52 +3474,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
         </div>
         <div
           className="d-md-none mb-4"
-        >
-          <a
-            className="pgn__hyperlink default-link standalone-link btn btn-primary"
-            href="http://localhost:18150/records"
-            onClick={[Function]}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            View My Records
-            <span
-              className="pgn__hyperlink__external-icon"
-              title="Opens in a new tab"
-            >
-              <span
-                className="pgn__icon"
-                style={
-                  Object {
-                    "height": "1em",
-                    "width": "1em",
-                  }
-                }
-              >
-                <svg
-                  aria-hidden={true}
-                  fill="none"
-                  focusable={false}
-                  height={24}
-                  role="img"
-                  viewBox="0 0 24 24"
-                  width={24}
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M19 19H5V5h7V3H3v18h18v-9h-2v7ZM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7Z"
-                    fill="currentColor"
-                  />
-                </svg>
-                <span
-                  className="sr-only"
-                >
-                  in a new tab
-                </span>
-              </span>
-            </span>
-          </a>
-        </div>
+        />
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
@@ -5703,9 +5364,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
           >
             <h1
               className="h2 mb-0 font-weight-bold text-truncate"
-            >
-              verified
-            </h1>
+            />
             <p
               className="mb-0"
             >
@@ -5764,9 +5423,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
           >
             <h1
               className="h2 mb-0 font-weight-bold text-truncate"
-            >
-              verified
-            </h1>
+            />
             <p
               className="mb-0"
             >
@@ -6005,25 +5662,6 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
             <div
               className="profile-avatar rounded-circle bg-light"
             >
-              <div
-                className="profile-avatar-menu-container"
-              >
-                <div
-                  className="pgn__dropdown pgn__dropdown-light dropdown"
-                  data-testid="dropdown"
-                >
-                  <button
-                    aria-expanded={false}
-                    aria-haspopup={true}
-                    className="dropdown-toggle btn btn-primary"
-                    disabled={false}
-                    onClick={[Function]}
-                    type="button"
-                  >
-                    Change
-                  </button>
-                </div>
-              </div>
               <img
                 alt="profile avatar"
                 className="w-100 h-100 d-block rounded-circle overflow-hidden"
@@ -6063,9 +5701,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
           >
             <h1
               className="h2 mb-0 font-weight-bold text-truncate"
-            >
-              staff
-            </h1>
+            />
             <p
               className="mb-0"
             >
@@ -6079,52 +5715,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
         </div>
         <div
           className="d-none d-md-block float-right"
-        >
-          <a
-            className="pgn__hyperlink default-link standalone-link btn btn-primary"
-            href="http://localhost:18150/records"
-            onClick={[Function]}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            View My Records
-            <span
-              className="pgn__hyperlink__external-icon"
-              title="Opens in a new tab"
-            >
-              <span
-                className="pgn__icon"
-                style={
-                  Object {
-                    "height": "1em",
-                    "width": "1em",
-                  }
-                }
-              >
-                <svg
-                  aria-hidden={true}
-                  fill="none"
-                  focusable={false}
-                  height={24}
-                  role="img"
-                  viewBox="0 0 24 24"
-                  width={24}
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M19 19H5V5h7V3H3v18h18v-9h-2v7ZM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7Z"
-                    fill="currentColor"
-                  />
-                </svg>
-                <span
-                  className="sr-only"
-                >
-                  in a new tab
-                </span>
-              </span>
-            </span>
-          </a>
-        </div>
+        />
       </div>
     </div>
     <div
@@ -6141,9 +5732,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
           >
             <h1
               className="h2 mb-0 font-weight-bold text-truncate"
-            >
-              staff
-            </h1>
+            />
             <p
               className="mb-0"
             >
@@ -6157,52 +5746,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
         </div>
         <div
           className="d-md-none mb-4"
-        >
-          <a
-            className="pgn__hyperlink default-link standalone-link btn btn-primary"
-            href="http://localhost:18150/records"
-            onClick={[Function]}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            View My Records
-            <span
-              className="pgn__hyperlink__external-icon"
-              title="Opens in a new tab"
-            >
-              <span
-                className="pgn__icon"
-                style={
-                  Object {
-                    "height": "1em",
-                    "width": "1em",
-                  }
-                }
-              >
-                <svg
-                  aria-hidden={true}
-                  fill="none"
-                  focusable={false}
-                  height={24}
-                  role="img"
-                  viewBox="0 0 24 24"
-                  width={24}
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M19 19H5V5h7V3H3v18h18v-9h-2v7ZM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7Z"
-                    fill="currentColor"
-                  />
-                </svg>
-                <span
-                  className="sr-only"
-                >
-                  in a new tab
-                </span>
-              </span>
-            </span>
-          </a>
-        </div>
+        />
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
@@ -7055,25 +6599,6 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
             <div
               className="profile-avatar rounded-circle bg-light"
             >
-              <div
-                className="profile-avatar-menu-container"
-              >
-                <div
-                  className="pgn__dropdown pgn__dropdown-light dropdown"
-                  data-testid="dropdown"
-                >
-                  <button
-                    aria-expanded={false}
-                    aria-haspopup={true}
-                    className="dropdown-toggle btn btn-primary"
-                    disabled={false}
-                    onClick={[Function]}
-                    type="button"
-                  >
-                    Change
-                  </button>
-                </div>
-              </div>
               <img
                 alt="profile avatar"
                 className="w-100 h-100 d-block rounded-circle overflow-hidden"
@@ -7113,9 +6638,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
           >
             <h1
               className="h2 mb-0 font-weight-bold text-truncate"
-            >
-              staff
-            </h1>
+            />
             <p
               className="mb-0"
             >
@@ -7129,52 +6652,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
         </div>
         <div
           className="d-none d-md-block float-right"
-        >
-          <a
-            className="pgn__hyperlink default-link standalone-link btn btn-primary"
-            href="http://localhost:18150/records"
-            onClick={[Function]}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            View My Records
-            <span
-              className="pgn__hyperlink__external-icon"
-              title="Opens in a new tab"
-            >
-              <span
-                className="pgn__icon"
-                style={
-                  Object {
-                    "height": "1em",
-                    "width": "1em",
-                  }
-                }
-              >
-                <svg
-                  aria-hidden={true}
-                  fill="none"
-                  focusable={false}
-                  height={24}
-                  role="img"
-                  viewBox="0 0 24 24"
-                  width={24}
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M19 19H5V5h7V3H3v18h18v-9h-2v7ZM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7Z"
-                    fill="currentColor"
-                  />
-                </svg>
-                <span
-                  className="sr-only"
-                >
-                  in a new tab
-                </span>
-              </span>
-            </span>
-          </a>
-        </div>
+        />
       </div>
     </div>
     <div
@@ -7191,9 +6669,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
           >
             <h1
               className="h2 mb-0 font-weight-bold text-truncate"
-            >
-              staff
-            </h1>
+            />
             <p
               className="mb-0"
             >
@@ -7207,52 +6683,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
         </div>
         <div
           className="d-md-none mb-4"
-        >
-          <a
-            className="pgn__hyperlink default-link standalone-link btn btn-primary"
-            href="http://localhost:18150/records"
-            onClick={[Function]}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            View My Records
-            <span
-              className="pgn__hyperlink__external-icon"
-              title="Opens in a new tab"
-            >
-              <span
-                className="pgn__icon"
-                style={
-                  Object {
-                    "height": "1em",
-                    "width": "1em",
-                  }
-                }
-              >
-                <svg
-                  aria-hidden={true}
-                  fill="none"
-                  focusable={false}
-                  height={24}
-                  role="img"
-                  viewBox="0 0 24 24"
-                  width={24}
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M19 19H5V5h7V3H3v18h18v-9h-2v7ZM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7Z"
-                    fill="currentColor"
-                  />
-                </svg>
-                <span
-                  className="sr-only"
-                >
-                  in a new tab
-                </span>
-              </span>
-            </span>
-          </a>
-        </div>
+        />
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
@@ -8172,25 +7603,6 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
             <div
               className="profile-avatar rounded-circle bg-light"
             >
-              <div
-                className="profile-avatar-menu-container"
-              >
-                <div
-                  className="pgn__dropdown pgn__dropdown-light dropdown"
-                  data-testid="dropdown"
-                >
-                  <button
-                    aria-expanded={false}
-                    aria-haspopup={true}
-                    className="dropdown-toggle btn btn-primary"
-                    disabled={false}
-                    onClick={[Function]}
-                    type="button"
-                  >
-                    Change
-                  </button>
-                </div>
-              </div>
               <img
                 alt="profile avatar"
                 className="w-100 h-100 d-block rounded-circle overflow-hidden"
@@ -8230,9 +7642,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
           >
             <h1
               className="h2 mb-0 font-weight-bold text-truncate"
-            >
-              staff
-            </h1>
+            />
             <p
               className="mb-0"
             >
@@ -8246,52 +7656,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
         </div>
         <div
           className="d-none d-md-block float-right"
-        >
-          <a
-            className="pgn__hyperlink default-link standalone-link btn btn-primary"
-            href="http://localhost:18150/records"
-            onClick={[Function]}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            View My Records
-            <span
-              className="pgn__hyperlink__external-icon"
-              title="Opens in a new tab"
-            >
-              <span
-                className="pgn__icon"
-                style={
-                  Object {
-                    "height": "1em",
-                    "width": "1em",
-                  }
-                }
-              >
-                <svg
-                  aria-hidden={true}
-                  fill="none"
-                  focusable={false}
-                  height={24}
-                  role="img"
-                  viewBox="0 0 24 24"
-                  width={24}
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M19 19H5V5h7V3H3v18h18v-9h-2v7ZM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7Z"
-                    fill="currentColor"
-                  />
-                </svg>
-                <span
-                  className="sr-only"
-                >
-                  in a new tab
-                </span>
-              </span>
-            </span>
-          </a>
-        </div>
+        />
       </div>
     </div>
     <div
@@ -8308,9 +7673,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
           >
             <h1
               className="h2 mb-0 font-weight-bold text-truncate"
-            >
-              staff
-            </h1>
+            />
             <p
               className="mb-0"
             >
@@ -8324,52 +7687,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
         </div>
         <div
           className="d-md-none mb-4"
-        >
-          <a
-            className="pgn__hyperlink default-link standalone-link btn btn-primary"
-            href="http://localhost:18150/records"
-            onClick={[Function]}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            View My Records
-            <span
-              className="pgn__hyperlink__external-icon"
-              title="Opens in a new tab"
-            >
-              <span
-                className="pgn__icon"
-                style={
-                  Object {
-                    "height": "1em",
-                    "width": "1em",
-                  }
-                }
-              >
-                <svg
-                  aria-hidden={true}
-                  fill="none"
-                  focusable={false}
-                  height={24}
-                  role="img"
-                  viewBox="0 0 24 24"
-                  width={24}
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M19 19H5V5h7V3H3v18h18v-9h-2v7ZM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7Z"
-                    fill="currentColor"
-                  />
-                </svg>
-                <span
-                  className="sr-only"
-                >
-                  in a new tab
-                </span>
-              </span>
-            </span>
-          </a>
-        </div>
+        />
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
@@ -9297,25 +8615,6 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
             <div
               className="profile-avatar rounded-circle bg-light"
             >
-              <div
-                className="profile-avatar-menu-container"
-              >
-                <div
-                  className="pgn__dropdown pgn__dropdown-light dropdown"
-                  data-testid="dropdown"
-                >
-                  <button
-                    aria-expanded={false}
-                    aria-haspopup={true}
-                    className="dropdown-toggle btn btn-primary"
-                    disabled={false}
-                    onClick={[Function]}
-                    type="button"
-                  >
-                    Change
-                  </button>
-                </div>
-              </div>
               <img
                 alt="profile avatar"
                 className="w-100 h-100 d-block rounded-circle overflow-hidden"
@@ -9355,9 +8654,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
           >
             <h1
               className="h2 mb-0 font-weight-bold text-truncate"
-            >
-              staff
-            </h1>
+            />
             <p
               className="mb-0"
             >
@@ -9388,9 +8685,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
           >
             <h1
               className="h2 mb-0 font-weight-bold text-truncate"
-            >
-              staff
-            </h1>
+            />
             <p
               className="mb-0"
             >
