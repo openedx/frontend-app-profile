@@ -11,7 +11,7 @@ exports[`<ProfilePage /> Renders correctly in various states app loading 1`] = `
     <div
       className="d-flex justify-content-center align-items-center flex-column"
       style={
-        Object {
+        {
           "height": "50vh",
         }
       }
@@ -81,7 +81,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                 data-hj-suppress={true}
                 src="http://localhost:18000/media/profile-images/d2a9bdc2ba165dcefc73265c54bf9a20_500.jpg?v=1552495012"
                 style={
-                  Object {
+                  {
                     "objectFit": "cover",
                   }
                 }
@@ -146,7 +146,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
               <span
                 className="pgn__icon"
                 style={
-                  Object {
+                  {
                     "height": "1em",
                     "width": "1em",
                   }
@@ -224,7 +224,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
               <span
                 className="pgn__icon"
                 style={
-                  Object {
+                  {
                     "height": "1em",
                     "width": "1em",
                   }
@@ -257,14 +257,14 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -282,7 +282,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -295,14 +295,14 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -321,14 +321,14 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 640 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M634 471L36 3.51A16 16 0 0 0 13.51 6l-10 12.49A16 16 0 0 0 6 41l598 467.49a16 16 0 0 0 22.49-2.49l10-12.49A16 16 0 0 0 634 471zM296.79 146.47l134.79 105.38C429.36 191.91 380.48 144 320 144a112.26 112.26 0 0 0-23.21 2.47zm46.42 219.07L208.42 260.16C210.65 320.09 259.53 368 320 368a113 113 0 0 0 23.21-2.46zM320 112c98.65 0 189.09 55 237.93 144a285.53 285.53 0 0 1-44 60.2l37.74 29.5a333.7 333.7 0 0 0 52.9-75.11 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64c-36.7 0-71.71 7-104.63 18.81l46.41 36.29c18.94-4.3 38.34-7.1 58.22-7.1zm0 288c-98.65 0-189.08-55-237.93-144a285.47 285.47 0 0 1 44.05-60.19l-37.74-29.5a333.6 333.6 0 0 0-52.89 75.1 32.35 32.35 0 0 0 0 29.19C89.72 376.41 197.08 448 320 448c36.7 0 71.71-7.05 104.63-18.81l-46.41-36.28C359.28 397.2 339.89 400 320 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -352,14 +352,14 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -1672,7 +1672,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                       <span
                         className="d-inline-block ml-1 mr-2"
                         style={
-                          Object {
+                          {
                             "width": "1.5rem",
                           }
                         }
@@ -1684,14 +1684,14 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                           data-prefix="far"
                           focusable="false"
                           role="img"
-                          style={Object {}}
+                          style={{}}
                           viewBox="0 0 576 512"
                           xmlns="http://www.w3.org/2000/svg"
                         >
                           <path
                             d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                             fill="currentColor"
-                            style={Object {}}
+                            style={{}}
                           />
                         </svg>
                       </span>
@@ -1775,14 +1775,14 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -1800,7 +1800,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -1813,14 +1813,14 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -1839,14 +1839,14 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 576 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -1865,14 +1865,14 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -1890,7 +1890,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -1903,14 +1903,14 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -1929,14 +1929,14 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 640 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M634 471L36 3.51A16 16 0 0 0 13.51 6l-10 12.49A16 16 0 0 0 6 41l598 467.49a16 16 0 0 0 22.49-2.49l10-12.49A16 16 0 0 0 634 471zM296.79 146.47l134.79 105.38C429.36 191.91 380.48 144 320 144a112.26 112.26 0 0 0-23.21 2.47zm46.42 219.07L208.42 260.16C210.65 320.09 259.53 368 320 368a113 113 0 0 0 23.21-2.46zM320 112c98.65 0 189.09 55 237.93 144a285.53 285.53 0 0 1-44 60.2l37.74 29.5a333.7 333.7 0 0 0 52.9-75.11 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64c-36.7 0-71.71 7-104.63 18.81l46.41 36.29c18.94-4.3 38.34-7.1 58.22-7.1zm0 288c-98.65 0-189.08-55-237.93-144a285.47 285.47 0 0 1 44.05-60.19l-37.74-29.5a333.6 333.6 0 0 0-52.89 75.1 32.35 32.35 0 0 0 0 29.19C89.72 376.41 197.08 448 320 448c36.7 0 71.71-7.05 104.63-18.81l-46.41-36.28C359.28 397.2 339.89 400 320 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -1955,14 +1955,14 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -1980,7 +1980,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -1993,14 +1993,14 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -2019,14 +2019,14 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 576 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -2051,14 +2051,14 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                     data-prefix="fab"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Twitter
@@ -2078,14 +2078,14 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                     data-prefix="fab"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Facebook
@@ -2109,14 +2109,14 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                       data-prefix="fas"
                       focusable="false"
                       role="img"
-                      style={Object {}}
+                      style={{}}
                       viewBox="0 0 448 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
                         fill="currentColor"
-                        style={Object {}}
+                        style={{}}
                       />
                     </svg>
                     Add 
@@ -2134,14 +2134,14 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -2159,7 +2159,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -2172,14 +2172,14 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -2198,14 +2198,14 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 576 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -2224,14 +2224,14 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
         <div
           className="pgn-transition-replace-group position-relative mb-4"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -2249,7 +2249,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -2262,14 +2262,14 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -2288,14 +2288,14 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 576 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -2315,7 +2315,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                   <div
                     className="certificate-type-illustration"
                     style={
-                      Object {
+                      {
                         "backgroundImage": "url(icon/mock/path)",
                       }
                     }
@@ -2372,7 +2372,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                           <span
                             className="pgn__icon"
                             style={
-                              Object {
+                              {
                                 "height": "1em",
                                 "width": "1em",
                               }
@@ -2464,7 +2464,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                 data-hj-suppress={true}
                 src="http://localhost:18000/media/profile-images/d2a9bdc2ba165dcefc73265c54bf9a20_500.jpg?v=1552495012"
                 style={
-                  Object {
+                  {
                     "objectFit": "cover",
                   }
                 }
@@ -2529,7 +2529,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
               <span
                 className="pgn__icon"
                 style={
-                  Object {
+                  {
                     "height": "1em",
                     "width": "1em",
                   }
@@ -2607,7 +2607,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
               <span
                 className="pgn__icon"
                 style={
-                  Object {
+                  {
                     "height": "1em",
                     "width": "1em",
                   }
@@ -2640,14 +2640,14 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -2665,7 +2665,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -2678,14 +2678,14 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -2704,14 +2704,14 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 640 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M634 471L36 3.51A16 16 0 0 0 13.51 6l-10 12.49A16 16 0 0 0 6 41l598 467.49a16 16 0 0 0 22.49-2.49l10-12.49A16 16 0 0 0 634 471zM296.79 146.47l134.79 105.38C429.36 191.91 380.48 144 320 144a112.26 112.26 0 0 0-23.21 2.47zm46.42 219.07L208.42 260.16C210.65 320.09 259.53 368 320 368a113 113 0 0 0 23.21-2.46zM320 112c98.65 0 189.09 55 237.93 144a285.53 285.53 0 0 1-44 60.2l37.74 29.5a333.7 333.7 0 0 0 52.9-75.11 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64c-36.7 0-71.71 7-104.63 18.81l46.41 36.29c18.94-4.3 38.34-7.1 58.22-7.1zm0 288c-98.65 0-189.08-55-237.93-144a285.47 285.47 0 0 1 44.05-60.19l-37.74-29.5a333.6 333.6 0 0 0-52.89 75.1 32.35 32.35 0 0 0 0 29.19C89.72 376.41 197.08 448 320 448c36.7 0 71.71-7.05 104.63-18.81l-46.41-36.28C359.28 397.2 339.89 400 320 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -2735,14 +2735,14 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -2760,7 +2760,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -2773,14 +2773,14 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -2799,14 +2799,14 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 576 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -2825,14 +2825,14 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -2850,7 +2850,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -2863,14 +2863,14 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -2889,14 +2889,14 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 576 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -2915,14 +2915,14 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -3029,7 +3029,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                       <span
                         className="d-inline-block ml-1 mr-2"
                         style={
-                          Object {
+                          {
                             "width": "1.5rem",
                           }
                         }
@@ -3041,14 +3041,14 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                           data-prefix="far"
                           focusable="false"
                           role="img"
-                          style={Object {}}
+                          style={{}}
                           viewBox="0 0 640 512"
                           xmlns="http://www.w3.org/2000/svg"
                         >
                           <path
                             d="M634 471L36 3.51A16 16 0 0 0 13.51 6l-10 12.49A16 16 0 0 0 6 41l598 467.49a16 16 0 0 0 22.49-2.49l10-12.49A16 16 0 0 0 634 471zM296.79 146.47l134.79 105.38C429.36 191.91 380.48 144 320 144a112.26 112.26 0 0 0-23.21 2.47zm46.42 219.07L208.42 260.16C210.65 320.09 259.53 368 320 368a113 113 0 0 0 23.21-2.46zM320 112c98.65 0 189.09 55 237.93 144a285.53 285.53 0 0 1-44 60.2l37.74 29.5a333.7 333.7 0 0 0 52.9-75.11 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64c-36.7 0-71.71 7-104.63 18.81l46.41 36.29c18.94-4.3 38.34-7.1 58.22-7.1zm0 288c-98.65 0-189.08-55-237.93-144a285.47 285.47 0 0 1 44.05-60.19l-37.74-29.5a333.6 333.6 0 0 0-52.89 75.1 32.35 32.35 0 0 0 0 29.19C89.72 376.41 197.08 448 320 448c36.7 0 71.71-7.05 104.63-18.81l-46.41-36.28C359.28 397.2 339.89 400 320 400z"
                             fill="currentColor"
-                            style={Object {}}
+                            style={{}}
                           />
                         </svg>
                       </span>
@@ -3132,14 +3132,14 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -3157,7 +3157,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -3170,14 +3170,14 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -3196,14 +3196,14 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 576 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -3228,14 +3228,14 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                     data-prefix="fab"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Twitter
@@ -3255,14 +3255,14 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                     data-prefix="fab"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Facebook
@@ -3286,14 +3286,14 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                       data-prefix="fas"
                       focusable="false"
                       role="img"
-                      style={Object {}}
+                      style={{}}
                       viewBox="0 0 448 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
                         fill="currentColor"
-                        style={Object {}}
+                        style={{}}
                       />
                     </svg>
                     Add 
@@ -3311,14 +3311,14 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -3336,7 +3336,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -3349,14 +3349,14 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -3375,14 +3375,14 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 576 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -3401,14 +3401,14 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
         <div
           className="pgn-transition-replace-group position-relative mb-4"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -3426,7 +3426,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -3439,14 +3439,14 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -3465,14 +3465,14 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 576 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -3492,7 +3492,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                   <div
                     className="certificate-type-illustration"
                     style={
-                      Object {
+                      {
                         "backgroundImage": "url(icon/mock/path)",
                       }
                     }
@@ -3549,7 +3549,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                           <span
                             className="pgn__icon"
                             style={
-                              Object {
+                              {
                                 "height": "1em",
                                 "width": "1em",
                               }
@@ -3641,7 +3641,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                 data-hj-suppress={true}
                 src="http://localhost:18000/media/profile-images/d2a9bdc2ba165dcefc73265c54bf9a20_500.jpg?v=1552495012"
                 style={
-                  Object {
+                  {
                     "objectFit": "cover",
                   }
                 }
@@ -3706,7 +3706,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
               <span
                 className="pgn__icon"
                 style={
-                  Object {
+                  {
                     "height": "1em",
                     "width": "1em",
                   }
@@ -3784,7 +3784,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
               <span
                 className="pgn__icon"
                 style={
-                  Object {
+                  {
                     "height": "1em",
                     "width": "1em",
                   }
@@ -3817,14 +3817,14 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -3842,7 +3842,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -3855,14 +3855,14 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -3881,14 +3881,14 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 640 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M634 471L36 3.51A16 16 0 0 0 13.51 6l-10 12.49A16 16 0 0 0 6 41l598 467.49a16 16 0 0 0 22.49-2.49l10-12.49A16 16 0 0 0 634 471zM296.79 146.47l134.79 105.38C429.36 191.91 380.48 144 320 144a112.26 112.26 0 0 0-23.21 2.47zm46.42 219.07L208.42 260.16C210.65 320.09 259.53 368 320 368a113 113 0 0 0 23.21-2.46zM320 112c98.65 0 189.09 55 237.93 144a285.53 285.53 0 0 1-44 60.2l37.74 29.5a333.7 333.7 0 0 0 52.9-75.11 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64c-36.7 0-71.71 7-104.63 18.81l46.41 36.29c18.94-4.3 38.34-7.1 58.22-7.1zm0 288c-98.65 0-189.08-55-237.93-144a285.47 285.47 0 0 1 44.05-60.19l-37.74-29.5a333.6 333.6 0 0 0-52.89 75.1 32.35 32.35 0 0 0 0 29.19C89.72 376.41 197.08 448 320 448c36.7 0 71.71-7.05 104.63-18.81l-46.41-36.28C359.28 397.2 339.89 400 320 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -3912,14 +3912,14 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -3937,7 +3937,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -3950,14 +3950,14 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -3976,14 +3976,14 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 576 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -4002,14 +4002,14 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -4991,7 +4991,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                       <span
                         className="d-inline-block ml-1 mr-2"
                         style={
-                          Object {
+                          {
                             "width": "1.5rem",
                           }
                         }
@@ -5003,14 +5003,14 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                           data-prefix="far"
                           focusable="false"
                           role="img"
-                          style={Object {}}
+                          style={{}}
                           viewBox="0 0 576 512"
                           xmlns="http://www.w3.org/2000/svg"
                         >
                           <path
                             d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                             fill="currentColor"
-                            style={Object {}}
+                            style={{}}
                           />
                         </svg>
                       </span>
@@ -5094,14 +5094,14 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -5119,7 +5119,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -5132,14 +5132,14 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -5158,14 +5158,14 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 640 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M634 471L36 3.51A16 16 0 0 0 13.51 6l-10 12.49A16 16 0 0 0 6 41l598 467.49a16 16 0 0 0 22.49-2.49l10-12.49A16 16 0 0 0 634 471zM296.79 146.47l134.79 105.38C429.36 191.91 380.48 144 320 144a112.26 112.26 0 0 0-23.21 2.47zm46.42 219.07L208.42 260.16C210.65 320.09 259.53 368 320 368a113 113 0 0 0 23.21-2.46zM320 112c98.65 0 189.09 55 237.93 144a285.53 285.53 0 0 1-44 60.2l37.74 29.5a333.7 333.7 0 0 0 52.9-75.11 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64c-36.7 0-71.71 7-104.63 18.81l46.41 36.29c18.94-4.3 38.34-7.1 58.22-7.1zm0 288c-98.65 0-189.08-55-237.93-144a285.47 285.47 0 0 1 44.05-60.19l-37.74-29.5a333.6 333.6 0 0 0-52.89 75.1 32.35 32.35 0 0 0 0 29.19C89.72 376.41 197.08 448 320 448c36.7 0 71.71-7.05 104.63-18.81l-46.41-36.28C359.28 397.2 339.89 400 320 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -5184,14 +5184,14 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -5209,7 +5209,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -5222,14 +5222,14 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -5248,14 +5248,14 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 576 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -5280,14 +5280,14 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                     data-prefix="fab"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Twitter
@@ -5307,14 +5307,14 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                     data-prefix="fab"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Facebook
@@ -5338,14 +5338,14 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                       data-prefix="fas"
                       focusable="false"
                       role="img"
-                      style={Object {}}
+                      style={{}}
                       viewBox="0 0 448 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
                         fill="currentColor"
-                        style={Object {}}
+                        style={{}}
                       />
                     </svg>
                     Add 
@@ -5363,14 +5363,14 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -5388,7 +5388,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -5401,14 +5401,14 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -5427,14 +5427,14 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 576 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -5453,14 +5453,14 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
         <div
           className="pgn-transition-replace-group position-relative mb-4"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -5478,7 +5478,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -5491,14 +5491,14 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -5517,14 +5517,14 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 576 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -5544,7 +5544,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                   <div
                     className="certificate-type-illustration"
                     style={
-                      Object {
+                      {
                         "backgroundImage": "url(icon/mock/path)",
                       }
                     }
@@ -5601,7 +5601,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                           <span
                             className="pgn__icon"
                             style={
-                              Object {
+                              {
                                 "height": "1em",
                                 "width": "1em",
                               }
@@ -5763,7 +5763,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               <span
                 className="pgn__icon"
                 style={
-                  Object {
+                  {
                     "height": "1em",
                     "width": "1em",
                   }
@@ -5869,7 +5869,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               <span
                 className="pgn__icon"
                 style={
-                  Object {
+                  {
                     "height": "1em",
                     "width": "1em",
                   }
@@ -5902,14 +5902,14 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -5935,14 +5935,14 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -5966,14 +5966,14 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -5997,14 +5997,14 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -6030,14 +6030,14 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -6064,14 +6064,14 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -6097,14 +6097,14 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
         <div
           className="pgn-transition-replace-group position-relative mb-4"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -6178,7 +6178,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                 data-hj-suppress={true}
                 src="http://localhost:18000/media/profile-images/d2a9bdc2ba165dcefc73265c54bf9a20_500.jpg?v=1552495012"
                 style={
-                  Object {
+                  {
                     "objectFit": "cover",
                   }
                 }
@@ -6243,7 +6243,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               <span
                 className="pgn__icon"
                 style={
-                  Object {
+                  {
                     "height": "1em",
                     "width": "1em",
                   }
@@ -6321,7 +6321,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               <span
                 className="pgn__icon"
                 style={
-                  Object {
+                  {
                     "height": "1em",
                     "width": "1em",
                   }
@@ -6354,14 +6354,14 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -6379,7 +6379,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -6392,14 +6392,14 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -6418,14 +6418,14 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 640 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M634 471L36 3.51A16 16 0 0 0 13.51 6l-10 12.49A16 16 0 0 0 6 41l598 467.49a16 16 0 0 0 22.49-2.49l10-12.49A16 16 0 0 0 634 471zM296.79 146.47l134.79 105.38C429.36 191.91 380.48 144 320 144a112.26 112.26 0 0 0-23.21 2.47zm46.42 219.07L208.42 260.16C210.65 320.09 259.53 368 320 368a113 113 0 0 0 23.21-2.46zM320 112c98.65 0 189.09 55 237.93 144a285.53 285.53 0 0 1-44 60.2l37.74 29.5a333.7 333.7 0 0 0 52.9-75.11 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64c-36.7 0-71.71 7-104.63 18.81l46.41 36.29c18.94-4.3 38.34-7.1 58.22-7.1zm0 288c-98.65 0-189.08-55-237.93-144a285.47 285.47 0 0 1 44.05-60.19l-37.74-29.5a333.6 333.6 0 0 0-52.89 75.1 32.35 32.35 0 0 0 0 29.19C89.72 376.41 197.08 448 320 448c36.7 0 71.71-7.05 104.63-18.81l-46.41-36.28C359.28 397.2 339.89 400 320 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -6449,14 +6449,14 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -6474,7 +6474,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -6487,14 +6487,14 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -6513,14 +6513,14 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 576 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -6539,14 +6539,14 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -6564,7 +6564,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -6577,14 +6577,14 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -6603,14 +6603,14 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 576 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -6629,14 +6629,14 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -6654,7 +6654,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -6667,14 +6667,14 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -6693,14 +6693,14 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 640 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M634 471L36 3.51A16 16 0 0 0 13.51 6l-10 12.49A16 16 0 0 0 6 41l598 467.49a16 16 0 0 0 22.49-2.49l10-12.49A16 16 0 0 0 634 471zM296.79 146.47l134.79 105.38C429.36 191.91 380.48 144 320 144a112.26 112.26 0 0 0-23.21 2.47zm46.42 219.07L208.42 260.16C210.65 320.09 259.53 368 320 368a113 113 0 0 0 23.21-2.46zM320 112c98.65 0 189.09 55 237.93 144a285.53 285.53 0 0 1-44 60.2l37.74 29.5a333.7 333.7 0 0 0 52.9-75.11 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64c-36.7 0-71.71 7-104.63 18.81l46.41 36.29c18.94-4.3 38.34-7.1 58.22-7.1zm0 288c-98.65 0-189.08-55-237.93-144a285.47 285.47 0 0 1 44.05-60.19l-37.74-29.5a333.6 333.6 0 0 0-52.89 75.1 32.35 32.35 0 0 0 0 29.19C89.72 376.41 197.08 448 320 448c36.7 0 71.71-7.05 104.63-18.81l-46.41-36.28C359.28 397.2 339.89 400 320 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -6719,14 +6719,14 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -6744,7 +6744,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -6757,14 +6757,14 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -6783,14 +6783,14 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 576 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -6815,14 +6815,14 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     data-prefix="fab"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Twitter
@@ -6842,14 +6842,14 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     data-prefix="fab"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Facebook
@@ -6873,14 +6873,14 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                       data-prefix="fas"
                       focusable="false"
                       role="img"
-                      style={Object {}}
+                      style={{}}
                       viewBox="0 0 448 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
                         fill="currentColor"
-                        style={Object {}}
+                        style={{}}
                       />
                     </svg>
                     Add 
@@ -6898,14 +6898,14 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -6923,7 +6923,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -6936,14 +6936,14 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -6962,14 +6962,14 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 576 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -6988,14 +6988,14 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
         <div
           className="pgn-transition-replace-group position-relative mb-4"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -7013,7 +7013,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -7026,14 +7026,14 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -7052,14 +7052,14 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 576 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -7079,7 +7079,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                   <div
                     className="certificate-type-illustration"
                     style={
-                      Object {
+                      {
                         "backgroundImage": "url(icon/mock/path)",
                       }
                     }
@@ -7136,7 +7136,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                           <span
                             className="pgn__icon"
                             style={
-                              Object {
+                              {
                                 "height": "1em",
                                 "width": "1em",
                               }
@@ -7228,7 +7228,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                 data-hj-suppress={true}
                 src="http://localhost:18000/media/profile-images/d2a9bdc2ba165dcefc73265c54bf9a20_500.jpg?v=1552495012"
                 style={
-                  Object {
+                  {
                     "objectFit": "cover",
                   }
                 }
@@ -7293,7 +7293,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               <span
                 className="pgn__icon"
                 style={
-                  Object {
+                  {
                     "height": "1em",
                     "width": "1em",
                   }
@@ -7371,7 +7371,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               <span
                 className="pgn__icon"
                 style={
-                  Object {
+                  {
                     "height": "1em",
                     "width": "1em",
                   }
@@ -7404,14 +7404,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -7429,7 +7429,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -7442,14 +7442,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -7468,14 +7468,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 640 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M634 471L36 3.51A16 16 0 0 0 13.51 6l-10 12.49A16 16 0 0 0 6 41l598 467.49a16 16 0 0 0 22.49-2.49l10-12.49A16 16 0 0 0 634 471zM296.79 146.47l134.79 105.38C429.36 191.91 380.48 144 320 144a112.26 112.26 0 0 0-23.21 2.47zm46.42 219.07L208.42 260.16C210.65 320.09 259.53 368 320 368a113 113 0 0 0 23.21-2.46zM320 112c98.65 0 189.09 55 237.93 144a285.53 285.53 0 0 1-44 60.2l37.74 29.5a333.7 333.7 0 0 0 52.9-75.11 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64c-36.7 0-71.71 7-104.63 18.81l46.41 36.29c18.94-4.3 38.34-7.1 58.22-7.1zm0 288c-98.65 0-189.08-55-237.93-144a285.47 285.47 0 0 1 44.05-60.19l-37.74-29.5a333.6 333.6 0 0 0-52.89 75.1 32.35 32.35 0 0 0 0 29.19C89.72 376.41 197.08 448 320 448c36.7 0 71.71-7.05 104.63-18.81l-46.41-36.28C359.28 397.2 339.89 400 320 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -7499,14 +7499,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -7524,7 +7524,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -7537,14 +7537,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -7563,14 +7563,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 576 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -7589,14 +7589,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -7614,7 +7614,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -7627,14 +7627,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -7653,14 +7653,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 576 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -7679,14 +7679,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -7704,7 +7704,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -7717,14 +7717,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -7743,14 +7743,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 640 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M634 471L36 3.51A16 16 0 0 0 13.51 6l-10 12.49A16 16 0 0 0 6 41l598 467.49a16 16 0 0 0 22.49-2.49l10-12.49A16 16 0 0 0 634 471zM296.79 146.47l134.79 105.38C429.36 191.91 380.48 144 320 144a112.26 112.26 0 0 0-23.21 2.47zm46.42 219.07L208.42 260.16C210.65 320.09 259.53 368 320 368a113 113 0 0 0 23.21-2.46zM320 112c98.65 0 189.09 55 237.93 144a285.53 285.53 0 0 1-44 60.2l37.74 29.5a333.7 333.7 0 0 0 52.9-75.11 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64c-36.7 0-71.71 7-104.63 18.81l46.41 36.29c18.94-4.3 38.34-7.1 58.22-7.1zm0 288c-98.65 0-189.08-55-237.93-144a285.47 285.47 0 0 1 44.05-60.19l-37.74-29.5a333.6 333.6 0 0 0-52.89 75.1 32.35 32.35 0 0 0 0 29.19C89.72 376.41 197.08 448 320 448c36.7 0 71.71-7.05 104.63-18.81l-46.41-36.28C359.28 397.2 339.89 400 320 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -7769,14 +7769,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -7794,7 +7794,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -7807,14 +7807,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -7833,14 +7833,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 576 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -7865,14 +7865,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     data-prefix="fab"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Twitter
@@ -7892,14 +7892,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     data-prefix="fab"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Facebook
@@ -7923,14 +7923,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                       data-prefix="fas"
                       focusable="false"
                       role="img"
-                      style={Object {}}
+                      style={{}}
                       viewBox="0 0 448 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
                         fill="currentColor"
-                        style={Object {}}
+                        style={{}}
                       />
                     </svg>
                     Add 
@@ -7948,14 +7948,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -8002,7 +8002,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                       <span
                         className="d-inline-block ml-1 mr-2"
                         style={
-                          Object {
+                          {
                             "width": "1.5rem",
                           }
                         }
@@ -8014,14 +8014,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                           data-prefix="far"
                           focusable="false"
                           role="img"
-                          style={Object {}}
+                          style={{}}
                           viewBox="0 0 576 512"
                           xmlns="http://www.w3.org/2000/svg"
                         >
                           <path
                             d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                             fill="currentColor"
-                            style={Object {}}
+                            style={{}}
                           />
                         </svg>
                       </span>
@@ -8105,14 +8105,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
         <div
           className="pgn-transition-replace-group position-relative mb-4"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -8130,7 +8130,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -8143,14 +8143,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -8169,14 +8169,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 576 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -8196,7 +8196,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                   <div
                     className="certificate-type-illustration"
                     style={
-                      Object {
+                      {
                         "backgroundImage": "url(icon/mock/path)",
                       }
                     }
@@ -8253,7 +8253,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                           <span
                             className="pgn__icon"
                             style={
-                              Object {
+                              {
                                 "height": "1em",
                                 "width": "1em",
                               }
@@ -8345,7 +8345,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                 data-hj-suppress={true}
                 src="http://localhost:18000/media/profile-images/d2a9bdc2ba165dcefc73265c54bf9a20_500.jpg?v=1552495012"
                 style={
-                  Object {
+                  {
                     "objectFit": "cover",
                   }
                 }
@@ -8410,7 +8410,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               <span
                 className="pgn__icon"
                 style={
-                  Object {
+                  {
                     "height": "1em",
                     "width": "1em",
                   }
@@ -8488,7 +8488,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               <span
                 className="pgn__icon"
                 style={
-                  Object {
+                  {
                     "height": "1em",
                     "width": "1em",
                   }
@@ -8521,14 +8521,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -8546,7 +8546,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -8559,14 +8559,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -8585,14 +8585,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 640 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M634 471L36 3.51A16 16 0 0 0 13.51 6l-10 12.49A16 16 0 0 0 6 41l598 467.49a16 16 0 0 0 22.49-2.49l10-12.49A16 16 0 0 0 634 471zM296.79 146.47l134.79 105.38C429.36 191.91 380.48 144 320 144a112.26 112.26 0 0 0-23.21 2.47zm46.42 219.07L208.42 260.16C210.65 320.09 259.53 368 320 368a113 113 0 0 0 23.21-2.46zM320 112c98.65 0 189.09 55 237.93 144a285.53 285.53 0 0 1-44 60.2l37.74 29.5a333.7 333.7 0 0 0 52.9-75.11 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64c-36.7 0-71.71 7-104.63 18.81l46.41 36.29c18.94-4.3 38.34-7.1 58.22-7.1zm0 288c-98.65 0-189.08-55-237.93-144a285.47 285.47 0 0 1 44.05-60.19l-37.74-29.5a333.6 333.6 0 0 0-52.89 75.1 32.35 32.35 0 0 0 0 29.19C89.72 376.41 197.08 448 320 448c36.7 0 71.71-7.05 104.63-18.81l-46.41-36.28C359.28 397.2 339.89 400 320 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -8616,14 +8616,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -8641,7 +8641,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -8654,14 +8654,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -8680,14 +8680,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 576 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -8706,14 +8706,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -8731,7 +8731,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -8744,14 +8744,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -8770,14 +8770,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 576 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -8796,14 +8796,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -8821,7 +8821,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -8834,14 +8834,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -8860,14 +8860,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 640 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M634 471L36 3.51A16 16 0 0 0 13.51 6l-10 12.49A16 16 0 0 0 6 41l598 467.49a16 16 0 0 0 22.49-2.49l10-12.49A16 16 0 0 0 634 471zM296.79 146.47l134.79 105.38C429.36 191.91 380.48 144 320 144a112.26 112.26 0 0 0-23.21 2.47zm46.42 219.07L208.42 260.16C210.65 320.09 259.53 368 320 368a113 113 0 0 0 23.21-2.46zM320 112c98.65 0 189.09 55 237.93 144a285.53 285.53 0 0 1-44 60.2l37.74 29.5a333.7 333.7 0 0 0 52.9-75.11 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64c-36.7 0-71.71 7-104.63 18.81l46.41 36.29c18.94-4.3 38.34-7.1 58.22-7.1zm0 288c-98.65 0-189.08-55-237.93-144a285.47 285.47 0 0 1 44.05-60.19l-37.74-29.5a333.6 333.6 0 0 0-52.89 75.1 32.35 32.35 0 0 0 0 29.19C89.72 376.41 197.08 448 320 448c36.7 0 71.71-7.05 104.63-18.81l-46.41-36.28C359.28 397.2 339.89 400 320 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -8886,14 +8886,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -8911,7 +8911,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -8924,14 +8924,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -8950,14 +8950,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 576 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -8982,14 +8982,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     data-prefix="fab"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Twitter
@@ -9009,14 +9009,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     data-prefix="fab"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Facebook
@@ -9040,14 +9040,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                       data-prefix="fas"
                       focusable="false"
                       role="img"
-                      style={Object {}}
+                      style={{}}
                       viewBox="0 0 448 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
                         fill="currentColor"
-                        style={Object {}}
+                        style={{}}
                       />
                     </svg>
                     Add 
@@ -9065,14 +9065,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -9127,7 +9127,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                       <span
                         className="d-inline-block ml-1 mr-2"
                         style={
-                          Object {
+                          {
                             "width": "1.5rem",
                           }
                         }
@@ -9139,14 +9139,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                           data-prefix="far"
                           focusable="false"
                           role="img"
-                          style={Object {}}
+                          style={{}}
                           viewBox="0 0 576 512"
                           xmlns="http://www.w3.org/2000/svg"
                         >
                           <path
                             d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                             fill="currentColor"
-                            style={Object {}}
+                            style={{}}
                           />
                         </svg>
                       </span>
@@ -9230,14 +9230,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
         <div
           className="pgn-transition-replace-group position-relative mb-4"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -9255,7 +9255,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -9268,14 +9268,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -9294,14 +9294,14 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 576 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -9321,7 +9321,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                   <div
                     className="certificate-type-illustration"
                     style={
-                      Object {
+                      {
                         "backgroundImage": "url(icon/mock/path)",
                       }
                     }
@@ -9378,7 +9378,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                           <span
                             className="pgn__icon"
                             style={
-                              Object {
+                              {
                                 "height": "1em",
                                 "width": "1em",
                               }
@@ -9470,7 +9470,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                 data-hj-suppress={true}
                 src="http://localhost:18000/media/profile-images/d2a9bdc2ba165dcefc73265c54bf9a20_500.jpg?v=1552495012"
                 style={
-                  Object {
+                  {
                     "objectFit": "cover",
                   }
                 }
@@ -9556,14 +9556,14 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -9581,7 +9581,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -9594,14 +9594,14 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -9620,14 +9620,14 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 640 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M634 471L36 3.51A16 16 0 0 0 13.51 6l-10 12.49A16 16 0 0 0 6 41l598 467.49a16 16 0 0 0 22.49-2.49l10-12.49A16 16 0 0 0 634 471zM296.79 146.47l134.79 105.38C429.36 191.91 380.48 144 320 144a112.26 112.26 0 0 0-23.21 2.47zm46.42 219.07L208.42 260.16C210.65 320.09 259.53 368 320 368a113 113 0 0 0 23.21-2.46zM320 112c98.65 0 189.09 55 237.93 144a285.53 285.53 0 0 1-44 60.2l37.74 29.5a333.7 333.7 0 0 0 52.9-75.11 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64c-36.7 0-71.71 7-104.63 18.81l46.41 36.29c18.94-4.3 38.34-7.1 58.22-7.1zm0 288c-98.65 0-189.08-55-237.93-144a285.47 285.47 0 0 1 44.05-60.19l-37.74-29.5a333.6 333.6 0 0 0-52.89 75.1 32.35 32.35 0 0 0 0 29.19C89.72 376.41 197.08 448 320 448c36.7 0 71.71-7.05 104.63-18.81l-46.41-36.28C359.28 397.2 339.89 400 320 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -9651,14 +9651,14 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -9676,7 +9676,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -9689,14 +9689,14 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -9715,14 +9715,14 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 576 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -9741,14 +9741,14 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -9766,7 +9766,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -9779,14 +9779,14 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -9805,14 +9805,14 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 576 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -9831,14 +9831,14 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -9856,7 +9856,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -9869,14 +9869,14 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -9895,14 +9895,14 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 640 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M634 471L36 3.51A16 16 0 0 0 13.51 6l-10 12.49A16 16 0 0 0 6 41l598 467.49a16 16 0 0 0 22.49-2.49l10-12.49A16 16 0 0 0 634 471zM296.79 146.47l134.79 105.38C429.36 191.91 380.48 144 320 144a112.26 112.26 0 0 0-23.21 2.47zm46.42 219.07L208.42 260.16C210.65 320.09 259.53 368 320 368a113 113 0 0 0 23.21-2.46zM320 112c98.65 0 189.09 55 237.93 144a285.53 285.53 0 0 1-44 60.2l37.74 29.5a333.7 333.7 0 0 0 52.9-75.11 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64c-36.7 0-71.71 7-104.63 18.81l46.41 36.29c18.94-4.3 38.34-7.1 58.22-7.1zm0 288c-98.65 0-189.08-55-237.93-144a285.47 285.47 0 0 1 44.05-60.19l-37.74-29.5a333.6 333.6 0 0 0-52.89 75.1 32.35 32.35 0 0 0 0 29.19C89.72 376.41 197.08 448 320 448c36.7 0 71.71-7.05 104.63-18.81l-46.41-36.28C359.28 397.2 339.89 400 320 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -9921,14 +9921,14 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -9946,7 +9946,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -9959,14 +9959,14 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -9985,14 +9985,14 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 576 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -10017,14 +10017,14 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                     data-prefix="fab"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Twitter
@@ -10044,14 +10044,14 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                     data-prefix="fab"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Facebook
@@ -10075,14 +10075,14 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                       data-prefix="fas"
                       focusable="false"
                       role="img"
-                      style={Object {}}
+                      style={{}}
                       viewBox="0 0 448 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
                         fill="currentColor"
-                        style={Object {}}
+                        style={{}}
                       />
                     </svg>
                     Add 
@@ -10100,14 +10100,14 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -10125,7 +10125,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -10138,14 +10138,14 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -10164,14 +10164,14 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 576 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -10190,14 +10190,14 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
         <div
           className="pgn-transition-replace-group position-relative mb-4"
           style={
-            Object {
+            {
               "height": null,
             }
           }
         >
           <div
             style={
-              Object {
+              {
                 "padding": ".1px 0",
               }
             }
@@ -10215,7 +10215,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                   disabled={false}
                   onClick={[Function]}
                   style={
-                    Object {
+                    {
                       "marginTop": "-.35rem",
                     }
                   }
@@ -10228,14 +10228,14 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                   Edit
@@ -10254,14 +10254,14 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                     data-prefix="far"
                     focusable="false"
                     role="img"
-                    style={Object {}}
+                    style={{}}
                     viewBox="0 0 576 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
                       fill="currentColor"
-                      style={Object {}}
+                      style={{}}
                     />
                   </svg>
                    
@@ -10281,7 +10281,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                   <div
                     className="certificate-type-illustration"
                     style={
-                      Object {
+                      {
                         "backgroundImage": "url(icon/mock/path)",
                       }
                     }
@@ -10338,7 +10338,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                           <span
                             className="pgn__icon"
                             style={
-                              Object {
+                              {
                                 "height": "1em",
                                 "width": "1em",
                               }
