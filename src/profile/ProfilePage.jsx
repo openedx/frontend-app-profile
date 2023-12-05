@@ -95,7 +95,7 @@ class ProfilePage extends React.Component {
   }
 
   handleToggleParagonThemeVariant() {
-    const nextThemeVariant = this.context.paragonTheme.state.themeVariant === 'light' ? 'invalid' : 'light';
+    const nextThemeVariant = this.context.paragonTheme.state.themeVariant === 'light' ? 'dark' : 'light';
     this.context.paragonTheme.setThemeVariant(nextThemeVariant);
   }
 
