@@ -30,10 +30,10 @@
   ],
   "dependencies": {
     "@edx/brand": "npm:@edx/brand-edx.org@2.2.0-alpha.16",
-    "@edx/paragon": "21.0.0-alpha.40",
     "@edx/frontend-component-footer": "12.6.0",
     "@edx/frontend-component-header": "4.10.1",
     "@edx/frontend-platform": "5.6.1",
+    "@edx/paragon": "21.0.0-alpha.40",
     "@fortawesome/fontawesome-svg-core": "1.2.36",
     "@fortawesome/free-brands-svg-icons": "5.15.4",
     "@fortawesome/free-regular-svg-icons": "5.15.4",
@@ -64,10 +64,10 @@
     "universal-cookie": "4.0.4"
   },
   "devDependencies": {
-    "@edx/browserslist-config": "1.2.0",
-    "@edx/frontend-build": "github:openedx/frontend-build#ags/2321",
     "@commitlint/cli": "17.8.1",
     "@commitlint/config-angular": "17.8.1",
+    "@edx/browserslist-config": "1.2.0",
+    "@edx/frontend-build": "github:openedx/frontend-build#ags/2321",
     "@edx/reactifex": "2.2.0",
     "@testing-library/react": "12.1.5",
     "@wojtekmaj/enzyme-adapter-react-17": "0.8.0",
