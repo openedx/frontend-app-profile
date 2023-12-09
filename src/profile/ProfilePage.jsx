@@ -6,7 +6,7 @@ import { sendTrackingLogEvent } from '@edx/frontend-platform/analytics';
 import { ensureConfig, getConfig } from '@edx/frontend-platform';
 import { AppContext } from '@edx/frontend-platform/react';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
-import { Alert, Hyperlink } from '@edx/paragon';
+import { Alert, Button, Hyperlink } from '@edx/paragon';
 
 // Actions
 import {
@@ -62,6 +62,7 @@ class ProfilePage extends React.Component {
     this.handleOpen = this.handleOpen.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleToggleParagonThemeVariant = this.handleToggleParagonThemeVariant.bind(this);
   }
 
   componentDidMount() {
@@ -93,6 +94,11 @@ class ProfilePage extends React.Component {
 
   handleChange(name, value) {
     this.props.updateDraft(name, value);
+  }
+
+  handleToggleParagonThemeVariant() {
+    const nextThemeVariant = this.context.paragonTheme.state.themeVariant === 'light' ? 'dark' : 'light';
+    this.context.paragonTheme.setThemeVariant(nextThemeVariant);
   }
 
   isYOBDisabled() {
@@ -309,6 +315,9 @@ class ProfilePage extends React.Component {
                 {...commonFormProps}
               />
             )}
+            <Button onClick={this.handleToggleParagonThemeVariant}>
+              Toggle theme
+            </Button>
           </div>
         </div>
       </div>
@@ -374,7 +383,7 @@ ProfilePage.propTypes = {
 
   // Learning Goal form data
   learningGoal: PropTypes.string,
-  visibilityLearningGoal: PropTypes.string.isRequired,
+  visibilityLearningGoal: PropTypes.string,
 
   // Other data we need
   profileImage: PropTypes.shape({
@@ -419,6 +428,7 @@ ProfilePage.defaultProps = {
   draftSocialLinksByPlatform: {},
   bio: null,
   learningGoal: null,
+  visibilityLearningGoal: null,
   languageProficiencies: [],
   courseCertificates: null,
   requiresParentalConsent: null,

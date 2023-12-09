@@ -15,8 +15,9 @@
     "snapshot": "fedx-scripts jest --updateSnapshot",
     "start": "fedx-scripts webpack-dev-server --progress",
     "test": "TZ=UTC fedx-scripts jest --coverage --passWithNoTests",
-    "stubs": "pact-stub-service ./src/pacts/frontend-app-profile-edx-platform.json --port 18000"
+    "replace-scss-with-css": "replace-scss-with-css"
   },
+  "stubs": "pact-stub-service ./src/pacts/frontend-app-profile-edx-platform.json --port 18000",
   "bugs": {
     "url": "https://github.com/openedx/frontend-app-profile/issues"
   },
@@ -28,11 +29,11 @@
     "extends @edx/browserslist-config"
   ],
   "dependencies": {
-    "@edx/brand": "npm:@openedx/brand-openedx@^1.2.2",
+    "@edx/brand": "npm:@edx/brand-edx.org@2.2.0-alpha.16",
     "@edx/frontend-component-footer": "12.6.0",
     "@edx/frontend-component-header": "4.10.1",
     "@edx/frontend-platform": "5.6.1",
-    "@edx/paragon": "^20.44.0",
+    "@edx/paragon": "21.0.0-alpha.40",
     "@fortawesome/fontawesome-svg-core": "1.2.36",
     "@fortawesome/free-brands-svg-icons": "5.15.4",
     "@fortawesome/free-regular-svg-icons": "5.15.4",
@@ -65,8 +66,8 @@
   "devDependencies": {
     "@commitlint/cli": "17.8.1",
     "@commitlint/config-angular": "17.8.1",
-    "@edx/browserslist-config": "^1.1.1",
-    "@edx/frontend-build": "13.0.8",
+    "@edx/browserslist-config": "1.2.0",
+    "@edx/frontend-build": "github:openedx/frontend-build#ags/2321",
     "@edx/reactifex": "2.2.0",
     "@testing-library/react": "12.1.5",
     "@wojtekmaj/enzyme-adapter-react-17": "0.8.0",
