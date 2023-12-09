@@ -1,0 +1,77 @@
+{
+  "consumer": {
+    "name": "frontend-app-profile"
+  },
+  "interactions": [
+    {
+      "description": "A request for user's basic information",
+      "providerStates": [
+        {
+          "name": "Account and user's information does not exist"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/api/user/v1/accounts/staff_not_found"
+      },
+      "response": {
+        "status": 404
+      }
+    },
+    {
+      "description": "A request for user's basic information",
+      "providerStates": [
+        {
+          "name": "I have a user's basic information"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/api/user/v1/accounts/staff"
+      },
+      "response": {
+        "body": {
+          "bio": "This is my bio",
+          "country": "ME",
+          "dateJoined": "2017-06-07T00:44:23Z",
+          "email": "staff@example.com",
+          "isActive": true,
+          "name": "Lemon Seltzer",
+          "username": "staff",
+          "yearOfBirth": 1901
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pact-js": {
+      "version": "11.0.2"
+    },
+    "pactRust": {
+      "ffi": "0.4.0",
+      "models": "1.0.4"
+    },
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  },
+  "provider": {
+    "name": "edx-platform"
+  }
+}
