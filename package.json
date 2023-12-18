@@ -66,7 +66,7 @@
     "@commitlint/cli": "17.8.1",
     "@commitlint/config-angular": "17.8.1",
     "@edx/browserslist-config": "^1.1.1",
-    "@edx/frontend-build": "13.0.12",
+    "@edx/frontend-build": "13.0.14",
     "@edx/reactifex": "2.2.0",
     "@testing-library/react": "12.1.5",
     "@wojtekmaj/enzyme-adapter-react-17": "0.8.0",
