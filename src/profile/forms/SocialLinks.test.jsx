@@ -1,4 +1,4 @@
-import { mount } from 'enzyme';
+import { render, fireEvent, screen } from '@testing-library/react';
 import PropTypes from 'prop-types';
 import React, { useMemo } from 'react';
 import { Provider } from 'react-redux';
@@ -112,47 +112,45 @@ describe('<SocialLinks />', () => {
     const changeHandler = jest.fn();
     const submitHandler = jest.fn();
     const closeHandler = jest.fn();
-    const component = (
+    const { container } = render(
       <SocialLinksWrapper
         {...defaultProps}
         formId="bio"
         changeHandler={changeHandler}
         submitHandler={submitHandler}
         closeHandler={closeHandler}
-      />
+      />,
     );
-    const wrapper = mount(component);
-    const socialLink = wrapper.find(SocialLinks);
+
     const { platform } = defaultProps.socialLinks[0];
-    const inputField = socialLink.find(`#social-${platform}`);
-    inputField.simulate('change', { target: { value: 'test', name: platform } });
+    const inputField = container.querySelector(`#social-${platform}`);
+    fireEvent.change(inputField, { target: { value: 'test', name: platform } });
     expect(changeHandler).toHaveBeenCalledTimes(1);
 
-    expect(socialLink.find('#visibilitySocialLinks select').props().value).toBe('private');
-    const event = { target: { value: 'all_users', name: 'visibilitySocialLinks' } };
-    socialLink.find('#visibilitySocialLinks select').simulate('change', event);
+    const selectElement = container.querySelector('#visibilitySocialLinks');
+    expect(selectElement.value).toBe('private');
+    fireEvent.change(selectElement, { target: { value: 'all_users', name: 'visibilitySocialLinks' } });
     expect(changeHandler).toHaveBeenCalledTimes(2);
 
-    socialLink.find('[aria-labelledby="editing-form"]').simulate('submit');
+    fireEvent.submit(container.querySelector('[aria-labelledby="editing-form"]'));
     expect(submitHandler).toHaveBeenCalledTimes(1);
 
-    socialLink.find('[aria-labelledby="editing-form"]').find('Button .btn-link').simulate('click');
+    fireEvent.click(screen.getByRole('button', { name: 'Cancel' }));
     expect(closeHandler).toHaveBeenCalledTimes(1);
   });
 
   it('calls social links with static', () => {
     const openHandler = jest.fn();
-    const component = (
+    render(
       <SocialLinksWrapper
         {...defaultProps}
         formId="goals"
         openHandler={openHandler}
-      />
+      />,
     );
-    const wrapper = mount(component);
-    const socialLink = wrapper.find(SocialLinks);
+    const addFacebookButton = screen.getByRole('button', { name: 'Add Facebook' });
+    fireEvent.click(addFacebookButton);
 
-    socialLink.find('EmptyContent button').first().simulate('click');
     expect(openHandler).toHaveBeenCalledTimes(1);
   });
 
@@ -160,10 +158,9 @@ describe('<SocialLinks />', () => {
     const newStore = JSON.parse(JSON.stringify(savingEditedBio));
     newStore.profilePage.errors.bio = { userMessage: 'error' };
 
-    const component = <SocialLinksWrapperWithStore store={newStore} />;
-    const wrapper = mount(component);
-    const socialLink = wrapper.find(SocialLinks);
+    const { container } = render(<SocialLinksWrapperWithStore store={newStore} />);
 
-    expect(socialLink.find('.alert-danger').exists()).toBe(true);
+    const alertDanger = container.querySelector('.alert-danger');
+    expect(alertDanger).toBeInTheDocument();
   });
 });
