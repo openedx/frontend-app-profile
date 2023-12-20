@@ -104,7 +104,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
         </div>
       </div>
       <div
-        className="col pl-0"
+        className="col"
       >
         <div
           className="d-md-none"
@@ -113,7 +113,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
             data-hj-suppress={true}
           >
             <h1
-              className="h2 mb-0 font-weight-bold"
+              className="h2 mb-0 font-weight-bold text-truncate"
             >
               staff
             </h1>
@@ -192,7 +192,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
             data-hj-suppress={true}
           >
             <h1
-              className="h2 mb-0 font-weight-bold"
+              className="h2 mb-0 font-weight-bold text-truncate"
             >
               staff
             </h1>
@@ -1698,7 +1698,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                         </svg>
                       </span>
                       <select
-                        className="d-inline-block w-auto form-control"
+                        className="d-inline-block form-control"
                         id="visibilityCountry"
                         name="visibilityCountry"
                         onChange={[Function]}
@@ -2490,7 +2490,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
         </div>
       </div>
       <div
-        className="col pl-0"
+        className="col"
       >
         <div
           className="d-md-none"
@@ -2499,7 +2499,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
             data-hj-suppress={true}
           >
             <h1
-              className="h2 mb-0 font-weight-bold"
+              className="h2 mb-0 font-weight-bold text-truncate"
             >
               staff
             </h1>
@@ -2578,7 +2578,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
             data-hj-suppress={true}
           >
             <h1
-              className="h2 mb-0 font-weight-bold"
+              className="h2 mb-0 font-weight-bold text-truncate"
             >
               staff
             </h1>
@@ -3058,7 +3058,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                         </svg>
                       </span>
                       <select
-                        className="d-inline-block w-auto form-control"
+                        className="d-inline-block form-control"
                         id="visibilityLevelOfEducation"
                         name="visibilityLevelOfEducation"
                         onChange={[Function]}
@@ -3670,7 +3670,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
         </div>
       </div>
       <div
-        className="col pl-0"
+        className="col"
       >
         <div
           className="d-md-none"
@@ -3679,7 +3679,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
             data-hj-suppress={true}
           >
             <h1
-              className="h2 mb-0 font-weight-bold"
+              className="h2 mb-0 font-weight-bold text-truncate"
             >
               staff
             </h1>
@@ -3758,7 +3758,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
             data-hj-suppress={true}
           >
             <h1
-              className="h2 mb-0 font-weight-bold"
+              className="h2 mb-0 font-weight-bold text-truncate"
             >
               staff
             </h1>
@@ -5023,7 +5023,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                         </svg>
                       </span>
                       <select
-                        className="d-inline-block w-auto form-control"
+                        className="d-inline-block form-control"
                         id="visibilityLanguageProficiencies"
                         name="visibilityLanguageProficiencies"
                         onChange={[Function]}
@@ -5652,7 +5652,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
 </div>
 `;
 
-exports[`<ProfilePage /> Renders correctly in various states viewing other profile 1`] = `
+exports[`<ProfilePage /> Renders correctly in various states viewing other profile with all fields 1`] = `
 <div
   className="profile-page"
 >
@@ -5702,7 +5702,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
         </div>
       </div>
       <div
-        className="col pl-0"
+        className="col"
       >
         <div
           className="d-md-none"
@@ -5711,9 +5711,9 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
             data-hj-suppress={true}
           >
             <h1
-              className="h2 mb-0 font-weight-bold"
+              className="h2 mb-0 font-weight-bold text-truncate"
             >
-              verified
+              staff
             </h1>
             <p
               className="mb-0"
@@ -5756,7 +5756,52 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
         </div>
         <div
           className="d-none d-md-block float-right"
-        />
+        >
+          <a
+            className="pgn__hyperlink default-link standalone-link btn btn-primary"
+            href="http://localhost:18150/records"
+            onClick={[Function]}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            View My Records
+            <span
+              className="pgn__hyperlink__external-icon"
+              title="Opens in a new tab"
+            >
+              <span
+                className="pgn__icon"
+                style={
+                  Object {
+                    "height": "1em",
+                    "width": "1em",
+                  }
+                }
+              >
+                <svg
+                  aria-hidden={true}
+                  fill="none"
+                  focusable={false}
+                  height={24}
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width={24}
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M19 19H5V5h7V3H3v18h18v-9h-2v7ZM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7Z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <span
+                  className="sr-only"
+                >
+                  in a new tab
+                </span>
+              </span>
+            </span>
+          </a>
+        </div>
       </div>
     </div>
     <div
@@ -5772,9 +5817,9 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
             data-hj-suppress={true}
           >
             <h1
-              className="h2 mb-0 font-weight-bold"
+              className="h2 mb-0 font-weight-bold text-truncate"
             >
-              verified
+              staff
             </h1>
             <p
               className="mb-0"
@@ -5817,7 +5862,52 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
         </div>
         <div
           className="d-md-none mb-4"
-        />
+        >
+          <a
+            className="pgn__hyperlink default-link standalone-link btn btn-primary"
+            href="http://localhost:18150/records"
+            onClick={[Function]}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            View My Records
+            <span
+              className="pgn__hyperlink__external-icon"
+              title="Opens in a new tab"
+            >
+              <span
+                className="pgn__icon"
+                style={
+                  Object {
+                    "height": "1em",
+                    "width": "1em",
+                  }
+                }
+              >
+                <svg
+                  aria-hidden={true}
+                  fill="none"
+                  focusable={false}
+                  height={24}
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width={24}
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M19 19H5V5h7V3H3v18h18v-9h-2v7ZM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7Z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <span
+                  className="sr-only"
+                >
+                  in a new tab
+                </span>
+              </span>
+            </span>
+          </a>
+        </div>
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
@@ -5825,7 +5915,32 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               "height": null,
             }
           }
-        />
+        >
+          <div
+            style={
+              Object {
+                "padding": ".1px 0",
+              }
+            }
+          >
+            <div
+              className="editable-item-header mb-2"
+            >
+              <h2
+                className="edit-section-header"
+                id={null}
+              >
+                Full Name
+              </h2>
+            </div>
+            <p
+              className="h5"
+              data-hj-suppress={true}
+            >
+              user
+            </p>
+          </div>
+        </div>
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
@@ -5833,7 +5948,30 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               "height": null,
             }
           }
-        />
+        >
+          <div
+            style={
+              Object {
+                "padding": ".1px 0",
+              }
+            }
+          >
+            <div
+              className="editable-item-header mb-2"
+            >
+              <h2
+                className="edit-section-header"
+                id={null}
+              >
+                Location
+              </h2>
+            </div>
+            <p
+              className="h5"
+              data-hj-suppress={true}
+            />
+          </div>
+        </div>
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
@@ -5841,7 +5979,30 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               "height": null,
             }
           }
-        />
+        >
+          <div
+            style={
+              Object {
+                "padding": ".1px 0",
+              }
+            }
+          >
+            <div
+              className="editable-item-header mb-2"
+            >
+              <h2
+                className="edit-section-header"
+                id={null}
+              >
+                Primary Language Spoken
+              </h2>
+            </div>
+            <p
+              className="h5"
+              data-hj-suppress={true}
+            />
+          </div>
+        </div>
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
@@ -5849,7 +6010,32 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               "height": null,
             }
           }
-        />
+        >
+          <div
+            style={
+              Object {
+                "padding": ".1px 0",
+              }
+            }
+          >
+            <div
+              className="editable-item-header mb-2"
+            >
+              <h2
+                className="edit-section-header"
+                id={null}
+              >
+                Education
+              </h2>
+            </div>
+            <p
+              className="h5"
+              data-hj-suppress={true}
+            >
+              Other education
+            </p>
+          </div>
+        </div>
         <div
           className="pgn-transition-replace-group position-relative mb-5"
           style={
@@ -5857,7 +6043,29 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               "height": null,
             }
           }
-        />
+        >
+          <div
+            style={
+              Object {
+                "padding": ".1px 0",
+              }
+            }
+          >
+            <div
+              className="editable-item-header mb-2"
+            >
+              <h2
+                className="edit-section-header"
+                id={null}
+              >
+                Social Links
+              </h2>
+            </div>
+            <ul
+              className="list-unstyled"
+            />
+          </div>
+        </div>
       </div>
       <div
         className="pt-md-3 col-md-8 col-lg-7 offset-lg-1"
@@ -5869,7 +6077,32 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               "height": null,
             }
           }
-        />
+        >
+          <div
+            style={
+              Object {
+                "padding": ".1px 0",
+              }
+            }
+          >
+            <div
+              className="editable-item-header mb-2"
+            >
+              <h2
+                className="edit-section-header"
+                id={null}
+              >
+                About Me
+              </h2>
+            </div>
+            <p
+              className="lead"
+              data-hj-suppress={true}
+            >
+              bio
+            </p>
+          </div>
+        </div>
         <div
           className="pgn-transition-replace-group position-relative mb-4"
           style={
@@ -5877,7 +6110,27 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               "height": null,
             }
           }
-        />
+        >
+          <div
+            style={
+              Object {
+                "padding": ".1px 0",
+              }
+            }
+          >
+            <div
+              className="editable-item-header mb-2"
+            >
+              <h2
+                className="edit-section-header"
+                id={null}
+              >
+                My Certificates
+              </h2>
+            </div>
+            You don't have any certificates yet.
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -5957,7 +6210,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
         </div>
       </div>
       <div
-        className="col pl-0"
+        className="col"
       >
         <div
           className="d-md-none"
@@ -5966,7 +6219,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
             data-hj-suppress={true}
           >
             <h1
-              className="h2 mb-0 font-weight-bold"
+              className="h2 mb-0 font-weight-bold text-truncate"
             >
               staff
             </h1>
@@ -6045,7 +6298,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
             data-hj-suppress={true}
           >
             <h1
-              className="h2 mb-0 font-weight-bold"
+              className="h2 mb-0 font-weight-bold text-truncate"
             >
               staff
             </h1>
@@ -7010,7 +7263,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
         </div>
       </div>
       <div
-        className="col pl-0"
+        className="col"
       >
         <div
           className="d-md-none"
@@ -7019,7 +7272,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
             data-hj-suppress={true}
           >
             <h1
-              className="h2 mb-0 font-weight-bold"
+              className="h2 mb-0 font-weight-bold text-truncate"
             >
               staff
             </h1>
@@ -7098,7 +7351,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
             data-hj-suppress={true}
           >
             <h1
-              className="h2 mb-0 font-weight-bold"
+              className="h2 mb-0 font-weight-bold text-truncate"
             >
               staff
             </h1>
@@ -7787,7 +8040,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                         </svg>
                       </span>
                       <select
-                        className="d-inline-block w-auto form-control"
+                        className="d-inline-block form-control"
                         id="visibilityBio"
                         name="visibilityBio"
                         onChange={[Function]}
@@ -8130,7 +8383,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
         </div>
       </div>
       <div
-        className="col pl-0"
+        className="col"
       >
         <div
           className="d-md-none"
@@ -8139,7 +8392,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
             data-hj-suppress={true}
           >
             <h1
-              className="h2 mb-0 font-weight-bold"
+              className="h2 mb-0 font-weight-bold text-truncate"
             >
               staff
             </h1>
@@ -8218,7 +8471,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
             data-hj-suppress={true}
           >
             <h1
-              className="h2 mb-0 font-weight-bold"
+              className="h2 mb-0 font-weight-bold text-truncate"
             >
               staff
             </h1>
@@ -8915,7 +9168,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                         </svg>
                       </span>
                       <select
-                        className="d-inline-block w-auto form-control"
+                        className="d-inline-block form-control"
                         id="visibilityBio"
                         name="visibilityBio"
                         onChange={[Function]}
@@ -9258,7 +9511,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
         </div>
       </div>
       <div
-        className="col pl-0"
+        className="col"
       >
         <div
           className="d-md-none"
@@ -9267,7 +9520,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
             data-hj-suppress={true}
           >
             <h1
-              className="h2 mb-0 font-weight-bold"
+              className="h2 mb-0 font-weight-bold text-truncate"
             >
               staff
             </h1>
@@ -9300,7 +9553,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
             data-hj-suppress={true}
           >
             <h1
-              className="h2 mb-0 font-weight-bold"
+              className="h2 mb-0 font-weight-bold text-truncate"
             >
               staff
             </h1>

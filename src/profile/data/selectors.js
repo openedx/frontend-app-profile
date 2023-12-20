@@ -35,9 +35,12 @@ export const editableFormModeSelector = createSelector(
     // or is being hidden from us (for other users' profiles)
     let propExists = account[formId] != null && account[formId].length > 0;
     propExists = formId === 'certificates' ? certificates.length > 0 : propExists; // overwrite for certificates
-    // If this isn't the current user's profile or if
+    // If this isn't the current user's profile
+    if (!isAuthenticatedUserProfile) {
+      return 'static';
+    }
     // the current user has no age set / under 13 ...
-    if (!isAuthenticatedUserProfile || account.requiresParentalConsent) {
+    if (account.requiresParentalConsent) {
       // then there are only two options: static or nothing.
       // We use 'null' as a return value because the consumers of
       // getMode render nothing at all on a mode of null.
@@ -228,13 +231,13 @@ export const visibilitiesSelector = createSelector(
     switch (accountPrivacy) {
       case 'custom':
         return {
-          visibilityBio: preferences.visibilityBio || 'private',
-          visibilityCourseCertificates: preferences.visibilityCourseCertificates || 'private',
-          visibilityCountry: preferences.visibilityCountry || 'private',
-          visibilityLevelOfEducation: preferences.visibilityLevelOfEducation || 'private',
-          visibilityLanguageProficiencies: preferences.visibilityLanguageProficiencies || 'private',
-          visibilityName: preferences.visibilityName || 'private',
-          visibilitySocialLinks: preferences.visibilitySocialLinks || 'private',
+          visibilityBio: preferences.visibilityBio || 'all_users',
+          visibilityCourseCertificates: preferences.visibilityCourseCertificates || 'all_users',
+          visibilityCountry: preferences.visibilityCountry || 'all_users',
+          visibilityLevelOfEducation: preferences.visibilityLevelOfEducation || 'all_users',
+          visibilityLanguageProficiencies: preferences.visibilityLanguageProficiencies || 'all_users',
+          visibilityName: preferences.visibilityName || 'all_users',
+          visibilitySocialLinks: preferences.visibilitySocialLinks || 'all_users',
         };
       case 'private':
         return {

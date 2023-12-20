@@ -1,5 +1,6 @@
+#####################
 frontend-app-profile
-##########################
+#####################
 
 |license-badge| |status-badge| |ci-badge| |codecov-badge|
 
@@ -17,8 +18,9 @@ frontend-app-profile
     :target: https://codecov.io/github/openedx/frontend-app-profile?branch=main
     :alt: Codecov
 
+********
 Purpose
-=======
+********
 
 This is a micro-frontend application responsible for the display and updating of user profiles.
 
@@ -26,11 +28,12 @@ When a user views their own profile, they're given fields to edit their full nam
 
 When a user views someone else's profile, they see all those fields that that user set as public.
 
+***************
 Getting Started
-===============
+***************
 
-Devstack Installation
----------------------
+Installation
+============
 
 Follow these steps to provision, run, and enable an instance of the
 Profile MFE for local development via the `devstack`_.
@@ -46,13 +49,30 @@ Profile MFE for local development via the `devstack`_.
 
 .. code-block::
 
-   npm install
-   npm start # The server will run on port 1995
+  1. Clone your new repo:
+
+    ``git clone https://github.com/openedx/frontend-app-profile.git``
+
+  2. Use node v18.x.
+
+    The current version of the micro-frontend build scripts support node 18.
+    Using other major versions of node *may* work, but this is unsupported.  For
+    convenience, this repository includes an .nvmrc file to help in setting the
+    correct node version via `nvm <https://github.com/nvm-sh/nvm>`_.
+
+  3. Install npm dependencies:
+
+    ``cd frontend-app-profile && npm ci``
+
+  4. Start the dev server:
+
+    ``npm start``
+     The server will run on port 1995
 
 Once the dev server is up, visit http://localhost:1995/u/staff.
 
 Configuration
--------------
+=============
 
 This MFE is configured via node environment variables supplied at build time. See the .env file for the list of required environment variables. Example build syntax with a single environment variable:
 
