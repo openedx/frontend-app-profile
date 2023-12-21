@@ -145,7 +145,6 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
             >
               <span
                 className="pgn__icon"
-                data-testid="hyperlink-icon"
                 style={
                   Object {
                     "height": "1em",
@@ -224,7 +223,6 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
             >
               <span
                 className="pgn__icon"
-                data-testid="hyperlink-icon"
                 style={
                   Object {
                     "height": "1em",
@@ -2373,7 +2371,6 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                         >
                           <span
                             className="pgn__icon"
-                            data-testid="hyperlink-icon"
                             style={
                               Object {
                                 "height": "1em",
@@ -2531,7 +2528,6 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
             >
               <span
                 className="pgn__icon"
-                data-testid="hyperlink-icon"
                 style={
                   Object {
                     "height": "1em",
@@ -2610,7 +2606,6 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
             >
               <span
                 className="pgn__icon"
-                data-testid="hyperlink-icon"
                 style={
                   Object {
                     "height": "1em",
@@ -3553,7 +3548,6 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                         >
                           <span
                             className="pgn__icon"
-                            data-testid="hyperlink-icon"
                             style={
                               Object {
                                 "height": "1em",
@@ -3711,7 +3705,6 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
             >
               <span
                 className="pgn__icon"
-                data-testid="hyperlink-icon"
                 style={
                   Object {
                     "height": "1em",
@@ -3790,7 +3783,6 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
             >
               <span
                 className="pgn__icon"
-                data-testid="hyperlink-icon"
                 style={
                   Object {
                     "height": "1em",
@@ -5608,7 +5600,6 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                         >
                           <span
                             className="pgn__icon"
-                            data-testid="hyperlink-icon"
                             style={
                               Object {
                                 "height": "1em",
@@ -5771,7 +5762,6 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
             >
               <span
                 className="pgn__icon"
-                data-testid="hyperlink-icon"
                 style={
                   Object {
                     "height": "1em",
@@ -5878,7 +5868,6 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
             >
               <span
                 className="pgn__icon"
-                data-testid="hyperlink-icon"
                 style={
                   Object {
                     "height": "1em",
@@ -6253,7 +6242,6 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
             >
               <span
                 className="pgn__icon"
-                data-testid="hyperlink-icon"
                 style={
                   Object {
                     "height": "1em",
@@ -6332,7 +6320,6 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
             >
               <span
                 className="pgn__icon"
-                data-testid="hyperlink-icon"
                 style={
                   Object {
                     "height": "1em",
@@ -7148,7 +7135,6 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                         >
                           <span
                             className="pgn__icon"
-                            data-testid="hyperlink-icon"
                             style={
                               Object {
                                 "height": "1em",
@@ -7306,7 +7292,6 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
             >
               <span
                 className="pgn__icon"
-                data-testid="hyperlink-icon"
                 style={
                   Object {
                     "height": "1em",
@@ -7385,7 +7370,6 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
             >
               <span
                 className="pgn__icon"
-                data-testid="hyperlink-icon"
                 style={
                   Object {
                     "height": "1em",
@@ -8268,7 +8252,6 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                         >
                           <span
                             className="pgn__icon"
-                            data-testid="hyperlink-icon"
                             style={
                               Object {
                                 "height": "1em",
@@ -8426,7 +8409,6 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
             >
               <span
                 className="pgn__icon"
-                data-testid="hyperlink-icon"
                 style={
                   Object {
                     "height": "1em",
@@ -8505,7 +8487,6 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
             >
               <span
                 className="pgn__icon"
-                data-testid="hyperlink-icon"
                 style={
                   Object {
                     "height": "1em",
@@ -9396,7 +9377,6 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                         >
                           <span
                             className="pgn__icon"
-                            data-testid="hyperlink-icon"
                             style={
                               Object {
                                 "height": "1em",
@@ -10357,7 +10337,6 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                         >
                           <span
                             className="pgn__icon"
-                            data-testid="hyperlink-icon"
                             style={
                               Object {
                                 "height": "1em",
