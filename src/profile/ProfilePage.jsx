@@ -6,7 +6,7 @@ import { sendTrackingLogEvent } from '@edx/frontend-platform/analytics';
 import { ensureConfig, getConfig } from '@edx/frontend-platform';
 import { AppContext } from '@edx/frontend-platform/react';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
-import { Alert, Hyperlink } from '@edx/paragon';
+import { Alert, Hyperlink } from '@openedx/paragon';
 
 // Actions
 import {
