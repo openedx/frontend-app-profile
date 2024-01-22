@@ -7,7 +7,6 @@ import { render } from '@testing-library/react';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
-import renderer from 'react-test-renderer';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
@@ -100,7 +99,7 @@ describe('<ProfilePage />', () => {
         config: getConfig(),
       };
       const component = <ProfilePageWrapper contextValue={contextValue} store={mockStore(storeMocks.loadingApp)} />;
-      const tree = renderer.create(component).toJSON();
+      const { container: tree } = render(component);
       expect(tree).toMatchSnapshot();
     });
 
@@ -110,7 +109,7 @@ describe('<ProfilePage />', () => {
         config: getConfig(),
       };
       const component = <ProfilePageWrapper contextValue={contextValue} store={mockStore(storeMocks.viewOwnProfile)} />;
-      const tree = renderer.create(component).toJSON();
+      const { container: tree } = render(component);
       expect(tree).toMatchSnapshot();
     });
 
@@ -144,7 +143,7 @@ describe('<ProfilePage />', () => {
           match={{ params: { username: 'verified' } }} // Override default match
         />
       );
-      const tree = renderer.create(component).toJSON();
+      const { container: tree } = render(component);
       expect(tree).toMatchSnapshot();
     });
 
@@ -159,7 +158,7 @@ describe('<ProfilePage />', () => {
           store={mockStore(storeMocks.savingEditedBio)}
         />
       );
-      const tree = renderer.create(component).toJSON();
+      const { container: tree } = render(component);
       expect(tree).toMatchSnapshot();
     });
 
@@ -176,7 +175,7 @@ describe('<ProfilePage />', () => {
           store={mockStore(storeData)}
         />
       );
-      const tree = renderer.create(component).toJSON();
+      const { container: tree } = render(component);
       expect(tree).toMatchSnapshot();
     });
 
@@ -194,7 +193,7 @@ describe('<ProfilePage />', () => {
           store={mockStore(storeData)}
         />
       );
-      const tree = renderer.create(component).toJSON();
+      const { container: tree } = render(component);
       expect(tree).toMatchSnapshot();
     });
 
@@ -212,7 +211,7 @@ describe('<ProfilePage />', () => {
           store={mockStore(storeData)}
         />
       );
-      const tree = renderer.create(component).toJSON();
+      const { container: tree } = render(component);
       expect(tree).toMatchSnapshot();
     });
 
@@ -230,7 +229,7 @@ describe('<ProfilePage />', () => {
           store={mockStore(storeData)}
         />
       );
-      const tree = renderer.create(component).toJSON();
+      const { container: tree } = render(component);
       expect(tree).toMatchSnapshot();
     });
 
@@ -248,7 +247,7 @@ describe('<ProfilePage />', () => {
           store={mockStore(storeMocks.viewOwnProfile)}
         />
       );
-      const tree = renderer.create(component).toJSON();
+      const { container: tree } = render(component);
       expect(tree).toMatchSnapshot();
     });
     it('test age message alert', () => {

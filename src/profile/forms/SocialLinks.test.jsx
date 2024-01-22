@@ -2,7 +2,6 @@ import { render, fireEvent, screen } from '@testing-library/react';
 import PropTypes from 'prop-types';
 import React, { useMemo } from 'react';
 import { Provider } from 'react-redux';
-import renderer from 'react-test-renderer';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { configure as configureI18n, IntlProvider } from '@edx/frontend-platform/i18n';
@@ -103,7 +102,7 @@ describe('<SocialLinks />', () => {
   ['certificates', 'bio', 'goals', 'socialLinks'].forEach(editMode => (
     it(`calls social links with edit mode ${editMode}`, () => {
       const component = <SocialLinksWrapper {...defaultProps} formId={editMode} />;
-      const tree = renderer.create(component).toJSON();
+      const { container: tree } = render(component);
       expect(tree).toMatchSnapshot();
     })
   ));
