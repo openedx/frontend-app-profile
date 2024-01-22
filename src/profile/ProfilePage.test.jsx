@@ -3,11 +3,10 @@ import { getConfig } from '@edx/frontend-platform';
 import * as analytics from '@edx/frontend-platform/analytics';
 import { AppContext } from '@edx/frontend-platform/react';
 import { configure as configureI18n, IntlProvider } from '@edx/frontend-platform/i18n';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
-import renderer from 'react-test-renderer';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
@@ -100,7 +99,7 @@ describe('<ProfilePage />', () => {
         config: getConfig(),
       };
       const component = <ProfilePageWrapper contextValue={contextValue} store={mockStore(storeMocks.loadingApp)} />;
-      const tree = renderer.create(component).toJSON();
+      const { container: tree } = render(component);
       expect(tree).toMatchSnapshot();
     });
 
@@ -110,7 +109,7 @@ describe('<ProfilePage />', () => {
         config: getConfig(),
       };
       const component = <ProfilePageWrapper contextValue={contextValue} store={mockStore(storeMocks.viewOwnProfile)} />;
-      const tree = renderer.create(component).toJSON();
+      const { container: tree } = render(component);
       expect(tree).toMatchSnapshot();
     });
 
@@ -144,7 +143,7 @@ describe('<ProfilePage />', () => {
           match={{ params: { username: 'verified' } }} // Override default match
         />
       );
-      const tree = renderer.create(component).toJSON();
+      const { container: tree } = render(component);
       expect(tree).toMatchSnapshot();
     });
 
@@ -159,7 +158,7 @@ describe('<ProfilePage />', () => {
           store={mockStore(storeMocks.savingEditedBio)}
         />
       );
-      const tree = renderer.create(component).toJSON();
+      const { container: tree } = render(component);
       expect(tree).toMatchSnapshot();
     });
 
@@ -176,7 +175,7 @@ describe('<ProfilePage />', () => {
           store={mockStore(storeData)}
         />
       );
-      const tree = renderer.create(component).toJSON();
+      const { container: tree } = render(component);
       expect(tree).toMatchSnapshot();
     });
 
@@ -194,7 +193,7 @@ describe('<ProfilePage />', () => {
           store={mockStore(storeData)}
         />
       );
-      const tree = renderer.create(component).toJSON();
+      const { container: tree } = render(component);
       expect(tree).toMatchSnapshot();
     });
 
@@ -212,7 +211,7 @@ describe('<ProfilePage />', () => {
           store={mockStore(storeData)}
         />
       );
-      const tree = renderer.create(component).toJSON();
+      const { container: tree } = render(component);
       expect(tree).toMatchSnapshot();
     });
 
@@ -230,7 +229,7 @@ describe('<ProfilePage />', () => {
           store={mockStore(storeData)}
         />
       );
-      const tree = renderer.create(component).toJSON();
+      const { container: tree } = render(component);
       expect(tree).toMatchSnapshot();
     });
 
@@ -248,7 +247,7 @@ describe('<ProfilePage />', () => {
           store={mockStore(storeMocks.viewOwnProfile)}
         />
       );
-      const tree = renderer.create(component).toJSON();
+      const { container: tree } = render(component);
       expect(tree).toMatchSnapshot();
     });
     it('test age message alert', () => {
@@ -259,17 +258,15 @@ describe('<ProfilePage />', () => {
         authenticatedUser: { userId: 123, username: 'staff', administrator: true },
         config: { ...getConfig(), COLLECT_YEAR_OF_BIRTH: true },
       };
-      const component = (
+      const { container } = render(
         <ProfilePageWrapper
           contextValue={contextValue}
           store={mockStore(storeData)}
           requiresParentalConsent
-        />
+        />,
       );
-      const wrapper = mount(component);
-      wrapper.update();
 
-      expect(wrapper.find('.alert-info').hasClass('show')).toBe(true);
+      expect(container.querySelector('.alert-info')).toHaveClass('show');
     });
     it('test photo error alert', () => {
       const storeData = JSON.parse(JSON.stringify(storeMocks.viewOwnProfile));
@@ -278,11 +275,15 @@ describe('<ProfilePage />', () => {
         authenticatedUser: { userId: 123, username: 'staff', administrator: true },
         config: { ...getConfig(), COLLECT_YEAR_OF_BIRTH: true },
       };
-      const component = <ProfilePageWrapper contextValue={contextValue} store={mockStore(storeData)} />;
-      const wrapper = mount(component);
-      wrapper.update();
+      const { container } = render(
+        <ProfilePageWrapper
+          contextValue={contextValue}
+          store={mockStore(storeData)}
+          requiresParentalConsent
+        />,
+      );
 
-      expect(wrapper.find('.alert-danger').hasClass('show')).toBe(true);
+      expect(container.querySelector('.alert-danger')).toHaveClass('show');
     });
   });
 
@@ -292,15 +293,13 @@ describe('<ProfilePage />', () => {
         authenticatedUser: { userId: 123, username: 'staff', administrator: true },
         config: getConfig(),
       };
-      const component = (
+      render(
         <ProfilePageWrapper
           contextValue={contextValue}
           store={mockStore(storeMocks.loadingApp)}
           params={{ username: 'test-username' }}
-        />
+        />,
       );
-      const wrapper = mount(component);
-      wrapper.update();
 
       expect(analytics.sendTrackingLogEvent.mock.calls.length).toBe(1);
       expect(analytics.sendTrackingLogEvent.mock.calls[0][0]).toEqual('edx.profile.viewed');
