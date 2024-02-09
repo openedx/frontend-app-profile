@@ -1,7 +1,7 @@
 const { createConfig } = require('@openedx/frontend-build');
 
 module.exports = createConfig('jest', {
-  setupFiles: [
+  setupFilesAfterEnv: [
     '<rootDir>/src/setupTest.js',
   ],
 });
