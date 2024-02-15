@@ -56,6 +56,10 @@
     "react-router": "6.22.0",
     "react-router-dom": "6.22.0",
     "redux": "4.2.1",
+<<<<<<< HEAD
+=======
+    "@redux-devtools/extension": "3.3.0",
+>>>>>>> master
     "redux-logger": "3.0.6",
     "redux-saga": "1.3.0",
     "redux-thunk": "2.4.2",
