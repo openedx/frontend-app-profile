@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {
   FormattedDate, FormattedMessage, injectIntl, intlShape,
 } from '@edx/frontend-platform/i18n';
-import { Hyperlink } from '@edx/paragon';
+import { Hyperlink } from '@openedx/paragon';
 import { connect } from 'react-redux';
 import get from 'lodash.get';
 

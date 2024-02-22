@@ -135,6 +135,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
               >
                 <span
                   class="pgn__icon"
+                  data-testid="hyperlink-icon"
                   style="height: 1em; width: 1em;"
                 >
                   <svg
@@ -207,6 +208,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
               >
                 <span
                   class="pgn__icon"
+                  data-testid="hyperlink-icon"
                   style="height: 1em; width: 1em;"
                 >
                   <svg
@@ -2192,6 +2194,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                           >
                             <span
                               class="pgn__icon"
+                              data-testid="hyperlink-icon"
                               style="height: 1em; width: 1em;"
                             >
                               <svg
@@ -2337,6 +2340,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
               >
                 <span
                   class="pgn__icon"
+                  data-testid="hyperlink-icon"
                   style="height: 1em; width: 1em;"
                 >
                   <svg
@@ -2409,6 +2413,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
               >
                 <span
                   class="pgn__icon"
+                  data-testid="hyperlink-icon"
                   style="height: 1em; width: 1em;"
                 >
                   <svg
@@ -3188,6 +3193,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                           >
                             <span
                               class="pgn__icon"
+                              data-testid="hyperlink-icon"
                               style="height: 1em; width: 1em;"
                             >
                               <svg
@@ -3333,6 +3339,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
               >
                 <span
                   class="pgn__icon"
+                  data-testid="hyperlink-icon"
                   style="height: 1em; width: 1em;"
                 >
                   <svg
@@ -3405,6 +3412,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
               >
                 <span
                   class="pgn__icon"
+                  data-testid="hyperlink-icon"
                   style="height: 1em; width: 1em;"
                 >
                   <svg
@@ -5059,6 +5067,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                           >
                             <span
                               class="pgn__icon"
+                              data-testid="hyperlink-icon"
                               style="height: 1em; width: 1em;"
                             >
                               <svg
@@ -5215,6 +5224,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               >
                 <span
                   class="pgn__icon"
+                  data-testid="hyperlink-icon"
                   style="height: 1em; width: 1em;"
                 >
                   <svg
@@ -5315,6 +5325,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               >
                 <span
                   class="pgn__icon"
+                  data-testid="hyperlink-icon"
                   style="height: 1em; width: 1em;"
                 >
                   <svg
@@ -5607,6 +5618,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               >
                 <span
                   class="pgn__icon"
+                  data-testid="hyperlink-icon"
                   style="height: 1em; width: 1em;"
                 >
                   <svg
@@ -5679,6 +5691,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               >
                 <span
                   class="pgn__icon"
+                  data-testid="hyperlink-icon"
                   style="height: 1em; width: 1em;"
                 >
                   <svg
@@ -6336,6 +6349,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                           >
                             <span
                               class="pgn__icon"
+                              data-testid="hyperlink-icon"
                               style="height: 1em; width: 1em;"
                             >
                               <svg
@@ -6481,6 +6495,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               >
                 <span
                   class="pgn__icon"
+                  data-testid="hyperlink-icon"
                   style="height: 1em; width: 1em;"
                 >
                   <svg
@@ -6553,6 +6568,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               >
                 <span
                   class="pgn__icon"
+                  data-testid="hyperlink-icon"
                   style="height: 1em; width: 1em;"
                 >
                   <svg
@@ -7274,6 +7290,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                           >
                             <span
                               class="pgn__icon"
+                              data-testid="hyperlink-icon"
                               style="height: 1em; width: 1em;"
                             >
                               <svg
@@ -7419,6 +7436,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               >
                 <span
                   class="pgn__icon"
+                  data-testid="hyperlink-icon"
                   style="height: 1em; width: 1em;"
                 >
                   <svg
@@ -7491,6 +7509,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               >
                 <span
                   class="pgn__icon"
+                  data-testid="hyperlink-icon"
                   style="height: 1em; width: 1em;"
                 >
                   <svg
@@ -8220,6 +8239,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                           >
                             <span
                               class="pgn__icon"
+                              data-testid="hyperlink-icon"
                               style="height: 1em; width: 1em;"
                             >
                               <svg
@@ -9016,6 +9036,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                           >
                             <span
                               class="pgn__icon"
+                              data-testid="hyperlink-icon"
                               style="height: 1em; width: 1em;"
                             >
                               <svg
