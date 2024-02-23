@@ -37,6 +37,13 @@ export function convertKeyNames(object, nameMap) {
   return modifyObjectKeys(object, transformer);
 }
 
+export const getFirstAndLastNameInitial = (nameValue) => {
+  const [first, ...lastNameArr] = nameValue.trim().split(' ');
+  const lastNameInitial = lastNameArr.length > 0 ? lastNameArr[0].charAt(0) : '';
+  const fullName = `${first} ${lastNameInitial}`;
+  return fullName.trim();
+};
+
 /**
  * Helper class to save time when writing out action types for asynchronous methods.  Also helps
  * ensure that actions are namespaced.
