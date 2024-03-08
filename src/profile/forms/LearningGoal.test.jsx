@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useMemo } from 'react';
 import { Provider } from 'react-redux';
-import renderer from 'react-test-renderer';
+import { render, screen } from '@testing-library/react';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { configure as configureI18n, IntlProvider } from '@edx/frontend-platform/i18n';
@@ -92,31 +92,25 @@ LearningGoalWrapperWithStore.propTypes = {
 describe('<LearningGoal />', () => {
   describe('renders the current learning goal', () => {
     it('renders "I want to advance my career"', () => {
-      const learningGoalRenderer = renderer.create(
+      render(
         <LearningGoalWrapper
           {...requiredLearningGoalProps}
           formId="learningGoal"
         />,
       );
-
-      const learningGoalInstance = learningGoalRenderer.root;
-
-      expect(learningGoalInstance.findByProps({ className: 'lead' }).children).toEqual(['I want to advance my career']);
+      expect(screen.getByText('I want to advance my career')).toBeTruthy();
     });
 
     it('renders "Something else"', () => {
       requiredLearningGoalProps.learningGoal = 'something_else';
 
-      const learningGoalRenderer = renderer.create(
+      render(
         <LearningGoalWrapper
           {...requiredLearningGoalProps}
           formId="learningGoal"
         />,
       );
-
-      const learningGoalInstance = learningGoalRenderer.root;
-
-      expect(learningGoalInstance.findByProps({ className: 'lead' }).children).toEqual(['Something else']);
+      expect(screen.getByText('Something else')).toBeTruthy();
     });
   });
 });

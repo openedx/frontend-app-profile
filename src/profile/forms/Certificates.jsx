@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {
   FormattedDate, FormattedMessage, injectIntl, intlShape,
 } from '@edx/frontend-platform/i18n';
-import { Hyperlink } from '@edx/paragon';
+import { Hyperlink } from '@openedx/paragon';
 import { connect } from 'react-redux';
 import get from 'lodash.get';
 
@@ -68,7 +68,7 @@ class Certificates extends React.Component {
     })();
 
     return (
-      <div key={`${modifiedDate}-${courseId}`} className="col col-sm-6 d-flex align-items-stretch">
+      <div key={`${modifiedDate}-${courseId}`} className="col-12 col-sm-6 d-flex align-items-stretch">
         <div className="card mb-4 certificate flex-grow-1">
           <div
             className="certificate-type-illustration"
