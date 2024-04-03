@@ -68,7 +68,7 @@
     "@commitlint/config-angular": "19.0.3",
     "@edx/browserslist-config": "^1.1.1",
     "@edx/reactifex": "2.2.0",
-    "@openedx/frontend-build": "14.0.0-alpha.1",
+    "@openedx/frontend-build": "https://github.com/openedx/frontend-build/tarball/bilalqamar95/alpha-eslint-update",
     "@testing-library/jest-dom": "6.4.2",
     "@testing-library/react": "12.1.5",
     "glob": "10.3.10",
