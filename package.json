@@ -15,6 +15,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "snapshot": "fedx-scripts jest --updateSnapshot",
     "start": "vite --host || echo this echo is here to ignore the --config arg if tutor passes it in",
+    "start-tutor": "PUBLIC_PATH=/profile/ MFE_CONFIG_API_URL='http://localhost:8000/api/mfe_config/v1' vite --host",
     "preview": "vite preview",
     "test": "TZ=UTC fedx-scripts jest --coverage --passWithNoTests",
     "stubs": "pact-stub-service ./src/pacts/frontend-app-profile-edx-platform.json --port 18000"
