@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Declare some very minimal types for @edx packages that don't have types
 declare module '@edx/frontend-platform' {
   const APP_INIT_ERROR: string;
@@ -19,6 +20,7 @@ declare module '@edx/frontend-platform/i18n' {
         injectIntl,
         intlShape,
         defineMessages,
+        IntlProvider,
     } from 'react-intl';
 }
 

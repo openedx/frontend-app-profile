@@ -14,6 +14,7 @@ function composeMiddleware() {
   if (getConfig().ENVIRONMENT === 'development') {
     const loggerMiddleware = createLogger({
       collapsed: true,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     }) as any;  // TODO: why is this type not accepted?
     return composeWithDevTools(applyMiddleware(thunkMiddleware, sagaMiddleware, loggerMiddleware));
   }
