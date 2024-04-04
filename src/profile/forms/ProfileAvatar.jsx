@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Button, Dropdown } from '@openedx/paragon';
 import { FormattedMessage, injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 
-import { ReactComponent as DefaultAvatar } from '../assets/avatar.svg';
+import DefaultAvatar from '../assets/avatar.svg';
 
 import messages from './ProfileAvatar.messages';
 
@@ -111,15 +111,13 @@ class ProfileAvatar extends React.Component {
   renderAvatar() {
     const { intl } = this.props;
 
-    return this.props.isDefault ? (
-      <DefaultAvatar className="text-muted" role="img" aria-hidden focusable="false" viewBox="0 0 24 24" />
-    ) : (
+    return (
       <img
         data-hj-suppress
         className="w-100 h-100 d-block rounded-circle overflow-hidden"
         style={{ objectFit: 'cover' }}
         alt={intl.formatMessage(messages['profile.image.alt.attribute'])}
-        src={this.props.src}
+        src={this.props.isDefault ? DefaultAvatar : this.props.src}
       />
     );
   }

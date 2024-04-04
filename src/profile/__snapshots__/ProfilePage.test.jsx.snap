@@ -5133,12 +5133,12 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               <div
                 class="profile-avatar rounded-circle bg-light"
               >
-                <iconmock
-                  aria-hidden="true"
-                  class="text-muted"
-                  focusable="false"
-                  role="img"
-                  viewbox="0 0 24 24"
+                <img
+                  alt="profile avatar"
+                  class="w-100 h-100 d-block rounded-circle overflow-hidden"
+                  data-hj-suppress="true"
+                  src="icon/mock/path"
+                  style="object-fit: cover;"
                 />
               </div>
               <form

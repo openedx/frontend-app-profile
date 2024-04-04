@@ -14,7 +14,7 @@ function composeMiddleware() {
   if (getConfig().ENVIRONMENT === 'development') {
     const loggerMiddleware = createLogger({
       collapsed: true,
-    });
+    }) as any;  // TODO: why is this type not accepted?
     return composeWithDevTools(applyMiddleware(thunkMiddleware, sagaMiddleware, loggerMiddleware));
   }
 
