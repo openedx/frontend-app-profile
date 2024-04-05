@@ -1,12 +1,13 @@
 <!doctype html>
 <html lang="en-us">
   <head>
-      <title>Learner Profile | <%= process.env.SITE_NAME %></title>
+      <title>Learner Profile | __SITE_NAME__</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="shortcut icon" href="<%=htmlWebpackPlugin.options.FAVICON_URL%>" type="image/x-icon" />
+      <link rel="shortcut icon" href="__FAVICON_URL__" type="image/x-icon" />
   </head>
   <body>
     <div id="root"></div>
+    <script type="module" src="/src/index.tsx"></script>
   </body>
 </html>

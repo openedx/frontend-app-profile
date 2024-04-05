@@ -32,7 +32,7 @@ const requiredProfilePageProps = {
 };
 
 // Mock language cookie
-Object.defineProperty(global.document, 'cookie', {
+Object.defineProperty(globalThis.document, 'cookie', {
   writable: true,
   value: `${getConfig().LANGUAGE_PREFERENCE_COOKIE_NAME}=en`,
 });

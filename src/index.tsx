@@ -1,6 +1,3 @@
-import 'core-js/stable';
-import 'regenerator-runtime/runtime';
-
 import {
   APP_INIT_ERROR,
   APP_READY,
@@ -33,7 +30,9 @@ subscribe(APP_READY, () => {
       <Head />
       <Header />
       <main id="main">
-        <AppRoutes />
+        <React.StrictMode>
+          <AppRoutes />
+        </React.StrictMode>
       </main>
       <Footer />
     </AppProvider>,
