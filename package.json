@@ -64,8 +64,8 @@
     "universal-cookie": "4.0.4"
   },
   "devDependencies": {
-    "@commitlint/cli": "19.2.2",
-    "@commitlint/config-angular": "19.2.2",
+    "@commitlint/cli": "19.3.0",
+    "@commitlint/config-angular": "19.3.0",
     "@edx/browserslist-config": "^1.1.1",
     "@edx/reactifex": "2.2.0",
     "@openedx/frontend-build": "13.1.4",
