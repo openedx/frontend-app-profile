@@ -4,7 +4,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: 'frontend-app-profile'
-  description: 'This is a micro-frontend application responsible for the display and updating of user profiles.'
+  description: 'This is a micro-frontend application responsible for displaying and updating the user profiles.'
   links:
     - url: 'https://github.com/openedx/frontend-app-profile/blob/master/README.rst'
       title: 'Documentation'
@@ -18,7 +18,7 @@ metadata:
     # This can be multiple comma-separated projects.
     openedx.org/add-to-projects: "openedx:23"
 spec:
+  owner: group:edx-infinity
   type: 'service'
   lifecycle: 'production'
-  owner: 2U-aperture
 # (Optional) An array of different components or resources.
