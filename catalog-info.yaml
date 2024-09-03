@@ -18,7 +18,7 @@ metadata:
     # This can be multiple comma-separated projects.
     openedx.org/add-to-projects: "openedx:23"
 spec:
-  owner: group:edx-infinity
+  owner: group:2u-infinity
   type: 'service'
   lifecycle: 'production'
 # (Optional) An array of different components or resources.
