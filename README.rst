@@ -98,7 +98,7 @@ frontend repository, the best place to discuss it would be in the `#wg-frontend
 channel`_.
 
 For anything non-trivial, the best path is to open an issue in this repository
-with as many details about the issue you are facing as you can provide.  Please tag **@openedx/2u-aperture** on any PRs or issues.
+with as many details about the issue you are facing as you can provide.  Please tag **@openedx/2u-infinity** on any PRs or issues.
 
 https://github.com/openedx/frontend-app-profile/issues
 
