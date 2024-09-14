@@ -22,6 +22,7 @@ export const initialState = {
   drafts: {},
   isLoadingProfile: true,
   isAuthenticatedUserProfile: false,
+  disabledCountries: ['RU'],
 };
 
 const profilePage = (state = initialState, action = {}) => {

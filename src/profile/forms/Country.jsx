@@ -35,7 +35,11 @@ class Country extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.submitHandler(this.props.formId);
+    const { country, disabledCountries, formId, submitHandler } = this.props;
+
+    if (!disabledCountries.includes(country)) {
+      submitHandler(formId);
+    }
   }
 
   handleClose() {
@@ -45,6 +49,26 @@ class Country extends React.Component {
   handleOpen() {
     this.props.openHandler(this.props.formId);
   }
+
+ isDisabledCountry = (country) => {
+    const { disabledCountries } = this.props;
+    return disabledCountries.includes(country);
+  };
+
+  filteredCountries = (countryList) => {
+    const { disabledCountries, committedCountry } = this.props;
+
+    if (!disabledCountries.length) {
+      return countryList;
+    }
+
+    return countryList.filter(({ code }) => {
+      const isDisabled = this.isDisabledCountry(code);
+      const isUserCountry = code === committedCountry;
+
+      return !isDisabled || isUserCountry;
+    });
+  };
 
   render() {
     const {
@@ -58,6 +82,7 @@ class Country extends React.Component {
       sortedCountries,
       countryMessages,
     } = this.props;
+    const filteredCountries = this.filteredCountries(sortedCountries);
 
     return (
       <SwitchContent
@@ -84,8 +109,8 @@ class Country extends React.Component {
                     onChange={this.handleChange}
                   >
                     <option value="">&nbsp;</option>
-                    {sortedCountries.map(({ code, name }) => (
-                      <option key={code} value={code}>{name}</option>
+                    {filteredCountries.map(({ code, name }) => (
+                      <option key={code} value={code} disabled={this.isDisabledCountry(code)}>{name}</option>
                     ))}
                   </select>
                   {error !== null && (
@@ -157,7 +182,9 @@ Country.propTypes = {
     code: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
   })).isRequired,
+  disabledCountries: PropTypes.arrayOf(PropTypes.string),
   countryMessages: PropTypes.objectOf(PropTypes.string).isRequired,
+  committedCountry: PropTypes.string,
 
   // Actions
   changeHandler: PropTypes.func.isRequired,
@@ -175,6 +202,8 @@ Country.defaultProps = {
   country: null,
   visibilityCountry: 'private',
   error: null,
+  disabledCountries: [],
+  committedCountry: '',
 };
 
 export default connect(
