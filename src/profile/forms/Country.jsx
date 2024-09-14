@@ -35,7 +35,9 @@ class Country extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const { country, disabledCountries, formId, submitHandler } = this.props;
+    const {
+      country, disabledCountries, formId, submitHandler,
+    } = this.props;
 
     if (!disabledCountries.includes(country)) {
       submitHandler(formId);
@@ -50,7 +52,7 @@ class Country extends React.Component {
     this.props.openHandler(this.props.formId);
   }
 
- isDisabledCountry = (country) => {
+  isDisabledCountry = (country) => {
     const { disabledCountries } = this.props;
     return disabledCountries.includes(country);
   };
