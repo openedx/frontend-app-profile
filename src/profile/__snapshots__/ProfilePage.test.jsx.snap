@@ -5107,7 +5107,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
 </div>
 `;
 
-exports[`<ProfilePage /> Renders correctly in various states test user with disabled country 1`] = `
+exports[`<ProfilePage /> Renders correctly in various states test user with test user with disabled country 1`] = `
 <div>
   <div
     class="profile-page"
@@ -7225,7 +7225,7 @@ exports[`<ProfilePage /> Renders correctly in various states test user with disa
 </div>
 `;
 
-exports[`<ProfilePage /> Renders correctly in various states test user with non disabled country 1`] = `
+exports[`<ProfilePage /> Renders correctly in various states test user with test user with non-disabled country 1`] = `
 <div>
   <div
     class="profile-page"
