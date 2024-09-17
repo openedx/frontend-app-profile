@@ -285,6 +285,29 @@ describe('<ProfilePage />', () => {
 
       expect(container.querySelector('.alert-danger')).toHaveClass('show');
     });
+
+    it.each([
+      ['test user with non-disabled country', 'PK'],
+      ['test user with disabled country', 'RU'],
+    ])('test user with %s', (_, accountCountry) => {
+      const storeData = JSON.parse(JSON.stringify(storeMocks.savingEditedBio));
+      storeData.profilePage.errors.country = {};
+      storeData.profilePage.currentlyEditingField = 'country';
+      storeData.profilePage.disabledCountries = ['RU'];
+      storeData.profilePage.account.country = accountCountry;
+      const contextValue = {
+        authenticatedUser: { userId: 123, username: 'staff', administrator: true },
+        config: getConfig(),
+      };
+      const component = (
+        <ProfilePageWrapper
+          contextValue={contextValue}
+          store={mockStore(storeData)}
+        />
+      );
+      const { container: tree } = render(component);
+      expect(tree).toMatchSnapshot();
+    });
   });
 
   describe('handles analytics', () => {

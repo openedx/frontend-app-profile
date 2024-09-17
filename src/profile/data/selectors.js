@@ -23,6 +23,7 @@ export const isLoadingProfileSelector = state => state.profilePage.isLoadingProf
 export const currentlyEditingFieldSelector = state => state.profilePage.currentlyEditingField;
 export const accountErrorsSelector = state => state.profilePage.errors;
 export const isAuthenticatedUserProfileSelector = state => state.profilePage.isAuthenticatedUserProfile;
+export const disabledCountriesSelector = state => state.profilePage.disabledCountries;
 
 export const editableFormModeSelector = createSelector(
   profileAccountSelector,
@@ -130,10 +131,14 @@ export const countrySelector = createSelector(
   editableFormSelector,
   sortedCountriesSelector,
   countryMessagesSelector,
-  (editableForm, sortedCountries, countryMessages) => ({
+  disabledCountriesSelector,
+  profileAccountSelector,
+  (editableForm, sortedCountries, countryMessages, disabledCountries, account) => ({
     ...editableForm,
     sortedCountries,
     countryMessages,
+    disabledCountries,
+    committedCountry: account.country,
   }),
 );
 
