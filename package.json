@@ -68,7 +68,7 @@
     "@commitlint/config-angular": "19.4.1",
     "@edx/browserslist-config": "^1.1.1",
     "@edx/reactifex": "2.2.0",
-    "@openedx/frontend-build": "14.1.2",
+    "@openedx/frontend-build": "14.1.4",
     "@testing-library/jest-dom": "6.4.8",
     "@testing-library/react": "12.1.5",
     "glob": "10.4.5",
