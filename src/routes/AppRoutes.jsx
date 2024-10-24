@@ -4,7 +4,7 @@ import {
   PageWrap,
 } from '@edx/frontend-platform/react';
 import { Routes, Route } from 'react-router-dom';
-import { ProfilePage, NotFoundPage } from '../profile';
+import { ProfilePage, NotFoundPage } from '../profile-v2';
 
 const AppRoutes = () => (
   <Routes>
