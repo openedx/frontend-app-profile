@@ -79,7 +79,9 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               </h1>
               <p
                 class="row pt-2 text-gray-800 font-weight-normal m-0"
-              />
+              >
+                user
+              </p>
               <div
                 class="row pt-2 m-0 g-1rem"
               >
@@ -228,7 +230,9 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               </h1>
               <p
                 class="row pt-2 text-gray-800 font-weight-normal m-0"
-              />
+              >
+                Lemon Seltzer
+              </p>
               <div
                 class="row pt-2 m-0 g-1rem"
               >
@@ -448,7 +452,9 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
               </h1>
               <p
                 class="row pt-2 text-gray-800 font-weight-normal m-0"
-              />
+              >
+                Lemon Seltzer
+              </p>
               <div
                 class="row pt-2 m-0 g-1rem"
               >
