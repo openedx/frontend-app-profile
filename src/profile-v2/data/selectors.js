@@ -47,6 +47,7 @@ export const profilePageSelector = createSelector(
     requiresParentalConsent: account.requiresParentalConsent,
     dateJoined: account.dateJoined,
     yearOfBirth: account.yearOfBirth,
+    name: account.name,
 
     courseCertificates,
 
