@@ -22,7 +22,6 @@ const Certificates = ({
 }) => {
   const intl = useIntl();
 
-  // Memoizing the renderCertificate function to prevent unnecessary re-renders
   const renderCertificate = useCallback(({
     certificateType, courseDisplayName, courseOrganization, modifiedDate, downloadUrl, courseId,
   }) => {

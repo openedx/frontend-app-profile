@@ -8,12 +8,8 @@ import { injectIntl } from '@edx/frontend-platform/i18n';
 import { Alert, Hyperlink } from '@openedx/paragon';
 import {
   fetchProfile,
-  saveProfile,
   saveProfilePhoto,
   deleteProfilePhoto,
-  openForm,
-  closeForm,
-  updateDraft,
 } from './data/actions';
 import ProfileAvatar from './forms/ProfileAvatar';
 import Certificates from './Certificates';
@@ -35,7 +31,6 @@ const ProfilePage = ({ params, intl }) => {
     dateJoined,
     yearOfBirth,
     courseCertificates,
-    visibilityCourseCertificates,
     name,
     profileImage,
     savePhotoState,
@@ -63,22 +58,6 @@ const ProfilePage = ({ params, intl }) => {
 
   const handleDeleteProfilePhoto = () => {
     dispatch(deleteProfilePhoto(context.authenticatedUser.username));
-  };
-
-  const handleClose = (formId) => {
-    dispatch(closeForm(formId));
-  };
-
-  const handleOpen = (formId) => {
-    dispatch(openForm(formId));
-  };
-
-  const handleSubmit = (formId) => {
-    dispatch(saveProfile(formId, context.authenticatedUser.username));
-  };
-
-  const handleChange = (fieldName, value) => {
-    dispatch(updateDraft(fieldName, value));
   };
 
   const isYOBDisabled = () => {
@@ -125,13 +104,6 @@ const ProfilePage = ({ params, intl }) => {
       return <PageLoading srMessage={intl.formatMessage(messages['profile.loading'])} />;
     }
 
-    const commonFormProps = {
-      openHandler: handleOpen,
-      closeHandler: handleClose,
-      submitHandler: handleSubmit,
-      changeHandler: handleChange,
-    };
-
     return (
       <>
         <div className="profile-page-bg-banner bg-primary d-md-block align-items-center px-75rem py-4rem h-100 w-100">
@@ -174,9 +146,7 @@ const ProfilePage = ({ params, intl }) => {
           {isBlockVisible(courseCertificates.length) && (
           <Certificates
             certificates={courseCertificates}
-            visibilityCourseCertificates={visibilityCourseCertificates}
             formId="certificates"
-            {...commonFormProps}
           />
           )}
         </div>
@@ -186,7 +156,6 @@ const ProfilePage = ({ params, intl }) => {
 
   return (
     <div className="profile-page">
-      {/* <Banner /> */}
       {renderContent()}
     </div>
   );

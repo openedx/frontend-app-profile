@@ -2,39 +2,38 @@ import {
   takeEvery,
   put,
   call,
-  delay,
   select,
   all,
 } from 'redux-saga/effects';
 import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
 
 import * as profileActions from './actions';
-import { handleSaveProfileSelector, userAccountSelector } from './selectors';
+import { userAccountSelector } from './selectors';
+
+import profileSaga, {
+  handleFetchProfile,
+  handleSaveProfilePhoto,
+  handleDeleteProfilePhoto,
+} from './sagas';
+import * as ProfileApiService from './services';
+import {
+  deleteProfilePhotoBegin,
+  deleteProfilePhotoReset,
+  saveProfilePhotoBegin,
+  saveProfilePhotoReset,
+} from './actions';
 
 jest.mock('./services', () => ({
-  getProfile: jest.fn(),
-  patchProfile: jest.fn(),
-  postProfilePhoto: jest.fn(),
-  deleteProfilePhoto: jest.fn(),
-  getPreferences: jest.fn(),
   getAccount: jest.fn(),
   getCourseCertificates: jest.fn(),
+  getPreferences: jest.fn(),
+  postProfilePhoto: jest.fn(),
+  deleteProfilePhoto: jest.fn(),
 }));
 
 jest.mock('@edx/frontend-platform/auth', () => ({
   getAuthenticatedUser: jest.fn(),
 }));
-
-// RootSaga and ProfileApiService must be imported AFTER the mock above.
-/* eslint-disable import/first */
-import profileSaga, {
-  handleFetchProfile,
-  handleSaveProfile,
-  handleSaveProfilePhoto,
-  handleDeleteProfilePhoto,
-} from './sagas';
-import * as ProfileApiService from './services';
-/* eslint-enable import/first */
 
 describe('RootSaga', () => {
   describe('profileSaga', () => {
@@ -43,8 +42,6 @@ describe('RootSaga', () => {
 
       expect(gen.next().value)
         .toEqual(takeEvery(profileActions.FETCH_PROFILE.BASE, handleFetchProfile));
-      expect(gen.next().value)
-        .toEqual(takeEvery(profileActions.SAVE_PROFILE.BASE, handleSaveProfile));
       expect(gen.next().value)
         .toEqual(takeEvery(profileActions.SAVE_PROFILE_PHOTO.BASE, handleSaveProfilePhoto));
       expect(gen.next().value)
@@ -111,55 +108,51 @@ describe('RootSaga', () => {
     });
   });
 
-  describe('handleSaveProfile', () => {
-    const selectorData = {
-      username: 'my username',
-      drafts: {
-        name: 'Full Name',
-      },
-      preferences: {},
-    };
+  describe('handleSaveProfilePhoto', () => {
+    it('should publish a reset action on error', () => {
+      const action = profileActions.saveProfilePhoto('my username', {});
+      const gen = handleSaveProfilePhoto(action);
+      const error = new Error('Error occurred');
 
-    it('should successfully process a saveProfile request if there are no exceptions', () => {
-      const action = profileActions.saveProfile('ze form id', 'my username');
-      const gen = handleSaveProfile(action);
-      const profile = {
-        name: 'Full Name',
-        levelOfEducation: 'b',
-      };
-      expect(gen.next().value).toEqual(select(handleSaveProfileSelector));
-      expect(gen.next(selectorData).value).toEqual(put(profileActions.saveProfileBegin()));
-      expect(gen.next().value).toEqual(call(ProfileApiService.patchProfile, 'my username', {
-        name: 'Full Name',
-      }));
-      // The library would supply the result of the above call
-      // as the parameter to the NEXT yield.  Here:
-      expect(gen.next(profile).value).toEqual(put(profileActions.saveProfileSuccess(profile, {})));
-      expect(gen.next().value).toEqual(delay(1000));
-      expect(gen.next().value).toEqual(put(profileActions.closeForm('ze form id')));
-      expect(gen.next().value).toEqual(delay(300));
-      expect(gen.next().value).toEqual(put(profileActions.saveProfileReset()));
-      expect(gen.next().value).toEqual(put(profileActions.resetDrafts()));
+      expect(gen.next().value).toEqual(put(saveProfilePhotoBegin()));
+      expect(gen.throw(error).value).toEqual(put(saveProfilePhotoReset()));
+      expect(gen.next().value).toBeUndefined();
+    });
+  });
+
+  describe('handleDeleteProfilePhoto', () => {
+    it('should publish a reset action on error', () => {
+      const action = profileActions.deleteProfilePhoto('my username');
+      const gen = handleDeleteProfilePhoto(action);
+      const error = new Error('Error occurred');
+
+      expect(gen.next().value).toEqual(put(deleteProfilePhotoBegin()));
+      expect(gen.throw(error).value).toEqual(put(deleteProfilePhotoReset()));
+      expect(gen.next().value).toBeUndefined();
+    });
+  });
+
+  describe('handleDeleteProfilePhoto', () => {
+    it('should successfully process a deleteProfilePhoto request if there are no exceptions', () => {
+      const action = profileActions.deleteProfilePhoto('my username');
+      const gen = handleDeleteProfilePhoto(action);
+      const photoResult = {};
+
+      expect(gen.next().value).toEqual(put(profileActions.deleteProfilePhotoBegin()));
+      expect(gen.next().value).toEqual(call(ProfileApiService.deleteProfilePhoto, 'my username'));
+      expect(gen.next(photoResult).value).toEqual(put(profileActions.deleteProfilePhotoSuccess(photoResult)));
+      expect(gen.next().value).toEqual(put(profileActions.deleteProfilePhotoReset()));
       expect(gen.next().value).toBeUndefined();
     });
 
-    it('should successfully publish a failure action on exception', () => {
-      const error = new Error('uhoh');
-      error.processedData = {
-        fieldErrors: {
-          uhoh: 'not good',
-        },
-      };
-      const action = profileActions.saveProfile(
-        'ze form id',
-        'my username',
-      );
-      const gen = handleSaveProfile(action);
+    it('should publish a failure action on exception', () => {
+      const error = new Error('Error occurred');
+      const action = profileActions.deleteProfilePhoto('my username');
+      const gen = handleDeleteProfilePhoto(action);
 
-      expect(gen.next().value).toEqual(select(handleSaveProfileSelector));
-      expect(gen.next(selectorData).value).toEqual(put(profileActions.saveProfileBegin()));
+      expect(gen.next().value).toEqual(put(profileActions.deleteProfilePhotoBegin()));
       const result = gen.throw(error);
-      expect(result.value).toEqual(put(profileActions.saveProfileFailure({ uhoh: 'not good' })));
+      expect(result.value).toEqual(put(profileActions.deleteProfilePhotoReset()));
       expect(gen.next().value).toBeUndefined();
     });
   });

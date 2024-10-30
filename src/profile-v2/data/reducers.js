@@ -1,25 +1,17 @@
 import {
-  SAVE_PROFILE,
   SAVE_PROFILE_PHOTO,
   DELETE_PROFILE_PHOTO,
-  CLOSE_FORM,
-  OPEN_FORM,
   FETCH_PROFILE,
-  UPDATE_DRAFT,
-  RESET_DRAFTS,
 } from './actions';
 
 export const initialState = {
   errors: {},
-  saveState: null,
   savePhotoState: null,
-  currentlyEditingField: null,
   account: {
     socialLinks: [],
   },
   preferences: {},
   courseCertificates: [],
-  drafts: {},
   isLoadingProfile: true,
   isAuthenticatedUserProfile: false,
   disabledCountries: ['RU'],
@@ -43,34 +35,6 @@ const profilePage = (state = initialState, action = {}) => {
         courseCertificates: action.courseCertificates,
         isLoadingProfile: false,
         isAuthenticatedUserProfile: action.isAuthenticatedUserProfile,
-      };
-    case SAVE_PROFILE.BEGIN:
-      return {
-        ...state,
-        saveState: 'pending',
-        errors: {},
-      };
-    case SAVE_PROFILE.SUCCESS:
-      return {
-        ...state,
-        saveState: 'complete',
-        errors: {},
-        // Account is always replaced completely.
-        account: action.payload.account !== null ? action.payload.account : state.account,
-        // Preferences changes get merged in.
-        preferences: { ...state.preferences, ...action.payload.preferences },
-      };
-    case SAVE_PROFILE.FAILURE:
-      return {
-        ...state,
-        saveState: 'error',
-        errors: { ...state.errors, ...action.payload.errors },
-      };
-    case SAVE_PROFILE.RESET:
-      return {
-        ...state,
-        saveState: null,
-        errors: {},
       };
 
     case SAVE_PROFILE_PHOTO.BEGIN:
@@ -127,33 +91,6 @@ const profilePage = (state = initialState, action = {}) => {
         errors: {},
       };
 
-    case UPDATE_DRAFT:
-      return {
-        ...state,
-        drafts: { ...state.drafts, [action.payload.name]: action.payload.value },
-      };
-
-    case RESET_DRAFTS:
-      return {
-        ...state,
-        drafts: {},
-      };
-    case OPEN_FORM:
-      return {
-        ...state,
-        currentlyEditingField: action.payload.formId,
-        drafts: {},
-      };
-    case CLOSE_FORM:
-      // Only close if the field to close is undefined or matches the field that is currently open
-      if (action.payload.formId === state.currentlyEditingField) {
-        return {
-          ...state,
-          currentlyEditingField: null,
-          drafts: {},
-        };
-      }
-      return state;
     default:
       return state;
   }

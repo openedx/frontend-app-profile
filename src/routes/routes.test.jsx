@@ -12,7 +12,7 @@ jest.mock('@edx/frontend-platform/auth', () => ({
   getLoginRedirectUrl: jest.fn(),
 }));
 
-jest.mock('../profile', () => ({
+jest.mock('../profile-v2', () => ({
   ProfilePage: () => (<div>Profile page</div>),
   NotFoundPage: () => (<div>Not found page</div>),
 }));
