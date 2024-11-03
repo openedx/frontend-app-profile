@@ -35,13 +35,13 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
       class="profile-page-bg-banner bg-primary d-md-block align-items-center px-75rem py-4rem h-100 w-100"
     >
       <div
-        class="col container-fluid w-100 h-100 bg-white py-0 pl-25rem pr-0 rounded-75"
+        class="col container-fluid w-100 h-100 bg-white py-0 pl-25rem pr-25rem rounded-75"
       >
         <div
           class="col h-100 w-100 py-4 px-0 justify-content-start g-15rem"
         >
           <div
-            class="row-auto d-flex align-items-center h-100 w-100 justify-content-start g-15rem"
+            class="row-auto d-flex flex-wrap align-items-center h-100 w-100 justify-content-start g-15rem"
           >
             <div
               class="profile-avatar-wrap position-relative"
@@ -100,10 +100,10 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               </div>
             </div>
             <div
-              class="pr-25rem"
+              class="col-auto p-0"
             >
               <a
-                class="pgn__hyperlink default-link standalone-link btn btn-brand btn-rounded font-weight-normal"
+                class="pgn__hyperlink default-link standalone-link btn btn-brand btn-rounded font-weight-normal px-4 py-0625rem text-nowrap"
                 href="http://localhost:18150/records"
                 rel="noopener noreferrer"
                 target="_blank"
@@ -169,13 +169,13 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
       class="profile-page-bg-banner bg-primary d-md-block align-items-center px-75rem py-4rem h-100 w-100"
     >
       <div
-        class="col container-fluid w-100 h-100 bg-white py-0 pl-25rem pr-0 rounded-75"
+        class="col container-fluid w-100 h-100 bg-white py-0 pl-25rem pr-25rem rounded-75"
       >
         <div
           class="col h-100 w-100 py-4 px-0 justify-content-start g-15rem"
         >
           <div
-            class="row-auto d-flex align-items-center h-100 w-100 justify-content-start g-15rem"
+            class="row-auto d-flex flex-wrap align-items-center h-100 w-100 justify-content-start g-15rem"
           >
             <div
               class="profile-avatar-wrap position-relative"
@@ -263,10 +263,10 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               </div>
             </div>
             <div
-              class="pr-25rem"
+              class="col-auto p-0"
             >
               <a
-                class="pgn__hyperlink default-link standalone-link btn btn-brand btn-rounded font-weight-normal"
+                class="pgn__hyperlink default-link standalone-link btn btn-brand btn-rounded font-weight-normal px-4 py-0625rem text-nowrap"
                 href="http://localhost:18150/records"
                 rel="noopener noreferrer"
                 target="_blank"
@@ -371,6 +371,11 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                       View Certificate
                     </a>
                   </div>
+                  <p
+                    class="small mb-0 pt-3"
+                  >
+                    Credential ID 
+                  </p>
                 </div>
               </div>
             </div>
@@ -391,13 +396,13 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
       class="profile-page-bg-banner bg-primary d-md-block align-items-center px-75rem py-4rem h-100 w-100"
     >
       <div
-        class="col container-fluid w-100 h-100 bg-white py-0 pl-25rem pr-0 rounded-75"
+        class="col container-fluid w-100 h-100 bg-white py-0 pl-25rem pr-25rem rounded-75"
       >
         <div
           class="col h-100 w-100 py-4 px-0 justify-content-start g-15rem"
         >
           <div
-            class="row-auto d-flex align-items-center h-100 w-100 justify-content-start g-15rem"
+            class="row-auto d-flex flex-wrap align-items-center h-100 w-100 justify-content-start g-15rem"
           >
             <div
               class="profile-avatar-wrap position-relative"
@@ -485,7 +490,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
               </div>
             </div>
             <div
-              class="pr-25rem"
+              class="col-auto p-0"
             />
           </div>
           <div
@@ -584,6 +589,11 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                       View Certificate
                     </a>
                   </div>
+                  <p
+                    class="small mb-0 pt-3"
+                  >
+                    Credential ID 
+                  </p>
                 </div>
               </div>
             </div>

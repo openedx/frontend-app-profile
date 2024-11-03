@@ -77,7 +77,7 @@ const ProfilePage = ({ params, intl }) => {
     }
 
     return (
-      <Hyperlink className="btn btn-brand btn-rounded font-weight-normal" target="_blank" showLaunchIcon={false} destination={viewMyRecordsUrl}>
+      <Hyperlink className="btn btn-brand btn-rounded font-weight-normal px-4 py-0625rem text-nowrap" target="_blank" showLaunchIcon={false} destination={viewMyRecordsUrl}>
         {intl.formatMessage(messages['profile.viewMyRecords'])}
       </Hyperlink>
     );
@@ -107,11 +107,11 @@ const ProfilePage = ({ params, intl }) => {
     return (
       <>
         <div className="profile-page-bg-banner bg-primary d-md-block align-items-center px-75rem py-4rem h-100 w-100">
-          <div className="col container-fluid w-100 h-100 bg-white py-0 pl-25rem pr-0 rounded-75">
+          <div className="col container-fluid w-100 h-100 bg-white py-0 pl-25rem pr-25rem rounded-75">
             <div className="col h-100 w-100 py-4 px-0 justify-content-start g-15rem">
-              <div className="row-auto d-flex align-items-center h-100 w-100 justify-content-start g-15rem">
+              <div className="row-auto d-flex flex-wrap align-items-center h-100 w-100 justify-content-start g-15rem">
                 <ProfileAvatar
-                  className=""
+                  className="col p-0"
                   src={profileImage.src}
                   isDefault={profileImage.isDefault}
                   onSave={handleSaveProfilePhoto}
@@ -129,7 +129,7 @@ const ProfilePage = ({ params, intl }) => {
                     <CertificateCount count={courseCertificates.length} />
                   </div>
                 </div>
-                <div className="pr-25rem">
+                <div className="col-auto p-0">
                   {renderViewMyRecordsButton()}
                 </div>
               </div>

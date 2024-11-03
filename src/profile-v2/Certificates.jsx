@@ -23,7 +23,7 @@ const Certificates = ({
   const intl = useIntl();
 
   const renderCertificate = useCallback(({
-    certificateType, courseDisplayName, courseOrganization, modifiedDate, downloadUrl, courseId,
+    certificateType, courseDisplayName, courseOrganization, modifiedDate, downloadUrl, courseId, uuid,
   }) => {
     const certificateIllustration = (() => {
       switch (certificateType) {
@@ -86,6 +86,15 @@ const Certificates = ({
                 {intl.formatMessage(messages['profile.certificates.view.certificate'])}
               </Hyperlink>
             </div>
+            <p className="small mb-0 pt-3">
+              <FormattedMessage
+                id="profile.certificate.uuid"
+                defaultMessage="Credential ID {certificate_uuid}"
+                values={{
+                  certificate_uuid: uuid,
+                }}
+              />
+            </p>
           </div>
         </div>
       </div>
