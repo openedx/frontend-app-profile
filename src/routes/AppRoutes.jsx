@@ -14,9 +14,11 @@ const AppRoutes = () => (
     <Route
       path="/u/:username"
       element={
-        <AuthenticatedPageRoute>
-          {isNewProfileEnabled ? <NewProfilePage /> : <ProfilePage />}
-        </AuthenticatedPageRoute>
+        (
+          <AuthenticatedPageRoute>
+            {isNewProfileEnabled ? <NewProfilePage /> : <ProfilePage />}
+          </AuthenticatedPageRoute>
+        )
       }
     />
     <Route
