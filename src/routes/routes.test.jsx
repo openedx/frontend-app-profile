@@ -12,10 +12,19 @@ jest.mock('@edx/frontend-platform/auth', () => ({
   getLoginRedirectUrl: jest.fn(),
 }));
 
-jest.mock('../profile-v2', () => ({
-  ProfilePage: () => (<div>Profile page</div>),
-  NotFoundPage: () => (<div>Not found page</div>),
-}));
+const isNewProfileEnabled = process.env.ENABLE_NEW_PROFILE_VIEW === 'true';
+
+if (isNewProfileEnabled) {
+  jest.mock('../profile-v2', () => ({
+    ProfilePage: () => (<div>New Profile page</div>),
+    NotFoundPage: () => (<div>New Not found page</div>),
+  }));
+} else {
+  jest.mock('../profile', () => ({
+    ProfilePage: () => (<div>Profile page</div>),
+    NotFoundPage: () => (<div>Not found page</div>),
+  }));
+}
 
 const RoutesWithProvider = (context, path) => (
   <AppContext.Provider value={context}>

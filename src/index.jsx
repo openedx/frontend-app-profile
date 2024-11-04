@@ -22,10 +22,15 @@ import FooterSlot from '@openedx/frontend-slot-footer';
 import messages from './i18n';
 import configureStore from './data/configureStore';
 
-import './index.scss';
 import Head from './head/Head';
 
 import AppRoutes from './routes/AppRoutes';
+
+if (process.env.ENABLE_NEW_PROFILE_VIEW === 'true') {
+  import('./index-v2.scss');
+} else {
+  import('./index.scss');
+}
 
 subscribe(APP_READY, () => {
   ReactDOM.render(
