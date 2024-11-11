@@ -4,7 +4,6 @@ import {
   PageWrap,
 } from '@edx/frontend-platform/react';
 import { Routes, Route } from 'react-router-dom';
-import { getConfig } from '@edx/frontend-platform';
 import { ProfilePage, NotFoundPage } from '../profile';
 import { ProfilePage as NewProfilePage, NotFoundPage as NewNotFoundPage } from '../profile-v2';
 
