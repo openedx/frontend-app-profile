@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux';
 
-import { reducer as profilePage } from '../profile';
-import { reducer as NewProfilePageReducer } from '../profile-v2';
+import { getConfig } from '@edx/frontend-platform';
 
-const isNewProfileEnabled = process.env.ENABLE_NEW_PROFILE_VIEW === 'true';
+import { reducer as profilePageReducer } from '../profile';
+import { reducer as newProfilePageReducer } from '../profile-v2';
+
+const isNewProfileEnabled = getConfig().ENABLE_NEW_PROFILE_VIEW;
 
 const createRootReducer = () => combineReducers({
-  profilePage: isNewProfileEnabled ? NewProfilePageReducer : profilePage,
+  profilePage: isNewProfileEnabled ? newProfilePageReducer : profilePageReducer,
 });
 
 export default createRootReducer;

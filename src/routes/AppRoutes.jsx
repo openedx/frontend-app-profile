@@ -4,31 +4,20 @@ import {
   PageWrap,
 } from '@edx/frontend-platform/react';
 import { Routes, Route } from 'react-router-dom';
+import { getConfig } from '@edx/frontend-platform';
 import { ProfilePage, NotFoundPage } from '../profile';
 import { ProfilePage as NewProfilePage, NotFoundPage as NewNotFoundPage } from '../profile-v2';
 
 const isNewProfileEnabled = process.env.ENABLE_NEW_PROFILE_VIEW === 'true';
 
+const SelectedProfilePage = isNewProfileEnabled ? NewProfilePage : ProfilePage;
+const SelectedNotFoundPage = isNewProfileEnabled ? NewNotFoundPage : NotFoundPage;
+
 const AppRoutes = () => (
   <Routes>
-    <Route
-      path="/u/:username"
-      element={
-        (
-          <AuthenticatedPageRoute>
-            {isNewProfileEnabled ? <NewProfilePage /> : <ProfilePage />}
-          </AuthenticatedPageRoute>
-        )
-      }
-    />
-    <Route
-      path="/notfound"
-      element={<PageWrap>{isNewProfileEnabled ? <NewNotFoundPage /> : <NotFoundPage />}</PageWrap>}
-    />
-    <Route
-      path="*"
-      element={<PageWrap>{isNewProfileEnabled ? <NewNotFoundPage /> : <NotFoundPage />}</PageWrap>}
-    />
+    <Route path="/u/:username" element={<AuthenticatedPageRoute><SelectedProfilePage /></AuthenticatedPageRoute>} />
+    <Route path="/notfound" element={<PageWrap><SelectedNotFoundPage /></PageWrap>} />
+    <Route path="*" element={<PageWrap><SelectedNotFoundPage /></PageWrap>} />
   </Routes>
 );
 

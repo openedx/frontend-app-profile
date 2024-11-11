@@ -138,10 +138,6 @@
       background-repeat: no-repeat;
       background-position: right top;
     }
-
-    .card-body {
-      position: relative;
-    }
   }
 }
 
@@ -170,10 +166,6 @@
     border-radius: 0.75rem;
 }
 
-.mb-2rem {
-  margin-bottom: 2rem;
-}
-
 .pt-4rem{
     padding-top: 4rem;
 }
@@ -193,12 +185,9 @@
   padding-right: 7.5rem;
 }
 
-.pl-25rem {
-  padding-left: 2.5rem;
-}
-
-.pr-25rem {
-  padding-right: 2.5rem;
+.px-25rem {
+padding-left: 2.5rem;
+padding-right: 2.5rem;
 }
 
 .g-15rem{
@@ -219,8 +208,4 @@
 
 .color-black{
     color: #000;
-}
-
-.line-height-1575rem{
-    line-height: 1.575rem;
 }

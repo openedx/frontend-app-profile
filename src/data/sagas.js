@@ -1,11 +1,12 @@
 import { all } from 'redux-saga/effects';
+import { getConfig } from '@edx/frontend-platform';
 import { saga as profileSaga } from '../profile';
-import { saga as NewProfileSaga } from '../profile-v2';
+import { saga as newProfileSaga } from '../profile-v2';
 
-const isNewProfileEnabled = process.env.ENABLE_NEW_PROFILE_VIEW === 'true';
+const isNewProfileEnabled = getConfig().ENABLE_NEW_PROFILE_VIEW;
 
 export default function* rootSaga() {
   yield all([
-    isNewProfileEnabled ? NewProfileSaga() : profileSaga(),
+    isNewProfileEnabled ? newProfileSaga() : profileSaga(),
   ]);
 }

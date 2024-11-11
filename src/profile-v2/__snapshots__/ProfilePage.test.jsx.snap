@@ -35,7 +35,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
       class="profile-page-bg-banner bg-primary d-md-block align-items-center px-75rem py-4rem h-100 w-100"
     >
       <div
-        class="col container-fluid w-100 h-100 bg-white py-0 pl-25rem pr-25rem rounded-75"
+        class="col container-fluid w-100 h-100 bg-white py-0 px-25rem rounded-75"
       >
         <div
           class="col h-100 w-100 py-4 px-0 justify-content-start g-15rem"
@@ -97,6 +97,18 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
                      
                   </span>
                 </span>
+                <span
+                  class="small m-0 text-gray-800"
+                >
+                  <span
+                    class="font-weight-bold"
+                  >
+                     
+                    0
+                     
+                  </span>
+                   certifications
+                </span>
               </div>
             </div>
             <div
@@ -153,7 +165,11 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
             </p>
           </div>
         </div>
-        You don't have any certificates yet.
+        <div
+          class="pt-5"
+        >
+          You don't have any certificates yet.
+        </div>
       </div>
     </div>
   </div>
@@ -169,7 +185,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
       class="profile-page-bg-banner bg-primary d-md-block align-items-center px-75rem py-4rem h-100 w-100"
     >
       <div
-        class="col container-fluid w-100 h-100 bg-white py-0 pl-25rem pr-25rem rounded-75"
+        class="col container-fluid w-100 h-100 bg-white py-0 px-25rem rounded-75"
       >
         <div
           class="col h-100 w-100 py-4 px-0 justify-content-start g-15rem"
@@ -327,7 +343,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                   style="background-image: url(icon/mock/path);"
                 />
                 <div
-                  class="card-body d-flex flex-column p-0 width-19625rem"
+                  class="d-flex flex-column position-relative p-0 width-19625rem"
                 >
                   <div
                     class="w-100 color-black"
@@ -337,21 +353,21 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     >
                       Verified Certificate
                     </p>
-                    <div
-                      class="h4 m-0 line-height-1575rem"
+                    <h4
+                      class="m-0 color-black"
                     >
                       edX Demonstration Course
-                    </div>
+                    </h4>
                     <p
                       class="small mb-0"
                     >
                       From
                     </p>
-                    <p
-                      class="h5 mb-0"
+                    <h5
+                      class="mb-0 color-black"
                     >
                       edX
-                    </p>
+                    </h5>
                     <p
                       class="small mb-0"
                     >
@@ -396,7 +412,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
       class="profile-page-bg-banner bg-primary d-md-block align-items-center px-75rem py-4rem h-100 w-100"
     >
       <div
-        class="col container-fluid w-100 h-100 bg-white py-0 pl-25rem pr-25rem rounded-75"
+        class="col container-fluid w-100 h-100 bg-white py-0 px-25rem rounded-75"
       >
         <div
           class="col h-100 w-100 py-4 px-0 justify-content-start g-15rem"
@@ -545,7 +561,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                   style="background-image: url(icon/mock/path);"
                 />
                 <div
-                  class="card-body d-flex flex-column p-0 width-19625rem"
+                  class="d-flex flex-column position-relative p-0 width-19625rem"
                 >
                   <div
                     class="w-100 color-black"
@@ -555,21 +571,21 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                     >
                       Verified Certificate
                     </p>
-                    <div
-                      class="h4 m-0 line-height-1575rem"
+                    <h4
+                      class="m-0 color-black"
                     >
                       edX Demonstration Course
-                    </div>
+                    </h4>
                     <p
                       class="small mb-0"
                     >
                       From
                     </p>
-                    <p
-                      class="h5 mb-0"
+                    <h5
+                      class="mb-0 color-black"
                     >
                       edX
-                    </p>
+                    </h5>
                     <p
                       class="small mb-0"
                     >

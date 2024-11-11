@@ -1,7 +1,6 @@
 import { createSelector } from 'reselect';
 
 export const userAccountSelector = state => state.userAccount;
-
 export const profileAccountSelector = state => state.profilePage.account;
 export const profileCourseCertificatesSelector = state => state.profilePage.courseCertificates;
 export const savePhotoStateSelector = state => state.profilePage.savePhotoState;

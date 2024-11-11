@@ -1,4 +1,3 @@
-/* eslint-disable global-require */
 import { getConfig } from '@edx/frontend-platform';
 import * as analytics from '@edx/frontend-platform/analytics';
 import { AppContext } from '@edx/frontend-platform/react';
@@ -12,12 +11,16 @@ import thunk from 'redux-thunk';
 
 import messages from '../i18n';
 import ProfilePage from './ProfilePage';
+import loadingApp from './__mocks__/loadingApp.mockStore';
+import viewOwnProfile from './__mocks__/viewOwnProfile.mockStore';
+import viewOtherProfile from './__mocks__/viewOtherProfile.mockStore';
 
 const mockStore = configureMockStore([thunk]);
+
 const storeMocks = {
-  loadingApp: require('./__mocks__/loadingApp.mockStore'),
-  viewOwnProfile: require('./__mocks__/viewOwnProfile.mockStore'),
-  viewOtherProfile: require('./__mocks__/viewOtherProfile.mockStore'),
+  loadingApp,
+  viewOwnProfile,
+  viewOtherProfile,
 };
 const requiredProfilePageProps = {
   fetchUserAccount: () => {},

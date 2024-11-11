@@ -1,10 +1,12 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, {
+  useEffect, useState, useContext, useCallback,
+} from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { sendTrackingLogEvent } from '@edx/frontend-platform/analytics';
 import { ensureConfig, getConfig } from '@edx/frontend-platform';
 import { AppContext } from '@edx/frontend-platform/react';
-import { injectIntl } from '@edx/frontend-platform/i18n';
+import { useIntl } from '@edx/frontend-platform/i18n';
 import { Alert, Hyperlink } from '@openedx/paragon';
 import {
   fetchProfile,
@@ -14,7 +16,7 @@ import {
 import ProfileAvatar from './forms/ProfileAvatar';
 import Certificates from './Certificates';
 import DateJoined from './DateJoined';
-import CertificateCount from './CertificateCount';
+import UserCertificateSummary from './UserCertificateSummary';
 import UsernameDescription from './UsernameDescription';
 import PageLoading from './PageLoading';
 import { profilePageSelector } from './data/selectors';
@@ -23,8 +25,9 @@ import withParams from '../utils/hoc';
 
 ensureConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL'], 'ProfilePage');
 
-const ProfilePage = ({ params, intl }) => {
+const ProfilePage = ({ params }) => {
   const dispatch = useDispatch();
+  const intl = useIntl();
   const context = useContext(AppContext);
   const {
     requiresParentalConsent,
@@ -41,24 +44,24 @@ const ProfilePage = ({ params, intl }) => {
   const [viewMyRecordsUrl, setViewMyRecordsUrl] = useState(null);
 
   useEffect(() => {
-    const credentialsBaseUrl = context.config.CREDENTIALS_BASE_URL;
-    if (credentialsBaseUrl) {
-      setViewMyRecordsUrl(`${credentialsBaseUrl}/records`);
+    const { CREDENTIALS_BASE_URL } = context.config;
+    if (CREDENTIALS_BASE_URL) {
+      setViewMyRecordsUrl(`${CREDENTIALS_BASE_URL}/records`);
     }
 
     dispatch(fetchProfile(params.username));
     sendTrackingLogEvent('edx.profile.viewed', {
       username: params.username,
     });
-  }, [dispatch, params.username, context.config.CREDENTIALS_BASE_URL]);
+  }, [dispatch, params.username, context.config]);
 
-  const handleSaveProfilePhoto = (formData) => {
+  const handleSaveProfilePhoto = useCallback((formData) => {
     dispatch(saveProfilePhoto(context.authenticatedUser.username, formData));
-  };
+  }, [dispatch, context.authenticatedUser.username]);
 
-  const handleDeleteProfilePhoto = () => {
+  const handleDeleteProfilePhoto = useCallback(() => {
     dispatch(deleteProfilePhoto(context.authenticatedUser.username));
-  };
+  }, [dispatch, context.authenticatedUser.username]);
 
   const isYOBDisabled = () => {
     const currentYear = new Date().getFullYear();
@@ -83,21 +86,17 @@ const ProfilePage = ({ params, intl }) => {
     );
   };
 
-  const renderPhotoUploadErrorMessage = () => {
-    if (photoUploadError === null) {
-      return null;
-    }
-
-    return (
-      <div className="row">
-        <div className="col-md-4 col-lg-3">
-          <Alert variant="danger" dismissible={false} show>
-            {photoUploadError.userMessage}
-          </Alert>
-        </div>
+  const renderPhotoUploadErrorMessage = () => (
+    photoUploadError && (
+    <div className="row">
+      <div className="col-md-4 col-lg-3">
+        <Alert variant="danger" dismissible={false} show>
+          {photoUploadError.userMessage}
+        </Alert>
       </div>
-    );
-  };
+    </div>
+    )
+  );
 
   const renderContent = () => {
     if (isLoadingProfile) {
@@ -107,7 +106,7 @@ const ProfilePage = ({ params, intl }) => {
     return (
       <>
         <div className="profile-page-bg-banner bg-primary d-md-block align-items-center px-75rem py-4rem h-100 w-100">
-          <div className="col container-fluid w-100 h-100 bg-white py-0 pl-25rem pr-25rem rounded-75">
+          <div className="col container-fluid w-100 h-100 bg-white py-0 px-25rem rounded-75">
             <div className="col h-100 w-100 py-4 px-0 justify-content-start g-15rem">
               <div className="row-auto d-flex flex-wrap align-items-center h-100 w-100 justify-content-start g-15rem">
                 <ProfileAvatar
@@ -126,7 +125,7 @@ const ProfilePage = ({ params, intl }) => {
                   )}
                   <div className="row pt-2 m-0 g-1rem">
                     <DateJoined date={dateJoined} />
-                    <CertificateCount count={courseCertificates.length} />
+                    <UserCertificateSummary count={courseCertificates.length} />
                   </div>
                 </div>
                 <div className="col-auto p-0">
@@ -165,9 +164,6 @@ ProfilePage.propTypes = {
   params: PropTypes.shape({
     username: PropTypes.string.isRequired,
   }).isRequired,
-  intl: PropTypes.shape({
-    formatMessage: PropTypes.func.isRequired,
-  }).isRequired,
 };
 
-export default injectIntl(withParams(ProfilePage));
+export default withParams(ProfilePage);
