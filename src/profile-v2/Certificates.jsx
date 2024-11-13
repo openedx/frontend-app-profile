@@ -32,7 +32,7 @@ const Certificates = ({ certificates }) => (
         </p>
       </div>
     </div>
-    {certificates && certificates.length > 0 ? (
+    {certificates?.length > 0 ? (
       <div className="col">
         <div className="row align-items-center pt-5 g-3rem">
           {certificates.map(certificate => (

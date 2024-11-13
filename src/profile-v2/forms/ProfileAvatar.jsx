@@ -40,8 +40,8 @@ const ProfileAvatar = ({
 
   const renderPending = () => (
     <div
-      className="position-absolute w-100 h-100 d-flex justify-content-center align-items-center rounded-circle"
-      style={{ backgroundColor: 'rgba(0,0,0,.65)' }}
+      className="position-absolute w-100 h-100 d-flex justify-content-center
+      align-items-center rounded-circle background-black-65"
     >
       <div className="spinner-border text-primary" role="status" />
     </div>
@@ -107,8 +107,7 @@ const ProfileAvatar = ({
     ) : (
       <img
         data-hj-suppress
-        className="w-100 h-100 d-block rounded-circle overflow-hidden"
-        style={{ objectFit: 'cover' }}
+        className="w-100 h-100 d-block rounded-circle overflow-hidden object-fit-cover"
         alt={intl.formatMessage(messages['profile.image.alt.attribute'])}
         src={src}
       />

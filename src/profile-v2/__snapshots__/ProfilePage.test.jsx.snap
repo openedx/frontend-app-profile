@@ -7,8 +7,7 @@ exports[`<ProfilePage /> Renders correctly in various states app loading 1`] = `
   >
     <div>
       <div
-        class="d-flex justify-content-center align-items-center flex-column"
-        style="height: 50vh;"
+        class="d-flex justify-content-center align-items-center flex-column height-50vh"
       >
         <div
           class="spinner-border text-primary"
@@ -218,10 +217,9 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                 </div>
                 <img
                   alt="profile avatar"
-                  class="w-100 h-100 d-block rounded-circle overflow-hidden"
+                  class="w-100 h-100 d-block rounded-circle overflow-hidden object-fit-cover"
                   data-hj-suppress="true"
                   src="http://localhost:18000/media/profile-images/d2a9bdc2ba165dcefc73265c54bf9a20_500.jpg?v=1552495012"
-                  style="object-fit: cover;"
                 />
               </div>
               <form
@@ -445,10 +443,9 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                 </div>
                 <img
                   alt="profile avatar"
-                  class="w-100 h-100 d-block rounded-circle overflow-hidden"
+                  class="w-100 h-100 d-block rounded-circle overflow-hidden object-fit-cover"
                   data-hj-suppress="true"
                   src="http://localhost:18000/media/profile-images/d2a9bdc2ba165dcefc73265c54bf9a20_500.jpg?v=1552495012"
-                  style="object-fit: cover;"
                 />
               </div>
               <form
