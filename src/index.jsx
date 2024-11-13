@@ -7,6 +7,7 @@ import {
   initialize,
   mergeConfig,
   subscribe,
+  getConfig,
 } from '@edx/frontend-platform';
 import {
   AppProvider,
@@ -26,19 +27,19 @@ import Head from './head/Head';
 
 import AppRoutes from './routes/AppRoutes';
 
-if (process.env.ENABLE_NEW_PROFILE_VIEW === 'true') {
-  import('./index-v2.scss');
-} else {
-  import('./index.scss');
-}
-
-subscribe(APP_READY, () => {
+subscribe(APP_READY, async () => {
+  const isNewProfileEnabled = getConfig().ENABLE_NEW_PROFILE_VIEW === 'true';
+  if (isNewProfileEnabled) {
+    await import('./index-v2.scss');
+  } else {
+    await import('./index.scss');
+  }
   ReactDOM.render(
     <AppProvider store={configureStore()}>
       <Head />
       <Header />
       <main id="main">
-        <AppRoutes />
+        <AppRoutes isNewProfileEnabled={isNewProfileEnabled} />
       </main>
       <FooterSlot />
     </AppProvider>,
