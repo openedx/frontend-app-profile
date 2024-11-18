@@ -7,6 +7,7 @@ import {
   initialize,
   mergeConfig,
   subscribe,
+  getConfig,
 } from '@edx/frontend-platform';
 import {
   AppProvider,
@@ -22,18 +23,23 @@ import FooterSlot from '@openedx/frontend-slot-footer';
 import messages from './i18n';
 import configureStore from './data/configureStore';
 
-import './index.scss';
 import Head from './head/Head';
 
 import AppRoutes from './routes/AppRoutes';
 
-subscribe(APP_READY, () => {
+subscribe(APP_READY, async () => {
+  const isNewProfileEnabled = getConfig().ENABLE_NEW_PROFILE_VIEW === 'true';
+  if (isNewProfileEnabled) {
+    await import('./index-v2.scss');
+  } else {
+    await import('./index.scss');
+  }
   ReactDOM.render(
     <AppProvider store={configureStore()}>
       <Head />
       <Header />
       <main id="main">
-        <AppRoutes />
+        <AppRoutes isNewProfileEnabled={isNewProfileEnabled} />
       </main>
       <FooterSlot />
     </AppProvider>,
@@ -53,6 +59,7 @@ initialize({
       mergeConfig({
         COLLECT_YEAR_OF_BIRTH: process.env.COLLECT_YEAR_OF_BIRTH,
         ENABLE_SKILLS_BUILDER_PROFILE: process.env.ENABLE_SKILLS_BUILDER_PROFILE,
+        ENABLE_NEW_PROFILE_VIEW: process.env.ENABLE_NEW_PROFILE_VIEW || null,
       }, 'App loadConfig override handler');
     },
   },

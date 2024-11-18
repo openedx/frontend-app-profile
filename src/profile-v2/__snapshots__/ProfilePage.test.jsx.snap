@@ -1,0 +1,619 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProfilePage /> Renders correctly in various states app loading 1`] = `
+<div>
+  <div
+    class="profile-page"
+  >
+    <div>
+      <div
+        class="d-flex justify-content-center align-items-center flex-column height-50vh"
+      >
+        <div
+          class="spinner-border text-primary"
+          role="status"
+        >
+          <span
+            class="sr-only"
+          >
+            Profile loading...
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ProfilePage /> Renders correctly in various states viewing other profile with all fields 1`] = `
+<div>
+  <div
+    class="profile-page"
+  >
+    <div
+      class="profile-page-bg-banner bg-primary d-md-block align-items-center px-75rem py-4rem h-100 w-100"
+    >
+      <div
+        class="col container-fluid w-100 h-100 bg-white py-0 px-25rem rounded-75"
+      >
+        <div
+          class="col h-100 w-100 py-4 px-0 justify-content-start g-15rem"
+        >
+          <div
+            class="row-auto d-flex flex-wrap align-items-center h-100 w-100 justify-content-start g-15rem"
+          >
+            <div
+              class="profile-avatar-wrap position-relative"
+            >
+              <div
+                class="profile-avatar rounded-circle bg-light"
+              >
+                <iconmock
+                  aria-hidden="true"
+                  class="text-muted"
+                  focusable="false"
+                  role="img"
+                  viewbox="0 0 24 24"
+                />
+              </div>
+              <form
+                enctype="multipart/form-data"
+              >
+                <input
+                  accept=".jpg, .jpeg, .png"
+                  class="d-none form-control-file"
+                  id="photo-file"
+                  name="file"
+                  type="file"
+                />
+              </form>
+            </div>
+            <div
+              class="col justify-content-start align-items-start h-100 w-100 m-0 p-0"
+            >
+              <h1
+                class="row h3 m-0 font-weight-bold text-truncate text-primary-500"
+              >
+                staff
+              </h1>
+              <p
+                class="row pt-2 text-gray-800 font-weight-normal m-0"
+              >
+                user
+              </p>
+              <div
+                class="row pt-2 m-0 g-1rem"
+              >
+                <span
+                  class="small mb-0 text-gray-800"
+                >
+                  Member since 
+                  <span
+                    class="font-weight-bold"
+                  >
+                     
+                    2017
+                     
+                  </span>
+                </span>
+                <span
+                  class="small m-0 text-gray-800"
+                >
+                  <span
+                    class="font-weight-bold"
+                  >
+                     
+                    0
+                     
+                  </span>
+                   certifications
+                </span>
+              </div>
+            </div>
+            <div
+              class="col-auto p-0"
+            >
+              <a
+                class="pgn__hyperlink default-link standalone-link btn btn-brand btn-rounded font-weight-normal px-4 py-0625rem text-nowrap"
+                href="http://localhost:18150/records"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                View My Records
+              </a>
+            </div>
+          </div>
+          <div
+            class="row-auto d-flex align-items-center h-100 w-100 justify-content-start m-0 pt-4"
+          >
+            <p
+              class="text-gray-800 font-weight-normal m-0"
+            >
+              Your learner records information is only visible to you. Only your username is visible to others on localhost.
+            </p>
+          </div>
+        </div>
+        <div
+          class="ml-auto"
+        />
+      </div>
+    </div>
+    <div
+      class="col container-fluid d-inline-flex px-75rem pt-4rem pb-6 h-100 w-100 align-items-start justify-content-center g-3rem"
+    >
+      <div>
+        <div
+          class="col justify-content-start align-items-start g-5rem p-0"
+        >
+          <div
+            class="col align-self-stretch height-2625rem justify-content-start align-items-start p-0"
+          >
+            <h2
+              class="font-weight-bold text-primary-500 m-0"
+            >
+              Your certificates
+            </h2>
+          </div>
+          <div
+            class="col justify-content-start align-items-start pt-2 p-0"
+          >
+            <p
+              class="font-weight-normal text-gray-800 m-0 p-0"
+            >
+              Your learner records information is only visible to you. Only your username is visible to others on localhost.
+            </p>
+          </div>
+        </div>
+        <div
+          class="pt-5"
+        >
+          You don't have any certificates yet.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ProfilePage /> Renders correctly in various states viewing own profile 1`] = `
+<div>
+  <div
+    class="profile-page"
+  >
+    <div
+      class="profile-page-bg-banner bg-primary d-md-block align-items-center px-75rem py-4rem h-100 w-100"
+    >
+      <div
+        class="col container-fluid w-100 h-100 bg-white py-0 px-25rem rounded-75"
+      >
+        <div
+          class="col h-100 w-100 py-4 px-0 justify-content-start g-15rem"
+        >
+          <div
+            class="row-auto d-flex flex-wrap align-items-center h-100 w-100 justify-content-start g-15rem"
+          >
+            <div
+              class="profile-avatar-wrap position-relative"
+            >
+              <div
+                class="profile-avatar rounded-circle bg-light"
+              >
+                <div
+                  class="profile-avatar-menu-container"
+                >
+                  <div
+                    class="pgn__dropdown pgn__dropdown-light dropdown"
+                    data-testid="dropdown"
+                  >
+                    <button
+                      aria-expanded="false"
+                      aria-haspopup="true"
+                      class="dropdown-toggle btn btn-primary"
+                      type="button"
+                    >
+                      Change
+                    </button>
+                  </div>
+                </div>
+                <img
+                  alt="profile avatar"
+                  class="w-100 h-100 d-block rounded-circle overflow-hidden object-fit-cover"
+                  data-hj-suppress="true"
+                  src="http://localhost:18000/media/profile-images/d2a9bdc2ba165dcefc73265c54bf9a20_500.jpg?v=1552495012"
+                />
+              </div>
+              <form
+                enctype="multipart/form-data"
+              >
+                <input
+                  accept=".jpg, .jpeg, .png"
+                  class="d-none form-control-file"
+                  id="photo-file"
+                  name="file"
+                  type="file"
+                />
+              </form>
+            </div>
+            <div
+              class="col justify-content-start align-items-start h-100 w-100 m-0 p-0"
+            >
+              <h1
+                class="row h3 m-0 font-weight-bold text-truncate text-primary-500"
+              >
+                staff
+              </h1>
+              <p
+                class="row pt-2 text-gray-800 font-weight-normal m-0"
+              >
+                Lemon Seltzer
+              </p>
+              <div
+                class="row pt-2 m-0 g-1rem"
+              >
+                <span
+                  class="small mb-0 text-gray-800"
+                >
+                  Member since 
+                  <span
+                    class="font-weight-bold"
+                  >
+                     
+                    2017
+                     
+                  </span>
+                </span>
+                <span
+                  class="small m-0 text-gray-800"
+                >
+                  <span
+                    class="font-weight-bold"
+                  >
+                     
+                    1
+                     
+                  </span>
+                   certifications
+                </span>
+              </div>
+            </div>
+            <div
+              class="col-auto p-0"
+            >
+              <a
+                class="pgn__hyperlink default-link standalone-link btn btn-brand btn-rounded font-weight-normal px-4 py-0625rem text-nowrap"
+                href="http://localhost:18150/records"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                View My Records
+              </a>
+            </div>
+          </div>
+          <div
+            class="row-auto d-flex align-items-center h-100 w-100 justify-content-start m-0 pt-4"
+          />
+        </div>
+        <div
+          class="ml-auto"
+        />
+      </div>
+    </div>
+    <div
+      class="col container-fluid d-inline-flex px-75rem pt-4rem pb-6 h-100 w-100 align-items-start justify-content-center g-3rem"
+    >
+      <div>
+        <div
+          class="col justify-content-start align-items-start g-5rem p-0"
+        >
+          <div
+            class="col align-self-stretch height-2625rem justify-content-start align-items-start p-0"
+          >
+            <h2
+              class="font-weight-bold text-primary-500 m-0"
+            >
+              Your certificates
+            </h2>
+          </div>
+          <div
+            class="col justify-content-start align-items-start pt-2 p-0"
+          >
+            <p
+              class="font-weight-normal text-gray-800 m-0 p-0"
+            >
+              Your learner records information is only visible to you. Only your username is visible to others on localhost.
+            </p>
+          </div>
+        </div>
+        <div
+          class="col"
+        >
+          <div
+            class="row align-items-center pt-5 g-3rem"
+          >
+            <div
+              class="col-auto d-flex align-items-center p-0"
+            >
+              <div
+                class="col certificate p-4 border-light-400 bg-light-200 w-100 h-100"
+              >
+                <div
+                  class="certificate-type-illustration"
+                  style="background-image: url(icon/mock/path);"
+                />
+                <div
+                  class="d-flex flex-column position-relative p-0 width-19625rem"
+                >
+                  <div
+                    class="w-100 color-black"
+                  >
+                    <p
+                      class="small mb-0 font-weight-normal"
+                    >
+                      Verified Certificate
+                    </p>
+                    <h4
+                      class="m-0 color-black"
+                    >
+                      edX Demonstration Course
+                    </h4>
+                    <p
+                      class="small mb-0"
+                    >
+                      From
+                    </p>
+                    <h5
+                      class="mb-0 color-black"
+                    >
+                      edX
+                    </h5>
+                    <p
+                      class="small mb-0"
+                    >
+                      Completed on 
+                      3/4/2019
+                    </p>
+                  </div>
+                  <div
+                    class="pt-3"
+                  >
+                    <a
+                      class="pgn__hyperlink default-link standalone-link btn btn-primary btn-rounded font-weight-normal px-4 py-0625rem"
+                      href="http://www.example.com/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      View Certificate
+                    </a>
+                  </div>
+                  <p
+                    class="small mb-0 pt-3"
+                  >
+                    Credential ID 
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ProfilePage /> Renders correctly in various states without credentials service 1`] = `
+<div>
+  <div
+    class="profile-page"
+  >
+    <div
+      class="profile-page-bg-banner bg-primary d-md-block align-items-center px-75rem py-4rem h-100 w-100"
+    >
+      <div
+        class="col container-fluid w-100 h-100 bg-white py-0 px-25rem rounded-75"
+      >
+        <div
+          class="col h-100 w-100 py-4 px-0 justify-content-start g-15rem"
+        >
+          <div
+            class="row-auto d-flex flex-wrap align-items-center h-100 w-100 justify-content-start g-15rem"
+          >
+            <div
+              class="profile-avatar-wrap position-relative"
+            >
+              <div
+                class="profile-avatar rounded-circle bg-light"
+              >
+                <div
+                  class="profile-avatar-menu-container"
+                >
+                  <div
+                    class="pgn__dropdown pgn__dropdown-light dropdown"
+                    data-testid="dropdown"
+                  >
+                    <button
+                      aria-expanded="false"
+                      aria-haspopup="true"
+                      class="dropdown-toggle btn btn-primary"
+                      type="button"
+                    >
+                      Change
+                    </button>
+                  </div>
+                </div>
+                <img
+                  alt="profile avatar"
+                  class="w-100 h-100 d-block rounded-circle overflow-hidden object-fit-cover"
+                  data-hj-suppress="true"
+                  src="http://localhost:18000/media/profile-images/d2a9bdc2ba165dcefc73265c54bf9a20_500.jpg?v=1552495012"
+                />
+              </div>
+              <form
+                enctype="multipart/form-data"
+              >
+                <input
+                  accept=".jpg, .jpeg, .png"
+                  class="d-none form-control-file"
+                  id="photo-file"
+                  name="file"
+                  type="file"
+                />
+              </form>
+            </div>
+            <div
+              class="col justify-content-start align-items-start h-100 w-100 m-0 p-0"
+            >
+              <h1
+                class="row h3 m-0 font-weight-bold text-truncate text-primary-500"
+              >
+                staff
+              </h1>
+              <p
+                class="row pt-2 text-gray-800 font-weight-normal m-0"
+              >
+                Lemon Seltzer
+              </p>
+              <div
+                class="row pt-2 m-0 g-1rem"
+              >
+                <span
+                  class="small mb-0 text-gray-800"
+                >
+                  Member since 
+                  <span
+                    class="font-weight-bold"
+                  >
+                     
+                    2017
+                     
+                  </span>
+                </span>
+                <span
+                  class="small m-0 text-gray-800"
+                >
+                  <span
+                    class="font-weight-bold"
+                  >
+                     
+                    1
+                     
+                  </span>
+                   certifications
+                </span>
+              </div>
+            </div>
+            <div
+              class="col-auto p-0"
+            />
+          </div>
+          <div
+            class="row-auto d-flex align-items-center h-100 w-100 justify-content-start m-0 pt-4"
+          />
+        </div>
+        <div
+          class="ml-auto"
+        />
+      </div>
+    </div>
+    <div
+      class="col container-fluid d-inline-flex px-75rem pt-4rem pb-6 h-100 w-100 align-items-start justify-content-center g-3rem"
+    >
+      <div>
+        <div
+          class="col justify-content-start align-items-start g-5rem p-0"
+        >
+          <div
+            class="col align-self-stretch height-2625rem justify-content-start align-items-start p-0"
+          >
+            <h2
+              class="font-weight-bold text-primary-500 m-0"
+            >
+              Your certificates
+            </h2>
+          </div>
+          <div
+            class="col justify-content-start align-items-start pt-2 p-0"
+          >
+            <p
+              class="font-weight-normal text-gray-800 m-0 p-0"
+            >
+              Your learner records information is only visible to you. Only your username is visible to others on localhost.
+            </p>
+          </div>
+        </div>
+        <div
+          class="col"
+        >
+          <div
+            class="row align-items-center pt-5 g-3rem"
+          >
+            <div
+              class="col-auto d-flex align-items-center p-0"
+            >
+              <div
+                class="col certificate p-4 border-light-400 bg-light-200 w-100 h-100"
+              >
+                <div
+                  class="certificate-type-illustration"
+                  style="background-image: url(icon/mock/path);"
+                />
+                <div
+                  class="d-flex flex-column position-relative p-0 width-19625rem"
+                >
+                  <div
+                    class="w-100 color-black"
+                  >
+                    <p
+                      class="small mb-0 font-weight-normal"
+                    >
+                      Verified Certificate
+                    </p>
+                    <h4
+                      class="m-0 color-black"
+                    >
+                      edX Demonstration Course
+                    </h4>
+                    <p
+                      class="small mb-0"
+                    >
+                      From
+                    </p>
+                    <h5
+                      class="mb-0 color-black"
+                    >
+                      edX
+                    </h5>
+                    <p
+                      class="small mb-0"
+                    >
+                      Completed on 
+                      3/4/2019
+                    </p>
+                  </div>
+                  <div
+                    class="pt-3"
+                  >
+                    <a
+                      class="pgn__hyperlink default-link standalone-link btn btn-primary btn-rounded font-weight-normal px-4 py-0625rem"
+                      href="http://www.example.com/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      View Certificate
+                    </a>
+                  </div>
+                  <p
+                    class="small mb-0 pt-3"
+                  >
+                    Credential ID 
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

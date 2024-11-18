@@ -1,0 +1,228 @@
+.word-break-all {
+  word-break: break-all !important;
+}
+
+// TODO: Update edx-bootstrap theme to incorporate these edits.
+.btn, a.btn {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+.btn-link {
+  text-decoration: underline;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.profile-page-bg-banner {
+  height: 298px;
+  width: 100%;
+  background-image: url('./assets/dot-pattern-light.png');
+  background-repeat: repeat-x;
+  background-size: auto 85%;
+}
+
+.icon-visibility-off {
+  height: 1rem;
+  color: $gray-500;
+}
+
+.profile-page {
+  .edit-section-header {
+    @extend .h6;
+    display: block;
+    font-weight: normal;
+    letter-spacing: 0;
+    margin: 0;
+  }
+
+  label.edit-section-header {
+    margin-bottom: $spacer * .5;
+  }
+
+  .profile-avatar-wrap {
+    @include media-breakpoint-up(md) {
+      max-width: 12rem;
+      margin-right: 0;
+      height: auto;
+    }
+  }
+
+  .profile-avatar-menu-container {
+    background: rgba(0,0,0,.65);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+
+    @include media-breakpoint-up(md) {
+      background: linear-gradient(to top, rgba(0,0,0,.65) 4rem, rgba(0,0,0,0) 4rem);
+      align-items: flex-end;
+    }
+
+    .btn {
+      text-decoration: none;
+      @include media-breakpoint-up(md) {
+        margin-bottom: 1.2rem;
+      }
+    }
+
+    .dropdown {
+      @include media-breakpoint-up(md) {
+        margin-bottom: 1.2rem;
+      }
+
+      .btn {
+        color: $white;
+        background: transparent;
+        border-color: transparent;
+        margin: 0;
+      }
+    }
+  }
+
+  .profile-avatar {
+    width: 5rem;
+    height: 5rem;
+    position: relative;
+
+    @include media-breakpoint-up(md) {
+      width: 7.5rem;
+      height: 7.5rem;
+    }
+
+    .profile-avatar-edit-button {
+      border: none;
+      position: absolute;
+      height: 100%;
+      left: 0;
+      width: 100%;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      padding-top: .1rem;
+      font-weight: 600;
+      background: rgba(0,0,0,.5);
+      border-radius:0;
+      transition: opacity 200ms ease;
+
+      @include media-breakpoint-up(md) {
+        height: 4rem;
+      }
+
+      &:focus, &:hover, &:active, &.active {
+        opacity: 1;
+      }
+    }
+  }
+
+  .certificate {
+    background-color: #F3F1ED;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: 1px #E7E4DB solid;
+
+    .certificate-type-illustration {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      bottom: 0;
+      width: 15.15rem;
+      opacity: .06;
+      background-size: 90%;
+      background-repeat: no-repeat;
+      background-position: right top;
+    }
+  }
+}
+
+// Todo: Move the following to edx-paragon
+
+.btn-rounded {
+  border-radius: 100px;
+}
+
+.max-width-32em {
+  max-width: 32em;
+}
+
+.width-75rem {
+  width: 75rem;
+}
+
+.width-72rem {
+  width: 72rem !important;
+}
+
+.width-19625rem {
+  width: 19.625rem;
+}
+
+.height-2625rem {
+  height: 2.625rem;
+}
+
+.height-50vh {
+  height: 50vh;
+}
+
+.rounded-75 {
+  border-radius: 0.75rem;
+}
+
+.pt-4rem {
+  padding-top: 4rem;
+}
+
+.py-4rem {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.py-0625rem {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+}
+
+.px-75rem {
+  padding-left: 7.5rem;
+  padding-right: 7.5rem;
+}
+
+.px-25rem {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+.g-15rem {
+  gap: 1.5rem;
+}
+
+.g-5rem {
+  gap: 0.5rem;
+}
+
+.g-1rem {
+  gap: 1rem;
+}
+
+.g-3rem {
+  gap: 3rem;
+}
+
+.color-black {
+  color: #000;
+}
+
+.background-black-65 {
+  background-color: rgba(0,0,0,.65)
+}
+
+.object-fit-cover {
+  object-fit: cover;
+}
