@@ -31,7 +31,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
     class="profile-page"
   >
     <div
-      class="profile-page-bg-banner bg-primary d-md-block align-items-center px-75rem py-4rem h-100 w-100"
+      class="profile-page-bg-banner bg-primary d-md-block align-items-center py-4rem h-100 w-100 px-75rem"
     >
       <div
         class="col container-fluid w-100 h-100 bg-white py-0 px-25rem rounded-75"
@@ -40,7 +40,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
           class="col h-100 w-100 py-4 px-0 justify-content-start g-15rem"
         >
           <div
-            class="row-auto d-flex flex-wrap align-items-center h-100 w-100 justify-content-start g-15rem"
+            class="row-auto d-flex flex-wrap align-items-center h-100 w-100 justify-content-start g-15rem flex-row"
           >
             <div
               class="profile-avatar-wrap position-relative"
@@ -69,15 +69,15 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               </form>
             </div>
             <div
-              class="col justify-content-start align-items-start h-100 w-100 m-0 p-0"
+              class="col h-100 w-100 m-0 p-0 justify-content-start align-items-start"
             >
-              <h1
-                class="row h3 m-0 font-weight-bold text-truncate text-primary-500"
+              <p
+                class="row m-0 font-weight-bold text-truncate text-primary-500 h3"
               >
                 staff
-              </h1>
+              </p>
               <p
-                class="row pt-2 text-gray-800 font-weight-normal m-0"
+                class="row pt-2 text-gray-800 font-weight-normal m-0 p"
               >
                 user
               </p>
@@ -111,7 +111,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               </div>
             </div>
             <div
-              class="col-auto p-0"
+              class="p-0  col-auto"
             >
               <a
                 class="pgn__hyperlink default-link standalone-link btn btn-brand btn-rounded font-weight-normal px-4 py-0625rem text-nowrap"
@@ -127,7 +127,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
             class="row-auto d-flex align-items-center h-100 w-100 justify-content-start m-0 pt-4"
           >
             <p
-              class="text-gray-800 font-weight-normal m-0"
+              class="text-gray-800 font-weight-normal m-0 p"
             >
               Your learner records information is only visible to you. Only your username is visible to others on localhost.
             </p>
@@ -148,17 +148,17 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
           <div
             class="col align-self-stretch height-2625rem justify-content-start align-items-start p-0"
           >
-            <h2
-              class="font-weight-bold text-primary-500 m-0"
+            <p
+              class="font-weight-bold text-primary-500 m-0 h2"
             >
               Your certificates
-            </h2>
+            </p>
           </div>
           <div
             class="col justify-content-start align-items-start pt-2 p-0"
           >
             <p
-              class="font-weight-normal text-gray-800 m-0 p-0"
+              class="font-weight-normal text-gray-800 m-0 p-0 p"
             >
               Your learner records information is only visible to you. Only your username is visible to others on localhost.
             </p>
@@ -181,7 +181,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
     class="profile-page"
   >
     <div
-      class="profile-page-bg-banner bg-primary d-md-block align-items-center px-75rem py-4rem h-100 w-100"
+      class="profile-page-bg-banner bg-primary d-md-block align-items-center py-4rem h-100 w-100 px-75rem"
     >
       <div
         class="col container-fluid w-100 h-100 bg-white py-0 px-25rem rounded-75"
@@ -190,7 +190,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
           class="col h-100 w-100 py-4 px-0 justify-content-start g-15rem"
         >
           <div
-            class="row-auto d-flex flex-wrap align-items-center h-100 w-100 justify-content-start g-15rem"
+            class="row-auto d-flex flex-wrap align-items-center h-100 w-100 justify-content-start g-15rem flex-row"
           >
             <div
               class="profile-avatar-wrap position-relative"
@@ -235,15 +235,15 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               </form>
             </div>
             <div
-              class="col justify-content-start align-items-start h-100 w-100 m-0 p-0"
+              class="col h-100 w-100 m-0 p-0 justify-content-start align-items-start"
             >
-              <h1
-                class="row h3 m-0 font-weight-bold text-truncate text-primary-500"
+              <p
+                class="row m-0 font-weight-bold text-truncate text-primary-500 h3"
               >
                 staff
-              </h1>
+              </p>
               <p
-                class="row pt-2 text-gray-800 font-weight-normal m-0"
+                class="row pt-2 text-gray-800 font-weight-normal m-0 p"
               >
                 Lemon Seltzer
               </p>
@@ -277,7 +277,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               </div>
             </div>
             <div
-              class="col-auto p-0"
+              class="p-0  col-auto"
             >
               <a
                 class="pgn__hyperlink default-link standalone-link btn btn-brand btn-rounded font-weight-normal px-4 py-0625rem text-nowrap"
@@ -308,17 +308,17 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
           <div
             class="col align-self-stretch height-2625rem justify-content-start align-items-start p-0"
           >
-            <h2
-              class="font-weight-bold text-primary-500 m-0"
+            <p
+              class="font-weight-bold text-primary-500 m-0 h2"
             >
               Your certificates
-            </h2>
+            </p>
           </div>
           <div
             class="col justify-content-start align-items-start pt-2 p-0"
           >
             <p
-              class="font-weight-normal text-gray-800 m-0 p-0"
+              class="font-weight-normal text-gray-800 m-0 p-0 p"
             >
               Your learner records information is only visible to you. Only your username is visible to others on localhost.
             </p>
@@ -347,17 +347,17 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     class="w-100 color-black"
                   >
                     <p
-                      class="small mb-0 font-weight-normal"
+                      class="mb-0 font-weight-normal small"
                     >
                       Verified Certificate
                     </p>
-                    <h4
-                      class="m-0 color-black"
+                    <p
+                      class="m-0 color-black h4"
                     >
                       edX Demonstration Course
-                    </h4>
+                    </p>
                     <p
-                      class="small mb-0"
+                      class="mb-0 small"
                     >
                       From
                     </p>
@@ -367,7 +367,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                       edX
                     </h5>
                     <p
-                      class="small mb-0"
+                      class="mb-0 small"
                     >
                       Completed on 
                       3/4/2019
@@ -386,7 +386,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     </a>
                   </div>
                   <p
-                    class="small mb-0 pt-3"
+                    class="mb-0 pt-3 small"
                   >
                     Credential ID 
                   </p>
@@ -407,7 +407,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
     class="profile-page"
   >
     <div
-      class="profile-page-bg-banner bg-primary d-md-block align-items-center px-75rem py-4rem h-100 w-100"
+      class="profile-page-bg-banner bg-primary d-md-block align-items-center py-4rem h-100 w-100 px-75rem"
     >
       <div
         class="col container-fluid w-100 h-100 bg-white py-0 px-25rem rounded-75"
@@ -416,7 +416,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
           class="col h-100 w-100 py-4 px-0 justify-content-start g-15rem"
         >
           <div
-            class="row-auto d-flex flex-wrap align-items-center h-100 w-100 justify-content-start g-15rem"
+            class="row-auto d-flex flex-wrap align-items-center h-100 w-100 justify-content-start g-15rem flex-row"
           >
             <div
               class="profile-avatar-wrap position-relative"
@@ -461,15 +461,15 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
               </form>
             </div>
             <div
-              class="col justify-content-start align-items-start h-100 w-100 m-0 p-0"
+              class="col h-100 w-100 m-0 p-0 justify-content-start align-items-start"
             >
-              <h1
-                class="row h3 m-0 font-weight-bold text-truncate text-primary-500"
+              <p
+                class="row m-0 font-weight-bold text-truncate text-primary-500 h3"
               >
                 staff
-              </h1>
+              </p>
               <p
-                class="row pt-2 text-gray-800 font-weight-normal m-0"
+                class="row pt-2 text-gray-800 font-weight-normal m-0 p"
               >
                 Lemon Seltzer
               </p>
@@ -503,7 +503,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
               </div>
             </div>
             <div
-              class="col-auto p-0"
+              class="p-0  col-auto"
             />
           </div>
           <div
@@ -525,17 +525,17 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
           <div
             class="col align-self-stretch height-2625rem justify-content-start align-items-start p-0"
           >
-            <h2
-              class="font-weight-bold text-primary-500 m-0"
+            <p
+              class="font-weight-bold text-primary-500 m-0 h2"
             >
               Your certificates
-            </h2>
+            </p>
           </div>
           <div
             class="col justify-content-start align-items-start pt-2 p-0"
           >
             <p
-              class="font-weight-normal text-gray-800 m-0 p-0"
+              class="font-weight-normal text-gray-800 m-0 p-0 p"
             >
               Your learner records information is only visible to you. Only your username is visible to others on localhost.
             </p>
@@ -564,17 +564,17 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                     class="w-100 color-black"
                   >
                     <p
-                      class="small mb-0 font-weight-normal"
+                      class="mb-0 font-weight-normal small"
                     >
                       Verified Certificate
                     </p>
-                    <h4
-                      class="m-0 color-black"
+                    <p
+                      class="m-0 color-black h4"
                     >
                       edX Demonstration Course
-                    </h4>
+                    </p>
                     <p
-                      class="small mb-0"
+                      class="mb-0 small"
                     >
                       From
                     </p>
@@ -584,7 +584,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                       edX
                     </h5>
                     <p
-                      class="small mb-0"
+                      class="mb-0 small"
                     >
                       Completed on 
                       3/4/2019
@@ -603,7 +603,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                     </a>
                   </div>
                   <p
-                    class="small mb-0 pt-3"
+                    class="mb-0 pt-3 small"
                   >
                     Credential ID 
                   </p>
