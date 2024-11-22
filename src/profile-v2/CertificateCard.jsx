@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedDate, FormattedMessage, useIntl } from '@edx/frontend-platform/i18n';
-import { breakpoints, Hyperlink, useWindowSize } from '@openedx/paragon';
+import { Hyperlink } from '@openedx/paragon';
 import get from 'lodash.get';
 
 import classNames from 'classnames';
 import professionalCertificateSVG from './assets/professional-certificate.svg';
 import verifiedCertificateSVG from './assets/verified-certificate.svg';
 import messages from './Certificates.messages';
+import { useIsOnMobileScreen } from './data/hooks';
 
 const CertificateCard = ({
   certificateType,
@@ -28,7 +29,7 @@ const CertificateCard = ({
     audit: null,
   }[certificateType] || null;
 
-  const isMobileView = useWindowSize().width <= breakpoints.small.minWidth;
+  const isMobileView = useIsOnMobileScreen();
 
   return (
     <div
@@ -125,8 +126,7 @@ const CertificateCard = ({
 
 CertificateCard.propTypes = {
   certificateType: PropTypes.string,
-  courseDisplayName:
-  PropTypes.string,
+  courseDisplayName: PropTypes.string,
   courseOrganization: PropTypes.string,
   modifiedDate: PropTypes.string,
   downloadUrl: PropTypes.string,

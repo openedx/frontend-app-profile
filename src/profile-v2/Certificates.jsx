@@ -5,13 +5,13 @@ import { connect } from 'react-redux';
 import { getConfig } from '@edx/frontend-platform';
 
 import classNames from 'classnames';
-import { breakpoints, useWindowSize } from '@openedx/paragon';
 import CertificateCard from './CertificateCard';
 import { certificatesSelector } from './data/selectors';
+import { useIsOnMobileScreen, useIsOnTabletScreen } from './data/hooks';
 
 const Certificates = ({ certificates }) => {
-  const isMobileView = useWindowSize().width <= breakpoints.small.minWidth;
-  const isTabletView = useWindowSize().width <= breakpoints.medium.minWidth;
+  const isMobileView = useIsOnMobileScreen();
+  const isTabletView = useIsOnTabletScreen();
   return (
     <div>
       <div className="col justify-content-start align-items-start g-5rem p-0">
@@ -53,7 +53,16 @@ const Certificates = ({ certificates }) => {
           )}
           >
             {certificates.map(certificate => (
-              <CertificateCard key={certificate.courseId} {...certificate} />
+              <CertificateCard
+                key={certificate.courseId}
+                certificateType={certificate.certificateType}
+                courseDisplayName={certificate.courseDisplayName}
+                courseOrganization={certificate.courseOrganization}
+                modifiedDate={certificate.modifiedDate}
+                downloadUrl={certificate.downloadUrl}
+                courseId={certificate.courseId}
+                uuid={certificate.uuid}
+              />
             ))}
           </div>
         </div>

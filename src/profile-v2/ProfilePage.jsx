@@ -7,12 +7,7 @@ import { sendTrackingLogEvent } from '@edx/frontend-platform/analytics';
 import { ensureConfig, getConfig } from '@edx/frontend-platform';
 import { AppContext } from '@edx/frontend-platform/react';
 import { useIntl } from '@edx/frontend-platform/i18n';
-import {
-  Alert,
-  Hyperlink,
-  breakpoints,
-  useWindowSize,
-} from '@openedx/paragon';
+import { Alert, Hyperlink } from '@openedx/paragon';
 import classNames from 'classnames';
 import {
   fetchProfile,
@@ -28,6 +23,7 @@ import PageLoading from './PageLoading';
 import { profilePageSelector } from './data/selectors';
 import messages from './ProfilePage.messages';
 import withParams from '../utils/hoc';
+import { useIsOnMobileScreen, useIsOnTabletScreen } from './data/hooks';
 
 ensureConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL'], 'ProfilePage');
 
@@ -48,8 +44,8 @@ const ProfilePage = ({ params }) => {
   } = useSelector(profilePageSelector);
 
   const [viewMyRecordsUrl, setViewMyRecordsUrl] = useState(null);
-  const isMobileView = useWindowSize().width <= breakpoints.small.minWidth;
-  const isTabletView = useWindowSize().width <= breakpoints.medium.minWidth;
+  const isMobileView = useIsOnMobileScreen();
+  const isTabletView = useIsOnTabletScreen();
 
   useEffect(() => {
     const { CREDENTIALS_BASE_URL } = context.config;

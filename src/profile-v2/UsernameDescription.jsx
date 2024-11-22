@@ -2,10 +2,10 @@ import React from 'react';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { getConfig } from '@edx/frontend-platform';
 import classNames from 'classnames';
-import { breakpoints, useWindowSize } from '@openedx/paragon';
+import { useIsOnMobileScreen } from './data/hooks';
 
 const UsernameDescription = () => {
-  const isMobileView = useWindowSize().width <= breakpoints.small.minWidth;
+  const isMobileView = useIsOnMobileScreen();
   return (
     <p className={classNames([
       'text-gray-800 font-weight-normal m-0',
