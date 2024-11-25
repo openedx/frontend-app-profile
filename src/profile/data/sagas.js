@@ -1,4 +1,3 @@
-import { history } from '@edx/frontend-platform';
 import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
 import pick from 'lodash.pick';
 import {
@@ -95,7 +94,11 @@ export function* handleFetchProfile(action) {
     yield put(fetchProfileReset());
   } catch (e) {
     if (e.response.status === 404) {
-      history.push('/notfound');
+      if (e.processedData && e.processedData.fieldErrors) {
+        yield put(saveProfileFailure(e.processedData.fieldErrors));
+      } else {
+        yield put(saveProfileFailure(e.customAttributes));
+      }
     } else {
       throw e;
     }

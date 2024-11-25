@@ -70,6 +70,14 @@ class ProfilePage extends React.Component {
     });
   }
 
+  componentDidUpdate() {
+    const { username, navigate, saveState } = this.props;
+
+    if (!username && saveState === 'error') {
+      navigate('/notfound');
+    }
+  }
+
   handleSaveProfilePhoto(formData) {
     this.props.saveProfilePhoto(this.context.authenticatedUser.username, formData);
   }
@@ -330,6 +338,7 @@ ProfilePage.propTypes = {
   // Account data
   requiresParentalConsent: PropTypes.bool,
   dateJoined: PropTypes.string,
+  username: PropTypes.string,
 
   // Bio form data
   bio: PropTypes.string,
@@ -395,6 +404,7 @@ ProfilePage.propTypes = {
   openForm: PropTypes.func.isRequired,
   closeForm: PropTypes.func.isRequired,
   updateDraft: PropTypes.func.isRequired,
+  navigate: PropTypes.func.isRequired,
 
   // Router
   params: PropTypes.shape({
@@ -407,6 +417,7 @@ ProfilePage.propTypes = {
 
 ProfilePage.defaultProps = {
   saveState: null,
+  username: '',
   savePhotoState: null,
   photoUploadError: {},
   profileImage: {},
