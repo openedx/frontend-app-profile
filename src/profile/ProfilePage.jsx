@@ -70,14 +70,6 @@ class ProfilePage extends React.Component {
     });
   }
 
-  componentDidUpdate() {
-    const { username, navigate, saveState } = this.props;
-
-    if (!username && saveState === 'error') {
-      navigate('/notfound');
-    }
-  }
-
   handleSaveProfilePhoto(formData) {
     this.props.saveProfilePhoto(this.context.authenticatedUser.username, formData);
   }
@@ -191,10 +183,17 @@ class ProfilePage extends React.Component {
       visibilityBio,
       requiresParentalConsent,
       isLoadingProfile,
+      username,
+      saveState,
+      navigate,
     } = this.props;
 
     if (isLoadingProfile) {
       return <PageLoading srMessage={this.props.intl.formatMessage(messages['profile.loading'])} />;
+    }
+
+    if (!username && saveState === 'error' && navigate) {
+      navigate('/notfound');
     }
 
     const commonFormProps = {
