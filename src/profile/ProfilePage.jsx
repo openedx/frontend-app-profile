@@ -183,10 +183,17 @@ class ProfilePage extends React.Component {
       visibilityBio,
       requiresParentalConsent,
       isLoadingProfile,
+      username,
+      saveState,
+      navigate,
     } = this.props;
 
     if (isLoadingProfile) {
       return <PageLoading srMessage={this.props.intl.formatMessage(messages['profile.loading'])} />;
+    }
+
+    if (!username && saveState === 'error' && navigate) {
+      navigate('/notfound');
     }
 
     const commonFormProps = {
@@ -330,6 +337,7 @@ ProfilePage.propTypes = {
   // Account data
   requiresParentalConsent: PropTypes.bool,
   dateJoined: PropTypes.string,
+  username: PropTypes.string,
 
   // Bio form data
   bio: PropTypes.string,
@@ -395,6 +403,7 @@ ProfilePage.propTypes = {
   openForm: PropTypes.func.isRequired,
   closeForm: PropTypes.func.isRequired,
   updateDraft: PropTypes.func.isRequired,
+  navigate: PropTypes.func.isRequired,
 
   // Router
   params: PropTypes.shape({
@@ -407,6 +416,7 @@ ProfilePage.propTypes = {
 
 ProfilePage.defaultProps = {
   saveState: null,
+  username: '',
   savePhotoState: null,
   photoUploadError: {},
   profileImage: {},
