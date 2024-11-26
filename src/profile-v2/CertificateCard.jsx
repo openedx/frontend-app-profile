@@ -4,9 +4,11 @@ import { FormattedDate, FormattedMessage, useIntl } from '@edx/frontend-platform
 import { Hyperlink } from '@openedx/paragon';
 import get from 'lodash.get';
 
+import classNames from 'classnames';
 import professionalCertificateSVG from './assets/professional-certificate.svg';
 import verifiedCertificateSVG from './assets/verified-certificate.svg';
 import messages from './Certificates.messages';
+import { useIsOnMobileScreen } from './data/hooks';
 
 const CertificateCard = ({
   certificateType,
@@ -27,6 +29,8 @@ const CertificateCard = ({
     audit: null,
   }[certificateType] || null;
 
+  const isMobileView = useIsOnMobileScreen();
+
   return (
     <div
       key={`${modifiedDate}-${courseId}`}
@@ -37,24 +41,47 @@ const CertificateCard = ({
           className="certificate-type-illustration"
           style={{ backgroundImage: `url(${certificateIllustration})` }}
         />
-        <div className="d-flex flex-column position-relative p-0 width-19625rem">
+        <div className={classNames(
+          'd-flex flex-column position-relative p-0',
+          { 'max-width-19rem': isMobileView },
+          { 'width-19625rem': !isMobileView },
+        )}
+        >
           <div className="w-100 color-black">
-            <p className="small mb-0 font-weight-normal">
+            <p className={classNames([
+              'mb-0 font-weight-normal',
+              isMobileView ? 'x-small' : 'small',
+            ])}
+            >
               {intl.formatMessage(get(
                 messages,
                 `profile.certificates.types.${certificateType}`,
                 messages['profile.certificates.types.unknown'],
               ))}
             </p>
-            <h4 className="m-0 color-black">{courseDisplayName}</h4>
-            <p className="small mb-0">
+            <p className={classNames([
+              'm-0 color-black',
+              isMobileView ? 'h5' : 'h4',
+            ])}
+            >
+              {courseDisplayName}
+            </p>
+            <p className={classNames([
+              'mb-0',
+              isMobileView ? 'x-small' : 'small',
+            ])}
+            >
               <FormattedMessage
                 id="profile.certificate.organization.label"
                 defaultMessage="From"
               />
             </p>
             <h5 className="mb-0 color-black">{courseOrganization}</h5>
-            <p className="small mb-0">
+            <p className={classNames([
+              'mb-0',
+              isMobileView ? 'x-small' : 'small',
+            ])}
+            >
               <FormattedMessage
                 id="profile.certificate.completion.date.label"
                 defaultMessage="Completed on {date}"
@@ -69,12 +96,20 @@ const CertificateCard = ({
               destination={downloadUrl}
               target="_blank"
               showLaunchIcon={false}
-              className="btn btn-primary btn-rounded font-weight-normal px-4 py-0625rem"
+              className={classNames(
+                'btn btn-primary btn-rounded font-weight-normal px-4 py-0625rem',
+                { 'btn-sm': isMobileView },
+              )}
             >
               {intl.formatMessage(messages['profile.certificates.view.certificate'])}
             </Hyperlink>
           </div>
-          <p className="small mb-0 pt-3">
+          <p
+            className={classNames([
+              'mb-0 pt-3',
+              isMobileView ? 'x-small' : 'small',
+            ])}
+          >
             <FormattedMessage
               id="profile.certificate.uuid"
               defaultMessage="Credential ID {certificate_uuid}"

@@ -8,6 +8,7 @@ import { ensureConfig, getConfig } from '@edx/frontend-platform';
 import { AppContext } from '@edx/frontend-platform/react';
 import { useIntl } from '@edx/frontend-platform/i18n';
 import { Alert, Hyperlink } from '@openedx/paragon';
+import classNames from 'classnames';
 import {
   fetchProfile,
   saveProfilePhoto,
@@ -22,6 +23,7 @@ import PageLoading from './PageLoading';
 import { profilePageSelector } from './data/selectors';
 import messages from './ProfilePage.messages';
 import withParams from '../utils/hoc';
+import { useIsOnMobileScreen, useIsOnTabletScreen } from './data/hooks';
 
 ensureConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL'], 'ProfilePage');
 
@@ -42,6 +44,8 @@ const ProfilePage = ({ params }) => {
   } = useSelector(profilePageSelector);
 
   const [viewMyRecordsUrl, setViewMyRecordsUrl] = useState(null);
+  const isMobileView = useIsOnMobileScreen();
+  const isTabletView = useIsOnTabletScreen();
 
   useEffect(() => {
     const { CREDENTIALS_BASE_URL } = context.config;
@@ -81,7 +85,10 @@ const ProfilePage = ({ params }) => {
 
     return (
       <Hyperlink
-        className="btn btn-brand btn-rounded font-weight-normal px-4 py-0625rem text-nowrap"
+        className={classNames(
+          'btn btn-brand btn-rounded font-weight-normal px-4 py-0625rem text-nowrap',
+          { 'btn-sm': isMobileView },
+        )}
         target="_blank"
         showLaunchIcon={false}
         destination={viewMyRecordsUrl}
@@ -109,10 +116,21 @@ const ProfilePage = ({ params }) => {
         <PageLoading srMessage={intl.formatMessage(messages['profile.loading'])} />
       ) : (
         <>
-          <div className="profile-page-bg-banner bg-primary d-md-block align-items-center px-75rem py-4rem h-100 w-100">
+          <div
+            className={classNames(
+              'profile-page-bg-banner bg-primary d-md-block align-items-center py-4rem h-100 w-100',
+              { 'px-4.5': isMobileView },
+              { 'px-75rem': !isMobileView },
+            )}
+          >
             <div className="col container-fluid w-100 h-100 bg-white py-0 px-25rem rounded-75">
               <div className="col h-100 w-100 py-4 px-0 justify-content-start g-15rem">
-                <div className="row-auto d-flex flex-wrap align-items-center h-100 w-100 justify-content-start g-15rem">
+                <div
+                  className={classNames([
+                    'row-auto d-flex flex-wrap align-items-center h-100 w-100 justify-content-start g-15rem',
+                    isMobileView || isTabletView ? 'flex-column' : 'flex-row',
+                  ])}
+                >
                   <ProfileAvatar
                     className="col p-0"
                     src={profileImage.src}
@@ -122,17 +140,46 @@ const ProfilePage = ({ params }) => {
                     savePhotoState={savePhotoState}
                     isEditable={isAuthenticatedUserProfile() && !requiresParentalConsent}
                   />
-                  <div className="col justify-content-start align-items-start h-100 w-100 m-0 p-0">
-                    <h1 className="row h3 m-0 font-weight-bold text-truncate text-primary-500">{params.username}</h1>
+                  <div
+                    className={classNames([
+                      'col h-100 w-100 m-0 p-0',
+                      isMobileView || isTabletView
+                        ? 'd-flex flex-column justify-content-center align-items-center'
+                        : 'justify-content-start align-items-start',
+                    ])}
+                  >
+                    <p className={classNames([
+                      'row m-0 font-weight-bold text-truncate text-primary-500',
+                      isMobileView ? 'h4' : 'h3',
+                    ])}
+                    >
+                      {params.username}
+                    </p>
                     {isBlockVisible(name) && (
-                      <p className="row pt-2 text-gray-800 font-weight-normal m-0">{name}</p>
+                    <p className={classNames([
+                      'row pt-2 text-gray-800 font-weight-normal m-0',
+                      isMobileView ? 'h5' : 'p',
+                    ])}
+                    >
+                      {name}
+                    </p>
                     )}
-                    <div className="row pt-2 m-0 g-1rem">
+                    <div className={classNames(
+                      'row pt-2 m-0',
+                      isMobileView
+                        ? 'd-flex justify-content-center align-items-center flex-column'
+                        : 'g-1rem',
+                    )}
+                    >
                       <DateJoined date={dateJoined} />
                       <UserCertificateSummary count={courseCertificates.length} />
                     </div>
                   </div>
-                  <div className="col-auto p-0">
+                  <div className={classNames([
+                    'p-0 ',
+                    isMobileView || isTabletView ? 'col d-flex justify-content-center' : 'col-auto',
+                  ])}
+                  >
                     {renderViewMyRecordsButton()}
                   </div>
                 </div>
