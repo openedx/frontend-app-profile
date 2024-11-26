@@ -63,12 +63,14 @@ const profilePage = (state = initialState, action = {}) => {
       return {
         ...state,
         saveState: 'error',
+        isLoadingProfile: false,
         errors: { ...state.errors, ...action.payload.errors },
       };
     case SAVE_PROFILE.RESET:
       return {
         ...state,
         saveState: null,
+        isLoadingProfile: false,
         errors: {},
       };
 

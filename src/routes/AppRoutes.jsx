@@ -3,15 +3,19 @@ import {
   AuthenticatedPageRoute,
   PageWrap,
 } from '@edx/frontend-platform/react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { ProfilePage, NotFoundPage } from '../profile';
 
-const AppRoutes = () => (
-  <Routes>
-    <Route path="/u/:username" element={<AuthenticatedPageRoute><ProfilePage /></AuthenticatedPageRoute>} />
-    <Route path="/notfound" element={<PageWrap><NotFoundPage /></PageWrap>} />
-    <Route path="*" element={<PageWrap><NotFoundPage /></PageWrap>} />
-  </Routes>
-);
+const AppRoutes = () => {
+  const navigate = useNavigate();
+
+  return (
+    <Routes>
+      <Route path="/u/:username" element={<AuthenticatedPageRoute><ProfilePage navigate={navigate} /></AuthenticatedPageRoute>} />
+      <Route path="/notfound" element={<PageWrap><NotFoundPage /></PageWrap>} />
+      <Route path="*" element={<PageWrap><NotFoundPage /></PageWrap>} />
+    </Routes>
+  );
+};
 
 export default AppRoutes;
