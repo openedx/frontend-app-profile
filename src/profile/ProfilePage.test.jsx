@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+import { BrowserRouter, useNavigate } from 'react-router-dom';
 
 import messages from '../i18n';
 import ProfilePage from './ProfilePage';
@@ -16,6 +17,7 @@ import ProfilePage from './ProfilePage';
 const mockStore = configureMockStore([thunk]);
 const storeMocks = {
   loadingApp: require('./__mocks__/loadingApp.mockStore'),
+  invalidUser: require('./__mocks__/invalidUser.mockStore'),
   viewOwnProfile: require('./__mocks__/viewOwnProfile.mockStore'),
   viewOtherProfile: require('./__mocks__/viewOtherProfile.mockStore'),
   savingEditedBio: require('./__mocks__/savingEditedBio.mockStore'),
@@ -65,6 +67,23 @@ beforeEach(() => {
   analytics.sendTrackingLogEvent.mockReset();
 });
 
+const ProfileWrapper = ({ params, requiresParentalConsent }) => {
+  const navigate = useNavigate();
+  return (
+    <ProfilePage
+      {...requiredProfilePageProps}
+      params={params}
+      requiresParentalConsent={requiresParentalConsent}
+      navigate={navigate}
+    />
+  );
+};
+
+ProfileWrapper.propTypes = {
+  params: PropTypes.shape({}).isRequired,
+  requiresParentalConsent: PropTypes.bool.isRequired,
+};
+
 const ProfilePageWrapper = ({
   contextValue, store, params, requiresParentalConsent,
 }) => (
@@ -73,7 +92,12 @@ const ProfilePageWrapper = ({
   >
     <IntlProvider locale="en">
       <Provider store={store}>
-        <ProfilePage {...requiredProfilePageProps} params={params} requiresParentalConsent={requiresParentalConsent} />
+        <BrowserRouter>
+          <ProfileWrapper
+            params={params}
+            requiresParentalConsent={requiresParentalConsent}
+          />
+        </BrowserRouter>
       </Provider>
     </IntlProvider>
   </AppContext.Provider>
@@ -99,6 +123,16 @@ describe('<ProfilePage />', () => {
         config: getConfig(),
       };
       const component = <ProfilePageWrapper contextValue={contextValue} store={mockStore(storeMocks.loadingApp)} />;
+      const { container: tree } = render(component);
+      expect(tree).toMatchSnapshot();
+    });
+
+    it('successfully redirected to not found page.', () => {
+      const contextValue = {
+        authenticatedUser: { userId: 123, username: 'staff', administrator: true },
+        config: getConfig(),
+      };
+      const component = <ProfilePageWrapper contextValue={contextValue} store={mockStore(storeMocks.invalidUser)} />;
       const { container: tree } = render(component);
       expect(tree).toMatchSnapshot();
     });
