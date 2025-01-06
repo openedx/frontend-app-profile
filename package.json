@@ -65,7 +65,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "19.6.1",
-    "@commitlint/config-angular": "19.6.0",
+    "@commitlint/config-angular": "19.7.0",
     "@edx/browserslist-config": "^1.1.1",
     "@edx/reactifex": "2.2.0",
     "@openedx/frontend-build": "14.2.2",
