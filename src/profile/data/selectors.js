@@ -11,6 +11,7 @@ export const formIdSelector = (state, props) => props.formId;
 export const userAccountSelector = state => state.userAccount;
 
 export const profileAccountSelector = state => state.profilePage.account;
+export const extendedProfileFieldsSelector = state => state.profilePage.extendedProfileFields;
 export const profileDraftsSelector = state => state.profilePage.drafts;
 export const accountPrivacySelector = state => state.profilePage.preferences.accountPrivacy;
 export const profilePreferencesSelector = state => state.profilePage.preferences;
@@ -323,6 +324,7 @@ export const profilePageSelector = createSelector(
   isLoadingProfileSelector,
   draftSocialLinksByPlatformSelector,
   accountErrorsSelector,
+  extendedProfileFieldsSelector,
   (
     account,
     formValues,
@@ -332,6 +334,7 @@ export const profilePageSelector = createSelector(
     isLoadingProfile,
     draftSocialLinksByPlatform,
     errors,
+    extendedProfileFields,
   ) => ({
     // Account data we need
     username: account.username,
@@ -374,5 +377,14 @@ export const profilePageSelector = createSelector(
     savePhotoState,
     isLoadingProfile,
     photoUploadError: errors.photo || null,
+
+    // Extended profile fields
+    extendedProfileFields: extendedProfileFields.map((field) => ({
+      ...field,
+      value: account.extendedProfile?.find(
+        (extendedProfileField) => extendedProfileField.fieldName === field.name,
+      )?.fieldValue,
+    })),
   }),
+
 );
