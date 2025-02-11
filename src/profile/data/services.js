@@ -89,7 +89,12 @@ export async function deleteProfilePhoto(username) {
 export async function getPreferences(username) {
   const { data } = await getHttpClient().get(`${getConfig().LMS_BASE_URL}/api/user/v1/preferences/${username}`);
 
-  return camelCaseObject(data);
+  const processedData = camelCaseObject(data);
+
+  return {
+    ...processedData,
+    visibilityExtendedProfile: JSON.parse(data['visibility.extended_profile']),
+  };
 }
 
 // PATCH PREFERENCES
@@ -105,7 +110,10 @@ export async function patchPreferences(username, params) {
     visibility_name: 'visibility.name',
     visibility_social_links: 'visibility.social_links',
     visibility_time_zone: 'visibility.time_zone',
+    visibility_extended_profile: 'visibility.extended_profile',
   });
+
+  processedParams['visibility.extended_profile'] = JSON.stringify(processedParams['visibility.extended_profile']);
 
   await getHttpClient().patch(`${getConfig().LMS_BASE_URL}/api/user/v1/preferences/${username}`, processedParams, {
     headers: { 'Content-Type': 'application/merge-patch+json' },

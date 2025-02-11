@@ -1,11 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
-import get from 'lodash.get';
-
-// Mock Data
-import mockData from '../data/mock_data';
 
 // Components
 import EditableItemHeader from './elements/EditableItemHeader';
@@ -19,17 +15,41 @@ const ExtendedProfileFields = (props) => {
     extendedProfileFields, formId, changeHandler, submitHandler, closeHandler, openHandler, editMode,
   } = props;
 
-  //   if (!learningGoal) {
-  //     learningGoal = mockData.learningGoal;
-  //   }
+  const draftProfile = useSelector((state) => state.profilePage.drafts);
+  const extendedProfile = useSelector((state) => state.profilePage.account.extendedProfile);
+  const visibilityExtendedProfile = useSelector((state) => state.profilePage.preferences.visibilityExtendedProfile);
+  const [currentEditingField, setCurrentEditingField] = useState(null);
 
-  //   if (!editMode || editMode === 'empty') { // editMode defaults to 'empty', not sure why yet
-  //     editMode = mockData.editMode;
-  //   }
+  const handleOpenEdit = (form) => {
+    const [parentFormId, fieldId] = form.split('/');
 
-  //   if (!visibilityLearningGoal) {
-  //     visibilityLearningGoal = mockData.visibilityLearningGoal;
-  //   }
+    openHandler(parentFormId);
+    setCurrentEditingField(fieldId);
+  };
+
+  const handleCloseEdit = () => {
+    closeHandler(null);
+    setCurrentEditingField(null);
+  };
+
+  const handleChangeExtendedField = (name, value) => {
+    const [parentFormId, fieldName] = name.split('/');
+    if (name.includes('visibility')) {
+      changeHandler(parentFormId, { [fieldName]: value });
+    } else {
+      const fieldIndex = extendedProfile.findIndex((field) => field.fieldName === fieldName);
+      const newFields = extendedProfile.map(
+        (extendedField, index) => (index === fieldIndex ? { ...extendedField, fieldValue: value } : extendedField),
+      );
+      changeHandler(parentFormId, newFields);
+    }
+  };
+
+  const handleSubmitExtendedField = (form) => {
+    const [parentFormId] = form.split('/');
+    submitHandler(parentFormId);
+    setCurrentEditingField(null);
+  };
 
   return extendedProfileFields?.map((field) => (
     <SwitchContent
@@ -46,24 +66,30 @@ const ExtendedProfileFields = (props) => {
         ),
         text: (
           <TextField
-            formId={formId}
-            changeHandler={changeHandler}
-            submitHandler={submitHandler}
-            closeHandler={closeHandler}
-            openHandler={openHandler}
-            editMode={editMode}
+            formId={`${formId}/${field.name}`}
+            editMode={currentEditingField === field.name ? editMode : 'editable'}
+            changeHandler={handleChangeExtendedField}
+            submitHandler={handleSubmitExtendedField}
+            closeHandler={handleCloseEdit}
+            openHandler={handleOpenEdit}
             {...field}
           />
         ),
         select: (
           <SelectField
-            formId={formId}
-            changeHandler={changeHandler}
-            submitHandler={submitHandler}
-            closeHandler={closeHandler}
-            openHandler={openHandler}
-            editMode={editMode}
+            formId={`${formId}/${field.name}`}
+            editMode={currentEditingField === field.name ? editMode : 'editable'}
+            changeHandler={handleChangeExtendedField}
+            submitHandler={handleSubmitExtendedField}
+            closeHandler={handleCloseEdit}
+            openHandler={handleOpenEdit}
             {...field}
+            value={draftProfile?.extendedProfile?.find(
+              (extendedField) => extendedField.fieldName === field.name,
+            )?.fieldValue ?? field.value}
+            visibility={
+                draftProfile?.visibilityExtendedProfile?.[field.name] ?? visibilityExtendedProfile?.[field.name]
+            }
           />
         ),
       }}
