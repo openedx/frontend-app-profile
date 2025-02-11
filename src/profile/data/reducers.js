@@ -7,6 +7,7 @@ import {
   FETCH_PROFILE,
   UPDATE_DRAFT,
   RESET_DRAFTS,
+  EXTENDED_PROFILE_FIELDS,
 } from './actions';
 
 export const initialState = {
@@ -22,6 +23,7 @@ export const initialState = {
   drafts: {},
   isLoadingProfile: true,
   isAuthenticatedUserProfile: false,
+  extendedProfileFields: [],
 };
 
 const profilePage = (state = initialState, action = {}) => {
@@ -155,6 +157,14 @@ const profilePage = (state = initialState, action = {}) => {
         };
       }
       return state;
+    case EXTENDED_PROFILE_FIELDS.BEGIN:
+    case EXTENDED_PROFILE_FIELDS.FAILURE:
+    case EXTENDED_PROFILE_FIELDS.SUCCESS:
+      if (!action.payload) { return state; }
+      return {
+        ...state,
+        extendedProfileFields: action.payload,
+      };
     default:
       return state;
   }
