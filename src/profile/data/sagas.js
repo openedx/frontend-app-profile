@@ -29,6 +29,10 @@ import {
   saveProfileSuccess,
   SAVE_PROFILE,
   SAVE_PROFILE_PHOTO,
+  EXTENDED_PROFILE_FIELDS,
+  getExtendedProfileFieldsBegin,
+  getExtendedProfileFieldsSuccess,
+  getExtendedProfileFieldsFailure,
 } from './actions';
 import { handleSaveProfileSelector, userAccountSelector } from './selectors';
 import * as ProfileApiService from './services';
@@ -117,6 +121,7 @@ export function* handleSaveProfile(action) {
       'languageProficiencies',
       'name',
       'socialLinks',
+      'extendedProfile',
     ]);
 
     const preferencesDrafts = pick(drafts, [
@@ -204,9 +209,24 @@ export function* handleDeleteProfilePhoto(action) {
   }
 }
 
+export function* fetchThirdPartyAuthContext(action) {
+  try {
+    yield put(getExtendedProfileFieldsBegin());
+    const {
+      fields,
+    } = yield call(ProfileApiService.getExtendedProfileFields, action.payload.urlParams);
+
+    yield put(getExtendedProfileFieldsSuccess(fields));
+  } catch (e) {
+    yield put(getExtendedProfileFieldsFailure());
+    throw e;
+  }
+}
+
 export default function* profileSaga() {
   yield takeEvery(FETCH_PROFILE.BASE, handleFetchProfile);
   yield takeEvery(SAVE_PROFILE.BASE, handleSaveProfile);
   yield takeEvery(SAVE_PROFILE_PHOTO.BASE, handleSaveProfilePhoto);
   yield takeEvery(DELETE_PROFILE_PHOTO.BASE, handleDeleteProfilePhoto);
+  yield takeEvery(EXTENDED_PROFILE_FIELDS.BASE, fetchThirdPartyAuthContext);
 }

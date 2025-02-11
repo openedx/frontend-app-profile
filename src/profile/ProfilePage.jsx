@@ -17,6 +17,7 @@ import {
   openForm,
   closeForm,
   updateDraft,
+  getExtendedProfileFields as fetchExtraFieldsInfo,
 } from './data/actions';
 
 // Components
@@ -42,6 +43,7 @@ import { profilePageSelector } from './data/selectors';
 import messages from './ProfilePage.messages';
 
 import withParams from '../utils/hoc';
+import ExtendedProfileFields from './forms/ExtendedProfileFields';
 
 ensureConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL'], 'ProfilePage');
 
@@ -65,6 +67,7 @@ class ProfilePage extends React.Component {
 
   componentDidMount() {
     this.props.fetchProfile(this.props.params.username);
+    this.props.fetchExtraFieldsInfo({ is_register_page: true });
     sendTrackingLogEvent('edx.profile.viewed', {
       username: this.props.params.username,
     });
@@ -291,6 +294,13 @@ class ProfilePage extends React.Component {
             )}
           </div>
           <div className="pt-md-3 col-md-8 col-lg-7 offset-lg-1">
+            {this.props.extendedProfileFields.length > 0 && (
+              <ExtendedProfileFields
+                extendedProfileFields={this.props.extendedProfileFields}
+                formId="extendedProfile"
+                {...commonFormProps}
+              />
+            )}
             {!this.isYOBDisabled() && this.renderAgeMessage()}
             {isBioBlockVisible && (
               <Bio
@@ -368,6 +378,28 @@ ProfilePage.propTypes = {
   name: PropTypes.string,
   visibilityName: PropTypes.string.isRequired,
 
+  // Extra profile fields
+  extendedProfileFields: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    default: PropTypes.unknown,
+    placeholder: PropTypes.string,
+    instructions: PropTypes.string,
+    options: PropTypes.arrayOf(PropTypes.shape({
+      value: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    })),
+    error_message: PropTypes.shape({
+      required: PropTypes.string,
+      invalid: PropTypes.string,
+    }),
+    restrictions: PropTypes.shape({
+      max_length: PropTypes.number,
+    }),
+    type: PropTypes.string.isRequired,
+    value: PropTypes.unknown,
+  })),
+
   // Social links form data
   socialLinks: PropTypes.arrayOf(PropTypes.shape({
     platform: PropTypes.string,
@@ -404,6 +436,7 @@ ProfilePage.propTypes = {
   closeForm: PropTypes.func.isRequired,
   updateDraft: PropTypes.func.isRequired,
   navigate: PropTypes.func.isRequired,
+  fetchExtraFieldsInfo: PropTypes.func.isRequired,
 
   // Router
   params: PropTypes.shape({
@@ -432,6 +465,7 @@ ProfilePage.defaultProps = {
   courseCertificates: null,
   requiresParentalConsent: null,
   dateJoined: null,
+  extendedProfileFields: [],
 };
 
 export default connect(
@@ -444,5 +478,6 @@ export default connect(
     openForm,
     closeForm,
     updateDraft,
+    fetchExtraFieldsInfo,
   },
 )(injectIntl(withParams(ProfilePage)));
