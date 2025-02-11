@@ -239,6 +239,7 @@ export const visibilitiesSelector = createSelector(
           visibilityLanguageProficiencies: preferences.visibilityLanguageProficiencies || 'all_users',
           visibilityName: preferences.visibilityName || 'all_users',
           visibilitySocialLinks: preferences.visibilitySocialLinks || 'all_users',
+          visibilityExtendedProfile: preferences.visibilityExtendedProfile || 'all_users',
         };
       case 'private':
         return {
@@ -249,6 +250,7 @@ export const visibilitiesSelector = createSelector(
           visibilityLanguageProficiencies: 'private',
           visibilityName: 'private',
           visibilitySocialLinks: 'private',
+          visibilityExtendedProfile: 'private',
         };
       case 'all_users':
       default:
@@ -264,6 +266,7 @@ export const visibilitiesSelector = createSelector(
           visibilityLanguageProficiencies: 'all_users',
           visibilityName: 'all_users',
           visibilitySocialLinks: 'all_users',
+          visibilityExtendedProfile: 'all_users',
         };
     }
   },
@@ -311,6 +314,10 @@ export const formValuesSelector = createSelector(
     visibilitySocialLinks: chooseFormValue(
       drafts.visibilitySocialLinks,
       visibilities.visibilitySocialLinks,
+    ),
+    visibilityExtendedProfile: chooseFormValue(
+      drafts.visibilityExtendedProfile,
+      visibilities.visibilityExtendedProfile,
     ),
   }),
 );

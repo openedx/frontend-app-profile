@@ -6,6 +6,7 @@ import FormControls from './FormControls';
 import EditableItemHeader from './EditableItemHeader';
 import EmptyContent from './EmptyContent';
 import SwitchContent from './SwitchContent';
+import { capitalizeFirstLetter } from '../../utils';
 
 const SelectField = ({
   formId,
@@ -76,7 +77,7 @@ const SelectField = ({
                 )}
               </Form.Group>
               <FormControls
-                visibilityId={`visibility${formId}`}
+                visibilityId={`visibility${capitalizeFirstLetter(formId)}`}
                 saveState={saveState}
                 visibility={visibility}
                 cancelHandler={handleClose}
@@ -131,7 +132,7 @@ SelectField.propTypes = {
     code: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
   })).isRequired,
-  fieldMessages: PropTypes.objectOf(PropTypes.string).isRequired,
+  //   fieldMessages: PropTypes.objectOf(PropTypes.string).isRequired,
   label: PropTypes.string.isRequired,
   emptyMessage: PropTypes.string.isRequired,
   changeHandler: PropTypes.func.isRequired,

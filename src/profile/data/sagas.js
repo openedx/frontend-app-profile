@@ -132,6 +132,7 @@ export function* handleSaveProfile(action) {
       'visibilityLanguageProficiencies',
       'visibilityName',
       'visibilitySocialLinks',
+      'visibilityExtendedProfile',
     ]);
 
     if (Object.keys(preferencesDrafts).length > 0) {
