@@ -1,16 +1,19 @@
+/* eslint-disable react/no-danger */
 import React from 'react';
+import DOMPurify from 'dompurify';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Form } from '@openedx/paragon';
+
+import { editableFormSelector } from '../../data/selectors';
 
 // Components
-import { Form } from '@openedx/paragon';
-import { connect } from 'react-redux';
 import FormControls from './FormControls';
 import EditableItemHeader from './EditableItemHeader';
 import EmptyContent from './EmptyContent';
 import SwitchContent from './SwitchContent';
-import { editableFormSelector } from '../../data/selectors';
 
-const TextField = ({
+const CheckboxField = ({
   formId,
   value,
   visibility,
@@ -26,7 +29,7 @@ const TextField = ({
   openHandler,
 }) => {
   const handleChange = (e) => {
-    const { name, value: newValue } = e.target;
+    const { name, checked: newValue } = e.target;
     changeHandler(name, newValue);
   };
 
@@ -54,16 +57,14 @@ const TextField = ({
                 controlId={formId}
                 isInvalid={error !== null}
               >
-                <label className="edit-section-header" htmlFor={formId}>
-                  {label}
-                </label>
-                <input
-                  className="form-control"
+                <Form.Checkbox
                   id={formId}
                   name={formId}
-                  value={value}
+                  checked={value}
                   onChange={handleChange}
-                />
+                >
+                  <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(label) }} />
+                </Form.Checkbox>
                 {error !== null && (
                 <Form.Control.Feedback hasIcon={false}>
                   {error}
@@ -84,10 +85,18 @@ const TextField = ({
         editable: (
           <>
             <EditableItemHeader
-              content={label}
+              content={(
+                <Form.Checkbox
+                  id={formId}
+                  name={formId}
+                  checked={value}
+                >
+                  <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(label) }} />
+                </Form.Checkbox>
+              )}
               showEditButton
               onClickEdit={handleOpen}
-              showVisibility={visibility !== null}
+              showVisibility={false}
               visibility={visibility}
             />
             <p data-hj-suppress className="h5">{value}</p>
@@ -115,9 +124,9 @@ const TextField = ({
   );
 };
 
-TextField.propTypes = {
+CheckboxField.propTypes = {
   formId: PropTypes.string.isRequired,
-  value: PropTypes.string,
+  value: PropTypes.bool,
   visibility: PropTypes.oneOf(['private', 'all_users']),
   editMode: PropTypes.oneOf(['editing', 'editable', 'empty', 'static']),
   saveState: PropTypes.string,
@@ -131,14 +140,14 @@ TextField.propTypes = {
   openHandler: PropTypes.func.isRequired,
 };
 
-TextField.defaultProps = {
+CheckboxField.defaultProps = {
   editMode: 'static',
   saveState: null,
-  value: null,
+  value: false,
   placeholder: '',
   instructions: '',
   visibility: 'private',
   error: null,
 };
 
-export default connect(editableFormSelector, {})(TextField);
+export default connect(editableFormSelector, {})(CheckboxField);
