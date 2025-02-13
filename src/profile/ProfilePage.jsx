@@ -189,6 +189,7 @@ class ProfilePage extends React.Component {
       username,
       saveState,
       navigate,
+      extendedProfileFields,
     } = this.props;
 
     if (isLoadingProfile) {
@@ -216,6 +217,11 @@ class ProfilePage extends React.Component {
     const isCertificatesBlockVisible = isBlockVisible(courseCertificates.length);
     const isNameBlockVisible = isBlockVisible(name);
     const isLocationBlockVisible = isBlockVisible(country);
+    // TODO: modify /api/user/v1/accounts/{{username}} to return extended profile fields
+    // So this can be shown for no-authenticated user profiles
+    const isExtendedProfileFieldsVisible = isBlockVisible(
+      extendedProfileFields.length > 0 && this.isAuthenticatedUserProfile(),
+    );
 
     return (
       <div className="container-fluid">
@@ -283,6 +289,13 @@ class ProfilePage extends React.Component {
                 {...commonFormProps}
               />
             )}
+            {isExtendedProfileFieldsVisible && (
+            <ExtendedProfileFields
+              extendedProfileFields={extendedProfileFields}
+              formId="extendedProfile"
+              {...commonFormProps}
+            />
+            )}
             {isSocialLinksBLockVisible && (
               <SocialLinks
                 socialLinks={socialLinks}
@@ -294,13 +307,6 @@ class ProfilePage extends React.Component {
             )}
           </div>
           <div className="pt-md-3 col-md-8 col-lg-7 offset-lg-1">
-            {this.props.extendedProfileFields.length > 0 && (
-              <ExtendedProfileFields
-                extendedProfileFields={this.props.extendedProfileFields}
-                formId="extendedProfile"
-                {...commonFormProps}
-              />
-            )}
             {!this.isYOBDisabled() && this.renderAgeMessage()}
             {isBioBlockVisible && (
               <Bio

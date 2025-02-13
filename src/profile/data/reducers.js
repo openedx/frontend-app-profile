@@ -130,11 +130,23 @@ const profilePage = (state = initialState, action = {}) => {
         errors: {},
       };
 
-    case UPDATE_DRAFT:
+    case UPDATE_DRAFT: {
+      const { name, value } = action.payload;
+      const updatedDrafts = { ...state.drafts, [name]: value };
+
+      if (name === 'visibilityExtendedProfile') {
+        const visibilityExtendedProfile = {
+          ...state.preferences.visibilityExtendedProfile,
+          ...value,
+        };
+        updatedDrafts[name] = visibilityExtendedProfile;
+      }
+
       return {
         ...state,
-        drafts: { ...state.drafts, [action.payload.name]: action.payload.value },
+        drafts: updatedDrafts,
       };
+    }
 
     case RESET_DRAFTS:
       return {

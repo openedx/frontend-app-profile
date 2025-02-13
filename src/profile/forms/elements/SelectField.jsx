@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form } from '@openedx/paragon';
 
+import { connect } from 'react-redux';
 import FormControls from './FormControls';
 import EditableItemHeader from './EditableItemHeader';
 import EmptyContent from './EmptyContent';
 import SwitchContent from './SwitchContent';
-import { capitalizeFirstLetter } from '../../utils';
+import { editableFormSelector } from '../../data/selectors';
 
 const SelectField = ({
   formId,
@@ -43,7 +44,6 @@ const SelectField = ({
 
   return (
     <SwitchContent
-      className="mb-5"
       expression={editMode}
       cases={{
         editing: (
@@ -77,9 +77,10 @@ const SelectField = ({
                 )}
               </Form.Group>
               <FormControls
-                visibilityId={`visibility${capitalizeFirstLetter(formId)}`}
+                // TODO: Modify api/user/v1/accounts/{username} so it returns extended_profile_fields for no owners
+                // visibilityId={`visibility${capitalizeFirstLetter(formId)}`}
+                showVisibilitySelect={false}
                 saveState={saveState}
-                visibility={visibility}
                 cancelHandler={handleClose}
                 changeHandler={handleChange}
               />
@@ -149,4 +150,4 @@ SelectField.defaultProps = {
   error: null,
 };
 
-export default SelectField;
+export default connect(editableFormSelector, {})(SelectField);

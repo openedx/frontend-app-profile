@@ -1,100 +1,86 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { connect, useSelector } from 'react-redux';
-import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
+import { useSelector } from 'react-redux';
+import { intlShape } from '@edx/frontend-platform/i18n';
 
 // Components
-import EditableItemHeader from './elements/EditableItemHeader';
 import SwitchContent from './elements/SwitchContent';
 import SelectField from './elements/SelectField';
-import { editableFormSelector } from '../data/selectors';
 import TextField from './elements/TextField';
+import CheckboxField from './elements/CheckboxField';
+import { moveCheckboxFieldsToEnd } from '../utils';
 
 const ExtendedProfileFields = (props) => {
   const {
-    extendedProfileFields, formId, changeHandler, submitHandler, closeHandler, openHandler, editMode,
+    extendedProfileFields, formId, changeHandler, submitHandler, closeHandler, openHandler,
   } = props;
 
   const draftProfile = useSelector((state) => state.profilePage.drafts);
   const extendedProfile = useSelector((state) => state.profilePage.account.extendedProfile);
   const visibilityExtendedProfile = useSelector((state) => state.profilePage.preferences.visibilityExtendedProfile);
-  const [currentEditingField, setCurrentEditingField] = useState(null);
-
-  const handleOpenEdit = (form) => {
-    const [parentFormId, fieldId] = form.split('/');
-
-    openHandler(parentFormId);
-    setCurrentEditingField(fieldId);
-  };
-
-  const handleCloseEdit = () => {
-    closeHandler(null);
-    setCurrentEditingField(null);
-  };
 
   const handleChangeExtendedField = (name, value) => {
-    const [parentFormId, fieldName] = name.split('/');
-    if (name.includes('visibility')) {
-      changeHandler(parentFormId, { [fieldName]: value });
-    } else {
-      const fieldIndex = extendedProfile.findIndex((field) => field.fieldName === fieldName);
-      const newFields = extendedProfile.map(
-        (extendedField, index) => (index === fieldIndex ? { ...extendedField, fieldValue: value } : extendedField),
+    const [parentPropKey, fieldName] = name.split('/');
+    const isVisibilityChange = name.includes('visibility');
+    const fields = isVisibilityChange ? visibilityExtendedProfile : extendedProfile;
+    const newFields = isVisibilityChange
+      ? {
+        ...fields,
+        [fieldName]: value,
+      }
+      : fields.map(
+        (extendedField) => (
+          extendedField.fieldName === fieldName ? { ...extendedField, fieldValue: value } : extendedField
+        ),
       );
-      changeHandler(parentFormId, newFields);
-    }
+    changeHandler(parentPropKey, newFields);
   };
 
   const handleSubmitExtendedField = (form) => {
-    const [parentFormId] = form.split('/');
-    submitHandler(parentFormId);
-    setCurrentEditingField(null);
+    submitHandler(form);
   };
 
-  return extendedProfileFields?.map((field) => (
-    <SwitchContent
-      className="mb-5"
-      expression={field.type}
-      cases={{
-        checkbox: (
-          <>
-            <EditableItemHeader content={field.label} />
-            <p data-hj-suppress className="lead">
-              {field.default}
-            </p>
-          </>
-        ),
-        text: (
-          <TextField
-            formId={`${formId}/${field.name}`}
-            editMode={currentEditingField === field.name ? editMode : 'editable'}
-            changeHandler={handleChangeExtendedField}
-            submitHandler={handleSubmitExtendedField}
-            closeHandler={handleCloseEdit}
-            openHandler={handleOpenEdit}
-            {...field}
+  return (
+    <div className="">
+      {extendedProfileFields.sort(moveCheckboxFieldsToEnd)?.map((field) => {
+        const value = draftProfile?.extendedProfile?.find(
+          (extendedField) => extendedField.fieldName === field.name,
+        )?.fieldValue ?? field.value;
+
+        const visibility = draftProfile?.visibilityExtendedProfile?.[field.name]
+            ?? visibilityExtendedProfile?.[field.name];
+
+        const commonProps = {
+          ...field,
+          formId: `${formId}/${field.name}`,
+          changeHandler: handleChangeExtendedField,
+          submitHandler: handleSubmitExtendedField,
+          closeHandler,
+          openHandler,
+          value,
+          visibility,
+        };
+
+        return (
+          <SwitchContent
+            className="mb-5"
+            expression={field.type}
+            cases={{
+              checkbox: (
+                <CheckboxField {...commonProps} />
+              ),
+              text: (
+                <TextField {...commonProps} />
+              ),
+              select: (
+                <SelectField {...commonProps} />
+              ),
+            }}
           />
-        ),
-        select: (
-          <SelectField
-            formId={`${formId}/${field.name}`}
-            editMode={currentEditingField === field.name ? editMode : 'editable'}
-            changeHandler={handleChangeExtendedField}
-            submitHandler={handleSubmitExtendedField}
-            closeHandler={handleCloseEdit}
-            openHandler={handleOpenEdit}
-            {...field}
-            value={draftProfile?.extendedProfile?.find(
-              (extendedField) => extendedField.fieldName === field.name,
-            )?.fieldValue ?? field.value}
-            visibility={
-                draftProfile?.visibilityExtendedProfile?.[field.name] ?? visibilityExtendedProfile?.[field.name]
-            }
-          />
-        ),
-      }}
-    />
-  ));
+        );
+      })}
+    </div>
+  );
 };
 
 ExtendedProfileFields.propTypes = {
@@ -126,6 +112,9 @@ ExtendedProfileFields.propTypes = {
   closeHandler: PropTypes.func.isRequired,
   openHandler: PropTypes.func.isRequired,
 
+  // Props
+  isAuthenticatedUserProfile: PropTypes.bool.isRequired,
+
   // i18n
   intl: intlShape.isRequired,
 };
@@ -133,4 +122,4 @@ ExtendedProfileFields.propTypes = {
 ExtendedProfileFields.defaultProps = {
 };
 
-export default connect(editableFormSelector, {})(injectIntl(ExtendedProfileFields));
+export default ExtendedProfileFields;

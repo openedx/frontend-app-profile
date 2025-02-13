@@ -32,10 +32,17 @@ export const editableFormModeSelector = createSelector(
   formIdSelector,
   currentlyEditingFieldSelector,
   (account, isAuthenticatedUserProfile, certificates, formId, currentlyEditingField) => {
+    const [parentPropKey, fieldName] = formId.split('/');
     // If the prop doesn't exist, that means it hasn't been set (for the current user's profile)
     // or is being hidden from us (for other users' profiles)
     let propExists = account[formId] != null && account[formId].length > 0;
     propExists = formId === 'certificates' ? certificates.length > 0 : propExists; // overwrite for certificates
+
+    // Overwrite for extended profile fields
+    propExists = formId.includes('extendedProfile') ? (
+      account[parentPropKey]?.some((field) => field.fieldName === fieldName)
+    ) : propExists;
+
     // If this isn't the current user's profile
     if (!isAuthenticatedUserProfile) {
       return 'static';
