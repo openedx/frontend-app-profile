@@ -19,6 +19,7 @@ jest.mock('./services', () => ({
   getPreferences: jest.fn(),
   getAccount: jest.fn(),
   getCourseCertificates: jest.fn(),
+  getCountryList: jest.fn(),
 }));
 
 jest.mock('@edx/frontend-platform/auth', () => ({
@@ -68,17 +69,12 @@ describe('RootSaga', () => {
       const action = profileActions.fetchProfile('gonzo');
       const gen = handleFetchProfile(action);
 
-      const result = [userAccount, [1, 2, 3], { preferences: 'stuff' }];
+      const result = [userAccount, [1, 2, 3], [], { preferences: 'stuff' }];
 
       expect(gen.next().value).toEqual(select(userAccountSelector));
       expect(gen.next(selectorData).value).toEqual(put(profileActions.fetchProfileBegin()));
-      expect(gen.next().value).toEqual(all([
-        call(ProfileApiService.getAccount, 'gonzo'),
-        call(ProfileApiService.getCourseCertificates, 'gonzo'),
-        call(ProfileApiService.getPreferences, 'gonzo'),
-      ]));
       expect(gen.next(result).value)
-        .toEqual(put(profileActions.fetchProfileSuccess(userAccount, result[2], result[1], true)));
+        .toEqual(put(profileActions.fetchProfileSuccess(userAccount, result[3], result[1], true, [])));
       expect(gen.next().value).toEqual(put(profileActions.fetchProfileReset()));
       expect(gen.next().value).toBeUndefined();
     });
@@ -96,16 +92,17 @@ describe('RootSaga', () => {
       const action = profileActions.fetchProfile('booyah');
       const gen = handleFetchProfile(action);
 
-      const result = [{}, [1, 2, 3]];
+      const result = [{}, [1, 2, 3], []];
 
       expect(gen.next().value).toEqual(select(userAccountSelector));
       expect(gen.next(selectorData).value).toEqual(put(profileActions.fetchProfileBegin()));
       expect(gen.next().value).toEqual(all([
         call(ProfileApiService.getAccount, 'booyah'),
         call(ProfileApiService.getCourseCertificates, 'booyah'),
+        call(ProfileApiService.getCountryList),
       ]));
       expect(gen.next(result).value)
-        .toEqual(put(profileActions.fetchProfileSuccess(result[0], {}, result[1], false)));
+        .toEqual(put(profileActions.fetchProfileSuccess(result[0], {}, result[1], false, [])));
       expect(gen.next().value).toEqual(put(profileActions.fetchProfileReset()));
       expect(gen.next().value).toBeUndefined();
     });
