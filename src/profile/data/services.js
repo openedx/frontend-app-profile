@@ -2,6 +2,7 @@ import { ensureConfig, getConfig } from '@edx/frontend-platform';
 import { getAuthenticatedHttpClient as getHttpClient } from '@edx/frontend-platform/auth';
 import { logError } from '@edx/frontend-platform/logging';
 import { camelCaseObject, convertKeyNames, snakeCaseObject } from '../utils';
+import { FIELD_LABELS } from './constants';
 
 ensureConfig(['LMS_BASE_URL'], 'Profile API service');
 
@@ -150,7 +151,7 @@ export async function getCourseCertificates(username) {
 
 function extractCountryList(data) {
   return data?.fields
-    .find(({ name }) => name === 'country')
+    .find(({ name }) => name === FIELD_LABELS.COUNTRY)
     ?.options?.map(({ value, name }) => ({ code: value, name })) || [];
 }
 
