@@ -109,7 +109,7 @@ const SelectField = ({
             </EmptyContent>
           </>
         ),
-        static: (
+        static: value && (
           <>
             <EditableItemHeader
               content={label}

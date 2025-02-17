@@ -90,10 +90,11 @@ export async function getPreferences(username) {
   const { data } = await getHttpClient().get(`${getConfig().LMS_BASE_URL}/api/user/v1/preferences/${username}`);
 
   const processedData = camelCaseObject(data);
+  const visibilityExtendedProfile = Object.prototype.hasOwnProperty.call(data, 'visibilityExtendedProfile');
 
   return {
     ...processedData,
-    visibilityExtendedProfile: JSON.parse(data['visibility.extended_profile']),
+    visibilityExtendedProfile: visibilityExtendedProfile ? JSON.parse(data['visibility.extended_profile']) : {},
   };
 }
 
