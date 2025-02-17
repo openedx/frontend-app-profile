@@ -104,7 +104,7 @@ const TextField = ({
             </small>
           </>
         ),
-        static: (
+        static: value && (
           <>
             <EditableItemHeader content={label} />
             <p data-hj-suppress className="h5">{value}</p>
