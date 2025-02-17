@@ -113,9 +113,20 @@ const CheckboxField = ({
             </small>
           </>
         ),
-        static: (
+        static: value && (
           <>
-            <EditableItemHeader content={label} />
+            <EditableItemHeader
+              content={(
+                <Form.Checkbox
+                  id={formId}
+                  name={formId}
+                  checked={value}
+                >
+                  <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(label) }} />
+                </Form.Checkbox>
+              )}
+              showVisibility={false}
+            />
             <p data-hj-suppress className="h5">{value}</p>
           </>
         ),

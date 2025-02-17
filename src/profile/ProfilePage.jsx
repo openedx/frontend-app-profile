@@ -217,8 +217,8 @@ class ProfilePage extends React.Component {
     const isCertificatesBlockVisible = isBlockVisible(courseCertificates.length);
     const isNameBlockVisible = isBlockVisible(name);
     const isLocationBlockVisible = isBlockVisible(country);
-    // TODO: modify /api/user/v1/accounts/{{username}} to return extended profile fields
-    // So this can be shown for no-authenticated user profiles
+    // TODO: modify /api/user/v1/accounts/{{username}} to return extended profile field values
+    // So these fields can be shown for no-authenticated user profiles
     const isExtendedProfileFieldsVisible = isBlockVisible(
       extendedProfileFields.length > 0 && this.isAuthenticatedUserProfile(),
     );

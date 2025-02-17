@@ -66,15 +66,9 @@ const ExtendedProfileFields = (props) => {
             className="mb-5"
             expression={field.type}
             cases={{
-              checkbox: (
-                <CheckboxField {...commonProps} />
-              ),
-              text: (
-                <TextField {...commonProps} />
-              ),
-              select: (
-                <SelectField {...commonProps} />
-              ),
+              checkbox: <CheckboxField {...commonProps} />,
+              text: <TextField {...commonProps} />,
+              select: <SelectField {...commonProps} />,
             }}
           />
         );
