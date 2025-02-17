@@ -73,6 +73,13 @@ describe('RootSaga', () => {
 
       expect(gen.next().value).toEqual(select(userAccountSelector));
       expect(gen.next(selectorData).value).toEqual(put(profileActions.fetchProfileBegin()));
+      expect(gen.next().value).toEqual(all([
+        call(ProfileApiService.getAccount, 'gonzo'),
+        call(ProfileApiService.getCourseCertificates, 'gonzo'),
+        call(ProfileApiService.getCountryList),
+        call(ProfileApiService.getPreferences, 'gonzo'),
+
+      ]));
       expect(gen.next(result).value)
         .toEqual(put(profileActions.fetchProfileSuccess(userAccount, result[3], result[1], true, [])));
       expect(gen.next().value).toEqual(put(profileActions.fetchProfileReset()));
