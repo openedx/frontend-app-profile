@@ -23,6 +23,7 @@ class Country extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleOpen = this.handleOpen.bind(this);
+    this.isDisabledCountry = this.isDisabledCountry.bind(this);
   }
 
   handleChange(e) {
@@ -45,6 +46,13 @@ class Country extends React.Component {
   handleOpen() {
     this.props.openHandler(this.props.formId);
   }
+
+  isDisabledCountry = (country) => {
+    const { countries } = this.props;
+    const countriesCodes = new Set(countries.map(countryObj => countryObj.code));
+
+    return !countriesCodes.has(country);
+  };
 
   render() {
     const {
@@ -85,7 +93,7 @@ class Country extends React.Component {
                   >
                     <option value="">&nbsp;</option>
                     {sortedCountries.map(({ code, name }) => (
-                      <option key={code} value={code}>{name}</option>
+                      <option key={code} value={code} disabled={this.isDisabledCountry(code)}>{name}</option>
                     ))}
                   </select>
                   {error !== null && (
@@ -154,6 +162,10 @@ Country.propTypes = {
   saveState: PropTypes.string,
   error: PropTypes.string,
   sortedCountries: PropTypes.arrayOf(PropTypes.shape({
+    code: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  })).isRequired,
+  countries: PropTypes.arrayOf(PropTypes.shape({
     code: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
   })).isRequired,

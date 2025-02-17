@@ -147,3 +147,21 @@ export async function getCourseCertificates(username) {
     return [];
   }
 }
+
+function extractCountryList(data) {
+  return data?.fields
+    .find(({ name }) => name === 'country')
+    ?.options?.map(({ value, name }) => ({ code: value, name })) || [];
+}
+
+export async function getCountryList() {
+  const url = `${getConfig().LMS_BASE_URL}/user_api/v1/account/registration/`;
+
+  try {
+    const { data } = await getHttpClient().get(url);
+    return extractCountryList(data);
+  } catch (e) {
+    logError(e);
+    return [];
+  }
+}
