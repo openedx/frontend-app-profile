@@ -246,9 +246,16 @@ export const visibilitiesSelector = createSelector(
           visibilityLanguageProficiencies: preferences.visibilityLanguageProficiencies || 'all_users',
           visibilityName: preferences.visibilityName || 'all_users',
           visibilitySocialLinks: preferences.visibilitySocialLinks || 'all_users',
-          visibilityExtendedProfile: preferences.visibilityExtendedProfile || 'all_users',
+          visibilityExtendedProfile: preferences.visibilityExtendedProfile || {},
         };
-      case 'private':
+      case 'private': {
+        const visibilityExtendedProfile = {};
+
+        if (preferences.visibilityExtendedProfile) {
+          Object.keys(preferences.visibilityExtendedProfile).forEach((key) => {
+            visibilityExtendedProfile[key] = 'private';
+          });
+        }
         return {
           visibilityBio: 'private',
           visibilityCourseCertificates: 'private',
@@ -257,14 +264,22 @@ export const visibilitiesSelector = createSelector(
           visibilityLanguageProficiencies: 'private',
           visibilityName: 'private',
           visibilitySocialLinks: 'private',
-          visibilityExtendedProfile: 'private',
+          visibilityExtendedProfile,
         };
+      }
       case 'all_users':
-      default:
+      default: {
         // All users is intended to fall through to default.
         // If there is no value for accountPrivacy in perferences, that means it has not been
         // explicitly set yet. The server assumes - today - that this means "all_users",
         // so we emulate that here in the client.
+        const visibilityExtendedProfile = {};
+        if (preferences.visibilityExtendedProfile) {
+          Object.keys(preferences.visibilityExtendedProfile).forEach((key) => {
+            visibilityExtendedProfile[key] = 'all_users';
+          });
+        }
+
         return {
           visibilityBio: 'all_users',
           visibilityCourseCertificates: 'all_users',
@@ -273,8 +288,8 @@ export const visibilitiesSelector = createSelector(
           visibilityLanguageProficiencies: 'all_users',
           visibilityName: 'all_users',
           visibilitySocialLinks: 'all_users',
-          visibilityExtendedProfile: 'all_users',
-        };
+          visibilityExtendedProfile,
+        }; }
     }
   },
 );
@@ -393,6 +408,7 @@ export const profilePageSelector = createSelector(
     photoUploadError: errors.photo || null,
 
     // Extended profile fields
+    // Combine the field properties and its values
     extendedProfileFields: extendedProfileFields.map((field) => ({
       ...field,
       value: account.extendedProfile?.find(

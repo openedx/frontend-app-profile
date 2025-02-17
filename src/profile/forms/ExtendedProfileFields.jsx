@@ -41,7 +41,7 @@ const ExtendedProfileFields = (props) => {
   };
 
   return (
-    <div className="">
+    <div>
       {extendedProfileFields.sort(moveCheckboxFieldsToEnd)?.map((field) => {
         const value = draftProfile?.extendedProfile?.find(
           (extendedField) => extendedField.fieldName === field.name,
