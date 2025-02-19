@@ -977,7 +977,6 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                          
                       </option>
                       <option
-                        disabled=""
                         value="ME"
                       >
                         Montenegro

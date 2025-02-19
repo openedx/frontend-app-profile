@@ -117,12 +117,10 @@ export const sortedCountriesSelector = createSelector(
   profileAccountSelector,
   (locale, countries, profileAccount) => {
     const countryList = getCountryList(locale);
-    const countriesCodes = new Set(countries.map(country => country.code));
+    const countriesCodes = new Set(countries.map(({ code }) => code));
+    const userCountryCode = profileAccount.country;
 
-    return countryList.filter(({ code }) => {
-      const isUserCountry = code === profileAccount.country || countriesCodes.has(code);
-      return isUserCountry;
-    });
+    return countryList.filter(({ code }) => code === userCountryCode || countriesCodes.has(code));
   },
 );
 

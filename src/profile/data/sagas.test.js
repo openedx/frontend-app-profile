@@ -99,7 +99,7 @@ describe('RootSaga', () => {
       const action = profileActions.fetchProfile('booyah');
       const gen = handleFetchProfile(action);
 
-      const result = [{}, [1, 2, 3], []];
+      const result = [{}, [1, 2, 3], [{ code: 'AX', name: 'Åland Islands' }, { code: 'AL', name: 'Albania' }]];
 
       expect(gen.next().value).toEqual(select(userAccountSelector));
       expect(gen.next(selectorData).value).toEqual(put(profileActions.fetchProfileBegin()));
@@ -109,7 +109,7 @@ describe('RootSaga', () => {
         call(ProfileApiService.getCountryList),
       ]));
       expect(gen.next(result).value)
-        .toEqual(put(profileActions.fetchProfileSuccess(result[0], {}, result[1], false, [])));
+        .toEqual(put(profileActions.fetchProfileSuccess(result[0], {}, result[1], false, [{ code: 'AX', name: 'Åland Islands' }, { code: 'AL', name: 'Albania' }])));
       expect(gen.next().value).toEqual(put(profileActions.fetchProfileReset()));
       expect(gen.next().value).toBeUndefined();
     });
