@@ -29,7 +29,6 @@ module.exports = {
     drafts: {},
     isLoadingProfile: false,
     isAuthenticatedUserProfile: true,
-    countries: [],
   },
   router: {
     location: {

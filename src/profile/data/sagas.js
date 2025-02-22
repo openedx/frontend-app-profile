@@ -41,7 +41,6 @@ export function* handleFetchProfile(action) {
   let preferences = {};
   let account = userAccount;
   let courseCertificates = null;
-  let countries = [];
 
   try {
     yield put(fetchProfileBegin());
@@ -50,7 +49,6 @@ export function* handleFetchProfile(action) {
     const calls = [
       call(ProfileApiService.getAccount, username),
       call(ProfileApiService.getCourseCertificates, username),
-      call(ProfileApiService.getCountryList),
     ];
 
     if (isAuthenticatedUserProfile) {
@@ -63,9 +61,9 @@ export function* handleFetchProfile(action) {
     const result = yield all(calls);
 
     if (isAuthenticatedUserProfile) {
-      [account, courseCertificates, countries, preferences] = result;
+      [account, courseCertificates, preferences] = result;
     } else {
-      [account, courseCertificates, countries] = result;
+      [account, courseCertificates] = result;
     }
 
     // Set initial visibility values for account
@@ -91,7 +89,6 @@ export function* handleFetchProfile(action) {
       preferences,
       courseCertificates,
       isAuthenticatedUserProfile,
-      countries,
     ));
 
     yield put(fetchProfileReset());
