@@ -25,12 +25,14 @@ export const fetchProfileSuccess = (
   preferences,
   courseCertificates,
   isAuthenticatedUserProfile,
+  countries,
 ) => ({
   type: FETCH_PROFILE.SUCCESS,
   account,
   preferences,
   courseCertificates,
   isAuthenticatedUserProfile,
+  countries,
 });
 
 export const fetchProfileReset = () => ({
