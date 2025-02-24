@@ -441,6 +441,7 @@ exports[`<ProfilePage /> Renders correctly in various states successfully redire
               </div>
             </div>
           </div>
+          <div />
           <div
             class="pgn-transition-replace-group position-relative mb-5"
           >
@@ -2482,6 +2483,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
               </p>
             </div>
           </div>
+          <div />
           <div
             class="pgn-transition-replace-group position-relative mb-5"
           >
@@ -3481,6 +3483,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
               </div>
             </div>
           </div>
+          <div />
           <div
             class="pgn-transition-replace-group position-relative mb-5"
           >
@@ -5355,6 +5358,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
               </p>
             </div>
           </div>
+          <div />
           <div
             class="pgn-transition-replace-group position-relative mb-5"
           >
@@ -6074,6 +6078,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               </p>
             </div>
           </div>
+          <div />
           <div
             class="pgn-transition-replace-group position-relative mb-5"
           >
@@ -6637,6 +6642,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               </p>
             </div>
           </div>
+          <div />
           <div
             class="pgn-transition-replace-group position-relative mb-5"
           >
@@ -7514,6 +7520,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               </p>
             </div>
           </div>
+          <div />
           <div
             class="pgn-transition-replace-group position-relative mb-5"
           >
@@ -8455,6 +8462,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               </p>
             </div>
           </div>
+          <div />
           <div
             class="pgn-transition-replace-group position-relative mb-5"
           >
@@ -9324,6 +9332,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
               </p>
             </div>
           </div>
+          <div />
           <div
             class="pgn-transition-replace-group position-relative mb-5"
           >
