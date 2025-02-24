@@ -49,8 +49,9 @@ class Country extends React.Component {
 
   isDisabledCountry = (country) => {
     const { countries } = this.props;
+    const countriesCode = new Set(countries.map(({ code }) => code));
 
-    return countries.length > 0 && !new Set(countries.map(({ code }) => code)).has(country);
+    return countries.length > 0 && !countriesCode.has(country);
   };
 
   render() {
