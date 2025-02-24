@@ -29,14 +29,16 @@ import AppRoutes from './routes/AppRoutes';
 
 subscribe(APP_READY, () => {
   ReactDOM.render(
-    <AppProvider store={configureStore()}>
-      <Head />
-      <Header />
-      <main id="main">
-        <AppRoutes />
-      </main>
-      <FooterSlot />
-    </AppProvider>,
+    <div className='mfe-profile'>
+	    <AppProvider store={configureStore()}>
+		    <Head />
+		    <Header />
+		    <main id="main">
+			    <AppRoutes />
+		    </main>
+		    <FooterSlot />
+	    </AppProvider>
+    </div>,
     document.getElementById('root'),
   );
 });

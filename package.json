@@ -29,7 +29,6 @@
   ],
   "dependencies": {
     "@edx/brand": "npm:@openedx/brand-openedx@^1.2.2",
-    "brand-openedx-zeit": "git+https://github.com/zeit-labs/brand-openedx.git",
     "@edx/frontend-component-header": "5.3.1",
     "@edx/frontend-platform": "7.1.4",
     "@edx/openedx-atlas": "^0.6.0",
@@ -42,6 +41,7 @@
     "@openedx/paragon": "^22.2.2",
     "@pact-foundation/pact": "^11.0.2",
     "@redux-devtools/extension": "3.3.0",
+    "brand-openedx-zeit": "github:zeit-labs/brand-openedx#new-styles-brand",
     "classnames": "2.5.1",
     "core-js": "3.36.1",
     "history": "5.3.0",
