@@ -48,10 +48,9 @@ class Country extends React.Component {
   }
 
   isDisabledCountry = (country) => {
-    const { countries } = this.props;
-    const countriesCode = new Set(countries.map(({ code }) => code));
+    const { countriesCodesList } = this.props;
 
-    return countries.length > 0 && !countriesCode.has(country);
+    return countriesCodesList.length > 0 && !countriesCodesList.find(code => code === country);
   };
 
   render() {
@@ -63,7 +62,7 @@ class Country extends React.Component {
       saveState,
       error,
       intl,
-      sortedCountries,
+      translatedCountries,
       countryMessages,
     } = this.props;
 
@@ -92,7 +91,7 @@ class Country extends React.Component {
                     onChange={this.handleChange}
                   >
                     <option value="">&nbsp;</option>
-                    {sortedCountries.map(({ code, name }) => (
+                    {translatedCountries.map(({ code, name }) => (
                       <option key={code} value={code} disabled={this.isDisabledCountry(code)}>{name}</option>
                     ))}
                   </select>
@@ -161,11 +160,11 @@ Country.propTypes = {
   editMode: PropTypes.oneOf(['editing', 'editable', 'empty', 'static']),
   saveState: PropTypes.string,
   error: PropTypes.string,
-  sortedCountries: PropTypes.arrayOf(PropTypes.shape({
+  translatedCountries: PropTypes.arrayOf(PropTypes.shape({
     code: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
   })).isRequired,
-  countries: PropTypes.arrayOf(PropTypes.shape({
+  countriesCodesList: PropTypes.arrayOf(PropTypes.shape({
     code: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
   })).isRequired,

@@ -152,7 +152,7 @@ export async function getCourseCertificates(username) {
 function extractCountryList(data) {
   return data?.fields
     .find(({ name }) => name === FIELD_LABELS.COUNTRY)
-    ?.options?.map(({ value, name }) => ({ code: value, name })) || [];
+    ?.options?.map(({ value }) => (value)) || [];
 }
 
 export async function getCountryList() {

@@ -23,7 +23,7 @@ export const isLoadingProfileSelector = state => state.profilePage.isLoadingProf
 export const currentlyEditingFieldSelector = state => state.profilePage.currentlyEditingField;
 export const accountErrorsSelector = state => state.profilePage.errors;
 export const isAuthenticatedUserProfileSelector = state => state.profilePage.isAuthenticatedUserProfile;
-export const countriesSelector = state => state.profilePage.countries;
+export const countriesCodesListSelector = state => state.profilePage.countriesCodesList;
 
 export const editableFormModeSelector = createSelector(
   profileAccountSelector,
@@ -113,14 +113,13 @@ export const sortedLanguagesSelector = createSelector(
 
 export const sortedCountriesSelector = createSelector(
   localeSelector,
-  countriesSelector,
+  countriesCodesListSelector,
   profileAccountSelector,
-  (locale, countries, profileAccount) => {
+  (locale, countriesCodesList, profileAccount) => {
     const countryList = getCountryList(locale);
-    const countriesCodes = new Set(countries.map(({ code }) => code));
-    const userCountryCode = profileAccount.country;
+    const userCountry = profileAccount.country;
 
-    return countryList.filter(({ code }) => code === userCountryCode || countriesCodes.has(code));
+    return countryList.filter(({ code }) => code === userCountry || countriesCodesList.find(x => x === code));
   },
 );
 
@@ -139,12 +138,12 @@ export const countrySelector = createSelector(
   editableFormSelector,
   sortedCountriesSelector,
   countryMessagesSelector,
-  countriesSelector,
-  (editableForm, sortedCountries, countryMessages, countries) => ({
+  countriesCodesListSelector,
+  (editableForm, translatedCountries, countryMessages, countriesCodesList) => ({
     ...editableForm,
-    sortedCountries,
+    translatedCountries,
     countryMessages,
-    countries,
+    countriesCodesList,
   }),
 );
 

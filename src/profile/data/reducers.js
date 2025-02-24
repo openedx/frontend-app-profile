@@ -22,7 +22,7 @@ export const initialState = {
   drafts: {},
   isLoadingProfile: true,
   isAuthenticatedUserProfile: false,
-  countries: [],
+  countriesCodesList: [],
 };
 
 const profilePage = (state = initialState, action = {}) => {
@@ -43,7 +43,7 @@ const profilePage = (state = initialState, action = {}) => {
         courseCertificates: action.courseCertificates,
         isLoadingProfile: false,
         isAuthenticatedUserProfile: action.isAuthenticatedUserProfile,
-        countries: action.countries,
+        countriesCodesList: action.countriesCodesList,
       };
     case SAVE_PROFILE.BEGIN:
       return {

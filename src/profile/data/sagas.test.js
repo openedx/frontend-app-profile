@@ -91,7 +91,7 @@ describe('RootSaga', () => {
         username: 'gonzo',
         other: 'data',
       };
-      const countries = [{ code: 'AX', name: 'Åland Islands' }, { code: 'AL', name: 'Albania' }];
+      const countriesCodesList = [{ code: 'AX' }, { code: 'AL' }];
       getAuthenticatedUser.mockReturnValue(userAccount);
       const selectorData = {
         userAccount,
@@ -100,7 +100,7 @@ describe('RootSaga', () => {
       const action = profileActions.fetchProfile('booyah');
       const gen = handleFetchProfile(action);
 
-      const result = [{}, [1, 2, 3], countries];
+      const result = [{}, [1, 2, 3], countriesCodesList];
 
       expect(gen.next().value).toEqual(select(userAccountSelector));
       expect(gen.next(selectorData).value).toEqual(put(profileActions.fetchProfileBegin()));
@@ -110,7 +110,7 @@ describe('RootSaga', () => {
         call(ProfileApiService.getCountryList),
       ]));
       expect(gen.next(result).value)
-        .toEqual(put(profileActions.fetchProfileSuccess(result[0], {}, result[1], false, countries)));
+        .toEqual(put(profileActions.fetchProfileSuccess(result[0], {}, result[1], false, countriesCodesList)));
       expect(gen.next().value).toEqual(put(profileActions.fetchProfileReset()));
       expect(gen.next().value).toBeUndefined();
     });
