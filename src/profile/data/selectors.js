@@ -409,7 +409,7 @@ export const profilePageSelector = createSelector(
 
     // Extended profile fields
     // Combine the field properties and its values
-    extendedProfileFields: extendedProfileFields.map((field) => ({
+    extendedProfileFields: extendedProfileFields?.map((field) => ({
       ...field,
       value: account.extendedProfile?.find(
         (extendedProfileField) => extendedProfileField.fieldName === field.name,

@@ -32,6 +32,7 @@ import profileSaga, {
   handleSaveProfile,
   handleSaveProfilePhoto,
   handleDeleteProfilePhoto,
+  fetchThirdPartyAuthContext,
 } from './sagas';
 import * as ProfileApiService from './services';
 /* eslint-enable import/first */
@@ -49,6 +50,8 @@ describe('RootSaga', () => {
         .toEqual(takeEvery(profileActions.SAVE_PROFILE_PHOTO.BASE, handleSaveProfilePhoto));
       expect(gen.next().value)
         .toEqual(takeEvery(profileActions.DELETE_PROFILE_PHOTO.BASE, handleDeleteProfilePhoto));
+      expect(gen.next().value)
+        .toEqual(takeEvery(profileActions.EXTENDED_PROFILE_FIELDS.BASE, fetchThirdPartyAuthContext));
 
       expect(gen.next().value).toBeUndefined();
     });
