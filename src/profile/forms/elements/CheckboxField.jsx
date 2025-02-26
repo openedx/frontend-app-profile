@@ -52,7 +52,7 @@ const CheckboxField = ({
       cases={{
         editing: (
           <div role="dialog" aria-labelledby={`${formId}-label`}>
-            <form onSubmit={handleSubmit}>
+            <form data-testid="test-form" onSubmit={handleSubmit}>
               <Form.Group
                 controlId={formId}
                 isInvalid={error !== null}
@@ -162,3 +162,5 @@ CheckboxField.defaultProps = {
 };
 
 export default connect(editableFormSelector, {})(CheckboxField);
+
+export const TestableCheckboxField = CheckboxField;

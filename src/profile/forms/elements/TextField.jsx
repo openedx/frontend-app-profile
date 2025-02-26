@@ -49,7 +49,7 @@ const TextField = ({
       cases={{
         editing: (
           <div role="dialog" aria-labelledby={`${formId}-label`}>
-            <form onSubmit={handleSubmit}>
+            <form data-testid="test-form" onSubmit={handleSubmit}>
               <Form.Group
                 controlId={formId}
                 isInvalid={error !== null}
@@ -142,3 +142,5 @@ TextField.defaultProps = {
 };
 
 export default connect(editableFormSelector, {})(TextField);
+
+export const TestableTextField = TextField;
