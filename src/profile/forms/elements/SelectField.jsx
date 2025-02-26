@@ -48,7 +48,7 @@ const SelectField = ({
       cases={{
         editing: (
           <div role="dialog" aria-labelledby={`${formId}-label`}>
-            <form onSubmit={handleSubmit}>
+            <form data-testid="test-form" onSubmit={handleSubmit}>
               <Form.Group
                 controlId={formId}
                 isInvalid={error !== null}
@@ -151,3 +151,5 @@ SelectField.defaultProps = {
 };
 
 export default connect(editableFormSelector, {})(SelectField);
+
+export const TestableSelectField = SelectField;
