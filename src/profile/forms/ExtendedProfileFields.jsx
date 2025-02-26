@@ -117,3 +117,5 @@ ExtendedProfileFields.defaultProps = {
 };
 
 export default ExtendedProfileFields;
+
+export const TestableExtendedProfileFields = ExtendedProfileFields;
