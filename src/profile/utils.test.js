@@ -4,6 +4,8 @@ import {
   camelCaseObject,
   snakeCaseObject,
   convertKeyNames,
+  moveCheckboxFieldsToEnd,
+  capitalizeFirstLetter,
 } from './utils';
 
 describe('modifyObjectKeys', () => {
@@ -99,5 +101,69 @@ describe('AsyncActionType', () => {
     expect(actionType.SUCCESS).toBe('HOUSE_CATS__START_THE_RACE__SUCCESS');
     expect(actionType.FAILURE).toBe('HOUSE_CATS__START_THE_RACE__FAILURE');
     expect(actionType.RESET).toBe('HOUSE_CATS__START_THE_RACE__RESET');
+  });
+
+  describe('moveCheckboxFieldsToEnd', () => {
+    it('returns 1 when first field is checkbox and second field is not', () => {
+      const a = { type: 'checkbox' };
+      const b = { type: 'text' };
+
+      expect(moveCheckboxFieldsToEnd(a, b)).toEqual(1);
+    });
+
+    it('returns -1 when first field is not checkbox and second field is', () => {
+      const a = { type: 'text' };
+      const b = { type: 'checkbox' };
+
+      expect(moveCheckboxFieldsToEnd(a, b)).toEqual(-1);
+    });
+
+    it('returns 0 when both fields are checkboxes', () => {
+      const a = { type: 'checkbox' };
+      const b = { type: 'checkbox' };
+
+      expect(moveCheckboxFieldsToEnd(a, b)).toEqual(0);
+    });
+
+    it('returns 0 when neither field is a checkbox', () => {
+      const a = { type: 'text' };
+      const b = { type: 'text' };
+
+      expect(moveCheckboxFieldsToEnd(a, b)).toEqual(0);
+    });
+  });
+
+  describe('capitalizeFirstLetter', () => {
+    it('capitalizes the first letter of a string', () => {
+      expect(capitalizeFirstLetter('hello')).toBe('Hello');
+    });
+
+    it('returns an empty string when given an empty string', () => {
+      expect(capitalizeFirstLetter('')).toBe('');
+    });
+
+    it('handles single character strings', () => {
+      expect(capitalizeFirstLetter('a')).toBe('A');
+    });
+
+    it('handles strings with only one word', () => {
+      expect(capitalizeFirstLetter('word')).toBe('Word');
+    });
+
+    it('handles strings with multiple words', () => {
+      expect(capitalizeFirstLetter('multiple words')).toBe('Multiple words');
+    });
+
+    it('handles non-string inputs by converting them to strings', () => {
+      expect(capitalizeFirstLetter(123)).toBe('123');
+      expect(capitalizeFirstLetter(null)).toBe('Null');
+      expect(capitalizeFirstLetter(undefined)).toBe('Undefined');
+      expect(capitalizeFirstLetter(true)).toBe('True');
+    });
+
+    it('handles strings with special characters', () => {
+      expect(capitalizeFirstLetter('!hello')).toBe('!hello');
+      expect(capitalizeFirstLetter('@world')).toBe('@world');
+    });
   });
 });

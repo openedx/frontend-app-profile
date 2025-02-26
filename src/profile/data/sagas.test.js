@@ -7,8 +7,10 @@ import {
   all,
 } from 'redux-saga/effects';
 import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
+import { runSaga } from 'redux-saga';
 
 import * as profileActions from './actions';
+import { getExtendedProfileFields } from './services';
 import { handleSaveProfileSelector, userAccountSelector } from './selectors';
 
 jest.mock('./services', () => ({
@@ -19,6 +21,7 @@ jest.mock('./services', () => ({
   getPreferences: jest.fn(),
   getAccount: jest.fn(),
   getCourseCertificates: jest.fn(),
+  getExtendedProfileFields: jest.fn(),
 }));
 
 jest.mock('@edx/frontend-platform/auth', () => ({
@@ -164,6 +167,45 @@ describe('RootSaga', () => {
       const result = gen.throw(error);
       expect(result.value).toEqual(put(profileActions.saveProfileFailure({ uhoh: 'not good' })));
       expect(gen.next().value).toBeUndefined();
+    });
+  });
+
+  describe('fetchThirdPartyAuthContext', () => {
+    test('should fetch third party auth context', async () => {
+      const dispatched = [];
+      const mockedAction = { payload: { urlParams: {} } };
+      const mockFields = { field1: 'value1' };
+
+      getExtendedProfileFields.mockResolvedValue({ fields: mockFields });
+
+      await runSaga(
+        {
+          dispatch: (action) => dispatched.push(action),
+        },
+        fetchThirdPartyAuthContext,
+        mockedAction,
+      ).toPromise();
+
+      expect(dispatched).toContainEqual(profileActions.getExtendedProfileFieldsBegin());
+      expect(dispatched).toContainEqual(profileActions.getExtendedProfileFieldsSuccess(mockFields));
+    });
+
+    test('should fail to fetch third party auth context', async () => {
+      const dispatched = [];
+      const mockedAction = { payload: { urlParams: {} } };
+
+      getExtendedProfileFields.mockRejectedValue(new Error('API error'));
+
+      await expect(runSaga(
+        {
+          dispatch: (action) => dispatched.push(action),
+        },
+        fetchThirdPartyAuthContext,
+        mockedAction,
+      ).toPromise()).rejects.toThrow('API error');
+
+      expect(dispatched).toContainEqual(profileActions.getExtendedProfileFieldsBegin());
+      expect(dispatched).toContainEqual(profileActions.getExtendedProfileFieldsFailure());
     });
   });
 });
