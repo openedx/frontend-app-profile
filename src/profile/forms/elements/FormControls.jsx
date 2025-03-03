@@ -8,13 +8,14 @@ import messages from './FormControls.messages';
 import { VisibilitySelect } from './Visibility';
 
 const FormControls = ({
-  cancelHandler, changeHandler, visibility, visibilityId, saveState, intl,
+  cancelHandler, changeHandler, visibility, visibilityId, saveState, intl, showVisibilitySelect,
 }) => {
   // Eliminate error/failed state for save button
   const buttonState = saveState === 'error' ? null : saveState;
 
   return (
     <div className="d-flex flex-row-reverse flex-wrap justify-content-end align-items-center">
+      {showVisibilitySelect && (
       <div className="form-group d-flex flex-wrap">
         <label className="col-form-label" htmlFor={visibilityId}>
           {intl.formatMessage(messages['profile.formcontrols.who.can.see'])}
@@ -28,6 +29,7 @@ const FormControls = ({
           onChange={changeHandler}
         />
       </div>
+      )}
       <div className="form-group flex-shrink-0 flex-grow-1">
         <StatefulButton
           type="submit"
@@ -67,6 +69,7 @@ FormControls.propTypes = {
   visibilityId: PropTypes.string.isRequired,
   cancelHandler: PropTypes.func.isRequired,
   changeHandler: PropTypes.func.isRequired,
+  showVisibilitySelect: PropTypes.bool,
 
   // i18n
   intl: intlShape.isRequired,
@@ -75,4 +78,5 @@ FormControls.propTypes = {
 FormControls.defaultProps = {
   visibility: 'private',
   saveState: null,
+  showVisibilitySelect: true,
 };
