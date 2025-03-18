@@ -126,7 +126,7 @@ module.exports = {
     ],
     drafts: {},
     isLoadingProfile: false,
-    disabledCountries: [],
+    countriesCodesList: [],
   },
   router: {
     location: {

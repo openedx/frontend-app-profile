@@ -48,10 +48,9 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               <div
                 class="profile-avatar rounded-circle bg-light"
               >
-                <div
+                <iconmock
                   aria-hidden="true"
                   class="text-muted"
-                  data-testid="IconMock"
                   focusable="false"
                   role="img"
                   viewbox="0 0 24 24"
