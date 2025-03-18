@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  AuthenticatedPageRoute,
-  PageWrap,
-} from '@edx/frontend-platform/react';
+import { AuthenticatedPageRoute, PageWrap } from '@edx/frontend-platform/react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { ProfilePage, NotFoundPage } from '../profile';
 import { ProfilePage as NewProfilePage, NotFoundPage as NewNotFoundPage } from '../profile-v2';
