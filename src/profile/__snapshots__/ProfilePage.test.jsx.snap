@@ -649,7 +649,7 @@ exports[`<ProfilePage /> Renders correctly in various states successfully redire
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -746,7 +746,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
               <p
                 class="mb-0"
               >
-                Member since
+                Member since 
                 2017
               </p>
               <hr
@@ -819,7 +819,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
               <p
                 class="mb-0"
               >
-                Member since
+                Member since 
                 2017
               </p>
               <hr
@@ -927,7 +927,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Just me
                   </span>
                 </p>
@@ -2400,7 +2400,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -2470,7 +2470,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Just me
                   </span>
                 </p>
@@ -2540,7 +2540,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -2622,7 +2622,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                           fill="currentColor"
                         />
                       </svg>
-                      Add
+                      Add 
                       LinkedIn
                     </button>
                   </div>
@@ -2691,7 +2691,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -2761,7 +2761,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -2812,7 +2812,7 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                       <p
                         class="small mb-2"
                       >
-                        Completed on
+                        Completed on 
                         3/4/2019
                       </p>
                       <div>
@@ -2951,7 +2951,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
               <p
                 class="mb-0"
               >
-                Member since
+                Member since 
                 2017
               </p>
               <hr
@@ -3024,7 +3024,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
               <p
                 class="mb-0"
               >
-                Member since
+                Member since 
                 2017
               </p>
               <hr
@@ -3132,7 +3132,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Just me
                   </span>
                 </p>
@@ -3207,7 +3207,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -3277,7 +3277,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -3539,7 +3539,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -3621,7 +3621,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                           fill="currentColor"
                         />
                       </svg>
-                      Add
+                      Add 
                       LinkedIn
                     </button>
                   </div>
@@ -3690,7 +3690,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -3760,7 +3760,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -3811,7 +3811,7 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
                       <p
                         class="small mb-2"
                       >
-                        Completed on
+                        Completed on 
                         3/4/2019
                       </p>
                       <div>
@@ -3950,7 +3950,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
               <p
                 class="mb-0"
               >
-                Member since
+                Member since 
                 2017
               </p>
               <hr
@@ -4023,7 +4023,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
               <p
                 class="mb-0"
               >
-                Member since
+                Member since 
                 2017
               </p>
               <hr
@@ -4131,7 +4131,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Just me
                   </span>
                 </p>
@@ -4206,7 +4206,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -5343,7 +5343,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Just me
                   </span>
                 </p>
@@ -5413,7 +5413,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -5495,7 +5495,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                           fill="currentColor"
                         />
                       </svg>
-                      Add
+                      Add 
                       LinkedIn
                     </button>
                   </div>
@@ -5564,7 +5564,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -5634,7 +5634,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -5685,7 +5685,7 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                       <p
                         class="small mb-2"
                       >
-                        Completed on
+                        Completed on 
                         3/4/2019
                       </p>
                       <div>
@@ -5824,7 +5824,7 @@ exports[`<ProfilePage /> Renders correctly in various states test user with test
               <p
                 class="mb-0"
               >
-                Member since
+                Member since 
                 2017
               </p>
               <hr
@@ -5857,7 +5857,7 @@ exports[`<ProfilePage /> Renders correctly in various states test user with test
               <p
                 class="mb-0"
               >
-                Member since
+                Member since 
                 2017
               </p>
               <hr
@@ -5925,7 +5925,7 @@ exports[`<ProfilePage /> Renders correctly in various states test user with test
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Just me
                   </span>
                 </p>
@@ -7391,7 +7391,7 @@ exports[`<ProfilePage /> Renders correctly in various states test user with test
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -7461,7 +7461,7 @@ exports[`<ProfilePage /> Renders correctly in various states test user with test
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Just me
                   </span>
                 </p>
@@ -7531,7 +7531,7 @@ exports[`<ProfilePage /> Renders correctly in various states test user with test
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -7613,7 +7613,7 @@ exports[`<ProfilePage /> Renders correctly in various states test user with test
                           fill="currentColor"
                         />
                       </svg>
-                      Add
+                      Add 
                       LinkedIn
                     </button>
                   </div>
@@ -7682,7 +7682,7 @@ exports[`<ProfilePage /> Renders correctly in various states test user with test
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -7752,7 +7752,7 @@ exports[`<ProfilePage /> Renders correctly in various states test user with test
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -7803,7 +7803,7 @@ exports[`<ProfilePage /> Renders correctly in various states test user with test
                       <p
                         class="small mb-2"
                       >
-                        Completed on
+                        Completed on 
                         3/4/2019
                       </p>
                       <div>
@@ -7942,7 +7942,7 @@ exports[`<ProfilePage /> Renders correctly in various states test user with test
               <p
                 class="mb-0"
               >
-                Member since
+                Member since 
                 2017
               </p>
               <hr
@@ -7975,7 +7975,7 @@ exports[`<ProfilePage /> Renders correctly in various states test user with test
               <p
                 class="mb-0"
               >
-                Member since
+                Member since 
                 2017
               </p>
               <hr
@@ -8043,7 +8043,7 @@ exports[`<ProfilePage /> Renders correctly in various states test user with test
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Just me
                   </span>
                 </p>
@@ -9503,7 +9503,7 @@ exports[`<ProfilePage /> Renders correctly in various states test user with test
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -9573,7 +9573,7 @@ exports[`<ProfilePage /> Renders correctly in various states test user with test
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Just me
                   </span>
                 </p>
@@ -9643,7 +9643,7 @@ exports[`<ProfilePage /> Renders correctly in various states test user with test
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -9725,7 +9725,7 @@ exports[`<ProfilePage /> Renders correctly in various states test user with test
                           fill="currentColor"
                         />
                       </svg>
-                      Add
+                      Add 
                       LinkedIn
                     </button>
                   </div>
@@ -9794,7 +9794,7 @@ exports[`<ProfilePage /> Renders correctly in various states test user with test
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -9864,7 +9864,7 @@ exports[`<ProfilePage /> Renders correctly in various states test user with test
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -9915,7 +9915,7 @@ exports[`<ProfilePage /> Renders correctly in various states test user with test
                       <p
                         class="small mb-2"
                       >
-                        Completed on
+                        Completed on 
                         3/4/2019
                       </p>
                       <div>
@@ -10038,7 +10038,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               <p
                 class="mb-0"
               >
-                Member since
+                Member since 
                 2017
               </p>
               <div
@@ -10139,7 +10139,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               <p
                 class="mb-0"
               >
-                Member since
+                Member since 
                 2017
               </p>
               <div
@@ -10460,7 +10460,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               <p
                 class="mb-0"
               >
-                Member since
+                Member since 
                 2017
               </p>
               <hr
@@ -10533,7 +10533,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               <p
                 class="mb-0"
               >
-                Member since
+                Member since 
                 2017
               </p>
               <hr
@@ -10641,7 +10641,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Just me
                   </span>
                 </p>
@@ -10716,7 +10716,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -10786,7 +10786,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -10856,7 +10856,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Just me
                   </span>
                 </p>
@@ -10926,7 +10926,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -11008,7 +11008,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                           fill="currentColor"
                         />
                       </svg>
-                      Add
+                      Add 
                       LinkedIn
                     </button>
                   </div>
@@ -11077,7 +11077,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -11147,7 +11147,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -11198,7 +11198,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                       <p
                         class="small mb-2"
                       >
-                        Completed on
+                        Completed on 
                         3/4/2019
                       </p>
                       <div>
@@ -11337,7 +11337,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               <p
                 class="mb-0"
               >
-                Member since
+                Member since 
                 2017
               </p>
               <hr
@@ -11410,7 +11410,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               <p
                 class="mb-0"
               >
-                Member since
+                Member since 
                 2017
               </p>
               <hr
@@ -11518,7 +11518,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Just me
                   </span>
                 </p>
@@ -11593,7 +11593,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -11663,7 +11663,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -11733,7 +11733,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Just me
                   </span>
                 </p>
@@ -11803,7 +11803,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -11885,7 +11885,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                           fill="currentColor"
                         />
                       </svg>
-                      Add
+                      Add 
                       LinkedIn
                     </button>
                   </div>
@@ -12088,7 +12088,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -12139,7 +12139,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                       <p
                         class="small mb-2"
                       >
-                        Completed on
+                        Completed on 
                         3/4/2019
                       </p>
                       <div>
@@ -12278,7 +12278,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               <p
                 class="mb-0"
               >
-                Member since
+                Member since 
                 2017
               </p>
               <hr
@@ -12351,7 +12351,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               <p
                 class="mb-0"
               >
-                Member since
+                Member since 
                 2017
               </p>
               <hr
@@ -12459,7 +12459,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Just me
                   </span>
                 </p>
@@ -12534,7 +12534,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -12604,7 +12604,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -12674,7 +12674,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Just me
                   </span>
                 </p>
@@ -12744,7 +12744,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -12826,7 +12826,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                           fill="currentColor"
                         />
                       </svg>
-                      Add
+                      Add 
                       LinkedIn
                     </button>
                   </div>
@@ -13037,7 +13037,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -13088,7 +13088,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                       <p
                         class="small mb-2"
                       >
-                        Completed on
+                        Completed on 
                         3/4/2019
                       </p>
                       <div>
@@ -13227,7 +13227,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
               <p
                 class="mb-0"
               >
-                Member since
+                Member since 
                 2017
               </p>
               <hr
@@ -13260,7 +13260,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
               <p
                 class="mb-0"
               >
-                Member since
+                Member since 
                 2017
               </p>
               <hr
@@ -13328,7 +13328,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Just me
                   </span>
                 </p>
@@ -13403,7 +13403,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -13473,7 +13473,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -13543,7 +13543,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Just me
                   </span>
                 </p>
@@ -13613,7 +13613,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -13695,7 +13695,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                           fill="currentColor"
                         />
                       </svg>
-                      Add
+                      Add 
                       LinkedIn
                     </button>
                   </div>
@@ -13764,7 +13764,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -13834,7 +13834,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                         fill="currentColor"
                       />
                     </svg>
-
+                     
                     Everyone on localhost
                   </span>
                 </p>
@@ -13885,7 +13885,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                       <p
                         class="small mb-2"
                       >
-                        Completed on
+                        Completed on 
                         3/4/2019
                       </p>
                       <div>
