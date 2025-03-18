@@ -86,6 +86,7 @@ module.exports = {
     drafts: {},
     isLoadingProfile: false,
     learningGoal: 'advance_career',
+    countriesCodesList: [],
   },
   router: {
     location: {
