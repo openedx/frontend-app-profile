@@ -23,6 +23,7 @@ class Country extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleOpen = this.handleOpen.bind(this);
+    this.isDisabledCountry = this.isDisabledCountry.bind(this);
   }
 
   handleChange(e) {
@@ -35,13 +36,7 @@ class Country extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const {
-      country, disabledCountries, formId, submitHandler,
-    } = this.props;
-
-    if (!disabledCountries.includes(country)) {
-      submitHandler(formId);
-    }
+    this.props.submitHandler(this.props.formId);
   }
 
   handleClose() {
@@ -53,23 +48,9 @@ class Country extends React.Component {
   }
 
   isDisabledCountry = (country) => {
-    const { disabledCountries } = this.props;
-    return disabledCountries.includes(country);
-  };
+    const { countriesCodesList } = this.props;
 
-  filteredCountries = (countryList) => {
-    const { disabledCountries, committedCountry } = this.props;
-
-    if (!disabledCountries.length) {
-      return countryList;
-    }
-
-    return countryList.filter(({ code }) => {
-      const isDisabled = this.isDisabledCountry(code);
-      const isUserCountry = code === committedCountry;
-
-      return !isDisabled || isUserCountry;
-    });
+    return countriesCodesList.length > 0 && !countriesCodesList.find(code => code === country);
   };
 
   render() {
@@ -81,10 +62,9 @@ class Country extends React.Component {
       saveState,
       error,
       intl,
-      sortedCountries,
+      translatedCountries,
       countryMessages,
     } = this.props;
-    const filteredCountries = this.filteredCountries(sortedCountries);
 
     return (
       <SwitchContent
@@ -111,7 +91,7 @@ class Country extends React.Component {
                     onChange={this.handleChange}
                   >
                     <option value="">&nbsp;</option>
-                    {filteredCountries.map(({ code, name }) => (
+                    {translatedCountries.map(({ code, name }) => (
                       <option key={code} value={code} disabled={this.isDisabledCountry(code)}>{name}</option>
                     ))}
                   </select>
@@ -180,13 +160,12 @@ Country.propTypes = {
   editMode: PropTypes.oneOf(['editing', 'editable', 'empty', 'static']),
   saveState: PropTypes.string,
   error: PropTypes.string,
-  sortedCountries: PropTypes.arrayOf(PropTypes.shape({
+  translatedCountries: PropTypes.arrayOf(PropTypes.shape({
     code: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
   })).isRequired,
-  disabledCountries: PropTypes.arrayOf(PropTypes.string),
+  countriesCodesList: PropTypes.arrayOf(PropTypes.string).isRequired,
   countryMessages: PropTypes.objectOf(PropTypes.string).isRequired,
-  committedCountry: PropTypes.string,
 
   // Actions
   changeHandler: PropTypes.func.isRequired,
@@ -204,8 +183,6 @@ Country.defaultProps = {
   country: null,
   visibilityCountry: 'private',
   error: null,
-  disabledCountries: [],
-  committedCountry: '',
 };
 
 export default connect(
