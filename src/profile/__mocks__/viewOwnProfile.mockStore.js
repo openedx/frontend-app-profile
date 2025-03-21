@@ -13,8 +13,8 @@ module.exports = {
         socialLink: 'https://www.facebook.com/aloha'
       },
       {
-        platform: 'twitter',
-        socialLink: 'https://www.twitter.com/ALOHA'
+        platform: 'xTwitter',
+        socialLink: 'https://www.x.com/ALOHA'
       }
     ],
     profileImage: {
@@ -85,8 +85,8 @@ module.exports = {
           socialLink: 'https://www.facebook.com/aloha'
         },
         {
-          platform: 'twitter',
-          socialLink: 'https://www.twitter.com/ALOHA'
+          platform: 'xTwitter',
+          socialLink: 'https://www.x.com/ALOHA'
         }
       ],
       timeZone: null,
