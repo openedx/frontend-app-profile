@@ -168,7 +168,7 @@ describe('<ProfilePage />', () => {
                 courseCertificates: ['course certificates'],
                 levelOfEducation: 'some level',
                 languageProficiencies: ['some lang'],
-                socialLinks: ['twitter'],
+                socialLinks: ['xTwitter'],
                 timeZone: 'time zone',
                 accountPrivacy: 'all_users',
               },
