@@ -13,7 +13,7 @@ import {
   ErrorPage,
 } from '@edx/frontend-platform/react';
 
-import React from 'react';
+import React, {StrictMode} from 'react';
 // eslint-disable-next-line import/no-unresolved
 import { createRoot } from 'react-dom/client';
 
@@ -31,14 +31,16 @@ import AppRoutes from './routes/AppRoutes';
 const rootNode = createRoot(document.getElementById('root'));
 subscribe(APP_READY, () => {
   rootNode.render(
-    <AppProvider store={configureStore()}>
-      <Head />
-      <Header />
-      <main id="main">
-        <AppRoutes />
-      </main>
-      <FooterSlot />
-    </AppProvider>,
+    <StrictMode>
+      <AppProvider store={configureStore()}>
+        <Head />
+        <Header />
+        <main id="main">
+          <AppRoutes />
+        </main>
+        <FooterSlot />
+      </AppProvider>
+    </StrictMode>,
   );
 });
 
