@@ -14,7 +14,8 @@ import {
 } from '@edx/frontend-platform/react';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
+// eslint-disable-next-line import/no-unresolved
+import { createRoot } from 'react-dom/client';
 
 import Header from '@edx/frontend-component-header';
 import FooterSlot from '@openedx/frontend-slot-footer';
@@ -27,8 +28,9 @@ import Head from './head/Head';
 
 import AppRoutes from './routes/AppRoutes';
 
+const rootNode = createRoot(document.getElementById('root'));
 subscribe(APP_READY, () => {
-  ReactDOM.render(
+  rootNode.render(
     <AppProvider store={configureStore()}>
       <Head />
       <Header />
@@ -37,12 +39,11 @@ subscribe(APP_READY, () => {
       </main>
       <FooterSlot />
     </AppProvider>,
-    document.getElementById('root'),
   );
 });
 
 subscribe(APP_INIT_ERROR, (error) => {
-  ReactDOM.render(<ErrorPage message={error.message} />, document.getElementById('root'));
+  rootNode.render(<ErrorPage message={error.message} />);
 });
 
 initialize({
