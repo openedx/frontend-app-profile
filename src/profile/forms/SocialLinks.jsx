@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Alert } from '@openedx/paragon';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTwitter, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faXTwitter, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { FormattedMessage, injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import classNames from 'classnames';
 
@@ -23,9 +23,9 @@ const platformDisplayInfo = {
     icon: faFacebook,
     name: 'Facebook',
   },
-  twitter: {
-    icon: faTwitter,
-    name: 'Twitter',
+  xTwitter: {
+    icon: faXTwitter,
+    name: 'X (Twitter)',
   },
   linkedin: {
     icon: faLinkedin,
@@ -108,7 +108,7 @@ const EmptyListItem = ({ onClick, name }) => (
         values={{
           network: name,
         }}
-        description="{network} is the name of a social network such as Facebook or Twitter"
+        description="{network} is the name of a social network such as Facebook or X"
       />
     </EmptyContent>
   </li>
@@ -181,7 +181,7 @@ class SocialLinks extends React.Component {
   }
 
   mergeWithDrafts(newSocialLink) {
-    const knownPlatforms = ['twitter', 'facebook', 'linkedin'];
+    const knownPlatforms = ['xTwitter', 'facebook', 'linkedin'];
     const updated = [];
     knownPlatforms.forEach((platform) => {
       if (newSocialLink.platform === platform) {
