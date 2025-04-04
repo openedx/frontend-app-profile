@@ -13,7 +13,7 @@ import {
   ErrorPage,
 } from '@edx/frontend-platform/react';
 
-import React, {StrictMode} from 'react';
+import React, { StrictMode } from 'react';
 // eslint-disable-next-line import/no-unresolved
 import { createRoot } from 'react-dom/client';
 
