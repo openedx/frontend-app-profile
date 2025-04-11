@@ -290,11 +290,11 @@ class ProfilePage extends React.Component {
               />
             )}
             {isExtendedProfileFieldsVisible && (
-            <ExtendedProfileFields
-              extendedProfileFields={extendedProfileFields}
-              formId="extendedProfile"
-              {...commonFormProps}
-            />
+              <ExtendedProfileFields
+                extendedProfileFields={extendedProfileFields}
+                formId="extendedProfile"
+                {...commonFormProps}
+              />
             )}
             {isSocialLinksBLockVisible && (
               <SocialLinks
@@ -395,13 +395,16 @@ ProfilePage.propTypes = {
       value: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired,
     })),
+    // https://github.com/openedx/edx-platform/blob/master/openedx/core/djangoapps/user_api/helpers.py#L179
     error_message: PropTypes.shape({
       required: PropTypes.string,
-      invalid: PropTypes.string,
     }),
+    // https://github.com/openedx/edx-platform/blob/master/openedx/core/djangoapps/user_api/helpers.py#L167
     restrictions: PropTypes.shape({
       max_length: PropTypes.number,
+      min_length: PropTypes.number,
     }),
+    // https://github.com/openedx/edx-platform/blob/master/openedx/core/djangoapps/user_api/helpers.py#L151
     type: PropTypes.string.isRequired,
     value: PropTypes.unknown,
   })),
