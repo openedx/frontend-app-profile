@@ -8,7 +8,7 @@ import messages from './FormControls.messages';
 import { VisibilitySelect } from './Visibility';
 
 const FormControls = ({
-  cancelHandler, changeHandler, visibility, visibilityId, saveState, intl, showVisibilitySelect,
+  cancelHandler, changeHandler, visibility, visibilityId, saveState, intl, showVisibilitySelect, disabled,
 }) => {
   // Eliminate error/failed state for save button
   const buttonState = saveState === 'error' ? null : saveState;
@@ -52,6 +52,7 @@ const FormControls = ({
             }
           }}
           disabledStates={[]}
+          disabled={disabled}
         />
         <Button variant="link" onClick={cancelHandler}>
           {intl.formatMessage(messages['profile.formcontrols.button.cancel'])}
@@ -70,6 +71,7 @@ FormControls.propTypes = {
   cancelHandler: PropTypes.func.isRequired,
   changeHandler: PropTypes.func.isRequired,
   showVisibilitySelect: PropTypes.bool,
+  disabled: PropTypes.bool,
 
   // i18n
   intl: intlShape.isRequired,
@@ -79,4 +81,5 @@ FormControls.defaultProps = {
   visibility: 'private',
   saveState: null,
   showVisibilitySelect: true,
+  disabled: false,
 };

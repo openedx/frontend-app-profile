@@ -52,6 +52,7 @@ const ExtendedProfileFields = (props) => {
 
         const commonProps = {
           ...field,
+          errorMessage: field.error_message,
           formId: `${formId}/${field.name}`,
           changeHandler: handleChangeExtendedField,
           submitHandler: handleSubmitExtendedField,
@@ -92,10 +93,10 @@ ExtendedProfileFields.propTypes = {
     })),
     error_message: PropTypes.shape({
       required: PropTypes.string,
-      invalid: PropTypes.string,
     }),
     restrictions: PropTypes.shape({
       max_length: PropTypes.number,
+      min_length: PropTypes.number,
     }),
     type: PropTypes.string.isRequired,
   })).isRequired,
