@@ -174,7 +174,7 @@ export async function getExtendedProfileFields(urlParams) {
     });
 
   const extendedProfileFields = data.optionalFields.extended_profile
-    .map((fieldName) => (data.optionalFields.fields[fieldName] ?? data.registrationFields.fields[fieldName]))
+    .map((fieldName) => (data.registrationFields.fields[fieldName]))
     .filter(Boolean);
 
   return { fields: extendedProfileFields };
