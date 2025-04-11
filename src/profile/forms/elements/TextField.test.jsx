@@ -14,7 +14,15 @@ describe('TextField', () => {
     visibility: 'private',
     editMode: 'editing',
     saveState: null,
-    error: null,
+    errorMessage: {
+      required: 'This field is required',
+      max_length: 'This field is too long',
+      min_length: 'This field is too short',
+    },
+    restrictions: {
+      max_length: 50,
+      min_length: 5,
+    },
     label: 'Username',
     placeholder: 'Enter your username',
     instructions: 'Provide a unique username',
