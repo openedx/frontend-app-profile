@@ -16,9 +16,9 @@ describe('SelectField', () => {
     saveState: null,
     error: null,
     options: [
-      ['us', 'United States'],
-      ['ca', 'Canada'],
-      ['uk', 'United Kingdom'],
+      { value: 'ca', name: 'Canada' },
+      { value: 'us', name: 'United States' },
+      { value: 'mx', name: 'Mexico' },
     ],
     label: 'Country',
     emptyMessage: 'No country selected',
