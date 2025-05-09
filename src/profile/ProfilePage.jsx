@@ -67,7 +67,7 @@ class ProfilePage extends React.Component {
 
   componentDidMount() {
     this.props.fetchProfile(this.props.params.username);
-    this.props.fetchExtraFieldsInfo({ is_register_page: true });
+    this.props.fetchExtraFieldsInfo();
     sendTrackingLogEvent('edx.profile.viewed', {
       username: this.props.params.username,
     });
@@ -396,7 +396,7 @@ ProfilePage.propTypes = {
       label: PropTypes.string.isRequired,
     })),
     // https://github.com/openedx/edx-platform/blob/master/openedx/core/djangoapps/user_api/helpers.py#L179
-    error_message: PropTypes.shape({
+    errorMessage: PropTypes.shape({
       required: PropTypes.string,
     }),
     // https://github.com/openedx/edx-platform/blob/master/openedx/core/djangoapps/user_api/helpers.py#L167

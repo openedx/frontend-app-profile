@@ -210,12 +210,12 @@ export function* handleDeleteProfilePhoto(action) {
   }
 }
 
-export function* fetchThirdPartyAuthContext(action) {
+export function* fetchExtendedProfileFields() {
   try {
     yield put(getExtendedProfileFieldsBegin());
     const {
       fields,
-    } = yield call(ProfileApiService.getExtendedProfileFields, action.payload.urlParams);
+    } = yield call(ProfileApiService.getExtendedProfileFields);
 
     yield put(getExtendedProfileFieldsSuccess(fields));
   } catch (e) {
@@ -229,5 +229,5 @@ export default function* profileSaga() {
   yield takeEvery(SAVE_PROFILE.BASE, handleSaveProfile);
   yield takeEvery(SAVE_PROFILE_PHOTO.BASE, handleSaveProfilePhoto);
   yield takeEvery(DELETE_PROFILE_PHOTO.BASE, handleDeleteProfilePhoto);
-  yield takeEvery(EXTENDED_PROFILE_FIELDS.BASE, fetchThirdPartyAuthContext);
+  yield takeEvery(EXTENDED_PROFILE_FIELDS.BASE, fetchExtendedProfileFields);
 }

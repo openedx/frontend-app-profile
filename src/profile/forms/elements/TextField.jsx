@@ -30,20 +30,20 @@ const TextField = ({
 
   useEffect(() => {
     if (!value && errorMessage?.required) {
-      setErrorMessage(errorMessage.required);
-    } else if (restrictions.max_length && value.length > restrictions.max_length) {
-      setErrorMessage(errorMessage.max_length);
-    } else if (restrictions.min_length && value.length < restrictions.min_length) {
-      setErrorMessage(errorMessage.min_length);
+      setErrorMessage(errorMessage?.required);
+    } else if (restrictions?.max_length && value?.length > restrictions?.max_length) {
+      setErrorMessage(errorMessage?.max_length);
+    } else if (restrictions?.min_length && value?.length < restrictions?.min_length) {
+      setErrorMessage(errorMessage?.min_length);
     } else {
       setErrorMessage(null);
     }
   }, [
-    errorMessage.max_length,
-    errorMessage.min_length,
-    errorMessage.required,
-    restrictions.max_length,
-    restrictions.min_length,
+    errorMessage?.max_length,
+    errorMessage?.min_length,
+    errorMessage?.required,
+    restrictions?.max_length,
+    restrictions?.min_length,
     value,
   ]);
 
@@ -85,8 +85,8 @@ const TextField = ({
                   name={formId}
                   value={value}
                   onChange={handleChange}
-                  minLength={restrictions.min_length}
-                  maxLength={restrictions.max_length}
+                  minLength={restrictions?.min_length}
+                  maxLength={restrictions?.max_length}
                 />
                 {displayedMessage !== null && (
                 <Form.Control.Feedback hasIcon={false}>

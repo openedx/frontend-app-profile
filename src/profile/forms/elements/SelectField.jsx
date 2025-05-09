@@ -66,8 +66,8 @@ const SelectField = ({
                   onChange={handleChange}
                 >
                   <option value="">&nbsp;</option>
-                  {options.map(([code, name]) => (
-                    <option key={code} value={code}>{name}</option>
+                  {options?.map(({ name, value: optionValue }) => (
+                    <option key={optionValue} value={optionValue}>{name}</option>
                   ))}
                 </select>
                 {error !== null && (
@@ -130,10 +130,9 @@ SelectField.propTypes = {
   saveState: PropTypes.string,
   error: PropTypes.string,
   options: PropTypes.arrayOf(PropTypes.shape({
-    code: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
   })).isRequired,
-  //   fieldMessages: PropTypes.objectOf(PropTypes.string).isRequired,
   label: PropTypes.string.isRequired,
   emptyMessage: PropTypes.string.isRequired,
   changeHandler: PropTypes.func.isRequired,

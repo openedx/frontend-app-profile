@@ -6,6 +6,7 @@ import {
   getCountryMessages,
   getLanguageMessages,
 } from '@edx/frontend-platform/i18n'; // eslint-disable-line
+import { moveCheckboxFieldsToEnd } from '../utils';
 
 export const formIdSelector = (state, props) => props.formId;
 export const userAccountSelector = state => state.userAccount;
@@ -414,7 +415,7 @@ export const profilePageSelector = createSelector(
       value: account.extendedProfile?.find(
         (extendedProfileField) => extendedProfileField.fieldName === field.name,
       )?.fieldValue,
-    })),
+    }))?.sort(moveCheckboxFieldsToEnd) ?? [],
   }),
 
 );

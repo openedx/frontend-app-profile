@@ -8,7 +8,6 @@ import SwitchContent from './elements/SwitchContent';
 import SelectField from './elements/SelectField';
 import TextField from './elements/TextField';
 import CheckboxField from './elements/CheckboxField';
-import { moveCheckboxFieldsToEnd } from '../utils';
 
 const ExtendedProfileFields = (props) => {
   const {
@@ -42,7 +41,7 @@ const ExtendedProfileFields = (props) => {
 
   return (
     <div>
-      {extendedProfileFields.sort(moveCheckboxFieldsToEnd)?.map((field) => {
+      {extendedProfileFields?.map((field) => {
         const value = draftProfile?.extendedProfile?.find(
           (extendedField) => extendedField.fieldName === field.name,
         )?.fieldValue ?? field.value;
@@ -52,7 +51,7 @@ const ExtendedProfileFields = (props) => {
 
         const commonProps = {
           ...field,
-          errorMessage: field.error_message,
+          errorMessage: field.errorMessage,
           formId: `${formId}/${field.name}`,
           changeHandler: handleChangeExtendedField,
           submitHandler: handleSubmitExtendedField,
@@ -91,7 +90,7 @@ ExtendedProfileFields.propTypes = {
       value: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired,
     })),
-    error_message: PropTypes.shape({
+    errorMessage: PropTypes.shape({
       required: PropTypes.string,
     }),
     restrictions: PropTypes.shape({
