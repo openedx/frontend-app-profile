@@ -35,7 +35,7 @@ import profileSaga, {
   handleSaveProfile,
   handleSaveProfilePhoto,
   handleDeleteProfilePhoto,
-  fetchThirdPartyAuthContext,
+  fetchExtendedProfileFields,
 } from './sagas';
 import * as ProfileApiService from './services';
 /* eslint-enable import/first */
@@ -54,7 +54,7 @@ describe('RootSaga', () => {
       expect(gen.next().value)
         .toEqual(takeEvery(profileActions.DELETE_PROFILE_PHOTO.BASE, handleDeleteProfilePhoto));
       expect(gen.next().value)
-        .toEqual(takeEvery(profileActions.EXTENDED_PROFILE_FIELDS.BASE, fetchThirdPartyAuthContext));
+        .toEqual(takeEvery(profileActions.EXTENDED_PROFILE_FIELDS.BASE, fetchExtendedProfileFields));
 
       expect(gen.next().value).toBeUndefined();
     });
@@ -170,7 +170,7 @@ describe('RootSaga', () => {
     });
   });
 
-  describe('fetchThirdPartyAuthContext', () => {
+  describe('fetchExtendedProfileFields', () => {
     test('should fetch third party auth context', async () => {
       const dispatched = [];
       const mockedAction = { payload: { urlParams: {} } };
@@ -182,7 +182,7 @@ describe('RootSaga', () => {
         {
           dispatch: (action) => dispatched.push(action),
         },
-        fetchThirdPartyAuthContext,
+        fetchExtendedProfileFields,
         mockedAction,
       ).toPromise();
 
@@ -200,7 +200,7 @@ describe('RootSaga', () => {
         {
           dispatch: (action) => dispatched.push(action),
         },
-        fetchThirdPartyAuthContext,
+        fetchExtendedProfileFields,
         mockedAction,
       ).toPromise()).rejects.toThrow('API error');
 
