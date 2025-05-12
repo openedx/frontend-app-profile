@@ -6,11 +6,13 @@ import {
   getCountryMessages,
   getLanguageMessages,
 } from '@edx/frontend-platform/i18n'; // eslint-disable-line
+import { moveCheckboxFieldsToEnd } from '../utils';
 
 export const formIdSelector = (state, props) => props.formId;
 export const userAccountSelector = state => state.userAccount;
 
 export const profileAccountSelector = state => state.profilePage.account;
+export const extendedProfileFieldsSelector = state => state.profilePage.extendedProfileFields;
 export const profileDraftsSelector = state => state.profilePage.drafts;
 export const accountPrivacySelector = state => state.profilePage.preferences.accountPrivacy;
 export const profilePreferencesSelector = state => state.profilePage.preferences;
@@ -31,10 +33,17 @@ export const editableFormModeSelector = createSelector(
   formIdSelector,
   currentlyEditingFieldSelector,
   (account, isAuthenticatedUserProfile, certificates, formId, currentlyEditingField) => {
+    const [parentPropKey, fieldName] = formId.split('/');
     // If the prop doesn't exist, that means it hasn't been set (for the current user's profile)
     // or is being hidden from us (for other users' profiles)
     let propExists = account[formId] != null && account[formId].length > 0;
     propExists = formId === 'certificates' ? certificates.length > 0 : propExists; // overwrite for certificates
+
+    // Overwrite for extended profile fields
+    propExists = formId.includes('extendedProfile') ? (
+      account[parentPropKey]?.some((field) => field.fieldName === fieldName)
+    ) : propExists;
+
     // If this isn't the current user's profile
     if (!isAuthenticatedUserProfile) {
       return 'static';
@@ -238,8 +247,16 @@ export const visibilitiesSelector = createSelector(
           visibilityLanguageProficiencies: preferences.visibilityLanguageProficiencies || 'all_users',
           visibilityName: preferences.visibilityName || 'all_users',
           visibilitySocialLinks: preferences.visibilitySocialLinks || 'all_users',
+          visibilityExtendedProfile: preferences.visibilityExtendedProfile || {},
         };
-      case 'private':
+      case 'private': {
+        const visibilityExtendedProfile = {};
+
+        if (preferences.visibilityExtendedProfile) {
+          Object.keys(preferences.visibilityExtendedProfile).forEach((key) => {
+            visibilityExtendedProfile[key] = 'private';
+          });
+        }
         return {
           visibilityBio: 'private',
           visibilityCourseCertificates: 'private',
@@ -248,13 +265,22 @@ export const visibilitiesSelector = createSelector(
           visibilityLanguageProficiencies: 'private',
           visibilityName: 'private',
           visibilitySocialLinks: 'private',
+          visibilityExtendedProfile,
         };
+      }
       case 'all_users':
-      default:
+      default: {
         // All users is intended to fall through to default.
         // If there is no value for accountPrivacy in perferences, that means it has not been
         // explicitly set yet. The server assumes - today - that this means "all_users",
         // so we emulate that here in the client.
+        const visibilityExtendedProfile = {};
+        if (preferences.visibilityExtendedProfile) {
+          Object.keys(preferences.visibilityExtendedProfile).forEach((key) => {
+            visibilityExtendedProfile[key] = 'all_users';
+          });
+        }
+
         return {
           visibilityBio: 'all_users',
           visibilityCourseCertificates: 'all_users',
@@ -263,7 +289,8 @@ export const visibilitiesSelector = createSelector(
           visibilityLanguageProficiencies: 'all_users',
           visibilityName: 'all_users',
           visibilitySocialLinks: 'all_users',
-        };
+          visibilityExtendedProfile,
+        }; }
     }
   },
 );
@@ -311,6 +338,10 @@ export const formValuesSelector = createSelector(
       drafts.visibilitySocialLinks,
       visibilities.visibilitySocialLinks,
     ),
+    visibilityExtendedProfile: chooseFormValue(
+      drafts.visibilityExtendedProfile,
+      visibilities.visibilityExtendedProfile,
+    ),
   }),
 );
 
@@ -323,6 +354,7 @@ export const profilePageSelector = createSelector(
   isLoadingProfileSelector,
   draftSocialLinksByPlatformSelector,
   accountErrorsSelector,
+  extendedProfileFieldsSelector,
   (
     account,
     formValues,
@@ -332,6 +364,7 @@ export const profilePageSelector = createSelector(
     isLoadingProfile,
     draftSocialLinksByPlatform,
     errors,
+    extendedProfileFields,
   ) => ({
     // Account data we need
     username: account.username,
@@ -374,5 +407,15 @@ export const profilePageSelector = createSelector(
     savePhotoState,
     isLoadingProfile,
     photoUploadError: errors.photo || null,
+
+    // Extended profile fields
+    // Combine the field properties and its values
+    extendedProfileFields: extendedProfileFields?.map((field) => ({
+      ...field,
+      value: account.extendedProfile?.find(
+        (extendedProfileField) => extendedProfileField.fieldName === field.name,
+      )?.fieldValue,
+    }))?.sort(moveCheckboxFieldsToEnd) ?? [],
   }),
+
 );

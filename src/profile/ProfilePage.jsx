@@ -17,6 +17,7 @@ import {
   openForm,
   closeForm,
   updateDraft,
+  getExtendedProfileFields as fetchExtraFieldsInfo,
 } from './data/actions';
 
 // Components
@@ -42,6 +43,7 @@ import { profilePageSelector } from './data/selectors';
 import messages from './ProfilePage.messages';
 
 import withParams from '../utils/hoc';
+import ExtendedProfileFields from './forms/ExtendedProfileFields';
 
 ensureConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL'], 'ProfilePage');
 
@@ -65,6 +67,7 @@ class ProfilePage extends React.Component {
 
   componentDidMount() {
     this.props.fetchProfile(this.props.params.username);
+    this.props.fetchExtraFieldsInfo();
     sendTrackingLogEvent('edx.profile.viewed', {
       username: this.props.params.username,
     });
@@ -186,6 +189,7 @@ class ProfilePage extends React.Component {
       username,
       saveState,
       navigate,
+      extendedProfileFields,
     } = this.props;
 
     if (isLoadingProfile) {
@@ -213,6 +217,11 @@ class ProfilePage extends React.Component {
     const isCertificatesBlockVisible = isBlockVisible(courseCertificates.length);
     const isNameBlockVisible = isBlockVisible(name);
     const isLocationBlockVisible = isBlockVisible(country);
+    // TODO: modify /api/user/v1/accounts/{{username}} to return extended profile field values
+    // So these fields can be shown for no-authenticated user profiles
+    const isExtendedProfileFieldsVisible = isBlockVisible(
+      extendedProfileFields.length > 0 && this.isAuthenticatedUserProfile(),
+    );
 
     return (
       <div className="container-fluid">
@@ -277,6 +286,13 @@ class ProfilePage extends React.Component {
                 levelOfEducation={levelOfEducation}
                 visibilityLevelOfEducation={visibilityLevelOfEducation}
                 formId="levelOfEducation"
+                {...commonFormProps}
+              />
+            )}
+            {isExtendedProfileFieldsVisible && (
+              <ExtendedProfileFields
+                extendedProfileFields={extendedProfileFields}
+                formId="extendedProfile"
                 {...commonFormProps}
               />
             )}
@@ -368,6 +384,31 @@ ProfilePage.propTypes = {
   name: PropTypes.string,
   visibilityName: PropTypes.string.isRequired,
 
+  // Extra profile fields
+  extendedProfileFields: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    default: PropTypes.unknown,
+    placeholder: PropTypes.string,
+    instructions: PropTypes.string,
+    options: PropTypes.arrayOf(PropTypes.shape({
+      value: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    })),
+    // https://github.com/openedx/edx-platform/blob/master/openedx/core/djangoapps/user_api/helpers.py#L179
+    errorMessage: PropTypes.shape({
+      required: PropTypes.string,
+    }),
+    // https://github.com/openedx/edx-platform/blob/master/openedx/core/djangoapps/user_api/helpers.py#L167
+    restrictions: PropTypes.shape({
+      max_length: PropTypes.number,
+      min_length: PropTypes.number,
+    }),
+    // https://github.com/openedx/edx-platform/blob/master/openedx/core/djangoapps/user_api/helpers.py#L151
+    type: PropTypes.string.isRequired,
+    value: PropTypes.unknown,
+  })),
+
   // Social links form data
   socialLinks: PropTypes.arrayOf(PropTypes.shape({
     platform: PropTypes.string,
@@ -404,6 +445,7 @@ ProfilePage.propTypes = {
   closeForm: PropTypes.func.isRequired,
   updateDraft: PropTypes.func.isRequired,
   navigate: PropTypes.func.isRequired,
+  fetchExtraFieldsInfo: PropTypes.func.isRequired,
 
   // Router
   params: PropTypes.shape({
@@ -432,6 +474,7 @@ ProfilePage.defaultProps = {
   courseCertificates: null,
   requiresParentalConsent: null,
   dateJoined: null,
+  extendedProfileFields: [],
 };
 
 export default connect(
@@ -444,5 +487,6 @@ export default connect(
     openForm,
     closeForm,
     updateDraft,
+    fetchExtraFieldsInfo,
   },
 )(injectIntl(withParams(ProfilePage)));
