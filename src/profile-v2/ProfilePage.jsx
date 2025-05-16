@@ -4,22 +4,38 @@ import React, {
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { sendTrackingLogEvent } from '@edx/frontend-platform/analytics';
-import { ensureConfig, getConfig } from '@edx/frontend-platform';
+import { ensureConfig } from '@edx/frontend-platform';
 import { AppContext } from '@edx/frontend-platform/react';
-import { useIntl } from '@edx/frontend-platform/i18n';
+import { FormattedMessage, useIntl } from '@edx/frontend-platform/i18n';
 import { Alert, Hyperlink } from '@openedx/paragon';
 import classNames from 'classnames';
+
+// Actions
 import {
   fetchProfile,
+  saveProfile,
   saveProfilePhoto,
   deleteProfilePhoto,
+  openForm,
+  closeForm,
+  updateDraft,
 } from './data/actions';
+
+// Components
 import ProfileAvatar from './forms/ProfileAvatar';
-import Certificates from './Certificates';
+import Name from './forms/Name';
+import Country from './forms/Country';
+import PreferredLanguage from './forms/PreferredLanguage';
+import Education from './forms/Education';
+import SocialLinks from './forms/SocialLinks';
+import Bio from './forms/Bio';
 import DateJoined from './DateJoined';
 import UserCertificateSummary from './UserCertificateSummary';
 import UsernameDescription from './UsernameDescription';
 import PageLoading from './PageLoading';
+import Certificates from './Certificates';
+
+// Selectors
 import { profilePageSelector } from './data/selectors';
 import messages from './ProfilePage.messages';
 import withParams from '../utils/hoc';
@@ -27,20 +43,32 @@ import { useIsOnMobileScreen, useIsOnTabletScreen } from './data/hooks';
 
 ensureConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL'], 'ProfilePage');
 
-const ProfilePage = ({ params }) => {
+const ProfilePage = ({ params, navigate }) => {
   const dispatch = useDispatch();
   const intl = useIntl();
   const context = useContext(AppContext);
   const {
-    requiresParentalConsent,
     dateJoined,
-    yearOfBirth,
     courseCertificates,
     name,
+    visibilityName,
     profileImage,
     savePhotoState,
     isLoadingProfile,
     photoUploadError,
+    country,
+    visibilityCountry,
+    levelOfEducation,
+    visibilityLevelOfEducation,
+    socialLinks,
+    draftSocialLinksByPlatform,
+    visibilitySocialLinks,
+    languageProficiencies,
+    visibilityLanguageProficiencies,
+    bio,
+    visibilityBio,
+    saveState,
+    username,
   } = useSelector(profilePageSelector);
 
   const [viewMyRecordsUrl, setViewMyRecordsUrl] = useState(null);
@@ -59,6 +87,12 @@ const ProfilePage = ({ params }) => {
     });
   }, [dispatch, params.username, context.config]);
 
+  useEffect(() => {
+    if (!username && saveState === 'error' && navigate) {
+      navigate('/notfound');
+    }
+  }, [username, saveState, navigate]);
+
   const handleSaveProfilePhoto = useCallback((formData) => {
     dispatch(saveProfilePhoto(context.authenticatedUser.username, formData));
   }, [dispatch, context.authenticatedUser.username]);
@@ -67,11 +101,21 @@ const ProfilePage = ({ params }) => {
     dispatch(deleteProfilePhoto(context.authenticatedUser.username));
   }, [dispatch, context.authenticatedUser.username]);
 
-  const isYOBDisabled = () => {
-    const currentYear = new Date().getFullYear();
-    const isAgeOrNotCompliant = !yearOfBirth || ((currentYear - yearOfBirth) < 13);
-    return isAgeOrNotCompliant && getConfig().COLLECT_YEAR_OF_BIRTH !== 'true';
-  };
+  const handleClose = useCallback((formId) => {
+    dispatch(closeForm(formId));
+  }, [dispatch]);
+
+  const handleOpen = useCallback((formId) => {
+    dispatch(openForm(formId));
+  }, [dispatch]);
+
+  const handleSubmit = useCallback((formId) => {
+    dispatch(saveProfile(formId, context.authenticatedUser.username));
+  }, [dispatch, context.authenticatedUser.username]);
+
+  const handleChange = useCallback((fieldName, value) => {
+    dispatch(updateDraft(fieldName, value));
+  }, [dispatch]);
 
   const isAuthenticatedUserProfile = () => params.username === context.authenticatedUser.username;
 
@@ -100,15 +144,22 @@ const ProfilePage = ({ params }) => {
 
   const renderPhotoUploadErrorMessage = () => (
     photoUploadError && (
-    <div className="row">
-      <div className="col-md-4 col-lg-3">
-        <Alert variant="danger" dismissible={false} show>
-          {photoUploadError.userMessage}
-        </Alert>
+      <div className="row">
+        <div className="col-md-4 col-lg-3">
+          <Alert variant="danger" dismissible={false} show>
+            {photoUploadError.userMessage}
+          </Alert>
+        </div>
       </div>
-    </div>
     )
   );
+
+  const commonFormProps = {
+    openHandler: handleOpen,
+    closeHandler: handleClose,
+    submitHandler: handleSubmit,
+    changeHandler: handleChange,
+  };
 
   return (
     <div className="profile-page">
@@ -138,7 +189,7 @@ const ProfilePage = ({ params }) => {
                     onSave={handleSaveProfilePhoto}
                     onDelete={handleDeleteProfilePhoto}
                     savePhotoState={savePhotoState}
-                    isEditable={isAuthenticatedUserProfile() && !requiresParentalConsent}
+                    isEditable={isAuthenticatedUserProfile()}
                   />
                   <div
                     className={classNames([
@@ -172,7 +223,7 @@ const ProfilePage = ({ params }) => {
                     )}
                     >
                       <DateJoined date={dateJoined} />
-                      <UserCertificateSummary count={courseCertificates.length} />
+                      <UserCertificateSummary count={(courseCertificates || []).length} />
                     </div>
                   </div>
                   <div className={classNames([
@@ -184,7 +235,7 @@ const ProfilePage = ({ params }) => {
                   </div>
                 </div>
                 <div className="row-auto d-flex align-items-center h-100 w-100 justify-content-start m-0 pt-4">
-                  {isYOBDisabled() && <UsernameDescription />}
+                  <UsernameDescription />
                 </div>
               </div>
               <div className="ml-auto">
@@ -192,12 +243,88 @@ const ProfilePage = ({ params }) => {
               </div>
             </div>
           </div>
-          <div className="col container-fluid d-inline-flex px-75rem pt-4rem pb-6 h-100 w-100 align-items-start justify-content-center g-3rem">
-            {isBlockVisible(courseCertificates.length) && (
-              <Certificates
-                certificates={courseCertificates}
-                formId="certificates"
-              />
+          <div className="col d-inline-flex px-75rem pt-4rem pb-6 h-100 w-100 align-items-start justify-content-start g-3rem">
+            <div>
+              <div className="col justify-content-start align-items-start g-5rem p-0">
+                <div className="col align-self-stretch height-2625rem justify-content-start align-items-start p-0">
+                  <p className={classNames([
+                    'font-weight-bold text-primary-500 m-0',
+                    isMobileView ? 'h3' : 'h2',
+                  ])}
+                  >
+                    <FormattedMessage
+                      id="profile.profile.information"
+                      defaultMessage="Profile information"
+                      description="heading for the editable profile section"
+                    />
+                  </p>
+                </div>
+              </div>
+              <div className="row w-100 d-inline-flex pt-4rem align-items-start justify-content-start">
+                <div className="col col-6">
+                  {isBlockVisible(name) && (
+                  <Name
+                    name={name}
+                    visibilityName={visibilityName}
+                    formId="name"
+                    {...commonFormProps}
+                  />
+                  )}
+                  {isBlockVisible(country) && (
+                  <Country
+                    country={country}
+                    visibilityCountry={visibilityCountry}
+                    formId="country"
+                    {...commonFormProps}
+                  />
+                  )}
+                  {isBlockVisible((languageProficiencies || []).length) && (
+                  <PreferredLanguage
+                    languageProficiencies={languageProficiencies || []}
+                    visibilityLanguageProficiencies={visibilityLanguageProficiencies}
+                    formId="languageProficiencies"
+                    {...commonFormProps}
+                  />
+                  )}
+                  {isBlockVisible(levelOfEducation) && (
+                  <Education
+                    levelOfEducation={levelOfEducation}
+                    visibilityLevelOfEducation={visibilityLevelOfEducation}
+                    formId="levelOfEducation"
+                    {...commonFormProps}
+                  />
+                  )}
+                </div>
+                <div className="col col-6">
+                  {isBlockVisible(bio) && (
+                  <Bio
+                    bio={bio}
+                    visibilityBio={visibilityBio}
+                    formId="bio"
+                    {...commonFormProps}
+                  />
+                  )}
+                  {isBlockVisible((socialLinks || []).some((link) => link?.socialLink !== null)) && (
+                  <SocialLinks
+                    socialLinks={socialLinks || []}
+                    draftSocialLinksByPlatform={draftSocialLinksByPlatform || {}}
+                    visibilitySocialLinks={visibilitySocialLinks}
+                    formId="socialLinks"
+                    {...commonFormProps}
+                  />
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="col container-fluid d-inline-flex bg-color-grey-FBFAF9 px-75rem pt-4rem pb-6 h-100 w-100 align-items-start justify-content-start g-3rem"
+          >
+            {isBlockVisible((courseCertificates || []).length) && (
+            <Certificates
+              certificates={courseCertificates || []}
+              formId="certificates"
+            />
             )}
           </div>
         </>
@@ -210,6 +337,76 @@ ProfilePage.propTypes = {
   params: PropTypes.shape({
     username: PropTypes.string.isRequired,
   }).isRequired,
+  navigate: PropTypes.func.isRequired,
+  // Account data
+  requiresParentalConsent: PropTypes.bool,
+  dateJoined: PropTypes.string,
+  username: PropTypes.string,
+  // Bio form data
+  bio: PropTypes.string,
+  visibilityBio: PropTypes.string,
+  // Certificates data
+  courseCertificates: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string,
+  })),
+  // Country form data
+  country: PropTypes.string,
+  visibilityCountry: PropTypes.string,
+  // Education form data
+  levelOfEducation: PropTypes.string,
+  visibilityLevelOfEducation: PropTypes.string,
+  // Language proficiency form data
+  languageProficiencies: PropTypes.arrayOf(PropTypes.shape({
+    code: PropTypes.string.isRequired,
+  })),
+  visibilityLanguageProficiencies: PropTypes.string,
+  // Name form data
+  name: PropTypes.string,
+  visibilityName: PropTypes.string,
+  // Social links form data
+  socialLinks: PropTypes.arrayOf(PropTypes.shape({
+    platform: PropTypes.string,
+    socialLink: PropTypes.string,
+  })),
+  draftSocialLinksByPlatform: PropTypes.objectOf(PropTypes.shape({
+    platform: PropTypes.string,
+    socialLink: PropTypes.string,
+  })),
+  visibilitySocialLinks: PropTypes.string,
+  // Other data
+  profileImage: PropTypes.shape({
+    src: PropTypes.string,
+    isDefault: PropTypes.bool,
+  }),
+  saveState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
+  savePhotoState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
+  isLoadingProfile: PropTypes.bool,
+  photoUploadError: PropTypes.objectOf(PropTypes.string),
+};
+
+ProfilePage.defaultProps = {
+  saveState: null,
+  username: '',
+  savePhotoState: null,
+  photoUploadError: {},
+  profileImage: {},
+  name: null,
+  levelOfEducation: null,
+  country: null,
+  socialLinks: [],
+  draftSocialLinksByPlatform: {},
+  bio: null,
+  languageProficiencies: [],
+  courseCertificates: [],
+  requiresParentalConsent: null,
+  dateJoined: null,
+  visibilityName: null,
+  visibilityCountry: null,
+  visibilityLevelOfEducation: null,
+  visibilitySocialLinks: null,
+  visibilityLanguageProficiencies: null,
+  visibilityBio: null,
+  isLoadingProfile: false,
 };
 
 export default withParams(ProfilePage);

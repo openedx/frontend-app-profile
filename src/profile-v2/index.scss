@@ -31,11 +31,12 @@
 
 .profile-page {
   .edit-section-header {
-    @extend .h6;
+    @extend .h4;
     display: block;
-    font-weight: normal;
+    font-weight: 400;
     letter-spacing: 0;
     margin: 0;
+    line-height: 2.25rem;
   }
 
   label.edit-section-header {
@@ -187,6 +188,14 @@
   padding-bottom: 4rem;
 }
 
+.p-0375rem {
+  padding: 0.375rem;
+}
+
+.pb-0375rem {
+  padding-bottom: 0.375rem;
+}
+
 .py-0625rem {
   padding-top: 0.625rem;
   padding-bottom: 0.625rem;
@@ -222,10 +231,18 @@
   color: #000;
 }
 
+.bg-color-grey-FBFAF9 {
+  background-color: #FBFAF9;
+}
+
 .background-black-65 {
   background-color: rgba(0,0,0,.65)
 }
 
 .object-fit-cover {
   object-fit: cover;
+}
+
+.lh-225rem {
+    line-height: 2.25rem;
 }

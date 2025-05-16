@@ -2,11 +2,25 @@ import { ensureConfig, getConfig } from '@edx/frontend-platform';
 import { getAuthenticatedHttpClient as getHttpClient } from '@edx/frontend-platform/auth';
 import { logError } from '@edx/frontend-platform/logging';
 import { camelCaseObject, convertKeyNames, snakeCaseObject } from '../utils';
+import { FIELD_LABELS } from './constants';
 
 ensureConfig(['LMS_BASE_URL'], 'Profile API service');
 
 function processAccountData(data) {
-  return camelCaseObject(data);
+  const processedData = camelCaseObject(data);
+  // Ensure critical fields are arrays or have default values
+  return {
+    ...processedData,
+    socialLinks: Array.isArray(processedData.socialLinks) ? processedData.socialLinks : [],
+    languageProficiencies: Array.isArray(processedData.languageProficiencies)
+      ? processedData.languageProficiencies : [],
+    name: processedData.name || null,
+    bio: processedData.bio || null,
+    country: processedData.country || null,
+    levelOfEducation: processedData.levelOfEducation || null,
+    profileImage: processedData.profileImage || {},
+    yearOfBirth: processedData.yearOfBirth || null,
+  };
 }
 
 function processAndThrowError(error, errorDataProcessor) {
@@ -46,7 +60,6 @@ export async function patchProfile(username, params) {
 }
 
 // POST PROFILE PHOTO
-
 export async function postProfilePhoto(username, formData) {
   // eslint-disable-next-line no-unused-vars
   const { data } = await getHttpClient().post(
@@ -71,7 +84,6 @@ export async function postProfilePhoto(username, formData) {
 }
 
 // DELETE PROFILE PHOTO
-
 export async function deleteProfilePhoto(username) {
   // eslint-disable-next-line no-unused-vars
   const { data } = await getHttpClient().delete(`${getConfig().LMS_BASE_URL}/api/user/v1/accounts/${username}/image`);
@@ -115,7 +127,6 @@ export async function patchPreferences(username, params) {
 }
 
 // GET COURSE CERTIFICATES
-
 function transformCertificateData(data) {
   const transformedData = [];
   data.forEach((cert) => {
@@ -142,6 +153,25 @@ export async function getCourseCertificates(username) {
   try {
     const { data } = await getHttpClient().get(url);
     return transformCertificateData(data);
+  } catch (e) {
+    logError(e);
+    return [];
+  }
+}
+
+// GET COUNTRY LIST
+function extractCountryList(data) {
+  return data?.fields
+    .find(({ name }) => name === FIELD_LABELS.COUNTRY)
+    ?.options?.map(({ value }) => (value)) || [];
+}
+
+export async function getCountryList() {
+  const url = `${getConfig().LMS_BASE_URL}/user_api/v1/account/registration/`;
+
+  try {
+    const { data } = await getHttpClient().get(url);
+    return extractCountryList(data);
   } catch (e) {
     logError(e);
     return [];
