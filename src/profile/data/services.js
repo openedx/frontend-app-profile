@@ -1,5 +1,5 @@
 import { ensureConfig, getConfig } from '@edx/frontend-platform';
-import { getAuthenticatedHttpClient as getHttpClient } from '@edx/frontend-platform/auth';
+import { getAuthenticatedHttpClient, getAuthenticatedHttpClient as getHttpClient } from '@edx/frontend-platform/auth';
 import { logError } from '@edx/frontend-platform/logging';
 import { camelCaseObject, convertKeyNames, snakeCaseObject } from '../utils';
 
@@ -89,7 +89,13 @@ export async function deleteProfilePhoto(username) {
 export async function getPreferences(username) {
   const { data } = await getHttpClient().get(`${getConfig().LMS_BASE_URL}/api/user/v1/preferences/${username}`);
 
-  return camelCaseObject(data);
+  const processedData = camelCaseObject(data);
+  const visibilityExtendedProfile = Object.prototype.hasOwnProperty.call(data, 'visibilityExtendedProfile');
+
+  return {
+    ...processedData,
+    visibilityExtendedProfile: visibilityExtendedProfile ? JSON.parse(data['visibility.extended_profile']) : {},
+  };
 }
 
 // PATCH PREFERENCES
@@ -105,7 +111,10 @@ export async function patchPreferences(username, params) {
     visibility_name: 'visibility.name',
     visibility_social_links: 'visibility.social_links',
     visibility_time_zone: 'visibility.time_zone',
+    visibility_extended_profile: 'visibility.extended_profile',
   });
+
+  processedParams['visibility.extended_profile'] = JSON.stringify(processedParams['visibility.extended_profile']);
 
   await getHttpClient().patch(`${getConfig().LMS_BASE_URL}/api/user/v1/preferences/${username}`, processedParams, {
     headers: { 'Content-Type': 'application/merge-patch+json' },
@@ -146,4 +155,18 @@ export async function getCourseCertificates(username) {
     logError(e);
     return [];
   }
+}
+
+export async function getExtendedProfileFields() {
+  const url = `${getConfig().LMS_BASE_URL}/user_api/v1/account/registration/`;
+
+  const { data } = await getAuthenticatedHttpClient()
+    .get(
+      url,
+    )
+    .catch((e) => {
+      throw (e);
+    });
+
+  return { fields: data.fields };
 }
