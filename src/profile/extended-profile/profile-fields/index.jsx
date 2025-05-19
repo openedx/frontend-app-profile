@@ -49,6 +49,8 @@ const ProfileFields = () => {
   return (
     <div>
       {extendedProfileFields?.map((field) => {
+        // extendedProfileValues comes from the user profile values
+        // here we are looking for the field value of each extended profile field
         const value = extendedProfileValues.find((el) => el.fieldName === field.name)?.fieldValue;
 
         const commonProps = {

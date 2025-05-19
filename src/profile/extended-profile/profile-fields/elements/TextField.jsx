@@ -7,6 +7,7 @@ import SwitchContent from '../../../forms/elements/SwitchContent';
 import EmptyContent from '../../../forms/elements/EmptyContent';
 import EditableItemHeader from '../../../forms/elements/EditableItemHeader';
 import messages from '../../messages';
+import { FORM_MODE } from '../../constants';
 
 const TextField = (props) => {
   const {
@@ -45,11 +46,11 @@ const TextField = (props) => {
   }, [draftValue?.length]);
 
   const handleStartEditing = () => {
-    setFormMode('editing', fieldName);
+    setFormMode(FORM_MODE.EDITING, fieldName);
   };
 
   const handleCancelEditing = () => {
-    setFormMode('editable');
+    setFormMode(FORM_MODE.EDITABLE);
     setDraftValue(fieldValue);
   };
 
@@ -62,17 +63,17 @@ const TextField = (props) => {
     handleFormSubmit(fieldName, draftValue);
   };
 
-  const isFieldBeingEdited = formEditMode === 'editing' && activeFieldName === fieldName;
+  const isFieldBeingEdited = formEditMode === FORM_MODE.EDITING && activeFieldName === fieldName;
   const isFieldEmpty = draftValue === '' || !draftValue;
 
   const getFieldDisplayMode = () => {
     if (isFieldBeingEdited) {
-      return 'editing';
+      return FORM_MODE.EDITING;
     }
     if (isFieldEmpty) {
-      return 'empty';
+      return FORM_MODE.EMPTY;
     }
-    return 'editable';
+    return FORM_MODE.EDITABLE;
   };
 
   return (

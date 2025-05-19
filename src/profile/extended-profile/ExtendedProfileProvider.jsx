@@ -4,9 +4,11 @@ import ExtendedProfileFieldsContext from './ExtendedProfileContext';
 import { getExtendedProfileFields } from './data/service';
 import { patchProfile } from '../data/services';
 
+import { FORM_MODE } from './constants';
+
 const ExtendedProfileFieldsProvider = ({ children }) => {
   const [extendedProfileFields, setExtendedProfileFields] = useState();
-  const [editMode, setEditMode] = useState('editable');
+  const [editMode, setEditMode] = useState(FORM_MODE.EDITABLE);
   const [editingInput, setEditingInput] = useState(null);
   const [saveState, setSaveState] = useState('default');
 
@@ -27,7 +29,7 @@ const ExtendedProfileFieldsProvider = ({ children }) => {
   };
 
   const handleResetFormEdition = () => {
-    setEditMode('editable');
+    setEditMode(FORM_MODE.EDITABLE);
     setEditingInput(null);
     setSaveState('default');
   };
