@@ -1,11 +1,12 @@
-import { useDispatch, useSelector } from 'react-redux';
-
 import React, { useContext } from 'react';
-
+import { useDispatch, useSelector } from 'react-redux';
 import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
-import SwitchContent from '../../forms/elements/SwitchContent';
-import ExtendedProfileFieldsContext from '../ExtendedProfileContext';
+
 import { fetchProfile } from '../../data/actions';
+import SwitchContent from '../../forms/elements/SwitchContent';
+
+import ExtendedProfileFieldsContext from '../ExtendedProfileContext';
+
 import TextField from './elements/TextField';
 import CheckboxField from './elements/CheckboxField';
 import SelectField from './elements/SelectField';
