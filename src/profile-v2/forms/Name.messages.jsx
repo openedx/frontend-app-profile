@@ -11,6 +11,11 @@ const messages = defineMessages({
     defaultMessage: 'Add full name',
     description: 'The affordance to add a name to a user’s profile.',
   },
+  'profile.name.tooltip': {
+    id: 'profile.name.tooltip',
+    defaultMessage: 'The name that is used for ID verification and that appears on your certificates',
+    description: 'Tooltip for the full name field.',
+  },
 });
 
 export default messages;

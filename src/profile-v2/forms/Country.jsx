@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
+import { useIntl } from '@edx/frontend-platform/i18n';
 import { Form } from '@openedx/paragon';
 
+import { getConfig } from '@edx/frontend-platform';
 import messages from './Country.messages';
 
 // Components
@@ -29,8 +30,10 @@ const Country = ({
   submitHandler,
   closeHandler,
   openHandler,
-  intl,
 }) => {
+  const isVisibilityEnabled = getConfig().ENABLE_VISIBILITY_EDITING === 'true';
+  const intl = useIntl();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     changeHandler(name, value);
@@ -49,13 +52,12 @@ const Country = ({
     openHandler(formId);
   };
 
-  const isDisabledCountry = (countryCode) => {
-    return countriesCodesList.length > 0 && !countriesCodesList.find(code => code === countryCode);
-  };
+  const isDisabledCountry = (countryCode) => countriesCodesList.length > 0
+      && !countriesCodesList.find(code => code === countryCode);
 
   return (
     <SwitchContent
-      className="mb-5"
+      className="pt-25rem"
       expression={editMode}
       cases={{
         editing: (
@@ -63,14 +65,15 @@ const Country = ({
             <form onSubmit={handleSubmit}>
               <Form.Group
                 controlId={formId}
+                className="m-0 pb-3"
                 isInvalid={error !== null}
               >
-                <p data-hj-suppress className="h5 font-weight-bold">
+                <p data-hj-suppress className="h5 font-weight-bold m-0 pb-075rem">
                   {intl.formatMessage(messages['profile.country.label'])}
                 </p>
                 <select
                   data-hj-suppress
-                  className="form-control"
+                  className="form-control py-0625rem"
                   type="select"
                   id={formId}
                   name={formId}
@@ -102,21 +105,21 @@ const Country = ({
         ),
         editable: (
           <>
-            <p data-hj-suppress className="h5 font-weight-bold">
+            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-0375rem">
               {intl.formatMessage(messages['profile.country.label'])}
             </p>
             <EditableItemHeader
               content={countryMessages[country]}
               showEditButton
               onClickEdit={handleOpen}
-              showVisibility={visibilityCountry !== null}
+              showVisibility={visibilityCountry !== null && isVisibilityEnabled}
               visibility={visibilityCountry}
             />
           </>
         ),
         empty: (
           <>
-            <p data-hj-suppress className="h5 font-weight-bold">
+            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-0375rem">
               {intl.formatMessage(messages['profile.country.label'])}
             </p>
             <EmptyContent onClick={handleOpen}>
@@ -126,7 +129,7 @@ const Country = ({
         ),
         static: (
           <>
-            <p data-hj-suppress className="h5 font-weight-bold">
+            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-0375rem">
               {intl.formatMessage(messages['profile.country.label'])}
             </p>
             <EditableItemHeader content={countryMessages[country]} />
@@ -154,7 +157,6 @@ Country.propTypes = {
   submitHandler: PropTypes.func.isRequired,
   closeHandler: PropTypes.func.isRequired,
   openHandler: PropTypes.func.isRequired,
-  intl: intlShape.isRequired,
 };
 
 Country.defaultProps = {
@@ -168,4 +170,4 @@ Country.defaultProps = {
 export default connect(
   countrySelector,
   {},
-)(injectIntl(Country));
+)(Country);

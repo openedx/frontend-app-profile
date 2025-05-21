@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
+import { useIntl } from '@edx/frontend-platform/i18n';
 
+import { getConfig } from '@edx/frontend-platform';
+import { InfoOutline } from '@openedx/paragon/icons';
+import { Form, OverlayTrigger, Tooltip } from '@openedx/paragon';
 import messages from './Name.messages';
 
 // Components
@@ -20,12 +23,15 @@ const Name = ({
   visibilityName,
   editMode,
   saveState,
+  error,
   changeHandler,
   submitHandler,
   closeHandler,
   openHandler,
-  intl,
 }) => {
+  const isVisibilityEnabled = getConfig().ENABLE_VISIBILITY_EDITING === 'true';
+  const intl = useIntl();
+
   const handleChange = (e) => {
     const { name: inputName, value } = e.target;
     changeHandler(inputName, value);
@@ -46,15 +52,43 @@ const Name = ({
 
   return (
     <SwitchContent
-      className="mb-5"
+      className="pt-25rem"
       expression={editMode}
       cases={{
         editing: (
           <div role="dialog" aria-labelledby={`${formId}-label`}>
             <form onSubmit={handleSubmit}>
               <div className="form-group">
-                <p data-hj-suppress className="h5 font-weight-bold m-0 pb-0375rem">{intl.formatMessage(messages['profile.name.full.name'])}</p>
-                <EditableItemHeader content={name} />
+                <div className="row m-0 pb-075rem align-items-center">
+                  <p data-hj-suppress className="h5 font-weight-bold m-0">
+                    {intl.formatMessage(messages['profile.name.full.name'])}
+                  </p>
+                  <OverlayTrigger
+                    key="top"
+                    placement="top"
+                    overlay={(
+                      <Tooltip variant="light" id="tooltip-top">
+                        <p className="h5 font-weight-normal m-0 p-0">
+                          {intl.formatMessage(messages['profile.name.tooltip'])}
+                        </p>
+                      </Tooltip>
+                          )}
+                  >
+                    <InfoOutline className="m-0 info-icon" />
+                  </OverlayTrigger>
+                </div>
+                <textarea
+                  className="form-control py-0625rem"
+                  id={formId}
+                  name={formId}
+                  value={name}
+                  onChange={handleChange}
+                />
+                {error !== null && (
+                <Form.Control.Feedback hasIcon={false}>
+                  {error}
+                </Form.Control.Feedback>
+                )}
               </div>
               <FormControls
                 visibilityId="visibilityName"
@@ -68,19 +102,53 @@ const Name = ({
         ),
         editable: (
           <>
-            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-0375rem">{intl.formatMessage(messages['profile.name.full.name'])}</p>
+            <div className="row m-0 pb-0375rem align-items-center">
+              <p data-hj-suppress className="h5 font-weight-bold m-0">
+                {intl.formatMessage(messages['profile.name.full.name'])}
+              </p>
+              <OverlayTrigger
+                key="top"
+                placement="top"
+                overlay={(
+                  <Tooltip variant="light" id="tooltip-top">
+                    <p className="h5 font-weight-normal m-0 p-0">
+                      {intl.formatMessage(messages['profile.name.tooltip'])}
+                    </p>
+                  </Tooltip>
+                          )}
+              >
+                <InfoOutline className="m-0 info-icon" />
+              </OverlayTrigger>
+            </div>
             <EditableItemHeader
               content={name}
               showEditButton
               onClickEdit={handleOpen}
-              showVisibility={visibilityName !== null}
+              showVisibility={visibilityName !== null && isVisibilityEnabled}
               visibility={visibilityName}
             />
           </>
         ),
         empty: (
           <>
-            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-0375rem">{intl.formatMessage(messages['profile.name.full.name'])}</p>
+            <div className="row m-0 pb-0375rem align-items-center">
+              <p data-hj-suppress className="h5 font-weight-bold m-0">
+                {intl.formatMessage(messages['profile.name.full.name'])}
+              </p>
+              <OverlayTrigger
+                key="top"
+                placement="top"
+                overlay={(
+                  <Tooltip variant="light" id="tooltip-top">
+                    <p className="h5 font-weight-normal m-0 p-0">
+                      {intl.formatMessage(messages['profile.name.tooltip'])}
+                    </p>
+                  </Tooltip>
+                          )}
+              >
+                <InfoOutline className="m-0 info-icon" />
+              </OverlayTrigger>
+            </div>
             <EmptyContent onClick={handleOpen}>
               {intl.formatMessage(messages['profile.name.empty'])}
             </EmptyContent>
@@ -88,7 +156,24 @@ const Name = ({
         ),
         static: (
           <>
-            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-0375rem">{intl.formatMessage(messages['profile.name.full.name'])}</p>
+            <div className="row m-0 pb-0375rem align-items-center">
+              <p data-hj-suppress className="h5 font-weight-bold m-0">
+                {intl.formatMessage(messages['profile.name.full.name'])}
+              </p>
+              <OverlayTrigger
+                key="top"
+                placement="top"
+                overlay={(
+                  <Tooltip variant="light" id="tooltip-top">
+                    <p className="h5 font-weight-normal m-0 p-0">
+                      {intl.formatMessage(messages['profile.name.tooltip'])}
+                    </p>
+                  </Tooltip>
+                          )}
+              >
+                <InfoOutline className="m-0 info-icon" />
+              </OverlayTrigger>
+            </div>
             <EditableItemHeader content={name} />
           </>
         ),
@@ -107,7 +192,7 @@ Name.propTypes = {
   submitHandler: PropTypes.func.isRequired,
   closeHandler: PropTypes.func.isRequired,
   openHandler: PropTypes.func.isRequired,
-  intl: intlShape.isRequired,
+  error: PropTypes.string,
 };
 
 Name.defaultProps = {
@@ -115,9 +200,10 @@ Name.defaultProps = {
   saveState: null,
   name: null,
   visibilityName: 'private',
+  error: null,
 };
 
 export default connect(
   editableFormSelector,
   {},
-)(injectIntl(Name));
+)(Name);

@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Alert } from '@openedx/paragon';
 import { connect } from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { FormattedMessage, injectIntl, intlShape } from '@edx/frontend-platform/i18n';
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import classNames from 'classnames';
 
 // Components
+import { getConfig } from '@edx/frontend-platform';
 import FormControls from './elements/FormControls';
 import EditableItemHeader from './elements/EditableItemHeader';
 import EmptyContent from './elements/EmptyContent';
@@ -15,7 +15,6 @@ import SwitchContent from './elements/SwitchContent';
 
 // Selectors
 import { editableFormSelector } from '../data/selectors';
-import messages from './SocialLinks.messages';
 
 const platformDisplayInfo = {
   facebook: {
@@ -32,19 +31,6 @@ const platformDisplayInfo = {
   },
 };
 
-const SocialLink = ({ url, name, platform }) => (
-  <a href={url} className="font-weight-bold">
-    <FontAwesomeIcon className="mr-2" icon={platformDisplayInfo[platform].icon} />
-    {name}
-  </a>
-);
-
-SocialLink.propTypes = {
-  url: PropTypes.string.isRequired,
-  platform: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-};
-
 const SocialLinks = ({
   formId,
   socialLinks,
@@ -57,8 +43,23 @@ const SocialLinks = ({
   submitHandler,
   closeHandler,
   openHandler,
-  intl,
 }) => {
+  const isVisibilityEnabled = getConfig().ENABLE_VISIBILITY_EDITING === 'true';
+  const [activePlatform, setActivePlatform] = useState(null);
+
+  const mergeWithDrafts = (newSocialLink) => {
+    const knownPlatforms = ['twitter', 'facebook', 'linkedin'];
+    const updated = [];
+    knownPlatforms.forEach((platform) => {
+      if (newSocialLink.platform === platform) {
+        updated.push(newSocialLink);
+      } else if (draftSocialLinksByPlatform[platform] !== undefined) {
+        updated.push(draftSocialLinksByPlatform[platform]);
+      }
+    });
+    return updated;
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name !== 'visibilitySocialLinks') {
@@ -77,43 +78,88 @@ const SocialLinks = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     submitHandler(formId);
+    setActivePlatform(null);
   };
 
   const handleClose = () => {
     closeHandler(formId);
+    setActivePlatform(null);
   };
 
-  const handleOpen = () => {
+  const handleOpen = (platform) => {
     openHandler(formId);
+    setActivePlatform(platform);
   };
 
-  const mergeWithDrafts = (newSocialLink) => {
-    const knownPlatforms = ['twitter', 'facebook', 'linkedin'];
-    const updated = [];
-    knownPlatforms.forEach((platform) => {
-      if (newSocialLink.platform === platform) {
-        updated.push(newSocialLink);
-      } else if (draftSocialLinksByPlatform[platform] !== undefined) {
-        updated.push(draftSocialLinksByPlatform[platform]);
-      }
-    });
-    return updated;
+  const renderPlatformContent = (platform, socialLink, isEditing) => {
+    if (isEditing) {
+      return (
+        <form onSubmit={handleSubmit}>
+          <div className="form-group pt-25rem m-0">
+            {error !== null && (
+              <div id="social-error-feedback">
+                <Alert variant="danger" dismissible={false} show>
+                  {error}
+                </Alert>
+              </div>
+            )}
+            <div className="pb-3">
+              <input
+                className={classNames('form-control py-0625rem', { 'is-invalid': Boolean(error) })}
+                type="text"
+                id={`social-${platform}`}
+                name={platform}
+                value={socialLink || ''}
+                onChange={handleChange}
+                aria-describedby="social-error-feedback"
+              />
+            </div>
+            <FormControls
+              visibilityId="visibilitySocialLinks"
+              saveState={saveState}
+              visibility={visibilitySocialLinks}
+              cancelHandler={handleClose}
+              changeHandler={handleChange}
+              submitHandler={handleSubmit}
+            />
+          </div>
+        </form>
+      );
+    }
+    if (socialLink) {
+      return (
+        <div className="w-100 overflowWrap-breakWord">
+          <EditableItemHeader
+            content={socialLink}
+            showEditButton
+            onClickEdit={() => handleOpen(platform)}
+            showVisibility={visibilitySocialLinks !== null && isVisibilityEnabled}
+            visibility={visibilitySocialLinks}
+          />
+        </div>
+      );
+    }
+    return (
+      <EmptyContent onClick={() => handleOpen(platform)}>
+        Add {platformDisplayInfo[platform].name}
+      </EmptyContent>
+    );
   };
 
   return (
     <SwitchContent
-      className="mb-5"
+      className="p-0"
       expression={editMode}
       cases={{
         empty: (
           <div>
             <div>
               {socialLinks.map(({ platform }) => (
-                <div key={platform} className="mb-4">
-                  <p data-hj-suppress className="h5 font-weight-bold">
+                <div key={platform} className="pt-25rem">
+                  <p data-hj-suppress className="h5 font-weight-bold m-0 pb-0375rem">
                     {platformDisplayInfo[platform].name}
                   </p>
-                  <EmptyContent onClick={handleOpen}>
+                  <EmptyContent onClick={() => handleOpen(platform)}>
                     <FormattedMessage
                       id="profile.sociallinks.add"
                       defaultMessage="Add {network} profile"
@@ -134,8 +180,8 @@ const SocialLinks = ({
               {socialLinks
                 .filter(({ socialLink }) => Boolean(socialLink))
                 .map(({ platform, socialLink }) => (
-                  <div key={platform} className="mb-4">
-                    <p data-hj-suppress className="h5 font-weight-bold">
+                  <div key={platform} className="pt-25rem">
+                    <p data-hj-suppress className="h5 font-weight-bold m-0 pb-0375rem">
                       {platformDisplayInfo[platform].name}
                     </p>
                     <EditableItemHeader
@@ -151,65 +197,28 @@ const SocialLinks = ({
           <div>
             <div>
               {socialLinks.map(({ platform, socialLink }) => (
-                <div key={platform} className="mb-4">
-                  <p data-hj-suppress className="h5 font-weight-bold">
+                <div key={platform} className="pt-25rem">
+                  <p data-hj-suppress className="h5 font-weight-bold m-0 pb-0375rem">
                     {platformDisplayInfo[platform].name}
                   </p>
-                  {socialLink ? (
-                    <EditableItemHeader
-                      content={socialLink}
-                      showEditButton
-                      onClickEdit={handleOpen}
-                      showVisibility={visibilitySocialLinks !== null}
-                      visibility={visibilitySocialLinks}
-                    />
-                  ) : (
-                    <EmptyContent onClick={handleOpen}>
-                      Add {platformDisplayInfo[platform].name}
-                    </EmptyContent>
-                  )}
+                  {renderPlatformContent(platform, socialLink, activePlatform === platform)}
                 </div>
               ))}
             </div>
           </div>
         ),
         editing: (
-          <div role="dialog" aria-labelledby="social-links-label">
-            <form onSubmit={handleSubmit}>
-              {error !== null && (
-                <div id="social-error-feedback">
-                  <Alert variant="danger" dismissible={false} show>
-                    {error}
-                  </Alert>
+          <div>
+            <div>
+              {socialLinks.map(({ platform, socialLink }) => (
+                <div key={platform} className="pt-25rem">
+                  <p data-hj-suppress className="h5 font-weight-bold m-0 pb-0375rem">
+                    {platformDisplayInfo[platform].name}
+                  </p>
+                  {renderPlatformContent(platform, socialLink, activePlatform === platform)}
                 </div>
-              )}
-              <div>
-                {socialLinks.map(({ platform, socialLink }) => (
-                  <div key={platform} className="form-group mb-4">
-                    <p data-hj-suppress className="h5 font-weight-bold">
-                      {platformDisplayInfo[platform].name}
-                    </p>
-                    <input
-                      className={classNames('form-control', { 'is-invalid': Boolean(error) })}
-                      type="text"
-                      id={`social-${platform}`}
-                      name={platform}
-                      value={socialLink || ''}
-                      onChange={handleChange}
-                      aria-describedby="social-error-feedback"
-                    />
-                  </div>
-                ))}
-              </div>
-              <FormControls
-                visibilityId="visibilitySocialLinks"
-                saveState={saveState}
-                visibility={visibilitySocialLinks}
-                cancelHandler={handleClose}
-                changeHandler={handleChange}
-                submitHandler={handleSubmit}
-              />
-            </form>
+              ))}
+            </div>
           </div>
         ),
       }}
@@ -235,7 +244,6 @@ SocialLinks.propTypes = {
   submitHandler: PropTypes.func.isRequired,
   closeHandler: PropTypes.func.isRequired,
   openHandler: PropTypes.func.isRequired,
-  intl: intlShape.isRequired,
 };
 
 SocialLinks.defaultProps = {
@@ -249,4 +257,4 @@ SocialLinks.defaultProps = {
 export default connect(
   editableFormSelector,
   {},
-)(injectIntl(SocialLinks));
+)(SocialLinks);

@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import classNames from 'classnames';
 import EditButton from './EditButton';
 import { Visibility } from './Visibility';
+import { useIsOnMobileScreen } from '../../data/hooks';
 
 const EditableItemHeader = ({
   content,
@@ -11,15 +13,35 @@ const EditableItemHeader = ({
   showEditButton,
   onClickEdit,
   headingId,
-}) => (
-  <div className="editable-item-header">
-    <h4 className="edit-section-header text-gray-700" id={headingId}>
-      {content}
-      {showEditButton ? <EditButton className="p-0375rem" onClick={onClickEdit} /> : null}
-    </h4>
-    {showVisibility ? <p className="mb-0"><Visibility to={visibility} /></p> : null}
-  </div>
-);
+}) => {
+  const isMobileView = useIsOnMobileScreen();
+  return (
+    <div className="row m-0 p-0 d-flex flex-nowrap align-items-center">
+      <div
+        className={classNames([
+          'm-0 p-0',
+          isMobileView ? 'col-11' : 'col-auto',
+        ])}
+      >
+        <h4
+          className="edit-section-header text-gray-700"
+          id={headingId}
+        >
+          {content}
+        </h4>
+      </div>
+      <div
+        className={classNames([
+          'col-auto m-0 p-0 d-flex align-items-center',
+          isMobileView ? 'col-1' : 'col-auto',
+        ])}
+      >
+        {showEditButton ? <EditButton className="p-0375rem" onClick={onClickEdit} /> : null}
+      </div>
+      {showVisibility ? <p className="mb-0"><Visibility to={visibility} /></p> : null}
+    </div>
+  );
+};
 
 export default EditableItemHeader;
 
@@ -33,7 +55,8 @@ EditableItemHeader.propTypes = {
 };
 
 EditableItemHeader.defaultProps = {
-  onClickEdit: () => {},
+  onClickEdit: () => {
+  },
   showVisibility: false,
   showEditButton: false,
   content: '',

@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { FormattedMessage, injectIntl, intlShape } from '@edx/frontend-platform/i18n';
+import { FormattedMessage, useIntl } from '@edx/frontend-platform/i18n';
 import get from 'lodash.get';
 import { Form } from '@openedx/paragon';
 
+import { getConfig } from '@edx/frontend-platform';
 import messages from './Education.messages';
 
 // Components
@@ -30,8 +31,10 @@ const Education = ({
   submitHandler,
   closeHandler,
   openHandler,
-  intl,
 }) => {
+  const isVisibilityEnabled = getConfig().ENABLE_VISIBILITY_EDITING === 'true';
+  const intl = useIntl();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     changeHandler(name, value);
@@ -52,7 +55,7 @@ const Education = ({
 
   return (
     <SwitchContent
-      className="mb-5"
+      className="pt-25rem"
       expression={editMode}
       cases={{
         editing: (
@@ -60,20 +63,21 @@ const Education = ({
             <form onSubmit={handleSubmit}>
               <Form.Group
                 controlId={formId}
+                className="m-0 pb-3"
                 isInvalid={error !== null}
               >
-                <p data-hj-suppress className="h5 font-weight-bold">
+                <p data-hj-suppress className="h5 font-weight-bold m-0 pb-075rem">
                   {intl.formatMessage(messages['profile.education.education'])}
                 </p>
                 <select
                   data-hj-suppress
-                  className="form-control"
+                  className="form-control py-0625rem"
                   id={formId}
                   name={formId}
                   value={levelOfEducation}
                   onChange={handleChange}
                 >
-ibble                  <option value=""> </option>
+                  <option value=""> </option>
                   {EDUCATION_LEVELS.map(level => (
                     <option key={level} value={level}>
                       {intl.formatMessage(get(
@@ -102,7 +106,7 @@ ibble                  <option value=""> </option>
         ),
         editable: (
           <>
-            <p data-hj-suppress className="h5 font-weight-bold">
+            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-0375rem">
               {intl.formatMessage(messages['profile.education.education'])}
             </p>
             <EditableItemHeader
@@ -113,14 +117,14 @@ ibble                  <option value=""> </option>
               ))}
               showEditButton
               onClickEdit={handleOpen}
-              showVisibility={visibilityLevelOfEducation !== null}
+              showVisibility={visibilityLevelOfEducation !== null && isVisibilityEnabled}
               visibility={visibilityLevelOfEducation}
             />
           </>
         ),
         empty: (
           <>
-            <p data-hj-suppress className="h5 font-weight-bold">
+            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-0375rem">
               {intl.formatMessage(messages['profile.education.education'])}
             </p>
             <EmptyContent onClick={handleOpen}>
@@ -134,7 +138,7 @@ ibble                  <option value=""> </option>
         ),
         static: (
           <>
-            <p data-hj-suppress className="h5 font-weight-bold">
+            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-0375rem">
               {intl.formatMessage(messages['profile.education.education'])}
             </p>
             <EditableItemHeader
@@ -162,7 +166,6 @@ Education.propTypes = {
   submitHandler: PropTypes.func.isRequired,
   closeHandler: PropTypes.func.isRequired,
   openHandler: PropTypes.func.isRequired,
-  intl: intlShape.isRequired,
 };
 
 Education.defaultProps = {
@@ -176,4 +179,4 @@ Education.defaultProps = {
 export default connect(
   editableFormSelector,
   {},
-)(injectIntl(Education));
+)(Education);

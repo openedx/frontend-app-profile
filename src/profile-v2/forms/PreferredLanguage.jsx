@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
+import { useIntl } from '@edx/frontend-platform/i18n';
 import { Form } from '@openedx/paragon';
 
+import { getConfig } from '@edx/frontend-platform';
 import messages from './PreferredLanguage.messages';
 
 // Components
@@ -28,8 +29,10 @@ const PreferredLanguage = ({
   submitHandler,
   closeHandler,
   openHandler,
-  intl,
 }) => {
+  const isVisibilityEnabled = getConfig().ENABLE_VISIBILITY_EDITING === 'true';
+  const intl = useIntl();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === formId) {
@@ -60,7 +63,7 @@ const PreferredLanguage = ({
 
   return (
     <SwitchContent
-      className="mb-5"
+      className="pt-25rem"
       expression={editMode}
       cases={{
         editing: (
@@ -68,16 +71,17 @@ const PreferredLanguage = ({
             <form onSubmit={handleSubmit}>
               <Form.Group
                 controlId={formId}
+                className="m-0 pb-3"
                 isInvalid={error !== null}
               >
-                <p data-hj-suppress className="h5 font-weight-bold">
+                <p data-hj-suppress className="h5 font-weight-bold m-0 pb-075rem">
                   {intl.formatMessage(messages['profile.preferredlanguage.label'])}
                 </p>
                 <select
                   data-hj-suppress
                   id={formId}
                   name={formId}
-                  className="form-control"
+                  className="form-control py-0625rem"
                   value={value}
                   onChange={handleChange}
                 >
@@ -104,21 +108,21 @@ const PreferredLanguage = ({
         ),
         editable: (
           <>
-            <p data-hj-suppress className="h5 font-weight-bold">
+            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-0375rem">
               {intl.formatMessage(messages['profile.preferredlanguage.label'])}
             </p>
             <EditableItemHeader
               content={languageMessages[value]}
               showEditButton
               onClickEdit={handleOpen}
-              showVisibility={visibilityLanguageProficiencies !== null}
+              showVisibility={visibilityLanguageProficiencies !== null && isVisibilityEnabled}
               visibility={visibilityLanguageProficiencies}
             />
           </>
         ),
         empty: (
           <>
-            <p data-hj-suppress className="h5 font-weight-bold">
+            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-0375rem">
               {intl.formatMessage(messages['profile.preferredlanguage.label'])}
             </p>
             <EmptyContent onClick={handleOpen}>
@@ -128,7 +132,7 @@ const PreferredLanguage = ({
         ),
         static: (
           <>
-            <p data-hj-suppress className="h5 font-weight-bold">
+            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-0375rem">
               {intl.formatMessage(messages['profile.preferredlanguage.label'])}
             </p>
             <EditableItemHeader content={languageMessages[value]} />
@@ -158,7 +162,6 @@ PreferredLanguage.propTypes = {
   submitHandler: PropTypes.func.isRequired,
   closeHandler: PropTypes.func.isRequired,
   openHandler: PropTypes.func.isRequired,
-  intl: intlShape.isRequired,
 };
 
 PreferredLanguage.defaultProps = {
@@ -172,4 +175,4 @@ PreferredLanguage.defaultProps = {
 export default connect(
   preferredLanguageSelector,
   {},
-)(injectIntl(PreferredLanguage));
+)(PreferredLanguage);

@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { FormattedMessage, injectIntl, intlShape } from '@edx/frontend-platform/i18n';
+import { FormattedMessage, useIntl } from '@edx/frontend-platform/i18n';
 import { Form } from '@openedx/paragon';
 
+import { getConfig } from '@edx/frontend-platform';
+import classNames from 'classnames';
 import messages from './Bio.messages';
 
 // Components
@@ -14,6 +16,7 @@ import SwitchContent from './elements/SwitchContent';
 
 // Selectors
 import { editableFormSelector } from '../data/selectors';
+import { useIsOnMobileScreen } from '../data/hooks';
 
 const Bio = ({
   formId,
@@ -26,8 +29,11 @@ const Bio = ({
   submitHandler,
   closeHandler,
   openHandler,
-  intl,
 }) => {
+  const isMobileView = useIsOnMobileScreen();
+  const isVisibilityEnabled = getConfig().ENABLE_VISIBILITY_EDITING === 'true';
+  const intl = useIntl();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     changeHandler(name, value);
@@ -48,7 +54,9 @@ const Bio = ({
 
   return (
     <SwitchContent
-      className="mb-5"
+      className={classNames([
+        isMobileView ? 'pt-25rem' : 'pt-0',
+      ])}
       expression={editMode}
       cases={{
         editing: (
@@ -56,13 +64,14 @@ const Bio = ({
             <form onSubmit={handleSubmit}>
               <Form.Group
                 controlId={formId}
+                className="m-0 pb-3"
                 isInvalid={error !== null}
               >
-                <p data-hj-suppress className="h5 font-weight-bold">
+                <p data-hj-suppress className="h5 font-weight-bold m-0 pb-075rem">
                   {intl.formatMessage(messages['profile.bio.about.me'])}
                 </p>
                 <textarea
-                  className="form-control"
+                  className="form-control py-0625rem"
                   id={formId}
                   name={formId}
                   value={bio}
@@ -86,21 +95,21 @@ const Bio = ({
         ),
         editable: (
           <>
-            <p data-hj-suppress className="h5 font-weight-bold">
+            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-0375rem">
               {intl.formatMessage(messages['profile.bio.about.me'])}
             </p>
             <EditableItemHeader
               content={bio}
               showEditButton
               onClickEdit={handleOpen}
-              showVisibility={visibilityBio !== null}
+              showVisibility={visibilityBio !== null && isVisibilityEnabled}
               visibility={visibilityBio}
             />
           </>
         ),
         empty: (
           <>
-            <p data-hj-suppress className="h5 font-weight-bold">
+            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-0375rem">
               {intl.formatMessage(messages['profile.bio.about.me'])}
             </p>
             <EmptyContent onClick={handleOpen}>
@@ -114,7 +123,7 @@ const Bio = ({
         ),
         static: (
           <>
-            <p data-hj-suppress className="h5 font-weight-bold">
+            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-0375rem">
               {intl.formatMessage(messages['profile.bio.about.me'])}
             </p>
             <EditableItemHeader content={bio} />
@@ -136,7 +145,6 @@ Bio.propTypes = {
   submitHandler: PropTypes.func.isRequired,
   closeHandler: PropTypes.func.isRequired,
   openHandler: PropTypes.func.isRequired,
-  intl: intlShape.isRequired,
 };
 
 Bio.defaultProps = {
@@ -150,4 +158,4 @@ Bio.defaultProps = {
 export default connect(
   editableFormSelector,
   {},
-)(injectIntl(Bio));
+)(Bio);
