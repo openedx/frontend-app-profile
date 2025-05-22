@@ -25,19 +25,19 @@ exports[`<ProfilePage /> Renders correctly in various states app loading 1`] = `
 </div>
 `;
 
-exports[`<ProfilePage /> Renders correctly in various states viewing other profile with all fields 1`] = `
+exports[`<ProfilePage /> Renders correctly in various states successfully redirected to not found page 1`] = `
 <div>
   <div
     class="profile-page"
   >
     <div
-      class="profile-page-bg-banner bg-primary d-md-block align-items-center py-4rem h-100 w-100 px-75rem"
+      class="profile-page-bg-banner bg-primary d-md-block align-items-center h-100 w-100 px-75rem py-4rem"
     >
       <div
-        class="col container-fluid w-100 h-100 bg-white py-0 px-25rem rounded-75"
+        class="col container-fluid w-100 h-100 bg-white py-0 rounded-75 px-25rem"
       >
         <div
-          class="col h-100 w-100 py-4 px-0 justify-content-start g-15rem"
+          class="col h-100 w-100 px-0 justify-content-start g-15re py-225rem"
         >
           <div
             class="row-auto d-flex flex-wrap align-items-center h-100 w-100 justify-content-start g-15rem flex-row"
@@ -75,12 +75,149 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               <p
                 class="row m-0 font-weight-bold text-truncate text-primary-500 h3"
               >
-                staff
+                staffTest
+              </p>
+              <div
+                class="row pt-2 m-0 g-1rem"
+              />
+            </div>
+            <div
+              class="p-0  col-auto"
+            />
+          </div>
+        </div>
+        <div
+          class="ml-auto"
+        />
+      </div>
+    </div>
+    <div
+      class="col d-inline-flex h-100 w-100 align-items-start justify-content-start g-3rem px-75rem py-6"
+    >
+      <div
+        class="w-100 p-0"
+      >
+        <div
+          class="col justify-content-start align-items-start p-0"
+        >
+          <div
+            class="col align-self-stretch height-2625rem justify-content-start align-items-start p-0"
+          >
+            <p
+              class="font-weight-bold text-primary-500 m-0 h2"
+            >
+              Profile information
+            </p>
+          </div>
+        </div>
+        <div
+          class="row m-0 px-0 w-100 d-inline-flex align-items-start justify-content-start pt-4rem"
+        >
+          <div
+            class="col p-0 col-6"
+          >
+            <div
+              class="m-0"
+            >
+              <div
+                class="row m-0 pb-0375rem align-items-center"
+              >
+                <p
+                  class="h5 font-weight-bold m-0"
+                  data-hj-suppress="true"
+                >
+                  Username
+                </p>
+                <svg
+                  class="m-0 info-icon"
+                  fill="none"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11 7h2v2h-2V7Zm0 4h2v6h-2v-6Zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+              <h4
+                class="edit-section-header text-gray-700"
+              >
+                staffTest
+              </h4>
+            </div>
+          </div>
+          <div
+            class="col m-0 pr-0 pl-25rem col-6"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="col container-fluid d-inline-flex bg-color-grey-FBFAF9 h-100 w-100 align-items-start justify-content-start g-3rem px-75rem py-6"
+    />
+  </div>
+</div>
+`;
+
+exports[`<ProfilePage /> Renders correctly in various states viewing other profile with all fields 1`] = `
+<div>
+  <div
+    class="profile-page"
+  >
+    <div
+      class="profile-page-bg-banner bg-primary d-md-block align-items-center h-100 w-100 px-75rem py-4rem"
+    >
+      <div
+        class="col container-fluid w-100 h-100 bg-white py-0 rounded-75 px-25rem"
+      >
+        <div
+          class="col h-100 w-100 px-0 justify-content-start g-15re py-225rem"
+        >
+          <div
+            class="row-auto d-flex flex-wrap align-items-center h-100 w-100 justify-content-start g-15rem flex-row"
+          >
+            <div
+              class="profile-avatar-wrap position-relative"
+            >
+              <div
+                class="profile-avatar rounded-circle bg-light"
+              >
+                <div
+                  aria-hidden="true"
+                  class="text-muted"
+                  data-testid="IconMock"
+                  focusable="false"
+                  role="img"
+                  viewbox="0 0 24 24"
+                />
+              </div>
+              <form
+                enctype="multipart/form-data"
+              >
+                <input
+                  accept=".jpg, .jpeg, .png"
+                  class="d-none form-control-file"
+                  id="photo-file"
+                  name="file"
+                  type="file"
+                />
+              </form>
+            </div>
+            <div
+              class="col h-100 w-100 m-0 p-0 justify-content-start align-items-start"
+            >
+              <p
+                class="row m-0 font-weight-bold text-truncate text-primary-500 h3"
+              >
+                verified
               </p>
               <p
                 class="row pt-2 text-gray-800 font-weight-normal m-0 p"
               >
-                user
+                Verified User
               </p>
               <div
                 class="row pt-2 m-0 g-1rem"
@@ -97,41 +234,11 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
                      
                   </span>
                 </span>
-                <span
-                  class="small m-0 text-gray-800"
-                >
-                  <span
-                    class="font-weight-bold"
-                  >
-                     
-                    0
-                     
-                  </span>
-                   certifications
-                </span>
               </div>
             </div>
             <div
               class="p-0  col-auto"
-            >
-              <a
-                class="pgn__hyperlink default-link standalone-link btn btn-brand btn-rounded font-weight-normal px-4 py-0625rem text-nowrap"
-                href="http://localhost:18150/records"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                View My Records
-              </a>
-            </div>
-          </div>
-          <div
-            class="row-auto d-flex align-items-center h-100 w-100 justify-content-start m-0 pt-4"
-          >
-            <p
-              class="text-gray-800 font-weight-normal m-0 p"
-            >
-              Your learner records information is only visible to you. Only your username is visible to others on localhost.
-            </p>
+            />
           </div>
         </div>
         <div
@@ -140,11 +247,13 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
       </div>
     </div>
     <div
-      class="col container-fluid d-inline-flex px-75rem pt-4rem pb-6 h-100 w-100 align-items-start justify-content-center g-3rem"
+      class="col d-inline-flex h-100 w-100 align-items-start justify-content-start g-3rem px-75rem py-6"
     >
-      <div>
+      <div
+        class="w-100 p-0"
+      >
         <div
-          class="col justify-content-start align-items-start g-5rem p-0"
+          class="col justify-content-start align-items-start p-0"
         >
           <div
             class="col align-self-stretch height-2625rem justify-content-start align-items-start p-0"
@@ -152,26 +261,282 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
             <p
               class="font-weight-bold text-primary-500 m-0 h2"
             >
-              Your certificates
-            </p>
-          </div>
-          <div
-            class="col justify-content-start align-items-start pt-2 p-0"
-          >
-            <p
-              class="font-weight-normal text-gray-800 m-0 p-0 p"
-            >
-              Your learner records information is only visible to you. Only your username is visible to others on localhost.
+              Profile information
             </p>
           </div>
         </div>
         <div
-          class="pt-5"
+          class="row m-0 px-0 w-100 d-inline-flex align-items-start justify-content-start pt-4rem"
         >
-          You don't have any certificates yet.
+          <div
+            class="col p-0 col-6"
+          >
+            <div
+              class="m-0"
+            >
+              <div
+                class="row m-0 pb-0375rem align-items-center"
+              >
+                <p
+                  class="h5 font-weight-bold m-0"
+                  data-hj-suppress="true"
+                >
+                  Username
+                </p>
+                <svg
+                  class="m-0 info-icon"
+                  fill="none"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11 7h2v2h-2V7Zm0 4h2v6h-2v-6Zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+              <h4
+                class="edit-section-header text-gray-700"
+              >
+                verified
+              </h4>
+            </div>
+            <div
+              class="pgn-transition-replace-group position-relative pt-25rem"
+            >
+              <div
+                style="padding: .1px 0px;"
+              >
+                <div
+                  class="row m-0 pb-0375rem align-items-center"
+                >
+                  <p
+                    class="h5 font-weight-bold m-0"
+                    data-hj-suppress="true"
+                  >
+                    Full name
+                  </p>
+                  <svg
+                    class="m-0 info-icon"
+                    fill="none"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M11 7h2v2h-2V7Zm0 4h2v6h-2v-6Zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="row m-0 p-0 d-flex flex-nowrap align-items-center"
+                >
+                  <div
+                    class="m-0 p-0 col-auto"
+                  >
+                    <h4
+                      class="edit-section-header text-gray-700"
+                    >
+                      Verified User
+                    </h4>
+                  </div>
+                  <div
+                    class="col-auto m-0 p-0 d-flex align-items-center col-auto"
+                  />
+                </div>
+                <div
+                  class="row m-0 p-0"
+                />
+              </div>
+            </div>
+            <div
+              class="pgn-transition-replace-group position-relative pt-25rem"
+            >
+              <div
+                style="padding: .1px 0px;"
+              >
+                <p
+                  class="h5 font-weight-bold m-0 pb-0375rem"
+                  data-hj-suppress="true"
+                >
+                  Country
+                </p>
+                <div
+                  class="row m-0 p-0 d-flex flex-nowrap align-items-center"
+                >
+                  <div
+                    class="m-0 p-0 col-auto"
+                  >
+                    <h4
+                      class="edit-section-header text-gray-700"
+                    >
+                      United States of America
+                    </h4>
+                  </div>
+                  <div
+                    class="col-auto m-0 p-0 d-flex align-items-center col-auto"
+                  />
+                </div>
+                <div
+                  class="row m-0 p-0"
+                />
+              </div>
+            </div>
+            <div
+              class="pgn-transition-replace-group position-relative pt-25rem"
+            >
+              <div
+                style="padding: .1px 0px;"
+              >
+                <p
+                  class="h5 font-weight-bold m-0 pb-0375rem"
+                  data-hj-suppress="true"
+                >
+                  Primary language spoken
+                </p>
+                <div
+                  class="row m-0 p-0 d-flex flex-nowrap align-items-center"
+                >
+                  <div
+                    class="m-0 p-0 col-auto"
+                  >
+                    <h4
+                      class="edit-section-header text-gray-700"
+                    >
+                      English
+                    </h4>
+                  </div>
+                  <div
+                    class="col-auto m-0 p-0 d-flex align-items-center col-auto"
+                  />
+                </div>
+                <div
+                  class="row m-0 p-0"
+                />
+              </div>
+            </div>
+            <div
+              class="pgn-transition-replace-group position-relative pt-25rem"
+            >
+              <div
+                style="padding: .1px 0px;"
+              >
+                <p
+                  class="h5 font-weight-bold m-0 pb-0375rem"
+                  data-hj-suppress="true"
+                >
+                  Education
+                </p>
+                <div
+                  class="row m-0 p-0 d-flex flex-nowrap align-items-center"
+                >
+                  <div
+                    class="m-0 p-0 col-auto"
+                  >
+                    <h4
+                      class="edit-section-header text-gray-700"
+                    >
+                      Other education
+                    </h4>
+                  </div>
+                  <div
+                    class="col-auto m-0 p-0 d-flex align-items-center col-auto"
+                  />
+                </div>
+                <div
+                  class="row m-0 p-0"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="col m-0 pr-0 pl-25rem col-6"
+          >
+            <div
+              class="pgn-transition-replace-group position-relative pt-0"
+            >
+              <div
+                style="padding: .1px 0px;"
+              >
+                <p
+                  class="h5 font-weight-bold m-0 pb-0375rem"
+                  data-hj-suppress="true"
+                >
+                  Bio
+                </p>
+                <div
+                  class="row m-0 p-0 d-flex flex-nowrap align-items-center"
+                >
+                  <div
+                    class="m-0 p-0 col-auto"
+                  >
+                    <h4
+                      class="edit-section-header text-gray-700"
+                    >
+                      About me
+                    </h4>
+                  </div>
+                  <div
+                    class="col-auto m-0 p-0 d-flex align-items-center col-auto"
+                  />
+                </div>
+                <div
+                  class="row m-0 p-0"
+                />
+              </div>
+            </div>
+            <div
+              class="pgn-transition-replace-group position-relative p-0"
+            >
+              <div
+                style="padding: .1px 0px;"
+              >
+                <div>
+                  <div>
+                    <div
+                      class="pt-25rem"
+                    >
+                      <p
+                        class="h5 font-weight-bold m-0 pb-0375rem"
+                        data-hj-suppress="true"
+                      >
+                        X
+                      </p>
+                      <div
+                        class="row m-0 p-0 d-flex flex-nowrap align-items-center"
+                      >
+                        <div
+                          class="m-0 p-0 col-auto"
+                        >
+                          <h4
+                            class="edit-section-header text-gray-700"
+                          >
+                            https://twitter.com/user
+                          </h4>
+                        </div>
+                        <div
+                          class="col-auto m-0 p-0 d-flex align-items-center col-auto"
+                        />
+                      </div>
+                      <div
+                        class="row m-0 p-0"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+    <div
+      class="col container-fluid d-inline-flex bg-color-grey-FBFAF9 h-100 w-100 align-items-start justify-content-start g-3rem px-75rem py-6"
+    />
   </div>
 </div>
 `;
@@ -182,13 +547,13 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
     class="profile-page"
   >
     <div
-      class="profile-page-bg-banner bg-primary d-md-block align-items-center py-4rem h-100 w-100 px-75rem"
+      class="profile-page-bg-banner bg-primary d-md-block align-items-center h-100 w-100 px-75rem py-4rem"
     >
       <div
-        class="col container-fluid w-100 h-100 bg-white py-0 px-25rem rounded-75"
+        class="col container-fluid w-100 h-100 bg-white py-0 rounded-75 px-25rem"
       >
         <div
-          class="col h-100 w-100 py-4 px-0 justify-content-start g-15rem"
+          class="col h-100 w-100 px-0 justify-content-start g-15re py-225rem"
         >
           <div
             class="row-auto d-flex flex-wrap align-items-center h-100 w-100 justify-content-start g-15rem flex-row"
@@ -199,29 +564,56 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               <div
                 class="profile-avatar rounded-circle bg-light"
               >
-                <div
-                  class="profile-avatar-menu-container"
-                >
-                  <div
-                    class="pgn__dropdown pgn__dropdown-light dropdown"
-                    data-testid="dropdown"
-                  >
-                    <button
-                      aria-expanded="false"
-                      aria-haspopup="true"
-                      class="dropdown-toggle btn btn-primary"
-                      type="button"
-                    >
-                      Change
-                    </button>
-                  </div>
-                </div>
                 <img
                   alt="profile avatar"
                   class="w-100 h-100 d-block rounded-circle overflow-hidden object-fit-cover"
                   data-hj-suppress="true"
                   src="http://localhost:18000/media/profile-images/d2a9bdc2ba165dcefc73265c54bf9a20_500.jpg?v=1552495012"
                 />
+              </div>
+              <div
+                class="profile-avatar-button"
+              >
+                <div
+                  class="pgn__dropdown pgn__dropdown-light dropdown"
+                  data-testid="dropdown"
+                >
+                  <button
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                    class="btn-icon btn-icon-inverse-primary btn-icon-md btn-icon-inverse-primary-active shadow-sm pgn__dropdown-toggle-iconbutton"
+                    id="dropdown-toggle-with-iconbutton"
+                    type="button"
+                  >
+                    <span
+                      class="btn-icon__icon-container"
+                    >
+                      <span
+                        class="pgn__icon btn-icon__icon"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          fill="none"
+                          focusable="false"
+                          height="24"
+                          role="img"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
+                            fill="currentColor"
+                          />
+                          <path
+                            d="M9 2 7.17 4H2v16h20V4h-5.17L15 2H9Zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5Z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                  </button>
+                </div>
               </div>
               <form
                 enctype="multipart/form-data"
@@ -269,9 +661,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                   <span
                     class="font-weight-bold"
                   >
-                     
                     1
-                     
                   </span>
                    certifications
                 </span>
@@ -281,7 +671,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               class="p-0  col-auto"
             >
               <a
-                class="pgn__hyperlink default-link standalone-link btn btn-brand btn-rounded font-weight-normal px-4 py-0625rem text-nowrap"
+                class="pgn__hyperlink default-link standalone-link btn btn-brand color-brand-500 btn-rounded font-weight-normal px-4 py-0625rem text-nowrap"
                 href="http://localhost:18150/records"
                 rel="noopener noreferrer"
                 target="_blank"
@@ -290,9 +680,6 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               </a>
             </div>
           </div>
-          <div
-            class="row-auto d-flex align-items-center h-100 w-100 justify-content-start m-0 pt-4"
-          />
         </div>
         <div
           class="ml-auto"
@@ -300,7 +687,502 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
       </div>
     </div>
     <div
-      class="col container-fluid d-inline-flex px-75rem pt-4rem pb-6 h-100 w-100 align-items-start justify-content-center g-3rem"
+      class="col d-inline-flex h-100 w-100 align-items-start justify-content-start g-3rem px-75rem py-6"
+    >
+      <div
+        class="w-100 p-0"
+      >
+        <div
+          class="col justify-content-start align-items-start p-0"
+        >
+          <div
+            class="col align-self-stretch height-2625rem justify-content-start align-items-start p-0"
+          >
+            <p
+              class="font-weight-bold text-primary-500 m-0 h2"
+            >
+              Profile information
+            </p>
+          </div>
+        </div>
+        <div
+          class="row m-0 px-0 w-100 d-inline-flex align-items-start justify-content-start pt-4rem"
+        >
+          <div
+            class="col p-0 col-6"
+          >
+            <div
+              class="m-0"
+            >
+              <div
+                class="row m-0 pb-0375rem align-items-center"
+              >
+                <p
+                  class="h5 font-weight-bold m-0"
+                  data-hj-suppress="true"
+                >
+                  Username
+                </p>
+                <svg
+                  class="m-0 info-icon"
+                  fill="none"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11 7h2v2h-2V7Zm0 4h2v6h-2v-6Zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+              <h4
+                class="edit-section-header text-gray-700"
+              >
+                staff
+              </h4>
+            </div>
+            <div
+              class="pgn-transition-replace-group position-relative pt-25rem"
+            >
+              <div
+                style="padding: .1px 0px;"
+              >
+                <div
+                  class="row m-0 pb-0375rem align-items-center"
+                >
+                  <p
+                    class="h5 font-weight-bold m-0"
+                    data-hj-suppress="true"
+                  >
+                    Full name
+                  </p>
+                  <svg
+                    class="m-0 info-icon"
+                    fill="none"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M11 7h2v2h-2V7Zm0 4h2v6h-2v-6Zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="row m-0 p-0 d-flex flex-nowrap align-items-center"
+                >
+                  <div
+                    class="m-0 p-0 col-auto"
+                  >
+                    <h4
+                      class="edit-section-header text-gray-700"
+                    >
+                      Lemon Seltzer
+                    </h4>
+                  </div>
+                  <div
+                    class="col-auto m-0 p-0 d-flex align-items-center col-auto"
+                  >
+                    <button
+                      class="p-0375rem btn btn-link btn-sm"
+                      type="button"
+                    >
+                      <svg
+                        class="text-gray-700"
+                        fill="none"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="m14.06 9.02.92.92L5.92 19H5v-.92l9.06-9.06ZM17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29Zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="row m-0 p-0"
+                />
+              </div>
+            </div>
+            <div
+              class="pgn-transition-replace-group position-relative pt-25rem"
+            >
+              <div
+                style="padding: .1px 0px;"
+              >
+                <p
+                  class="h5 font-weight-bold m-0 pb-0375rem"
+                  data-hj-suppress="true"
+                >
+                  Country
+                </p>
+                <div
+                  class="row m-0 p-0 d-flex flex-nowrap align-items-center"
+                >
+                  <div
+                    class="m-0 p-0 col-auto"
+                  >
+                    <h4
+                      class="edit-section-header text-gray-700"
+                    >
+                      Montenegro
+                    </h4>
+                  </div>
+                  <div
+                    class="col-auto m-0 p-0 d-flex align-items-center col-auto"
+                  >
+                    <button
+                      class="p-0375rem btn btn-link btn-sm"
+                      type="button"
+                    >
+                      <svg
+                        class="text-gray-700"
+                        fill="none"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="m14.06 9.02.92.92L5.92 19H5v-.92l9.06-9.06ZM17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29Zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="row m-0 p-0"
+                />
+              </div>
+            </div>
+            <div
+              class="pgn-transition-replace-group position-relative pt-25rem"
+            >
+              <div
+                style="padding: .1px 0px;"
+              >
+                <p
+                  class="h5 font-weight-bold m-0 pb-0375rem"
+                  data-hj-suppress="true"
+                >
+                  Primary language spoken
+                </p>
+                <div
+                  class="row m-0 p-0 d-flex flex-nowrap align-items-center"
+                >
+                  <div
+                    class="m-0 p-0 col-auto"
+                  >
+                    <h4
+                      class="edit-section-header text-gray-700"
+                    >
+                      Yoruba
+                    </h4>
+                  </div>
+                  <div
+                    class="col-auto m-0 p-0 d-flex align-items-center col-auto"
+                  >
+                    <button
+                      class="p-0375rem btn btn-link btn-sm"
+                      type="button"
+                    >
+                      <svg
+                        class="text-gray-700"
+                        fill="none"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="m14.06 9.02.92.92L5.92 19H5v-.92l9.06-9.06ZM17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29Zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="row m-0 p-0"
+                />
+              </div>
+            </div>
+            <div
+              class="pgn-transition-replace-group position-relative pt-25rem"
+            >
+              <div
+                style="padding: .1px 0px;"
+              >
+                <p
+                  class="h5 font-weight-bold m-0 pb-0375rem"
+                  data-hj-suppress="true"
+                >
+                  Education
+                </p>
+                <div
+                  class="row m-0 p-0 d-flex flex-nowrap align-items-center"
+                >
+                  <div
+                    class="m-0 p-0 col-auto"
+                  >
+                    <h4
+                      class="edit-section-header text-gray-700"
+                    >
+                      Elementary/primary school
+                    </h4>
+                  </div>
+                  <div
+                    class="col-auto m-0 p-0 d-flex align-items-center col-auto"
+                  >
+                    <button
+                      class="p-0375rem btn btn-link btn-sm"
+                      type="button"
+                    >
+                      <svg
+                        class="text-gray-700"
+                        fill="none"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="m14.06 9.02.92.92L5.92 19H5v-.92l9.06-9.06ZM17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29Zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="row m-0 p-0"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="col m-0 pr-0 pl-25rem col-6"
+          >
+            <div
+              class="pgn-transition-replace-group position-relative pt-0"
+            >
+              <div
+                style="padding: .1px 0px;"
+              >
+                <p
+                  class="h5 font-weight-bold m-0 pb-0375rem"
+                  data-hj-suppress="true"
+                >
+                  Bio
+                </p>
+                <div
+                  class="row m-0 p-0 d-flex flex-nowrap align-items-center"
+                >
+                  <div
+                    class="m-0 p-0 col-auto"
+                  >
+                    <h4
+                      class="edit-section-header text-gray-700"
+                    >
+                      This is my bio
+                    </h4>
+                  </div>
+                  <div
+                    class="col-auto m-0 p-0 d-flex align-items-center col-auto"
+                  >
+                    <button
+                      class="p-0375rem btn btn-link btn-sm"
+                      type="button"
+                    >
+                      <svg
+                        class="text-gray-700"
+                        fill="none"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="m14.06 9.02.92.92L5.92 19H5v-.92l9.06-9.06ZM17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29Zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="row m-0 p-0"
+                />
+              </div>
+            </div>
+            <div
+              class="pgn-transition-replace-group position-relative p-0"
+            >
+              <div
+                style="padding: .1px 0px;"
+              >
+                <div>
+                  <div>
+                    <div
+                      class="pt-25rem"
+                    >
+                      <p
+                        class="h5 font-weight-bold m-0 pb-0375rem"
+                        data-hj-suppress="true"
+                      >
+                        X
+                      </p>
+                      <div
+                        class="w-100 overflowWrap-breakWord"
+                      >
+                        <div
+                          class="row m-0 p-0 d-flex flex-nowrap align-items-center"
+                        >
+                          <div
+                            class="m-0 p-0 col-auto"
+                          >
+                            <h4
+                              class="edit-section-header text-gray-700"
+                            >
+                              https://www.twitter.com/ALOHA
+                            </h4>
+                          </div>
+                          <div
+                            class="col-auto m-0 p-0 d-flex align-items-center col-auto"
+                          >
+                            <button
+                              class="p-0375rem btn btn-link btn-sm"
+                              type="button"
+                            >
+                              <svg
+                                class="text-gray-700"
+                                fill="none"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="m14.06 9.02.92.92L5.92 19H5v-.92l9.06-9.06ZM17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29Zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75Z"
+                                  fill="currentColor"
+                                />
+                              </svg>
+                            </button>
+                          </div>
+                        </div>
+                        <div
+                          class="row m-0 p-0"
+                        />
+                      </div>
+                    </div>
+                    <div
+                      class="pt-25rem"
+                    >
+                      <p
+                        class="h5 font-weight-bold m-0 pb-0375rem"
+                        data-hj-suppress="true"
+                      >
+                        Facebook
+                      </p>
+                      <div
+                        class="w-100 overflowWrap-breakWord"
+                      >
+                        <div
+                          class="row m-0 p-0 d-flex flex-nowrap align-items-center"
+                        >
+                          <div
+                            class="m-0 p-0 col-auto"
+                          >
+                            <h4
+                              class="edit-section-header text-gray-700"
+                            >
+                              https://www.facebook.com/aloha
+                            </h4>
+                          </div>
+                          <div
+                            class="col-auto m-0 p-0 d-flex align-items-center col-auto"
+                          >
+                            <button
+                              class="p-0375rem btn btn-link btn-sm"
+                              type="button"
+                            >
+                              <svg
+                                class="text-gray-700"
+                                fill="none"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="m14.06 9.02.92.92L5.92 19H5v-.92l9.06-9.06ZM17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29Zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75Z"
+                                  fill="currentColor"
+                                />
+                              </svg>
+                            </button>
+                          </div>
+                        </div>
+                        <div
+                          class="row m-0 p-0"
+                        />
+                      </div>
+                    </div>
+                    <div
+                      class="pt-25rem"
+                    >
+                      <p
+                        class="h5 font-weight-bold m-0 pb-0375rem"
+                        data-hj-suppress="true"
+                      >
+                        LinkedIn
+                      </p>
+                      <div
+                        class="p-0 m-0"
+                      >
+                        <button
+                          class="p-0 text-left btn btn-link lh-225rem"
+                          tabindex="0"
+                          type="button"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            class="svg-inline--fa fa-plus fa-xs mr-1"
+                            data-icon="plus"
+                            data-prefix="fas"
+                            focusable="false"
+                            role="img"
+                            viewBox="0 0 448 512"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 144L48 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l144 0 0 144c0 17.7 14.3 32 32 32s32-14.3 32-32l0-144 144 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-144 0 0-144z"
+                              fill="currentColor"
+                            />
+                          </svg>
+                          Add 
+                          LinkedIn
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="col container-fluid d-inline-flex bg-color-grey-FBFAF9 h-100 w-100 align-items-start justify-content-start g-3rem px-75rem py-6"
     >
       <div>
         <div
@@ -321,7 +1203,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
             <p
               class="font-weight-normal text-gray-800 m-0 p-0 p"
             >
-              Your learner records information is only visible to you. Only your username is visible to others on localhost.
+              Your learner records information is only visible to you. Only your username and profile image is visible to others on localhost.
             </p>
           </div>
         </div>
@@ -408,13 +1290,13 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
     class="profile-page"
   >
     <div
-      class="profile-page-bg-banner bg-primary d-md-block align-items-center py-4rem h-100 w-100 px-75rem"
+      class="profile-page-bg-banner bg-primary d-md-block align-items-center h-100 w-100 px-75rem py-4rem"
     >
       <div
-        class="col container-fluid w-100 h-100 bg-white py-0 px-25rem rounded-75"
+        class="col container-fluid w-100 h-100 bg-white py-0 rounded-75 px-25rem"
       >
         <div
-          class="col h-100 w-100 py-4 px-0 justify-content-start g-15rem"
+          class="col h-100 w-100 px-0 justify-content-start g-15re py-225rem"
         >
           <div
             class="row-auto d-flex flex-wrap align-items-center h-100 w-100 justify-content-start g-15rem flex-row"
@@ -425,29 +1307,56 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
               <div
                 class="profile-avatar rounded-circle bg-light"
               >
-                <div
-                  class="profile-avatar-menu-container"
-                >
-                  <div
-                    class="pgn__dropdown pgn__dropdown-light dropdown"
-                    data-testid="dropdown"
-                  >
-                    <button
-                      aria-expanded="false"
-                      aria-haspopup="true"
-                      class="dropdown-toggle btn btn-primary"
-                      type="button"
-                    >
-                      Change
-                    </button>
-                  </div>
-                </div>
                 <img
                   alt="profile avatar"
                   class="w-100 h-100 d-block rounded-circle overflow-hidden object-fit-cover"
                   data-hj-suppress="true"
                   src="http://localhost:18000/media/profile-images/d2a9bdc2ba165dcefc73265c54bf9a20_500.jpg?v=1552495012"
                 />
+              </div>
+              <div
+                class="profile-avatar-button"
+              >
+                <div
+                  class="pgn__dropdown pgn__dropdown-light dropdown"
+                  data-testid="dropdown"
+                >
+                  <button
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                    class="btn-icon btn-icon-inverse-primary btn-icon-md btn-icon-inverse-primary-active shadow-sm pgn__dropdown-toggle-iconbutton"
+                    id="dropdown-toggle-with-iconbutton"
+                    type="button"
+                  >
+                    <span
+                      class="btn-icon__icon-container"
+                    >
+                      <span
+                        class="pgn__icon btn-icon__icon"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          fill="none"
+                          focusable="false"
+                          height="24"
+                          role="img"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
+                            fill="currentColor"
+                          />
+                          <path
+                            d="M9 2 7.17 4H2v16h20V4h-5.17L15 2H9Zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5Z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                  </button>
+                </div>
               </div>
               <form
                 enctype="multipart/form-data"
@@ -495,9 +1404,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                   <span
                     class="font-weight-bold"
                   >
-                     
                     1
-                     
                   </span>
                    certifications
                 </span>
@@ -507,9 +1414,6 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
               class="p-0  col-auto"
             />
           </div>
-          <div
-            class="row-auto d-flex align-items-center h-100 w-100 justify-content-start m-0 pt-4"
-          />
         </div>
         <div
           class="ml-auto"
@@ -517,7 +1421,502 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
       </div>
     </div>
     <div
-      class="col container-fluid d-inline-flex px-75rem pt-4rem pb-6 h-100 w-100 align-items-start justify-content-center g-3rem"
+      class="col d-inline-flex h-100 w-100 align-items-start justify-content-start g-3rem px-75rem py-6"
+    >
+      <div
+        class="w-100 p-0"
+      >
+        <div
+          class="col justify-content-start align-items-start p-0"
+        >
+          <div
+            class="col align-self-stretch height-2625rem justify-content-start align-items-start p-0"
+          >
+            <p
+              class="font-weight-bold text-primary-500 m-0 h2"
+            >
+              Profile information
+            </p>
+          </div>
+        </div>
+        <div
+          class="row m-0 px-0 w-100 d-inline-flex align-items-start justify-content-start pt-4rem"
+        >
+          <div
+            class="col p-0 col-6"
+          >
+            <div
+              class="m-0"
+            >
+              <div
+                class="row m-0 pb-0375rem align-items-center"
+              >
+                <p
+                  class="h5 font-weight-bold m-0"
+                  data-hj-suppress="true"
+                >
+                  Username
+                </p>
+                <svg
+                  class="m-0 info-icon"
+                  fill="none"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11 7h2v2h-2V7Zm0 4h2v6h-2v-6Zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+              <h4
+                class="edit-section-header text-gray-700"
+              >
+                staff
+              </h4>
+            </div>
+            <div
+              class="pgn-transition-replace-group position-relative pt-25rem"
+            >
+              <div
+                style="padding: .1px 0px;"
+              >
+                <div
+                  class="row m-0 pb-0375rem align-items-center"
+                >
+                  <p
+                    class="h5 font-weight-bold m-0"
+                    data-hj-suppress="true"
+                  >
+                    Full name
+                  </p>
+                  <svg
+                    class="m-0 info-icon"
+                    fill="none"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M11 7h2v2h-2V7Zm0 4h2v6h-2v-6Zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="row m-0 p-0 d-flex flex-nowrap align-items-center"
+                >
+                  <div
+                    class="m-0 p-0 col-auto"
+                  >
+                    <h4
+                      class="edit-section-header text-gray-700"
+                    >
+                      Lemon Seltzer
+                    </h4>
+                  </div>
+                  <div
+                    class="col-auto m-0 p-0 d-flex align-items-center col-auto"
+                  >
+                    <button
+                      class="p-0375rem btn btn-link btn-sm"
+                      type="button"
+                    >
+                      <svg
+                        class="text-gray-700"
+                        fill="none"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="m14.06 9.02.92.92L5.92 19H5v-.92l9.06-9.06ZM17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29Zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="row m-0 p-0"
+                />
+              </div>
+            </div>
+            <div
+              class="pgn-transition-replace-group position-relative pt-25rem"
+            >
+              <div
+                style="padding: .1px 0px;"
+              >
+                <p
+                  class="h5 font-weight-bold m-0 pb-0375rem"
+                  data-hj-suppress="true"
+                >
+                  Country
+                </p>
+                <div
+                  class="row m-0 p-0 d-flex flex-nowrap align-items-center"
+                >
+                  <div
+                    class="m-0 p-0 col-auto"
+                  >
+                    <h4
+                      class="edit-section-header text-gray-700"
+                    >
+                      Montenegro
+                    </h4>
+                  </div>
+                  <div
+                    class="col-auto m-0 p-0 d-flex align-items-center col-auto"
+                  >
+                    <button
+                      class="p-0375rem btn btn-link btn-sm"
+                      type="button"
+                    >
+                      <svg
+                        class="text-gray-700"
+                        fill="none"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="m14.06 9.02.92.92L5.92 19H5v-.92l9.06-9.06ZM17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29Zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="row m-0 p-0"
+                />
+              </div>
+            </div>
+            <div
+              class="pgn-transition-replace-group position-relative pt-25rem"
+            >
+              <div
+                style="padding: .1px 0px;"
+              >
+                <p
+                  class="h5 font-weight-bold m-0 pb-0375rem"
+                  data-hj-suppress="true"
+                >
+                  Primary language spoken
+                </p>
+                <div
+                  class="row m-0 p-0 d-flex flex-nowrap align-items-center"
+                >
+                  <div
+                    class="m-0 p-0 col-auto"
+                  >
+                    <h4
+                      class="edit-section-header text-gray-700"
+                    >
+                      Yoruba
+                    </h4>
+                  </div>
+                  <div
+                    class="col-auto m-0 p-0 d-flex align-items-center col-auto"
+                  >
+                    <button
+                      class="p-0375rem btn btn-link btn-sm"
+                      type="button"
+                    >
+                      <svg
+                        class="text-gray-700"
+                        fill="none"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="m14.06 9.02.92.92L5.92 19H5v-.92l9.06-9.06ZM17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29Zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="row m-0 p-0"
+                />
+              </div>
+            </div>
+            <div
+              class="pgn-transition-replace-group position-relative pt-25rem"
+            >
+              <div
+                style="padding: .1px 0px;"
+              >
+                <p
+                  class="h5 font-weight-bold m-0 pb-0375rem"
+                  data-hj-suppress="true"
+                >
+                  Education
+                </p>
+                <div
+                  class="row m-0 p-0 d-flex flex-nowrap align-items-center"
+                >
+                  <div
+                    class="m-0 p-0 col-auto"
+                  >
+                    <h4
+                      class="edit-section-header text-gray-700"
+                    >
+                      Elementary/primary school
+                    </h4>
+                  </div>
+                  <div
+                    class="col-auto m-0 p-0 d-flex align-items-center col-auto"
+                  >
+                    <button
+                      class="p-0375rem btn btn-link btn-sm"
+                      type="button"
+                    >
+                      <svg
+                        class="text-gray-700"
+                        fill="none"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="m14.06 9.02.92.92L5.92 19H5v-.92l9.06-9.06ZM17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29Zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="row m-0 p-0"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="col m-0 pr-0 pl-25rem col-6"
+          >
+            <div
+              class="pgn-transition-replace-group position-relative pt-0"
+            >
+              <div
+                style="padding: .1px 0px;"
+              >
+                <p
+                  class="h5 font-weight-bold m-0 pb-0375rem"
+                  data-hj-suppress="true"
+                >
+                  Bio
+                </p>
+                <div
+                  class="row m-0 p-0 d-flex flex-nowrap align-items-center"
+                >
+                  <div
+                    class="m-0 p-0 col-auto"
+                  >
+                    <h4
+                      class="edit-section-header text-gray-700"
+                    >
+                      This is my bio
+                    </h4>
+                  </div>
+                  <div
+                    class="col-auto m-0 p-0 d-flex align-items-center col-auto"
+                  >
+                    <button
+                      class="p-0375rem btn btn-link btn-sm"
+                      type="button"
+                    >
+                      <svg
+                        class="text-gray-700"
+                        fill="none"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="m14.06 9.02.92.92L5.92 19H5v-.92l9.06-9.06ZM17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29Zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="row m-0 p-0"
+                />
+              </div>
+            </div>
+            <div
+              class="pgn-transition-replace-group position-relative p-0"
+            >
+              <div
+                style="padding: .1px 0px;"
+              >
+                <div>
+                  <div>
+                    <div
+                      class="pt-25rem"
+                    >
+                      <p
+                        class="h5 font-weight-bold m-0 pb-0375rem"
+                        data-hj-suppress="true"
+                      >
+                        X
+                      </p>
+                      <div
+                        class="w-100 overflowWrap-breakWord"
+                      >
+                        <div
+                          class="row m-0 p-0 d-flex flex-nowrap align-items-center"
+                        >
+                          <div
+                            class="m-0 p-0 col-auto"
+                          >
+                            <h4
+                              class="edit-section-header text-gray-700"
+                            >
+                              https://www.twitter.com/ALOHA
+                            </h4>
+                          </div>
+                          <div
+                            class="col-auto m-0 p-0 d-flex align-items-center col-auto"
+                          >
+                            <button
+                              class="p-0375rem btn btn-link btn-sm"
+                              type="button"
+                            >
+                              <svg
+                                class="text-gray-700"
+                                fill="none"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="m14.06 9.02.92.92L5.92 19H5v-.92l9.06-9.06ZM17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29Zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75Z"
+                                  fill="currentColor"
+                                />
+                              </svg>
+                            </button>
+                          </div>
+                        </div>
+                        <div
+                          class="row m-0 p-0"
+                        />
+                      </div>
+                    </div>
+                    <div
+                      class="pt-25rem"
+                    >
+                      <p
+                        class="h5 font-weight-bold m-0 pb-0375rem"
+                        data-hj-suppress="true"
+                      >
+                        Facebook
+                      </p>
+                      <div
+                        class="w-100 overflowWrap-breakWord"
+                      >
+                        <div
+                          class="row m-0 p-0 d-flex flex-nowrap align-items-center"
+                        >
+                          <div
+                            class="m-0 p-0 col-auto"
+                          >
+                            <h4
+                              class="edit-section-header text-gray-700"
+                            >
+                              https://www.facebook.com/aloha
+                            </h4>
+                          </div>
+                          <div
+                            class="col-auto m-0 p-0 d-flex align-items-center col-auto"
+                          >
+                            <button
+                              class="p-0375rem btn btn-link btn-sm"
+                              type="button"
+                            >
+                              <svg
+                                class="text-gray-700"
+                                fill="none"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="m14.06 9.02.92.92L5.92 19H5v-.92l9.06-9.06ZM17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29Zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75Z"
+                                  fill="currentColor"
+                                />
+                              </svg>
+                            </button>
+                          </div>
+                        </div>
+                        <div
+                          class="row m-0 p-0"
+                        />
+                      </div>
+                    </div>
+                    <div
+                      class="pt-25rem"
+                    >
+                      <p
+                        class="h5 font-weight-bold m-0 pb-0375rem"
+                        data-hj-suppress="true"
+                      >
+                        LinkedIn
+                      </p>
+                      <div
+                        class="p-0 m-0"
+                      >
+                        <button
+                          class="p-0 text-left btn btn-link lh-225rem"
+                          tabindex="0"
+                          type="button"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            class="svg-inline--fa fa-plus fa-xs mr-1"
+                            data-icon="plus"
+                            data-prefix="fas"
+                            focusable="false"
+                            role="img"
+                            viewBox="0 0 448 512"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 144L48 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l144 0 0 144c0 17.7 14.3 32 32 32s32-14.3 32-32l0-144 144 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-144 0 0-144z"
+                              fill="currentColor"
+                            />
+                          </svg>
+                          Add 
+                          LinkedIn
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="col container-fluid d-inline-flex bg-color-grey-FBFAF9 h-100 w-100 align-items-start justify-content-start g-3rem px-75rem py-6"
     >
       <div>
         <div
@@ -538,7 +1937,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
             <p
               class="font-weight-normal text-gray-800 m-0 p-0 p"
             >
-              Your learner records information is only visible to you. Only your username is visible to others on localhost.
+              Your learner records information is only visible to you. Only your username and profile image is visible to others on localhost.
             </p>
           </div>
         </div>

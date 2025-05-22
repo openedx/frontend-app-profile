@@ -8,12 +8,14 @@ import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+import { MemoryRouter, Routes, Route } from 'react-router-dom';
 
 import messages from '../i18n';
 import ProfilePage from './ProfilePage';
 import loadingApp from './__mocks__/loadingApp.mockStore';
 import viewOwnProfile from './__mocks__/viewOwnProfile.mockStore';
 import viewOtherProfile from './__mocks__/viewOtherProfile.mockStore';
+import invalidUser from './__mocks__/invalidUser.mockStore';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -21,11 +23,12 @@ const storeMocks = {
   loadingApp,
   viewOwnProfile,
   viewOtherProfile,
+  invalidUser,
 };
+
 const requiredProfilePageProps = {
-  fetchUserAccount: () => {},
-  fetchProfile: () => {},
   params: { username: 'staff' },
+  navigate: jest.fn(),
 };
 
 // Mock language cookie
@@ -60,17 +63,23 @@ configureI18n({
 
 beforeEach(() => {
   analytics.sendTrackingLogEvent.mockReset();
+  requiredProfilePageProps.navigate.mockReset();
 });
 
 const ProfilePageWrapper = ({
-  contextValue, store, params,
+  contextValue, store, params, navigate,
 }) => (
-  <AppContext.Provider
-    value={contextValue}
-  >
+  <AppContext.Provider value={contextValue}>
     <IntlProvider locale="en">
       <Provider store={store}>
-        <ProfilePage {...requiredProfilePageProps} params={params} />
+        <MemoryRouter initialEntries={[`/profile/${params.username}`]}>
+          <Routes>
+            <Route
+              path="/profile/:username"
+              element={<ProfilePage {...requiredProfilePageProps} params={params} navigate={navigate} />}
+            />
+          </Routes>
+        </MemoryRouter>
       </Provider>
     </IntlProvider>
   </AppContext.Provider>
@@ -78,12 +87,16 @@ const ProfilePageWrapper = ({
 
 ProfilePageWrapper.defaultProps = {
   params: { username: 'staff' },
+  navigate: jest.fn(),
 };
 
 ProfilePageWrapper.propTypes = {
   contextValue: PropTypes.shape({}).isRequired,
   store: PropTypes.shape({}).isRequired,
-  params: PropTypes.shape({}),
+  params: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+  }),
+  navigate: PropTypes.func,
 };
 
 describe('<ProfilePage />', () => {
@@ -93,7 +106,13 @@ describe('<ProfilePage />', () => {
         authenticatedUser: { userId: null, username: null, administrator: false },
         config: getConfig(),
       };
-      const component = <ProfilePageWrapper contextValue={contextValue} store={mockStore(storeMocks.loadingApp)} />;
+      const component = (
+        <ProfilePageWrapper
+          contextValue={contextValue}
+          store={mockStore(storeMocks.loadingApp)}
+          navigate={requiredProfilePageProps.navigate}
+        />
+      );
       const { container: tree } = render(component);
       expect(tree).toMatchSnapshot();
     });
@@ -103,7 +122,13 @@ describe('<ProfilePage />', () => {
         authenticatedUser: { userId: 123, username: 'staff', administrator: true },
         config: getConfig(),
       };
-      const component = <ProfilePageWrapper contextValue={contextValue} store={mockStore(storeMocks.viewOwnProfile)} />;
+      const component = (
+        <ProfilePageWrapper
+          contextValue={contextValue}
+          store={mockStore(storeMocks.viewOwnProfile)}
+          navigate={requiredProfilePageProps.navigate}
+        />
+      );
       const { container: tree } = render(component);
       expect(tree).toMatchSnapshot();
     });
@@ -113,7 +138,6 @@ describe('<ProfilePage />', () => {
         authenticatedUser: { userId: 123, username: 'staff', administrator: true },
         config: getConfig(),
       };
-
       const component = (
         <ProfilePageWrapper
           contextValue={contextValue}
@@ -123,19 +147,27 @@ describe('<ProfilePage />', () => {
               ...storeMocks.viewOtherProfile.profilePage,
               account: {
                 ...storeMocks.viewOtherProfile.profilePage.account,
-                name: 'user',
-                country: 'EN',
-                bio: 'bio',
-                courseCertificates: ['course certificates'],
-                levelOfEducation: 'some level',
-                languageProficiencies: ['some lang'],
-                socialLinks: ['twitter'],
-                timeZone: 'time zone',
-                accountPrivacy: 'all_users',
+                name: 'Verified User',
+                country: 'US',
+                bio: 'About me',
+                courseCertificates: [{ title: 'Course 1' }],
+                levelOfEducation: 'bachelors',
+                languageProficiencies: [{ code: 'en' }],
+                socialLinks: [{ platform: 'twitter', socialLink: 'https://twitter.com/user' }],
+              },
+              preferences: {
+                ...storeMocks.viewOtherProfile.profilePage.preferences,
+                visibilityName: 'all_users',
+                visibilityCountry: 'all_users',
+                visibilityLevelOfEducation: 'all_users',
+                visibilityLanguageProficiencies: 'all_users',
+                visibilitySocialLinks: 'all_users',
+                visibilityBio: 'all_users',
               },
             },
           })}
-          match={{ params: { username: 'verified' } }} // Override default match
+          params={{ username: 'verified' }}
+          navigate={requiredProfilePageProps.navigate}
         />
       );
       const { container: tree } = render(component);
@@ -154,10 +186,29 @@ describe('<ProfilePage />', () => {
         <ProfilePageWrapper
           contextValue={contextValue}
           store={mockStore(storeMocks.viewOwnProfile)}
+          navigate={requiredProfilePageProps.navigate}
         />
       );
       const { container: tree } = render(component);
       expect(tree).toMatchSnapshot();
+    });
+
+    it('successfully redirected to not found page', () => {
+      const contextValue = {
+        authenticatedUser: { userId: 123, username: 'staff', administrator: true },
+        config: getConfig(),
+      };
+      const component = (
+        <ProfilePageWrapper
+          contextValue={contextValue}
+          store={mockStore(storeMocks.invalidUser)}
+          params={{ username: 'staffTest' }}
+          navigate={requiredProfilePageProps.navigate}
+        />
+      );
+      const { container: tree } = render(component);
+      expect(tree).toMatchSnapshot();
+      expect(requiredProfilePageProps.navigate).toHaveBeenCalledWith('/notfound');
     });
   });
 
@@ -172,14 +223,33 @@ describe('<ProfilePage />', () => {
           contextValue={contextValue}
           store={mockStore(storeMocks.loadingApp)}
           params={{ username: 'test-username' }}
+          navigate={requiredProfilePageProps.navigate}
         />,
       );
 
-      expect(analytics.sendTrackingLogEvent.mock.calls.length).toBe(1);
-      expect(analytics.sendTrackingLogEvent.mock.calls[0][0]).toEqual('edx.profile.viewed');
-      expect(analytics.sendTrackingLogEvent.mock.calls[0][1]).toEqual({
+      expect(analytics.sendTrackingLogEvent).toHaveBeenCalledTimes(1);
+      expect(analytics.sendTrackingLogEvent).toHaveBeenCalledWith('edx.profile.viewed', {
         username: 'test-username',
       });
+    });
+  });
+
+  describe('handles navigation', () => {
+    it('navigates to notfound on save error with no username', () => {
+      const contextValue = {
+        authenticatedUser: { userId: 123, username: 'staff', administrator: true },
+        config: getConfig(),
+      };
+      render(
+        <ProfilePageWrapper
+          contextValue={contextValue}
+          store={mockStore(storeMocks.invalidUser)}
+          params={{ username: 'staffTest' }}
+          navigate={requiredProfilePageProps.navigate}
+        />,
+      );
+
+      expect(requiredProfilePageProps.navigate).toHaveBeenCalledWith('/notfound');
     });
   });
 });

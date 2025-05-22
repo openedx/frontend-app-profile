@@ -44,7 +44,7 @@ const SocialLinks = ({
   closeHandler,
   openHandler,
 }) => {
-  const isVisibilityEnabled = getConfig().ENABLE_VISIBILITY_EDITING === 'true';
+  const isVisibilityEnabled = getConfig().DISABLE_VISIBILITY_EDITING === 'true';
   const [activePlatform, setActivePlatform] = useState(null);
 
   const mergeWithDrafts = (newSocialLink) => {

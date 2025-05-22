@@ -13,7 +13,7 @@ const FormControls = ({
 }) => {
   // Eliminate error/failed state for save button
   const buttonState = saveState === 'error' ? null : saveState;
-  const isVisibilityEnabled = getConfig().ENABLE_VISIBILITY_EDITING === 'true';
+  const isVisibilityEnabled = getConfig().DISABLE_VISIBILITY_EDITING === 'true';
 
   return (
     <div className="d-flex flex-row-reverse flex-wrap justify-content-end align-items-center">

@@ -17,23 +17,23 @@ module.exports = {
   },
   profilePage: {
     errors: {},
-    saveState: null,
+    saveState: 'error',
     savePhotoState: null,
     currentlyEditingField: null,
     account: {
-      username: 'staff',
+      username: '',
       socialLinks: []
     },
     preferences: {},
     courseCertificates: [],
     drafts: {},
-    isLoadingProfile: true,
+    isLoadingProfile: false,
     isAuthenticatedUserProfile: true,
     countriesCodesList: ['US', 'CA', 'GB', 'ME']
   },
   router: {
     location: {
-      pathname: '/u/staff',
+      pathname: '/u/staffTest',
       search: '',
       hash: ''
     },

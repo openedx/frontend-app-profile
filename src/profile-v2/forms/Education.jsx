@@ -32,7 +32,7 @@ const Education = ({
   closeHandler,
   openHandler,
 }) => {
-  const isVisibilityEnabled = getConfig().ENABLE_VISIBILITY_EDITING === 'true';
+  const isVisibilityEnabled = getConfig().DISABLE_VISIBILITY_EDITING === 'true';
   const intl = useIntl();
 
   const handleChange = (e) => {

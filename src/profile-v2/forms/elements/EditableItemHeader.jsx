@@ -16,30 +16,34 @@ const EditableItemHeader = ({
 }) => {
   const isMobileView = useIsOnMobileScreen();
   return (
-    <div className="row m-0 p-0 d-flex flex-nowrap align-items-center">
-      <div
-        className={classNames([
-          'm-0 p-0',
-          isMobileView ? 'col-11' : 'col-auto',
-        ])}
-      >
-        <h4
-          className="edit-section-header text-gray-700"
-          id={headingId}
+    <>
+      <div className="row m-0 p-0 d-flex flex-nowrap align-items-center">
+        <div
+          className={classNames([
+            'm-0 p-0',
+            isMobileView ? 'col-11' : 'col-auto',
+          ])}
         >
-          {content}
-        </h4>
+          <h4
+            className="edit-section-header text-gray-700"
+            id={headingId}
+          >
+            {content}
+          </h4>
+        </div>
+        <div
+          className={classNames([
+            'col-auto m-0 p-0 d-flex align-items-center',
+            isMobileView ? 'col-1' : 'col-auto',
+          ])}
+        >
+          {showEditButton ? <EditButton className="p-0375rem" onClick={onClickEdit} /> : null}
+        </div>
       </div>
-      <div
-        className={classNames([
-          'col-auto m-0 p-0 d-flex align-items-center',
-          isMobileView ? 'col-1' : 'col-auto',
-        ])}
-      >
-        {showEditButton ? <EditButton className="p-0375rem" onClick={onClickEdit} /> : null}
+      <div className="row m-0 p-0">
+        {showVisibility ? <p className="mb-0"><Visibility to={visibility} /></p> : null}
       </div>
-      {showVisibility ? <p className="mb-0"><Visibility to={visibility} /></p> : null}
-    </div>
+    </>
   );
 };
 
