@@ -11,6 +11,16 @@ const messages = defineMessages({
     defaultMessage: 'Change',
     description: 'Change photo button',
   },
+  'profile.profileavatar.tooltip.edit': {
+    id: 'profile.profileavatar.tooltip.edit',
+    defaultMessage: 'Edit photo',
+    description: 'Tooltip for edit photo button',
+  },
+  'profile.profileavatar.tooltip.upload': {
+    id: 'profile.profileavatar.tooltip.upload',
+    defaultMessage: 'Upload photo',
+    description: 'Tooltip for upload photo button',
+  },
 });
 
 export default messages;

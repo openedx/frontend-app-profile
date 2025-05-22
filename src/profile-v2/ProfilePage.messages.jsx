@@ -11,6 +11,16 @@ const messages = defineMessages({
     defaultMessage: 'Profile loading...',
     description: 'Message displayed when the profile data is loading.',
   },
+  'profile.username': {
+    id: 'profile.username',
+    defaultMessage: 'Username',
+    description: 'Label for the username field.',
+  },
+  'profile.username.tooltip': {
+    id: 'profile.username.tooltip',
+    defaultMessage: 'The name that identifies you on edX. You cannot change your username.',
+    description: 'Tooltip for the username field.',
+  },
 });
 
 export default messages;

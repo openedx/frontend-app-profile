@@ -17,6 +17,10 @@ const expectedUserInfo200 = {
   dateJoined: '2017-06-07T00:44:23Z',
   isActive: true,
   yearOfBirth: 1901,
+  languageProficiencies: [],
+  levelOfEducation: null,
+  profileImage: {},
+  socialLinks: [],
 };
 
 const provider = new PactV3({
