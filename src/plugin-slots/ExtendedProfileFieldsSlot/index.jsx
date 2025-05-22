@@ -12,18 +12,22 @@ const ExtendedProfileFieldsSlot = () => {
   const dispatch = useDispatch();
   const extendedProfileValues = useSelector((state) => state.profilePage.account.extendedProfile);
 
+  const pluginProps = {
+    refreshUserProfile: (username) => dispatch(fetchProfile(username)),
+    updateUserProfile: patchProfile,
+    profileFieldValues: extendedProfileValues,
+    formComponents: {
+      SwitchContent,
+      EmptyContent,
+      EditableItemHeader,
+    },
+  };
+
   return (
     <PluginSlot
       id="org.openedx.frontend.profile.extended_profile_fields.v1"
       idAliases={['extended_profile_fields_slot']}
-      pluginProps={{
-        fetchProfile: (username) => dispatch(fetchProfile(username)),
-        patchProfile,
-        extendedProfileValues,
-        SwitchContent,
-        EmptyContent,
-        EditableItemHeader,
-      }}
+      pluginProps={pluginProps}
     />
   );
 };
