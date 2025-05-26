@@ -8,6 +8,8 @@ import { AppContext } from '@edx/frontend-platform/react';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { Alert, Hyperlink } from '@openedx/paragon';
 
+import ExtendedProfileFieldsSlot from '../plugin-slots/ExtendedProfileFieldsSlot';
+
 // Actions
 import {
   fetchProfile,
@@ -280,6 +282,9 @@ class ProfilePage extends React.Component {
                 {...commonFormProps}
               />
             )}
+
+            <ExtendedProfileFieldsSlot />
+
             {isSocialLinksBLockVisible && (
               <SocialLinks
                 socialLinks={socialLinks}
