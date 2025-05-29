@@ -4,19 +4,22 @@ import { connect } from 'react-redux';
 import { FormattedMessage, useIntl } from '@edx/frontend-platform/i18n';
 import { Form } from '@openedx/paragon';
 
-import { getConfig } from '@edx/frontend-platform';
 import classNames from 'classnames';
 import messages from './Bio.messages';
 
-// Components
 import FormControls from './elements/FormControls';
 import EditableItemHeader from './elements/EditableItemHeader';
 import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
 
-// Selectors
 import { editableFormSelector } from '../data/selectors';
-import { useIsOnMobileScreen } from '../data/hooks';
+import {
+  useCloseOpenHandler,
+  useHandleChange,
+  useHandleSubmit,
+  useIsOnMobileScreen,
+  useIsVisibilityEnabled,
+} from '../data/hooks';
 
 const Bio = ({
   formId,
@@ -31,31 +34,18 @@ const Bio = ({
   openHandler,
 }) => {
   const isMobileView = useIsOnMobileScreen();
-  const isVisibilityEnabled = getConfig().DISABLE_VISIBILITY_EDITING === 'true';
+  const isVisibilityEnabled = useIsVisibilityEnabled();
   const intl = useIntl();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    changeHandler(name, value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    submitHandler(formId);
-  };
-
-  const handleClose = () => {
-    closeHandler(formId);
-  };
-
-  const handleOpen = () => {
-    openHandler(formId);
-  };
+  const handleChange = useHandleChange(changeHandler);
+  const handleSubmit = useHandleSubmit(submitHandler, formId);
+  const handleOpen = useCloseOpenHandler(openHandler, formId);
+  const handleClose = useCloseOpenHandler(closeHandler, formId);
 
   return (
     <SwitchContent
       className={classNames([
-        isMobileView ? 'pt-25rem' : 'pt-0',
+        isMobileView ? 'pt-40px' : 'pt-0',
       ])}
       expression={editMode}
       cases={{
@@ -67,11 +57,11 @@ const Bio = ({
                 className="m-0 pb-3"
                 isInvalid={error !== null}
               >
-                <p data-hj-suppress className="h5 font-weight-bold m-0 pb-075rem">
+                <p data-hj-suppress className="h5 font-weight-bold m-0 pb-2.5">
                   {intl.formatMessage(messages['profile.bio.about.me'])}
                 </p>
                 <textarea
-                  className="form-control py-0625rem"
+                  className="form-control py-10px"
                   id={formId}
                   name={formId}
                   value={bio}
@@ -95,7 +85,7 @@ const Bio = ({
         ),
         editable: (
           <>
-            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-0375rem">
+            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-1.5">
               {intl.formatMessage(messages['profile.bio.about.me'])}
             </p>
             <EditableItemHeader
@@ -109,7 +99,7 @@ const Bio = ({
         ),
         empty: (
           <>
-            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-0375rem">
+            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-1.5">
               {intl.formatMessage(messages['profile.bio.about.me'])}
             </p>
             <EmptyContent onClick={handleOpen}>
@@ -123,7 +113,7 @@ const Bio = ({
         ),
         static: (
           <>
-            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-0375rem">
+            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-1.5">
               {intl.formatMessage(messages['profile.bio.about.me'])}
             </p>
             <EditableItemHeader content={bio} />

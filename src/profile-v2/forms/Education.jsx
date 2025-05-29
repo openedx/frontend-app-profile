@@ -5,20 +5,22 @@ import { FormattedMessage, useIntl } from '@edx/frontend-platform/i18n';
 import get from 'lodash.get';
 import { Form } from '@openedx/paragon';
 
-import { getConfig } from '@edx/frontend-platform';
 import messages from './Education.messages';
 
-// Components
 import FormControls from './elements/FormControls';
 import EditableItemHeader from './elements/EditableItemHeader';
 import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
 
-// Constants
 import { EDUCATION_LEVELS } from '../data/constants';
 
-// Selectors
 import { editableFormSelector } from '../data/selectors';
+import {
+  useCloseOpenHandler,
+  useHandleChange,
+  useHandleSubmit,
+  useIsVisibilityEnabled,
+} from '../data/hooks';
 
 const Education = ({
   formId,
@@ -32,30 +34,17 @@ const Education = ({
   closeHandler,
   openHandler,
 }) => {
-  const isVisibilityEnabled = getConfig().DISABLE_VISIBILITY_EDITING === 'true';
+  const isVisibilityEnabled = useIsVisibilityEnabled();
   const intl = useIntl();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    changeHandler(name, value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    submitHandler(formId);
-  };
-
-  const handleClose = () => {
-    closeHandler(formId);
-  };
-
-  const handleOpen = () => {
-    openHandler(formId);
-  };
+  const handleChange = useHandleChange(changeHandler);
+  const handleSubmit = useHandleSubmit(submitHandler, formId);
+  const handleOpen = useCloseOpenHandler(openHandler, formId);
+  const handleClose = useCloseOpenHandler(closeHandler, formId);
 
   return (
     <SwitchContent
-      className="pt-25rem"
+      className="pt-40px"
       expression={editMode}
       cases={{
         editing: (
@@ -66,12 +55,12 @@ const Education = ({
                 className="m-0 pb-3"
                 isInvalid={error !== null}
               >
-                <p data-hj-suppress className="h5 font-weight-bold m-0 pb-075rem">
+                <p data-hj-suppress className="h5 font-weight-bold m-0 pb-2.5">
                   {intl.formatMessage(messages['profile.education.education'])}
                 </p>
                 <select
                   data-hj-suppress
-                  className="form-control py-0625rem"
+                  className="form-control py-10px"
                   id={formId}
                   name={formId}
                   value={levelOfEducation}
@@ -106,7 +95,7 @@ const Education = ({
         ),
         editable: (
           <>
-            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-0375rem">
+            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-1.5">
               {intl.formatMessage(messages['profile.education.education'])}
             </p>
             <EditableItemHeader
@@ -124,7 +113,7 @@ const Education = ({
         ),
         empty: (
           <>
-            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-0375rem">
+            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-1.5">
               {intl.formatMessage(messages['profile.education.education'])}
             </p>
             <EmptyContent onClick={handleOpen}>
@@ -138,7 +127,7 @@ const Education = ({
         ),
         static: (
           <>
-            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-0375rem">
+            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-1.5">
               {intl.formatMessage(messages['profile.education.education'])}
             </p>
             <EditableItemHeader

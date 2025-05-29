@@ -17,20 +17,20 @@ export const initialState = {
   account: {
     socialLinks: [],
     languageProficiencies: [],
-    name: null,
-    bio: null,
-    country: null,
-    levelOfEducation: null,
+    name: '',
+    bio: '',
+    country: '',
+    levelOfEducation: '',
     profileImage: {},
-    yearOfBirth: null,
+    yearOfBirth: '',
   },
   preferences: {
-    visibilityName: null,
-    visibilityBio: null,
-    visibilityCountry: null,
-    visibilityLevelOfEducation: null,
-    visibilitySocialLinks: null,
-    visibilityLanguageProficiencies: null,
+    visibilityName: '',
+    visibilityBio: '',
+    visibilityCountry: '',
+    visibilityLevelOfEducation: '',
+    visibilitySocialLinks: '',
+    visibilityLanguageProficiencies: '',
   },
   courseCertificates: [],
   drafts: {},
@@ -76,14 +76,12 @@ const profilePage = (state = initialState, action = {}) => {
         ...state,
         saveState: 'complete',
         errors: {},
-        // Account is always replaced completely.
         account: action.payload.account !== null ? {
           ...state.account,
           ...action.payload.account,
           socialLinks: action.payload.account.socialLinks || [],
           languageProficiencies: action.payload.account.languageProficiencies || [],
         } : state.account,
-        // Preferences changes get merged in.
         preferences: { ...state.preferences, ...action.payload.preferences },
       };
     case SAVE_PROFILE.FAILURE:
@@ -109,7 +107,6 @@ const profilePage = (state = initialState, action = {}) => {
     case SAVE_PROFILE_PHOTO.SUCCESS:
       return {
         ...state,
-        // Merge in new profile image data
         account: { ...state.account, profileImage: action.payload.profileImage },
         savePhotoState: 'complete',
         errors: {},
@@ -135,7 +132,6 @@ const profilePage = (state = initialState, action = {}) => {
     case DELETE_PROFILE_PHOTO.SUCCESS:
       return {
         ...state,
-        // Merge in new profile image data (should be empty or default image)
         account: { ...state.account, profileImage: action.payload.profileImage },
         savePhotoState: 'complete',
         errors: {},
@@ -169,7 +165,6 @@ const profilePage = (state = initialState, action = {}) => {
         drafts: {},
       };
     case CLOSE_FORM:
-      // Only close if the field to close is undefined or matches the field that is currently open
       if (action.payload.formId === state.currentlyEditingField) {
         return {
           ...state,

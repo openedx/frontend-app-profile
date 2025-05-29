@@ -8,7 +8,12 @@ import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { MemoryRouter, Routes, Route } from 'react-router-dom';
+import {
+  MemoryRouter,
+  Routes,
+  Route,
+  useNavigate,
+} from 'react-router-dom';
 
 import messages from '../i18n';
 import ProfilePage from './ProfilePage';
@@ -16,6 +21,11 @@ import loadingApp from './__mocks__/loadingApp.mockStore';
 import viewOwnProfile from './__mocks__/viewOwnProfile.mockStore';
 import viewOtherProfile from './__mocks__/viewOtherProfile.mockStore';
 import invalidUser from './__mocks__/invalidUser.mockStore';
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: jest.fn(),
+}));
 
 const mockStore = configureMockStore([thunk]);
 
@@ -28,10 +38,8 @@ const storeMocks = {
 
 const requiredProfilePageProps = {
   params: { username: 'staff' },
-  navigate: jest.fn(),
 };
 
-// Mock language cookie
 Object.defineProperty(global.document, 'cookie', {
   writable: true,
   value: `${getConfig().LANGUAGE_PREFERENCE_COOKIE_NAME}=en`,
@@ -63,11 +71,11 @@ configureI18n({
 
 beforeEach(() => {
   analytics.sendTrackingLogEvent.mockReset();
-  requiredProfilePageProps.navigate.mockReset();
+  useNavigate.mockReset();
 });
 
 const ProfilePageWrapper = ({
-  contextValue, store, params, navigate,
+  contextValue, store, params,
 }) => (
   <AppContext.Provider value={contextValue}>
     <IntlProvider locale="en">
@@ -76,7 +84,7 @@ const ProfilePageWrapper = ({
           <Routes>
             <Route
               path="/profile/:username"
-              element={<ProfilePage {...requiredProfilePageProps} params={params} navigate={navigate} />}
+              element={<ProfilePage {...requiredProfilePageProps} params={params} />}
             />
           </Routes>
         </MemoryRouter>
@@ -86,8 +94,8 @@ const ProfilePageWrapper = ({
 );
 
 ProfilePageWrapper.defaultProps = {
+  // eslint-disable-next-line react/default-props-match-prop-types
   params: { username: 'staff' },
-  navigate: jest.fn(),
 };
 
 ProfilePageWrapper.propTypes = {
@@ -95,8 +103,7 @@ ProfilePageWrapper.propTypes = {
   store: PropTypes.shape({}).isRequired,
   params: PropTypes.shape({
     username: PropTypes.string.isRequired,
-  }),
-  navigate: PropTypes.func,
+  }).isRequired,
 };
 
 describe('<ProfilePage />', () => {
@@ -110,7 +117,6 @@ describe('<ProfilePage />', () => {
         <ProfilePageWrapper
           contextValue={contextValue}
           store={mockStore(storeMocks.loadingApp)}
-          navigate={requiredProfilePageProps.navigate}
         />
       );
       const { container: tree } = render(component);
@@ -126,7 +132,6 @@ describe('<ProfilePage />', () => {
         <ProfilePageWrapper
           contextValue={contextValue}
           store={mockStore(storeMocks.viewOwnProfile)}
-          navigate={requiredProfilePageProps.navigate}
         />
       );
       const { container: tree } = render(component);
@@ -167,7 +172,6 @@ describe('<ProfilePage />', () => {
             },
           })}
           params={{ username: 'verified' }}
-          navigate={requiredProfilePageProps.navigate}
         />
       );
       const { container: tree } = render(component);
@@ -186,7 +190,6 @@ describe('<ProfilePage />', () => {
         <ProfilePageWrapper
           contextValue={contextValue}
           store={mockStore(storeMocks.viewOwnProfile)}
-          navigate={requiredProfilePageProps.navigate}
         />
       );
       const { container: tree } = render(component);
@@ -198,17 +201,18 @@ describe('<ProfilePage />', () => {
         authenticatedUser: { userId: 123, username: 'staff', administrator: true },
         config: getConfig(),
       };
+      const navigate = jest.fn();
+      useNavigate.mockReturnValue(navigate);
       const component = (
         <ProfilePageWrapper
           contextValue={contextValue}
           store={mockStore(storeMocks.invalidUser)}
           params={{ username: 'staffTest' }}
-          navigate={requiredProfilePageProps.navigate}
         />
       );
       const { container: tree } = render(component);
       expect(tree).toMatchSnapshot();
-      expect(requiredProfilePageProps.navigate).toHaveBeenCalledWith('/notfound');
+      expect(navigate).toHaveBeenCalledWith('/notfound');
     });
   });
 
@@ -223,7 +227,6 @@ describe('<ProfilePage />', () => {
           contextValue={contextValue}
           store={mockStore(storeMocks.loadingApp)}
           params={{ username: 'test-username' }}
-          navigate={requiredProfilePageProps.navigate}
         />,
       );
 
@@ -240,16 +243,17 @@ describe('<ProfilePage />', () => {
         authenticatedUser: { userId: 123, username: 'staff', administrator: true },
         config: getConfig(),
       };
+      const navigate = jest.fn();
+      useNavigate.mockReturnValue(navigate);
       render(
         <ProfilePageWrapper
           contextValue={contextValue}
           store={mockStore(storeMocks.invalidUser)}
           params={{ username: 'staffTest' }}
-          navigate={requiredProfilePageProps.navigate}
         />,
       );
 
-      expect(requiredProfilePageProps.navigate).toHaveBeenCalledWith('/notfound');
+      expect(navigate).toHaveBeenCalledWith('/notfound');
     });
   });
 });

@@ -4,17 +4,19 @@ import { connect } from 'react-redux';
 import { useIntl } from '@edx/frontend-platform/i18n';
 import { Form } from '@openedx/paragon';
 
-import { getConfig } from '@edx/frontend-platform';
 import messages from './PreferredLanguage.messages';
 
-// Components
 import FormControls from './elements/FormControls';
 import EditableItemHeader from './elements/EditableItemHeader';
 import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
 
-// Selectors
 import { preferredLanguageSelector } from '../data/selectors';
+import {
+  useCloseOpenHandler,
+  useHandleSubmit,
+  useIsVisibilityEnabled,
+} from '../data/hooks';
 
 const PreferredLanguage = ({
   formId,
@@ -30,40 +32,26 @@ const PreferredLanguage = ({
   closeHandler,
   openHandler,
 }) => {
-  const isVisibilityEnabled = getConfig().DISABLE_VISIBILITY_EDITING === 'true';
+  const isVisibilityEnabled = useIsVisibilityEnabled();
   const intl = useIntl();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const handleChange = ({ target: { name, value } }) => {
+    let newValue = value;
     if (name === formId) {
-      if (value !== '') {
-        changeHandler(name, [{ code: value }]);
-      } else {
-        changeHandler(name, []);
-      }
-    } else {
-      changeHandler(name, value);
+      newValue = value ? [{ code: value }] : [];
     }
+    changeHandler(name, newValue);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    submitHandler(formId);
-  };
-
-  const handleClose = () => {
-    closeHandler(formId);
-  };
-
-  const handleOpen = () => {
-    openHandler(formId);
-  };
+  const handleSubmit = useHandleSubmit(submitHandler, formId);
+  const handleOpen = useCloseOpenHandler(openHandler, formId);
+  const handleClose = useCloseOpenHandler(closeHandler, formId);
 
   const value = languageProficiencies.length ? languageProficiencies[0].code : '';
 
   return (
     <SwitchContent
-      className="pt-25rem"
+      className="pt-40px"
       expression={editMode}
       cases={{
         editing: (
@@ -74,14 +62,14 @@ const PreferredLanguage = ({
                 className="m-0 pb-3"
                 isInvalid={error !== null}
               >
-                <p data-hj-suppress className="h5 font-weight-bold m-0 pb-075rem">
+                <p data-hj-suppress className="h5 font-weight-bold m-0 pb-2.5">
                   {intl.formatMessage(messages['profile.preferredlanguage.label'])}
                 </p>
                 <select
                   data-hj-suppress
                   id={formId}
                   name={formId}
-                  className="form-control py-0625rem"
+                  className="form-control py-10px"
                   value={value}
                   onChange={handleChange}
                 >
@@ -108,7 +96,7 @@ const PreferredLanguage = ({
         ),
         editable: (
           <>
-            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-0375rem">
+            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-1.5">
               {intl.formatMessage(messages['profile.preferredlanguage.label'])}
             </p>
             <EditableItemHeader
@@ -122,7 +110,7 @@ const PreferredLanguage = ({
         ),
         empty: (
           <>
-            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-0375rem">
+            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-1.5">
               {intl.formatMessage(messages['profile.preferredlanguage.label'])}
             </p>
             <EmptyContent onClick={handleOpen}>
@@ -132,7 +120,7 @@ const PreferredLanguage = ({
         ),
         static: (
           <>
-            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-0375rem">
+            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-1.5">
               {intl.formatMessage(messages['profile.preferredlanguage.label'])}
             </p>
             <EditableItemHeader content={languageMessages[value]} />

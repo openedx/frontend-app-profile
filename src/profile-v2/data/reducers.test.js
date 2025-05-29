@@ -20,7 +20,6 @@ describe('profilePage reducer', () => {
       const action = { type: FETCH_PROFILE.BEGIN };
       const expectedState = {
         ...initialState,
-        // Uncomment isLoadingProfile: true if this functionality is required.
       };
       expect(profilePage(initialState, action)).toEqual(expectedState);
     });

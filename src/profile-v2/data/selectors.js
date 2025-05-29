@@ -29,15 +29,11 @@ export const editableFormModeSelector = createSelector(
   formIdSelector,
   currentlyEditingFieldSelector,
   (account, isAuthenticatedUserProfile, certificates, formId, currentlyEditingField) => {
-    // If the prop doesn't exist, that means it hasn't been set (for the current user's profile)
-    // or is being hidden from us (for other users' profiles)
     let propExists = account[formId] != null && account[formId].length > 0;
-    propExists = formId === 'certificates' ? certificates.length > 0 : propExists; // overwrite for certificates
-    // If this isn't the current user's profile
+    propExists = formId === 'certificates' ? certificates.length > 0 : propExists;
     if (!isAuthenticatedUserProfile) {
       return 'static';
     }
-    // Otherwise, if this is the current user's profile...
     if (formId === currentlyEditingField) {
       return 'editing';
     }
@@ -62,8 +58,6 @@ export const visibilityDraftsFieldSelector = createSelector(
   (formId, drafts) => drafts[`visibility${formId.charAt(0).toUpperCase() + formId.slice(1)}`],
 );
 
-// Note: Error messages are delivered from the server
-// localized according to a user's account settings
 export const formErrorSelector = createSelector(
   accountErrorsSelector,
   formIdSelector,
@@ -81,11 +75,6 @@ export const editableFormSelector = createSelector(
   }),
 );
 
-// Because this selector has no input selectors, it will only be evaluated once.  This is fine
-// for now because we don't allow users to change the locale after page load.
-// Once we DO allow this, we should create an actual action which dispatches the locale into redux,
-// then we can modify this to get the locale from state rather than from getLocale() directly.
-// Once we do that, this will work as expected and be re-evaluated when the locale changes.
 export const localeSelector = () => getLocale();
 export const countryMessagesSelector = createSelector(
   localeSelector,
@@ -159,9 +148,6 @@ export const profileImageSelector = createSelector(
     : {}),
 );
 
-/**
- * This is used by a saga to pull out data to process.
- */
 export const handleSaveProfileSelector = createSelector(
   profileDraftsSelector,
   profilePreferencesSelector,
@@ -171,7 +157,6 @@ export const handleSaveProfileSelector = createSelector(
   }),
 );
 
-// Reformats the social links in a platform-keyed hash.
 const socialLinksByPlatformSelector = createSelector(
   profileAccountSelector,
   (account) => {
@@ -198,24 +183,18 @@ const draftSocialLinksByPlatformSelector = createSelector(
   },
 );
 
-// Fleshes out our list of existing social links with all the other ones the user can set.
 export const formSocialLinksSelector = createSelector(
   socialLinksByPlatformSelector,
   draftSocialLinksByPlatformSelector,
   (linksByPlatform, draftLinksByPlatform) => {
     const knownPlatforms = ['twitter', 'facebook', 'linkedin'];
     const socialLinks = [];
-    // For each known platform
     knownPlatforms.forEach((platform) => {
-      // If the link is in our drafts.
       if (draftLinksByPlatform[platform] !== undefined) {
-        // Use the draft one.
         socialLinks.push(draftLinksByPlatform[platform]);
       } else if (linksByPlatform[platform] !== undefined) {
-        // Otherwise use the real one.
         socialLinks.push(linksByPlatform[platform]);
       } else {
-        // And if it's not in either, use a stub.
         socialLinks.push({
           platform,
           socialLink: null,
@@ -251,10 +230,6 @@ export const visibilitiesSelector = createSelector(
         };
       case 'all_users':
       default:
-        // All users is intended to fall through to default.
-        // If there is no value for accountPrivacy in preferences, that means it has not been
-        // explicitly set yet. The server assumes - today - that this means "all_users",
-        // so we emulate that here in the client.
         return {
           visibilityBio: 'all_users',
           visibilityCountry: 'all_users',
@@ -267,9 +242,6 @@ export const visibilitiesSelector = createSelector(
   },
 );
 
-/**
- * If there's no draft present at all (undefined), use the original committed value.
- */
 function chooseFormValue(draft, committed) {
   return draft !== undefined ? draft : committed;
 }
@@ -301,7 +273,7 @@ export const formValuesSelector = createSelector(
     ),
     name: chooseFormValue(drafts.name, account.name),
     visibilityName: chooseFormValue(drafts.visibilityName, visibilities.visibilityName),
-    socialLinks, // Social links is calculated in its own selector, since it's complicated.
+    socialLinks,
     visibilitySocialLinks: chooseFormValue(
       drafts.visibilitySocialLinks,
       visibilities.visibilitySocialLinks,
@@ -330,42 +302,33 @@ export const profilePageSelector = createSelector(
     errors,
     isAuthenticatedUserProfile,
   ) => ({
-    // Account data we need
     username: account.username,
     profileImage,
     requiresParentalConsent: account.requiresParentalConsent,
     dateJoined: account.dateJoined,
     yearOfBirth: account.yearOfBirth,
 
-    // Bio form data
     bio: formValues.bio,
     visibilityBio: formValues.visibilityBio,
 
-    // Certificates form data
     courseCertificates: formValues.courseCertificates,
 
-    // Country form data
     country: formValues.country,
     visibilityCountry: formValues.visibilityCountry,
 
-    // Education form data
     levelOfEducation: formValues.levelOfEducation,
     visibilityLevelOfEducation: formValues.visibilityLevelOfEducation,
 
-    // Language proficiency form data
     languageProficiencies: formValues.languageProficiencies,
     visibilityLanguageProficiencies: formValues.visibilityLanguageProficiencies,
 
-    // Name form data
     name: formValues.name,
     visibilityName: formValues.visibilityName,
 
-    // Social links form data
     socialLinks: formValues.socialLinks,
     visibilitySocialLinks: formValues.visibilitySocialLinks,
     draftSocialLinksByPlatform,
 
-    // Other data we need
     saveState,
     savePhotoState,
     isLoadingProfile,

@@ -3,17 +3,16 @@ import PropTypes from 'prop-types';
 import { Button, StatefulButton } from '@openedx/paragon';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 
-import { getConfig } from '@edx/frontend-platform';
 import messages from './FormControls.messages';
 
 import { VisibilitySelect } from './Visibility';
+import { useIsVisibilityEnabled } from '../../data/hooks';
 
 const FormControls = ({
   cancelHandler, changeHandler, visibility, visibilityId, saveState, intl,
 }) => {
-  // Eliminate error/failed state for save button
   const buttonState = saveState === 'error' ? null : saveState;
-  const isVisibilityEnabled = getConfig().DISABLE_VISIBILITY_EDITING === 'true';
+  const isVisibilityEnabled = useIsVisibilityEnabled();
 
   return (
     <div className="d-flex flex-row-reverse flex-wrap justify-content-end align-items-center">
@@ -76,7 +75,6 @@ FormControls.propTypes = {
   cancelHandler: PropTypes.func.isRequired,
   changeHandler: PropTypes.func.isRequired,
 
-  // i18n
   intl: intlShape.isRequired,
 };
 

@@ -6,15 +6,13 @@ import { faTwitter, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import classNames from 'classnames';
 
-// Components
-import { getConfig } from '@edx/frontend-platform';
 import FormControls from './elements/FormControls';
 import EditableItemHeader from './elements/EditableItemHeader';
 import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
 
-// Selectors
 import { editableFormSelector } from '../data/selectors';
+import { useIsVisibilityEnabled } from '../data/hooks';
 
 const platformDisplayInfo = {
   facebook: {
@@ -44,7 +42,7 @@ const SocialLinks = ({
   closeHandler,
   openHandler,
 }) => {
-  const isVisibilityEnabled = getConfig().DISABLE_VISIBILITY_EDITING === 'true';
+  const isVisibilityEnabled = useIsVisibilityEnabled();
   const [activePlatform, setActivePlatform] = useState(null);
 
   const mergeWithDrafts = (newSocialLink) => {
@@ -95,7 +93,7 @@ const SocialLinks = ({
     if (isEditing) {
       return (
         <form onSubmit={handleSubmit}>
-          <div className="form-group pt-25rem m-0">
+          <div className="form-group m-0">
             {error !== null && (
               <div id="social-error-feedback">
                 <Alert variant="danger" dismissible={false} show>
@@ -105,7 +103,7 @@ const SocialLinks = ({
             )}
             <div className="pb-3">
               <input
-                className={classNames('form-control py-0625rem', { 'is-invalid': Boolean(error) })}
+                className={classNames('form-control py-10px', { 'is-invalid': Boolean(error) })}
                 type="text"
                 id={`social-${platform}`}
                 name={platform}
@@ -155,8 +153,8 @@ const SocialLinks = ({
           <div>
             <div>
               {socialLinks.map(({ platform }) => (
-                <div key={platform} className="pt-25rem">
-                  <p data-hj-suppress className="h5 font-weight-bold m-0 pb-0375rem">
+                <div key={platform} className="pt-40px">
+                  <p data-hj-suppress className="h5 font-weight-bold m-0 pb-1.5">
                     {platformDisplayInfo[platform].name}
                   </p>
                   <EmptyContent onClick={() => handleOpen(platform)}>
@@ -180,8 +178,8 @@ const SocialLinks = ({
               {socialLinks
                 .filter(({ socialLink }) => Boolean(socialLink))
                 .map(({ platform, socialLink }) => (
-                  <div key={platform} className="pt-25rem">
-                    <p data-hj-suppress className="h5 font-weight-bold m-0 pb-0375rem">
+                  <div key={platform} className="pt-40px">
+                    <p data-hj-suppress className="h5 font-weight-bold m-0 pb-1.5">
                       {platformDisplayInfo[platform].name}
                     </p>
                     <EditableItemHeader
@@ -197,8 +195,8 @@ const SocialLinks = ({
           <div>
             <div>
               {socialLinks.map(({ platform, socialLink }) => (
-                <div key={platform} className="pt-25rem">
-                  <p data-hj-suppress className="h5 font-weight-bold m-0 pb-0375rem">
+                <div key={platform} className="pt-40px">
+                  <p data-hj-suppress className="h5 font-weight-bold m-0 pb-1.5">
                     {platformDisplayInfo[platform].name}
                   </p>
                   {renderPlatformContent(platform, socialLink, activePlatform === platform)}
@@ -211,8 +209,8 @@ const SocialLinks = ({
           <div>
             <div>
               {socialLinks.map(({ platform, socialLink }) => (
-                <div key={platform} className="pt-25rem">
-                  <p data-hj-suppress className="h5 font-weight-bold m-0 pb-0375rem">
+                <div key={platform} className="pt-40px">
+                  <p data-hj-suppress className="h5 font-weight-bold m-0 pb-2.5">
                     {platformDisplayInfo[platform].name}
                   </p>
                   {renderPlatformContent(platform, socialLink, activePlatform === platform)}

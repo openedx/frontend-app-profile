@@ -89,7 +89,7 @@ const ProfileAvatar = ({
               className="shadow-sm"
             />
           </OverlayTrigger>
-          <Dropdown.Menu className="min-width-11rem p-0 m-0">
+          <Dropdown.Menu className="min-width-179px p-0 m-0">
             <Dropdown.Item type="button" onClick={onClickUpload}>
               <FormattedMessage
                 id="profile.profileavatar.upload-button"

@@ -14,7 +14,7 @@ const Certificates = ({ certificates }) => {
   return (
     <div>
       <div className="col justify-content-start align-items-start g-5rem p-0">
-        <div className="col align-self-stretch height-2625rem justify-content-start align-items-start p-0">
+        <div className="col align-self-stretch height-42px justify-content-start align-items-start p-0">
           <p className="font-weight-bold text-primary-500 m-0 h2">
             <FormattedMessage
               id="profile.your.certificates"
@@ -27,7 +27,7 @@ const Certificates = ({ certificates }) => {
           <p className="font-weight-normal text-gray-800 m-0 p-0 p">
             <FormattedMessage
               id="profile.certificates.description"
-              defaultMessage="Your learner records information is only visible to you. Only your username and profile image is visible to others on {siteName}."
+              defaultMessage="Your learner records information is only visible to you. Only your username and profile image are visible to others on {siteName}."
               description="description of the certificates section"
               values={{
                 siteName: getConfig().SITE_NAME,

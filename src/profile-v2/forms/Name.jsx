@@ -3,19 +3,22 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useIntl } from '@edx/frontend-platform/i18n';
 
-import { getConfig } from '@edx/frontend-platform';
 import { InfoOutline } from '@openedx/paragon/icons';
 import { Form, OverlayTrigger, Tooltip } from '@openedx/paragon';
 import messages from './Name.messages';
 
-// Components
 import FormControls from './elements/FormControls';
 import EditableItemHeader from './elements/EditableItemHeader';
 import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
 
-// Selectors
 import { editableFormSelector } from '../data/selectors';
+import {
+  useCloseOpenHandler,
+  useHandleChange,
+  useHandleSubmit,
+  useIsVisibilityEnabled,
+} from '../data/hooks';
 
 const Name = ({
   formId,
@@ -29,37 +32,24 @@ const Name = ({
   closeHandler,
   openHandler,
 }) => {
-  const isVisibilityEnabled = getConfig().DISABLE_VISIBILITY_EDITING === 'true';
+  const isVisibilityEnabled = useIsVisibilityEnabled();
   const intl = useIntl();
 
-  const handleChange = (e) => {
-    const { name: inputName, value } = e.target;
-    changeHandler(inputName, value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    submitHandler(formId);
-  };
-
-  const handleClose = () => {
-    closeHandler(formId);
-  };
-
-  const handleOpen = () => {
-    openHandler(formId);
-  };
+  const handleChange = useHandleChange(changeHandler);
+  const handleSubmit = useHandleSubmit(submitHandler, formId);
+  const handleOpen = useCloseOpenHandler(openHandler, formId);
+  const handleClose = useCloseOpenHandler(closeHandler, formId);
 
   return (
     <SwitchContent
-      className="pt-25rem"
+      className="pt-40px"
       expression={editMode}
       cases={{
         editing: (
           <div role="dialog" aria-labelledby={`${formId}-label`}>
             <form onSubmit={handleSubmit}>
               <div className="form-group">
-                <div className="row m-0 pb-075rem align-items-center">
+                <div className="row m-0 pb-2.5 align-items-center">
                   <p data-hj-suppress className="h5 font-weight-bold m-0">
                     {intl.formatMessage(messages['profile.name.full.name'])}
                   </p>
@@ -78,7 +68,7 @@ const Name = ({
                   </OverlayTrigger>
                 </div>
                 <textarea
-                  className="form-control py-0625rem"
+                  className="form-control py-10px"
                   id={formId}
                   name={formId}
                   value={name}
@@ -102,7 +92,7 @@ const Name = ({
         ),
         editable: (
           <>
-            <div className="row m-0 pb-0375rem align-items-center">
+            <div className="row m-0 pb-1.5 align-items-center">
               <p data-hj-suppress className="h5 font-weight-bold m-0">
                 {intl.formatMessage(messages['profile.name.full.name'])}
               </p>
@@ -131,7 +121,7 @@ const Name = ({
         ),
         empty: (
           <>
-            <div className="row m-0 pb-0375rem align-items-center">
+            <div className="row m-0 pb-1.5 align-items-center">
               <p data-hj-suppress className="h5 font-weight-bold m-0">
                 {intl.formatMessage(messages['profile.name.full.name'])}
               </p>
@@ -156,7 +146,7 @@ const Name = ({
         ),
         static: (
           <>
-            <div className="row m-0 pb-0375rem align-items-center">
+            <div className="row m-0 pb-1.5 align-items-center">
               <p data-hj-suppress className="h5 font-weight-bold m-0">
                 {intl.formatMessage(messages['profile.name.full.name'])}
               </p>

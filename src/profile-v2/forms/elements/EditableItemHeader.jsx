@@ -20,8 +20,8 @@ const EditableItemHeader = ({
       <div className="row m-0 p-0 d-flex flex-nowrap align-items-center">
         <div
           className={classNames([
-            'm-0 p-0',
-            isMobileView ? 'col-11' : 'col-auto',
+            'm-0 p-0 col-auto',
+            isMobileView ? 'w-90' : '',
           ])}
         >
           <h4
@@ -37,7 +37,7 @@ const EditableItemHeader = ({
             isMobileView ? 'col-1' : 'col-auto',
           ])}
         >
-          {showEditButton ? <EditButton className="p-0375rem" onClick={onClickEdit} /> : null}
+          {showEditButton ? <EditButton className="p-1.5" onClick={onClickEdit} /> : null}
         </div>
       </div>
       <div className="row m-0 p-0">

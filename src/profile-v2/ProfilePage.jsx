@@ -3,6 +3,8 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
 import { sendTrackingLogEvent } from '@edx/frontend-platform/analytics';
 import { ensureConfig } from '@edx/frontend-platform';
 import { AppContext } from '@edx/frontend-platform/react';
@@ -13,7 +15,6 @@ import {
 import { InfoOutline } from '@openedx/paragon/icons';
 import classNames from 'classnames';
 
-// Actions
 import {
   fetchProfile,
   saveProfile,
@@ -24,7 +25,6 @@ import {
   updateDraft,
 } from './data/actions';
 
-// Components
 import ProfileAvatar from './forms/ProfileAvatar';
 import Name from './forms/Name';
 import Country from './forms/Country';
@@ -37,7 +37,6 @@ import UserCertificateSummary from './UserCertificateSummary';
 import PageLoading from './PageLoading';
 import Certificates from './Certificates';
 
-// Selectors
 import { profilePageSelector } from './data/selectors';
 import messages from './ProfilePage.messages';
 import withParams from '../utils/hoc';
@@ -45,7 +44,7 @@ import { useIsOnMobileScreen, useIsOnTabletScreen } from './data/hooks';
 
 ensureConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL'], 'ProfilePage');
 
-const ProfilePage = ({ params, navigate }) => {
+const ProfilePage = ({ params }) => {
   const dispatch = useDispatch();
   const intl = useIntl();
   const context = useContext(AppContext);
@@ -73,6 +72,7 @@ const ProfilePage = ({ params, navigate }) => {
     username,
   } = useSelector(profilePageSelector);
 
+  const navigate = useNavigate();
   const [viewMyRecordsUrl, setViewMyRecordsUrl] = useState(null);
   const isMobileView = useIsOnMobileScreen();
   const isTabletView = useIsOnTabletScreen();
@@ -95,13 +95,15 @@ const ProfilePage = ({ params, navigate }) => {
     }
   }, [username, saveState, navigate]);
 
+  const authenticatedUserName = context.authenticatedUser.username;
+
   const handleSaveProfilePhoto = useCallback((formData) => {
-    dispatch(saveProfilePhoto(context.authenticatedUser.username, formData));
-  }, [dispatch, context.authenticatedUser.username]);
+    dispatch(saveProfilePhoto(authenticatedUserName, formData));
+  }, [dispatch, authenticatedUserName]);
 
   const handleDeleteProfilePhoto = useCallback(() => {
-    dispatch(deleteProfilePhoto(context.authenticatedUser.username));
-  }, [dispatch, context.authenticatedUser.username]);
+    dispatch(deleteProfilePhoto(authenticatedUserName));
+  }, [dispatch, authenticatedUserName]);
 
   const handleClose = useCallback((formId) => {
     dispatch(closeForm(formId));
@@ -112,14 +114,14 @@ const ProfilePage = ({ params, navigate }) => {
   }, [dispatch]);
 
   const handleSubmit = useCallback((formId) => {
-    dispatch(saveProfile(formId, context.authenticatedUser.username));
-  }, [dispatch, context.authenticatedUser.username]);
+    dispatch(saveProfile(formId, authenticatedUserName));
+  }, [dispatch, authenticatedUserName]);
 
   const handleChange = useCallback((fieldName, value) => {
     dispatch(updateDraft(fieldName, value));
   }, [dispatch]);
 
-  const isAuthenticatedUserProfile = () => params.username === context.authenticatedUser.username;
+  const isAuthenticatedUserProfile = () => params.username === authenticatedUserName;
 
   const isBlockVisible = (blockInfo) => isAuthenticatedUserProfile()
       || (!isAuthenticatedUserProfile() && Boolean(blockInfo));
@@ -132,7 +134,7 @@ const ProfilePage = ({ params, navigate }) => {
     return (
       <Hyperlink
         className={classNames(
-          'btn btn-brand color-brand-500 btn-rounded font-weight-normal px-4 py-0625rem text-nowrap',
+          'btn btn-brand bg-brand-500 btn-rounded font-weight-normal px-4 py-10px text-nowrap',
           { 'w-100': isMobileView },
         )}
         target="_blank"
@@ -173,19 +175,25 @@ const ProfilePage = ({ params, navigate }) => {
             className={classNames(
               'profile-page-bg-banner bg-primary d-md-block align-items-center h-100 w-100',
               { 'px-3 py-4': isMobileView },
-              { 'px-75rem py-4rem': !isMobileView },
+              { 'px-120px py-5.5': !isMobileView },
             )}
           >
             <div
               className={classNames([
                 'col container-fluid w-100 h-100 bg-white py-0 rounded-75',
-                isMobileView ? 'px-3' : 'px-25rem',
+                {
+                  'px-3': isMobileView,
+                  'px-40px': !isMobileView,
+                },
               ])}
             >
               <div
                 className={classNames([
-                  'col h-100 w-100 px-0 justify-content-start g-15re',
-                  isMobileView ? 'py-4' : 'py-225rem',
+                  'col h-100 w-100 px-0 justify-content-start g-15rem',
+                  {
+                    'py-4': isMobileView,
+                    'py-36px': !isMobileView,
+                  },
                 ])}
               >
                 <div
@@ -227,7 +235,7 @@ const ProfilePage = ({ params, navigate }) => {
                     )}
                     >
                       <DateJoined date={dateJoined} />
-                      <UserCertificateSummary count={(courseCertificates || []).length} />
+                      <UserCertificateSummary count={courseCertificates?.length || 0} />
                     </div>
                   </div>
                   <div className={classNames([
@@ -247,12 +255,12 @@ const ProfilePage = ({ params, navigate }) => {
           <div
             className={classNames([
               'col d-inline-flex h-100 w-100 align-items-start justify-content-start g-3rem',
-              isMobileView ? 'py-4 px-3' : 'px-75rem py-6',
+              isMobileView ? 'py-4 px-3' : 'px-120px py-6',
             ])}
           >
             <div className="w-100 p-0">
               <div className="col justify-content-start align-items-start p-0">
-                <div className="col align-self-stretch height-2625rem justify-content-start align-items-start p-0">
+                <div className="col align-self-stretch height-42px justify-content-start align-items-start p-0">
                   <p className="font-weight-bold text-primary-500 m-0 h2">
                     {isMobileView ? (
                       <FormattedMessage
@@ -274,7 +282,7 @@ const ProfilePage = ({ params, navigate }) => {
               <div
                 className={classNames([
                   'row m-0 px-0 w-100 d-inline-flex align-items-start justify-content-start',
-                  isMobileView ? 'pt-4' : 'pt-4rem',
+                  isMobileView ? 'pt-4' : 'pt-5.5',
                 ])}
               >
                 <div
@@ -284,7 +292,7 @@ const ProfilePage = ({ params, navigate }) => {
                   ])}
                 >
                   <div className="m-0">
-                    <div className="row m-0 pb-0375rem align-items-center">
+                    <div className="row m-0 pb-1.5 align-items-center">
                       <p data-hj-suppress className="h5 font-weight-bold m-0">
                         {intl.formatMessage(messages['profile.username'])}
                       </p>
@@ -342,7 +350,7 @@ const ProfilePage = ({ params, navigate }) => {
                 <div
                   className={classNames([
                     'col m-0 pr-0',
-                    isMobileView ? 'pl-0 col-12' : 'pl-25rem col-6',
+                    isMobileView ? 'pl-0 col-12' : 'pl-40px col-6',
                   ])}
                 >
                   {isBlockVisible(bio) && (
@@ -369,7 +377,7 @@ const ProfilePage = ({ params, navigate }) => {
           <div
             className={classNames([
               'col container-fluid d-inline-flex bg-color-grey-FBFAF9 h-100 w-100 align-items-start justify-content-start g-3rem',
-              isMobileView ? 'py-4 px-3' : 'px-75rem py-6',
+              isMobileView ? 'py-4 px-3' : 'px-120px py-6',
             ])}
           >
             {isBlockVisible((courseCertificates || []).length) && (
@@ -389,33 +397,24 @@ ProfilePage.propTypes = {
   params: PropTypes.shape({
     username: PropTypes.string.isRequired,
   }).isRequired,
-  navigate: PropTypes.func.isRequired,
-  // Account data
   requiresParentalConsent: PropTypes.bool,
   dateJoined: PropTypes.string,
   username: PropTypes.string,
-  // Bio form data
   bio: PropTypes.string,
   visibilityBio: PropTypes.string,
-  // Certificates data
   courseCertificates: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string,
   })),
-  // Country form data
   country: PropTypes.string,
   visibilityCountry: PropTypes.string,
-  // Education form data
   levelOfEducation: PropTypes.string,
   visibilityLevelOfEducation: PropTypes.string,
-  // Language proficiency form data
   languageProficiencies: PropTypes.arrayOf(PropTypes.shape({
     code: PropTypes.string.isRequired,
   })),
   visibilityLanguageProficiencies: PropTypes.string,
-  // Name form data
   name: PropTypes.string,
   visibilityName: PropTypes.string,
-  // Social links form data
   socialLinks: PropTypes.arrayOf(PropTypes.shape({
     platform: PropTypes.string,
     socialLink: PropTypes.string,
@@ -425,7 +424,6 @@ ProfilePage.propTypes = {
     socialLink: PropTypes.string,
   })),
   visibilitySocialLinks: PropTypes.string,
-  // Other data
   profileImage: PropTypes.shape({
     src: PropTypes.string,
     isDefault: PropTypes.bool,

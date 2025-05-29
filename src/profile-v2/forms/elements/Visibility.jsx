@@ -23,7 +23,6 @@ const Visibility = ({ to, intl }) => {
 Visibility.propTypes = {
   to: PropTypes.oneOf(['private', 'all_users']),
 
-  // i18n
   intl: intlShape.isRequired,
 };
 Visibility.defaultProps = {
@@ -36,7 +35,7 @@ const VisibilitySelect = ({ intl, className, ...props }) => {
 
   return (
     <span className={className}>
-      <span className="d-inline-block ml-1 mr-2" style={{ width: '1.5rem' }}>
+      <span className="d-inline-block ml-1 mr-2 width-24px">
         <FontAwesomeIcon icon={icon} />
       </span>
       <select className="d-inline-block form-control" {...props}>
@@ -58,7 +57,6 @@ VisibilitySelect.propTypes = {
   value: PropTypes.oneOf(['private', 'all_users']),
   onChange: PropTypes.func,
 
-  // i18n
   intl: intlShape.isRequired,
 };
 VisibilitySelect.defaultProps = {
