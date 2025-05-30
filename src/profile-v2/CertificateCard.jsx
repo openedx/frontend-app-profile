@@ -43,8 +43,8 @@ const CertificateCard = ({
         />
         <div className={classNames(
           'd-flex flex-column position-relative p-0',
-          { 'max-width-19rem': isMobileView },
-          { 'width-19625rem': !isMobileView },
+          { 'max-width-304px': isMobileView },
+          { 'width-314px': !isMobileView },
         )}
         >
           <div className="w-100 color-black">
@@ -97,7 +97,7 @@ const CertificateCard = ({
               target="_blank"
               showLaunchIcon={false}
               className={classNames(
-                'btn btn-primary btn-rounded font-weight-normal px-4 py-0625rem',
+                'btn btn-primary btn-rounded font-weight-normal px-4 py-10px',
                 { 'btn-sm': isMobileView },
               )}
             >

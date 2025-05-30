@@ -2,11 +2,24 @@ import { ensureConfig, getConfig } from '@edx/frontend-platform';
 import { getAuthenticatedHttpClient as getHttpClient } from '@edx/frontend-platform/auth';
 import { logError } from '@edx/frontend-platform/logging';
 import { camelCaseObject, convertKeyNames, snakeCaseObject } from '../utils';
+import { FIELD_LABELS } from './constants';
 
 ensureConfig(['LMS_BASE_URL'], 'Profile API service');
 
 function processAccountData(data) {
-  return camelCaseObject(data);
+  const processedData = camelCaseObject(data);
+  return {
+    ...processedData,
+    socialLinks: Array.isArray(processedData.socialLinks) ? processedData.socialLinks : [],
+    languageProficiencies: Array.isArray(processedData.languageProficiencies)
+      ? processedData.languageProficiencies : [],
+    name: processedData.name || null,
+    bio: processedData.bio || null,
+    country: processedData.country || null,
+    levelOfEducation: processedData.levelOfEducation || null,
+    profileImage: processedData.profileImage || {},
+    yearOfBirth: processedData.yearOfBirth || null,
+  };
 }
 
 function processAndThrowError(error, errorDataProcessor) {
@@ -19,15 +32,12 @@ function processAndThrowError(error, errorDataProcessor) {
   }
 }
 
-// GET ACCOUNT
 export async function getAccount(username) {
   const { data } = await getHttpClient().get(`${getConfig().LMS_BASE_URL}/api/user/v1/accounts/${username}`);
 
-  // Process response data
   return processAccountData(data);
 }
 
-// PATCH PROFILE
 export async function patchProfile(username, params) {
   const processedParams = snakeCaseObject(params);
 
@@ -41,11 +51,8 @@ export async function patchProfile(username, params) {
       processAndThrowError(error, processAccountData);
     });
 
-  // Process response data
   return processAccountData(data);
 }
-
-// POST PROFILE PHOTO
 
 export async function postProfilePhoto(username, formData) {
   // eslint-disable-next-line no-unused-vars
@@ -70,8 +77,6 @@ export async function postProfilePhoto(username, formData) {
   return updatedData.profileImage;
 }
 
-// DELETE PROFILE PHOTO
-
 export async function deleteProfilePhoto(username) {
   // eslint-disable-next-line no-unused-vars
   const { data } = await getHttpClient().delete(`${getConfig().LMS_BASE_URL}/api/user/v1/accounts/${username}/image`);
@@ -85,14 +90,12 @@ export async function deleteProfilePhoto(username) {
   return updatedData.profileImage;
 }
 
-// GET PREFERENCES
 export async function getPreferences(username) {
   const { data } = await getHttpClient().get(`${getConfig().LMS_BASE_URL}/api/user/v1/preferences/${username}`);
 
   return camelCaseObject(data);
 }
 
-// PATCH PREFERENCES
 export async function patchPreferences(username, params) {
   let processedParams = snakeCaseObject(params);
   processedParams = convertKeyNames(processedParams, {
@@ -113,8 +116,6 @@ export async function patchPreferences(username, params) {
 
   return params; // TODO: Once the server returns the updated preferences object, return that.
 }
-
-// GET COURSE CERTIFICATES
 
 function transformCertificateData(data) {
   const transformedData = [];
@@ -142,6 +143,24 @@ export async function getCourseCertificates(username) {
   try {
     const { data } = await getHttpClient().get(url);
     return transformCertificateData(data);
+  } catch (e) {
+    logError(e);
+    return [];
+  }
+}
+
+function extractCountryList(data) {
+  return data?.fields
+    .find(({ name }) => name === FIELD_LABELS.COUNTRY)
+    ?.options?.map(({ value }) => (value)) || [];
+}
+
+export async function getCountryList() {
+  const url = `${getConfig().LMS_BASE_URL}/user_api/v1/account/registration/`;
+
+  try {
+    const { data } = await getHttpClient().get(url);
+    return extractCountryList(data);
   } catch (e) {
     logError(e);
     return [];

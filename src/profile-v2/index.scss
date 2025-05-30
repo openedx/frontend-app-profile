@@ -31,11 +31,12 @@
 
 .profile-page {
   .edit-section-header {
-    @extend .h6;
+    @extend .h4;
     display: block;
-    font-weight: normal;
+    font-weight: 400;
     letter-spacing: 0;
     margin: 0;
+    line-height: 2.25rem;
   }
 
   label.edit-section-header {
@@ -48,6 +49,12 @@
       margin-right: 0;
       height: auto;
     }
+  }
+
+  .profile-avatar-button {
+    position: absolute;
+    left: 76px;
+    top: 76px;
   }
 
   .profile-avatar-menu-container {
@@ -87,8 +94,8 @@
   }
 
   .profile-avatar {
-    width: 5rem;
-    height: 5rem;
+    width: 7.5rem;
+    height: 7.5rem;
     position: relative;
 
     @include media-breakpoint-up(md) {
@@ -141,65 +148,80 @@
   }
 }
 
-// Todo: Move the following to edx-paragon
-
-.btn-rounded {
-  border-radius: 100px;
+.info-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  padding-left: 0.125rem;
 }
 
 .max-width-32em {
   max-width: 32em;
 }
 
-.max-width-19rem{
-    max-width: 19rem;
-}
-.width-75rem {
-  width: 75rem;
-}
-
-.width-72rem {
-  width: 72rem !important;
-}
-
-.width-19625rem {
-  width: 19.625rem;
-}
-
-.height-2625rem {
-  height: 2.625rem;
-}
-
 .height-50vh {
   height: 50vh;
+}
+
+// Todo: Move the following to edx-paragon
+
+.btn-rounded {
+  border-radius: 100px;
+}
+
+.min-width-179px {
+  min-width: 179px;
+}
+
+.max-width-304px{
+  max-width: 304px;
+}
+
+.width-314px {
+  width: 314px;
+}
+
+.w-90{
+  max-width: 90%;
+}
+
+.width-24px{
+  width: 24px;
+}
+
+.height-42px {
+  height: 42px;
 }
 
 .rounded-75 {
   border-radius: 0.75rem;
 }
 
-.pt-4rem {
-  padding-top: 4rem;
+.pt-40px{
+  padding-top: 40px;
 }
 
-.py-4rem {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+.pl-40px {
+  padding-left: 40px;
 }
 
-.py-0625rem {
-  padding-top: 0.625rem;
-  padding-bottom: 0.625rem;
+.py-10px{
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
-.px-75rem {
-  padding-left: 7.5rem;
-  padding-right: 7.5rem;
+.py-36px {
+  padding-top: 36px;
+  padding-bottom: 36px;
 }
 
-.px-25rem {
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
+.px-120px {
+  padding-left: 120px;
+  padding-right: 120px;
+}
+
+.px-40px {
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 .g-15rem {
@@ -222,10 +244,22 @@
   color: #000;
 }
 
+.bg-color-grey-FBFAF9 {
+  background-color: #FBFAF9;
+}
+
 .background-black-65 {
   background-color: rgba(0,0,0,.65)
 }
 
 .object-fit-cover {
   object-fit: cover;
+}
+
+.lh-36px {
+  line-height: 36px;
+}
+
+.overflowWrap-breakWord {
+  overflow-wrap: break-word;
 }
