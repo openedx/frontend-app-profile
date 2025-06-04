@@ -28,22 +28,21 @@ import { DIRECT_PLUGIN, PLUGIN_OPERATIONS } from '@openedx/frontend-plugin-frame
 import { ExtendedProfileFields } from '@organization/frontend-component-extended-fields';
 
 const config = {
-	pluginSlots: {
-		extended_profile_fields_slot: {
-			keepDefault: false,
-			plugins: [
-				{
-                    // Insert a custom ExtendedProfileFields component
-					op: PLUGIN_OPERATIONS.Insert,
-					widget: {
-						id: 'extended_profile_fields',
-						type: DIRECT_PLUGIN,
-						RenderWidget: ExtendedProfileFields,
-					},
-				},
-			],
-		},
-	},
+  pluginSlots: {
+    extended_profile_fields_slot: {
+      keepDefault: false,
+      plugins: [
+        {
+          op: PLUGIN_OPERATIONS.Insert,
+          widget: {
+            id: 'extended_profile_fields',
+            type: DIRECT_PLUGIN,
+            RenderWidget: ExtendedProfileFields,
+          },
+        },
+      ],
+    },
+  },
 };
 
 export default config;
