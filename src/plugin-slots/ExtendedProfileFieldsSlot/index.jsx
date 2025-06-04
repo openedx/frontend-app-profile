@@ -1,6 +1,7 @@
 import { PluginSlot } from '@openedx/frontend-plugin-framework';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { useCallback } from 'react';
 import { patchProfile } from '../../profile/data/services';
 import { fetchProfile } from '../../profile/data/actions';
 
@@ -13,7 +14,7 @@ const ExtendedProfileFieldsSlot = () => {
   const extendedProfileValues = useSelector((state) => state.profilePage.account.extendedProfile);
 
   const pluginProps = {
-    refreshUserProfile: (username) => dispatch(fetchProfile(username)),
+    refreshUserProfile: useCallback((username) => dispatch(fetchProfile(username)), [dispatch]),
     updateUserProfile: patchProfile,
     profileFieldValues: extendedProfileValues,
     formComponents: {
