@@ -74,13 +74,18 @@ const ProfilePage = ({ params }) => {
 
   const navigate = useNavigate();
   const [viewMyRecordsUrl, setViewMyRecordsUrl] = useState(null);
+  const [viewAccountSettingsUrl, setViewAccountSettingsUrl] = useState(null);
   const isMobileView = useIsOnMobileScreen();
   const isTabletView = useIsOnTabletScreen();
 
   useEffect(() => {
     const { CREDENTIALS_BASE_URL } = context.config;
+    const { ACCOUNT_SETTINGS_URL } = context.config;
     if (CREDENTIALS_BASE_URL) {
       setViewMyRecordsUrl(`${CREDENTIALS_BASE_URL}/records`);
+    }
+    if (ACCOUNT_SETTINGS_URL) {
+      setViewAccountSettingsUrl(ACCOUNT_SETTINGS_URL);
     }
 
     dispatch(fetchProfile(params.username));
@@ -317,6 +322,7 @@ const ProfilePage = ({ params }) => {
                   {isBlockVisible(name) && (
                   <Name
                     name={name}
+                    accountSettingsUrl={viewAccountSettingsUrl}
                     visibilityName={visibilityName}
                     formId="name"
                     {...commonFormProps}

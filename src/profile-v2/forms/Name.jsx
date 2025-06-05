@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { useIntl } from '@edx/frontend-platform/i18n';
 
 import { InfoOutline } from '@openedx/paragon/icons';
-import { Form, OverlayTrigger, Tooltip } from '@openedx/paragon';
+import { Hyperlink, OverlayTrigger, Tooltip } from '@openedx/paragon';
 import messages from './Name.messages';
 
 import FormControls from './elements/FormControls';
@@ -26,11 +26,11 @@ const Name = ({
   visibilityName,
   editMode,
   saveState,
-  error,
   changeHandler,
   submitHandler,
   closeHandler,
   openHandler,
+  accountSettingsUrl,
 }) => {
   const isVisibilityEnabled = useIsVisibilityEnabled();
   const intl = useIntl();
@@ -62,23 +62,17 @@ const Name = ({
                           {intl.formatMessage(messages['profile.name.tooltip'])}
                         </p>
                       </Tooltip>
-                          )}
+                            )}
                   >
                     <InfoOutline className="m-0 info-icon" />
                   </OverlayTrigger>
                 </div>
-                <textarea
-                  className="form-control py-10px"
-                  id={formId}
-                  name={formId}
-                  value={name}
-                  onChange={handleChange}
-                />
-                {error !== null && (
-                <Form.Control.Feedback hasIcon={false}>
-                  {error}
-                </Form.Control.Feedback>
-                )}
+                <EditableItemHeader content={name} />
+                <h4 className="font-weight-normal">
+                  <Hyperlink destination={accountSettingsUrl} target="_blank">
+                    {intl.formatMessage(messages['profile.name.redirect'])}
+                  </Hyperlink>
+                </h4>
               </div>
               <FormControls
                 visibilityId="visibilityName"
@@ -182,7 +176,7 @@ Name.propTypes = {
   submitHandler: PropTypes.func.isRequired,
   closeHandler: PropTypes.func.isRequired,
   openHandler: PropTypes.func.isRequired,
-  error: PropTypes.string,
+  accountSettingsUrl: PropTypes.string.isRequired,
 };
 
 Name.defaultProps = {
@@ -190,7 +184,6 @@ Name.defaultProps = {
   saveState: null,
   name: null,
   visibilityName: 'private',
-  error: null,
 };
 
 export default connect(
