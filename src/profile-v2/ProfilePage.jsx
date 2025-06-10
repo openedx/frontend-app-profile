@@ -79,8 +79,7 @@ const ProfilePage = ({ params }) => {
   const isTabletView = useIsOnTabletScreen();
 
   useEffect(() => {
-    const { CREDENTIALS_BASE_URL } = context.config;
-    const { ACCOUNT_SETTINGS_URL } = context.config;
+    const { ACCOUNT_SETTINGS_URL, CREDENTIALS_BASE_URL } = context.config;
     if (CREDENTIALS_BASE_URL) {
       setViewMyRecordsUrl(`${CREDENTIALS_BASE_URL}/records`);
     }
