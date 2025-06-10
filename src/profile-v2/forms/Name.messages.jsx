@@ -16,6 +16,11 @@ const messages = defineMessages({
     defaultMessage: 'The name that is used for ID verification and that appears on your certificates',
     description: 'Tooltip for the full name field.',
   },
+  'profile.name.redirect': {
+    id: 'profile.name.redirect',
+    defaultMessage: 'Edit full name from the Accounts page',
+    description: 'Redirect message for editing the name from the Accounts page.',
+  },
 });
 
 export default messages;

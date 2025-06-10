@@ -42,7 +42,7 @@ import messages from './ProfilePage.messages';
 import withParams from '../utils/hoc';
 import { useIsOnMobileScreen, useIsOnTabletScreen } from './data/hooks';
 
-ensureConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL'], 'ProfilePage');
+ensureConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL', 'ACCOUNT_SETTINGS_URL'], 'ProfilePage');
 
 const ProfilePage = ({ params }) => {
   const dispatch = useDispatch();
@@ -317,6 +317,7 @@ const ProfilePage = ({ params }) => {
                   {isBlockVisible(name) && (
                   <Name
                     name={name}
+                    accountSettingsUrl={context.config.ACCOUNT_SETTINGS_URL}
                     visibilityName={visibilityName}
                     formId="name"
                     {...commonFormProps}
