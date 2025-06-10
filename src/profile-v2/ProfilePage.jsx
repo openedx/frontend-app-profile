@@ -42,7 +42,7 @@ import messages from './ProfilePage.messages';
 import withParams from '../utils/hoc';
 import { useIsOnMobileScreen, useIsOnTabletScreen } from './data/hooks';
 
-ensureConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL'], 'ProfilePage');
+ensureConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL', 'ACCOUNT_SETTINGS_URL'], 'ProfilePage');
 
 const ProfilePage = ({ params }) => {
   const dispatch = useDispatch();
@@ -74,17 +74,13 @@ const ProfilePage = ({ params }) => {
 
   const navigate = useNavigate();
   const [viewMyRecordsUrl, setViewMyRecordsUrl] = useState(null);
-  const [viewAccountSettingsUrl, setViewAccountSettingsUrl] = useState(null);
   const isMobileView = useIsOnMobileScreen();
   const isTabletView = useIsOnTabletScreen();
 
   useEffect(() => {
-    const { ACCOUNT_SETTINGS_URL, CREDENTIALS_BASE_URL } = context.config;
+    const { CREDENTIALS_BASE_URL } = context.config;
     if (CREDENTIALS_BASE_URL) {
       setViewMyRecordsUrl(`${CREDENTIALS_BASE_URL}/records`);
-    }
-    if (ACCOUNT_SETTINGS_URL) {
-      setViewAccountSettingsUrl(ACCOUNT_SETTINGS_URL);
     }
 
     dispatch(fetchProfile(params.username));
@@ -321,7 +317,7 @@ const ProfilePage = ({ params }) => {
                   {isBlockVisible(name) && (
                   <Name
                     name={name}
-                    accountSettingsUrl={viewAccountSettingsUrl}
+                    accountSettingsUrl={context.config.ACCOUNT_SETTINGS_URL}
                     visibilityName={visibilityName}
                     formId="name"
                     {...commonFormProps}
