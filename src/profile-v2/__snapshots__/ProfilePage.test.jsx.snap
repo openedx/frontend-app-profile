@@ -2017,3 +2017,1655 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
   </div>
 </div>
 `;
+
+exports[`<ProfilePage /> handles empty profile renders empty profile state 1`] = `
+<div>
+  <div
+    class="profile-page"
+  >
+    <div
+      class="profile-page-bg-banner bg-primary d-md-block align-items-center h-100 w-100 px-120px py-5.5"
+    >
+      <div
+        class="col container-fluid w-100 h-100 bg-white py-0 rounded-75 px-40px"
+      >
+        <div
+          class="col h-100 w-100 px-0 justify-content-start g-15rem py-36px"
+        >
+          <div
+            class="row-auto d-flex flex-wrap align-items-center h-100 w-100 justify-content-start g-15rem flex-row"
+          >
+            <div
+              class="profile-avatar-wrap position-relative"
+            >
+              <div
+                class="profile-avatar rounded-circle bg-light"
+              >
+                <div
+                  aria-hidden="true"
+                  class="text-muted"
+                  data-testid="IconMock"
+                  focusable="false"
+                  role="img"
+                  viewbox="0 0 24 24"
+                />
+              </div>
+              <form
+                enctype="multipart/form-data"
+              >
+                <input
+                  accept=".jpg, .jpeg, .png"
+                  class="d-none form-control-file"
+                  id="photo-file"
+                  name="file"
+                  type="file"
+                />
+              </form>
+            </div>
+            <div
+              class="col h-100 w-100 m-0 p-0 justify-content-start align-items-start"
+            >
+              <p
+                class="row m-0 font-weight-bold text-truncate text-primary-500 h3"
+              >
+                empty
+              </p>
+              <div
+                class="row pt-2 m-0 g-1rem"
+              >
+                <span
+                  class="small mb-0 text-gray-800"
+                >
+                  Member since 
+                  <span
+                    class="font-weight-bold"
+                  >
+                     
+                    2017
+                     
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div
+              class="p-0  col-auto"
+            />
+          </div>
+        </div>
+        <div
+          class="ml-auto"
+        />
+      </div>
+    </div>
+    <div
+      class="col d-inline-flex h-100 w-100 align-items-start justify-content-start g-3rem px-120px py-6"
+    >
+      <div
+        class="w-100 p-0"
+      >
+        <div
+          class="col justify-content-start align-items-start p-0"
+        >
+          <div
+            class="col align-self-stretch height-42px justify-content-start align-items-start p-0"
+          >
+            <p
+              class="font-weight-bold text-primary-500 m-0 h2"
+            >
+              Profile information
+            </p>
+          </div>
+        </div>
+        <div
+          class="row m-0 px-0 w-100 d-inline-flex align-items-start justify-content-start pt-5.5"
+        >
+          <div
+            class="col p-0 col-6"
+          >
+            <div
+              class="m-0"
+            >
+              <div
+                class="row m-0 pb-1.5 align-items-center"
+              >
+                <p
+                  class="h5 font-weight-bold m-0"
+                  data-hj-suppress="true"
+                >
+                  Username
+                </p>
+                <svg
+                  class="m-0 info-icon"
+                  fill="none"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11 7h2v2h-2V7Zm0 4h2v6h-2v-6Zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+              <h4
+                class="edit-section-header text-gray-700"
+              >
+                empty
+              </h4>
+            </div>
+          </div>
+          <div
+            class="col m-0 pr-0 pl-40px col-6"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="col container-fluid d-inline-flex bg-color-grey-FBFAF9 h-100 w-100 align-items-start justify-content-start g-3rem px-120px py-6"
+    />
+  </div>
+</div>
+`;
+
+exports[`<ProfilePage /> handles profile with no fields and no username renders empty profile state 1`] = `<div />`;
+
+exports[`<ProfilePage /> handles profile with no social links renders profile without social links 1`] = `
+<div>
+  <div
+    class="profile-page"
+  >
+    <div
+      class="profile-page-bg-banner bg-primary d-md-block align-items-center h-100 w-100 px-120px py-5.5"
+    >
+      <div
+        class="col container-fluid w-100 h-100 bg-white py-0 rounded-75 px-40px"
+      >
+        <div
+          class="col h-100 w-100 px-0 justify-content-start g-15rem py-36px"
+        >
+          <div
+            class="row-auto d-flex flex-wrap align-items-center h-100 w-100 justify-content-start g-15rem flex-row"
+          >
+            <div
+              class="profile-avatar-wrap position-relative"
+            >
+              <div
+                class="profile-avatar rounded-circle bg-light"
+              >
+                <div
+                  aria-hidden="true"
+                  class="text-muted"
+                  data-testid="IconMock"
+                  focusable="false"
+                  role="img"
+                  viewbox="0 0 24 24"
+                />
+              </div>
+              <form
+                enctype="multipart/form-data"
+              >
+                <input
+                  accept=".jpg, .jpeg, .png"
+                  class="d-none form-control-file"
+                  id="photo-file"
+                  name="file"
+                  type="file"
+                />
+              </form>
+            </div>
+            <div
+              class="col h-100 w-100 m-0 p-0 justify-content-start align-items-start"
+            >
+              <p
+                class="row m-0 font-weight-bold text-truncate text-primary-500 h3"
+              >
+                noSocialLinks
+              </p>
+              <div
+                class="row pt-2 m-0 g-1rem"
+              >
+                <span
+                  class="small mb-0 text-gray-800"
+                >
+                  Member since 
+                  <span
+                    class="font-weight-bold"
+                  >
+                     
+                    2017
+                     
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div
+              class="p-0  col-auto"
+            />
+          </div>
+        </div>
+        <div
+          class="ml-auto"
+        />
+      </div>
+    </div>
+    <div
+      class="col d-inline-flex h-100 w-100 align-items-start justify-content-start g-3rem px-120px py-6"
+    >
+      <div
+        class="w-100 p-0"
+      >
+        <div
+          class="col justify-content-start align-items-start p-0"
+        >
+          <div
+            class="col align-self-stretch height-42px justify-content-start align-items-start p-0"
+          >
+            <p
+              class="font-weight-bold text-primary-500 m-0 h2"
+            >
+              Profile information
+            </p>
+          </div>
+        </div>
+        <div
+          class="row m-0 px-0 w-100 d-inline-flex align-items-start justify-content-start pt-5.5"
+        >
+          <div
+            class="col p-0 col-6"
+          >
+            <div
+              class="m-0"
+            >
+              <div
+                class="row m-0 pb-1.5 align-items-center"
+              >
+                <p
+                  class="h5 font-weight-bold m-0"
+                  data-hj-suppress="true"
+                >
+                  Username
+                </p>
+                <svg
+                  class="m-0 info-icon"
+                  fill="none"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11 7h2v2h-2V7Zm0 4h2v6h-2v-6Zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+              <h4
+                class="edit-section-header text-gray-700"
+              >
+                noSocialLinks
+              </h4>
+            </div>
+          </div>
+          <div
+            class="col m-0 pr-0 pl-40px col-6"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="col container-fluid d-inline-flex bg-color-grey-FBFAF9 h-100 w-100 align-items-start justify-content-start g-3rem px-120px py-6"
+    />
+  </div>
+</div>
+`;
+
+exports[`<ProfilePage /> handles profile with only bio renders profile with only bio 1`] = `
+<div>
+  <div
+    class="profile-page"
+  >
+    <div
+      class="profile-page-bg-banner bg-primary d-md-block align-items-center h-100 w-100 px-120px py-5.5"
+    >
+      <div
+        class="col container-fluid w-100 h-100 bg-white py-0 rounded-75 px-40px"
+      >
+        <div
+          class="col h-100 w-100 px-0 justify-content-start g-15rem py-36px"
+        >
+          <div
+            class="row-auto d-flex flex-wrap align-items-center h-100 w-100 justify-content-start g-15rem flex-row"
+          >
+            <div
+              class="profile-avatar-wrap position-relative"
+            >
+              <div
+                class="profile-avatar rounded-circle bg-light"
+              >
+                <div
+                  aria-hidden="true"
+                  class="text-muted"
+                  data-testid="IconMock"
+                  focusable="false"
+                  role="img"
+                  viewbox="0 0 24 24"
+                />
+              </div>
+              <form
+                enctype="multipart/form-data"
+              >
+                <input
+                  accept=".jpg, .jpeg, .png"
+                  class="d-none form-control-file"
+                  id="photo-file"
+                  name="file"
+                  type="file"
+                />
+              </form>
+            </div>
+            <div
+              class="col h-100 w-100 m-0 p-0 justify-content-start align-items-start"
+            >
+              <p
+                class="row m-0 font-weight-bold text-truncate text-primary-500 h3"
+              >
+                onlyBio
+              </p>
+              <div
+                class="row pt-2 m-0 g-1rem"
+              >
+                <span
+                  class="small mb-0 text-gray-800"
+                >
+                  Member since 
+                  <span
+                    class="font-weight-bold"
+                  >
+                     
+                    2017
+                     
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div
+              class="p-0  col-auto"
+            />
+          </div>
+        </div>
+        <div
+          class="ml-auto"
+        />
+      </div>
+    </div>
+    <div
+      class="col d-inline-flex h-100 w-100 align-items-start justify-content-start g-3rem px-120px py-6"
+    >
+      <div
+        class="w-100 p-0"
+      >
+        <div
+          class="col justify-content-start align-items-start p-0"
+        >
+          <div
+            class="col align-self-stretch height-42px justify-content-start align-items-start p-0"
+          >
+            <p
+              class="font-weight-bold text-primary-500 m-0 h2"
+            >
+              Profile information
+            </p>
+          </div>
+        </div>
+        <div
+          class="row m-0 px-0 w-100 d-inline-flex align-items-start justify-content-start pt-5.5"
+        >
+          <div
+            class="col p-0 col-6"
+          >
+            <div
+              class="m-0"
+            >
+              <div
+                class="row m-0 pb-1.5 align-items-center"
+              >
+                <p
+                  class="h5 font-weight-bold m-0"
+                  data-hj-suppress="true"
+                >
+                  Username
+                </p>
+                <svg
+                  class="m-0 info-icon"
+                  fill="none"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11 7h2v2h-2V7Zm0 4h2v6h-2v-6Zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+              <h4
+                class="edit-section-header text-gray-700"
+              >
+                onlyBio
+              </h4>
+            </div>
+          </div>
+          <div
+            class="col m-0 pr-0 pl-40px col-6"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="col container-fluid d-inline-flex bg-color-grey-FBFAF9 h-100 w-100 align-items-start justify-content-start g-3rem px-120px py-6"
+    />
+  </div>
+</div>
+`;
+
+exports[`<ProfilePage /> handles profile with only country renders profile with only country 1`] = `
+<div>
+  <div
+    class="profile-page"
+  >
+    <div
+      class="profile-page-bg-banner bg-primary d-md-block align-items-center h-100 w-100 px-120px py-5.5"
+    >
+      <div
+        class="col container-fluid w-100 h-100 bg-white py-0 rounded-75 px-40px"
+      >
+        <div
+          class="col h-100 w-100 px-0 justify-content-start g-15rem py-36px"
+        >
+          <div
+            class="row-auto d-flex flex-wrap align-items-center h-100 w-100 justify-content-start g-15rem flex-row"
+          >
+            <div
+              class="profile-avatar-wrap position-relative"
+            >
+              <div
+                class="profile-avatar rounded-circle bg-light"
+              >
+                <div
+                  aria-hidden="true"
+                  class="text-muted"
+                  data-testid="IconMock"
+                  focusable="false"
+                  role="img"
+                  viewbox="0 0 24 24"
+                />
+              </div>
+              <form
+                enctype="multipart/form-data"
+              >
+                <input
+                  accept=".jpg, .jpeg, .png"
+                  class="d-none form-control-file"
+                  id="photo-file"
+                  name="file"
+                  type="file"
+                />
+              </form>
+            </div>
+            <div
+              class="col h-100 w-100 m-0 p-0 justify-content-start align-items-start"
+            >
+              <p
+                class="row m-0 font-weight-bold text-truncate text-primary-500 h3"
+              >
+                onlyCountry
+              </p>
+              <div
+                class="row pt-2 m-0 g-1rem"
+              >
+                <span
+                  class="small mb-0 text-gray-800"
+                >
+                  Member since 
+                  <span
+                    class="font-weight-bold"
+                  >
+                     
+                    2017
+                     
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div
+              class="p-0  col-auto"
+            />
+          </div>
+        </div>
+        <div
+          class="ml-auto"
+        />
+      </div>
+    </div>
+    <div
+      class="col d-inline-flex h-100 w-100 align-items-start justify-content-start g-3rem px-120px py-6"
+    >
+      <div
+        class="w-100 p-0"
+      >
+        <div
+          class="col justify-content-start align-items-start p-0"
+        >
+          <div
+            class="col align-self-stretch height-42px justify-content-start align-items-start p-0"
+          >
+            <p
+              class="font-weight-bold text-primary-500 m-0 h2"
+            >
+              Profile information
+            </p>
+          </div>
+        </div>
+        <div
+          class="row m-0 px-0 w-100 d-inline-flex align-items-start justify-content-start pt-5.5"
+        >
+          <div
+            class="col p-0 col-6"
+          >
+            <div
+              class="m-0"
+            >
+              <div
+                class="row m-0 pb-1.5 align-items-center"
+              >
+                <p
+                  class="h5 font-weight-bold m-0"
+                  data-hj-suppress="true"
+                >
+                  Username
+                </p>
+                <svg
+                  class="m-0 info-icon"
+                  fill="none"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11 7h2v2h-2V7Zm0 4h2v6h-2v-6Zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+              <h4
+                class="edit-section-header text-gray-700"
+              >
+                onlyCountry
+              </h4>
+            </div>
+          </div>
+          <div
+            class="col m-0 pr-0 pl-40px col-6"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="col container-fluid d-inline-flex bg-color-grey-FBFAF9 h-100 w-100 align-items-start justify-content-start g-3rem px-120px py-6"
+    />
+  </div>
+</div>
+`;
+
+exports[`<ProfilePage /> handles profile with only course certificates renders profile with only course certificates 1`] = `
+<div>
+  <div
+    class="profile-page"
+  >
+    <div
+      class="profile-page-bg-banner bg-primary d-md-block align-items-center h-100 w-100 px-120px py-5.5"
+    >
+      <div
+        class="col container-fluid w-100 h-100 bg-white py-0 rounded-75 px-40px"
+      >
+        <div
+          class="col h-100 w-100 px-0 justify-content-start g-15rem py-36px"
+        >
+          <div
+            class="row-auto d-flex flex-wrap align-items-center h-100 w-100 justify-content-start g-15rem flex-row"
+          >
+            <div
+              class="profile-avatar-wrap position-relative"
+            >
+              <div
+                class="profile-avatar rounded-circle bg-light"
+              >
+                <div
+                  aria-hidden="true"
+                  class="text-muted"
+                  data-testid="IconMock"
+                  focusable="false"
+                  role="img"
+                  viewbox="0 0 24 24"
+                />
+              </div>
+              <form
+                enctype="multipart/form-data"
+              >
+                <input
+                  accept=".jpg, .jpeg, .png"
+                  class="d-none form-control-file"
+                  id="photo-file"
+                  name="file"
+                  type="file"
+                />
+              </form>
+            </div>
+            <div
+              class="col h-100 w-100 m-0 p-0 justify-content-start align-items-start"
+            >
+              <p
+                class="row m-0 font-weight-bold text-truncate text-primary-500 h3"
+              >
+                onlyCourseCertificates
+              </p>
+              <div
+                class="row pt-2 m-0 g-1rem"
+              >
+                <span
+                  class="small mb-0 text-gray-800"
+                >
+                  Member since 
+                  <span
+                    class="font-weight-bold"
+                  >
+                     
+                    2017
+                     
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div
+              class="p-0  col-auto"
+            />
+          </div>
+        </div>
+        <div
+          class="ml-auto"
+        />
+      </div>
+    </div>
+    <div
+      class="col d-inline-flex h-100 w-100 align-items-start justify-content-start g-3rem px-120px py-6"
+    >
+      <div
+        class="w-100 p-0"
+      >
+        <div
+          class="col justify-content-start align-items-start p-0"
+        >
+          <div
+            class="col align-self-stretch height-42px justify-content-start align-items-start p-0"
+          >
+            <p
+              class="font-weight-bold text-primary-500 m-0 h2"
+            >
+              Profile information
+            </p>
+          </div>
+        </div>
+        <div
+          class="row m-0 px-0 w-100 d-inline-flex align-items-start justify-content-start pt-5.5"
+        >
+          <div
+            class="col p-0 col-6"
+          >
+            <div
+              class="m-0"
+            >
+              <div
+                class="row m-0 pb-1.5 align-items-center"
+              >
+                <p
+                  class="h5 font-weight-bold m-0"
+                  data-hj-suppress="true"
+                >
+                  Username
+                </p>
+                <svg
+                  class="m-0 info-icon"
+                  fill="none"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11 7h2v2h-2V7Zm0 4h2v6h-2v-6Zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+              <h4
+                class="edit-section-header text-gray-700"
+              >
+                onlyCourseCertificates
+              </h4>
+            </div>
+          </div>
+          <div
+            class="col m-0 pr-0 pl-40px col-6"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="col container-fluid d-inline-flex bg-color-grey-FBFAF9 h-100 w-100 align-items-start justify-content-start g-3rem px-120px py-6"
+    />
+  </div>
+</div>
+`;
+
+exports[`<ProfilePage /> handles profile with only language proficiencies renders profile with only language proficiencies 1`] = `
+<div>
+  <div
+    class="profile-page"
+  >
+    <div
+      class="profile-page-bg-banner bg-primary d-md-block align-items-center h-100 w-100 px-120px py-5.5"
+    >
+      <div
+        class="col container-fluid w-100 h-100 bg-white py-0 rounded-75 px-40px"
+      >
+        <div
+          class="col h-100 w-100 px-0 justify-content-start g-15rem py-36px"
+        >
+          <div
+            class="row-auto d-flex flex-wrap align-items-center h-100 w-100 justify-content-start g-15rem flex-row"
+          >
+            <div
+              class="profile-avatar-wrap position-relative"
+            >
+              <div
+                class="profile-avatar rounded-circle bg-light"
+              >
+                <div
+                  aria-hidden="true"
+                  class="text-muted"
+                  data-testid="IconMock"
+                  focusable="false"
+                  role="img"
+                  viewbox="0 0 24 24"
+                />
+              </div>
+              <form
+                enctype="multipart/form-data"
+              >
+                <input
+                  accept=".jpg, .jpeg, .png"
+                  class="d-none form-control-file"
+                  id="photo-file"
+                  name="file"
+                  type="file"
+                />
+              </form>
+            </div>
+            <div
+              class="col h-100 w-100 m-0 p-0 justify-content-start align-items-start"
+            >
+              <p
+                class="row m-0 font-weight-bold text-truncate text-primary-500 h3"
+              >
+                onlyLanguageProficiencies
+              </p>
+              <div
+                class="row pt-2 m-0 g-1rem"
+              >
+                <span
+                  class="small mb-0 text-gray-800"
+                >
+                  Member since 
+                  <span
+                    class="font-weight-bold"
+                  >
+                     
+                    2017
+                     
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div
+              class="p-0  col-auto"
+            />
+          </div>
+        </div>
+        <div
+          class="ml-auto"
+        />
+      </div>
+    </div>
+    <div
+      class="col d-inline-flex h-100 w-100 align-items-start justify-content-start g-3rem px-120px py-6"
+    >
+      <div
+        class="w-100 p-0"
+      >
+        <div
+          class="col justify-content-start align-items-start p-0"
+        >
+          <div
+            class="col align-self-stretch height-42px justify-content-start align-items-start p-0"
+          >
+            <p
+              class="font-weight-bold text-primary-500 m-0 h2"
+            >
+              Profile information
+            </p>
+          </div>
+        </div>
+        <div
+          class="row m-0 px-0 w-100 d-inline-flex align-items-start justify-content-start pt-5.5"
+        >
+          <div
+            class="col p-0 col-6"
+          >
+            <div
+              class="m-0"
+            >
+              <div
+                class="row m-0 pb-1.5 align-items-center"
+              >
+                <p
+                  class="h5 font-weight-bold m-0"
+                  data-hj-suppress="true"
+                >
+                  Username
+                </p>
+                <svg
+                  class="m-0 info-icon"
+                  fill="none"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11 7h2v2h-2V7Zm0 4h2v6h-2v-6Zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+              <h4
+                class="edit-section-header text-gray-700"
+              >
+                onlyLanguageProficiencies
+              </h4>
+            </div>
+          </div>
+          <div
+            class="col m-0 pr-0 pl-40px col-6"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="col container-fluid d-inline-flex bg-color-grey-FBFAF9 h-100 w-100 align-items-start justify-content-start g-3rem px-120px py-6"
+    />
+  </div>
+</div>
+`;
+
+exports[`<ProfilePage /> handles profile with only level of education renders profile with only level of education 1`] = `
+<div>
+  <div
+    class="profile-page"
+  >
+    <div
+      class="profile-page-bg-banner bg-primary d-md-block align-items-center h-100 w-100 px-120px py-5.5"
+    >
+      <div
+        class="col container-fluid w-100 h-100 bg-white py-0 rounded-75 px-40px"
+      >
+        <div
+          class="col h-100 w-100 px-0 justify-content-start g-15rem py-36px"
+        >
+          <div
+            class="row-auto d-flex flex-wrap align-items-center h-100 w-100 justify-content-start g-15rem flex-row"
+          >
+            <div
+              class="profile-avatar-wrap position-relative"
+            >
+              <div
+                class="profile-avatar rounded-circle bg-light"
+              >
+                <div
+                  aria-hidden="true"
+                  class="text-muted"
+                  data-testid="IconMock"
+                  focusable="false"
+                  role="img"
+                  viewbox="0 0 24 24"
+                />
+              </div>
+              <form
+                enctype="multipart/form-data"
+              >
+                <input
+                  accept=".jpg, .jpeg, .png"
+                  class="d-none form-control-file"
+                  id="photo-file"
+                  name="file"
+                  type="file"
+                />
+              </form>
+            </div>
+            <div
+              class="col h-100 w-100 m-0 p-0 justify-content-start align-items-start"
+            >
+              <p
+                class="row m-0 font-weight-bold text-truncate text-primary-500 h3"
+              >
+                onlyLevelOfEducation
+              </p>
+              <div
+                class="row pt-2 m-0 g-1rem"
+              >
+                <span
+                  class="small mb-0 text-gray-800"
+                >
+                  Member since 
+                  <span
+                    class="font-weight-bold"
+                  >
+                     
+                    2017
+                     
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div
+              class="p-0  col-auto"
+            />
+          </div>
+        </div>
+        <div
+          class="ml-auto"
+        />
+      </div>
+    </div>
+    <div
+      class="col d-inline-flex h-100 w-100 align-items-start justify-content-start g-3rem px-120px py-6"
+    >
+      <div
+        class="w-100 p-0"
+      >
+        <div
+          class="col justify-content-start align-items-start p-0"
+        >
+          <div
+            class="col align-self-stretch height-42px justify-content-start align-items-start p-0"
+          >
+            <p
+              class="font-weight-bold text-primary-500 m-0 h2"
+            >
+              Profile information
+            </p>
+          </div>
+        </div>
+        <div
+          class="row m-0 px-0 w-100 d-inline-flex align-items-start justify-content-start pt-5.5"
+        >
+          <div
+            class="col p-0 col-6"
+          >
+            <div
+              class="m-0"
+            >
+              <div
+                class="row m-0 pb-1.5 align-items-center"
+              >
+                <p
+                  class="h5 font-weight-bold m-0"
+                  data-hj-suppress="true"
+                >
+                  Username
+                </p>
+                <svg
+                  class="m-0 info-icon"
+                  fill="none"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11 7h2v2h-2V7Zm0 4h2v6h-2v-6Zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+              <h4
+                class="edit-section-header text-gray-700"
+              >
+                onlyLevelOfEducation
+              </h4>
+            </div>
+          </div>
+          <div
+            class="col m-0 pr-0 pl-40px col-6"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="col container-fluid d-inline-flex bg-color-grey-FBFAF9 h-100 w-100 align-items-start justify-content-start g-3rem px-120px py-6"
+    />
+  </div>
+</div>
+`;
+
+exports[`<ProfilePage /> handles profile with only name renders profile with only name 1`] = `
+<div>
+  <div
+    class="profile-page"
+  >
+    <div
+      class="profile-page-bg-banner bg-primary d-md-block align-items-center h-100 w-100 px-120px py-5.5"
+    >
+      <div
+        class="col container-fluid w-100 h-100 bg-white py-0 rounded-75 px-40px"
+      >
+        <div
+          class="col h-100 w-100 px-0 justify-content-start g-15rem py-36px"
+        >
+          <div
+            class="row-auto d-flex flex-wrap align-items-center h-100 w-100 justify-content-start g-15rem flex-row"
+          >
+            <div
+              class="profile-avatar-wrap position-relative"
+            >
+              <div
+                class="profile-avatar rounded-circle bg-light"
+              >
+                <div
+                  aria-hidden="true"
+                  class="text-muted"
+                  data-testid="IconMock"
+                  focusable="false"
+                  role="img"
+                  viewbox="0 0 24 24"
+                />
+              </div>
+              <form
+                enctype="multipart/form-data"
+              >
+                <input
+                  accept=".jpg, .jpeg, .png"
+                  class="d-none form-control-file"
+                  id="photo-file"
+                  name="file"
+                  type="file"
+                />
+              </form>
+            </div>
+            <div
+              class="col h-100 w-100 m-0 p-0 justify-content-start align-items-start"
+            >
+              <p
+                class="row m-0 font-weight-bold text-truncate text-primary-500 h3"
+              >
+                onlyName
+              </p>
+              <div
+                class="row pt-2 m-0 g-1rem"
+              >
+                <span
+                  class="small mb-0 text-gray-800"
+                >
+                  Member since 
+                  <span
+                    class="font-weight-bold"
+                  >
+                     
+                    2017
+                     
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div
+              class="p-0  col-auto"
+            />
+          </div>
+        </div>
+        <div
+          class="ml-auto"
+        />
+      </div>
+    </div>
+    <div
+      class="col d-inline-flex h-100 w-100 align-items-start justify-content-start g-3rem px-120px py-6"
+    >
+      <div
+        class="w-100 p-0"
+      >
+        <div
+          class="col justify-content-start align-items-start p-0"
+        >
+          <div
+            class="col align-self-stretch height-42px justify-content-start align-items-start p-0"
+          >
+            <p
+              class="font-weight-bold text-primary-500 m-0 h2"
+            >
+              Profile information
+            </p>
+          </div>
+        </div>
+        <div
+          class="row m-0 px-0 w-100 d-inline-flex align-items-start justify-content-start pt-5.5"
+        >
+          <div
+            class="col p-0 col-6"
+          >
+            <div
+              class="m-0"
+            >
+              <div
+                class="row m-0 pb-1.5 align-items-center"
+              >
+                <p
+                  class="h5 font-weight-bold m-0"
+                  data-hj-suppress="true"
+                >
+                  Username
+                </p>
+                <svg
+                  class="m-0 info-icon"
+                  fill="none"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11 7h2v2h-2V7Zm0 4h2v6h-2v-6Zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+              <h4
+                class="edit-section-header text-gray-700"
+              >
+                onlyName
+              </h4>
+            </div>
+          </div>
+          <div
+            class="col m-0 pr-0 pl-40px col-6"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="col container-fluid d-inline-flex bg-color-grey-FBFAF9 h-100 w-100 align-items-start justify-content-start g-3rem px-120px py-6"
+    />
+  </div>
+</div>
+`;
+
+exports[`<ProfilePage /> handles profile with only social links renders profile with only social links 1`] = `
+<div>
+  <div
+    class="profile-page"
+  >
+    <div
+      class="profile-page-bg-banner bg-primary d-md-block align-items-center h-100 w-100 px-120px py-5.5"
+    >
+      <div
+        class="col container-fluid w-100 h-100 bg-white py-0 rounded-75 px-40px"
+      >
+        <div
+          class="col h-100 w-100 px-0 justify-content-start g-15rem py-36px"
+        >
+          <div
+            class="row-auto d-flex flex-wrap align-items-center h-100 w-100 justify-content-start g-15rem flex-row"
+          >
+            <div
+              class="profile-avatar-wrap position-relative"
+            >
+              <div
+                class="profile-avatar rounded-circle bg-light"
+              >
+                <div
+                  aria-hidden="true"
+                  class="text-muted"
+                  data-testid="IconMock"
+                  focusable="false"
+                  role="img"
+                  viewbox="0 0 24 24"
+                />
+              </div>
+              <form
+                enctype="multipart/form-data"
+              >
+                <input
+                  accept=".jpg, .jpeg, .png"
+                  class="d-none form-control-file"
+                  id="photo-file"
+                  name="file"
+                  type="file"
+                />
+              </form>
+            </div>
+            <div
+              class="col h-100 w-100 m-0 p-0 justify-content-start align-items-start"
+            >
+              <p
+                class="row m-0 font-weight-bold text-truncate text-primary-500 h3"
+              >
+                onlySocialLinks
+              </p>
+              <div
+                class="row pt-2 m-0 g-1rem"
+              >
+                <span
+                  class="small mb-0 text-gray-800"
+                >
+                  Member since 
+                  <span
+                    class="font-weight-bold"
+                  >
+                     
+                    2017
+                     
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div
+              class="p-0  col-auto"
+            />
+          </div>
+        </div>
+        <div
+          class="ml-auto"
+        />
+      </div>
+    </div>
+    <div
+      class="col d-inline-flex h-100 w-100 align-items-start justify-content-start g-3rem px-120px py-6"
+    >
+      <div
+        class="w-100 p-0"
+      >
+        <div
+          class="col justify-content-start align-items-start p-0"
+        >
+          <div
+            class="col align-self-stretch height-42px justify-content-start align-items-start p-0"
+          >
+            <p
+              class="font-weight-bold text-primary-500 m-0 h2"
+            >
+              Profile information
+            </p>
+          </div>
+        </div>
+        <div
+          class="row m-0 px-0 w-100 d-inline-flex align-items-start justify-content-start pt-5.5"
+        >
+          <div
+            class="col p-0 col-6"
+          >
+            <div
+              class="m-0"
+            >
+              <div
+                class="row m-0 pb-1.5 align-items-center"
+              >
+                <p
+                  class="h5 font-weight-bold m-0"
+                  data-hj-suppress="true"
+                >
+                  Username
+                </p>
+                <svg
+                  class="m-0 info-icon"
+                  fill="none"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11 7h2v2h-2V7Zm0 4h2v6h-2v-6Zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+              <h4
+                class="edit-section-header text-gray-700"
+              >
+                onlySocialLinks
+              </h4>
+            </div>
+          </div>
+          <div
+            class="col m-0 pr-0 pl-40px col-6"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="col container-fluid d-inline-flex bg-color-grey-FBFAF9 h-100 w-100 align-items-start justify-content-start g-3rem px-120px py-6"
+    />
+  </div>
+</div>
+`;
+
+exports[`<ProfilePage /> handles profile with only username and no other fields renders profile with only username 1`] = `
+<div>
+  <div
+    class="profile-page"
+  >
+    <div
+      class="profile-page-bg-banner bg-primary d-md-block align-items-center h-100 w-100 px-120px py-5.5"
+    >
+      <div
+        class="col container-fluid w-100 h-100 bg-white py-0 rounded-75 px-40px"
+      >
+        <div
+          class="col h-100 w-100 px-0 justify-content-start g-15rem py-36px"
+        >
+          <div
+            class="row-auto d-flex flex-wrap align-items-center h-100 w-100 justify-content-start g-15rem flex-row"
+          >
+            <div
+              class="profile-avatar-wrap position-relative"
+            >
+              <div
+                class="profile-avatar rounded-circle bg-light"
+              >
+                <div
+                  aria-hidden="true"
+                  class="text-muted"
+                  data-testid="IconMock"
+                  focusable="false"
+                  role="img"
+                  viewbox="0 0 24 24"
+                />
+              </div>
+              <form
+                enctype="multipart/form-data"
+              >
+                <input
+                  accept=".jpg, .jpeg, .png"
+                  class="d-none form-control-file"
+                  id="photo-file"
+                  name="file"
+                  type="file"
+                />
+              </form>
+            </div>
+            <div
+              class="col h-100 w-100 m-0 p-0 justify-content-start align-items-start"
+            >
+              <p
+                class="row m-0 font-weight-bold text-truncate text-primary-500 h3"
+              >
+                onlyUsernameNoFields
+              </p>
+              <div
+                class="row pt-2 m-0 g-1rem"
+              >
+                <span
+                  class="small mb-0 text-gray-800"
+                >
+                  Member since 
+                  <span
+                    class="font-weight-bold"
+                  >
+                     
+                    2017
+                     
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div
+              class="p-0  col-auto"
+            />
+          </div>
+        </div>
+        <div
+          class="ml-auto"
+        />
+      </div>
+    </div>
+    <div
+      class="col d-inline-flex h-100 w-100 align-items-start justify-content-start g-3rem px-120px py-6"
+    >
+      <div
+        class="w-100 p-0"
+      >
+        <div
+          class="col justify-content-start align-items-start p-0"
+        >
+          <div
+            class="col align-self-stretch height-42px justify-content-start align-items-start p-0"
+          >
+            <p
+              class="font-weight-bold text-primary-500 m-0 h2"
+            >
+              Profile information
+            </p>
+          </div>
+        </div>
+        <div
+          class="row m-0 px-0 w-100 d-inline-flex align-items-start justify-content-start pt-5.5"
+        >
+          <div
+            class="col p-0 col-6"
+          >
+            <div
+              class="m-0"
+            >
+              <div
+                class="row m-0 pb-1.5 align-items-center"
+              >
+                <p
+                  class="h5 font-weight-bold m-0"
+                  data-hj-suppress="true"
+                >
+                  Username
+                </p>
+                <svg
+                  class="m-0 info-icon"
+                  fill="none"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11 7h2v2h-2V7Zm0 4h2v6h-2v-6Zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+              <h4
+                class="edit-section-header text-gray-700"
+              >
+                onlyUsernameNoFields
+              </h4>
+            </div>
+          </div>
+          <div
+            class="col m-0 pr-0 pl-40px col-6"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="col container-fluid d-inline-flex bg-color-grey-FBFAF9 h-100 w-100 align-items-start justify-content-start g-3rem px-120px py-6"
+    />
+  </div>
+</div>
+`;
+
+exports[`<ProfilePage /> handles profile with only username renders profile with only username 1`] = `
+<div>
+  <div
+    class="profile-page"
+  >
+    <div
+      class="profile-page-bg-banner bg-primary d-md-block align-items-center h-100 w-100 px-120px py-5.5"
+    >
+      <div
+        class="col container-fluid w-100 h-100 bg-white py-0 rounded-75 px-40px"
+      >
+        <div
+          class="col h-100 w-100 px-0 justify-content-start g-15rem py-36px"
+        >
+          <div
+            class="row-auto d-flex flex-wrap align-items-center h-100 w-100 justify-content-start g-15rem flex-row"
+          >
+            <div
+              class="profile-avatar-wrap position-relative"
+            >
+              <div
+                class="profile-avatar rounded-circle bg-light"
+              >
+                <div
+                  aria-hidden="true"
+                  class="text-muted"
+                  data-testid="IconMock"
+                  focusable="false"
+                  role="img"
+                  viewbox="0 0 24 24"
+                />
+              </div>
+              <form
+                enctype="multipart/form-data"
+              >
+                <input
+                  accept=".jpg, .jpeg, .png"
+                  class="d-none form-control-file"
+                  id="photo-file"
+                  name="file"
+                  type="file"
+                />
+              </form>
+            </div>
+            <div
+              class="col h-100 w-100 m-0 p-0 justify-content-start align-items-start"
+            >
+              <p
+                class="row m-0 font-weight-bold text-truncate text-primary-500 h3"
+              >
+                onlyUsername
+              </p>
+              <div
+                class="row pt-2 m-0 g-1rem"
+              >
+                <span
+                  class="small mb-0 text-gray-800"
+                >
+                  Member since 
+                  <span
+                    class="font-weight-bold"
+                  >
+                     
+                    2017
+                     
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div
+              class="p-0  col-auto"
+            />
+          </div>
+        </div>
+        <div
+          class="ml-auto"
+        />
+      </div>
+    </div>
+    <div
+      class="col d-inline-flex h-100 w-100 align-items-start justify-content-start g-3rem px-120px py-6"
+    >
+      <div
+        class="w-100 p-0"
+      >
+        <div
+          class="col justify-content-start align-items-start p-0"
+        >
+          <div
+            class="col align-self-stretch height-42px justify-content-start align-items-start p-0"
+          >
+            <p
+              class="font-weight-bold text-primary-500 m-0 h2"
+            >
+              Profile information
+            </p>
+          </div>
+        </div>
+        <div
+          class="row m-0 px-0 w-100 d-inline-flex align-items-start justify-content-start pt-5.5"
+        >
+          <div
+            class="col p-0 col-6"
+          >
+            <div
+              class="m-0"
+            >
+              <div
+                class="row m-0 pb-1.5 align-items-center"
+              >
+                <p
+                  class="h5 font-weight-bold m-0"
+                  data-hj-suppress="true"
+                >
+                  Username
+                </p>
+                <svg
+                  class="m-0 info-icon"
+                  fill="none"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11 7h2v2h-2V7Zm0 4h2v6h-2v-6Zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+              <h4
+                class="edit-section-header text-gray-700"
+              >
+                onlyUsername
+              </h4>
+            </div>
+          </div>
+          <div
+            class="col m-0 pr-0 pl-40px col-6"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="col container-fluid d-inline-flex bg-color-grey-FBFAF9 h-100 w-100 align-items-start justify-content-start g-3rem px-120px py-6"
+    />
+  </div>
+</div>
+`;
