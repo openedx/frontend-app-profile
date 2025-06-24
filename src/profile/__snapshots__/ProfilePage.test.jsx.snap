@@ -978,1254 +978,9 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
                          
                       </option>
                       <option
-                        value="AF"
-                      >
-                        Afghanistan
-                      </option>
-                      <option
-                        value="AL"
-                      >
-                        Albania
-                      </option>
-                      <option
-                        value="DZ"
-                      >
-                        Algeria
-                      </option>
-                      <option
-                        value="AS"
-                      >
-                        American Samoa
-                      </option>
-                      <option
-                        value="AD"
-                      >
-                        Andorra
-                      </option>
-                      <option
-                        value="AO"
-                      >
-                        Angola
-                      </option>
-                      <option
-                        value="AI"
-                      >
-                        Anguilla
-                      </option>
-                      <option
-                        value="AQ"
-                      >
-                        Antarctica
-                      </option>
-                      <option
-                        value="AG"
-                      >
-                        Antigua and Barbuda
-                      </option>
-                      <option
-                        value="AR"
-                      >
-                        Argentina
-                      </option>
-                      <option
-                        value="AM"
-                      >
-                        Armenia
-                      </option>
-                      <option
-                        value="AW"
-                      >
-                        Aruba
-                      </option>
-                      <option
-                        value="AU"
-                      >
-                        Australia
-                      </option>
-                      <option
-                        value="AT"
-                      >
-                        Austria
-                      </option>
-                      <option
-                        value="AZ"
-                      >
-                        Azerbaijan
-                      </option>
-                      <option
-                        value="BS"
-                      >
-                        Bahamas
-                      </option>
-                      <option
-                        value="BH"
-                      >
-                        Bahrain
-                      </option>
-                      <option
-                        value="BD"
-                      >
-                        Bangladesh
-                      </option>
-                      <option
-                        value="BB"
-                      >
-                        Barbados
-                      </option>
-                      <option
-                        value="BY"
-                      >
-                        Belarus
-                      </option>
-                      <option
-                        value="BE"
-                      >
-                        Belgium
-                      </option>
-                      <option
-                        value="BZ"
-                      >
-                        Belize
-                      </option>
-                      <option
-                        value="BJ"
-                      >
-                        Benin
-                      </option>
-                      <option
-                        value="BM"
-                      >
-                        Bermuda
-                      </option>
-                      <option
-                        value="BT"
-                      >
-                        Bhutan
-                      </option>
-                      <option
-                        value="BO"
-                      >
-                        Bolivia
-                      </option>
-                      <option
-                        value="BA"
-                      >
-                        Bosnia and Herzegovina
-                      </option>
-                      <option
-                        value="BW"
-                      >
-                        Botswana
-                      </option>
-                      <option
-                        value="BV"
-                      >
-                        Bouvet Island
-                      </option>
-                      <option
-                        value="BR"
-                      >
-                        Brazil
-                      </option>
-                      <option
-                        value="IO"
-                      >
-                        British Indian Ocean Territory
-                      </option>
-                      <option
-                        value="BN"
-                      >
-                        Brunei Darussalam
-                      </option>
-                      <option
-                        value="BG"
-                      >
-                        Bulgaria
-                      </option>
-                      <option
-                        value="BF"
-                      >
-                        Burkina Faso
-                      </option>
-                      <option
-                        value="BI"
-                      >
-                        Burundi
-                      </option>
-                      <option
-                        value="KH"
-                      >
-                        Cambodia
-                      </option>
-                      <option
-                        value="CM"
-                      >
-                        Cameroon
-                      </option>
-                      <option
-                        value="CA"
-                      >
-                        Canada
-                      </option>
-                      <option
-                        value="CV"
-                      >
-                        Cape Verde
-                      </option>
-                      <option
-                        value="KY"
-                      >
-                        Cayman Islands
-                      </option>
-                      <option
-                        value="CF"
-                      >
-                        Central African Republic
-                      </option>
-                      <option
-                        value="TD"
-                      >
-                        Chad
-                      </option>
-                      <option
-                        value="CL"
-                      >
-                        Chile
-                      </option>
-                      <option
-                        value="CN"
-                      >
-                        China
-                      </option>
-                      <option
-                        value="CX"
-                      >
-                        Christmas Island
-                      </option>
-                      <option
-                        value="CC"
-                      >
-                        Cocos (Keeling) Islands
-                      </option>
-                      <option
-                        value="CO"
-                      >
-                        Colombia
-                      </option>
-                      <option
-                        value="KM"
-                      >
-                        Comoros
-                      </option>
-                      <option
-                        value="CG"
-                      >
-                        Congo
-                      </option>
-                      <option
-                        value="CD"
-                      >
-                        Congo, the Democratic Republic of the
-                      </option>
-                      <option
-                        value="CK"
-                      >
-                        Cook Islands
-                      </option>
-                      <option
-                        value="CR"
-                      >
-                        Costa Rica
-                      </option>
-                      <option
-                        value="CI"
-                      >
-                        Cote D'Ivoire
-                      </option>
-                      <option
-                        value="HR"
-                      >
-                        Croatia
-                      </option>
-                      <option
-                        value="CU"
-                      >
-                        Cuba
-                      </option>
-                      <option
-                        value="CY"
-                      >
-                        Cyprus
-                      </option>
-                      <option
-                        value="CZ"
-                      >
-                        Czech Republic
-                      </option>
-                      <option
-                        value="DK"
-                      >
-                        Denmark
-                      </option>
-                      <option
-                        value="DJ"
-                      >
-                        Djibouti
-                      </option>
-                      <option
-                        value="DM"
-                      >
-                        Dominica
-                      </option>
-                      <option
-                        value="DO"
-                      >
-                        Dominican Republic
-                      </option>
-                      <option
-                        value="EC"
-                      >
-                        Ecuador
-                      </option>
-                      <option
-                        value="EG"
-                      >
-                        Egypt
-                      </option>
-                      <option
-                        value="SV"
-                      >
-                        El Salvador
-                      </option>
-                      <option
-                        value="GQ"
-                      >
-                        Equatorial Guinea
-                      </option>
-                      <option
-                        value="ER"
-                      >
-                        Eritrea
-                      </option>
-                      <option
-                        value="EE"
-                      >
-                        Estonia
-                      </option>
-                      <option
-                        value="ET"
-                      >
-                        Ethiopia
-                      </option>
-                      <option
-                        value="FK"
-                      >
-                        Falkland Islands (Malvinas)
-                      </option>
-                      <option
-                        value="FO"
-                      >
-                        Faroe Islands
-                      </option>
-                      <option
-                        value="FJ"
-                      >
-                        Fiji
-                      </option>
-                      <option
-                        value="FI"
-                      >
-                        Finland
-                      </option>
-                      <option
-                        value="FR"
-                      >
-                        France
-                      </option>
-                      <option
-                        value="GF"
-                      >
-                        French Guiana
-                      </option>
-                      <option
-                        value="PF"
-                      >
-                        French Polynesia
-                      </option>
-                      <option
-                        value="TF"
-                      >
-                        French Southern Territories
-                      </option>
-                      <option
-                        value="GA"
-                      >
-                        Gabon
-                      </option>
-                      <option
-                        value="GM"
-                      >
-                        Gambia
-                      </option>
-                      <option
-                        value="GE"
-                      >
-                        Georgia
-                      </option>
-                      <option
-                        value="DE"
-                      >
-                        Germany
-                      </option>
-                      <option
-                        value="GH"
-                      >
-                        Ghana
-                      </option>
-                      <option
-                        value="GI"
-                      >
-                        Gibraltar
-                      </option>
-                      <option
-                        value="GR"
-                      >
-                        Greece
-                      </option>
-                      <option
-                        value="GL"
-                      >
-                        Greenland
-                      </option>
-                      <option
-                        value="GD"
-                      >
-                        Grenada
-                      </option>
-                      <option
-                        value="GP"
-                      >
-                        Guadeloupe
-                      </option>
-                      <option
-                        value="GU"
-                      >
-                        Guam
-                      </option>
-                      <option
-                        value="GT"
-                      >
-                        Guatemala
-                      </option>
-                      <option
-                        value="GN"
-                      >
-                        Guinea
-                      </option>
-                      <option
-                        value="GW"
-                      >
-                        Guinea-Bissau
-                      </option>
-                      <option
-                        value="GY"
-                      >
-                        Guyana
-                      </option>
-                      <option
-                        value="HT"
-                      >
-                        Haiti
-                      </option>
-                      <option
-                        value="HM"
-                      >
-                        Heard Island and Mcdonald Islands
-                      </option>
-                      <option
-                        value="VA"
-                      >
-                        Holy See (Vatican City State)
-                      </option>
-                      <option
-                        value="HN"
-                      >
-                        Honduras
-                      </option>
-                      <option
-                        value="HK"
-                      >
-                        Hong Kong
-                      </option>
-                      <option
-                        value="HU"
-                      >
-                        Hungary
-                      </option>
-                      <option
-                        value="IS"
-                      >
-                        Iceland
-                      </option>
-                      <option
-                        value="IN"
-                      >
-                        India
-                      </option>
-                      <option
-                        value="ID"
-                      >
-                        Indonesia
-                      </option>
-                      <option
-                        value="IR"
-                      >
-                        Iran, Islamic Republic of
-                      </option>
-                      <option
-                        value="IQ"
-                      >
-                        Iraq
-                      </option>
-                      <option
-                        value="IE"
-                      >
-                        Ireland
-                      </option>
-                      <option
-                        value="IL"
-                      >
-                        Israel
-                      </option>
-                      <option
-                        value="IT"
-                      >
-                        Italy
-                      </option>
-                      <option
-                        value="JM"
-                      >
-                        Jamaica
-                      </option>
-                      <option
-                        value="JP"
-                      >
-                        Japan
-                      </option>
-                      <option
-                        value="JO"
-                      >
-                        Jordan
-                      </option>
-                      <option
-                        value="KZ"
-                      >
-                        Kazakhstan
-                      </option>
-                      <option
-                        value="KE"
-                      >
-                        Kenya
-                      </option>
-                      <option
-                        value="KI"
-                      >
-                        Kiribati
-                      </option>
-                      <option
-                        value="KP"
-                      >
-                        North Korea
-                      </option>
-                      <option
-                        value="KR"
-                      >
-                        South Korea
-                      </option>
-                      <option
-                        value="KW"
-                      >
-                        Kuwait
-                      </option>
-                      <option
-                        value="KG"
-                      >
-                        Kyrgyzstan
-                      </option>
-                      <option
-                        value="LA"
-                      >
-                        Lao People's Democratic Republic
-                      </option>
-                      <option
-                        value="LV"
-                      >
-                        Latvia
-                      </option>
-                      <option
-                        value="LB"
-                      >
-                        Lebanon
-                      </option>
-                      <option
-                        value="LS"
-                      >
-                        Lesotho
-                      </option>
-                      <option
-                        value="LR"
-                      >
-                        Liberia
-                      </option>
-                      <option
-                        value="LY"
-                      >
-                        Libya
-                      </option>
-                      <option
-                        value="LI"
-                      >
-                        Liechtenstein
-                      </option>
-                      <option
-                        value="LT"
-                      >
-                        Lithuania
-                      </option>
-                      <option
-                        value="LU"
-                      >
-                        Luxembourg
-                      </option>
-                      <option
-                        value="MO"
-                      >
-                        Macao
-                      </option>
-                      <option
-                        value="MG"
-                      >
-                        Madagascar
-                      </option>
-                      <option
-                        value="MW"
-                      >
-                        Malawi
-                      </option>
-                      <option
-                        value="MY"
-                      >
-                        Malaysia
-                      </option>
-                      <option
-                        value="MV"
-                      >
-                        Maldives
-                      </option>
-                      <option
-                        value="ML"
-                      >
-                        Mali
-                      </option>
-                      <option
-                        value="MT"
-                      >
-                        Malta
-                      </option>
-                      <option
-                        value="MH"
-                      >
-                        Marshall Islands
-                      </option>
-                      <option
-                        value="MQ"
-                      >
-                        Martinique
-                      </option>
-                      <option
-                        value="MR"
-                      >
-                        Mauritania
-                      </option>
-                      <option
-                        value="MU"
-                      >
-                        Mauritius
-                      </option>
-                      <option
-                        value="YT"
-                      >
-                        Mayotte
-                      </option>
-                      <option
-                        value="MX"
-                      >
-                        Mexico
-                      </option>
-                      <option
-                        value="FM"
-                      >
-                        Micronesia, Federated States of
-                      </option>
-                      <option
-                        value="MD"
-                      >
-                        Moldova, Republic of
-                      </option>
-                      <option
-                        value="MC"
-                      >
-                        Monaco
-                      </option>
-                      <option
-                        value="MN"
-                      >
-                        Mongolia
-                      </option>
-                      <option
-                        value="MS"
-                      >
-                        Montserrat
-                      </option>
-                      <option
-                        value="MA"
-                      >
-                        Morocco
-                      </option>
-                      <option
-                        value="MZ"
-                      >
-                        Mozambique
-                      </option>
-                      <option
-                        value="MM"
-                      >
-                        Myanmar
-                      </option>
-                      <option
-                        value="NA"
-                      >
-                        Namibia
-                      </option>
-                      <option
-                        value="NR"
-                      >
-                        Nauru
-                      </option>
-                      <option
-                        value="NP"
-                      >
-                        Nepal
-                      </option>
-                      <option
-                        value="NL"
-                      >
-                        Netherlands
-                      </option>
-                      <option
-                        value="NC"
-                      >
-                        New Caledonia
-                      </option>
-                      <option
-                        value="NZ"
-                      >
-                        New Zealand
-                      </option>
-                      <option
-                        value="NI"
-                      >
-                        Nicaragua
-                      </option>
-                      <option
-                        value="NE"
-                      >
-                        Niger
-                      </option>
-                      <option
-                        value="NG"
-                      >
-                        Nigeria
-                      </option>
-                      <option
-                        value="NU"
-                      >
-                        Niue
-                      </option>
-                      <option
-                        value="NF"
-                      >
-                        Norfolk Island
-                      </option>
-                      <option
-                        value="MK"
-                      >
-                        North Macedonia, Republic of
-                      </option>
-                      <option
-                        value="MP"
-                      >
-                        Northern Mariana Islands
-                      </option>
-                      <option
-                        value="NO"
-                      >
-                        Norway
-                      </option>
-                      <option
-                        value="OM"
-                      >
-                        Oman
-                      </option>
-                      <option
-                        value="PK"
-                      >
-                        Pakistan
-                      </option>
-                      <option
-                        value="PW"
-                      >
-                        Palau
-                      </option>
-                      <option
-                        value="PS"
-                      >
-                        Palestinian Territory, Occupied
-                      </option>
-                      <option
-                        value="PA"
-                      >
-                        Panama
-                      </option>
-                      <option
-                        value="PG"
-                      >
-                        Papua New Guinea
-                      </option>
-                      <option
-                        value="PY"
-                      >
-                        Paraguay
-                      </option>
-                      <option
-                        value="PE"
-                      >
-                        Peru
-                      </option>
-                      <option
-                        value="PH"
-                      >
-                        Philippines
-                      </option>
-                      <option
-                        value="PN"
-                      >
-                        Pitcairn
-                      </option>
-                      <option
-                        value="PL"
-                      >
-                        Poland
-                      </option>
-                      <option
-                        value="PT"
-                      >
-                        Portugal
-                      </option>
-                      <option
-                        value="PR"
-                      >
-                        Puerto Rico
-                      </option>
-                      <option
-                        value="QA"
-                      >
-                        Qatar
-                      </option>
-                      <option
-                        value="RE"
-                      >
-                        Reunion
-                      </option>
-                      <option
-                        value="RO"
-                      >
-                        Romania
-                      </option>
-                      <option
-                        value="RU"
-                      >
-                        Russian Federation
-                      </option>
-                      <option
-                        value="RW"
-                      >
-                        Rwanda
-                      </option>
-                      <option
-                        value="SH"
-                      >
-                        Saint Helena
-                      </option>
-                      <option
-                        value="KN"
-                      >
-                        Saint Kitts and Nevis
-                      </option>
-                      <option
-                        value="LC"
-                      >
-                        Saint Lucia
-                      </option>
-                      <option
-                        value="PM"
-                      >
-                        Saint Pierre and Miquelon
-                      </option>
-                      <option
-                        value="VC"
-                      >
-                        Saint Vincent and the Grenadines
-                      </option>
-                      <option
-                        value="WS"
-                      >
-                        Samoa
-                      </option>
-                      <option
-                        value="SM"
-                      >
-                        San Marino
-                      </option>
-                      <option
-                        value="ST"
-                      >
-                        Sao Tome and Principe
-                      </option>
-                      <option
-                        value="SA"
-                      >
-                        Saudi Arabia
-                      </option>
-                      <option
-                        value="SN"
-                      >
-                        Senegal
-                      </option>
-                      <option
-                        value="SC"
-                      >
-                        Seychelles
-                      </option>
-                      <option
-                        value="SL"
-                      >
-                        Sierra Leone
-                      </option>
-                      <option
-                        value="SG"
-                      >
-                        Singapore
-                      </option>
-                      <option
-                        value="SK"
-                      >
-                        Slovakia
-                      </option>
-                      <option
-                        value="SI"
-                      >
-                        Slovenia
-                      </option>
-                      <option
-                        value="SB"
-                      >
-                        Solomon Islands
-                      </option>
-                      <option
-                        value="SO"
-                      >
-                        Somalia
-                      </option>
-                      <option
-                        value="ZA"
-                      >
-                        South Africa
-                      </option>
-                      <option
-                        value="GS"
-                      >
-                        South Georgia and the South Sandwich Islands
-                      </option>
-                      <option
-                        value="ES"
-                      >
-                        Spain
-                      </option>
-                      <option
-                        value="LK"
-                      >
-                        Sri Lanka
-                      </option>
-                      <option
-                        value="SD"
-                      >
-                        Sudan
-                      </option>
-                      <option
-                        value="SR"
-                      >
-                        Suriname
-                      </option>
-                      <option
-                        value="SJ"
-                      >
-                        Svalbard and Jan Mayen
-                      </option>
-                      <option
-                        value="SZ"
-                      >
-                        Swaziland
-                      </option>
-                      <option
-                        value="SE"
-                      >
-                        Sweden
-                      </option>
-                      <option
-                        value="CH"
-                      >
-                        Switzerland
-                      </option>
-                      <option
-                        value="SY"
-                      >
-                        Syrian Arab Republic
-                      </option>
-                      <option
-                        value="TW"
-                      >
-                        Taiwan
-                      </option>
-                      <option
-                        value="TJ"
-                      >
-                        Tajikistan
-                      </option>
-                      <option
-                        value="TZ"
-                      >
-                        Tanzania, United Republic of
-                      </option>
-                      <option
-                        value="TH"
-                      >
-                        Thailand
-                      </option>
-                      <option
-                        value="TL"
-                      >
-                        Timor-Leste
-                      </option>
-                      <option
-                        value="TG"
-                      >
-                        Togo
-                      </option>
-                      <option
-                        value="TK"
-                      >
-                        Tokelau
-                      </option>
-                      <option
-                        value="TO"
-                      >
-                        Tonga
-                      </option>
-                      <option
-                        value="TT"
-                      >
-                        Trinidad and Tobago
-                      </option>
-                      <option
-                        value="TN"
-                      >
-                        Tunisia
-                      </option>
-                      <option
-                        value="TR"
-                      >
-                        Turkey
-                      </option>
-                      <option
-                        value="TM"
-                      >
-                        Turkmenistan
-                      </option>
-                      <option
-                        value="TC"
-                      >
-                        Turks and Caicos Islands
-                      </option>
-                      <option
-                        value="TV"
-                      >
-                        Tuvalu
-                      </option>
-                      <option
-                        value="UG"
-                      >
-                        Uganda
-                      </option>
-                      <option
-                        value="UA"
-                      >
-                        Ukraine
-                      </option>
-                      <option
-                        value="AE"
-                      >
-                        United Arab Emirates
-                      </option>
-                      <option
-                        value="GB"
-                      >
-                        United Kingdom
-                      </option>
-                      <option
-                        value="US"
-                      >
-                        United States of America
-                      </option>
-                      <option
-                        value="UM"
-                      >
-                        United States Minor Outlying Islands
-                      </option>
-                      <option
-                        value="UY"
-                      >
-                        Uruguay
-                      </option>
-                      <option
-                        value="UZ"
-                      >
-                        Uzbekistan
-                      </option>
-                      <option
-                        value="VU"
-                      >
-                        Vanuatu
-                      </option>
-                      <option
-                        value="VE"
-                      >
-                        Venezuela
-                      </option>
-                      <option
-                        value="VN"
-                      >
-                        Viet Nam
-                      </option>
-                      <option
-                        value="VG"
-                      >
-                        Virgin Islands, British
-                      </option>
-                      <option
-                        value="VI"
-                      >
-                        Virgin Islands, U.S.
-                      </option>
-                      <option
-                        value="WF"
-                      >
-                        Wallis and Futuna
-                      </option>
-                      <option
-                        value="EH"
-                      >
-                        Western Sahara
-                      </option>
-                      <option
-                        value="YE"
-                      >
-                        Yemen
-                      </option>
-                      <option
-                        value="ZM"
-                      >
-                        Zambia
-                      </option>
-                      <option
-                        value="ZW"
-                      >
-                        Zimbabwe
-                      </option>
-                      <option
-                        value="AX"
-                      >
-                        Åland Islands
-                      </option>
-                      <option
-                        value="BQ"
-                      >
-                        Bonaire, Sint Eustatius and Saba
-                      </option>
-                      <option
-                        value="CW"
-                      >
-                        Curaçao
-                      </option>
-                      <option
-                        value="GG"
-                      >
-                        Guernsey
-                      </option>
-                      <option
-                        value="IM"
-                      >
-                        Isle of Man
-                      </option>
-                      <option
-                        value="JE"
-                      >
-                        Jersey
-                      </option>
-                      <option
                         value="ME"
                       >
                         Montenegro
-                      </option>
-                      <option
-                        value="BL"
-                      >
-                        Saint Barthélemy
-                      </option>
-                      <option
-                        value="MF"
-                      >
-                        Saint Martin (French part)
-                      </option>
-                      <option
-                        value="RS"
-                      >
-                        Serbia
-                      </option>
-                      <option
-                        value="SX"
-                      >
-                        Sint Maarten (Dutch part)
-                      </option>
-                      <option
-                        value="SS"
-                      >
-                        South Sudan
-                      </option>
-                      <option
-                        value="XK"
-                      >
-                        Kosovo
                       </option>
                     </select>
                     <div
@@ -5284,6 +4039,1750 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
                   </div>
                 </form>
               </div>
+            </div>
+          </div>
+          <div
+            class="pgn-transition-replace-group position-relative mb-5"
+          >
+            <div
+              style="padding: .1px 0px;"
+            >
+              <div
+                class="editable-item-header mb-2"
+              >
+                <h2
+                  class="edit-section-header"
+                >
+                  Education
+                  <button
+                    class="float-right px-0 btn btn-link btn-sm"
+                    style="margin-top: -.35rem;"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-pencil mr-1"
+                      data-icon="pencil"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1 0 32c0 8.8 7.2 16 16 16l32 0zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    Edit
+                  </button>
+                </h2>
+                <p
+                  class="mb-0"
+                >
+                  <span
+                    class="ml-auto small text-muted"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-eye-slash "
+                      data-icon="eye-slash"
+                      data-prefix="far"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 640 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zm151 118.3C226 97.7 269.5 80 320 80c65.2 0 118.8 29.6 159.9 67.7C518.4 183.5 545 226 558.6 256c-12.6 28-36.6 66.8-70.9 100.9l-53.8-42.2c9.1-17.6 14.2-37.5 14.2-58.7c0-70.7-57.3-128-128-128c-32.2 0-61.7 11.9-84.2 31.5l-46.1-36.1zM394.9 284.2l-81.5-63.9c4.2-8.5 6.6-18.2 6.6-28.3c0-5.5-.7-10.9-2-16c.7 0 1.3 0 2 0c44.2 0 80 35.8 80 80c0 9.9-1.8 19.4-5.1 28.2zm9.4 130.3C378.8 425.4 350.7 432 320 432c-65.2 0-118.8-29.6-159.9-67.7C121.6 328.5 95 286 81.4 256c8.3-18.4 21.5-41.5 39.4-64.8L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5l-41.9-33zM192 256c0 70.7 57.3 128 128 128c13.3 0 26.1-2 38.2-5.8L302 334c-23.5-5.4-43.1-21.2-53.7-42.3l-56.1-44.2c-.2 2.8-.3 5.6-.3 8.5z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                     
+                    Just me
+                  </span>
+                </p>
+              </div>
+              <p
+                class="h5"
+                data-hj-suppress="true"
+              >
+                Elementary/primary school
+              </p>
+            </div>
+          </div>
+          <div
+            class="pgn-transition-replace-group position-relative mb-5"
+          >
+            <div
+              style="padding: .1px 0px;"
+            >
+              <div
+                class="editable-item-header mb-2"
+              >
+                <h2
+                  class="edit-section-header"
+                >
+                  Social Links
+                  <button
+                    class="float-right px-0 btn btn-link btn-sm"
+                    style="margin-top: -.35rem;"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-pencil mr-1"
+                      data-icon="pencil"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1 0 32c0 8.8 7.2 16 16 16l32 0zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    Edit
+                  </button>
+                </h2>
+                <p
+                  class="mb-0"
+                >
+                  <span
+                    class="ml-auto small text-muted"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-eye "
+                      data-icon="eye"
+                      data-prefix="far"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 576 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M288 80c-65.2 0-118.8 29.6-159.9 67.7C89.6 183.5 63 226 49.4 256c13.6 30 40.2 72.5 78.6 108.3C169.2 402.4 222.8 432 288 432s118.8-29.6 159.9-67.7C486.4 328.5 513 286 526.6 256c-13.6-30-40.2-72.5-78.6-108.3C406.8 109.6 353.2 80 288 80zM95.4 112.6C142.5 68.8 207.2 32 288 32s145.5 36.8 192.6 80.6c46.8 43.5 78.1 95.4 93 131.1c3.3 7.9 3.3 16.7 0 24.6c-14.9 35.7-46.2 87.7-93 131.1C433.5 443.2 368.8 480 288 480s-145.5-36.8-192.6-80.6C48.6 356 17.3 304 2.5 268.3c-3.3-7.9-3.3-16.7 0-24.6C17.3 208 48.6 156 95.4 112.6zM288 336c44.2 0 80-35.8 80-80s-35.8-80-80-80c-.7 0-1.3 0-2 0c1.3 5.1 2 10.5 2 16c0 35.3-28.7 64-64 64c-5.5 0-10.9-.7-16-2c0 .7 0 1.3 0 2c0 44.2 35.8 80 80 80zm0-208a128 128 0 1 1 0 256 128 128 0 1 1 0-256z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                     
+                    Everyone on localhost
+                  </span>
+                </p>
+              </div>
+              <ul
+                class="list-unstyled"
+              >
+                <li
+                  class="form-group"
+                >
+                  <a
+                    class="font-weight-bold"
+                    href="https://www.twitter.com/ALOHA"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-twitter mr-2"
+                      data-icon="twitter"
+                      data-prefix="fab"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    Twitter
+                  </a>
+                </li>
+                <li
+                  class="form-group"
+                >
+                  <a
+                    class="font-weight-bold"
+                    href="https://www.facebook.com/aloha"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-facebook mr-2"
+                      data-icon="facebook"
+                      data-prefix="fab"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    Facebook
+                  </a>
+                </li>
+                <li
+                  class="form-group"
+                >
+                  <div>
+                    <button
+                      class="pl-0 text-left btn btn-link"
+                      tabindex="0"
+                      type="button"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-plus fa-xs mr-2"
+                        data-icon="plus"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 448 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 144L48 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l144 0 0 144c0 17.7 14.3 32 32 32s32-14.3 32-32l0-144 144 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-144 0 0-144z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                      Add 
+                      LinkedIn
+                    </button>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div
+          class="pt-md-3 col-md-8 col-lg-7 offset-lg-1"
+        >
+          <div
+            class="pgn-transition-replace-group position-relative mb-5"
+          >
+            <div
+              style="padding: .1px 0px;"
+            >
+              <div
+                class="editable-item-header mb-2"
+              >
+                <h2
+                  class="edit-section-header"
+                >
+                  About Me
+                  <button
+                    class="float-right px-0 btn btn-link btn-sm"
+                    style="margin-top: -.35rem;"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-pencil mr-1"
+                      data-icon="pencil"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1 0 32c0 8.8 7.2 16 16 16l32 0zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    Edit
+                  </button>
+                </h2>
+                <p
+                  class="mb-0"
+                >
+                  <span
+                    class="ml-auto small text-muted"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-eye "
+                      data-icon="eye"
+                      data-prefix="far"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 576 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M288 80c-65.2 0-118.8 29.6-159.9 67.7C89.6 183.5 63 226 49.4 256c13.6 30 40.2 72.5 78.6 108.3C169.2 402.4 222.8 432 288 432s118.8-29.6 159.9-67.7C486.4 328.5 513 286 526.6 256c-13.6-30-40.2-72.5-78.6-108.3C406.8 109.6 353.2 80 288 80zM95.4 112.6C142.5 68.8 207.2 32 288 32s145.5 36.8 192.6 80.6c46.8 43.5 78.1 95.4 93 131.1c3.3 7.9 3.3 16.7 0 24.6c-14.9 35.7-46.2 87.7-93 131.1C433.5 443.2 368.8 480 288 480s-145.5-36.8-192.6-80.6C48.6 356 17.3 304 2.5 268.3c-3.3-7.9-3.3-16.7 0-24.6C17.3 208 48.6 156 95.4 112.6zM288 336c44.2 0 80-35.8 80-80s-35.8-80-80-80c-.7 0-1.3 0-2 0c1.3 5.1 2 10.5 2 16c0 35.3-28.7 64-64 64c-5.5 0-10.9-.7-16-2c0 .7 0 1.3 0 2c0 44.2 35.8 80 80 80zm0-208a128 128 0 1 1 0 256 128 128 0 1 1 0-256z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                     
+                    Everyone on localhost
+                  </span>
+                </p>
+              </div>
+              <p
+                class="lead"
+                data-hj-suppress="true"
+              >
+                This is my bio
+              </p>
+            </div>
+          </div>
+          <div
+            class="pgn-transition-replace-group position-relative mb-4"
+          >
+            <div
+              style="padding: .1px 0px;"
+            >
+              <div
+                class="editable-item-header mb-2"
+              >
+                <h2
+                  class="edit-section-header"
+                >
+                  My Certificates
+                  <button
+                    class="float-right px-0 btn btn-link btn-sm"
+                    style="margin-top: -.35rem;"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-pencil mr-1"
+                      data-icon="pencil"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1 0 32c0 8.8 7.2 16 16 16l32 0zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    Edit
+                  </button>
+                </h2>
+                <p
+                  class="mb-0"
+                >
+                  <span
+                    class="ml-auto small text-muted"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-eye "
+                      data-icon="eye"
+                      data-prefix="far"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 576 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M288 80c-65.2 0-118.8 29.6-159.9 67.7C89.6 183.5 63 226 49.4 256c13.6 30 40.2 72.5 78.6 108.3C169.2 402.4 222.8 432 288 432s118.8-29.6 159.9-67.7C486.4 328.5 513 286 526.6 256c-13.6-30-40.2-72.5-78.6-108.3C406.8 109.6 353.2 80 288 80zM95.4 112.6C142.5 68.8 207.2 32 288 32s145.5 36.8 192.6 80.6c46.8 43.5 78.1 95.4 93 131.1c3.3 7.9 3.3 16.7 0 24.6c-14.9 35.7-46.2 87.7-93 131.1C433.5 443.2 368.8 480 288 480s-145.5-36.8-192.6-80.6C48.6 356 17.3 304 2.5 268.3c-3.3-7.9-3.3-16.7 0-24.6C17.3 208 48.6 156 95.4 112.6zM288 336c44.2 0 80-35.8 80-80s-35.8-80-80-80c-.7 0-1.3 0-2 0c1.3 5.1 2 10.5 2 16c0 35.3-28.7 64-64 64c-5.5 0-10.9-.7-16-2c0 .7 0 1.3 0 2c0 44.2 35.8 80 80 80zm0-208a128 128 0 1 1 0 256 128 128 0 1 1 0-256z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                     
+                    Everyone on localhost
+                  </span>
+                </p>
+              </div>
+              <div
+                class="row align-items-stretch"
+              >
+                <div
+                  class="col-12 col-sm-6 d-flex align-items-stretch"
+                >
+                  <div
+                    class="card mb-4 certificate flex-grow-1"
+                  >
+                    <div
+                      class="certificate-type-illustration"
+                      style="background-image: url(icon/mock/path);"
+                    />
+                    <div
+                      class="card-body d-flex flex-column"
+                    >
+                      <div
+                        class="card-title"
+                      >
+                        <p
+                          class="small mb-0"
+                        >
+                          Verified Certificate
+                        </p>
+                        <h4
+                          class="certificate-title"
+                        >
+                          edX Demonstration Course
+                        </h4>
+                      </div>
+                      <p
+                        class="small mb-0"
+                      >
+                        From
+                      </p>
+                      <p
+                        class="h6 mb-4"
+                      >
+                        edX
+                      </p>
+                      <div
+                        class="flex-grow-1"
+                      />
+                      <p
+                        class="small mb-2"
+                      >
+                        Completed on 
+                        3/4/2019
+                      </p>
+                      <div>
+                        <a
+                          class="pgn__hyperlink default-link standalone-link btn btn-outline-primary"
+                          href="http://www.example.com/"
+                          rel="noopener noreferrer"
+                          target="_blank"
+                        >
+                          View Certificate
+                          <span
+                            class="pgn__hyperlink__external-icon"
+                            title="Opens in a new tab"
+                          >
+                            <span
+                              class="pgn__icon"
+                              data-testid="hyperlink-icon"
+                              style="height: 1em; width: 1em;"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                fill="none"
+                                focusable="false"
+                                height="24"
+                                role="img"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M19 19H5V5h7V3H3v18h18v-9h-2v7ZM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7Z"
+                                  fill="currentColor"
+                                />
+                              </svg>
+                              <span
+                                class="sr-only"
+                              >
+                                in a new tab
+                              </span>
+                            </span>
+                          </span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ProfilePage /> Renders correctly in various states test user with test user with disabled country 1`] = `
+<div>
+  <div
+    class="profile-page"
+  >
+    <div
+      class="profile-page-bg-banner bg-primary d-md-block p-relative"
+    />
+    <div
+      class="container-fluid"
+    >
+      <div
+        class="row align-items-center pt-4 mb-4 pt-md-0 mb-md-0"
+      >
+        <div
+          class="col-auto col-md-4 col-lg-3"
+        >
+          <div
+            class="d-flex align-items-center d-md-block"
+          >
+            <div
+              class="profile-avatar-wrap position-relative"
+            >
+              <div
+                class="profile-avatar rounded-circle bg-light"
+              >
+                <div
+                  class="profile-avatar-menu-container"
+                >
+                  <div
+                    class="pgn__dropdown pgn__dropdown-light dropdown"
+                    data-testid="dropdown"
+                  >
+                    <button
+                      aria-expanded="false"
+                      aria-haspopup="true"
+                      class="dropdown-toggle btn btn-primary"
+                      type="button"
+                    >
+                      Change
+                    </button>
+                  </div>
+                </div>
+                <img
+                  alt="profile avatar"
+                  class="w-100 h-100 d-block rounded-circle overflow-hidden"
+                  data-hj-suppress="true"
+                  src="http://localhost:18000/media/profile-images/d2a9bdc2ba165dcefc73265c54bf9a20_500.jpg?v=1552495012"
+                  style="object-fit: cover;"
+                />
+              </div>
+              <form
+                enctype="multipart/form-data"
+              >
+                <input
+                  accept=".jpg, .jpeg, .png"
+                  class="d-none form-control-file"
+                  id="photo-file"
+                  name="file"
+                  type="file"
+                />
+              </form>
+            </div>
+          </div>
+        </div>
+        <div
+          class="col"
+        >
+          <div
+            class="d-md-none"
+          >
+            <span
+              data-hj-suppress="true"
+            >
+              <h1
+                class="h2 mb-0 font-weight-bold text-truncate"
+              >
+                staff
+              </h1>
+              <p
+                class="mb-0"
+              >
+                Member since 
+                2017
+              </p>
+              <hr
+                class="d-none d-md-block"
+              />
+            </span>
+          </div>
+          <div
+            class="d-none d-md-block float-right"
+          />
+        </div>
+      </div>
+      <div
+        class="row"
+      >
+        <div
+          class="col-md-4 col-lg-4"
+        >
+          <div
+            class="d-none d-md-block mb-4"
+          >
+            <span
+              data-hj-suppress="true"
+            >
+              <h1
+                class="h2 mb-0 font-weight-bold text-truncate"
+              >
+                staff
+              </h1>
+              <p
+                class="mb-0"
+              >
+                Member since 
+                2017
+              </p>
+              <hr
+                class="d-none d-md-block"
+              />
+            </span>
+          </div>
+          <div
+            class="d-md-none mb-4"
+          />
+          <div
+            class="pgn-transition-replace-group position-relative mb-5"
+          >
+            <div
+              style="padding: .1px 0px;"
+            >
+              <div
+                class="editable-item-header mb-2"
+              >
+                <h2
+                  class="edit-section-header"
+                >
+                  Full Name
+                  <button
+                    class="float-right px-0 btn btn-link btn-sm"
+                    style="margin-top: -.35rem;"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-pencil mr-1"
+                      data-icon="pencil"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1 0 32c0 8.8 7.2 16 16 16l32 0zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    Edit
+                  </button>
+                </h2>
+                <p
+                  class="mb-0"
+                >
+                  <span
+                    class="ml-auto small text-muted"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-eye-slash "
+                      data-icon="eye-slash"
+                      data-prefix="far"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 640 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zm151 118.3C226 97.7 269.5 80 320 80c65.2 0 118.8 29.6 159.9 67.7C518.4 183.5 545 226 558.6 256c-12.6 28-36.6 66.8-70.9 100.9l-53.8-42.2c9.1-17.6 14.2-37.5 14.2-58.7c0-70.7-57.3-128-128-128c-32.2 0-61.7 11.9-84.2 31.5l-46.1-36.1zM394.9 284.2l-81.5-63.9c4.2-8.5 6.6-18.2 6.6-28.3c0-5.5-.7-10.9-2-16c.7 0 1.3 0 2 0c44.2 0 80 35.8 80 80c0 9.9-1.8 19.4-5.1 28.2zm9.4 130.3C378.8 425.4 350.7 432 320 432c-65.2 0-118.8-29.6-159.9-67.7C121.6 328.5 95 286 81.4 256c8.3-18.4 21.5-41.5 39.4-64.8L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5l-41.9-33zM192 256c0 70.7 57.3 128 128 128c13.3 0 26.1-2 38.2-5.8L302 334c-23.5-5.4-43.1-21.2-53.7-42.3l-56.1-44.2c-.2 2.8-.3 5.6-.3 8.5z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                     
+                    Just me
+                  </span>
+                </p>
+              </div>
+              <p
+                class="h5"
+                data-hj-suppress="true"
+              >
+                Lemon Seltzer
+              </p>
+              <small
+                class="form-text text-muted"
+              >
+                This is the name that appears in your account and on your certificates.
+              </small>
+            </div>
+          </div>
+          <div
+            class="pgn-transition-replace-group position-relative mb-5"
+          >
+            <div
+              style="padding: .1px 0px;"
+            >
+              <div
+                aria-labelledby="country-label"
+                role="dialog"
+              >
+                <form>
+                  <div
+                    class="pgn__form-group"
+                  >
+                    <label
+                      class="edit-section-header"
+                      for="country"
+                    >
+                      Location
+                    </label>
+                    <select
+                      class="form-control"
+                      data-hj-suppress="true"
+                      id="country"
+                      name="country"
+                      type="select"
+                    >
+                      <option
+                        value=""
+                      >
+                         
+                      </option>
+                      <option
+                        value="RU"
+                      >
+                        Russian Federation
+                      </option>
+                    </select>
+                  </div>
+                  <div
+                    class="d-flex flex-row-reverse flex-wrap justify-content-end align-items-center"
+                  >
+                    <div
+                      class="form-group d-flex flex-wrap"
+                    >
+                      <label
+                        class="col-form-label"
+                        for="visibilityCountry"
+                      >
+                        Who can see this:
+                      </label>
+                      <span
+                        class="d-flex align-items-center"
+                      >
+                        <span
+                          class="d-inline-block ml-1 mr-2"
+                          style="width: 1.5rem;"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            class="svg-inline--fa fa-eye "
+                            data-icon="eye"
+                            data-prefix="far"
+                            focusable="false"
+                            role="img"
+                            viewBox="0 0 576 512"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M288 80c-65.2 0-118.8 29.6-159.9 67.7C89.6 183.5 63 226 49.4 256c13.6 30 40.2 72.5 78.6 108.3C169.2 402.4 222.8 432 288 432s118.8-29.6 159.9-67.7C486.4 328.5 513 286 526.6 256c-13.6-30-40.2-72.5-78.6-108.3C406.8 109.6 353.2 80 288 80zM95.4 112.6C142.5 68.8 207.2 32 288 32s145.5 36.8 192.6 80.6c46.8 43.5 78.1 95.4 93 131.1c3.3 7.9 3.3 16.7 0 24.6c-14.9 35.7-46.2 87.7-93 131.1C433.5 443.2 368.8 480 288 480s-145.5-36.8-192.6-80.6C48.6 356 17.3 304 2.5 268.3c-3.3-7.9-3.3-16.7 0-24.6C17.3 208 48.6 156 95.4 112.6zM288 336c44.2 0 80-35.8 80-80s-35.8-80-80-80c-.7 0-1.3 0-2 0c1.3 5.1 2 10.5 2 16c0 35.3-28.7 64-64 64c-5.5 0-10.9-.7-16-2c0 .7 0 1.3 0 2c0 44.2 35.8 80 80 80zm0-208a128 128 0 1 1 0 256 128 128 0 1 1 0-256z"
+                              fill="currentColor"
+                            />
+                          </svg>
+                        </span>
+                        <select
+                          class="d-inline-block form-control"
+                          id="visibilityCountry"
+                          name="visibilityCountry"
+                          type="select"
+                        >
+                          <option
+                            value="private"
+                          >
+                            Just me
+                          </option>
+                          <option
+                            value="all_users"
+                          >
+                            Everyone on localhost
+                          </option>
+                        </select>
+                      </span>
+                    </div>
+                    <div
+                      class="form-group flex-shrink-0 flex-grow-1"
+                    >
+                      <button
+                        aria-disabled="false"
+                        aria-live="assertive"
+                        class="pgn__stateful-btn pgn__stateful-btn-state-pending btn btn-primary"
+                        type="submit"
+                      >
+                        <span
+                          class="d-flex align-items-center justify-content-center"
+                        >
+                          <span
+                            class="pgn__stateful-btn-icon"
+                          >
+                            <span
+                              class="pgn__icon icon-spin"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                fill="none"
+                                focusable="false"
+                                height="24"
+                                role="img"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M22 12A10 10 0 1 1 6.122 3.91l1.176 1.618A8 8 0 1 0 20 12h2Z"
+                                  fill="currentColor"
+                                />
+                              </svg>
+                            </span>
+                          </span>
+                          <span>
+                            Saving
+                          </span>
+                        </span>
+                      </button>
+                      <button
+                        class="btn btn-link"
+                        type="button"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div
+            class="pgn-transition-replace-group position-relative mb-5"
+          >
+            <div
+              style="padding: .1px 0px;"
+            >
+              <div
+                class="editable-item-header mb-2"
+              >
+                <h2
+                  class="edit-section-header"
+                >
+                  Primary Language Spoken
+                  <button
+                    class="float-right px-0 btn btn-link btn-sm"
+                    style="margin-top: -.35rem;"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-pencil mr-1"
+                      data-icon="pencil"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1 0 32c0 8.8 7.2 16 16 16l32 0zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    Edit
+                  </button>
+                </h2>
+                <p
+                  class="mb-0"
+                >
+                  <span
+                    class="ml-auto small text-muted"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-eye "
+                      data-icon="eye"
+                      data-prefix="far"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 576 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M288 80c-65.2 0-118.8 29.6-159.9 67.7C89.6 183.5 63 226 49.4 256c13.6 30 40.2 72.5 78.6 108.3C169.2 402.4 222.8 432 288 432s118.8-29.6 159.9-67.7C486.4 328.5 513 286 526.6 256c-13.6-30-40.2-72.5-78.6-108.3C406.8 109.6 353.2 80 288 80zM95.4 112.6C142.5 68.8 207.2 32 288 32s145.5 36.8 192.6 80.6c46.8 43.5 78.1 95.4 93 131.1c3.3 7.9 3.3 16.7 0 24.6c-14.9 35.7-46.2 87.7-93 131.1C433.5 443.2 368.8 480 288 480s-145.5-36.8-192.6-80.6C48.6 356 17.3 304 2.5 268.3c-3.3-7.9-3.3-16.7 0-24.6C17.3 208 48.6 156 95.4 112.6zM288 336c44.2 0 80-35.8 80-80s-35.8-80-80-80c-.7 0-1.3 0-2 0c1.3 5.1 2 10.5 2 16c0 35.3-28.7 64-64 64c-5.5 0-10.9-.7-16-2c0 .7 0 1.3 0 2c0 44.2 35.8 80 80 80zm0-208a128 128 0 1 1 0 256 128 128 0 1 1 0-256z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                     
+                    Everyone on localhost
+                  </span>
+                </p>
+              </div>
+              <p
+                class="h5"
+                data-hj-suppress="true"
+              >
+                Yoruba
+              </p>
+            </div>
+          </div>
+          <div
+            class="pgn-transition-replace-group position-relative mb-5"
+          >
+            <div
+              style="padding: .1px 0px;"
+            >
+              <div
+                class="editable-item-header mb-2"
+              >
+                <h2
+                  class="edit-section-header"
+                >
+                  Education
+                  <button
+                    class="float-right px-0 btn btn-link btn-sm"
+                    style="margin-top: -.35rem;"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-pencil mr-1"
+                      data-icon="pencil"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1 0 32c0 8.8 7.2 16 16 16l32 0zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    Edit
+                  </button>
+                </h2>
+                <p
+                  class="mb-0"
+                >
+                  <span
+                    class="ml-auto small text-muted"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-eye-slash "
+                      data-icon="eye-slash"
+                      data-prefix="far"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 640 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zm151 118.3C226 97.7 269.5 80 320 80c65.2 0 118.8 29.6 159.9 67.7C518.4 183.5 545 226 558.6 256c-12.6 28-36.6 66.8-70.9 100.9l-53.8-42.2c9.1-17.6 14.2-37.5 14.2-58.7c0-70.7-57.3-128-128-128c-32.2 0-61.7 11.9-84.2 31.5l-46.1-36.1zM394.9 284.2l-81.5-63.9c4.2-8.5 6.6-18.2 6.6-28.3c0-5.5-.7-10.9-2-16c.7 0 1.3 0 2 0c44.2 0 80 35.8 80 80c0 9.9-1.8 19.4-5.1 28.2zm9.4 130.3C378.8 425.4 350.7 432 320 432c-65.2 0-118.8-29.6-159.9-67.7C121.6 328.5 95 286 81.4 256c8.3-18.4 21.5-41.5 39.4-64.8L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5l-41.9-33zM192 256c0 70.7 57.3 128 128 128c13.3 0 26.1-2 38.2-5.8L302 334c-23.5-5.4-43.1-21.2-53.7-42.3l-56.1-44.2c-.2 2.8-.3 5.6-.3 8.5z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                     
+                    Just me
+                  </span>
+                </p>
+              </div>
+              <p
+                class="h5"
+                data-hj-suppress="true"
+              >
+                Elementary/primary school
+              </p>
+            </div>
+          </div>
+          <div
+            class="pgn-transition-replace-group position-relative mb-5"
+          >
+            <div
+              style="padding: .1px 0px;"
+            >
+              <div
+                class="editable-item-header mb-2"
+              >
+                <h2
+                  class="edit-section-header"
+                >
+                  Social Links
+                  <button
+                    class="float-right px-0 btn btn-link btn-sm"
+                    style="margin-top: -.35rem;"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-pencil mr-1"
+                      data-icon="pencil"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1 0 32c0 8.8 7.2 16 16 16l32 0zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    Edit
+                  </button>
+                </h2>
+                <p
+                  class="mb-0"
+                >
+                  <span
+                    class="ml-auto small text-muted"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-eye "
+                      data-icon="eye"
+                      data-prefix="far"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 576 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M288 80c-65.2 0-118.8 29.6-159.9 67.7C89.6 183.5 63 226 49.4 256c13.6 30 40.2 72.5 78.6 108.3C169.2 402.4 222.8 432 288 432s118.8-29.6 159.9-67.7C486.4 328.5 513 286 526.6 256c-13.6-30-40.2-72.5-78.6-108.3C406.8 109.6 353.2 80 288 80zM95.4 112.6C142.5 68.8 207.2 32 288 32s145.5 36.8 192.6 80.6c46.8 43.5 78.1 95.4 93 131.1c3.3 7.9 3.3 16.7 0 24.6c-14.9 35.7-46.2 87.7-93 131.1C433.5 443.2 368.8 480 288 480s-145.5-36.8-192.6-80.6C48.6 356 17.3 304 2.5 268.3c-3.3-7.9-3.3-16.7 0-24.6C17.3 208 48.6 156 95.4 112.6zM288 336c44.2 0 80-35.8 80-80s-35.8-80-80-80c-.7 0-1.3 0-2 0c1.3 5.1 2 10.5 2 16c0 35.3-28.7 64-64 64c-5.5 0-10.9-.7-16-2c0 .7 0 1.3 0 2c0 44.2 35.8 80 80 80zm0-208a128 128 0 1 1 0 256 128 128 0 1 1 0-256z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                     
+                    Everyone on localhost
+                  </span>
+                </p>
+              </div>
+              <ul
+                class="list-unstyled"
+              >
+                <li
+                  class="form-group"
+                >
+                  <a
+                    class="font-weight-bold"
+                    href="https://www.twitter.com/ALOHA"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-twitter mr-2"
+                      data-icon="twitter"
+                      data-prefix="fab"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    Twitter
+                  </a>
+                </li>
+                <li
+                  class="form-group"
+                >
+                  <a
+                    class="font-weight-bold"
+                    href="https://www.facebook.com/aloha"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-facebook mr-2"
+                      data-icon="facebook"
+                      data-prefix="fab"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    Facebook
+                  </a>
+                </li>
+                <li
+                  class="form-group"
+                >
+                  <div>
+                    <button
+                      class="pl-0 text-left btn btn-link"
+                      tabindex="0"
+                      type="button"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-plus fa-xs mr-2"
+                        data-icon="plus"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 448 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 144L48 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l144 0 0 144c0 17.7 14.3 32 32 32s32-14.3 32-32l0-144 144 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-144 0 0-144z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                      Add 
+                      LinkedIn
+                    </button>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div
+          class="pt-md-3 col-md-8 col-lg-7 offset-lg-1"
+        >
+          <div
+            class="pgn-transition-replace-group position-relative mb-5"
+          >
+            <div
+              style="padding: .1px 0px;"
+            >
+              <div
+                class="editable-item-header mb-2"
+              >
+                <h2
+                  class="edit-section-header"
+                >
+                  About Me
+                  <button
+                    class="float-right px-0 btn btn-link btn-sm"
+                    style="margin-top: -.35rem;"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-pencil mr-1"
+                      data-icon="pencil"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1 0 32c0 8.8 7.2 16 16 16l32 0zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    Edit
+                  </button>
+                </h2>
+                <p
+                  class="mb-0"
+                >
+                  <span
+                    class="ml-auto small text-muted"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-eye "
+                      data-icon="eye"
+                      data-prefix="far"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 576 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M288 80c-65.2 0-118.8 29.6-159.9 67.7C89.6 183.5 63 226 49.4 256c13.6 30 40.2 72.5 78.6 108.3C169.2 402.4 222.8 432 288 432s118.8-29.6 159.9-67.7C486.4 328.5 513 286 526.6 256c-13.6-30-40.2-72.5-78.6-108.3C406.8 109.6 353.2 80 288 80zM95.4 112.6C142.5 68.8 207.2 32 288 32s145.5 36.8 192.6 80.6c46.8 43.5 78.1 95.4 93 131.1c3.3 7.9 3.3 16.7 0 24.6c-14.9 35.7-46.2 87.7-93 131.1C433.5 443.2 368.8 480 288 480s-145.5-36.8-192.6-80.6C48.6 356 17.3 304 2.5 268.3c-3.3-7.9-3.3-16.7 0-24.6C17.3 208 48.6 156 95.4 112.6zM288 336c44.2 0 80-35.8 80-80s-35.8-80-80-80c-.7 0-1.3 0-2 0c1.3 5.1 2 10.5 2 16c0 35.3-28.7 64-64 64c-5.5 0-10.9-.7-16-2c0 .7 0 1.3 0 2c0 44.2 35.8 80 80 80zm0-208a128 128 0 1 1 0 256 128 128 0 1 1 0-256z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                     
+                    Everyone on localhost
+                  </span>
+                </p>
+              </div>
+              <p
+                class="lead"
+                data-hj-suppress="true"
+              >
+                This is my bio
+              </p>
+            </div>
+          </div>
+          <div
+            class="pgn-transition-replace-group position-relative mb-4"
+          >
+            <div
+              style="padding: .1px 0px;"
+            >
+              <div
+                class="editable-item-header mb-2"
+              >
+                <h2
+                  class="edit-section-header"
+                >
+                  My Certificates
+                  <button
+                    class="float-right px-0 btn btn-link btn-sm"
+                    style="margin-top: -.35rem;"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-pencil mr-1"
+                      data-icon="pencil"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1 0 32c0 8.8 7.2 16 16 16l32 0zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    Edit
+                  </button>
+                </h2>
+                <p
+                  class="mb-0"
+                >
+                  <span
+                    class="ml-auto small text-muted"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-eye "
+                      data-icon="eye"
+                      data-prefix="far"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 576 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M288 80c-65.2 0-118.8 29.6-159.9 67.7C89.6 183.5 63 226 49.4 256c13.6 30 40.2 72.5 78.6 108.3C169.2 402.4 222.8 432 288 432s118.8-29.6 159.9-67.7C486.4 328.5 513 286 526.6 256c-13.6-30-40.2-72.5-78.6-108.3C406.8 109.6 353.2 80 288 80zM95.4 112.6C142.5 68.8 207.2 32 288 32s145.5 36.8 192.6 80.6c46.8 43.5 78.1 95.4 93 131.1c3.3 7.9 3.3 16.7 0 24.6c-14.9 35.7-46.2 87.7-93 131.1C433.5 443.2 368.8 480 288 480s-145.5-36.8-192.6-80.6C48.6 356 17.3 304 2.5 268.3c-3.3-7.9-3.3-16.7 0-24.6C17.3 208 48.6 156 95.4 112.6zM288 336c44.2 0 80-35.8 80-80s-35.8-80-80-80c-.7 0-1.3 0-2 0c1.3 5.1 2 10.5 2 16c0 35.3-28.7 64-64 64c-5.5 0-10.9-.7-16-2c0 .7 0 1.3 0 2c0 44.2 35.8 80 80 80zm0-208a128 128 0 1 1 0 256 128 128 0 1 1 0-256z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                     
+                    Everyone on localhost
+                  </span>
+                </p>
+              </div>
+              <div
+                class="row align-items-stretch"
+              >
+                <div
+                  class="col-12 col-sm-6 d-flex align-items-stretch"
+                >
+                  <div
+                    class="card mb-4 certificate flex-grow-1"
+                  >
+                    <div
+                      class="certificate-type-illustration"
+                      style="background-image: url(icon/mock/path);"
+                    />
+                    <div
+                      class="card-body d-flex flex-column"
+                    >
+                      <div
+                        class="card-title"
+                      >
+                        <p
+                          class="small mb-0"
+                        >
+                          Verified Certificate
+                        </p>
+                        <h4
+                          class="certificate-title"
+                        >
+                          edX Demonstration Course
+                        </h4>
+                      </div>
+                      <p
+                        class="small mb-0"
+                      >
+                        From
+                      </p>
+                      <p
+                        class="h6 mb-4"
+                      >
+                        edX
+                      </p>
+                      <div
+                        class="flex-grow-1"
+                      />
+                      <p
+                        class="small mb-2"
+                      >
+                        Completed on 
+                        3/4/2019
+                      </p>
+                      <div>
+                        <a
+                          class="pgn__hyperlink default-link standalone-link btn btn-outline-primary"
+                          href="http://www.example.com/"
+                          rel="noopener noreferrer"
+                          target="_blank"
+                        >
+                          View Certificate
+                          <span
+                            class="pgn__hyperlink__external-icon"
+                            title="Opens in a new tab"
+                          >
+                            <span
+                              class="pgn__icon"
+                              data-testid="hyperlink-icon"
+                              style="height: 1em; width: 1em;"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                fill="none"
+                                focusable="false"
+                                height="24"
+                                role="img"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M19 19H5V5h7V3H3v18h18v-9h-2v7ZM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7Z"
+                                  fill="currentColor"
+                                />
+                              </svg>
+                              <span
+                                class="sr-only"
+                              >
+                                in a new tab
+                              </span>
+                            </span>
+                          </span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ProfilePage /> Renders correctly in various states test user with test user with non-disabled country 1`] = `
+<div>
+  <div
+    class="profile-page"
+  >
+    <div
+      class="profile-page-bg-banner bg-primary d-md-block p-relative"
+    />
+    <div
+      class="container-fluid"
+    >
+      <div
+        class="row align-items-center pt-4 mb-4 pt-md-0 mb-md-0"
+      >
+        <div
+          class="col-auto col-md-4 col-lg-3"
+        >
+          <div
+            class="d-flex align-items-center d-md-block"
+          >
+            <div
+              class="profile-avatar-wrap position-relative"
+            >
+              <div
+                class="profile-avatar rounded-circle bg-light"
+              >
+                <div
+                  class="profile-avatar-menu-container"
+                >
+                  <div
+                    class="pgn__dropdown pgn__dropdown-light dropdown"
+                    data-testid="dropdown"
+                  >
+                    <button
+                      aria-expanded="false"
+                      aria-haspopup="true"
+                      class="dropdown-toggle btn btn-primary"
+                      type="button"
+                    >
+                      Change
+                    </button>
+                  </div>
+                </div>
+                <img
+                  alt="profile avatar"
+                  class="w-100 h-100 d-block rounded-circle overflow-hidden"
+                  data-hj-suppress="true"
+                  src="http://localhost:18000/media/profile-images/d2a9bdc2ba165dcefc73265c54bf9a20_500.jpg?v=1552495012"
+                  style="object-fit: cover;"
+                />
+              </div>
+              <form
+                enctype="multipart/form-data"
+              >
+                <input
+                  accept=".jpg, .jpeg, .png"
+                  class="d-none form-control-file"
+                  id="photo-file"
+                  name="file"
+                  type="file"
+                />
+              </form>
+            </div>
+          </div>
+        </div>
+        <div
+          class="col"
+        >
+          <div
+            class="d-md-none"
+          >
+            <span
+              data-hj-suppress="true"
+            >
+              <h1
+                class="h2 mb-0 font-weight-bold text-truncate"
+              >
+                staff
+              </h1>
+              <p
+                class="mb-0"
+              >
+                Member since 
+                2017
+              </p>
+              <hr
+                class="d-none d-md-block"
+              />
+            </span>
+          </div>
+          <div
+            class="d-none d-md-block float-right"
+          />
+        </div>
+      </div>
+      <div
+        class="row"
+      >
+        <div
+          class="col-md-4 col-lg-4"
+        >
+          <div
+            class="d-none d-md-block mb-4"
+          >
+            <span
+              data-hj-suppress="true"
+            >
+              <h1
+                class="h2 mb-0 font-weight-bold text-truncate"
+              >
+                staff
+              </h1>
+              <p
+                class="mb-0"
+              >
+                Member since 
+                2017
+              </p>
+              <hr
+                class="d-none d-md-block"
+              />
+            </span>
+          </div>
+          <div
+            class="d-md-none mb-4"
+          />
+          <div
+            class="pgn-transition-replace-group position-relative mb-5"
+          >
+            <div
+              style="padding: .1px 0px;"
+            >
+              <div
+                class="editable-item-header mb-2"
+              >
+                <h2
+                  class="edit-section-header"
+                >
+                  Full Name
+                  <button
+                    class="float-right px-0 btn btn-link btn-sm"
+                    style="margin-top: -.35rem;"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-pencil mr-1"
+                      data-icon="pencil"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1 0 32c0 8.8 7.2 16 16 16l32 0zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    Edit
+                  </button>
+                </h2>
+                <p
+                  class="mb-0"
+                >
+                  <span
+                    class="ml-auto small text-muted"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-eye-slash "
+                      data-icon="eye-slash"
+                      data-prefix="far"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 640 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zm151 118.3C226 97.7 269.5 80 320 80c65.2 0 118.8 29.6 159.9 67.7C518.4 183.5 545 226 558.6 256c-12.6 28-36.6 66.8-70.9 100.9l-53.8-42.2c9.1-17.6 14.2-37.5 14.2-58.7c0-70.7-57.3-128-128-128c-32.2 0-61.7 11.9-84.2 31.5l-46.1-36.1zM394.9 284.2l-81.5-63.9c4.2-8.5 6.6-18.2 6.6-28.3c0-5.5-.7-10.9-2-16c.7 0 1.3 0 2 0c44.2 0 80 35.8 80 80c0 9.9-1.8 19.4-5.1 28.2zm9.4 130.3C378.8 425.4 350.7 432 320 432c-65.2 0-118.8-29.6-159.9-67.7C121.6 328.5 95 286 81.4 256c8.3-18.4 21.5-41.5 39.4-64.8L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5l-41.9-33zM192 256c0 70.7 57.3 128 128 128c13.3 0 26.1-2 38.2-5.8L302 334c-23.5-5.4-43.1-21.2-53.7-42.3l-56.1-44.2c-.2 2.8-.3 5.6-.3 8.5z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                     
+                    Just me
+                  </span>
+                </p>
+              </div>
+              <p
+                class="h5"
+                data-hj-suppress="true"
+              >
+                Lemon Seltzer
+              </p>
+              <small
+                class="form-text text-muted"
+              >
+                This is the name that appears in your account and on your certificates.
+              </small>
+            </div>
+          </div>
+          <div
+            class="pgn-transition-replace-group position-relative mb-5"
+          >
+            <div
+              style="padding: .1px 0px;"
+            >
+              <div
+                aria-labelledby="country-label"
+                role="dialog"
+              >
+                <form>
+                  <div
+                    class="pgn__form-group"
+                  >
+                    <label
+                      class="edit-section-header"
+                      for="country"
+                    >
+                      Location
+                    </label>
+                    <select
+                      class="form-control"
+                      data-hj-suppress="true"
+                      id="country"
+                      name="country"
+                      type="select"
+                    >
+                      <option
+                        value=""
+                      >
+                         
+                      </option>
+                      <option
+                        value="PK"
+                      >
+                        Pakistan
+                      </option>
+                    </select>
+                  </div>
+                  <div
+                    class="d-flex flex-row-reverse flex-wrap justify-content-end align-items-center"
+                  >
+                    <div
+                      class="form-group d-flex flex-wrap"
+                    >
+                      <label
+                        class="col-form-label"
+                        for="visibilityCountry"
+                      >
+                        Who can see this:
+                      </label>
+                      <span
+                        class="d-flex align-items-center"
+                      >
+                        <span
+                          class="d-inline-block ml-1 mr-2"
+                          style="width: 1.5rem;"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            class="svg-inline--fa fa-eye "
+                            data-icon="eye"
+                            data-prefix="far"
+                            focusable="false"
+                            role="img"
+                            viewBox="0 0 576 512"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M288 80c-65.2 0-118.8 29.6-159.9 67.7C89.6 183.5 63 226 49.4 256c13.6 30 40.2 72.5 78.6 108.3C169.2 402.4 222.8 432 288 432s118.8-29.6 159.9-67.7C486.4 328.5 513 286 526.6 256c-13.6-30-40.2-72.5-78.6-108.3C406.8 109.6 353.2 80 288 80zM95.4 112.6C142.5 68.8 207.2 32 288 32s145.5 36.8 192.6 80.6c46.8 43.5 78.1 95.4 93 131.1c3.3 7.9 3.3 16.7 0 24.6c-14.9 35.7-46.2 87.7-93 131.1C433.5 443.2 368.8 480 288 480s-145.5-36.8-192.6-80.6C48.6 356 17.3 304 2.5 268.3c-3.3-7.9-3.3-16.7 0-24.6C17.3 208 48.6 156 95.4 112.6zM288 336c44.2 0 80-35.8 80-80s-35.8-80-80-80c-.7 0-1.3 0-2 0c1.3 5.1 2 10.5 2 16c0 35.3-28.7 64-64 64c-5.5 0-10.9-.7-16-2c0 .7 0 1.3 0 2c0 44.2 35.8 80 80 80zm0-208a128 128 0 1 1 0 256 128 128 0 1 1 0-256z"
+                              fill="currentColor"
+                            />
+                          </svg>
+                        </span>
+                        <select
+                          class="d-inline-block form-control"
+                          id="visibilityCountry"
+                          name="visibilityCountry"
+                          type="select"
+                        >
+                          <option
+                            value="private"
+                          >
+                            Just me
+                          </option>
+                          <option
+                            value="all_users"
+                          >
+                            Everyone on localhost
+                          </option>
+                        </select>
+                      </span>
+                    </div>
+                    <div
+                      class="form-group flex-shrink-0 flex-grow-1"
+                    >
+                      <button
+                        aria-disabled="false"
+                        aria-live="assertive"
+                        class="pgn__stateful-btn pgn__stateful-btn-state-pending btn btn-primary"
+                        type="submit"
+                      >
+                        <span
+                          class="d-flex align-items-center justify-content-center"
+                        >
+                          <span
+                            class="pgn__stateful-btn-icon"
+                          >
+                            <span
+                              class="pgn__icon icon-spin"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                fill="none"
+                                focusable="false"
+                                height="24"
+                                role="img"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M22 12A10 10 0 1 1 6.122 3.91l1.176 1.618A8 8 0 1 0 20 12h2Z"
+                                  fill="currentColor"
+                                />
+                              </svg>
+                            </span>
+                          </span>
+                          <span>
+                            Saving
+                          </span>
+                        </span>
+                      </button>
+                      <button
+                        class="btn btn-link"
+                        type="button"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div
+            class="pgn-transition-replace-group position-relative mb-5"
+          >
+            <div
+              style="padding: .1px 0px;"
+            >
+              <div
+                class="editable-item-header mb-2"
+              >
+                <h2
+                  class="edit-section-header"
+                >
+                  Primary Language Spoken
+                  <button
+                    class="float-right px-0 btn btn-link btn-sm"
+                    style="margin-top: -.35rem;"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-pencil mr-1"
+                      data-icon="pencil"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1 0 32c0 8.8 7.2 16 16 16l32 0zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    Edit
+                  </button>
+                </h2>
+                <p
+                  class="mb-0"
+                >
+                  <span
+                    class="ml-auto small text-muted"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-eye "
+                      data-icon="eye"
+                      data-prefix="far"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 576 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M288 80c-65.2 0-118.8 29.6-159.9 67.7C89.6 183.5 63 226 49.4 256c13.6 30 40.2 72.5 78.6 108.3C169.2 402.4 222.8 432 288 432s118.8-29.6 159.9-67.7C486.4 328.5 513 286 526.6 256c-13.6-30-40.2-72.5-78.6-108.3C406.8 109.6 353.2 80 288 80zM95.4 112.6C142.5 68.8 207.2 32 288 32s145.5 36.8 192.6 80.6c46.8 43.5 78.1 95.4 93 131.1c3.3 7.9 3.3 16.7 0 24.6c-14.9 35.7-46.2 87.7-93 131.1C433.5 443.2 368.8 480 288 480s-145.5-36.8-192.6-80.6C48.6 356 17.3 304 2.5 268.3c-3.3-7.9-3.3-16.7 0-24.6C17.3 208 48.6 156 95.4 112.6zM288 336c44.2 0 80-35.8 80-80s-35.8-80-80-80c-.7 0-1.3 0-2 0c1.3 5.1 2 10.5 2 16c0 35.3-28.7 64-64 64c-5.5 0-10.9-.7-16-2c0 .7 0 1.3 0 2c0 44.2 35.8 80 80 80zm0-208a128 128 0 1 1 0 256 128 128 0 1 1 0-256z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                     
+                    Everyone on localhost
+                  </span>
+                </p>
+              </div>
+              <p
+                class="h5"
+                data-hj-suppress="true"
+              >
+                Yoruba
+              </p>
             </div>
           </div>
           <div
