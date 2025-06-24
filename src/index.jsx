@@ -15,7 +15,8 @@ import {
 } from '@edx/frontend-platform/react';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
+// eslint-disable-next-line import/no-unresolved
+import { createRoot } from 'react-dom/client';
 
 import Header from '@edx/frontend-component-header';
 import FooterSlot from '@openedx/frontend-slot-footer';
@@ -27,6 +28,7 @@ import Head from './head/Head';
 
 import AppRoutes from './routes/AppRoutes';
 
+const rootNode = createRoot(document.getElementById('root'));
 subscribe(APP_READY, async () => {
   const isNewProfileEnabled = getConfig().ENABLE_NEW_PROFILE_VIEW === 'true';
   if (isNewProfileEnabled) {
@@ -34,7 +36,7 @@ subscribe(APP_READY, async () => {
   } else {
     await import('./index.scss');
   }
-  ReactDOM.render(
+  rootNode.render(
     <AppProvider store={configureStore()}>
       <Head />
       <Header />
@@ -48,7 +50,7 @@ subscribe(APP_READY, async () => {
 });
 
 subscribe(APP_INIT_ERROR, (error) => {
-  ReactDOM.render(<ErrorPage message={error.message} />, document.getElementById('root'));
+  rootNode.render(<ErrorPage message={error.message} />, document.getElementById('root'));
 });
 
 initialize({
