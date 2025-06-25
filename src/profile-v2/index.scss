@@ -26,12 +26,12 @@
 
 .icon-visibility-off {
   height: 1rem;
-  color: $gray-500;
+  color: var(--pgn-color-gray-500);
 }
 
 .profile-page {
   .edit-section-header {
-    @extend .h4;
+    font-size: var(--pgn-typography-font-size-h4-base);
     display: block;
     font-weight: 400;
     letter-spacing: 0;
@@ -40,11 +40,11 @@
   }
 
   label.edit-section-header {
-    margin-bottom: $spacer * .5;
+    margin-bottom: calc(var(--pgn-spacing-spacer-base) * .5);
   }
 
   .profile-avatar-wrap {
-    @include media-breakpoint-up(md) {
+    @media (--pgn-size-breakpoint-min-width-md) {
       max-width: 12rem;
       margin-right: 0;
       height: auto;
@@ -67,25 +67,25 @@
     align-items: center;
     border-radius: 50%;
 
-    @include media-breakpoint-up(md) {
+    @media (--pgn-size-breakpoint-min-width-md) {
       background: linear-gradient(to top, rgba(0,0,0,.65) 4rem, rgba(0,0,0,0) 4rem);
       align-items: flex-end;
     }
 
     .btn {
       text-decoration: none;
-      @include media-breakpoint-up(md) {
+      @media (--pgn-size-breakpoint-min-width-md) {
         margin-bottom: 1.2rem;
       }
     }
 
     .dropdown {
-      @include media-breakpoint-up(md) {
+      @media (--pgn-size-breakpoint-min-width-md) {
         margin-bottom: 1.2rem;
       }
 
       .btn {
-        color: $white;
+        color:var(--pgn-color-white);;
         background: transparent;
         border-color: transparent;
         margin: 0;
@@ -98,7 +98,7 @@
     height: 7.5rem;
     position: relative;
 
-    @include media-breakpoint-up(md) {
+    @media (--pgn-size-breakpoint-min-width-md) {
       width: 7.5rem;
       height: 7.5rem;
     }
@@ -118,7 +118,7 @@
       border-radius:0;
       transition: opacity 200ms ease;
 
-      @include media-breakpoint-up(md) {
+      @media (--pgn-size-breakpoint-min-width-md) {
         height: 4rem;
       }
 
