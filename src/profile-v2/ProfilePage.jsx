@@ -219,7 +219,7 @@ const ProfilePage = ({ params }) => {
                         : 'justify-content-start align-items-start',
                     ])}
                   >
-                    <p className="row m-0 font-weight-bold text-truncate text-primary-500 h3">
+                    <p className="row m-0 font-weight-bold text-truncate text-primary-500 user-name">
                       {params.username}
                     </p>
                     {isBlockVisible(name) && (
@@ -293,7 +293,7 @@ const ProfilePage = ({ params }) => {
                 >
                   <div className="m-0">
                     <div className="row m-0 pb-1.5 align-items-center">
-                      <p data-hj-suppress className="h5 font-weight-bold m-0">
+                      <p data-hj-suppress className="field-headings font-weight-bold m-0">
                         {intl.formatMessage(messages['profile.username'])}
                       </p>
                       <OverlayTrigger
@@ -310,9 +310,9 @@ const ProfilePage = ({ params }) => {
                         <InfoOutline className="m-0 info-icon" />
                       </OverlayTrigger>
                     </div>
-                    <h4 className="edit-section-header text-gray-700">
+                    <h6 className="edit-section-header text-gray-700">
                       {params.username}
-                    </h4>
+                    </h6>
                   </div>
                   {isBlockVisible(name) && (
                   <Name
