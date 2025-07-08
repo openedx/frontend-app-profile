@@ -124,6 +124,7 @@ module.exports = {
         createdDate: '2019-03-04T19:31:39.896806Z'
       }
     ],
+    countriesCodesList:[{code:"AX"},{code:"AL"}],
     drafts: {},
     isLoadingProfile: false
   },
