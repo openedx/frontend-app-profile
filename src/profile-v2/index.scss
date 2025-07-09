@@ -30,16 +30,8 @@
 }
 
 .profile-page {
-  .user-name {
-    font-size: 22px;
-    line-height: 28px;
-  }
-  .date-joined {
-    font-size: 14px;
-    line-height: 24px;
-  }
   .edit-section-header {
-    font-size: var(--pgn-typography-font-size-h6-base);
+    font-size: var(--pgn-typography-font-size-h4-base);
     display: block;
     font-weight: 400;
     letter-spacing: 0;
@@ -156,14 +148,9 @@
   }
 }
 
-.field-headings{
-  font-size: 14px;
-  line-height: 20px;
-}
-
 .info-icon {
-  width: 18px;
-  height: 18px;
+  width: 1.5rem;
+  height: 1.5rem;
   padding-left: 0.125rem;
 }
 

@@ -50,7 +50,7 @@ const Name = ({
             <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <div className="row m-0 pb-2.5 align-items-center">
-                  <p data-hj-suppress className="field-headings font-weight-bold m-0">
+                  <p data-hj-suppress className="h5 font-weight-bold m-0">
                     {intl.formatMessage(messages['profile.name.full.name'])}
                   </p>
                   <OverlayTrigger
@@ -68,11 +68,11 @@ const Name = ({
                   </OverlayTrigger>
                 </div>
                 <EditableItemHeader content={name} />
-                <h6 className="font-weight-normal">
+                <h4 className="font-weight-normal">
                   <Hyperlink destination={accountSettingsUrl} target="_blank">
                     {intl.formatMessage(messages['profile.name.redirect'])}
                   </Hyperlink>
-                </h6>
+                </h4>
               </div>
               <FormControls
                 visibilityId="visibilityName"
@@ -87,7 +87,7 @@ const Name = ({
         editable: (
           <>
             <div className="row m-0 pb-1.5 align-items-center">
-              <p data-hj-suppress className="field-headings font-weight-bold m-0">
+              <p data-hj-suppress className="h5 font-weight-bold m-0">
                 {intl.formatMessage(messages['profile.name.full.name'])}
               </p>
               <OverlayTrigger
@@ -116,7 +116,7 @@ const Name = ({
         empty: (
           <>
             <div className="row m-0 pb-1.5 align-items-center">
-              <p data-hj-suppress className="field-headings font-weight-bold m-0">
+              <p data-hj-suppress className="h5 font-weight-bold m-0">
                 {intl.formatMessage(messages['profile.name.full.name'])}
               </p>
               <OverlayTrigger
@@ -141,7 +141,7 @@ const Name = ({
         static: (
           <>
             <div className="row m-0 pb-1.5 align-items-center">
-              <p data-hj-suppress className="field-headings font-weight-bold m-0">
+              <p data-hj-suppress className="h5 font-weight-bold m-0">
                 {intl.formatMessage(messages['profile.name.full.name'])}
               </p>
               <OverlayTrigger
