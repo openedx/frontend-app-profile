@@ -19,7 +19,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 
 import Header from '@edx/frontend-component-header';
-import FooterSlot from '@openedx/frontend-slot-footer';
+import { FooterSlot } from '@edx/frontend-component-footer';
 
 import messages from './i18n';
 import configureStore from './data/configureStore';
