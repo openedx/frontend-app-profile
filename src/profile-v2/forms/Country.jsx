@@ -58,7 +58,7 @@ const Country = ({
                 className="m-0 pb-3"
                 isInvalid={error !== null}
               >
-                <p data-hj-suppress className="field-headings font-weight-bold m-0 pb-2.5">
+                <p data-hj-suppress className="h5 font-weight-bold m-0 pb-2.5">
                   {intl.formatMessage(messages['profile.country.label'])}
                 </p>
                 <select
@@ -95,7 +95,7 @@ const Country = ({
         ),
         editable: (
           <>
-            <p data-hj-suppress className="field-headings font-weight-bold m-0 pb-1.5">
+            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-1.5">
               {intl.formatMessage(messages['profile.country.label'])}
             </p>
             <EditableItemHeader
@@ -109,7 +109,7 @@ const Country = ({
         ),
         empty: (
           <>
-            <p data-hj-suppress className="field-headings font-weight-bold m-0 pb-1.5">
+            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-1.5">
               {intl.formatMessage(messages['profile.country.label'])}
             </p>
             <EmptyContent onClick={handleOpen}>
@@ -119,7 +119,7 @@ const Country = ({
         ),
         static: (
           <>
-            <p data-hj-suppress className="field-headings font-weight-bold m-0 pb-1.5">
+            <p data-hj-suppress className="h5 font-weight-bold m-0 pb-1.5">
               {intl.formatMessage(messages['profile.country.label'])}
             </p>
             <EditableItemHeader content={countryMessages[country]} />

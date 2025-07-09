@@ -73,7 +73,7 @@ exports[`<ProfilePage /> Renders correctly in various states successfully redire
               class="col h-100 w-100 m-0 p-0 justify-content-start align-items-start"
             >
               <p
-                class="row m-0 font-weight-bold text-truncate text-primary-500 user-name"
+                class="row m-0 font-weight-bold text-truncate text-primary-500 h3"
               >
                 staffTest
               </p>
@@ -123,7 +123,7 @@ exports[`<ProfilePage /> Renders correctly in various states successfully redire
                 class="row m-0 pb-1.5 align-items-center"
               >
                 <p
-                  class="field-headings font-weight-bold m-0"
+                  class="h5 font-weight-bold m-0"
                   data-hj-suppress="true"
                 >
                   Username
@@ -142,11 +142,11 @@ exports[`<ProfilePage /> Renders correctly in various states successfully redire
                   />
                 </svg>
               </div>
-              <h6
+              <h4
                 class="edit-section-header text-gray-700"
               >
                 staffTest
-              </h6>
+              </h4>
             </div>
           </div>
           <div
@@ -210,7 +210,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               class="col h-100 w-100 m-0 p-0 justify-content-start align-items-start"
             >
               <p
-                class="row m-0 font-weight-bold text-truncate text-primary-500 user-name"
+                class="row m-0 font-weight-bold text-truncate text-primary-500 h3"
               >
                 verified
               </p>
@@ -223,11 +223,11 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
                 class="row pt-2 m-0 g-1rem"
               >
                 <span
-                  class="date-joined mb-0 text-gray-800"
+                  class="small mb-0 text-gray-800"
                 >
                   Member since 
                   <span
-                    class="font-weight-bold date-joined"
+                    class="font-weight-bold"
                   >
                      
                     2017
@@ -278,7 +278,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
                 class="row m-0 pb-1.5 align-items-center"
               >
                 <p
-                  class="field-headings font-weight-bold m-0"
+                  class="h5 font-weight-bold m-0"
                   data-hj-suppress="true"
                 >
                   Username
@@ -297,11 +297,11 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
                   />
                 </svg>
               </div>
-              <h6
+              <h4
                 class="edit-section-header text-gray-700"
               >
                 verified
-              </h6>
+              </h4>
             </div>
             <div
               class="pgn-transition-replace-group position-relative pt-40px"
@@ -313,7 +313,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
                   class="row m-0 pb-1.5 align-items-center"
                 >
                   <p
-                    class="field-headings font-weight-bold m-0"
+                    class="h5 font-weight-bold m-0"
                     data-hj-suppress="true"
                   >
                     Full name
@@ -360,7 +360,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
                 style="padding: .1px 0px;"
               >
                 <p
-                  class="field-headings font-weight-bold m-0 pb-1.5"
+                  class="h5 font-weight-bold m-0 pb-1.5"
                   data-hj-suppress="true"
                 >
                   Country
@@ -393,7 +393,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
                 style="padding: .1px 0px;"
               >
                 <p
-                  class="field-headings font-weight-bold m-0 pb-1.5"
+                  class="h5 font-weight-bold m-0 pb-1.5"
                   data-hj-suppress="true"
                 >
                   Primary language spoken
@@ -426,7 +426,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
                 style="padding: .1px 0px;"
               >
                 <p
-                  class="field-headings font-weight-bold m-0 pb-1.5"
+                  class="h5 font-weight-bold m-0 pb-1.5"
                   data-hj-suppress="true"
                 >
                   Education
@@ -463,7 +463,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
                 style="padding: .1px 0px;"
               >
                 <p
-                  class="field-headings font-weight-bold m-0 pb-1.5"
+                  class="h5 font-weight-bold m-0 pb-1.5"
                   data-hj-suppress="true"
                 >
                   Bio
@@ -501,7 +501,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
                       class="pt-40px"
                     >
                       <p
-                        class="field-headings font-weight-bold m-0 pb-1.5"
+                        class="h5 font-weight-bold m-0 pb-1.5"
                         data-hj-suppress="true"
                       >
                         X
@@ -631,7 +631,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               class="col h-100 w-100 m-0 p-0 justify-content-start align-items-start"
             >
               <p
-                class="row m-0 font-weight-bold text-truncate text-primary-500 user-name"
+                class="row m-0 font-weight-bold text-truncate text-primary-500 h3"
               >
                 staff
               </p>
@@ -644,11 +644,11 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                 class="row pt-2 m-0 g-1rem"
               >
                 <span
-                  class="date-joined mb-0 text-gray-800"
+                  class="small mb-0 text-gray-800"
                 >
                   Member since 
                   <span
-                    class="font-weight-bold date-joined"
+                    class="font-weight-bold"
                   >
                      
                     2017
@@ -718,7 +718,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                 class="row m-0 pb-1.5 align-items-center"
               >
                 <p
-                  class="field-headings font-weight-bold m-0"
+                  class="h5 font-weight-bold m-0"
                   data-hj-suppress="true"
                 >
                   Username
@@ -737,11 +737,11 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                   />
                 </svg>
               </div>
-              <h6
+              <h4
                 class="edit-section-header text-gray-700"
               >
                 staff
-              </h6>
+              </h4>
             </div>
             <div
               class="pgn-transition-replace-group position-relative pt-40px"
@@ -753,7 +753,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                   class="row m-0 pb-1.5 align-items-center"
                 >
                   <p
-                    class="field-headings font-weight-bold m-0"
+                    class="h5 font-weight-bold m-0"
                     data-hj-suppress="true"
                   >
                     Full name
@@ -819,7 +819,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                 style="padding: .1px 0px;"
               >
                 <p
-                  class="field-headings font-weight-bold m-0 pb-1.5"
+                  class="h5 font-weight-bold m-0 pb-1.5"
                   data-hj-suppress="true"
                 >
                   Country
@@ -871,7 +871,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                 style="padding: .1px 0px;"
               >
                 <p
-                  class="field-headings font-weight-bold m-0 pb-1.5"
+                  class="h5 font-weight-bold m-0 pb-1.5"
                   data-hj-suppress="true"
                 >
                   Primary language spoken
@@ -923,7 +923,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                 style="padding: .1px 0px;"
               >
                 <p
-                  class="field-headings font-weight-bold m-0 pb-1.5"
+                  class="h5 font-weight-bold m-0 pb-1.5"
                   data-hj-suppress="true"
                 >
                   Education
@@ -979,7 +979,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                 style="padding: .1px 0px;"
               >
                 <p
-                  class="field-headings font-weight-bold m-0 pb-1.5"
+                  class="h5 font-weight-bold m-0 pb-1.5"
                   data-hj-suppress="true"
                 >
                   Bio
@@ -1036,7 +1036,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                       class="pt-40px"
                     >
                       <p
-                        class="field-headings font-weight-bold m-0 pb-1.5"
+                        class="h5 font-weight-bold m-0 pb-1.5"
                         data-hj-suppress="true"
                       >
                         X
@@ -1088,7 +1088,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                       class="pt-40px"
                     >
                       <p
-                        class="field-headings font-weight-bold m-0 pb-1.5"
+                        class="h5 font-weight-bold m-0 pb-1.5"
                         data-hj-suppress="true"
                       >
                         Facebook
@@ -1140,7 +1140,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                       class="pt-40px"
                     >
                       <p
-                        class="field-headings font-weight-bold m-0 pb-1.5"
+                        class="h5 font-weight-bold m-0 pb-1.5"
                         data-hj-suppress="true"
                       >
                         LinkedIn
@@ -1374,7 +1374,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
               class="col h-100 w-100 m-0 p-0 justify-content-start align-items-start"
             >
               <p
-                class="row m-0 font-weight-bold text-truncate text-primary-500 user-name"
+                class="row m-0 font-weight-bold text-truncate text-primary-500 h3"
               >
                 staff
               </p>
@@ -1387,11 +1387,11 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                 class="row pt-2 m-0 g-1rem"
               >
                 <span
-                  class="date-joined mb-0 text-gray-800"
+                  class="small mb-0 text-gray-800"
                 >
                   Member since 
                   <span
-                    class="font-weight-bold date-joined"
+                    class="font-weight-bold"
                   >
                      
                     2017
@@ -1452,7 +1452,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                 class="row m-0 pb-1.5 align-items-center"
               >
                 <p
-                  class="field-headings font-weight-bold m-0"
+                  class="h5 font-weight-bold m-0"
                   data-hj-suppress="true"
                 >
                   Username
@@ -1471,11 +1471,11 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                   />
                 </svg>
               </div>
-              <h6
+              <h4
                 class="edit-section-header text-gray-700"
               >
                 staff
-              </h6>
+              </h4>
             </div>
             <div
               class="pgn-transition-replace-group position-relative pt-40px"
@@ -1487,7 +1487,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                   class="row m-0 pb-1.5 align-items-center"
                 >
                   <p
-                    class="field-headings font-weight-bold m-0"
+                    class="h5 font-weight-bold m-0"
                     data-hj-suppress="true"
                   >
                     Full name
@@ -1553,7 +1553,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                 style="padding: .1px 0px;"
               >
                 <p
-                  class="field-headings font-weight-bold m-0 pb-1.5"
+                  class="h5 font-weight-bold m-0 pb-1.5"
                   data-hj-suppress="true"
                 >
                   Country
@@ -1605,7 +1605,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                 style="padding: .1px 0px;"
               >
                 <p
-                  class="field-headings font-weight-bold m-0 pb-1.5"
+                  class="h5 font-weight-bold m-0 pb-1.5"
                   data-hj-suppress="true"
                 >
                   Primary language spoken
@@ -1657,7 +1657,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                 style="padding: .1px 0px;"
               >
                 <p
-                  class="field-headings font-weight-bold m-0 pb-1.5"
+                  class="h5 font-weight-bold m-0 pb-1.5"
                   data-hj-suppress="true"
                 >
                   Education
@@ -1713,7 +1713,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                 style="padding: .1px 0px;"
               >
                 <p
-                  class="field-headings font-weight-bold m-0 pb-1.5"
+                  class="h5 font-weight-bold m-0 pb-1.5"
                   data-hj-suppress="true"
                 >
                   Bio
@@ -1770,7 +1770,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                       class="pt-40px"
                     >
                       <p
-                        class="field-headings font-weight-bold m-0 pb-1.5"
+                        class="h5 font-weight-bold m-0 pb-1.5"
                         data-hj-suppress="true"
                       >
                         X
@@ -1822,7 +1822,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                       class="pt-40px"
                     >
                       <p
-                        class="field-headings font-weight-bold m-0 pb-1.5"
+                        class="h5 font-weight-bold m-0 pb-1.5"
                         data-hj-suppress="true"
                       >
                         Facebook
@@ -1874,7 +1874,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                       class="pt-40px"
                     >
                       <p
-                        class="field-headings font-weight-bold m-0 pb-1.5"
+                        class="h5 font-weight-bold m-0 pb-1.5"
                         data-hj-suppress="true"
                       >
                         LinkedIn

@@ -154,7 +154,7 @@ const SocialLinks = ({
             <div>
               {socialLinks.map(({ platform }) => (
                 <div key={platform} className="pt-40px">
-                  <p data-hj-suppress className="field-headings font-weight-bold m-0 pb-1.5">
+                  <p data-hj-suppress className="h5 font-weight-bold m-0 pb-1.5">
                     {platformDisplayInfo[platform].name}
                   </p>
                   <EmptyContent onClick={() => handleOpen(platform)}>
@@ -179,7 +179,7 @@ const SocialLinks = ({
                 .filter(({ socialLink }) => Boolean(socialLink))
                 .map(({ platform, socialLink }) => (
                   <div key={platform} className="pt-40px">
-                    <p data-hj-suppress className="field-headings font-weight-bold m-0 pb-1.5">
+                    <p data-hj-suppress className="h5 font-weight-bold m-0 pb-1.5">
                       {platformDisplayInfo[platform].name}
                     </p>
                     <EditableItemHeader
@@ -196,7 +196,7 @@ const SocialLinks = ({
             <div>
               {socialLinks.map(({ platform, socialLink }) => (
                 <div key={platform} className="pt-40px">
-                  <p data-hj-suppress className="field-headings font-weight-bold m-0 pb-1.5">
+                  <p data-hj-suppress className="h5 font-weight-bold m-0 pb-1.5">
                     {platformDisplayInfo[platform].name}
                   </p>
                   {renderPlatformContent(platform, socialLink, activePlatform === platform)}
@@ -210,7 +210,7 @@ const SocialLinks = ({
             <div>
               {socialLinks.map(({ platform, socialLink }) => (
                 <div key={platform} className="pt-40px">
-                  <p data-hj-suppress className="field-headings font-weight-bold m-0 pb-2.5">
+                  <p data-hj-suppress className="h5 font-weight-bold m-0 pb-2.5">
                     {platformDisplayInfo[platform].name}
                   </p>
                   {renderPlatformContent(platform, socialLink, activePlatform === platform)}
