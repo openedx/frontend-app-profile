@@ -8,7 +8,7 @@ const messages = defineMessages({
   },
   'profile.preferredlanguage.label': {
     id: 'profile.preferredlanguage.label',
-    defaultMessage: 'Primary Language Spoken',
+    defaultMessage: 'Primary language spoken',
     description: 'The label for a user’s primary spoken language.',
   },
 });

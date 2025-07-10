@@ -29,6 +29,7 @@ module.exports = {
     drafts: {},
     isLoadingProfile: true,
     isAuthenticatedUserProfile: true,
+    countriesCodesList: ['US', 'CA', 'GB', 'ME']
   },
   router: {
     location: {

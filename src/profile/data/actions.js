@@ -9,8 +9,6 @@ export const CLOSE_FORM = 'CLOSE_FORM';
 export const UPDATE_DRAFT = 'UPDATE_DRAFT';
 export const RESET_DRAFTS = 'RESET_DRAFTS';
 
-// FETCH PROFILE ACTIONS
-
 export const fetchProfile = username => ({
   type: FETCH_PROFILE.BASE,
   payload: { username },
@@ -25,21 +23,17 @@ export const fetchProfileSuccess = (
   preferences,
   courseCertificates,
   isAuthenticatedUserProfile,
-  countriesCodesList,
 ) => ({
   type: FETCH_PROFILE.SUCCESS,
   account,
   preferences,
   courseCertificates,
   isAuthenticatedUserProfile,
-  countriesCodesList,
 });
 
 export const fetchProfileReset = () => ({
   type: FETCH_PROFILE.RESET,
 });
-
-// SAVE PROFILE ACTIONS
 
 export const saveProfile = (formId, username) => ({
   type: SAVE_PROFILE.BASE,
@@ -70,8 +64,6 @@ export const saveProfileFailure = errors => ({
   payload: { errors },
 });
 
-// SAVE PROFILE PHOTO ACTIONS
-
 export const saveProfilePhoto = (username, formData) => ({
   type: SAVE_PROFILE_PHOTO.BASE,
   payload: {
@@ -98,8 +90,6 @@ export const saveProfilePhotoFailure = error => ({
   payload: { error },
 });
 
-// DELETE PROFILE PHOTO ACTIONS
-
 export const deleteProfilePhoto = username => ({
   type: DELETE_PROFILE_PHOTO.BASE,
   payload: {
@@ -120,8 +110,6 @@ export const deleteProfilePhotoReset = () => ({
   type: DELETE_PROFILE_PHOTO.RESET,
 });
 
-// FIELD STATE ACTIONS
-
 export const openForm = formId => ({
   type: OPEN_FORM,
   payload: {
@@ -135,8 +123,6 @@ export const closeForm = formId => ({
     formId,
   },
 });
-
-// FORM STATE ACTIONS
 
 export const updateDraft = (name, value) => ({
   type: UPDATE_DRAFT,
