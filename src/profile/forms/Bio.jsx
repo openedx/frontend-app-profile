@@ -19,10 +19,12 @@ class Bio extends React.Component {
   constructor(props) {
     super(props);
 
+    this.textareaRef = React.createRef();
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleOpen = this.handleOpen.bind(this);
+    this.handleResize = this.handleResize.bind(this);
   }
 
   handleChange(e) {
@@ -41,6 +43,25 @@ class Bio extends React.Component {
 
   handleOpen() {
     this.props.openHandler(this.props.formId);
+  }
+
+  handleResize(event) {
+    if (event.altKey) {
+      const textarea = this.textareaRef.current;
+      if (!textarea) {
+        return;
+      }
+
+      const step = 10; // pixels to increase/decrease the height of the textarea
+      if (event.key === 'ArrowUp') {
+        textarea.style.height = `${Math.max(30, textarea.offsetHeight - step)}px`;
+        event.preventDefault();
+      }
+      if (event.key === 'ArrowDown') {
+        textarea.style.height = `${textarea.offsetHeight + step}px`;
+        event.preventDefault();
+      }
+    }
   }
 
   render() {
@@ -68,7 +89,9 @@ class Bio extends React.Component {
                     id={formId}
                     name={formId}
                     value={bio}
+                    ref={this.textareaRef}
                     onChange={this.handleChange}
+                    onKeyDown={this.handleResize}
                   />
                   {error !== null && (
                     <Form.Control.Feedback hasIcon={false}>
