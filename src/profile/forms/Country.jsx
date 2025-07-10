@@ -23,6 +23,7 @@ class Country extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleOpen = this.handleOpen.bind(this);
+    this.isDisabledCountry = this.isDisabledCountry.bind(this);
   }
 
   handleChange(e) {
@@ -46,6 +47,12 @@ class Country extends React.Component {
     this.props.openHandler(this.props.formId);
   }
 
+  isDisabledCountry = (country) => {
+    const { countriesCodesList } = this.props;
+
+    return countriesCodesList.length > 0 && !countriesCodesList.find(code => code === country);
+  };
+
   render() {
     const {
       formId,
@@ -55,7 +62,7 @@ class Country extends React.Component {
       saveState,
       error,
       intl,
-      sortedCountries,
+      translatedCountries,
       countryMessages,
     } = this.props;
 
@@ -84,8 +91,8 @@ class Country extends React.Component {
                     onChange={this.handleChange}
                   >
                     <option value="">&nbsp;</option>
-                    {sortedCountries.map(({ code, name }) => (
-                      <option key={code} value={code}>{name}</option>
+                    {translatedCountries.map(({ code, name }) => (
+                      <option key={code} value={code} disabled={this.isDisabledCountry(code)}>{name}</option>
                     ))}
                   </select>
                   {error !== null && (
@@ -153,10 +160,11 @@ Country.propTypes = {
   editMode: PropTypes.oneOf(['editing', 'editable', 'empty', 'static']),
   saveState: PropTypes.string,
   error: PropTypes.string,
-  sortedCountries: PropTypes.arrayOf(PropTypes.shape({
+  translatedCountries: PropTypes.arrayOf(PropTypes.shape({
     code: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
   })).isRequired,
+  countriesCodesList: PropTypes.arrayOf(PropTypes.string).isRequired,
   countryMessages: PropTypes.objectOf(PropTypes.string).isRequired,
 
   // Actions
