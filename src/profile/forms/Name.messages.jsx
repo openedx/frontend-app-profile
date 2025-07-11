@@ -3,18 +3,23 @@ import { defineMessages } from '@edx/frontend-platform/i18n';
 const messages = defineMessages({
   'profile.name.full.name': {
     id: 'profile.name.full.name',
-    defaultMessage: 'Full Name',
+    defaultMessage: 'Full name',
     description: 'A section of a user profile',
-  },
-  'profile.name.details': {
-    id: 'profile.name.details',
-    defaultMessage: 'This is the name that appears in your account and on your certificates.',
-    description: 'Describes the area for a user to update their name.',
   },
   'profile.name.empty': {
     id: 'profile.name.empty',
-    defaultMessage: 'Add name',
+    defaultMessage: 'Add full name',
     description: 'The affordance to add a name to a user’s profile.',
+  },
+  'profile.name.tooltip': {
+    id: 'profile.name.tooltip',
+    defaultMessage: 'The name that is used for ID verification and that appears on your certificates',
+    description: 'Tooltip for the full name field.',
+  },
+  'profile.name.redirect': {
+    id: 'profile.name.redirect',
+    defaultMessage: 'Edit full name from the Accounts page',
+    description: 'Redirect message for editing the name from the Accounts page.',
   },
 });
 

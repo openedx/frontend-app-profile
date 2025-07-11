@@ -3,12 +3,12 @@ import { defineMessages } from '@edx/frontend-platform/i18n';
 const messages = defineMessages({
   'profile.country.label': {
     id: 'profile.country.label',
-    defaultMessage: 'Location',
+    defaultMessage: 'Country',
     description: 'The label for a country in a user profile.',
   },
   'profile.country.empty': {
     id: 'profile.country.empty',
-    defaultMessage: 'Add location',
+    defaultMessage: 'Add country',
     description: 'The affordance to add country location to a user’s profile.',
   },
 });

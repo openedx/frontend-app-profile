@@ -1,3 +1,4 @@
+import { history } from '@edx/frontend-platform';
 import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
 import pick from 'lodash.pick';
 import {
@@ -21,13 +22,12 @@ import {
   resetDrafts,
   saveProfileBegin,
   saveProfileFailure,
-  saveProfilePhotoBegin,
-  saveProfilePhotoFailure,
-  saveProfilePhotoReset,
-  saveProfilePhotoSuccess,
   saveProfileReset,
   saveProfileSuccess,
   SAVE_PROFILE,
+  saveProfilePhotoBegin,
+  saveProfilePhotoReset,
+  saveProfilePhotoSuccess,
   SAVE_PROFILE_PHOTO,
 } from './actions';
 import { handleSaveProfileSelector, userAccountSelector } from './selectors';
@@ -37,7 +37,6 @@ export function* handleFetchProfile(action) {
   const { username } = action.payload;
   const userAccount = yield select(userAccountSelector);
   const isAuthenticatedUserProfile = username === getAuthenticatedUser().username;
-  // Default our data assuming the account is the current user's account.
   let preferences = {};
   let account = userAccount;
   let courseCertificates = null;
@@ -46,7 +45,6 @@ export function* handleFetchProfile(action) {
   try {
     yield put(fetchProfileBegin());
 
-    // Depending on which profile we're loading, we need to make different calls.
     const calls = [
       call(ProfileApiService.getAccount, username),
       call(ProfileApiService.getCourseCertificates, username),
@@ -54,12 +52,9 @@ export function* handleFetchProfile(action) {
     ];
 
     if (isAuthenticatedUserProfile) {
-      // If the profile is for the current user, get their preferences.
-      // We don't need them for other users.
       calls.push(call(ProfileApiService.getPreferences, username));
     }
 
-    // Make all the calls in parallel.
     const result = yield all(calls);
 
     if (isAuthenticatedUserProfile) {
@@ -68,9 +63,6 @@ export function* handleFetchProfile(action) {
       [account, courseCertificates, countriesCodesList] = result;
     }
 
-    // Set initial visibility values for account
-    // Set account_privacy as custom is necessary so that when viewing another user's profile,
-    // their full name is displayed and change visibility forms are worked correctly
     if (isAuthenticatedUserProfile && result[0].accountPrivacy === 'all_users') {
       yield call(ProfileApiService.patchPreferences, action.payload.username, {
         account_privacy: 'custom',
@@ -97,11 +89,7 @@ export function* handleFetchProfile(action) {
     yield put(fetchProfileReset());
   } catch (e) {
     if (e.response.status === 404) {
-      if (e.processedData && e.processedData.fieldErrors) {
-        yield put(saveProfileFailure(e.processedData.fieldErrors));
-      } else {
-        yield put(saveProfileFailure(e.customAttributes));
-      }
+      history.push('/notfound');
     } else {
       throw e;
     }
@@ -114,7 +102,6 @@ export function* handleSaveProfile(action) {
 
     const accountDrafts = pick(drafts, [
       'bio',
-      'courseCertificates',
       'country',
       'levelOfEducation',
       'languageProficiencies',
@@ -124,7 +111,6 @@ export function* handleSaveProfile(action) {
 
     const preferencesDrafts = pick(drafts, [
       'visibilityBio',
-      'visibilityCourseCertificates',
       'visibilityCountry',
       'visibilityLevelOfEducation',
       'visibilityLanguageProficiencies',
@@ -138,7 +124,6 @@ export function* handleSaveProfile(action) {
 
     yield put(saveProfileBegin());
     let accountResult = null;
-    // Build the visibility drafts into a structure the API expects.
 
     if (Object.keys(accountDrafts).length > 0) {
       accountResult = yield call(
@@ -148,17 +133,14 @@ export function* handleSaveProfile(action) {
       );
     }
 
-    let preferencesResult = preferences; // assume it hasn't changed.
+    let preferencesResult = preferences;
     if (Object.keys(preferencesDrafts).length > 0) {
       yield call(ProfileApiService.patchPreferences, action.payload.username, preferencesDrafts);
       // TODO: Temporary deoptimization since the patchPreferences call doesn't return anything.
-      // Remove this second call once we can get a result from the one above.
+
       preferencesResult = yield call(ProfileApiService.getPreferences, action.payload.username);
     }
 
-    // The account result is returned from the server.
-    // The preferences draft is valid if the server didn't complain, so
-    // pass it through directly.
     yield put(saveProfileSuccess(accountResult, preferencesResult));
     yield delay(1000);
     yield put(closeForm(action.payload.formId));
@@ -184,12 +166,7 @@ export function* handleSaveProfilePhoto(action) {
     yield put(saveProfilePhotoSuccess(photoResult));
     yield put(saveProfilePhotoReset());
   } catch (e) {
-    if (e.processedData) {
-      yield put(saveProfilePhotoFailure(e.processedData));
-    } else {
-      yield put(saveProfilePhotoReset());
-      throw e;
-    }
+    yield put(saveProfilePhotoReset());
   }
 }
 
@@ -203,7 +180,6 @@ export function* handleDeleteProfilePhoto(action) {
     yield put(deleteProfilePhotoReset());
   } catch (e) {
     yield put(deleteProfilePhotoReset());
-    throw e;
   }
 }
 

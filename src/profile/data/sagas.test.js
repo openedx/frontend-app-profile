@@ -26,7 +26,6 @@ jest.mock('@edx/frontend-platform/auth', () => ({
   getAuthenticatedUser: jest.fn(),
 }));
 
-// RootSaga and ProfileApiService must be imported AFTER the mock above.
 /* eslint-disable import/first */
 import profileSaga, {
   handleFetchProfile,
@@ -78,7 +77,6 @@ describe('RootSaga', () => {
         call(ProfileApiService.getCourseCertificates, 'gonzo'),
         call(ProfileApiService.getCountryList),
         call(ProfileApiService.getPreferences, 'gonzo'),
-
       ]));
       expect(gen.next(result).value)
         .toEqual(put(profileActions.fetchProfileSuccess(userAccount, result[3], result[1], true, [])));
@@ -137,8 +135,6 @@ describe('RootSaga', () => {
       expect(gen.next().value).toEqual(call(ProfileApiService.patchProfile, 'my username', {
         name: 'Full Name',
       }));
-      // The library would supply the result of the above call
-      // as the parameter to the NEXT yield.  Here:
       expect(gen.next(profile).value).toEqual(put(profileActions.saveProfileSuccess(profile, {})));
       expect(gen.next().value).toEqual(delay(1000));
       expect(gen.next().value).toEqual(put(profileActions.closeForm('ze form id')));

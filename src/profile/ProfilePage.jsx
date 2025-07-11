@@ -1,14 +1,20 @@
-import React from 'react';
+import React, {
+  useEffect, useState, useContext, useCallback,
+} from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { sendTrackingLogEvent } from '@edx/frontend-platform/analytics';
-import { ensureConfig, getConfig } from '@edx/frontend-platform';
+import { ensureConfig } from '@edx/frontend-platform';
 import { AppContext } from '@edx/frontend-platform/react';
-import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
-import { Alert, Hyperlink } from '@openedx/paragon';
+import { FormattedMessage, useIntl } from '@edx/frontend-platform/i18n';
+import {
+  Alert, Hyperlink, OverlayTrigger, Tooltip,
+} from '@openedx/paragon';
+import { InfoOutline } from '@openedx/paragon/icons';
+import classNames from 'classnames';
 
-// Actions
 import {
   fetchProfile,
   saveProfile,
@@ -19,7 +25,6 @@ import {
   updateDraft,
 } from './data/actions';
 
-// Components
 import ProfileAvatar from './forms/ProfileAvatar';
 import Name from './forms/Name';
 import Country from './forms/Country';
@@ -27,120 +32,122 @@ import PreferredLanguage from './forms/PreferredLanguage';
 import Education from './forms/Education';
 import SocialLinks from './forms/SocialLinks';
 import Bio from './forms/Bio';
-import Certificates from './forms/Certificates';
-import AgeMessage from './AgeMessage';
 import DateJoined from './DateJoined';
-import UsernameDescription from './UsernameDescription';
+import UserCertificateSummary from './UserCertificateSummary';
 import PageLoading from './PageLoading';
-import Banner from './Banner';
-import LearningGoal from './forms/LearningGoal';
+import Certificates from './Certificates';
 
-// Selectors
 import { profilePageSelector } from './data/selectors';
-
-// i18n
 import messages from './ProfilePage.messages';
-
 import withParams from '../utils/hoc';
+import { useIsOnMobileScreen, useIsOnTabletScreen } from './data/hooks';
 
-ensureConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL'], 'ProfilePage');
+ensureConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL', 'ACCOUNT_SETTINGS_URL'], 'ProfilePage');
 
-class ProfilePage extends React.Component {
-  constructor(props, context) {
-    super(props, context);
+const ProfilePage = ({ params }) => {
+  const dispatch = useDispatch();
+  const intl = useIntl();
+  const context = useContext(AppContext);
+  const {
+    dateJoined,
+    courseCertificates,
+    name,
+    visibilityName,
+    profileImage,
+    savePhotoState,
+    isLoadingProfile,
+    photoUploadError,
+    country,
+    visibilityCountry,
+    levelOfEducation,
+    visibilityLevelOfEducation,
+    socialLinks,
+    draftSocialLinksByPlatform,
+    visibilitySocialLinks,
+    languageProficiencies,
+    visibilityLanguageProficiencies,
+    bio,
+    visibilityBio,
+    saveState,
+    username,
+  } = useSelector(profilePageSelector);
 
-    const credentialsBaseUrl = context.config.CREDENTIALS_BASE_URL;
-    this.state = {
-      viewMyRecordsUrl: credentialsBaseUrl ? `${credentialsBaseUrl}/records` : null,
-      accountSettingsUrl: context.config.ACCOUNT_SETTINGS_URL,
-    };
+  const navigate = useNavigate();
+  const [viewMyRecordsUrl, setViewMyRecordsUrl] = useState(null);
+  const isMobileView = useIsOnMobileScreen();
+  const isTabletView = useIsOnTabletScreen();
 
-    this.handleSaveProfilePhoto = this.handleSaveProfilePhoto.bind(this);
-    this.handleDeleteProfilePhoto = this.handleDeleteProfilePhoto.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-    this.handleOpen = this.handleOpen.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-  }
+  useEffect(() => {
+    const { CREDENTIALS_BASE_URL } = context.config;
+    if (CREDENTIALS_BASE_URL) {
+      setViewMyRecordsUrl(`${CREDENTIALS_BASE_URL}/records`);
+    }
 
-  componentDidMount() {
-    this.props.fetchProfile(this.props.params.username);
+    dispatch(fetchProfile(params.username));
     sendTrackingLogEvent('edx.profile.viewed', {
-      username: this.props.params.username,
+      username: params.username,
     });
-  }
+  }, [dispatch, params.username, context.config]);
 
-  handleSaveProfilePhoto(formData) {
-    this.props.saveProfilePhoto(this.context.authenticatedUser.username, formData);
-  }
+  useEffect(() => {
+    if (!username && saveState === 'error' && navigate) {
+      navigate('/notfound');
+    }
+  }, [username, saveState, navigate]);
 
-  handleDeleteProfilePhoto() {
-    this.props.deleteProfilePhoto(this.context.authenticatedUser.username);
-  }
+  const authenticatedUserName = context.authenticatedUser.username;
 
-  handleClose(formId) {
-    this.props.closeForm(formId);
-  }
+  const handleSaveProfilePhoto = useCallback((formData) => {
+    dispatch(saveProfilePhoto(authenticatedUserName, formData));
+  }, [dispatch, authenticatedUserName]);
 
-  handleOpen(formId) {
-    this.props.openForm(formId);
-  }
+  const handleDeleteProfilePhoto = useCallback(() => {
+    dispatch(deleteProfilePhoto(authenticatedUserName));
+  }, [dispatch, authenticatedUserName]);
 
-  handleSubmit(formId) {
-    this.props.saveProfile(formId, this.context.authenticatedUser.username);
-  }
+  const handleClose = useCallback((formId) => {
+    dispatch(closeForm(formId));
+  }, [dispatch]);
 
-  handleChange(name, value) {
-    this.props.updateDraft(name, value);
-  }
+  const handleOpen = useCallback((formId) => {
+    dispatch(openForm(formId));
+  }, [dispatch]);
 
-  isYOBDisabled() {
-    const { yearOfBirth } = this.props;
-    const currentYear = new Date().getFullYear();
-    const isAgeOrNotCompliant = !yearOfBirth || ((currentYear - yearOfBirth) < 13);
+  const handleSubmit = useCallback((formId) => {
+    dispatch(saveProfile(formId, authenticatedUserName));
+  }, [dispatch, authenticatedUserName]);
 
-    return isAgeOrNotCompliant && getConfig().COLLECT_YEAR_OF_BIRTH !== 'true';
-  }
+  const handleChange = useCallback((fieldName, value) => {
+    dispatch(updateDraft(fieldName, value));
+  }, [dispatch]);
 
-  isAuthenticatedUserProfile() {
-    return this.props.params.username === this.context.authenticatedUser.username;
-  }
+  const isAuthenticatedUserProfile = () => params.username === authenticatedUserName;
 
-  // Inserted into the DOM in two places (for responsive layout)
-  renderViewMyRecordsButton() {
-    if (!(this.state.viewMyRecordsUrl && this.isAuthenticatedUserProfile())) {
+  const isBlockVisible = (blockInfo) => isAuthenticatedUserProfile()
+      || (!isAuthenticatedUserProfile() && Boolean(blockInfo));
+
+  const renderViewMyRecordsButton = () => {
+    if (!(viewMyRecordsUrl && isAuthenticatedUserProfile())) {
       return null;
     }
 
     return (
-      <Hyperlink className="btn btn-primary" destination={this.state.viewMyRecordsUrl} target="_blank">
-        {this.props.intl.formatMessage(messages['profile.viewMyRecords'])}
+      <Hyperlink
+        className={classNames(
+          'btn btn-brand bg-brand-500 btn-rounded font-weight-normal px-4 py-10px text-nowrap',
+          { 'w-100': isMobileView },
+        )}
+        target="_blank"
+        showLaunchIcon={false}
+        destination={viewMyRecordsUrl}
+      >
+        {intl.formatMessage(messages['profile.viewMyRecords'])}
       </Hyperlink>
     );
-  }
+  };
 
-  // Inserted into the DOM in two places (for responsive layout)
-  renderHeadingLockup() {
-    const { dateJoined } = this.props;
-
-    return (
-      <span data-hj-suppress>
-        <h1 className="h2 mb-0 font-weight-bold text-truncate">{this.props.params.username}</h1>
-        <DateJoined date={dateJoined} />
-        {this.isYOBDisabled() && <UsernameDescription />}
-        <hr className="d-none d-md-block" />
-      </span>
-    );
-  }
-
-  renderPhotoUploadErrorMessage() {
-    const { photoUploadError } = this.props;
-
-    if (photoUploadError === null) {
-      return null;
-    }
-
-    return (
+  const renderPhotoUploadErrorMessage = () => (
+    photoUploadError && (
       <div className="row">
         <div className="col-md-4 col-lg-3">
           <Alert variant="danger" dismissible={false} show>
@@ -148,227 +155,267 @@ class ProfilePage extends React.Component {
           </Alert>
         </div>
       </div>
-    );
-  }
+    )
+  );
 
-  renderAgeMessage() {
-    const { requiresParentalConsent } = this.props;
-    const shouldShowAgeMessage = requiresParentalConsent && this.isAuthenticatedUserProfile();
+  const commonFormProps = {
+    openHandler: handleOpen,
+    closeHandler: handleClose,
+    submitHandler: handleSubmit,
+    changeHandler: handleChange,
+  };
 
-    if (!shouldShowAgeMessage) {
-      return null;
-    }
-    return <AgeMessage accountSettingsUrl={this.state.accountSettingsUrl} />;
-  }
-
-  renderContent() {
-    const {
-      profileImage,
-      name,
-      visibilityName,
-      country,
-      visibilityCountry,
-      levelOfEducation,
-      visibilityLevelOfEducation,
-      socialLinks,
-      draftSocialLinksByPlatform,
-      visibilitySocialLinks,
-      learningGoal,
-      visibilityLearningGoal,
-      languageProficiencies,
-      visibilityLanguageProficiencies,
-      courseCertificates,
-      visibilityCourseCertificates,
-      bio,
-      visibilityBio,
-      requiresParentalConsent,
-      isLoadingProfile,
-      username,
-      saveState,
-      navigate,
-    } = this.props;
-
-    if (isLoadingProfile) {
-      return <PageLoading srMessage={this.props.intl.formatMessage(messages['profile.loading'])} />;
-    }
-
-    if (!username && saveState === 'error' && navigate) {
-      navigate('/notfound');
-    }
-
-    const commonFormProps = {
-      openHandler: this.handleOpen,
-      closeHandler: this.handleClose,
-      submitHandler: this.handleSubmit,
-      changeHandler: this.handleChange,
-    };
-
-    const isBlockVisible = (blockInfo) => this.isAuthenticatedUserProfile()
-      || (!this.isAuthenticatedUserProfile() && Boolean(blockInfo));
-
-    const isLanguageBlockVisible = isBlockVisible(languageProficiencies.length);
-    const isEducationBlockVisible = isBlockVisible(levelOfEducation);
-    const isSocialLinksBLockVisible = isBlockVisible(socialLinks.some((link) => link.socialLink !== null));
-    const isBioBlockVisible = isBlockVisible(bio);
-    const isCertificatesBlockVisible = isBlockVisible(courseCertificates.length);
-    const isNameBlockVisible = isBlockVisible(name);
-    const isLocationBlockVisible = isBlockVisible(country);
-
-    return (
-      <div className="container-fluid">
-        <div className="row align-items-center pt-4 mb-4 pt-md-0 mb-md-0">
-          <div className="col-auto col-md-4 col-lg-3">
-            <div className="d-flex align-items-center d-md-block">
-              <ProfileAvatar
-                className="mb-md-3"
-                src={profileImage.src}
-                isDefault={profileImage.isDefault}
-                onSave={this.handleSaveProfilePhoto}
-                onDelete={this.handleDeleteProfilePhoto}
-                savePhotoState={this.props.savePhotoState}
-                isEditable={this.isAuthenticatedUserProfile() && !requiresParentalConsent}
-              />
+  return (
+    <div className="profile-page">
+      {isLoadingProfile ? (
+        <PageLoading srMessage={intl.formatMessage(messages['profile.loading'])} />
+      ) : (
+        <>
+          <div
+            className={classNames(
+              'profile-page-bg-banner bg-primary d-md-block align-items-center h-100 w-100',
+              { 'px-3 py-4': isMobileView },
+              { 'px-120px py-5.5': !isMobileView },
+            )}
+          >
+            <div
+              className={classNames([
+                'col container-fluid w-100 h-100 bg-white py-0 rounded-75',
+                {
+                  'px-3': isMobileView,
+                  'px-40px': !isMobileView,
+                },
+              ])}
+            >
+              <div
+                className={classNames([
+                  'col h-100 w-100 px-0 justify-content-start g-15rem',
+                  {
+                    'py-4': isMobileView,
+                    'py-36px': !isMobileView,
+                  },
+                ])}
+              >
+                <div
+                  className={classNames([
+                    'row-auto d-flex flex-wrap align-items-center h-100 w-100 justify-content-start g-15rem',
+                    isMobileView || isTabletView ? 'flex-column' : 'flex-row',
+                  ])}
+                >
+                  <ProfileAvatar
+                    className="col p-0"
+                    src={profileImage.src}
+                    isDefault={profileImage.isDefault}
+                    onSave={handleSaveProfilePhoto}
+                    onDelete={handleDeleteProfilePhoto}
+                    savePhotoState={savePhotoState}
+                    isEditable={isAuthenticatedUserProfile()}
+                  />
+                  <div
+                    className={classNames([
+                      'col h-100 w-100 m-0 p-0',
+                      isMobileView || isTabletView
+                        ? 'd-flex flex-column justify-content-center align-items-center'
+                        : 'justify-content-start align-items-start',
+                    ])}
+                  >
+                    <p className="row m-0 font-weight-bold text-truncate text-primary-500 h3">
+                      {params.username}
+                    </p>
+                    {isBlockVisible(name) && (
+                    <p className="row pt-2 text-gray-800 font-weight-normal m-0 p">
+                      {name}
+                    </p>
+                    )}
+                    <div className={classNames(
+                      'row pt-2 m-0',
+                      isMobileView
+                        ? 'd-flex justify-content-center align-items-center flex-column'
+                        : 'g-1rem',
+                    )}
+                    >
+                      <DateJoined date={dateJoined} />
+                      <UserCertificateSummary count={courseCertificates?.length || 0} />
+                    </div>
+                  </div>
+                  <div className={classNames([
+                    'p-0 ',
+                    isMobileView || isTabletView ? 'col d-flex justify-content-center' : 'col-auto',
+                  ])}
+                  >
+                    {renderViewMyRecordsButton()}
+                  </div>
+                </div>
+              </div>
+              <div className="ml-auto">
+                {renderPhotoUploadErrorMessage()}
+              </div>
             </div>
           </div>
-          <div className="col">
-            <div className="d-md-none">
-              {this.renderHeadingLockup()}
-            </div>
-            <div className="d-none d-md-block float-right">
-              {this.renderViewMyRecordsButton()}
+          <div
+            className={classNames([
+              'col d-inline-flex h-100 w-100 align-items-start justify-content-start g-3rem',
+              isMobileView ? 'py-4 px-3' : 'px-120px py-6',
+            ])}
+          >
+            <div className="w-100 p-0">
+              <div className="col justify-content-start align-items-start p-0">
+                <div className="col align-self-stretch height-42px justify-content-start align-items-start p-0">
+                  <p className="font-weight-bold text-primary-500 m-0 h2">
+                    {isMobileView ? (
+                      <FormattedMessage
+                        id="profile.profile.information"
+                        defaultMessage="Profile"
+                        description="heading for the editable profile section in mobile view"
+                      />
+                    )
+                      : (
+                        <FormattedMessage
+                          id="profile.profile.information"
+                          defaultMessage="Profile information"
+                          description="heading for the editable profile section"
+                        />
+                      )}
+                  </p>
+                </div>
+              </div>
+              <div
+                className={classNames([
+                  'row m-0 px-0 w-100 d-inline-flex align-items-start justify-content-start',
+                  isMobileView ? 'pt-4' : 'pt-5.5',
+                ])}
+              >
+                <div
+                  className={classNames([
+                    'col p-0',
+                    isMobileView ? 'col-12' : 'col-6',
+                  ])}
+                >
+                  <div className="m-0">
+                    <div className="row m-0 pb-1.5 align-items-center">
+                      <p data-hj-suppress className="h5 font-weight-bold m-0">
+                        {intl.formatMessage(messages['profile.username'])}
+                      </p>
+                      <OverlayTrigger
+                        key="top"
+                        placement="top"
+                        overlay={(
+                          <Tooltip variant="light" id="tooltip-top">
+                            <p className="h5 font-weight-normal m-0 p-0">
+                              {intl.formatMessage(messages['profile.username.tooltip'])}
+                            </p>
+                          </Tooltip>
+                          )}
+                      >
+                        <InfoOutline className="m-0 info-icon" />
+                      </OverlayTrigger>
+                    </div>
+                    <h4 className="edit-section-header text-gray-700">
+                      {params.username}
+                    </h4>
+                  </div>
+                  {isBlockVisible(name) && (
+                  <Name
+                    name={name}
+                    accountSettingsUrl={context.config.ACCOUNT_SETTINGS_URL}
+                    visibilityName={visibilityName}
+                    formId="name"
+                    {...commonFormProps}
+                  />
+                  )}
+                  {isBlockVisible(country) && (
+                  <Country
+                    country={country}
+                    visibilityCountry={visibilityCountry}
+                    formId="country"
+                    {...commonFormProps}
+                  />
+                  )}
+                  {isBlockVisible((languageProficiencies || []).length) && (
+                  <PreferredLanguage
+                    languageProficiencies={languageProficiencies || []}
+                    visibilityLanguageProficiencies={visibilityLanguageProficiencies}
+                    formId="languageProficiencies"
+                    {...commonFormProps}
+                  />
+                  )}
+                  {isBlockVisible(levelOfEducation) && (
+                  <Education
+                    levelOfEducation={levelOfEducation}
+                    visibilityLevelOfEducation={visibilityLevelOfEducation}
+                    formId="levelOfEducation"
+                    {...commonFormProps}
+                  />
+                  )}
+                </div>
+                <div
+                  className={classNames([
+                    'col m-0 pr-0',
+                    isMobileView ? 'pl-0 col-12' : 'pl-40px col-6',
+                  ])}
+                >
+                  {isBlockVisible(bio) && (
+                  <Bio
+                    bio={bio}
+                    visibilityBio={visibilityBio}
+                    formId="bio"
+                    {...commonFormProps}
+                  />
+                  )}
+                  {isBlockVisible((socialLinks || []).some((link) => link?.socialLink !== null)) && (
+                  <SocialLinks
+                    socialLinks={socialLinks || []}
+                    draftSocialLinksByPlatform={draftSocialLinksByPlatform || {}}
+                    visibilitySocialLinks={visibilitySocialLinks}
+                    formId="socialLinks"
+                    {...commonFormProps}
+                  />
+                  )}
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        {this.renderPhotoUploadErrorMessage()}
-        <div className="row">
-          <div className="col-md-4 col-lg-4">
-            <div className="d-none d-md-block mb-4">
-              {this.renderHeadingLockup()}
-            </div>
-            <div className="d-md-none mb-4">
-              {this.renderViewMyRecordsButton()}
-            </div>
-            {isNameBlockVisible && (
-              <Name
-                name={name}
-                visibilityName={visibilityName}
-                formId="name"
-                {...commonFormProps}
-              />
-            )}
-            {isLocationBlockVisible && (
-              <Country
-                country={country}
-                visibilityCountry={visibilityCountry}
-                formId="country"
-                {...commonFormProps}
-              />
-            )}
-            {isLanguageBlockVisible && (
-              <PreferredLanguage
-                languageProficiencies={languageProficiencies}
-                visibilityLanguageProficiencies={visibilityLanguageProficiencies}
-                formId="languageProficiencies"
-                {...commonFormProps}
-              />
-            )}
-            {isEducationBlockVisible && (
-              <Education
-                levelOfEducation={levelOfEducation}
-                visibilityLevelOfEducation={visibilityLevelOfEducation}
-                formId="levelOfEducation"
-                {...commonFormProps}
-              />
-            )}
-            {isSocialLinksBLockVisible && (
-              <SocialLinks
-                socialLinks={socialLinks}
-                draftSocialLinksByPlatform={draftSocialLinksByPlatform}
-                visibilitySocialLinks={visibilitySocialLinks}
-                formId="socialLinks"
-                {...commonFormProps}
-              />
+          <div
+            className={classNames([
+              'col container-fluid d-inline-flex bg-color-grey-FBFAF9 h-100 w-100 align-items-start justify-content-start g-3rem',
+              isMobileView ? 'py-4 px-3' : 'px-120px py-6',
+            ])}
+          >
+            {isBlockVisible((courseCertificates || []).length) && (
+            <Certificates
+              certificates={courseCertificates || []}
+              formId="certificates"
+            />
             )}
           </div>
-          <div className="pt-md-3 col-md-8 col-lg-7 offset-lg-1">
-            {!this.isYOBDisabled() && this.renderAgeMessage()}
-            {isBioBlockVisible && (
-              <Bio
-                bio={bio}
-                visibilityBio={visibilityBio}
-                formId="bio"
-                {...commonFormProps}
-              />
-            )}
-            {getConfig().ENABLE_SKILLS_BUILDER_PROFILE && (
-              <LearningGoal
-                learningGoal={learningGoal}
-                visibilityLearningGoal={visibilityLearningGoal}
-                formId="learningGoal"
-                {...commonFormProps}
-              />
-            )}
-            {isCertificatesBlockVisible && (
-              <Certificates
-                visibilityCourseCertificates={visibilityCourseCertificates}
-                formId="certificates"
-                {...commonFormProps}
-              />
-            )}
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  render() {
-    return (
-      <div className="profile-page">
-        <Banner />
-        {this.renderContent()}
-      </div>
-    );
-  }
-}
-
-ProfilePage.contextType = AppContext;
+        </>
+      )}
+    </div>
+  );
+};
 
 ProfilePage.propTypes = {
-  // Account data
+  params: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+  }).isRequired,
   requiresParentalConsent: PropTypes.bool,
   dateJoined: PropTypes.string,
   username: PropTypes.string,
-
-  // Bio form data
   bio: PropTypes.string,
-  yearOfBirth: PropTypes.number,
-  visibilityBio: PropTypes.string.isRequired,
-
-  // Certificates form data
+  visibilityBio: PropTypes.string,
   courseCertificates: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string,
   })),
-  visibilityCourseCertificates: PropTypes.string.isRequired,
-
-  // Country form data
   country: PropTypes.string,
-  visibilityCountry: PropTypes.string.isRequired,
-
-  // Education form data
+  visibilityCountry: PropTypes.string,
   levelOfEducation: PropTypes.string,
-  visibilityLevelOfEducation: PropTypes.string.isRequired,
-
-  // Language proficiency form data
+  visibilityLevelOfEducation: PropTypes.string,
   languageProficiencies: PropTypes.arrayOf(PropTypes.shape({
     code: PropTypes.string.isRequired,
   })),
-  visibilityLanguageProficiencies: PropTypes.string.isRequired,
-
-  // Name form data
+  visibilityLanguageProficiencies: PropTypes.string,
   name: PropTypes.string,
-  visibilityName: PropTypes.string.isRequired,
-
-  // Social links form data
+  visibilityName: PropTypes.string,
   socialLinks: PropTypes.arrayOf(PropTypes.shape({
     platform: PropTypes.string,
     socialLink: PropTypes.string,
@@ -377,41 +424,15 @@ ProfilePage.propTypes = {
     platform: PropTypes.string,
     socialLink: PropTypes.string,
   })),
-  visibilitySocialLinks: PropTypes.string.isRequired,
-
-  // Learning Goal form data
-  learningGoal: PropTypes.string,
-  visibilityLearningGoal: PropTypes.string.isRequired,
-
-  // Other data we need
+  visibilitySocialLinks: PropTypes.string,
   profileImage: PropTypes.shape({
     src: PropTypes.string,
     isDefault: PropTypes.bool,
   }),
   saveState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
   savePhotoState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
-  isLoadingProfile: PropTypes.bool.isRequired,
-
-  // Page state helpers
+  isLoadingProfile: PropTypes.bool,
   photoUploadError: PropTypes.objectOf(PropTypes.string),
-
-  // Actions
-  fetchProfile: PropTypes.func.isRequired,
-  saveProfile: PropTypes.func.isRequired,
-  saveProfilePhoto: PropTypes.func.isRequired,
-  deleteProfilePhoto: PropTypes.func.isRequired,
-  openForm: PropTypes.func.isRequired,
-  closeForm: PropTypes.func.isRequired,
-  updateDraft: PropTypes.func.isRequired,
-  navigate: PropTypes.func.isRequired,
-
-  // Router
-  params: PropTypes.shape({
-    username: PropTypes.string.isRequired,
-  }).isRequired,
-
-  // i18n
-  intl: intlShape.isRequired,
 };
 
 ProfilePage.defaultProps = {
@@ -421,28 +442,22 @@ ProfilePage.defaultProps = {
   photoUploadError: {},
   profileImage: {},
   name: null,
-  yearOfBirth: null,
   levelOfEducation: null,
   country: null,
   socialLinks: [],
   draftSocialLinksByPlatform: {},
   bio: null,
-  learningGoal: null,
   languageProficiencies: [],
-  courseCertificates: null,
+  courseCertificates: [],
   requiresParentalConsent: null,
   dateJoined: null,
+  visibilityName: null,
+  visibilityCountry: null,
+  visibilityLevelOfEducation: null,
+  visibilitySocialLinks: null,
+  visibilityLanguageProficiencies: null,
+  visibilityBio: null,
+  isLoadingProfile: false,
 };
 
-export default connect(
-  profilePageSelector,
-  {
-    fetchProfile,
-    saveProfilePhoto,
-    deleteProfilePhoto,
-    saveProfile,
-    openForm,
-    closeForm,
-    updateDraft,
-  },
-)(injectIntl(withParams(ProfilePage)));
+export default withParams(ProfilePage);

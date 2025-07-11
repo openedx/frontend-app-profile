@@ -81,12 +81,18 @@ module.exports = {
       gender: null,
       accountPrivacy: 'private'
     },
-    preferences: {},
+    preferences: {
+      visibilityName: 'all_users',
+      visibilityCountry: 'all_users',
+      visibilityLevelOfEducation: 'all_users',
+      visibilityLanguageProficiencies: 'all_users',
+      visibilitySocialLinks: 'all_users',
+      visibilityBio: 'all_users'
+    },
     courseCertificates: [],
     drafts: {},
     isLoadingProfile: false,
-    learningGoal: 'advance_career',
-    countriesCodesList: [],
+    countriesCodesList: ['US', 'CA', 'GB', 'ME']
   },
   router: {
     location: {

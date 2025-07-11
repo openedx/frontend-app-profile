@@ -16,12 +16,27 @@ export const initialState = {
   currentlyEditingField: null,
   account: {
     socialLinks: [],
+    languageProficiencies: [],
+    name: '',
+    bio: '',
+    country: '',
+    levelOfEducation: '',
+    profileImage: {},
+    yearOfBirth: '',
   },
-  preferences: {},
+  preferences: {
+    visibilityName: '',
+    visibilityBio: '',
+    visibilityCountry: '',
+    visibilityLevelOfEducation: '',
+    visibilitySocialLinks: '',
+    visibilityLanguageProficiencies: '',
+  },
   courseCertificates: [],
   drafts: {},
   isLoadingProfile: true,
   isAuthenticatedUserProfile: false,
+  disabledCountries: ['RU'],
   countriesCodesList: [],
 };
 
@@ -38,12 +53,17 @@ const profilePage = (state = initialState, action = {}) => {
     case FETCH_PROFILE.SUCCESS:
       return {
         ...state,
-        account: action.account,
+        account: {
+          ...state.account,
+          ...action.account,
+          socialLinks: action.account.socialLinks || [],
+          languageProficiencies: action.account.languageProficiencies || [],
+        },
         preferences: action.preferences,
-        courseCertificates: action.courseCertificates,
+        courseCertificates: action.courseCertificates || [],
         isLoadingProfile: false,
         isAuthenticatedUserProfile: action.isAuthenticatedUserProfile,
-        countriesCodesList: action.countriesCodesList,
+        countriesCodesList: action.countriesCodesList || [],
       };
     case SAVE_PROFILE.BEGIN:
       return {
@@ -56,9 +76,12 @@ const profilePage = (state = initialState, action = {}) => {
         ...state,
         saveState: 'complete',
         errors: {},
-        // Account is always replaced completely.
-        account: action.payload.account !== null ? action.payload.account : state.account,
-        // Preferences changes get merged in.
+        account: action.payload.account !== null ? {
+          ...state.account,
+          ...action.payload.account,
+          socialLinks: action.payload.account.socialLinks || [],
+          languageProficiencies: action.payload.account.languageProficiencies || [],
+        } : state.account,
         preferences: { ...state.preferences, ...action.payload.preferences },
       };
     case SAVE_PROFILE.FAILURE:
@@ -75,7 +98,6 @@ const profilePage = (state = initialState, action = {}) => {
         isLoadingProfile: false,
         errors: {},
       };
-
     case SAVE_PROFILE_PHOTO.BEGIN:
       return {
         ...state,
@@ -85,7 +107,6 @@ const profilePage = (state = initialState, action = {}) => {
     case SAVE_PROFILE_PHOTO.SUCCESS:
       return {
         ...state,
-        // Merge in new profile image data
         account: { ...state.account, profileImage: action.payload.profileImage },
         savePhotoState: 'complete',
         errors: {},
@@ -102,7 +123,6 @@ const profilePage = (state = initialState, action = {}) => {
         savePhotoState: null,
         errors: {},
       };
-
     case DELETE_PROFILE_PHOTO.BEGIN:
       return {
         ...state,
@@ -112,7 +132,6 @@ const profilePage = (state = initialState, action = {}) => {
     case DELETE_PROFILE_PHOTO.SUCCESS:
       return {
         ...state,
-        // Merge in new profile image data (should be empty or default image)
         account: { ...state.account, profileImage: action.payload.profileImage },
         savePhotoState: 'complete',
         errors: {},
@@ -129,13 +148,11 @@ const profilePage = (state = initialState, action = {}) => {
         savePhotoState: null,
         errors: {},
       };
-
     case UPDATE_DRAFT:
       return {
         ...state,
         drafts: { ...state.drafts, [action.payload.name]: action.payload.value },
       };
-
     case RESET_DRAFTS:
       return {
         ...state,
@@ -148,7 +165,6 @@ const profilePage = (state = initialState, action = {}) => {
         drafts: {},
       };
     case CLOSE_FORM:
-      // Only close if the field to close is undefined or matches the field that is currently open
       if (action.payload.formId === state.currentlyEditingField) {
         return {
           ...state,

@@ -4,16 +4,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const EmptyContent = ({ children, onClick, showPlusIcon }) => (
-  <div>
+  <div className="p-0 m-0">
     {onClick ? (
       <button
         type="button"
-        className="pl-0 text-left btn btn-link"
+        className="p-0 text-left btn btn-link lh-36px"
         onClick={onClick}
         onKeyDown={(e) => { if (e.key === 'Enter') { onClick(); } }}
         tabIndex={0}
       >
-        {showPlusIcon ? <FontAwesomeIcon size="xs" className="mr-2" icon={faPlus} /> : null}
+        {showPlusIcon ? <FontAwesomeIcon size="xs" className="mr-1" icon={faPlus} /> : null}
         {children}
       </button>
     ) : children}

@@ -1,158 +1,155 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Dropdown } from '@openedx/paragon';
-import { FormattedMessage, injectIntl, intlShape } from '@edx/frontend-platform/i18n';
+import {
+  Dropdown,
+  IconButton,
+  Icon,
+  Tooltip,
+  OverlayTrigger,
+} from '@openedx/paragon';
+import { FormattedMessage, useIntl } from '@edx/frontend-platform/i18n';
 
+import { PhotoCamera } from '@openedx/paragon/icons';
 import { ReactComponent as DefaultAvatar } from '../assets/avatar.svg';
-
 import messages from './ProfileAvatar.messages';
 
-class ProfileAvatar extends React.Component {
-  constructor(props) {
-    super(props);
+const ProfileAvatar = ({
+  src,
+  isDefault,
+  onSave,
+  onDelete,
+  savePhotoState,
+  isEditable,
+}) => {
+  const intl = useIntl();
+  const fileInput = useRef(null);
+  const form = useRef(null);
 
-    this.fileInput = React.createRef();
-    this.form = React.createRef();
+  const onClickUpload = () => {
+    fileInput.current.click();
+  };
 
-    this.onClickUpload = this.onClickUpload.bind(this);
-    this.onClickDelete = this.onClickDelete.bind(this);
-    this.onChangeInput = this.onChangeInput.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
+  const onClickDelete = () => {
+    onDelete();
+  };
 
-  onClickUpload() {
-    this.fileInput.current.click();
-  }
-
-  onClickDelete() {
-    this.props.onDelete();
-  }
-
-  onChangeInput() {
-    this.onSubmit();
-  }
-
-  onSubmit(e) {
+  const onSubmit = (e) => {
     if (e) {
       e.preventDefault();
     }
-    this.props.onSave(new FormData(this.form.current));
-    this.form.current.reset();
-  }
+    onSave(new FormData(form.current));
+    form.current.reset();
+  };
 
-  renderPending() {
-    return (
-      <div
-        className="position-absolute w-100 h-100 d-flex justify-content-center align-items-center rounded-circle"
-        style={{ backgroundColor: 'rgba(0,0,0,.65)' }}
-      >
-        <div className="spinner-border text-primary" role="status" />
-      </div>
-    );
-  }
+  const onChangeInput = () => {
+    onSubmit();
+  };
 
-  renderMenuContent() {
-    const { intl } = this.props;
+  const renderPending = () => (
+    <div
+      className="position-absolute w-100 h-100 d-flex justify-content-center align-items-center rounded-circle bg-black bg-opacity-65"
+    >
+      <div className="spinner-border text-primary" role="status" />
+    </div>
+  );
 
-    if (this.props.isDefault) {
-      return (
-        <Button
-          variant="link"
-          size="sm"
-          className="text-white btn-block"
-          onClick={this.onClickUpload}
-        >
-          <FormattedMessage
-            id="profile.profileavatar.upload-button"
-            defaultMessage="Upload Photo"
-            description="Upload photo button"
-          />
-        </Button>
-      );
-    }
-
-    return (
-      <Dropdown>
-        <Dropdown.Toggle>
-          {intl.formatMessage(messages['profile.profileavatar.change-button'])}
-        </Dropdown.Toggle>
-        <Dropdown.Menu>
-          <Dropdown.Item type="button" onClick={this.onClickUpload}>
-            <FormattedMessage
-              id="profile.profileavatar.upload-button"
-              defaultMessage="Upload Photo"
-              description="Upload photo button"
-            />
-          </Dropdown.Item>
-          <Dropdown.Item type="button" onClick={this.onClickDelete}>
-            <FormattedMessage
-              id="profile.profileavatar.remove.button"
-              defaultMessage="Remove"
-              description="Remove photo button"
-            />
-          </Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
-    );
-  }
-
-  renderMenu() {
-    if (!this.props.isEditable) {
+  const renderEditButton = () => {
+    if (!isEditable) {
       return null;
     }
 
     return (
-      <div className="profile-avatar-menu-container">
-        {this.renderMenuContent()}
+      <div className="profile-avatar-button">
+        <Dropdown>
+          <OverlayTrigger
+            key="top"
+            placement="top"
+            overlay={(
+              <Tooltip variant="light" id="tooltip-top">
+                {!isDefault ? (
+                  <p className="h5 font-weight-normal m-0 p-0">
+                    {intl.formatMessage(messages['profile.profileavatar.tooltip.edit'])}
+                  </p>
+                ) : (
+                  <p className="h5 font-weight-normal m-0 p-0">
+                    {intl.formatMessage(messages['profile.profileavatar.tooltip.upload'])}
+                  </p>
+                )}
+              </Tooltip>
+              )}
+          >
+            <Dropdown.Toggle
+              invertColors
+              isActive
+              id="dropdown-toggle-with-iconbutton"
+              as={IconButton}
+              src={PhotoCamera}
+              iconAs={Icon}
+              variant="primary"
+              className="shadow-sm"
+            />
+          </OverlayTrigger>
+          <Dropdown.Menu className="min-width-179px p-0 m-0">
+            <Dropdown.Item type="button" onClick={onClickUpload}>
+              <FormattedMessage
+                id="profile.profileavatar.upload-button"
+                defaultMessage="Upload photo"
+                description="Upload photo button"
+              />
+            </Dropdown.Item>
+            {!isDefault && (
+              <Dropdown.Item type="button" onClick={onClickDelete}>
+                <FormattedMessage
+                  id="profile.profileavatar.remove.button"
+                  defaultMessage="Remove photo"
+                  description="Remove photo button"
+                />
+              </Dropdown.Item>
+            )}
+          </Dropdown.Menu>
+        </Dropdown>
       </div>
     );
-  }
+  };
 
-  renderAvatar() {
-    const { intl } = this.props;
-
-    return this.props.isDefault ? (
+  const renderAvatar = () => (
+    isDefault ? (
       <DefaultAvatar className="text-muted" role="img" aria-hidden focusable="false" viewBox="0 0 24 24" />
     ) : (
       <img
         data-hj-suppress
-        className="w-100 h-100 d-block rounded-circle overflow-hidden"
-        style={{ objectFit: 'cover' }}
+        className="w-100 h-100 d-block rounded-circle overflow-hidden object-fit-cover"
         alt={intl.formatMessage(messages['profile.image.alt.attribute'])}
-        src={this.props.src}
+        src={src}
       />
-    );
-  }
+    )
+  );
 
-  render() {
-    return (
-      <div className="profile-avatar-wrap position-relative">
-        <div className="profile-avatar rounded-circle bg-light">
-          {this.props.savePhotoState === 'pending' ? this.renderPending() : this.renderMenu() }
-          {this.renderAvatar()}
-        </div>
-        <form
-          ref={this.form}
-          onSubmit={this.onSubmit}
-          encType="multipart/form-data"
-        >
-          {/* The name of this input must be 'file' */}
-          <input
-            className="d-none form-control-file"
-            ref={this.fileInput}
-            type="file"
-            name="file"
-            id="photo-file"
-            onChange={this.onChangeInput}
-            accept=".jpg, .jpeg, .png"
-          />
-        </form>
+  return (
+    <div className="profile-avatar-wrap position-relative">
+      <div className="profile-avatar rounded-circle bg-light">
+        {savePhotoState === 'pending' && renderPending()}
+        {renderAvatar()}
       </div>
-    );
-  }
-}
-
-export default injectIntl(ProfileAvatar);
+      {renderEditButton()}
+      <form
+        ref={form}
+        onSubmit={onSubmit}
+        encType="multipart/form-data"
+      >
+        <input
+          className="d-none form-control-file"
+          ref={fileInput}
+          type="file"
+          name="file"
+          id="photo-file"
+          onChange={onChangeInput}
+          accept=".jpg, .jpeg, .png"
+        />
+      </form>
+    </div>
+  );
+};
 
 ProfileAvatar.propTypes = {
   src: PropTypes.string,
@@ -161,7 +158,6 @@ ProfileAvatar.propTypes = {
   onDelete: PropTypes.func.isRequired,
   savePhotoState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
   isEditable: PropTypes.bool,
-  intl: intlShape.isRequired,
 };
 
 ProfileAvatar.defaultProps = {
@@ -170,3 +166,5 @@ ProfileAvatar.defaultProps = {
   savePhotoState: null,
   isEditable: false,
 };
+
+export default ProfileAvatar;

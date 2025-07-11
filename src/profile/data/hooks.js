@@ -12,7 +12,7 @@ export function useIsOnMobileScreen() {
 }
 
 export function useIsVisibilityEnabled() {
-  return getConfig().DISABLE_VISIBILITY_EDITING === 'true';
+  return getConfig().DISABLE_VISIBILITY_EDITING !== 'true';
 }
 
 export function useHandleChange(changeHandler) {
