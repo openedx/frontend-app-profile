@@ -17,6 +17,7 @@ describe('FormControls', () => {
         />
       </IntlProvider>,
     );
+
     // Use the actual label from the messages file
     const cancelLabel = messages['profile.formcontrols.button.cancel'].defaultMessage;
     fireEvent.click(getByText(cancelLabel));
