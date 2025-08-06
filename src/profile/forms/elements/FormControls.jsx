@@ -48,13 +48,13 @@ const FormControls = ({
             state={buttonState}
             labels={{
               default: intl.formatMessage(
-                messages['profile.formcontrols.button.save']
+                messages['profile.formcontrols.button.save'],
               ),
               pending: intl.formatMessage(
-                messages['profile.formcontrols.button.saving']
+                messages['profile.formcontrols.button.saving'],
               ),
               complete: intl.formatMessage(
-                messages['profile.formcontrols.button.saved']
+                messages['profile.formcontrols.button.saved'],
               ),
             }}
             onClick={(e) => {
