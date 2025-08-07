@@ -134,7 +134,7 @@ const ProfilePage = ({ params }) => {
     return (
       <Hyperlink
         className={classNames(
-          'btn btn-brand bg-brand-500 btn-rounded font-weight-normal px-4 py-10px text-nowrap',
+          'btn btn-brand bg-brand-500 font-weight-normal px-4 py-10px text-nowrap',
           { 'w-100': isMobileView },
         )}
         target="_blank"
