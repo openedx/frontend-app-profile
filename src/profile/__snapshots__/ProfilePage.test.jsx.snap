@@ -671,7 +671,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               class="p-0  col-auto"
             >
               <a
-                class="pgn__hyperlink default-link standalone-link btn btn-brand bg-brand-500 btn-rounded font-weight-normal px-4 py-10px text-nowrap"
+                class="pgn__hyperlink default-link standalone-link btn btn-brand bg-brand-500 font-weight-normal px-4 py-10px text-nowrap"
                 href="http://localhost:18150/records"
                 rel="noopener noreferrer"
                 target="_blank"
@@ -1442,7 +1442,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                     class="pt-3"
                   >
                     <a
-                      class="pgn__hyperlink default-link standalone-link btn btn-primary btn-rounded font-weight-normal px-4 py-10px"
+                      class="pgn__hyperlink default-link standalone-link btn btn-primary font-weight-normal px-4 py-10px"
                       href="http://www.example.com/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -2358,7 +2358,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                     class="pt-3"
                   >
                     <a
-                      class="pgn__hyperlink default-link standalone-link btn btn-primary btn-rounded font-weight-normal px-4 py-10px"
+                      class="pgn__hyperlink default-link standalone-link btn btn-primary font-weight-normal px-4 py-10px"
                       href="http://www.example.com/"
                       rel="noopener noreferrer"
                       target="_blank"
