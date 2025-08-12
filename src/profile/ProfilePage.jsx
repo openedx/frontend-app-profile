@@ -15,9 +15,6 @@ import {
 import { InfoOutline } from '@openedx/paragon/icons';
 import classNames from 'classnames';
 
-import AdditionalProfileFieldsSlot from '../plugin-slots/AdditionalProfileFieldsSlot';
-
-// Actions
 import {
   fetchProfile,
   saveProfile,
@@ -44,6 +41,8 @@ import { profilePageSelector } from './data/selectors';
 import messages from './ProfilePage.messages';
 import withParams from '../utils/hoc';
 import { useIsOnMobileScreen, useIsOnTabletScreen } from './data/hooks';
+
+import AdditionalProfileFieldsSlot from '../plugin-slots/AdditionalProfileFieldsSlot';
 
 ensureConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL', 'ACCOUNT_SETTINGS_URL'], 'ProfilePage');
 
