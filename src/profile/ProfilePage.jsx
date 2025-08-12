@@ -15,7 +15,7 @@ import {
 import { InfoOutline } from '@openedx/paragon/icons';
 import classNames from 'classnames';
 
-import ExtendedProfileFieldsSlot from '../plugin-slots/ExtendedProfileFieldsSlot';
+import AdditionalProfileFieldsSlot from '../plugin-slots/AdditionalProfileFieldsSlot';
 
 // Actions
 import {
@@ -350,6 +350,10 @@ const ProfilePage = ({ params }) => {
                     {...commonFormProps}
                   />
                   )}
+
+                  <div className="pt-40px">
+                    <AdditionalProfileFieldsSlot />
+                  </div>
                 </div>
                 <div
                   className={classNames([
@@ -365,8 +369,6 @@ const ProfilePage = ({ params }) => {
                     {...commonFormProps}
                   />
                   )}
-
-                  <ExtendedProfileFieldsSlot />
 
                   {isBlockVisible((socialLinks || []).some((link) => link?.socialLink !== null)) && (
                   <SocialLinks

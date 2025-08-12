@@ -9,14 +9,16 @@ import SwitchContent from '../../profile/forms/elements/SwitchContent';
 import EmptyContent from '../../profile/forms/elements/EmptyContent';
 import EditableItemHeader from '../../profile/forms/elements/EditableItemHeader';
 
-const ExtendedProfileFieldsSlot = () => {
+const AdditionalProfileFieldsSlot = () => {
   const dispatch = useDispatch();
   const extendedProfileValues = useSelector((state) => state.profilePage.account.extendedProfile);
+  const errors = useSelector((state) => state.profilePage.errors);
 
   const pluginProps = {
     refreshUserProfile: useCallback((username) => dispatch(fetchProfile(username)), [dispatch]),
     updateUserProfile: patchProfile,
     profileFieldValues: extendedProfileValues,
+    profileFieldErrors: errors,
     formComponents: {
       SwitchContent,
       EmptyContent,
@@ -26,11 +28,10 @@ const ExtendedProfileFieldsSlot = () => {
 
   return (
     <PluginSlot
-      id="org.openedx.frontend.profile.extended_profile_fields.v1"
-      idAliases={['extended_profile_fields_slot']}
+      id="org.openedx.frontend.profile.additional_profile_fields.v1"
       pluginProps={pluginProps}
     />
   );
 };
 
-export default ExtendedProfileFieldsSlot;
+export default AdditionalProfileFieldsSlot;
