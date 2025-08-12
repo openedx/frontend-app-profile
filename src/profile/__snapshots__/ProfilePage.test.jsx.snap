@@ -148,6 +148,9 @@ exports[`<ProfilePage /> Renders correctly in various states successfully redire
                 staffTest
               </h4>
             </div>
+            <div
+              class="pt-40px"
+            />
           </div>
           <div
             class="col m-0 pr-0 pl-40px col-6"
@@ -452,6 +455,9 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
                 />
               </div>
             </div>
+            <div
+              class="pt-40px"
+            />
           </div>
           <div
             class="col m-0 pr-0 pl-40px col-6"
@@ -1072,6 +1078,9 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                 </div>
               </div>
             </div>
+            <div
+              class="pt-40px"
+            />
           </div>
           <div
             class="col m-0 pr-0 pl-40px col-6"
@@ -1988,6 +1997,9 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                 </div>
               </div>
             </div>
+            <div
+              class="pt-40px"
+            />
           </div>
           <div
             class="col m-0 pr-0 pl-40px col-6"
