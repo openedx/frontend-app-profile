@@ -350,9 +350,7 @@ const ProfilePage = ({ params }) => {
                   />
                   )}
 
-                  <div className="pt-40px">
-                    <AdditionalProfileFieldsSlot />
-                  </div>
+                  <AdditionalProfileFieldsSlot />
                 </div>
                 <div
                   className={classNames([

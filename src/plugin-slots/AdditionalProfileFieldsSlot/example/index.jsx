@@ -49,7 +49,7 @@ const Example = ({
   };
 
   return (
-    <div className="border .border-accent-500 p-3">
+    <div className="border border-accent-500 p-3 mt-5">
       <h3 className="h3">Example Additional Profile Fields Slot</h3>
 
       <SwitchContent
