@@ -1,26 +1,59 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
-import { IntlProvider } from '@edx/frontend-platform/i18n';
+import { render, screen, fireEvent } from '@testing-library/react';
 import FormControls from './FormControls';
 import messages from './FormControls.messages';
 
-describe('FormControls', () => {
-  it('renders and triggers cancelHandler', () => {
-    const cancelHandler = jest.fn();
-    const changeHandler = jest.fn();
-    const { getByText } = render(
-      <IntlProvider locale="en" messages={messages}>
-        <FormControls
-          cancelHandler={cancelHandler}
-          changeHandler={changeHandler}
-          visibilityId="test-visibility"
-        />
-      </IntlProvider>,
-    );
+const defaultProps = {
+  cancelHandler: jest.fn(),
+  changeHandler: jest.fn(),
+  visibilityId: 'visibility-id',
+  visibility: 'private',
+  saveState: null,
+};
 
-    // Use the actual label from the messages file
-    const cancelLabel = messages['profile.formcontrols.button.cancel'].defaultMessage;
-    fireEvent.click(getByText(cancelLabel));
-    expect(cancelHandler).toHaveBeenCalled();
+jest.mock('@edx/frontend-platform/i18n', () => {
+  const actual = jest.requireActual('@edx/frontend-platform/i18n');
+  return {
+    ...actual,
+    injectIntl: (Component) => (props) => (
+      <Component
+        {...props}
+        intl={{
+          formatMessage: (msg) => msg.id, // returns id so we can assert on it
+        }}
+      />
+    ),
+    intlShape: {}, // optional, prevents prop-type warnings
+  };
+});
+
+describe('FormControls', () => {
+  it('renders Save button label when saveState is null', () => {
+    render(<FormControls {...defaultProps} />);
+    expect(
+      screen.getByRole('button', { name: messages['profile.formcontrols.button.save'].id }),
+    ).toBeInTheDocument();
+  });
+
+  it('renders Saved label when saveState is complete', () => {
+    render(<FormControls {...defaultProps} saveState="complete" />);
+    expect(
+      screen.getByRole('button', { name: messages['profile.formcontrols.button.saved'].id }),
+    ).toBeInTheDocument();
+  });
+
+  it('renders Saving label when saveState is pending', () => {
+    render(<FormControls {...defaultProps} saveState="pending" />);
+    expect(
+      screen.getByRole('button', { name: messages['profile.formcontrols.button.saving'].id }),
+    ).toBeInTheDocument();
+  });
+
+  it('calls cancelHandler when Cancel button is clicked', () => {
+    render(<FormControls {...defaultProps} />);
+    fireEvent.click(
+      screen.getByRole('button', { name: messages['profile.formcontrols.button.cancel'].id }),
+    );
+    expect(defaultProps.cancelHandler).toHaveBeenCalled();
   });
 });

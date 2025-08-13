@@ -163,5 +163,67 @@ describe('RootSaga', () => {
       expect(result.value).toEqual(put(profileActions.saveProfileFailure({ uhoh: 'not good' })));
       expect(gen.next().value).toBeUndefined();
     });
+
+    it('should reset profile if error has no processedData', () => {
+      const action = profileActions.saveProfile('formid', 'user1');
+      const gen = handleSaveProfile(action);
+
+      expect(gen.next().value).toEqual(select(handleSaveProfileSelector));
+      expect(gen.next(selectorData).value).toEqual(put(profileActions.saveProfileBegin()));
+
+      const err = new Error('oops');
+      const result = gen.throw(err);
+      expect(result.value).toEqual(put(profileActions.saveProfileReset()));
+    });
+  });
+
+  describe('handleSaveProfilePhoto', () => {
+    it('should save profile photo successfully', () => {
+      const action = profileActions.saveProfilePhoto('user1', { some: 'formdata' });
+      const gen = handleSaveProfilePhoto(action);
+      const fakePhoto = { url: 'photo.jpg' };
+
+      expect(gen.next().value).toEqual(put(profileActions.saveProfilePhotoBegin()));
+      expect(gen.next().value).toEqual(call(ProfileApiService.postProfilePhoto, 'user1', { some: 'formdata' }));
+      expect(gen.next(fakePhoto).value).toEqual(put(profileActions.saveProfilePhotoSuccess(fakePhoto)));
+      expect(gen.next().value).toEqual(put(profileActions.saveProfilePhotoReset()));
+      expect(gen.next().value).toBeUndefined();
+    });
+
+    it('should reset photo state on error', () => {
+      const action = profileActions.saveProfilePhoto('user1', {});
+      const gen = handleSaveProfilePhoto(action);
+
+      expect(gen.next().value).toEqual(put(profileActions.saveProfilePhotoBegin()));
+
+      const err = new Error('fail');
+
+      expect(gen.throw(err).value).toEqual(put(profileActions.saveProfilePhotoReset()));
+      expect(gen.next().done).toBe(true);
+    });
+  });
+
+  describe('handleDeleteProfilePhoto', () => {
+    it('should delete profile photo successfully', () => {
+      const action = profileActions.deleteProfilePhoto('user1');
+      const gen = handleDeleteProfilePhoto(action);
+      const fakeResult = { ok: true };
+
+      expect(gen.next().value).toEqual(put(profileActions.deleteProfilePhotoBegin()));
+      expect(gen.next().value).toEqual(call(ProfileApiService.deleteProfilePhoto, 'user1'));
+      expect(gen.next(fakeResult).value).toEqual(put(profileActions.deleteProfilePhotoSuccess(fakeResult)));
+      expect(gen.next().value).toEqual(put(profileActions.deleteProfilePhotoReset()));
+      expect(gen.next().value).toBeUndefined();
+    });
+    it('should reset photo state on error', () => {
+      const action = profileActions.saveProfilePhoto('user1', {});
+      const gen = handleSaveProfilePhoto(action);
+
+      expect(gen.next().value).toEqual(put(profileActions.saveProfilePhotoBegin()));
+      const err = new Error('fail');
+      expect(gen.throw(err).value).toEqual(put(profileActions.saveProfilePhotoReset()));
+
+      expect(gen.next().done).toBe(true);
+    });
   });
 });

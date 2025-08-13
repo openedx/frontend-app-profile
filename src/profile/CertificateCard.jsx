@@ -97,7 +97,7 @@ const CertificateCard = ({
               target="_blank"
               showLaunchIcon={false}
               className={classNames(
-                'btn btn-primary btn-rounded font-weight-normal px-4 py-10px',
+                'btn btn-primary font-weight-normal px-4 py-10px',
                 { 'btn-sm': isMobileView },
               )}
             >
