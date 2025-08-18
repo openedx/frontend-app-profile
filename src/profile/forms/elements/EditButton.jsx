@@ -39,4 +39,3 @@ EditButton.propTypes = {
   className: PropTypes.string,
   style: PropTypes.object, // eslint-disable-line
 };
-

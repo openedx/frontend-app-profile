@@ -27,4 +27,3 @@ EmptyContent.propTypes = {
   children: PropTypes.node,
   showPlusIcon: PropTypes.bool,
 };
-

@@ -86,4 +86,3 @@ FormControls.propTypes = {
   cancelHandler: PropTypes.func.isRequired,
   changeHandler: PropTypes.func.isRequired,
 };
-

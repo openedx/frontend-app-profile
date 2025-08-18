@@ -57,4 +57,3 @@ EditableItemHeader.propTypes = {
   visibility: PropTypes.oneOf(['private', 'all_users']),
   headingId: PropTypes.string,
 };
-

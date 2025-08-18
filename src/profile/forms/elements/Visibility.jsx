@@ -27,13 +27,13 @@ Visibility.propTypes = {
   to: PropTypes.oneOf(['private', 'all_users']),
 };
 
-const VisibilitySelect = ({ 
-  id = null, 
-  className = null, 
-  name = 'visibility', 
-  value = null, 
+const VisibilitySelect = ({
+  id = null,
+  className = null,
+  name = 'visibility',
+  value = null,
   onChange = null,
-  ...props 
+  ...props
 }) => {
   const intl = useIntl();
   const icon = value === 'private' ? faEyeSlash : faEye;
@@ -43,8 +43,8 @@ const VisibilitySelect = ({
       <span className="d-inline-block ml-1 mr-2 width-24px">
         <FontAwesomeIcon icon={icon} />
       </span>
-      <select 
-        className="d-inline-block form-control" 
+      <select
+        className="d-inline-block form-control"
         id={id}
         name={name}
         value={value}
