@@ -5,7 +5,7 @@ import { useIntl } from '@edx/frontend-platform/i18n';
 import { Button, OverlayTrigger, Tooltip } from '@openedx/paragon';
 import messages from './EditButton.messages';
 
-const EditButton = ({ onClick, className, style }) => {
+const EditButton = ({ onClick, className = null, style = null }) => {
   const intl = useIntl();
   return (
     <OverlayTrigger
@@ -40,7 +40,3 @@ EditButton.propTypes = {
   style: PropTypes.object, // eslint-disable-line
 };
 
-EditButton.defaultProps = {
-  className: null,
-  style: null,
-};

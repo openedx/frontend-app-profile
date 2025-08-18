@@ -4,7 +4,7 @@ import { IntlProvider } from '@edx/frontend-platform/i18n';
 import EditButton from './EditButton';
 
 const messages = {
-  'profile.editbutton.edit': { defaultMessage: 'Edit' },
+  'profile.editbutton.edit': 'Edit',
 };
 
 describe('EditButton', () => {

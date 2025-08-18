@@ -11,9 +11,9 @@ import { useIsVisibilityEnabled } from '../../data/hooks';
 const FormControls = ({
   cancelHandler,
   changeHandler,
-  visibility,
+  visibility = 'private',
   visibilityId,
-  saveState,
+  saveState = null,
 }) => {
   const intl = useIntl();
   const buttonState = saveState === 'error' ? null : saveState;
@@ -58,6 +58,13 @@ const FormControls = ({
               ),
             }}
             onClick={(e) => {
+              // Swallow clicks if the state is pending.
+              // We do this instead of disabling the button to prevent
+              // it from losing focus (disabled elements cannot have focus).
+              // Disabling it would causes upstream issues in focus management.
+              // Swallowing the onSubmit event on the form would be better, but
+              // we would have to add that logic for every field given our
+              // current structure of the application.
               if (buttonState === 'pending') {
                 e.preventDefault();
               }
@@ -80,7 +87,3 @@ FormControls.propTypes = {
   changeHandler: PropTypes.func.isRequired,
 };
 
-FormControls.defaultProps = {
-  visibility: 'private',
-  saveState: null,
-};

@@ -5,8 +5,8 @@ import { Visibility, VisibilitySelect } from './Visibility';
 import '@testing-library/jest-dom';
 
 const messages = {
-  'profile.visibility.who.just.me': { defaultMessage: 'Just me' },
-  'profile.visibility.who.everyone': { defaultMessage: 'Everyone' },
+  'profile.visibility.who.just.me': 'Just me',
+  'profile.visibility.who.everyone': 'Everyone',
 };
 
 describe('Visibility', () => {

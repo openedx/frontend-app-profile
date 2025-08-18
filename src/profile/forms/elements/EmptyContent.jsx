@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
-const EmptyContent = ({ children, onClick, showPlusIcon }) => (
+const EmptyContent = ({ children = null, onClick = null, showPlusIcon = true }) => (
   <div className="p-0 m-0">
     {onClick ? (
       <button
@@ -28,8 +28,3 @@ EmptyContent.propTypes = {
   showPlusIcon: PropTypes.bool,
 };
 
-EmptyContent.defaultProps = {
-  onClick: null,
-  children: null,
-  showPlusIcon: true,
-};

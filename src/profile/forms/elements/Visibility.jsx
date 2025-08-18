@@ -7,7 +7,7 @@ import { faEyeSlash, faEye } from '@fortawesome/free-regular-svg-icons';
 
 import messages from './Visibility.messages';
 
-const Visibility = ({ to }) => {
+const Visibility = ({ to = 'private' }) => {
   const intl = useIntl();
   const icon = to === 'private' ? faEyeSlash : faEye;
   const label = to === 'private'
@@ -26,13 +26,16 @@ const Visibility = ({ to }) => {
 Visibility.propTypes = {
   to: PropTypes.oneOf(['private', 'all_users']),
 };
-Visibility.defaultProps = {
-  to: 'private',
-};
 
-const VisibilitySelect = ({ className, ...props }) => {
+const VisibilitySelect = ({ 
+  id = null, 
+  className = null, 
+  name = 'visibility', 
+  value = null, 
+  onChange = null,
+  ...props 
+}) => {
   const intl = useIntl();
-  const { value } = props;
   const icon = value === 'private' ? faEyeSlash : faEye;
 
   return (
@@ -40,7 +43,14 @@ const VisibilitySelect = ({ className, ...props }) => {
       <span className="d-inline-block ml-1 mr-2 width-24px">
         <FontAwesomeIcon icon={icon} />
       </span>
-      <select className="d-inline-block form-control" {...props}>
+      <select 
+        className="d-inline-block form-control" 
+        id={id}
+        name={name}
+        value={value}
+        onChange={onChange}
+        {...props}
+      >
         <option key="private" value="private">
           {intl.formatMessage(messages['profile.visibility.who.just.me'])}
         </option>
@@ -60,13 +70,6 @@ VisibilitySelect.propTypes = {
   name: PropTypes.string,
   value: PropTypes.oneOf(['private', 'all_users']),
   onChange: PropTypes.func,
-};
-VisibilitySelect.defaultProps = {
-  id: null,
-  className: null,
-  name: 'visibility',
-  value: null,
-  onChange: null,
 };
 
 export { Visibility, VisibilitySelect };

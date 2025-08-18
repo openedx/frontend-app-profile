@@ -7,12 +7,12 @@ import { Visibility } from './Visibility';
 import { useIsOnMobileScreen } from '../../data/hooks';
 
 const EditableItemHeader = ({
-  content,
-  showVisibility,
-  visibility,
-  showEditButton,
-  onClickEdit,
-  headingId,
+  content = '',
+  showVisibility = false,
+  visibility = 'private',
+  showEditButton = false,
+  onClickEdit = () => {},
+  headingId = null,
 }) => {
   const isMobileView = useIsOnMobileScreen();
   return (
@@ -58,12 +58,3 @@ EditableItemHeader.propTypes = {
   headingId: PropTypes.string,
 };
 
-EditableItemHeader.defaultProps = {
-  onClickEdit: () => {
-  },
-  showVisibility: false,
-  showEditButton: false,
-  content: '',
-  visibility: 'private',
-  headingId: null,
-};
