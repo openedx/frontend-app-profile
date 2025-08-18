@@ -42,6 +42,8 @@ import messages from './ProfilePage.messages';
 import withParams from '../utils/hoc';
 import { useIsOnMobileScreen, useIsOnTabletScreen } from './data/hooks';
 
+import AdditionalProfileFieldsSlot from '../plugin-slots/AdditionalProfileFieldsSlot';
+
 ensureConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL', 'ACCOUNT_SETTINGS_URL'], 'ProfilePage');
 
 const ProfilePage = ({ params }) => {
@@ -347,6 +349,8 @@ const ProfilePage = ({ params }) => {
                     {...commonFormProps}
                   />
                   )}
+
+                  <AdditionalProfileFieldsSlot />
                 </div>
                 <div
                   className={classNames([
@@ -362,6 +366,7 @@ const ProfilePage = ({ params }) => {
                     {...commonFormProps}
                   />
                   )}
+
                   {isBlockVisible((socialLinks || []).some((link) => link?.socialLink !== null)) && (
                   <SocialLinks
                     socialLinks={socialLinks || []}
