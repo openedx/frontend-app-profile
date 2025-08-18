@@ -15,6 +15,9 @@ jest.mock('@edx/frontend-platform/i18n', () => {
   const actual = jest.requireActual('@edx/frontend-platform/i18n');
   return {
     ...actual,
+    useIntl: () => ({
+      formatMessage: (msg) => msg.id, // returns id so we can assert on it
+    }),
     injectIntl: (Component) => (props) => (
       <Component
         {...props}
@@ -26,6 +29,10 @@ jest.mock('@edx/frontend-platform/i18n', () => {
     intlShape: {}, // optional, prevents prop-type warnings
   };
 });
+
+jest.mock('../../data/hooks', () => ({
+  useIsVisibilityEnabled: () => true,
+}));
 
 describe('FormControls', () => {
   it('renders Save button label when saveState is null', () => {

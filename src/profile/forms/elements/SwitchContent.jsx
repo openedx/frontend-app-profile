@@ -17,7 +17,7 @@ const onChildExit = (htmlNode) => {
   }
 };
 
-const SwitchContent = ({ expression, cases, className }) => {
+const SwitchContent = ({ expression = null, cases, className = null }) => {
   const getContent = (caseKey) => {
     if (cases[caseKey]) {
       if (typeof cases[caseKey] === 'string') {
@@ -49,11 +49,6 @@ SwitchContent.propTypes = {
   expression: PropTypes.string,
   cases: PropTypes.objectOf(PropTypes.node).isRequired,
   className: PropTypes.string,
-};
-
-SwitchContent.defaultProps = {
-  expression: null,
-  className: null,
 };
 
 export default SwitchContent;
