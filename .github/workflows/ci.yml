@@ -14,7 +14,6 @@ jobs:
         - lint
         - test
         node: [20, 24]
-    continue-on-error: ${{ matrix.node == 24 }}
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
