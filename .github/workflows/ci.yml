@@ -13,6 +13,7 @@ jobs:
         - i18n_extract
         - lint
         - test
+        node: [20, 24]
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
