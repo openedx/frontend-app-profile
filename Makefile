@@ -40,10 +40,8 @@ pull_translations:
 	mkdir src/i18n/messages
 	cd src/i18n/messages \
       && atlas pull $(ATLAS_OPTIONS) \
-               translations/frontend-platform/src/i18n/messages:frontend-platform \
+               translations/frontend-base/src/i18n/messages:frontend-base \
                translations/paragon/src/i18n/messages:paragon \
-               translations/frontend-component-header/src/i18n/messages:frontend-component-header \
-               translations/frontend-component-footer/src/i18n/messages:frontend-component-footer \
                translations/frontend-app-profile/src/i18n/messages:frontend-app-profile
 
 	$(intl_imports) frontend-platform paragon frontend-component-header frontend-component-footer frontend-app-profile
