@@ -1,6 +1,5 @@
 import React from 'react';
-import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
-import { getConfig } from '@edx/frontend-platform';
+import { getConfig, injectIntl, intlShape } from '@openedx/frontend-base';
 
 import messages from './messages';
 

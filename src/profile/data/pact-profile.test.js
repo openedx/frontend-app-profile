@@ -5,7 +5,7 @@ import path from 'path';
 
 import { PactV3, MatchersV3 } from '@pact-foundation/pact';
 
-import { initializeMockApp, getConfig, setConfig } from '@edx/frontend-platform';
+import { initializeMockApp, getConfig, setConfig } from '@openedx/frontend-base';
 import { getAccount } from './services';
 
 const expectedUserInfo200 = {

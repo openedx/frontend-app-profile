@@ -2,7 +2,7 @@ import React from 'react';
 import {
   AuthenticatedPageRoute,
   PageWrap,
-} from '@edx/frontend-platform/react';
+} from '@openedx/frontend-base';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { ProfilePage, NotFoundPage } from '../profile';
 

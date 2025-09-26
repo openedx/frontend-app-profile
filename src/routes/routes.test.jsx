@@ -1,14 +1,12 @@
 import React from 'react';
-import { AppContext } from '@edx/frontend-platform/react';
-import { getConfig } from '@edx/frontend-platform';
+import { getConfig, AppContext, getLoginRedirectUrl } from '@openedx/frontend-base';
 import { MemoryRouter as Router } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
-import { getLoginRedirectUrl } from '@edx/frontend-platform/auth';
 import AppRoutes from './AppRoutes';
 
-jest.mock('@edx/frontend-platform/analytics');
+// jest.mock('@openedx/frontend-base/analytics');
 
-jest.mock('@edx/frontend-platform/auth', () => ({
+jest.mock('@openedx/frontend-base', () => ({
   getLoginRedirectUrl: jest.fn(),
 }));
 

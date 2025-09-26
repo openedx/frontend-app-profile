@@ -1,8 +1,5 @@
 /* eslint-disable global-require */
-import { getConfig } from '@edx/frontend-platform';
-import * as analytics from '@edx/frontend-platform/analytics';
-import { AppContext } from '@edx/frontend-platform/react';
-import { configure as configureI18n, IntlProvider } from '@edx/frontend-platform/i18n';
+import { sendTrackingLogEvent, configureI18n, getConfig, IntlProvider, AppContext } from '@openedx/frontend-base';
 import { render } from '@testing-library/react';
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -39,16 +36,12 @@ Object.defineProperty(global.document, 'cookie', {
   value: `${getConfig().LANGUAGE_PREFERENCE_COOKIE_NAME}=en`,
 });
 
-jest.mock('@edx/frontend-platform/auth', () => ({
+jest.mock('@openedx/frontend-base', () => ({
   configure: () => {},
   getAuthenticatedUser: () => null,
   fetchAuthenticatedUser: () => null,
   getAuthenticatedHttpClient: jest.fn(),
   AUTHENTICATED_USER_CHANGED: 'user_changed',
-}));
-
-jest.mock('@edx/frontend-platform/analytics', () => ({
-  configure: () => {},
   identifyAnonymousUser: jest.fn(),
   identifyAuthenticatedUser: jest.fn(),
   sendTrackingLogEvent: jest.fn(),
@@ -64,7 +57,7 @@ configureI18n({
 });
 
 beforeEach(() => {
-  analytics.sendTrackingLogEvent.mockReset();
+  sendTrackingLogEvent.mockReset();
 });
 
 const ProfileWrapper = ({ params, requiresParentalConsent }) => {
@@ -335,9 +328,9 @@ describe('<ProfilePage />', () => {
         />,
       );
 
-      expect(analytics.sendTrackingLogEvent.mock.calls.length).toBe(1);
-      expect(analytics.sendTrackingLogEvent.mock.calls[0][0]).toEqual('edx.profile.viewed');
-      expect(analytics.sendTrackingLogEvent.mock.calls[0][1]).toEqual({
+      expect(sendTrackingLogEvent.mock.calls.length).toBe(1);
+      expect(sendTrackingLogEvent.mock.calls[0][0]).toEqual('edx.profile.viewed');
+      expect(sendTrackingLogEvent.mock.calls[0][1]).toEqual({
         username: 'test-username',
       });
     });

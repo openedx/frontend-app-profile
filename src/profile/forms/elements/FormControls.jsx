@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, StatefulButton } from '@openedx/paragon';
-import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
+import { injectIntl, intlShape } from '@openedx/frontend-base';
 
 import messages from './FormControls.messages';
 

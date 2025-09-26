@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Alert } from '@openedx/paragon';
-import { FormattedMessage } from '@edx/frontend-platform/i18n';
-import { getConfig } from '@edx/frontend-platform';
+import { getConfig, FormattedMessage } from '@openedx/frontend-base';
 
 const AgeMessage = ({ accountSettingsUrl }) => (
   <Alert

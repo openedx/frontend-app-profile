@@ -5,7 +5,7 @@ import {
   getCountryList,
   getCountryMessages,
   getLanguageMessages,
-} from '@edx/frontend-platform/i18n'; // eslint-disable-line
+} from '@openedx/frontend-base'; // eslint-disable-line
 
 export const formIdSelector = (state, props) => props.formId;
 export const userAccountSelector = state => state.userAccount;
