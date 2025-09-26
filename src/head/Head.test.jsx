@@ -1,7 +1,6 @@
 import React from 'react';
-import { IntlProvider } from '@edx/frontend-platform/i18n';
 import { render } from '@testing-library/react';
-import { getConfig } from '@edx/frontend-platform';
+import { getConfig, IntlProvider } from '@openedx/frontend-base';
 import Head from './Head';
 
 describe('Head', () => {

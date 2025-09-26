@@ -7,11 +7,9 @@ import {
   initialize,
   mergeConfig,
   subscribe,
-} from '@edx/frontend-platform';
-import {
-  AppProvider,
+  SiteProvider,
   ErrorPage,
-} from '@edx/frontend-platform/react';
+} from '@openedx/frontend-base';
 
 import React, { StrictMode } from 'react';
 // eslint-disable-next-line import/no-unresolved
@@ -32,14 +30,14 @@ const rootNode = createRoot(document.getElementById('root'));
 subscribe(APP_READY, () => {
   rootNode.render(
     <StrictMode>
-      <AppProvider store={configureStore()}>
+      <SiteProvider store={configureStore()}>
         <Head />
         <Header />
         <main id="main">
           <AppRoutes />
         </main>
         <FooterSlot />
-      </AppProvider>
+      </SiteProvider>
     </StrictMode>,
   );
 });

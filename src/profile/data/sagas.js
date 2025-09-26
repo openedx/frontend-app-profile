@@ -1,4 +1,4 @@
-import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
+import { getAuthenticatedUser } from '@openedx/frontend-base';
 import pick from 'lodash.pick';
 import {
   all,

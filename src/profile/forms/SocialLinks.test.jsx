@@ -4,9 +4,7 @@ import React, { useMemo } from 'react';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { configure as configureI18n, IntlProvider } from '@edx/frontend-platform/i18n';
-import { getConfig } from '@edx/frontend-platform';
-import { AppContext } from '@edx/frontend-platform/react';
+import { getConfig, AppContext, configureI18n, IntlProvider } from '@openedx/frontend-base';
 
 import SocialLinks from './SocialLinks';
 import * as savingEditedBio from '../__mocks__/savingEditedBio.mockStore';

@@ -2,10 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { sendTrackingLogEvent } from '@edx/frontend-platform/analytics';
-import { ensureConfig, getConfig } from '@edx/frontend-platform';
-import { AppContext } from '@edx/frontend-platform/react';
-import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
+import { ensureConfig, getConfig, injectIntl, intlShape, sendTrackingLogEvent, AppContext} from '@openedx/frontend-base';
 import { Alert, Hyperlink } from '@openedx/paragon';
 
 // Actions

@@ -1,8 +1,7 @@
 import React from 'react';
-import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { VisibilityOff } from '@openedx/paragon/icons';
 import { Icon } from '@openedx/paragon';
-import { getConfig } from '@edx/frontend-platform';
+import { getConfig, FormattedMessage} from '@openedx/frontend-base';
 
 const UsernameDescription = () => (
   <div className="d-flex align-items-center mt-3 mb-2rem">

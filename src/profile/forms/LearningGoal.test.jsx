@@ -4,9 +4,7 @@ import { Provider } from 'react-redux';
 import { render, screen } from '@testing-library/react';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { configure as configureI18n, IntlProvider } from '@edx/frontend-platform/i18n';
-import { getConfig } from '@edx/frontend-platform';
-import { AppContext } from '@edx/frontend-platform/react';
+import { AppContext, getConfig, configureI18n, IntlProvider } from '@openedx/frontend-base';
 import messages from '../../i18n';
 
 import viewOwnProfileMockStore from '../__mocks__/viewOwnProfile.mockStore';
