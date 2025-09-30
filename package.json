@@ -53,6 +53,7 @@
     "lodash.snakecase": "4.1.1",
     "prop-types": "15.8.1",
     "redux": "4.2.1",
+    "react-redux": "7.2.9",
     "redux-logger": "3.0.6",
     "redux-saga": "1.3.0",
     "redux-thunk": "2.4.2",
@@ -72,10 +73,9 @@
   "peerDependencies": {
     "@openedx/frontend-base": "^1.0.0-alpha.6",
     "@openedx/paragon": "^22",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "react-redux": "7.2.9",
-    "react-router": "6.30.1",
-    "react-router-dom": "6.30.1"
+    "react": "^18",
+    "react-dom": "^18",
+    "react-router": "^6",
+    "react-router-dom": "^6"
   }
 }
