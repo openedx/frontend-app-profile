@@ -22,7 +22,7 @@ frontend-app-profile
 Purpose
 ********
 
-This is a micro-frontend application responsible for the display and updating of user profiles.
+This is a frontend application responsible for the display and updating of user profiles.
 
 When a user views their own profile, they're given fields to edit their full name, location, primary spoken language, education, social links, and bio.  Each field also has a dropdown to select the visibility of that field - i.e., whether it can be viewed by other learners.
 
@@ -36,14 +36,7 @@ Installation
 ============
 
 Follow these steps to provision, run, and enable an instance of the
-Profile MFE for local development via the `devstack`_.
-
-.. _devstack: https://github.com/openedx/devstack#getting-started
-
-#. To use this application, `devstack <https://github.com/openedx/devstack>`__ must be running and you must be logged into it.
-
-   * Start devstack
-   * Log in (http://localhost:18000/login)
+Profile frontend app for local development.
 
 #. To run Profile, install requirements and start the development server by running:
 
@@ -71,16 +64,15 @@ Profile MFE for local development via the `devstack`_.
 
 Once the dev server is up, visit http://localhost:1995/u/staff.
 
-Plugins
+Widgets
 =======
-This MFE can be customized using `Frontend Plugin Framework <https://github.com/openedx/frontend-plugin-framework>`_.
 
-The parts of this MFE that can be customized in that manner are documented `here </src/plugin-slots>`_.
+The parts of this frontend app that can be customized in that manner are documented `here </src/slots>`_.
 
 Configuration
 =============
 
-This MFE is configured via node environment variables supplied at build time. See the .env file for the list of required environment variables. Example build syntax with a single environment variable:
+This frontend app is configured via node environment variables supplied at build time. See the src/app.ts file for the list of required environment variables. Example build syntax with a single environment variable:
 
 .. code-block::
 
