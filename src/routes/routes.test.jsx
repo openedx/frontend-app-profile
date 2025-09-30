@@ -1,8 +1,9 @@
 import React from 'react';
-import { getConfig, AppContext, getLoginRedirectUrl } from '@openedx/frontend-base';
+import { getAppConfig, AppContext, getLoginRedirectUrl } from '@openedx/frontend-base';
 import { MemoryRouter as Router } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import AppRoutes from './AppRoutes';
+import { appId } from '../profile/constants';
 
 // jest.mock('@openedx/frontend-base/analytics');
 
@@ -25,7 +26,7 @@ const RoutesWithProvider = (context, path) => (
 
 const unauthenticatedUser = {
   authenticatedUser: null,
-  config: getConfig(),
+  config: getAppConfig(appId),
 };
 
 describe('routes', () => {
@@ -44,7 +45,7 @@ describe('routes', () => {
             username: 'edx',
             email: 'edx@example.com',
           },
-          config: getConfig(),
+          config: getAppConfig(appId),
         },
         '/u/edx',
       ),

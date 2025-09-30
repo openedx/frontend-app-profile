@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl, intlShape } from '@openedx/frontend-base';
-import { getConfig } from '@openedx/frontend-base';
+import { getSiteConfig } from '@openedx/frontend-base';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEyeSlash, faEye } from '@fortawesome/free-regular-svg-icons';
 
@@ -11,7 +11,7 @@ const Visibility = ({ to, intl }) => {
   const icon = to === 'private' ? faEyeSlash : faEye;
   const label = to === 'private'
     ? intl.formatMessage(messages['profile.visibility.who.just.me'])
-    : intl.formatMessage(messages['profile.visibility.who.everyone'], { siteName: getConfig().SITE_NAME });
+    : intl.formatMessage(messages['profile.visibility.who.everyone'], { siteName: getSiteConfig().siteName });
 
   return (
     <span className="ml-auto small text-muted">
@@ -44,7 +44,7 @@ const VisibilitySelect = ({ intl, className, ...props }) => {
           {intl.formatMessage(messages['profile.visibility.who.just.me'])}
         </option>
         <option key="all_users" value="all_users">
-          {intl.formatMessage(messages['profile.visibility.who.everyone'], { siteName: getConfig().SITE_NAME })}
+          {intl.formatMessage(messages['profile.visibility.who.everyone'], { siteName: getSiteConfig().siteName })}
         </option>
       </select>
     </span>

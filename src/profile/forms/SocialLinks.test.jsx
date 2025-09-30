@@ -4,7 +4,8 @@ import React, { useMemo } from 'react';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { getConfig, AppContext, configureI18n, IntlProvider } from '@openedx/frontend-base';
+import { getAppConfig, AppContext, configureI18n, IntlProvider } from '@openedx/frontend-base';
+import { appId } from '../constants';
 
 import SocialLinks from './SocialLinks';
 import * as savingEditedBio from '../__mocks__/savingEditedBio.mockStore';
@@ -47,7 +48,7 @@ configureI18n({
 const SocialLinksWrapper = (props) => {
   const contextValue = useMemo(() => ({
     authenticatedUser: { userId: null, username: null, administrator: false },
-    config: getConfig(),
+    config: (),
   }), []);
   return (
     <AppContext.Provider
@@ -73,7 +74,7 @@ SocialLinksWrapper.propTypes = {
 const SocialLinksWrapperWithStore = ({ store }) => {
   const contextValue = useMemo(() => ({
     authenticatedUser: { userId: null, username: null, administrator: false },
-    config: getConfig(),
+    config: getAppConfig(appId),
   }), []);
   return (
     <AppContext.Provider

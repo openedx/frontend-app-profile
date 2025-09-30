@@ -1,7 +1,7 @@
 import React from 'react';
 import { VisibilityOff } from '@openedx/paragon/icons';
 import { Icon } from '@openedx/paragon';
-import { getConfig, FormattedMessage} from '@openedx/frontend-base';
+import { getSiteConfig, FormattedMessage} from '@openedx/frontend-base';
 
 const UsernameDescription = () => (
   <div className="d-flex align-items-center mt-3 mb-2rem">
@@ -12,7 +12,7 @@ const UsernameDescription = () => (
         defaultMessage="Your profile information is only visible to you. Only your username is visible to others on {siteName}."
         description="A description of the username field"
         values={{
-          siteName: getConfig().SITE_NAME,
+          siteName: getSiteConfig().siteName,
         }}
       />
     </div>

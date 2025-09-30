@@ -5,8 +5,9 @@ import path from 'path';
 
 import { PactV3, MatchersV3 } from '@pact-foundation/pact';
 
-import { initializeMockApp, getConfig, setConfig } from '@openedx/frontend-base';
+import { initializeMockApp, getAppConfig, setConfig } from '@openedx/frontend-base';
 import { getAccount } from './services';
+import { appId } from '../constants';
 
 const expectedUserInfo200 = {
   username: 'staff',
@@ -48,7 +49,7 @@ describe('getAccount for one username', () => {
     });
     return provider.executeTest(async (mockserver) => {
       setConfig({
-        ...getConfig(),
+        ...getAppConfig(appId),
         LMS_BASE_URL: mockserver.url,
       });
       const response = await getAccount(username200);
@@ -71,7 +72,7 @@ describe('getAccount for one username', () => {
     });
     await provider.executeTest(async (mockserver) => {
       setConfig({
-        ...getConfig(),
+        ...getAppConfig(appId),
         LMS_BASE_URL: mockserver.url,
       });
       await expect(getAccount(username404).then((response) => response.data)).rejects.toThrow('Request failed with status code 404');

@@ -1,5 +1,5 @@
 /* eslint-disable global-require */
-import { sendTrackingLogEvent, configureI18n, getConfig, IntlProvider, AppContext } from '@openedx/frontend-base';
+import { sendTrackingLogEvent, configureI18n, getAppConfig, IntlProvider, AppContext } from '@openedx/frontend-base';
 import { render } from '@testing-library/react';
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { BrowserRouter, useNavigate } from 'react-router-dom';
+import { appId } from '../constants';
 
 import messages from '../i18n';
 import ProfilePage from './ProfilePage';
@@ -33,7 +34,7 @@ const requiredProfilePageProps = {
 // Mock language cookie
 Object.defineProperty(global.document, 'cookie', {
   writable: true,
-  value: `${getConfig().LANGUAGE_PREFERENCE_COOKIE_NAME}=en`,
+  value: `${getAppConfig(appId).LANGUAGE_PREFERENCE_COOKIE_NAME}=en`,
 });
 
 jest.mock('@openedx/frontend-base', () => ({
@@ -113,7 +114,7 @@ describe('<ProfilePage />', () => {
     it('app loading', () => {
       const contextValue = {
         authenticatedUser: { userId: null, username: null, administrator: false },
-        config: getConfig(),
+        config: getAppConfig(appId),
       };
       const component = <ProfilePageWrapper contextValue={contextValue} store={mockStore(storeMocks.loadingApp)} />;
       const { container: tree } = render(component);
@@ -123,7 +124,7 @@ describe('<ProfilePage />', () => {
     it('successfully redirected to not found page.', () => {
       const contextValue = {
         authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-        config: getConfig(),
+        config: getAppConfig(appId),
       };
       const component = <ProfilePageWrapper contextValue={contextValue} store={mockStore(storeMocks.invalidUser)} />;
       const { container: tree } = render(component);
@@ -133,7 +134,7 @@ describe('<ProfilePage />', () => {
     it('viewing own profile', () => {
       const contextValue = {
         authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-        config: getConfig(),
+        config: getAppConfig(appId),
       };
       const component = <ProfilePageWrapper contextValue={contextValue} store={mockStore(storeMocks.viewOwnProfile)} />;
       const { container: tree } = render(component);
@@ -143,7 +144,7 @@ describe('<ProfilePage />', () => {
     it('viewing other profile with all fields', () => {
       const contextValue = {
         authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-        config: getConfig(),
+        config: getAppConfig(appId),
       };
 
       const component = (
@@ -177,7 +178,7 @@ describe('<ProfilePage />', () => {
     it('while saving an edited bio', () => {
       const contextValue = {
         authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-        config: getConfig(),
+        config: getAppConfig(appId),
       };
       const component = (
         <ProfilePageWrapper
@@ -194,7 +195,7 @@ describe('<ProfilePage />', () => {
       storeData.profilePage.errors.bio = { userMessage: 'bio error' };
       const contextValue = {
         authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-        config: getConfig(),
+        config: getAppConfig(appId),
       };
       const component = (
         <ProfilePageWrapper
@@ -212,7 +213,7 @@ describe('<ProfilePage />', () => {
       storeData.profilePage.currentlyEditingField = 'country';
       const contextValue = {
         authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-        config: getConfig(),
+        config: getAppConfig(appId),
       };
       const component = (
         <ProfilePageWrapper
@@ -230,7 +231,7 @@ describe('<ProfilePage />', () => {
       storeData.profilePage.currentlyEditingField = 'levelOfEducation';
       const contextValue = {
         authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-        config: getConfig(),
+        config: getAppConfig(appId),
       };
       const component = (
         <ProfilePageWrapper
@@ -248,7 +249,7 @@ describe('<ProfilePage />', () => {
       storeData.profilePage.currentlyEditingField = 'languageProficiencies';
       const contextValue = {
         authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-        config: getConfig(),
+        config: getAppConfig(appId),
       };
       const component = (
         <ProfilePageWrapper
@@ -261,12 +262,12 @@ describe('<ProfilePage />', () => {
     });
 
     it('without credentials service', () => {
-      const config = getConfig();
+      const config = getAppConfig(appId);
       config.CREDENTIALS_BASE_URL = '';
 
       const contextValue = {
         authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-        config: getConfig(),
+        config: getAppConfig(appId),
       };
       const component = (
         <ProfilePageWrapper
@@ -283,7 +284,7 @@ describe('<ProfilePage />', () => {
       storeData.profilePage.account.requiresParentalConsent = true;
       const contextValue = {
         authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-        config: { ...getConfig(), COLLECT_YEAR_OF_BIRTH: true },
+        config: { ...getAppConfig(appId), COLLECT_YEAR_OF_BIRTH: true },
       };
       const { container } = render(
         <ProfilePageWrapper
@@ -300,7 +301,7 @@ describe('<ProfilePage />', () => {
       storeData.profilePage.errors.photo = { userMessage: 'error' };
       const contextValue = {
         authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-        config: { ...getConfig(), COLLECT_YEAR_OF_BIRTH: true },
+        config: { ...getAppConfig(appId), COLLECT_YEAR_OF_BIRTH: true },
       };
       const { container } = render(
         <ProfilePageWrapper
@@ -318,7 +319,7 @@ describe('<ProfilePage />', () => {
     it('calls sendTrackingLogEvent when mounting', () => {
       const contextValue = {
         authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-        config: getConfig(),
+        config: getAppConfig(appId),
       };
       render(
         <ProfilePageWrapper

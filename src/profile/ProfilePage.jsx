@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { ensureConfig, getConfig, injectIntl, intlShape, sendTrackingLogEvent, AppContext} from '@openedx/frontend-base';
+import { getAppConfig, injectIntl, intlShape, sendTrackingLogEvent, SiteContext, getAuthenticatedUser} from '@openedx/frontend-base';
 import { Alert, Hyperlink } from '@openedx/paragon';
 
 // Actions
@@ -39,17 +39,18 @@ import { profilePageSelector } from './data/selectors';
 import messages from './ProfilePage.messages';
 
 import withParams from '../utils/hoc';
+import { appId } from '../constants';
 
-ensureConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL'], 'ProfilePage');
+// ensureConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL'], 'ProfilePage'); //TODO: delete?
 
 class ProfilePage extends React.Component {
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
 
-    const credentialsBaseUrl = context.config.CREDENTIALS_BASE_URL;
+    const credentialsBaseUrl = getAppConfig(appId).CREDENTIALS_BASE_URL;
     this.state = {
       viewMyRecordsUrl: credentialsBaseUrl ? `${credentialsBaseUrl}/records` : null,
-      accountSettingsUrl: context.config.ACCOUNT_SETTINGS_URL,
+      accountSettingsUrl: getAppConfig(appId).ACCOUNT_SETTINGS_URL,
     };
 
     this.handleSaveProfilePhoto = this.handleSaveProfilePhoto.bind(this);
@@ -68,11 +69,11 @@ class ProfilePage extends React.Component {
   }
 
   handleSaveProfilePhoto(formData) {
-    this.props.saveProfilePhoto(this.context.authenticatedUser.username, formData);
+    this.props.saveProfilePhoto(getAuthenticatedUser().username, formData);
   }
 
   handleDeleteProfilePhoto() {
-    this.props.deleteProfilePhoto(this.context.authenticatedUser.username);
+    this.props.deleteProfilePhoto(getAuthenticatedUser().username);
   }
 
   handleClose(formId) {
@@ -84,7 +85,7 @@ class ProfilePage extends React.Component {
   }
 
   handleSubmit(formId) {
-    this.props.saveProfile(formId, this.context.authenticatedUser.username);
+    this.props.saveProfile(formId, getAuthenticatedUser().username);
   }
 
   handleChange(name, value) {
@@ -96,11 +97,11 @@ class ProfilePage extends React.Component {
     const currentYear = new Date().getFullYear();
     const isAgeOrNotCompliant = !yearOfBirth || ((currentYear - yearOfBirth) < 13);
 
-    return isAgeOrNotCompliant && getConfig().COLLECT_YEAR_OF_BIRTH !== 'true';
+    return isAgeOrNotCompliant && getAppConfig(appId).COLLECT_YEAR_OF_BIRTH !== 'true';
   }
 
   isAuthenticatedUserProfile() {
-    return this.props.params.username === this.context.authenticatedUser.username;
+    return this.props.params.username === getAuthenticatedUser().username;
   }
 
   // Inserted into the DOM in two places (for responsive layout)
@@ -297,7 +298,7 @@ class ProfilePage extends React.Component {
                 {...commonFormProps}
               />
             )}
-            {getConfig().ENABLE_SKILLS_BUILDER_PROFILE && (
+            {getAppConfig(appId).ENABLE_SKILLS_BUILDER_PROFILE && (
               <LearningGoal
                 learningGoal={learningGoal}
                 visibilityLearningGoal={visibilityLearningGoal}
@@ -328,7 +329,7 @@ class ProfilePage extends React.Component {
   }
 }
 
-ProfilePage.contextType = AppContext;
+ProfilePage.contextType = SiteContext;
 
 ProfilePage.propTypes = {
   // Account data
