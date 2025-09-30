@@ -44,7 +44,7 @@ pull_translations:
                translations/paragon/src/i18n/messages:paragon \
                translations/frontend-app-profile/src/i18n/messages:frontend-app-profile
 
-	$(intl_imports) frontend-platform paragon frontend-component-header frontend-component-footer frontend-app-profile
+	$(intl_imports) frontend-base paragon frontend-app-profile
 
 # This target is used by Travis.
 validate-no-uncommitted-package-lock-changes:
