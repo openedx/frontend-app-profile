@@ -49,7 +49,7 @@
 
 .profile-page {
   .edit-section-header {
-    @extend .h6;
+    font-size: var(--pgn-typography-font-size-h6-base);
     display: block;
     font-weight: normal;
     letter-spacing: 0;
