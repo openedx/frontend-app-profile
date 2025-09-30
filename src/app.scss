@@ -1,0 +1,6 @@
+@use "@openedx/paragon/styles/css/core/custom-media-breakpoints" as paragonCustomMediaBreakpoints;
+
+@use "~@edx/frontend-component-header/dist/index";
+@use "~@edx/frontend-component-footer/dist/footer";
+
+@use './profile/index';
