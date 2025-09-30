@@ -8,14 +8,12 @@ import configureStore from './data/configureStore';
 import { appId } from './constants';
 
 import './app.scss';
-import Head from './head/Head';
 
 import { Outlet } from 'react-router-dom';
 
 const Main = () => (
   <CurrentAppProvider appId={appId}>
     <ReduxProvider store={configureStore()}>
-      <Head />
       <main id="main">
         <Outlet />
       </main>
