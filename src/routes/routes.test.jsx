@@ -1,5 +1,5 @@
 import React from 'react';
-import { getAppConfig, AppContext, getLoginRedirectUrl } from '@openedx/frontend-base';
+import { getAppConfig, SiteContext, getLoginRedirectUrl } from '@openedx/frontend-base';
 import { MemoryRouter as Router } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import AppRoutes from './AppRoutes';
@@ -17,11 +17,11 @@ jest.mock('../profile', () => ({
 }));
 
 const RoutesWithProvider = (context, path) => (
-  <AppContext.Provider value={context}>
+  <SiteContext.Provider value={context}>
     <Router initialEntries={[`${path}`]}>
       <AppRoutes />
     </Router>
-  </AppContext.Provider>
+  </SiteContext.Provider>
 );
 
 const unauthenticatedUser = {

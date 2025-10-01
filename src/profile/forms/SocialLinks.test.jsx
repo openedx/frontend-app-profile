@@ -4,8 +4,8 @@ import React, { useMemo } from 'react';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { getAppConfig, AppContext, configureI18n, IntlProvider } from '@openedx/frontend-base';
-import { appId } from '../constants';
+import { getAppConfig, SiteContext, configureI18n, IntlProvider } from '@openedx/frontend-base';
+import { appId } from '../../constants';
 
 import SocialLinks from './SocialLinks';
 import * as savingEditedBio from '../__mocks__/savingEditedBio.mockStore';
@@ -48,10 +48,10 @@ configureI18n({
 const SocialLinksWrapper = (props) => {
   const contextValue = useMemo(() => ({
     authenticatedUser: { userId: null, username: null, administrator: false },
-    config: (),
+    config: getAppConfig(appId),
   }), []);
   return (
-    <AppContext.Provider
+    <SiteContext.Provider
       value={contextValue}
     >
       <IntlProvider locale="en">
@@ -59,7 +59,7 @@ const SocialLinksWrapper = (props) => {
           <SocialLinks {...props} />
         </Provider>
       </IntlProvider>
-    </AppContext.Provider>
+    </SiteContext.Provider>
   );
 };
 
@@ -77,7 +77,7 @@ const SocialLinksWrapperWithStore = ({ store }) => {
     config: getAppConfig(appId),
   }), []);
   return (
-    <AppContext.Provider
+    <SiteContext.Provider
       value={contextValue}
     >
       <IntlProvider locale="en">
@@ -85,7 +85,7 @@ const SocialLinksWrapperWithStore = ({ store }) => {
           <SocialLinks {...defaultProps} formId="bio" />
         </Provider>
       </IntlProvider>
-    </AppContext.Provider>
+    </SiteContext.Provider>
   );
 };
 

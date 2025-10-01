@@ -5,9 +5,8 @@ import path from 'path';
 
 import { PactV3, MatchersV3 } from '@pact-foundation/pact';
 
-import { initializeMockApp, getAppConfig, setConfig } from '@openedx/frontend-base';
+import { initializeMockApp, getSiteConfig } from '@openedx/frontend-base';
 import { getAccount } from './services';
-import { appId } from '../constants';
 
 const expectedUserInfo200 = {
   username: 'staff',
@@ -26,6 +25,11 @@ const provider = new PactV3({
   consumer: 'frontend-app-profile',
   provider: 'edx-platform',
 });
+
+jest.mock('@openedx/frontend-base', () => ({
+  ...jest.requireActual('@openedx/frontend-base'),
+  getSiteConfig: jest.fn(),
+}));
 
 describe('getAccount for one username', () => {
   beforeAll(async () => {
@@ -48,9 +52,9 @@ describe('getAccount for one username', () => {
       },
     });
     return provider.executeTest(async (mockserver) => {
-      setConfig({
-        ...getAppConfig(appId),
-        LMS_BASE_URL: mockserver.url,
+      jest.mocked(getSiteConfig).mockReturnValue({
+        ...getSiteConfig(),
+        lmsBaseUrl: mockserver.url,
       });
       const response = await getAccount(username200);
       expect(response).toEqual(expectedUserInfo200);
@@ -71,9 +75,9 @@ describe('getAccount for one username', () => {
       },
     });
     await provider.executeTest(async (mockserver) => {
-      setConfig({
-        ...getAppConfig(appId),
-        LMS_BASE_URL: mockserver.url,
+      jest.mocked(getSiteConfig).mockReturnValue({
+        ...getSiteConfig(),
+        lmsBaseUrl: mockserver.url,
       });
       await expect(getAccount(username404).then((response) => response.data)).rejects.toThrow('Request failed with status code 404');
     });

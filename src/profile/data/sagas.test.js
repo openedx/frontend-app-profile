@@ -26,7 +26,6 @@ jest.mock('@openedx/frontend-base', () => ({
 }));
 
 // RootSaga and ProfileApiService must be imported AFTER the mock above.
-/* eslint-disable import/first */
 import profileSaga, {
   handleFetchProfile,
   handleSaveProfile,
@@ -34,7 +33,6 @@ import profileSaga, {
   handleDeleteProfilePhoto,
 } from './sagas';
 import * as ProfileApiService from './services';
-/* eslint-enable import/first */
 
 describe('RootSaga', () => {
   describe('profileSaga', () => {

@@ -4,9 +4,9 @@ import { Provider } from 'react-redux';
 import { render, screen } from '@testing-library/react';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { AppContext, getAppConfig, configureI18n, IntlProvider } from '@openedx/frontend-base';
+import { SiteContext, getAppConfig, configureI18n, IntlProvider } from '@openedx/frontend-base';
 import messages from '../../i18n';
-import { appId } from '../constants';
+import { appId } from '../../constants';
 
 import viewOwnProfileMockStore from '../__mocks__/viewOwnProfile.mockStore';
 import savingEditedBioMockStore from '../__mocks__/savingEditedBio.mockStore';
@@ -42,7 +42,7 @@ const LearningGoalWrapper = (props) => {
     config: getAppConfig(appId),
   }), []);
   return (
-    <AppContext.Provider
+    <SiteContext.Provider
       value={contextValue}
     >
       <IntlProvider locale="en">
@@ -50,7 +50,7 @@ const LearningGoalWrapper = (props) => {
           <LearningGoal {...props} />
         </Provider>
       </IntlProvider>
-    </AppContext.Provider>
+    </SiteContext.Provider>
   );
 };
 
@@ -68,7 +68,7 @@ const LearningGoalWrapperWithStore = ({ store }) => {
     config: getAppConfig(appId),
   }), []);
   return (
-    <AppContext.Provider
+    <SiteContext.Provider
       value={contextValue}
     >
       <IntlProvider locale="en">
@@ -76,7 +76,7 @@ const LearningGoalWrapperWithStore = ({ store }) => {
           <LearningGoal {...requiredLearningGoalProps} formId="learningGoal" />
         </Provider>
       </IntlProvider>
-    </AppContext.Provider>
+    </SiteContext.Provider>
   );
 };
 

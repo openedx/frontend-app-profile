@@ -1,5 +1,5 @@
 /* eslint-disable global-require */
-import { sendTrackingLogEvent, configureI18n, getAppConfig, IntlProvider, AppContext } from '@openedx/frontend-base';
+import { sendTrackingLogEvent, configureI18n, getAppConfig, IntlProvider, SiteContext } from '@openedx/frontend-base';
 import { render } from '@testing-library/react';
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -38,8 +38,11 @@ Object.defineProperty(global.document, 'cookie', {
 });
 
 jest.mock('@openedx/frontend-base', () => ({
+  ...jest.requireActual('@openedx/frontend-base'),
   configure: () => {},
-  getAuthenticatedUser: () => null,
+  getAuthenticatedUser: jest.fn(() => ({
+    username: 'staff',
+  })),
   fetchAuthenticatedUser: () => null,
   getAuthenticatedHttpClient: jest.fn(),
   AUTHENTICATED_USER_CHANGED: 'user_changed',
@@ -81,7 +84,7 @@ ProfileWrapper.propTypes = {
 const ProfilePageWrapper = ({
   contextValue, store, params, requiresParentalConsent,
 }) => (
-  <AppContext.Provider
+  <SiteContext.Provider
     value={contextValue}
   >
     <IntlProvider locale="en">
@@ -94,7 +97,7 @@ const ProfilePageWrapper = ({
         </BrowserRouter>
       </Provider>
     </IntlProvider>
-  </AppContext.Provider>
+  </SiteContext.Provider>
 );
 
 ProfilePageWrapper.defaultProps = {
