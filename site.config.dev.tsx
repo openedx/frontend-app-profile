@@ -31,7 +31,11 @@ const siteConfig: SiteConfig = {
     {
       role: 'org.openedx.frontend.role.logout',
       url: 'http://local.openedx.io:8000/logout'
-    }
+    },
+    {
+      role: 'org.openedx.frontend.role.learnerDashboard',
+      url: 'http://apps.local.openedx.io:1996/learner-dashboard'
+    },
   ],
 };
 
