@@ -1,6 +1,7 @@
 import { ProfilePage, NotFoundPage } from './profile';
 import Main from './Main';
 import { withNavigate } from './utils/hoc';
+import { AuthenticatedPageRoute, PageWrap } from '@openedx/frontend-base';
 import { RoleRouteObject } from '@openedx/frontend-base/types';
 
 const ProfilePageWithNavigate = withNavigate(ProfilePage);
@@ -13,15 +14,15 @@ const routes: RoleRouteObject[] = [
     children: [
       {
         path: '/u/:username',
-        element: <ProfilePageWithNavigate />
+        element: <AuthenticatedPageRoute><ProfilePageWithNavigate /></AuthenticatedPageRoute>
       },
       {
         path: '/notfound',
-        element: (<NotFoundPage />)
+        element: (<PageWrap><NotFoundPage /></PageWrap>)
       },
       {
         path: '*',
-        element: (<NotFoundPage />)
+        element: (<PageWrap><NotFoundPage /></PageWrap>)
       },
     ]
   }
