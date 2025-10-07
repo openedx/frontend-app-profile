@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Alert } from '@openedx/paragon';
-import { FormattedMessage } from '@edx/frontend-platform/i18n';
-import { getConfig } from '@edx/frontend-platform';
+import { getSiteConfig, FormattedMessage } from '@openedx/frontend-base';
 
 const AgeMessage = ({ accountSettingsUrl }) => (
   <Alert
@@ -23,7 +22,7 @@ const AgeMessage = ({ accountSettingsUrl }) => (
       description="Error message"
       tagName="p"
       values={{
-        siteName: getConfig().SITE_NAME,
+        siteName: getSiteConfig().siteName,
       }}
     />
     <Alert.Link href={accountSettingsUrl}>

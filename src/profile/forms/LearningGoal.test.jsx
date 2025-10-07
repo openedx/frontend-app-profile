@@ -4,10 +4,9 @@ import { Provider } from 'react-redux';
 import { render, screen } from '@testing-library/react';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { configure as configureI18n, IntlProvider } from '@edx/frontend-platform/i18n';
-import { getConfig } from '@edx/frontend-platform';
-import { AppContext } from '@edx/frontend-platform/react';
+import { SiteContext, getAppConfig, configureI18n, IntlProvider } from '@openedx/frontend-base';
 import messages from '../../i18n';
+import { appId } from '../../constants';
 
 import viewOwnProfileMockStore from '../__mocks__/viewOwnProfile.mockStore';
 import savingEditedBioMockStore from '../__mocks__/savingEditedBio.mockStore';
@@ -40,10 +39,10 @@ configureI18n({
 const LearningGoalWrapper = (props) => {
   const contextValue = useMemo(() => ({
     authenticatedUser: { userId: null, username: null, administrator: false },
-    config: getConfig(),
+    config: getAppConfig(appId),
   }), []);
   return (
-    <AppContext.Provider
+    <SiteContext.Provider
       value={contextValue}
     >
       <IntlProvider locale="en">
@@ -51,7 +50,7 @@ const LearningGoalWrapper = (props) => {
           <LearningGoal {...props} />
         </Provider>
       </IntlProvider>
-    </AppContext.Provider>
+    </SiteContext.Provider>
   );
 };
 
@@ -66,10 +65,10 @@ LearningGoalWrapper.propTypes = {
 const LearningGoalWrapperWithStore = ({ store }) => {
   const contextValue = useMemo(() => ({
     authenticatedUser: { userId: null, username: null, administrator: false },
-    config: getConfig(),
+    config: getAppConfig(appId),
   }), []);
   return (
-    <AppContext.Provider
+    <SiteContext.Provider
       value={contextValue}
     >
       <IntlProvider locale="en">
@@ -77,7 +76,7 @@ const LearningGoalWrapperWithStore = ({ store }) => {
           <LearningGoal {...requiredLearningGoalProps} formId="learningGoal" />
         </Provider>
       </IntlProvider>
-    </AppContext.Provider>
+    </SiteContext.Provider>
   );
 };
 

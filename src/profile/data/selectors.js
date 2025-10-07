@@ -1,11 +1,8 @@
 import { createSelector } from 'reselect';
-import {
-  getLocale,
-  getLanguageList,
-  getCountryList,
-  getCountryMessages,
-  getLanguageMessages,
-} from '@edx/frontend-platform/i18n'; // eslint-disable-line
+import { getLocale } from '@openedx/frontend-base';
+
+import { getCountryList, getCountryMessages } from '../../i18n/countries';
+import { getLanguageList, getLanguageMessages } from '../../i18n/languages';
 
 export const formIdSelector = (state, props) => props.formId;
 export const userAccountSelector = state => state.userAccount;
@@ -151,9 +148,9 @@ export const profileImageSelector = createSelector(
   profileAccountSelector,
   account => (account.profileImage != null
     ? {
-      src: account.profileImage.imageUrlFull,
-      isDefault: !account.profileImage.hasImage,
-    }
+        src: account.profileImage.imageUrlFull,
+        isDefault: !account.profileImage.hasImage,
+      }
     : {}),
 );
 
@@ -231,13 +228,13 @@ export const visibilitiesSelector = createSelector(
     switch (accountPrivacy) {
       case 'custom':
         return {
-          visibilityBio: preferences.visibilityBio || 'all_users',
-          visibilityCourseCertificates: preferences.visibilityCourseCertificates || 'all_users',
-          visibilityCountry: preferences.visibilityCountry || 'all_users',
-          visibilityLevelOfEducation: preferences.visibilityLevelOfEducation || 'all_users',
-          visibilityLanguageProficiencies: preferences.visibilityLanguageProficiencies || 'all_users',
-          visibilityName: preferences.visibilityName || 'all_users',
-          visibilitySocialLinks: preferences.visibilitySocialLinks || 'all_users',
+          visibilityBio: preferences.visibilityBio ?? 'all_users',
+          visibilityCourseCertificates: preferences.visibilityCourseCertificates ?? 'all_users',
+          visibilityCountry: preferences.visibilityCountry ?? 'all_users',
+          visibilityLevelOfEducation: preferences.visibilityLevelOfEducation ?? 'all_users',
+          visibilityLanguageProficiencies: preferences.visibilityLanguageProficiencies ?? 'all_users',
+          visibilityName: preferences.visibilityName ?? 'all_users',
+          visibilitySocialLinks: preferences.visibilitySocialLinks ?? 'all_users',
         };
       case 'private':
         return {
@@ -373,6 +370,6 @@ export const profilePageSelector = createSelector(
     saveState,
     savePhotoState,
     isLoadingProfile,
-    photoUploadError: errors.photo || null,
+    photoUploadError: errors.photo ?? null,
   }),
 );

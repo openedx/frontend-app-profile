@@ -1,3 +1,5 @@
+@use "@openedx/paragon/scss/core/core" as paragon;
+
 .word-break-all {
   word-break: break-all !important;
 }
@@ -28,7 +30,7 @@
   position: absolute;
   left: 1.5rem;
   top: 5.25rem;
-  color: var(--pgn-color-gray-500);
+  color: paragon.$gray-500;
   line-height: 0.9rem;
   font-size: 0.8rem;
   font-style: normal;
@@ -42,7 +44,7 @@
 
 .icon-visibility-off {
   height: 1rem;
-  color: var(--pgn-color-gray-500);
+  color: paragon.$gray-500;
 }
 
 .profile-page {
@@ -55,11 +57,11 @@
   }
 
   label.edit-section-header {
-    margin-bottom: calc(var(--pgn-spacing-spacer-base) * .5);
+    margin-bottom: paragon.$spacer * .5;
   }
 
   .profile-avatar-wrap {
-    @media (--pgn-size-breakpoint-min-width-md) {
+    @include paragon.media-breakpoint-up(md) {
       max-width: 12rem;
       margin-right: 0;
       margin-top: -8rem;
@@ -77,25 +79,25 @@
     align-items: center;
     border-radius: 50%;
 
-     @media (--pgn-size-breakpoint-min-width-md) {
+    @include paragon.media-breakpoint-up(md) {
       background: linear-gradient(to top, rgba(0,0,0,.65) 4rem, rgba(0,0,0,0) 4rem);
       align-items: flex-end;
     }
 
     .btn {
       text-decoration: none;
-      @media (--pgn-size-breakpoint-min-width-md) {
+      @include paragon.media-breakpoint-up(md) {
         margin-bottom: 1.2rem;
       }
     }
 
     .dropdown {
-      @media (--pgn-size-breakpoint-min-width-md) {
+      @include paragon.media-breakpoint-up(md) {
         margin-bottom: 1.2rem;
       }
 
       .btn {
-        color: var(--pgn-color-white);
+        color: paragon.$white;
         background: transparent;
         border-color: transparent;
         margin: 0;
@@ -108,7 +110,7 @@
     height: 5rem;
     position: relative;
 
-    @media (--pgn-size-breakpoint-min-width-md) {
+    @include paragon.media-breakpoint-up(md) {
       width: 12rem;
       height: 12rem;
     }
@@ -128,7 +130,7 @@
       border-radius:0;
       transition: opacity 200ms ease;
 
-      @media (--pgn-size-breakpoint-min-width-md) {
+      @include paragon.media-breakpoint-up(md) {
         height: 4rem;
       }
 
@@ -142,7 +144,7 @@
     position: relative;
 
     .certificate-title {
-      font-family: var(--pgn-typography-font-family-serif);
+      font-family: paragon.$font-family-serif;
       font-weight: 400;
     }
 
