@@ -291,7 +291,9 @@ class ProfilePage extends React.Component {
                 {...commonFormProps}
               />
             )}
-            <AdditionalProfileFieldsSlot />
+            <div className="mb-4">
+              <AdditionalProfileFieldsSlot />
+            </div>
           </div>
           <div className="pt-md-3 col-md-8 col-lg-7 offset-lg-1">
             {!this.isYOBDisabled() && this.renderAgeMessage()}
