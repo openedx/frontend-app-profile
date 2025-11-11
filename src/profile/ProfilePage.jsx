@@ -43,6 +43,8 @@ import messages from './ProfilePage.messages';
 
 import withParams from '../utils/hoc';
 
+import AdditionalProfileFieldsSlot from '../plugin-slots/AdditionalProfileFieldsSlot';
+
 ensureConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL'], 'ProfilePage');
 
 class ProfilePage extends React.Component {
@@ -289,6 +291,9 @@ class ProfilePage extends React.Component {
                 {...commonFormProps}
               />
             )}
+            <div className="mb-4">
+              <AdditionalProfileFieldsSlot />
+            </div>
           </div>
           <div className="pt-md-3 col-md-8 col-lg-7 offset-lg-1">
             {!this.isYOBDisabled() && this.renderAgeMessage()}
