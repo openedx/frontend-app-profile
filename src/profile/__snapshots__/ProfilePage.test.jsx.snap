@@ -547,6 +547,9 @@ exports[`<ProfilePage /> Renders correctly in various states successfully redire
               </ul>
             </div>
           </div>
+          <div
+            class="mb-4"
+          />
         </div>
         <div
           class="pt-md-3 col-md-8 col-lg-7 offset-lg-1"
@@ -2630,6 +2633,9 @@ exports[`<ProfilePage /> Renders correctly in various states test country edit w
               </ul>
             </div>
           </div>
+          <div
+            class="mb-4"
+          />
         </div>
         <div
           class="pt-md-3 col-md-8 col-lg-7 offset-lg-1"
@@ -3629,6 +3635,9 @@ exports[`<ProfilePage /> Renders correctly in various states test education edit
               </ul>
             </div>
           </div>
+          <div
+            class="mb-4"
+          />
         </div>
         <div
           class="pt-md-3 col-md-8 col-lg-7 offset-lg-1"
@@ -5503,6 +5512,9 @@ exports[`<ProfilePage /> Renders correctly in various states test preferreded la
               </ul>
             </div>
           </div>
+          <div
+            class="mb-4"
+          />
         </div>
         <div
           class="pt-md-3 col-md-8 col-lg-7 offset-lg-1"
@@ -6096,6 +6108,9 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               />
             </div>
           </div>
+          <div
+            class="mb-4"
+          />
         </div>
         <div
           class="pt-md-3 col-md-8 col-lg-7 offset-lg-1"
@@ -6786,6 +6801,9 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               </ul>
             </div>
           </div>
+          <div
+            class="mb-4"
+          />
         </div>
         <div
           class="pt-md-3 col-md-8 col-lg-7 offset-lg-1"
@@ -7663,6 +7681,9 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               </ul>
             </div>
           </div>
+          <div
+            class="mb-4"
+          />
         </div>
         <div
           class="pt-md-3 col-md-8 col-lg-7 offset-lg-1"
@@ -8604,6 +8625,9 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               </ul>
             </div>
           </div>
+          <div
+            class="mb-4"
+          />
         </div>
         <div
           class="pt-md-3 col-md-8 col-lg-7 offset-lg-1"
@@ -9473,6 +9497,9 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
               </ul>
             </div>
           </div>
+          <div
+            class="mb-4"
+          />
         </div>
         <div
           class="pt-md-3 col-md-8 col-lg-7 offset-lg-1"
