@@ -158,7 +158,7 @@ describe('<ProfilePage />', () => {
                 courseCertificates: [{ title: 'Course 1' }],
                 levelOfEducation: 'bachelors',
                 languageProficiencies: [{ code: 'en' }],
-                socialLinks: [{ platform: 'twitter', socialLink: 'https://twitter.com/user' }],
+                socialLinks: [{ platform: 'x', socialLink: 'https://x.com/user' }],
               },
               preferences: {
                 ...storeMocks.viewOtherProfile.profilePage.preferences,

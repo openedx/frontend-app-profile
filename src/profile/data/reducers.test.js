@@ -32,7 +32,7 @@ describe('profilePage reducer', () => {
           bio: 'Software Engineer',
           country: 'US',
           levelOfEducation: 'bachelors',
-          socialLinks: [{ platform: 'twitter', link: 'twitter.com/johndoe' }],
+          socialLinks: [{ platform: 'x', link: 'x.com/johndoe' }],
           languageProficiencies: [{ code: 'en', name: 'English' }],
           profileImage: { url: 'profile.jpg' },
           yearOfBirth: 1990,

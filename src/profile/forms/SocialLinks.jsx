@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Alert } from '@openedx/paragon';
 import { connect } from 'react-redux';
-import { faTwitter, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faXTwitter, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import classNames from 'classnames';
 
@@ -19,9 +19,9 @@ const platformDisplayInfo = {
     icon: faFacebook,
     name: 'Facebook',
   },
-  twitter: {
-    icon: faTwitter,
-    name: 'X',
+  x: {
+    icon: faXTwitter,
+    name: 'X (Twitter)',
   },
   linkedin: {
     icon: faLinkedin,
@@ -46,7 +46,7 @@ const SocialLinks = ({
   const [activePlatform, setActivePlatform] = useState(null);
 
   const mergeWithDrafts = (newSocialLink) => {
-    const knownPlatforms = ['twitter', 'facebook', 'linkedin'];
+    const knownPlatforms = ['x', 'facebook', 'linkedin'];
     const updated = [];
     knownPlatforms.forEach((platform) => {
       if (newSocialLink.platform === platform) {
@@ -164,7 +164,7 @@ const SocialLinks = ({
                       values={{
                         network: platformDisplayInfo[platform].name,
                       }}
-                      description="{network} is the name of a social network such as Facebook or Twitter"
+                      description="{network} is the name of a social network such as Facebook or X"
                     />
                   </EmptyContent>
                 </div>

@@ -504,7 +504,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
                         class="h5 font-weight-bold m-0 pb-1.5"
                         data-hj-suppress="true"
                       >
-                        X
+                        X (Twitter)
                       </p>
                       <div
                         class="row m-0 p-0 d-flex flex-nowrap align-items-center"
@@ -515,7 +515,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
                           <h4
                             class="edit-section-header text-gray-700"
                           >
-                            https://twitter.com/user
+                            https://x.com/user
                           </h4>
                         </div>
                         <div
@@ -1169,7 +1169,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                         class="h5 font-weight-bold m-0 pb-1.5"
                         data-hj-suppress="true"
                       >
-                        X
+                        X (Twitter)
                       </p>
                       <div
                         class="w-100 overflowWrap-breakWord"
@@ -1183,7 +1183,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                             <h4
                               class="edit-section-header text-gray-700"
                             >
-                              https://www.twitter.com/ALOHA
+                              https://www.x.com/ALOHA
                             </h4>
                           </div>
                           <div
@@ -2085,7 +2085,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                         class="h5 font-weight-bold m-0 pb-1.5"
                         data-hj-suppress="true"
                       >
-                        X
+                        X (Twitter)
                       </p>
                       <div
                         class="w-100 overflowWrap-breakWord"
@@ -2099,7 +2099,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                             <h4
                               class="edit-section-header text-gray-700"
                             >
-                              https://www.twitter.com/ALOHA
+                              https://www.x.com/ALOHA
                             </h4>
                           </div>
                           <div

@@ -14,8 +14,8 @@ const SOCIAL = {
   linkedin: {
     title: 'LinkedIn',
   },
-  twitter: {
-    title: 'Twitter',
+  x: {
+    title: 'X',
   },
   facebook: {
     title: 'Facebook',
