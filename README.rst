@@ -53,9 +53,9 @@ Profile MFE for local development via the `devstack`_.
 
     ``git clone https://github.com/openedx/frontend-app-profile.git``
 
-  2. Use node v18.x.
+  2. Use the version of node in the `.nvmrc` file.
 
-    The current version of the micro-frontend build scripts support node 18.
+    The currently supported version of the micro-frontend build scripts can be found in `.nvmrc`.
     Using other major versions of node *may* work, but this is unsupported.  For
     convenience, this repository includes an .nvmrc file to help in setting the
     correct node version via `nvm <https://github.com/nvm-sh/nvm>`_.
