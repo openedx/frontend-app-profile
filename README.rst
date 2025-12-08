@@ -32,44 +32,52 @@ When a user views someone else's profile, they see all those fields that that us
 Getting Started
 ***************
 
-Installation
-============
+Prerequisites
+=============
 
-Follow these steps to provision, run, and enable an instance of the
-Profile MFE for local development via the `devstack`_.
+The Tutor_ platform is a prerequisite for developing an MFE.
+Utilize `relevant tutor-mfe documentation`_ to guide you through
+the process of MFE development within the Tutor environment.
 
-.. _devstack: https://github.com/openedx/devstack#getting-started
+.. _Tutor: https://github.com/overhangio/tutor
 
-#. To use this application, `devstack <https://github.com/openedx/devstack>`__ must be running and you must be logged into it.
+.. _relevant tutor-mfe documentation: https://github.com/overhangio/tutor-mfe#mfe-development
 
-   * Start devstack
-   * Log in (http://localhost:18000/login)
 
-#. To run Profile, install requirements and start the development server by running:
+Cloning and Startup
+===================
 
-.. code-block::
+1. Clone the repo:
 
-  1. Clone your new repo:
+  ``git clone https://github.com/openedx/frontend-app-profile.git``
 
-    ``git clone https://github.com/openedx/frontend-app-profile.git``
+2. Use the version of node in the `.nvmrc` file.
 
-  2. Use the version of node in the `.nvmrc` file.
+  The current version of the micro-frontend build scripts support the version of node found in `.nvmrc`.
+  Using other major versions of node *may* work, but this is unsupported.  For
+  convenience, this repository includes an .nvmrc file to help in setting the
+  correct node version via `nvm <https://github.com/nvm-sh/nvm>`_.
 
-    The currently supported version of the micro-frontend build scripts can be found in `.nvmrc`.
-    Using other major versions of node *may* work, but this is unsupported.  For
-    convenience, this repository includes an .nvmrc file to help in setting the
-    correct node version via `nvm <https://github.com/nvm-sh/nvm>`_.
+3. Install npm dependencies:
 
-  3. Install npm dependencies:
+  ``cd frontend-app-profile && npm ci``
 
-    ``cd frontend-app-profile && npm ci``
+4. Mount the frontend-app-profile MFE in Tutor:
 
-  4. Start the dev server:
+  ``tutor mounts add <your-tutor-project-dir>/frontend-app-profile``
+5. Build the Docker image:
 
-    ``npm start``
-     The server will run on port 1995
+  ``tutor images build profile-dev``
 
-Once the dev server is up, visit http://localhost:1995/u/staff.
+6. Launch the development server with Tutor:
+
+  ``tutor dev start profile``
+
+
+The dev server is running at `http://localhost:1995/u/staff <http://localhost:1995/u/staff>`_.
+
+`Tutor <https://github.com/overhangio/tutor>`_. If you start Tutor with ``tutor dev start profile``
+that should give you everything you need as a companion to this frontend.
 
 Plugins
 =======
