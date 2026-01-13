@@ -19,7 +19,7 @@ metadata:
     openedx.org/add-to-projects: "openedx:23"
     openedx.org/release: "master"
 spec:
-  owner: group:2u-infinity
+  owner: jacobo-dominguez-wgu
   type: 'service'
   lifecycle: 'production'
 # (Optional) An array of different components or resources.
