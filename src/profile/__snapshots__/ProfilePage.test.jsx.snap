@@ -307,7 +307,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               class="pgn-transition-replace-group position-relative pt-40px"
             >
               <div
-                style="padding: .1px 0px;"
+                style="padding: 0.1px 0px;"
               >
                 <div
                   class="row m-0 pb-1.5 align-items-center"
@@ -357,7 +357,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               class="pgn-transition-replace-group position-relative pt-40px"
             >
               <div
-                style="padding: .1px 0px;"
+                style="padding: 0.1px 0px;"
               >
                 <p
                   class="h5 font-weight-bold m-0 pb-1.5"
@@ -390,7 +390,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               class="pgn-transition-replace-group position-relative pt-40px"
             >
               <div
-                style="padding: .1px 0px;"
+                style="padding: 0.1px 0px;"
               >
                 <p
                   class="h5 font-weight-bold m-0 pb-1.5"
@@ -423,7 +423,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               class="pgn-transition-replace-group position-relative pt-40px"
             >
               <div
-                style="padding: .1px 0px;"
+                style="padding: 0.1px 0px;"
               >
                 <p
                   class="h5 font-weight-bold m-0 pb-1.5"
@@ -460,7 +460,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               class="pgn-transition-replace-group position-relative pt-0"
             >
               <div
-                style="padding: .1px 0px;"
+                style="padding: 0.1px 0px;"
               >
                 <p
                   class="h5 font-weight-bold m-0 pb-1.5"
@@ -493,7 +493,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               class="pgn-transition-replace-group position-relative p-0"
             >
               <div
-                style="padding: .1px 0px;"
+                style="padding: 0.1px 0px;"
               >
                 <div>
                   <div>
@@ -747,7 +747,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               class="pgn-transition-replace-group position-relative pt-40px"
             >
               <div
-                style="padding: .1px 0px;"
+                style="padding: 0.1px 0px;"
               >
                 <div
                   class="row m-0 pb-1.5 align-items-center"
@@ -842,7 +842,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               class="pgn-transition-replace-group position-relative pt-40px"
             >
               <div
-                style="padding: .1px 0px;"
+                style="padding: 0.1px 0px;"
               >
                 <p
                   class="h5 font-weight-bold m-0 pb-1.5"
@@ -920,7 +920,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               class="pgn-transition-replace-group position-relative pt-40px"
             >
               <div
-                style="padding: .1px 0px;"
+                style="padding: 0.1px 0px;"
               >
                 <p
                   class="h5 font-weight-bold m-0 pb-1.5"
@@ -998,7 +998,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               class="pgn-transition-replace-group position-relative pt-40px"
             >
               <div
-                style="padding: .1px 0px;"
+                style="padding: 0.1px 0px;"
               >
                 <p
                   class="h5 font-weight-bold m-0 pb-1.5"
@@ -1080,7 +1080,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               class="pgn-transition-replace-group position-relative pt-0"
             >
               <div
-                style="padding: .1px 0px;"
+                style="padding: 0.1px 0px;"
               >
                 <p
                   class="h5 font-weight-bold m-0 pb-1.5"
@@ -1158,7 +1158,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               class="pgn-transition-replace-group position-relative p-0"
             >
               <div
-                style="padding: .1px 0px;"
+                style="padding: 0.1px 0px;"
               >
                 <div>
                   <div>
@@ -1403,7 +1403,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               >
                 <div
                   class="certificate-type-illustration"
-                  style="background-image: url(icon/mock/path);"
+                  style="background-image: url("icon/mock/path");"
                 />
                 <div
                   class="d-flex flex-column position-relative p-0 width-314px"
@@ -1663,7 +1663,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
               class="pgn-transition-replace-group position-relative pt-40px"
             >
               <div
-                style="padding: .1px 0px;"
+                style="padding: 0.1px 0px;"
               >
                 <div
                   class="row m-0 pb-1.5 align-items-center"
@@ -1758,7 +1758,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
               class="pgn-transition-replace-group position-relative pt-40px"
             >
               <div
-                style="padding: .1px 0px;"
+                style="padding: 0.1px 0px;"
               >
                 <p
                   class="h5 font-weight-bold m-0 pb-1.5"
@@ -1836,7 +1836,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
               class="pgn-transition-replace-group position-relative pt-40px"
             >
               <div
-                style="padding: .1px 0px;"
+                style="padding: 0.1px 0px;"
               >
                 <p
                   class="h5 font-weight-bold m-0 pb-1.5"
@@ -1914,7 +1914,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
               class="pgn-transition-replace-group position-relative pt-40px"
             >
               <div
-                style="padding: .1px 0px;"
+                style="padding: 0.1px 0px;"
               >
                 <p
                   class="h5 font-weight-bold m-0 pb-1.5"
@@ -1996,7 +1996,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
               class="pgn-transition-replace-group position-relative pt-0"
             >
               <div
-                style="padding: .1px 0px;"
+                style="padding: 0.1px 0px;"
               >
                 <p
                   class="h5 font-weight-bold m-0 pb-1.5"
@@ -2074,7 +2074,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
               class="pgn-transition-replace-group position-relative p-0"
             >
               <div
-                style="padding: .1px 0px;"
+                style="padding: 0.1px 0px;"
               >
                 <div>
                   <div>
@@ -2319,7 +2319,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
               >
                 <div
                   class="certificate-type-illustration"
-                  style="background-image: url(icon/mock/path);"
+                  style="background-image: url("icon/mock/path");"
                 />
                 <div
                   class="d-flex flex-column position-relative p-0 width-314px"
