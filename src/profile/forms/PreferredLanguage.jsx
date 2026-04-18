@@ -73,7 +73,7 @@ const PreferredLanguage = ({
                   value={value}
                   onChange={handleChange}
                 >
-                  <option value=""> </option>
+                  <option value="" aria-label="empty">&nbsp;</option>
                   {sortedLanguages.map(({ code, name }) => (
                     <option key={code} value={code}>{name}</option>
                   ))}

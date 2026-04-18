@@ -66,7 +66,7 @@ const Education = ({
                   value={levelOfEducation}
                   onChange={handleChange}
                 >
-                  <option value=""> </option>
+                  <option value="" aria-label="empty">&nbsp;</option>
                   {EDUCATION_LEVELS.map(level => (
                     <option key={level} value={level}>
                       {intl.formatMessage(get(
