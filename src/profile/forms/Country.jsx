@@ -70,7 +70,7 @@ const Country = ({
                   value={country}
                   onChange={handleChange}
                 >
-                  <option value=""> </option>
+                  <option value="" aria-label="empty">&nbsp;</option>
                   {translatedCountries.map(({ code, name }) => (
                     <option key={code} value={code} disabled={isDisabledCountry(code)}>
                       {name}
