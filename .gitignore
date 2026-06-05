@@ -1,4 +1,5 @@
 .DS_Store
+.env.development.local
 .eslintcache
 .idea
 node_modules
