@@ -16,7 +16,8 @@
     "start": "fedx-scripts webpack-dev-server --progress",
     "dev": "PUBLIC_PATH=/profile/ MFE_CONFIG_API_URL='http://localhost:8000/api/mfe_config/v1' fedx-scripts webpack-dev-server --progress --host apps.local.openedx.io",
     "test": "TZ=UTC fedx-scripts jest --coverage --passWithNoTests",
-    "stubs": "pact-stub-service ./src/pacts/frontend-app-profile-edx-platform.json --port 18000"
+    "stubs": "pact-stub-service ./src/pacts/frontend-app-profile-edx-platform.json --port 18000",
+    "postinstall": "patch-package"
   },
   "bugs": {
     "url": "https://github.com/openedx/frontend-app-profile/issues"
@@ -74,6 +75,7 @@
     "@testing-library/react": "14.3.1",
     "glob": "11.1.0",
     "jest-environment-jsdom": "^30.3.0",
+    "patch-package": "^8.0.1",
     "redux-mock-store": "1.5.5"
   }
 }
