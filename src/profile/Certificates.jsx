@@ -13,7 +13,7 @@ const Certificates = ({ certificates }) => {
   const isTabletView = useIsOnTabletScreen();
   return (
     <div>
-      <div className="col justify-content-start align-items-start g-5rem p-0">
+      <div className="col p-0">
         <div className="col align-self-stretch height-42px justify-content-start align-items-start p-0">
           <p className="font-weight-bold text-primary-500 m-0 h2">
             <FormattedMessage

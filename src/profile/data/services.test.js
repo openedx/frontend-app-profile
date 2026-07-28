@@ -9,6 +9,7 @@ import {
   patchPreferences,
   getCourseCertificates,
   getCountryList,
+  getCourseCompletion,
 } from './services';
 
 import { FIELD_LABELS } from './constants';
@@ -167,6 +168,33 @@ describe('services', () => {
     it('should log error and return empty array on failure', async () => {
       mockHttpClient.get.mockRejectedValue(new Error('fail'));
       const result = await getCountryList();
+      expect(result).toEqual([]);
+      expect(logError).toHaveBeenCalled();
+    });
+  });
+
+  describe('getCourseCompletion', () => {
+    it('should return processed course completion data', async () => {
+      mockHttpClient.get.mockResolvedValue({
+        data: [{
+          courseId: 'course-v1:Org+Course+Run',
+          title: 'Intro',
+          completion: 42,
+          dueDate: '2026-04-05T23:59:00+00:00',
+        }],
+      });
+
+      const result = await getCourseCompletion();
+      expect(result).toHaveLength(1);
+      expect(mockHttpClient.get).toHaveBeenCalledWith(
+        'http://fake-lms/api/openlms/course-completion/',
+      );
+      expect(camelCaseObject).toHaveBeenCalled();
+    });
+
+    it('should log error and return empty array on failure', async () => {
+      mockHttpClient.get.mockRejectedValue(new Error('fail'));
+      const result = await getCourseCompletion();
       expect(result).toEqual([]);
       expect(logError).toHaveBeenCalled();
     });

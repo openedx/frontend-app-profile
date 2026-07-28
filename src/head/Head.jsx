@@ -5,6 +5,10 @@ import { getConfig } from '@edx/frontend-platform';
 
 import messages from './messages';
 
+export const getBrandFaviconUrl = () => (
+  `${getConfig().LMS_BASE_URL}/static/indigo/images/favicon.ico`
+);
+
 const Head = () => {
   const intl = useIntl();
   return (
@@ -16,7 +20,7 @@ const Head = () => {
       </title>
       <link
         rel="shortcut icon"
-        href={getConfig().FAVICON_URL}
+        href={getBrandFaviconUrl()}
         type="image/x-icon"
       />
     </Helmet>

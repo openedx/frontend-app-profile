@@ -35,7 +35,7 @@ subscribe(APP_READY, async () => {
     <AppProvider store={configureStore()}>
       <Head />
       <Header />
-      <main id="main">
+      <main id="main" className="px-36px">
         <AppRoutes />
       </main>
       <FooterSlot />

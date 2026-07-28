@@ -2,7 +2,7 @@ import { getConfig } from '@edx/frontend-platform';
 import * as analytics from '@edx/frontend-platform/analytics';
 import { AppContext } from '@edx/frontend-platform/react';
 import { configure as configureI18n, IntlProvider } from '@edx/frontend-platform/i18n';
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
@@ -58,6 +58,11 @@ jest.mock('@edx/frontend-platform/analytics', () => ({
   identifyAnonymousUser: jest.fn(),
   identifyAuthenticatedUser: jest.fn(),
   sendTrackingLogEvent: jest.fn(),
+}));
+
+jest.mock('./data/services', () => ({
+  ...jest.requireActual('./data/services'),
+  getCourseCompletion: jest.fn(() => Promise.resolve([])),
 }));
 
 configureI18n({
@@ -123,7 +128,7 @@ describe('<ProfilePage />', () => {
       expect(tree).toMatchSnapshot();
     });
 
-    it('viewing own profile', () => {
+    it('viewing own profile', async () => {
       const contextValue = {
         authenticatedUser: { userId: 123, username: 'staff', administrator: true },
         config: getConfig(),
@@ -135,6 +140,9 @@ describe('<ProfilePage />', () => {
         />
       );
       const { container: tree } = render(component);
+      await waitFor(() => {
+        expect(tree.querySelector('.profile-status-cards')).toBeInTheDocument();
+      });
       expect(tree).toMatchSnapshot();
     });
 
@@ -172,24 +180,6 @@ describe('<ProfilePage />', () => {
             },
           })}
           params={{ username: 'verified' }}
-        />
-      );
-      const { container: tree } = render(component);
-      expect(tree).toMatchSnapshot();
-    });
-
-    it('without credentials service', () => {
-      const config = getConfig();
-      config.CREDENTIALS_BASE_URL = '';
-
-      const contextValue = {
-        authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-        config: getConfig(),
-      };
-      const component = (
-        <ProfilePageWrapper
-          contextValue={contextValue}
-          store={mockStore(storeMocks.viewOwnProfile)}
         />
       );
       const { container: tree } = render(component);

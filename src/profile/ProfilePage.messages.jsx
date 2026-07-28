@@ -1,11 +1,6 @@
 import { defineMessages } from '@edx/frontend-platform/i18n';
 
 const messages = defineMessages({
-  'profile.viewMyRecords': {
-    id: 'profile.viewMyRecords',
-    defaultMessage: 'View My Records',
-    description: 'A link to go view my academic records',
-  },
   'profile.loading': {
     id: 'profile.loading',
     defaultMessage: 'Profile loading...',
@@ -20,6 +15,16 @@ const messages = defineMessages({
     id: 'profile.username.tooltip',
     defaultMessage: 'The name that identifies you on edX. You cannot change your username.',
     description: 'Tooltip for the username field.',
+  },
+  'profile.profile.information': {
+    id: 'profile.profile.information',
+    defaultMessage: 'Profile information',
+    description: 'heading for the editable profile section',
+  },
+  'profile.profile.information.mobile': {
+    id: 'profile.profile.information.mobile',
+    defaultMessage: 'Profile',
+    description: 'heading for the editable profile section in mobile view',
   },
 });
 

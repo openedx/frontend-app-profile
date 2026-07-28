@@ -47,7 +47,7 @@ const CertificateCard = ({
           { 'width-314px': !isMobileView },
         )}
         >
-          <div className="w-100 color-black">
+          <div className="w-100 text-black">
             <p className={classNames([
               'mb-0 font-weight-normal',
               isMobileView ? 'x-small' : 'small',
@@ -60,7 +60,7 @@ const CertificateCard = ({
               ))}
             </p>
             <p className={classNames([
-              'm-0 color-black',
+              'm-0 text-black',
               isMobileView ? 'h5' : 'h4',
             ])}
             >
@@ -76,7 +76,7 @@ const CertificateCard = ({
                 defaultMessage="From"
               />
             </p>
-            <h5 className="mb-0 color-black">{courseOrganization}</h5>
+            <h5 className="mb-0 text-black">{courseOrganization}</h5>
             <p className={classNames([
               'mb-0',
               isMobileView ? 'x-small' : 'small',

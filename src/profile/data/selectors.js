@@ -303,10 +303,8 @@ export const profilePageSelector = createSelector(
     isAuthenticatedUserProfile,
   ) => ({
     username: account.username,
+    email: account.email,
     profileImage,
-    requiresParentalConsent: account.requiresParentalConsent,
-    dateJoined: account.dateJoined,
-    yearOfBirth: account.yearOfBirth,
 
     bio: formValues.bio,
     visibilityBio: formValues.visibilityBio,

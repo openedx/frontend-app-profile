@@ -1,5 +1,5 @@
 import React, {
-  useEffect, useState, useContext, useCallback,
+  useEffect, useContext, useCallback,
 } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,9 +8,9 @@ import { useNavigate } from 'react-router-dom';
 import { sendTrackingLogEvent } from '@edx/frontend-platform/analytics';
 import { ensureConfig } from '@edx/frontend-platform';
 import { AppContext } from '@edx/frontend-platform/react';
-import { FormattedMessage, useIntl } from '@edx/frontend-platform/i18n';
+import { useIntl } from '@edx/frontend-platform/i18n';
 import {
-  Alert, Hyperlink, OverlayTrigger, Tooltip,
+  Alert, OverlayTrigger, Tooltip,
 } from '@openedx/paragon';
 import { InfoOutline } from '@openedx/paragon/icons';
 import classNames from 'classnames';
@@ -26,34 +26,48 @@ import {
 } from './data/actions';
 
 import ProfileAvatar from './forms/ProfileAvatar';
+import ProfileStatusCards from './ProfileStatusCards';
+import ProfileStatusActions from './ProfileStatusActions';
 import Name from './forms/Name';
 import Country from './forms/Country';
 import PreferredLanguage from './forms/PreferredLanguage';
 import Education from './forms/Education';
 import SocialLinks from './forms/SocialLinks';
 import Bio from './forms/Bio';
-import DateJoined from './DateJoined';
-import UserCertificateSummary from './UserCertificateSummary';
 import PageLoading from './PageLoading';
 import Certificates from './Certificates';
 
 import { profilePageSelector } from './data/selectors';
 import messages from './ProfilePage.messages';
 import withParams from '../utils/hoc';
-import { useIsOnMobileScreen, useIsOnTabletScreen } from './data/hooks';
+import {
+  useCourseCompletionCounts,
+  useIsOnMobileScreen,
+  useIsOnTabletScreen,
+} from './data/hooks';
 
 import AdditionalProfileFieldsSlot from '../plugin-slots/AdditionalProfileFieldsSlot';
 
-ensureConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL', 'ACCOUNT_SETTINGS_URL'], 'ProfilePage');
+ensureConfig(['ACCOUNT_SETTINGS_URL'], 'ProfilePage');
+
+// Directory-sourced names carry an org suffix, e.g. "Jane Cruz (SSED-EXT-CEB)",
+// which is noise in the profile header.
+const getDisplayName = (fullName) => {
+  if (typeof fullName !== 'string') {
+    return fullName;
+  }
+  const [beforeSuffix] = fullName.split(/[([{]/);
+  return beforeSuffix.trim() || fullName.trim();
+};
 
 const ProfilePage = ({ params }) => {
   const dispatch = useDispatch();
   const intl = useIntl();
   const context = useContext(AppContext);
   const {
-    dateJoined,
     courseCertificates,
     name,
+    email,
     visibilityName,
     profileImage,
     savePhotoState,
@@ -75,21 +89,15 @@ const ProfilePage = ({ params }) => {
   } = useSelector(profilePageSelector);
 
   const navigate = useNavigate();
-  const [viewMyRecordsUrl, setViewMyRecordsUrl] = useState(null);
   const isMobileView = useIsOnMobileScreen();
   const isTabletView = useIsOnTabletScreen();
 
   useEffect(() => {
-    const { CREDENTIALS_BASE_URL } = context.config;
-    if (CREDENTIALS_BASE_URL) {
-      setViewMyRecordsUrl(`${CREDENTIALS_BASE_URL}/records`);
-    }
-
     dispatch(fetchProfile(params.username));
     sendTrackingLogEvent('edx.profile.viewed', {
       username: params.username,
     });
-  }, [dispatch, params.username, context.config]);
+  }, [dispatch, params.username]);
 
   useEffect(() => {
     if (!username && saveState === 'error' && navigate) {
@@ -123,30 +131,18 @@ const ProfilePage = ({ params }) => {
     dispatch(updateDraft(fieldName, value));
   }, [dispatch]);
 
-  const isAuthenticatedUserProfile = () => params.username === authenticatedUserName;
+  const isAuthenticatedUserProfile = params.username === authenticatedUserName;
 
-  const isBlockVisible = (blockInfo) => isAuthenticatedUserProfile()
-      || (!isAuthenticatedUserProfile() && Boolean(blockInfo));
+  const {
+    counts: statusCounts,
+    isLoading: isLoadingStatusCounts,
+  } = useCourseCompletionCounts(isAuthenticatedUserProfile);
 
-  const renderViewMyRecordsButton = () => {
-    if (!(viewMyRecordsUrl && isAuthenticatedUserProfile())) {
-      return null;
-    }
+  const displayEmail = email || (
+    isAuthenticatedUserProfile ? context.authenticatedUser?.email : null
+  );
 
-    return (
-      <Hyperlink
-        className={classNames(
-          'btn btn-brand bg-brand-500 font-weight-normal px-4 py-10px text-nowrap',
-          { 'w-100': isMobileView },
-        )}
-        target="_blank"
-        showLaunchIcon={false}
-        destination={viewMyRecordsUrl}
-      >
-        {intl.formatMessage(messages['profile.viewMyRecords'])}
-      </Hyperlink>
-    );
-  };
+  const isBlockVisible = (blockInfo) => isAuthenticatedUserProfile || Boolean(blockInfo);
 
   const renderPhotoUploadErrorMessage = () => (
     photoUploadError && (
@@ -175,109 +171,68 @@ const ProfilePage = ({ params }) => {
         <>
           <div
             className={classNames(
-              'profile-page-bg-banner bg-primary d-md-block align-items-center h-100 w-100',
-              { 'px-3 py-4': isMobileView },
-              { 'px-120px py-5.5': !isMobileView },
+              'profile-page-header w-100',
+              isMobileView ? 'pt-4 pb-3' : 'pt-5 pb-4',
             )}
           >
-            <div
-              className={classNames([
-                'col container-fluid w-100 h-100 bg-white py-0 rounded-75',
-                {
-                  'px-3': isMobileView,
-                  'px-40px': !isMobileView,
-                },
-              ])}
-            >
+            <div className="profile-header-card">
               <div
-                className={classNames([
-                  'col h-100 w-100 px-0 justify-content-start g-15rem',
-                  {
-                    'py-4': isMobileView,
-                    'py-36px': !isMobileView,
-                  },
-                ])}
+                className={classNames(
+                  'profile-header-card__identity',
+                  isMobileView || isTabletView
+                    ? 'flex-column'
+                    : 'flex-row',
+                )}
               >
-                <div
-                  className={classNames([
-                    'row-auto d-flex flex-wrap align-items-center h-100 w-100 justify-content-start g-15rem',
-                    isMobileView || isTabletView ? 'flex-column' : 'flex-row',
-                  ])}
-                >
-                  <ProfileAvatar
-                    className="col p-0"
-                    src={profileImage.src}
-                    isDefault={profileImage.isDefault}
-                    onSave={handleSaveProfilePhoto}
-                    onDelete={handleDeleteProfilePhoto}
-                    savePhotoState={savePhotoState}
-                    isEditable={isAuthenticatedUserProfile()}
-                  />
-                  <div
-                    className={classNames([
-                      'col h-100 w-100 m-0 p-0',
-                      isMobileView || isTabletView
-                        ? 'd-flex flex-column justify-content-center align-items-center'
-                        : 'justify-content-start align-items-start',
-                    ])}
-                  >
-                    <p className="row m-0 font-weight-bold text-truncate text-primary-500 h3">
-                      {params.username}
+                <ProfileAvatar
+                  src={profileImage.src}
+                  isDefault={profileImage.isDefault}
+                  onSave={handleSaveProfilePhoto}
+                  onDelete={handleDeleteProfilePhoto}
+                  savePhotoState={savePhotoState}
+                  isEditable={isAuthenticatedUserProfile}
+                />
+                <div className="profile-identity">
+                  <p className="profile-identity__name m-0 text-truncate">
+                    {isBlockVisible(name) ? getDisplayName(name) : params.username}
+                  </p>
+                  {displayEmail && (
+                    <p className="profile-identity__email m-0 text-truncate">
+                      {displayEmail}
                     </p>
-                    {isBlockVisible(name) && (
-                    <p className="row pt-2 text-gray-800 font-weight-normal m-0 p">
-                      {name}
-                    </p>
-                    )}
-                    <div className={classNames(
-                      'row pt-2 m-0',
-                      isMobileView
-                        ? 'd-flex justify-content-center align-items-center flex-column'
-                        : 'g-1rem',
-                    )}
-                    >
-                      <DateJoined date={dateJoined} />
-                      <UserCertificateSummary count={courseCertificates?.length || 0} />
-                    </div>
-                  </div>
-                  <div className={classNames([
-                    'p-0 ',
-                    isMobileView || isTabletView ? 'col d-flex justify-content-center' : 'col-auto',
-                  ])}
-                  >
-                    {renderViewMyRecordsButton()}
-                  </div>
+                  )}
+                  {isAuthenticatedUserProfile && (
+                    <ProfileStatusCards
+                      counts={statusCounts}
+                      isLoading={isLoadingStatusCounts}
+                    />
+                  )}
                 </div>
               </div>
-              <div className="ml-auto">
-                {renderPhotoUploadErrorMessage()}
-              </div>
+              {isAuthenticatedUserProfile && (
+                <ProfileStatusActions
+                  overdueCount={statusCounts.overdue}
+                  isLoading={isLoadingStatusCounts}
+                />
+              )}
+              {renderPhotoUploadErrorMessage()}
             </div>
           </div>
           <div
             className={classNames([
               'col d-inline-flex h-100 w-100 align-items-start justify-content-start g-3rem',
-              isMobileView ? 'py-4 px-3' : 'px-120px py-6',
+              isMobileView ? 'py-4' : 'py-6',
             ])}
           >
             <div className="w-100 p-0">
               <div className="col justify-content-start align-items-start p-0">
                 <div className="col align-self-stretch height-42px justify-content-start align-items-start p-0">
                   <p className="font-weight-bold text-primary-500 m-0 h2">
-                    {isMobileView ? (
-                      <FormattedMessage
-                        id="profile.profile.information"
-                        defaultMessage="Profile"
-                        description="heading for the editable profile section in mobile view"
-                      />
-                    )
-                      : (
-                        <FormattedMessage
-                          id="profile.profile.information"
-                          defaultMessage="Profile information"
-                          description="heading for the editable profile section"
-                        />
-                      )}
+                    {intl.formatMessage(
+                      isMobileView
+                        ? messages['profile.profile.information.mobile']
+                        : messages['profile.profile.information'],
+                    )}
                   </p>
                 </div>
               </div>
@@ -383,7 +338,7 @@ const ProfilePage = ({ params }) => {
           <div
             className={classNames([
               'col container-fluid d-inline-flex bg-color-grey-FBFAF9 h-100 w-100 align-items-start justify-content-start g-3rem',
-              isMobileView ? 'py-4 px-3' : 'px-120px py-6',
+              isMobileView ? 'py-4' : 'py-6',
             ])}
           >
             {isBlockVisible((courseCertificates || []).length) && (
@@ -403,66 +358,6 @@ ProfilePage.propTypes = {
   params: PropTypes.shape({
     username: PropTypes.string.isRequired,
   }).isRequired,
-  requiresParentalConsent: PropTypes.bool,
-  dateJoined: PropTypes.string,
-  username: PropTypes.string,
-  bio: PropTypes.string,
-  visibilityBio: PropTypes.string,
-  courseCertificates: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string,
-  })),
-  country: PropTypes.string,
-  visibilityCountry: PropTypes.string,
-  levelOfEducation: PropTypes.string,
-  visibilityLevelOfEducation: PropTypes.string,
-  languageProficiencies: PropTypes.arrayOf(PropTypes.shape({
-    code: PropTypes.string.isRequired,
-  })),
-  visibilityLanguageProficiencies: PropTypes.string,
-  name: PropTypes.string,
-  visibilityName: PropTypes.string,
-  socialLinks: PropTypes.arrayOf(PropTypes.shape({
-    platform: PropTypes.string,
-    socialLink: PropTypes.string,
-  })),
-  draftSocialLinksByPlatform: PropTypes.objectOf(PropTypes.shape({
-    platform: PropTypes.string,
-    socialLink: PropTypes.string,
-  })),
-  visibilitySocialLinks: PropTypes.string,
-  profileImage: PropTypes.shape({
-    src: PropTypes.string,
-    isDefault: PropTypes.bool,
-  }),
-  saveState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
-  savePhotoState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
-  isLoadingProfile: PropTypes.bool,
-  photoUploadError: PropTypes.objectOf(PropTypes.string),
-};
-
-ProfilePage.defaultProps = {
-  saveState: null,
-  username: '',
-  savePhotoState: null,
-  photoUploadError: {},
-  profileImage: {},
-  name: null,
-  levelOfEducation: null,
-  country: null,
-  socialLinks: [],
-  draftSocialLinksByPlatform: {},
-  bio: null,
-  languageProficiencies: [],
-  courseCertificates: [],
-  requiresParentalConsent: null,
-  dateJoined: null,
-  visibilityName: null,
-  visibilityCountry: null,
-  visibilityLevelOfEducation: null,
-  visibilitySocialLinks: null,
-  visibilityLanguageProficiencies: null,
-  visibilityBio: null,
-  isLoadingProfile: false,
 };
 
 export default withParams(ProfilePage);

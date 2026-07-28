@@ -126,7 +126,7 @@ const SocialLinks = ({
     }
     if (socialLink) {
       return (
-        <div className="w-100 overflowWrap-breakWord">
+        <div className="w-100 text-break">
           <EditableItemHeader
             content={socialLink}
             showEditButton

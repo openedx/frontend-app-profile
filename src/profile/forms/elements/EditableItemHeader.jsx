@@ -21,7 +21,7 @@ const EditableItemHeader = ({
         <div
           className={classNames([
             'm-0 p-0 col-auto',
-            isMobileView ? 'w-90' : '',
+            isMobileView ? 'mw-90' : '',
           ])}
         >
           <h4

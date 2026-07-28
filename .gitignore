@@ -18,3 +18,8 @@ temp/babel-plugin-react-intl
 /.vscode
 /module.config.js
 src/i18n/messages
+
+### Local Tutor dev (Personal-setup / dev.sh) — do not commit ###
+webpack.dev-tutor.config.js
+webpack.dev.config.js
+*.bak.devsh

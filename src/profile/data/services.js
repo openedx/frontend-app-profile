@@ -166,3 +166,15 @@ export async function getCountryList() {
     return [];
   }
 }
+
+export async function getCourseCompletion() {
+  const url = `${getConfig().LMS_BASE_URL}/api/openlms/course-completion/`;
+
+  try {
+    const { data } = await getHttpClient().get(url);
+    return Array.isArray(data) ? camelCaseObject(data) : [];
+  } catch (e) {
+    logError(e);
+    return [];
+  }
+}

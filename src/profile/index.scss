@@ -1,138 +1,406 @@
-.word-break-all {
-  word-break: break-all !important;
+// MFE-local palette (no matching Paragon/brand tokens in this MFE build).
+$profile-page-bg: #F8FAFC;
+$profile-border-color: #E2E8F0;
+$profile-name-color: #1E293B;
+$profile-email-color: #64748B;
+$profile-certificates-bg: #FBFAF9;
+$profile-font-family: 'Google Sans Flex', var(--pgn-typography-font-family-sans-serif);
+$profile-primary-color: var(--pgn-color-primary-500, #15376D);
+
+// Status card dimensions and theme colors (no matching Paragon tokens).
+$status-card-radius: 12px;
+$status-card-width: 236.25px;
+$status-card-height: 85px;
+$status-card-completed-bg: #ECFDF5;
+$status-card-completed-color: #059669;
+$status-card-in-progress-bg: #E6F2FF;
+$status-card-in-progress-color: #003366;
+$status-card-assigned-bg: #FFF7ED;
+$status-card-assigned-color: #EA580C;
+$status-card-total-hours-bg: #F5F3FF;
+$status-card-total-hours-color: #7C3AED;
+
+// Diameter of the avatar; the photo menu opens from the avatar itself.
+$profile-avatar-size: 108px;
+$profile-header-card-radius: 12px;
+$profile-identity-gap: 24px;
+// One line of an .edit-section-header. Text buttons that stand in for a value
+// (EmptyContent) match it so rows keep the same vertical rhythm.
+$edit-section-line-height: 2.25rem;
+$certificate-border-radius: 0.75rem;
+
+// TODO: Move these link/button overrides into the brand theme.
+// Paragon underlines anchors on hover, which is wrong for anchors rendered as
+// buttons (Hyperlink + .btn).
+a.btn:hover {
+  text-decoration: none;
 }
 
-// TODO: Update edx-bootstrap theme to incorporate these edits.
-.btn, a.btn {
-  text-decoration: none;
-  &:hover {
-    text-decoration: none;
-  }
-}
+// Conversely, a <button> that replaces a value should read as a link.
 .btn-link {
   text-decoration: underline;
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-.profile-page-bg-banner {
-  height: 298px;
-  width: 100%;
-  background-image: url('./assets/dot-pattern-light.png');
-  background-repeat: repeat-x;
-  background-size: auto 85%;
-}
-
-.icon-visibility-off {
-  height: 1rem;
-  color: var(--pgn-color-gray-500);
 }
 
 .profile-page {
+  .profile-header-card {
+    width: 100%;
+    min-height: 315px;
+    background-color: var(--pgn-color-white);
+    padding: var(--pgn-spacing-spacer-4);
+    border: 1px solid $profile-border-color;
+    border-radius: $profile-header-card-radius;
+  }
+
+  .profile-header-card__identity {
+    display: flex;
+    gap: $profile-identity-gap;
+  }
+
   .edit-section-header {
     font-size: var(--pgn-typography-font-size-h4-base);
     display: block;
-    font-weight: 400;
+    font-weight: var(--pgn-typography-font-weight-normal);
     letter-spacing: 0;
     margin: 0;
-    line-height: 2.25rem;
+    line-height: $edit-section-line-height;
   }
 
   label.edit-section-header {
     margin-bottom: calc(var(--pgn-spacing-spacer-base) * .5);
   }
 
-  .profile-avatar-wrap {
-    @media (--pgn-size-breakpoint-min-width-md) {
-      max-width: 12rem;
-      margin-right: 0;
-      height: auto;
-    }
-  }
-
-  .profile-avatar-button {
-    position: absolute;
-    left: 76px;
-    top: 76px;
-  }
-
-  .profile-avatar-menu-container {
-    background: rgba(0,0,0,.65);
-    position: absolute;
-    width: 100%;
-    height: 100%;
+  .profile-identity {
     display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    gap: var(--pgn-spacing-spacer-2);
+    min-width: 0;
+    font-family: $profile-font-family;
+
+    &__name {
+      padding-top: 4px;
+      padding-bottom: 4px;
+      font-size: 1.875rem;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 0;
+      color: $profile-name-color;
+    }
+
+    &__email {
+      font-size: 0.875rem;
+      font-weight: 400;
+      line-height: 1.3125rem;
+      letter-spacing: 0;
+      color: $profile-email-color;
+    }
+  }
+
+  .profile-status-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--pgn-spacing-spacer-3);
+    width: 100%;
+    margin-top: var(--pgn-spacing-spacer-3);
+
+    &--mobile {
+      .profile-status-card {
+        width: calc(50% - 4px);
+        max-width: none;
+      }
+    }
+  }
+
+  .profile-status-card {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
+    gap: var(--pgn-spacing-spacer-2);
+    box-sizing: border-box;
+    width: $status-card-width;
+    height: $status-card-height;
+    padding: var(--pgn-spacing-spacer-3);
+    border: 1px solid transparent;
+    border-radius: $status-card-radius;
+    font-family: $profile-font-family;
+
+    &__metric {
+      display: flex;
+      align-items: center;
+      gap: var(--pgn-spacing-spacer-2);
+      min-width: 0;
+    }
+
+    &__icon {
+      display: inline-flex;
+      flex-shrink: 0;
+      align-items: center;
+      justify-content: center;
+      width: 1.5rem; // 24px — matches SVG viewBox
+      height: 1.5rem;
+      color: inherit;
+
+      svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &__value {
+      font-family: $profile-font-family;
+      font-size: 18px;
+      font-weight: 500;
+      font-style: normal;
+      line-height: 100%;
+      letter-spacing: 0;
+      color: inherit;
+    }
+
+    &__label {
+      font-family: $profile-font-family;
+      font-size: 14px;
+      font-weight: 400;
+      font-style: normal;
+      line-height: 21px;
+      letter-spacing: 0;
+      color: $profile-name-color;
+    }
+
+    &--completed {
+      background-color: $status-card-completed-bg;
+      color: $status-card-completed-color;
+    }
+
+    &--in-progress {
+      background-color: $status-card-in-progress-bg;
+      color: $status-card-in-progress-color;
+    }
+
+    &--assigned {
+      background-color: $status-card-assigned-bg;
+      color: $status-card-assigned-color;
+    }
+
+    &--total-hours {
+      background-color: $status-card-total-hours-bg;
+      color: $status-card-total-hours-color;
+    }
+  }
+
+  .profile-status-divider {
+    width: 100%;
+    height: 1px;
+    margin: var(--pgn-spacing-spacer-4) 0;
+    padding: 0;
+    border: 0;
+    background-color: $profile-border-color;
+  }
+
+  .profile-status-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--pgn-spacing-spacer-3);
     align-items: center;
-    border-radius: 50%;
+  }
 
-    @media (--pgn-size-breakpoint-min-width-md) {
-      background: linear-gradient(to top, rgba(0,0,0,.65) 4rem, rgba(0,0,0,0) 4rem);
-      align-items: flex-end;
-    }
+  .profile-status-action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-width: 186px;
+    height: 40px;
+    padding: 9px 12px;
+    border: 0;
+    border-radius: 6px;
+    background-color: $profile-page-bg;
+    color: $profile-name-color;
+    font-family: $profile-font-family;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+    text-decoration: none;
+    white-space: nowrap;
 
-    .btn {
+    &:hover,
+    &:focus {
+      color: $profile-name-color;
       text-decoration: none;
-      @media (--pgn-size-breakpoint-min-width-md) {
-        margin-bottom: 1.2rem;
-      }
+      background-color: darken($profile-page-bg, 3%);
     }
 
-    .dropdown {
-      @media (--pgn-size-breakpoint-min-width-md) {
-        margin-bottom: 1.2rem;
-      }
-
-      .btn {
-        color:var(--pgn-color-white);;
-        background: transparent;
-        border-color: transparent;
-        margin: 0;
-      }
+    &:focus-visible {
+      outline: 2px solid var(--pgn-color-primary-500);
+      outline-offset: 2px;
     }
+
+    &__icon {
+      display: block;
+      flex-shrink: 0;
+      width: 1.5rem; // 24px — matches SVG viewBox / card icons
+      height: 1.5rem;
+      margin-right: var(--pgn-spacing-spacer-2);
+      color: inherit;
+    }
+
+    &__badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      width: 78px;
+      height: 22px;
+      margin-left: var(--pgn-spacing-spacer-2);
+      gap: 10px;
+      padding: 2px 8px;
+      border-radius: 8px;
+      background-color: #EA580C;
+      color: #F8FAFC;
+      font-family: $profile-font-family;
+      font-size: 12px;
+      font-weight: 700;
+      font-style: normal;
+      line-height: 18px;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+  }
+
+  .profile-avatar-wrap {
+    flex-shrink: 0;
+    position: relative;
   }
 
   .profile-avatar {
-    width: 7.5rem;
-    height: 7.5rem;
     position: relative;
+    display: block;
+    width: $profile-avatar-size;
+    height: $profile-avatar-size;
+    overflow: hidden;
+  }
 
-    @media (--pgn-size-breakpoint-min-width-md) {
-      width: 7.5rem;
-      height: 7.5rem;
+  // Avatar itself is the photo-menu trigger — no floating camera button.
+  .profile-avatar-toggle {
+    display: block;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    box-shadow: 0 0 0 1px $profile-border-color;
+    cursor: pointer;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+
+    // Hide Bootstrap/Paragon caret on .dropdown-toggle.
+    &.dropdown-toggle::after {
+      display: none;
     }
 
-    .profile-avatar-edit-button {
-      border: none;
-      position: absolute;
-      height: 100%;
-      left: 0;
-      width: 100%;
-      bottom: 0;
-      display: flex;
-      justify-content: center;
-      padding-top: .1rem;
-      font-weight: 600;
-      background: rgba(0,0,0,.5);
-      border-radius:0;
-      transition: opacity 200ms ease;
+    &:hover:not(:disabled),
+    &:focus-visible {
+      box-shadow:
+        0 0 0 2px var(--pgn-color-white),
+        0 0 0 4px $profile-primary-color;
+      outline: none;
+    }
 
-      @media (--pgn-size-breakpoint-min-width-md) {
-        height: 4rem;
+    &:disabled,
+    &--pending {
+      cursor: default;
+    }
+
+    &:hover:not(:disabled) .profile-avatar-toggle__cue,
+    &:focus-visible .profile-avatar-toggle__cue,
+    &[aria-expanded="true"] .profile-avatar-toggle__cue {
+      opacity: 1;
+    }
+  }
+
+  .profile-avatar-toggle__cue {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: color-mix(in srgb, $profile-primary-color 55%, transparent);
+    color: var(--pgn-color-white);
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    pointer-events: none;
+  }
+
+  .profile-avatar-toggle__cue-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .profile-avatar-dropdown-menu {
+    min-width: 12.5rem;
+    padding: 0.375rem;
+    margin-top: 0.5rem !important;
+    overflow: hidden;
+    border: 1px solid $profile-border-color;
+    border-radius: $profile-header-card-radius;
+    box-shadow: var(--pgn-elevation-dropdown-box-shadow);
+    background-color: var(--pgn-color-white);
+
+    .dropdown-item,
+    .pgn__dropdown-item,
+    &__item {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      padding: 0.625rem 0.75rem;
+      border-radius: 8px;
+      font-family: $profile-font-family;
+      font-size: 0.875rem;
+      font-weight: 500;
+      line-height: 1.25rem;
+      color: $profile-name-color;
+
+      &:hover,
+      &:focus {
+        background-color: var(--pgn-color-light-200, #F0F4FA);
+        color: $profile-name-color;
       }
 
-      &:focus, &:hover, &:active, &.active {
-        opacity: 1;
+      &:focus-visible {
+        outline: 2px solid var(--pgn-color-primary-500);
+        outline-offset: 1px;
+      }
+    }
+
+    &__icon {
+      flex-shrink: 0;
+      width: 1.125rem;
+      height: 1.125rem;
+      color: $profile-primary-color;
+    }
+
+    &__item--danger {
+      color: var(--pgn-color-danger-500, #EF4444);
+
+      .profile-avatar-dropdown-menu__icon {
+        color: inherit;
+      }
+
+      &:hover,
+      &:focus {
+        background-color: var(--pgn-color-danger-100, #FEE2E2);
+        color: var(--pgn-color-danger-500, #EF4444);
       }
     }
   }
 
+  // Colors come from the bg-light-200 / border-light-400 utilities on the card;
+  // the containing block and overflow keep the type illustration clipped inside it.
   .certificate {
-    background-color: #F3F1ED;
-    border-radius: 0.75rem;
+    position: relative;
     overflow: hidden;
-    border: 1px #E7E4DB solid;
+    border: 1px solid;
+    border-radius: $certificate-border-radius;
 
     .certificate-type-illustration {
       position: absolute;
@@ -148,6 +416,9 @@
   }
 }
 
+// Local utilities, for values Paragon's scale doesn't cover. Prefer a Paragon
+// utility (spacing steps, .text-break, .rounded-*, .bg-*) when one matches.
+
 .info-icon {
   width: 1.5rem;
   height: 1.5rem;
@@ -162,13 +433,7 @@
   height: 50vh;
 }
 
-// Todo: Move the following to edx-paragon
-
-.min-width-179px {
-  min-width: 179px;
-}
-
-.max-width-304px{
+.max-width-304px {
   max-width: 304px;
 }
 
@@ -176,11 +441,11 @@
   width: 314px;
 }
 
-.w-90{
+.mw-90 {
   max-width: 90%;
 }
 
-.width-24px{
+.width-24px {
   width: 24px;
 }
 
@@ -188,11 +453,7 @@
   height: 42px;
 }
 
-.rounded-75 {
-  border-radius: 0.75rem;
-}
-
-.pt-40px{
+.pt-40px {
   padding-top: 40px;
 }
 
@@ -200,62 +461,32 @@
   padding-left: 40px;
 }
 
-.py-10px{
+.py-10px {
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
-.py-36px {
-  padding-top: 36px;
-  padding-bottom: 36px;
-}
-
-.px-120px {
-  padding-left: 120px;
-  padding-right: 120px;
-}
-
-.px-40px {
-  padding-left: 40px;
-  padding-right: 40px;
-}
-
-.g-15rem {
-  gap: 1.5rem;
-}
-
-.g-5rem {
-  gap: 0.5rem;
-}
-
-.g-1rem {
-  gap: 1rem;
+.px-36px {
+  padding-left: 36px;
+  padding-right: 36px;
 }
 
 .g-3rem {
   gap: 3rem;
 }
 
-.color-black {
-  color: #000;
+.lh-36px {
+  line-height: $edit-section-line-height;
 }
 
 .bg-color-grey-FBFAF9 {
-  background-color: #FBFAF9;
+  background-color: $profile-certificates-bg;
 }
 
 .background-black-65 {
-  background-color: rgba(0,0,0,.65)
+  background-color: rgba(0, 0, 0, .65);
 }
 
 .object-fit-cover {
   object-fit: cover;
-}
-
-.lh-36px {
-  line-height: 36px;
-}
-
-.overflowWrap-breakWord {
-  overflow-wrap: break-word;
 }
