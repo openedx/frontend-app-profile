@@ -1,0 +1,16 @@
+diff --git a/node_modules/@edx/frontend-platform/auth/AxiosJwtAuthService.js b/node_modules/@edx/frontend-platform/auth/AxiosJwtAuthService.js
+index 23b235e..81a344a 100644
+--- a/node_modules/@edx/frontend-platform/auth/AxiosJwtAuthService.js
++++ b/node_modules/@edx/frontend-platform/auth/AxiosJwtAuthService.js
+@@ -384,7 +384,10 @@ var AxiosJwtAuthService = /*#__PURE__*/function () {
+               return this.authenticatedHttpClient.get("".concat(this.config.LMS_BASE_URL, "/api/user/v1/accounts/").concat(user.username));
+             case 4:
+               response = _context3.sent;
+-              this.setAuthenticatedUser(_objectSpread(_objectSpread({}, user), camelCaseObject(response.data)));
++              var userData = camelCaseObject(response.data);
++              this.setAuthenticatedUser(_objectSpread(_objectSpread(_objectSpread({}, user), userData), {}, {
++                avatar: (userData.profileImage && userData.profileImage.imageUrlFull) || null,
++              }));
+             case 6:
+             case "end":
+               return _context3.stop();
