@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
-import { connect } from 'react-redux';
 import { getConfig } from '@edx/frontend-platform';
 
 import classNames from 'classnames';
 import CertificateCard from './CertificateCard';
-import { certificatesSelector } from './data/selectors';
 import { useIsOnTabletScreen } from './data/hooks';
 
 const Certificates = ({ certificates }) => {
@@ -86,7 +84,4 @@ Certificates.defaultProps = {
   certificates: [],
 };
 
-export default connect(
-  certificatesSelector,
-  {},
-)(Certificates);
+export default Certificates;

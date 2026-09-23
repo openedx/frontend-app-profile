@@ -1,63 +1,26 @@
-import { getConfig } from '@edx/frontend-platform';
-import * as analytics from '@edx/frontend-platform/analytics';
-import { AppContext } from '@edx/frontend-platform/react';
-import { configure as configureI18n, IntlProvider } from '@edx/frontend-platform/i18n';
-import { render } from '@testing-library/react';
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Provider } from 'react-redux';
-import configureMockStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
-import {
-  MemoryRouter,
-  Routes,
-  Route,
-  useNavigate,
-} from 'react-router-dom';
+import { fireEvent, screen, waitFor } from '@testing-library/react';
 
-import messages from '../i18n';
+import { mergeConfig } from '@edx/frontend-platform';
+import { sendTrackingLogEvent } from '@edx/frontend-platform/analytics';
+import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
+import { configure as configureI18n } from '@edx/frontend-platform/i18n';
+
+import * as api from './data/api';
+import { CUSTOM_ALL_USERS_PREFERENCES } from './data/hooks';
 import ProfilePage from './ProfilePage';
-import loadingApp from './__mocks__/loadingApp.mockStore';
-import viewOwnProfile from './__mocks__/viewOwnProfile.mockStore';
-import viewOtherProfile from './__mocks__/viewOtherProfile.mockStore';
-import invalidUser from './__mocks__/invalidUser.mockStore';
+import { renderWithProviders } from '../tests/renderWithProviders';
 
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useNavigate: jest.fn(),
-}));
-
-const mockStore = configureMockStore([thunk]);
-
-const storeMocks = {
-  loadingApp,
-  viewOwnProfile,
-  viewOtherProfile,
-  invalidUser,
-};
-
-const requiredProfilePageProps = {
-  params: { username: 'staff' },
-};
-
-Object.defineProperty(global.document, 'cookie', {
-  writable: true,
-  value: `${getConfig().LANGUAGE_PREFERENCE_COOKIE_NAME}=en`,
-});
-
+jest.mock('./data/api');
 jest.mock('@edx/frontend-platform/auth', () => ({
-  configure: () => {},
-  getAuthenticatedUser: () => null,
-  fetchAuthenticatedUser: () => null,
+  getAuthenticatedUser: jest.fn(),
   getAuthenticatedHttpClient: jest.fn(),
-  AUTHENTICATED_USER_CHANGED: 'user_changed',
 }));
-
 jest.mock('@edx/frontend-platform/analytics', () => ({
-  configure: () => {},
-  identifyAnonymousUser: jest.fn(),
-  identifyAuthenticatedUser: jest.fn(),
   sendTrackingLogEvent: jest.fn(),
+}));
+jest.mock('@edx/frontend-platform/logging', () => ({
+  logError: jest.fn(),
 }));
 
 configureI18n({
@@ -66,194 +29,200 @@ configureI18n({
     ENVIRONMENT: 'production',
     LANGUAGE_PREFERENCE_COOKIE_NAME: 'yum',
   },
-  messages,
+  messages: [],
 });
+
+const account = {
+  username: 'staff',
+  name: 'Lemon Seltzer',
+  bio: 'This is my bio',
+  country: 'ME',
+  levelOfEducation: 'el',
+  languageProficiencies: [{ code: 'yo' }],
+  socialLinks: [{ platform: 'facebook', socialLink: 'https://www.facebook.com/aloha' }],
+  profileImage: { imageUrlFull: 'http://img/full.jpg', hasImage: true },
+  dateJoined: '2017-06-07T00:44:23Z',
+  accountPrivacy: 'custom',
+  extendedProfile: [],
+};
+const preferences = {
+  accountPrivacy: 'custom',
+  visibilityName: 'private',
+  visibilityBio: 'all_users',
+  visibilityCountry: 'all_users',
+  visibilityLevelOfEducation: 'private',
+  visibilityLanguageProficiencies: 'all_users',
+  visibilitySocialLinks: 'all_users',
+};
+const certificates = [{
+  courseId: 'course-v1:edX+DemoX+Demo_Course',
+  courseDisplayName: 'edX Demonstration Course',
+  courseOrganization: 'edX',
+  certificateType: 'verified',
+  modifiedDate: '2019-03-04T19:31:39.930255Z',
+  downloadUrl: 'http://www.example.com/',
+  uuid: 'abc',
+}];
+
+const renderPage = ({ username = 'staff', config = {} } = {}) => {
+  mergeConfig({
+    CREDENTIALS_BASE_URL: 'http://credentials.example.com',
+    ACCOUNT_SETTINGS_URL: 'http://account.example.com',
+    ...config,
+  });
+  return renderWithProviders(<ProfilePage />, {
+    route: `/u/${username}`,
+    path: '/u/:username',
+    // The page reads `config` from the context; whose profile it is comes from getAuthenticatedUser.
+    appContext: {},
+  });
+};
 
 beforeEach(() => {
-  analytics.sendTrackingLogEvent.mockReset();
-  useNavigate.mockReset();
+  jest.clearAllMocks();
+  getAuthenticatedUser.mockReturnValue({ username: 'staff' });
+  api.getAccount.mockResolvedValue(account);
+  api.getPreferences.mockResolvedValue(preferences);
+  api.getCourseCertificates.mockResolvedValue(certificates);
+  api.getCountryList.mockResolvedValue(['US', 'CA']);
 });
 
-const ProfilePageWrapper = ({
-  contextValue, store, params,
-}) => (
-  <AppContext.Provider value={contextValue}>
-    <IntlProvider locale="en">
-      <Provider store={store}>
-        <MemoryRouter initialEntries={[`/profile/${params.username}`]}>
-          <Routes>
-            <Route
-              path="/profile/:username"
-              element={<ProfilePage {...requiredProfilePageProps} params={params} />}
-            />
-          </Routes>
-        </MemoryRouter>
-      </Provider>
-    </IntlProvider>
-  </AppContext.Provider>
-);
-
-ProfilePageWrapper.defaultProps = {
-  // eslint-disable-next-line react/default-props-match-prop-types
-  params: { username: 'staff' },
-};
-
-ProfilePageWrapper.propTypes = {
-  contextValue: PropTypes.shape({}).isRequired,
-  store: PropTypes.shape({}).isRequired,
-  params: PropTypes.shape({
-    username: PropTypes.string.isRequired,
-  }).isRequired,
-};
-
 describe('<ProfilePage />', () => {
-  describe('Renders correctly in various states', () => {
-    it('app loading', () => {
-      const contextValue = {
-        authenticatedUser: { userId: null, username: null, administrator: false },
-        config: getConfig(),
-      };
-      const component = (
-        <ProfilePageWrapper
-          contextValue={contextValue}
-          store={mockStore(storeMocks.loadingApp)}
-        />
-      );
-      const { container: tree } = render(component);
-      expect(tree).toMatchSnapshot();
-    });
+  it('shows a spinner while the profile loads', () => {
+    api.getAccount.mockReturnValue(new Promise(() => {}));
+    renderPage();
 
-    it('viewing own profile', () => {
-      const contextValue = {
-        authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-        config: getConfig(),
-      };
-      const component = (
-        <ProfilePageWrapper
-          contextValue={contextValue}
-          store={mockStore(storeMocks.viewOwnProfile)}
-        />
-      );
-      const { container: tree } = render(component);
-      expect(tree).toMatchSnapshot();
-    });
-
-    it('viewing other profile with all fields', () => {
-      const contextValue = {
-        authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-        config: getConfig(),
-      };
-      const component = (
-        <ProfilePageWrapper
-          contextValue={contextValue}
-          store={mockStore({
-            ...storeMocks.viewOtherProfile,
-            profilePage: {
-              ...storeMocks.viewOtherProfile.profilePage,
-              account: {
-                ...storeMocks.viewOtherProfile.profilePage.account,
-                name: 'Verified User',
-                country: 'US',
-                bio: 'About me',
-                courseCertificates: [{ title: 'Course 1' }],
-                levelOfEducation: 'bachelors',
-                languageProficiencies: [{ code: 'en' }],
-                socialLinks: [{ platform: 'x', socialLink: 'https://x.com/user' }],
-              },
-              preferences: {
-                ...storeMocks.viewOtherProfile.profilePage.preferences,
-                visibilityName: 'all_users',
-                visibilityCountry: 'all_users',
-                visibilityLevelOfEducation: 'all_users',
-                visibilityLanguageProficiencies: 'all_users',
-                visibilitySocialLinks: 'all_users',
-                visibilityBio: 'all_users',
-              },
-            },
-          })}
-          params={{ username: 'verified' }}
-        />
-      );
-      const { container: tree } = render(component);
-      expect(tree).toMatchSnapshot();
-    });
-
-    it('without credentials service', () => {
-      const config = getConfig();
-      config.CREDENTIALS_BASE_URL = '';
-
-      const contextValue = {
-        authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-        config: getConfig(),
-      };
-      const component = (
-        <ProfilePageWrapper
-          contextValue={contextValue}
-          store={mockStore(storeMocks.viewOwnProfile)}
-        />
-      );
-      const { container: tree } = render(component);
-      expect(tree).toMatchSnapshot();
-    });
-
-    it('successfully redirected to not found page', () => {
-      const contextValue = {
-        authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-        config: getConfig(),
-      };
-      const navigate = jest.fn();
-      useNavigate.mockReturnValue(navigate);
-      const component = (
-        <ProfilePageWrapper
-          contextValue={contextValue}
-          store={mockStore(storeMocks.invalidUser)}
-          params={{ username: 'staffTest' }}
-        />
-      );
-      const { container: tree } = render(component);
-      expect(tree).toMatchSnapshot();
-      expect(navigate).toHaveBeenCalledWith('/notfound');
-    });
+    expect(screen.getByRole('status')).toHaveTextContent('Profile loading...');
   });
 
-  describe('handles analytics', () => {
-    it('calls sendTrackingLogEvent when mounting', () => {
-      const contextValue = {
-        authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-        config: getConfig(),
-      };
-      render(
-        <ProfilePageWrapper
-          contextValue={contextValue}
-          store={mockStore(storeMocks.loadingApp)}
-          params={{ username: 'test-username' }}
-        />,
-      );
+  it("shows the learner's own profile with its editing controls", async () => {
+    renderPage();
 
-      expect(analytics.sendTrackingLogEvent).toHaveBeenCalledTimes(1);
-      expect(analytics.sendTrackingLogEvent).toHaveBeenCalledWith('edx.profile.viewed', {
-        username: 'test-username',
-      });
-    });
+    // The name shows in the banner and in its own field.
+    expect(await screen.findAllByText('Lemon Seltzer')).toHaveLength(2);
+    expect(screen.getAllByText('staff').length).toBeGreaterThan(0);
+    expect(screen.getByText('This is my bio')).toBeInTheDocument();
+    expect(screen.getByText('Montenegro')).toBeInTheDocument();
+    expect(screen.getByText('Elementary/primary school')).toBeInTheDocument();
+    expect(screen.getByText('edX Demonstration Course')).toBeInTheDocument();
+    expect(screen.getByText(/Member since/)).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'View My Records' }))
+      .toHaveAttribute('href', 'http://credentials.example.com/records');
+    // Only the owner sees who can see each field.
+    expect(screen.getAllByText('Just me').length).toBeGreaterThan(0);
+    expect(api.getPreferences).toHaveBeenCalledWith('staff');
   });
 
-  describe('handles navigation', () => {
-    it('navigates to notfound on save error with no username', () => {
-      const contextValue = {
-        authenticatedUser: { userId: 123, username: 'staff', administrator: true },
-        config: getConfig(),
-      };
-      const navigate = jest.fn();
-      useNavigate.mockReturnValue(navigate);
-      render(
-        <ProfilePageWrapper
-          contextValue={contextValue}
-          store={mockStore(storeMocks.invalidUser)}
-          params={{ username: 'staffTest' }}
-        />,
-      );
+  it('edits and saves a field', async () => {
+    api.getAccount.mockResolvedValue({ ...account, bio: null });
+    api.patchProfile.mockResolvedValue({ bio: 'Hello there' });
+    renderPage();
 
-      expect(navigate).toHaveBeenCalledWith('/notfound');
+    fireEvent.click(await screen.findByRole('button', { name: /Add a short bio/ }));
+    const textarea = screen.getByRole('textbox');
+    fireEvent.change(textarea, { target: { value: 'Hello there' } });
+    expect(textarea).toHaveValue('Hello there');
+    fireEvent.click(screen.getByRole('button', { name: 'Save' }));
+
+    await waitFor(() => expect(api.patchProfile).toHaveBeenCalledWith('staff', { bio: 'Hello there' }));
+    expect(await screen.findByRole('button', { name: 'Saved' })).toBeInTheDocument();
+  });
+
+  it("shows someone else's public fields without controls", async () => {
+    api.getAccount.mockResolvedValue({
+      ...account, username: 'verified', name: 'Verified User', levelOfEducation: null,
+    });
+    renderPage({ username: 'verified' });
+
+    expect(await screen.findAllByText('Verified User')).toHaveLength(2);
+    expect(screen.getByText('This is my bio')).toBeInTheDocument();
+    expect(screen.queryByText('Just me')).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /^Add / })).not.toBeInTheDocument();
+    expect(screen.queryByRole('link', { name: 'View My Records' })).not.toBeInTheDocument();
+    expect(api.getPreferences).not.toHaveBeenCalled();
+  });
+
+  it('hides the records link without a credentials service', async () => {
+    renderPage({ config: { CREDENTIALS_BASE_URL: '' } });
+
+    await screen.findAllByText('Lemon Seltzer');
+    expect(screen.queryByRole('link', { name: 'View My Records' })).not.toBeInTheDocument();
+  });
+
+  it('shows the not-found page for an unknown user, without retrying', async () => {
+    api.getAccount.mockRejectedValue({ response: { status: 404 } });
+    renderPage({ username: 'nobody' });
+
+    expect(await screen.findByText(/The page you're looking for is unavailable/)).toBeInTheDocument();
+    expect(api.getAccount).toHaveBeenCalledTimes(1);
+  });
+
+  it('shows an error page when the profile cannot be loaded', async () => {
+    api.getAccount.mockRejectedValue({ response: { status: 500 } });
+    renderPage();
+
+    expect(await screen.findByText(/An unexpected error occurred/)).toBeInTheDocument();
+  });
+
+  it('records the profile view once', async () => {
+    renderPage({ username: 'test-username' });
+
+    await screen.findAllByText('Lemon Seltzer');
+    expect(sendTrackingLogEvent).toHaveBeenCalledTimes(1);
+    expect(sendTrackingLogEvent).toHaveBeenCalledWith('edx.profile.viewed', { username: 'test-username' });
+  });
+
+  it('moves a legacy public account to per-field privacy, once', async () => {
+    api.getAccount.mockResolvedValue({ ...account, accountPrivacy: 'all_users' });
+    api.patchPreferences.mockResolvedValue({});
+    renderPage();
+
+    await waitFor(() => expect(api.patchPreferences).toHaveBeenCalledWith('staff', CUSTOM_ALL_USERS_PREFERENCES));
+    await screen.findAllByText('Lemon Seltzer');
+    expect(api.patchPreferences).toHaveBeenCalledTimes(1);
+  });
+
+  it("does not touch someone else's privacy settings", async () => {
+    api.getAccount.mockResolvedValue({ ...account, username: 'other', accountPrivacy: 'all_users' });
+    renderPage({ username: 'other' });
+
+    await screen.findAllByText('Lemon Seltzer');
+    expect(api.patchPreferences).not.toHaveBeenCalled();
+  });
+
+  it('shows the message of a rejected photo upload', async () => {
+    const error = new Error('Bad Request');
+    error.processedData = { userMessage: 'The file must be smaller than 1 MB in size.' };
+    api.postProfilePhoto.mockRejectedValue(error);
+    const { container } = renderPage();
+
+    await screen.findAllByText('Lemon Seltzer');
+    const file = new File(['photo'], 'photo.png', { type: 'image/png' });
+    fireEvent.change(container.querySelector('#photo-file'), { target: { files: [file] } });
+
+    expect(await screen.findByText('The file must be smaller than 1 MB in size.')).toBeInTheDocument();
+    expect(api.postProfilePhoto).toHaveBeenCalledWith('staff', expect.any(FormData));
+  });
+
+  it('drops the upload error along with the photo', async () => {
+    const error = new Error('Bad Request');
+    error.processedData = { userMessage: 'The file must be smaller than 1 MB in size.' };
+    api.postProfilePhoto.mockRejectedValue(error);
+    api.deleteProfilePhoto.mockResolvedValue({ imageUrlFull: 'http://img/default.jpg', hasImage: false });
+    const { container } = renderPage();
+
+    await screen.findAllByText('Lemon Seltzer');
+    fireEvent.change(container.querySelector('#photo-file'), {
+      target: { files: [new File(['photo'], 'photo.png', { type: 'image/png' })] },
+    });
+    await screen.findByText('The file must be smaller than 1 MB in size.');
+
+    fireEvent.click(container.querySelector('#dropdown-toggle-with-iconbutton'));
+    fireEvent.click(await screen.findByRole('button', { name: 'Remove photo' }));
+
+    await waitFor(() => expect(api.deleteProfilePhoto).toHaveBeenCalledWith('staff'));
+    await waitFor(() => {
+      expect(screen.queryByText('The file must be smaller than 1 MB in size.')).not.toBeInTheDocument();
     });
   });
 });

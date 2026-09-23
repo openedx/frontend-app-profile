@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { useIntl } from '@edx/frontend-platform/i18n';
 import { Form } from '@openedx/paragon';
 
@@ -11,10 +10,11 @@ import EditableItemHeader from './elements/EditableItemHeader';
 import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
 
-import { preferredLanguageSelector } from '../data/selectors';
 import {
   useCloseOpenHandler,
+  useEditableForm,
   useHandleSubmit,
+  useLanguageOptions,
   useIsVisibilityEnabled,
 } from '../data/hooks';
 
@@ -22,11 +22,6 @@ const PreferredLanguage = ({
   formId,
   languageProficiencies,
   visibilityLanguageProficiencies,
-  editMode,
-  saveState,
-  error,
-  sortedLanguages,
-  languageMessages,
   changeHandler,
   submitHandler,
   closeHandler,
@@ -34,6 +29,8 @@ const PreferredLanguage = ({
 }) => {
   const isVisibilityEnabled = useIsVisibilityEnabled();
   const intl = useIntl();
+  const { editMode, error, saveState } = useEditableForm(formId);
+  const { sortedLanguages, languageMessages } = useLanguageOptions();
 
   const handleChange = ({ target: { name, value } }) => {
     let newValue = value;
@@ -138,14 +135,6 @@ PreferredLanguage.propTypes = {
     PropTypes.oneOf(['']),
   ]),
   visibilityLanguageProficiencies: PropTypes.oneOf(['private', 'all_users']),
-  editMode: PropTypes.oneOf(['editing', 'editable', 'empty', 'static']),
-  saveState: PropTypes.string,
-  error: PropTypes.string,
-  sortedLanguages: PropTypes.arrayOf(PropTypes.shape({
-    code: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-  })).isRequired,
-  languageMessages: PropTypes.objectOf(PropTypes.string).isRequired,
   changeHandler: PropTypes.func.isRequired,
   submitHandler: PropTypes.func.isRequired,
   closeHandler: PropTypes.func.isRequired,
@@ -153,14 +142,8 @@ PreferredLanguage.propTypes = {
 };
 
 PreferredLanguage.defaultProps = {
-  editMode: 'static',
-  saveState: null,
   languageProficiencies: [],
   visibilityLanguageProficiencies: 'private',
-  error: null,
 };
 
-export default connect(
-  preferredLanguageSelector,
-  {},
-)(PreferredLanguage);
+export default PreferredLanguage;
