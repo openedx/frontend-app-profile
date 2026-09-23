@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useIntl } from '@edx/frontend-platform/i18n';
+import { getLinkProps, useIntl } from '@openedx/frontend-base';
 
 import { InfoOutline } from '@openedx/paragon/icons';
 import { Hyperlink, OverlayTrigger, Tooltip } from '@openedx/paragon';
-import messages from './Name.messages';
+import messages from '@src/profile/forms/Name.messages';
 
-import FormControls from './elements/FormControls';
-import EditableItemHeader from './elements/EditableItemHeader';
-import EmptyContent from './elements/EmptyContent';
-import SwitchContent from './elements/SwitchContent';
+import FormControls from '@src/profile/forms/elements/FormControls';
+import EditableItemHeader from '@src/profile/forms/elements/EditableItemHeader';
+import EmptyContent from '@src/profile/forms/elements/EmptyContent';
+import SwitchContent from '@src/profile/forms/elements/SwitchContent';
 
 import {
   useCloseOpenHandler,
@@ -17,7 +17,7 @@ import {
   useHandleChange,
   useHandleSubmit,
   useIsVisibilityEnabled,
-} from '../data/hooks';
+} from '@src/profile/data/hooks';
 
 const Name = ({
   formId,
@@ -27,7 +27,7 @@ const Name = ({
   submitHandler,
   closeHandler,
   openHandler,
-  accountSettingsUrl,
+  accountSettings,
 }) => {
   const isVisibilityEnabled = useIsVisibilityEnabled();
   const intl = useIntl();
@@ -67,7 +67,12 @@ const Name = ({
                 </div>
                 <EditableItemHeader content={name} />
                 <h4 className="font-weight-normal">
-                  <Hyperlink destination={accountSettingsUrl} target="_blank">
+                  {/* A route in this site navigates in the client; the LMS's own page
+                      opens in a new tab, as it always has. */}
+                  <Hyperlink
+                    {...getLinkProps(accountSettings.url)}
+                    target={accountSettings.isInternal ? '_self' : '_blank'}
+                  >
                     {intl.formatMessage(messages['profile.name.redirect'])}
                   </Hyperlink>
                 </h4>
@@ -172,7 +177,10 @@ Name.propTypes = {
   submitHandler: PropTypes.func.isRequired,
   closeHandler: PropTypes.func.isRequired,
   openHandler: PropTypes.func.isRequired,
-  accountSettingsUrl: PropTypes.string.isRequired,
+  accountSettings: PropTypes.shape({
+    url: PropTypes.string.isRequired,
+    isInternal: PropTypes.bool.isRequired,
+  }).isRequired,
 };
 
 Name.defaultProps = {

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import SwitchContent from './SwitchContent';
+import SwitchContent from '@src/profile/forms/elements/SwitchContent';
 
 jest.mock('@openedx/paragon', () => ({
   TransitionReplace: ({ children, onChildExit, className }) => (

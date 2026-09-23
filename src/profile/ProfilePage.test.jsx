@@ -1,36 +1,20 @@
 import React from 'react';
 import { fireEvent, screen, waitFor } from '@testing-library/react';
 
-import { mergeConfig } from '@edx/frontend-platform';
-import { sendTrackingLogEvent } from '@edx/frontend-platform/analytics';
-import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
-import { configure as configureI18n } from '@edx/frontend-platform/i18n';
+import { mergeAppConfig, sendTrackingLogEvent } from '@openedx/frontend-base';
 
-import * as api from './data/api';
-import { CUSTOM_ALL_USERS_PREFERENCES } from './data/hooks';
-import ProfilePage from './ProfilePage';
-import { renderWithProviders } from '../tests/renderWithProviders';
+import { appId } from '@src/constants';
+import * as api from '@src/profile/data/api';
+import { CUSTOM_ALL_USERS_PREFERENCES } from '@src/profile/data/hooks';
+import { profileKeys } from '@src/profile/data/queryKeys';
+import ProfilePage from '@src/profile/ProfilePage';
+import { createTestQueryClient, renderWithProviders } from '@src/tests/renderWithProviders';
 
-jest.mock('./data/api');
-jest.mock('@edx/frontend-platform/auth', () => ({
-  getAuthenticatedUser: jest.fn(),
-  getAuthenticatedHttpClient: jest.fn(),
-}));
-jest.mock('@edx/frontend-platform/analytics', () => ({
+jest.mock('@src/profile/data/api');
+jest.mock('@openedx/frontend-base', () => ({
+  ...jest.requireActual('@openedx/frontend-base'),
   sendTrackingLogEvent: jest.fn(),
 }));
-jest.mock('@edx/frontend-platform/logging', () => ({
-  logError: jest.fn(),
-}));
-
-configureI18n({
-  loggingService: { logError: jest.fn() },
-  config: {
-    ENVIRONMENT: 'production',
-    LANGUAGE_PREFERENCE_COOKIE_NAME: 'yum',
-  },
-  messages: [],
-});
 
 const account = {
   username: 'staff',
@@ -64,23 +48,21 @@ const certificates = [{
   uuid: 'abc',
 }];
 
-const renderPage = ({ username = 'staff', config = {} } = {}) => {
-  mergeConfig({
+// `setupTest` signs in `staff`, so a route username of `staff` is the learner's own profile.
+const renderPage = ({ username = 'staff', config = {}, ...options } = {}) => {
+  mergeAppConfig(appId, {
     CREDENTIALS_BASE_URL: 'http://credentials.example.com',
-    ACCOUNT_SETTINGS_URL: 'http://account.example.com',
     ...config,
   });
   return renderWithProviders(<ProfilePage />, {
-    route: `/u/${username}`,
-    path: '/u/:username',
-    // The page reads `config` from the context; whose profile it is comes from getAuthenticatedUser.
-    appContext: {},
+    route: `/profile/u/${username}`,
+    path: '/profile/u/:username',
+    ...options,
   });
 };
 
 beforeEach(() => {
   jest.clearAllMocks();
-  getAuthenticatedUser.mockReturnValue({ username: 'staff' });
   api.getAccount.mockResolvedValue(account);
   api.getPreferences.mockResolvedValue(preferences);
   api.getCourseCertificates.mockResolvedValue(certificates);
@@ -111,6 +93,28 @@ describe('<ProfilePage />', () => {
     // Only the owner sees who can see each field.
     expect(screen.getAllByText('Just me').length).toBeGreaterThan(0);
     expect(api.getPreferences).toHaveBeenCalledWith('staff');
+  });
+
+  it('starts cold on a revisit, so a name the Account app changed is never painted stale', async () => {
+    // A client that keeps queries around, as the shell's does; the profile's own opt out of it.
+    const queryClient = createTestQueryClient({ gcTime: 5 * 60 * 1000 });
+
+    const firstVisit = renderPage({ queryClient });
+    expect(await screen.findAllByText('Lemon Seltzer')).toHaveLength(2);
+    firstVisit.unmount();
+
+    await waitFor(() => {
+      expect(queryClient.getQueryData(profileKeys.account('staff'))).toBeUndefined();
+      expect(queryClient.getQueryData(profileKeys.preferences('staff'))).toBeUndefined();
+    });
+
+    // The learner renames themselves in Account, then comes back.
+    api.getAccount.mockResolvedValue({ ...account, name: 'Sparkling Water' });
+    renderPage({ queryClient });
+
+    expect(screen.getByRole('status')).toHaveTextContent('Profile loading...');
+    expect(screen.queryByText('Lemon Seltzer')).not.toBeInTheDocument();
+    expect(await screen.findAllByText('Sparkling Water')).toHaveLength(2);
   });
 
   it('edits and saves a field', async () => {

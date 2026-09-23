@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useIntl } from '@edx/frontend-platform/i18n';
-import { getConfig } from '@edx/frontend-platform';
+import { getSiteConfig, useIntl } from '@openedx/frontend-base';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEyeSlash, faEye } from '@fortawesome/free-regular-svg-icons';
 
-import messages from './Visibility.messages';
+import messages from '@src/profile/forms/elements/Visibility.messages';
 
 const Visibility = ({ to = 'private' }) => {
   const intl = useIntl();
@@ -13,7 +12,7 @@ const Visibility = ({ to = 'private' }) => {
   const label = to === 'private'
     ? intl.formatMessage(messages['profile.visibility.who.just.me'])
     : intl.formatMessage(messages['profile.visibility.who.everyone'], {
-      siteName: getConfig().SITE_NAME,
+      siteName: getSiteConfig().siteName,
     });
 
   return (
@@ -56,7 +55,7 @@ const VisibilitySelect = ({
         </option>
         <option key="all_users" value="all_users">
           {intl.formatMessage(messages['profile.visibility.who.everyone'], {
-            siteName: getConfig().SITE_NAME,
+            siteName: getSiteConfig().siteName,
           })}
         </option>
       </select>

@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Alert } from '@openedx/paragon';
 import { faXTwitter, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { FormattedMessage } from '@edx/frontend-platform/i18n';
+import { FormattedMessage } from '@openedx/frontend-base';
 import classNames from 'classnames';
 
-import FormControls from './elements/FormControls';
-import EditableItemHeader from './elements/EditableItemHeader';
-import EmptyContent from './elements/EmptyContent';
-import SwitchContent from './elements/SwitchContent';
+import FormControls from '@src/profile/forms/elements/FormControls';
+import EditableItemHeader from '@src/profile/forms/elements/EditableItemHeader';
+import EmptyContent from '@src/profile/forms/elements/EmptyContent';
+import SwitchContent from '@src/profile/forms/elements/SwitchContent';
 
-import { KNOWN_SOCIAL_PLATFORMS } from '../data/derive';
-import { useEditableForm, useIsVisibilityEnabled } from '../data/hooks';
+import { KNOWN_SOCIAL_PLATFORMS } from '@src/profile/data/derive';
+import { useEditableForm, useIsVisibilityEnabled } from '@src/profile/data/hooks';
 
 const platformDisplayInfo = {
   facebook: {

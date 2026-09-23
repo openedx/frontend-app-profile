@@ -1,71 +1,100 @@
 {
-  "name": "@edx/frontend-app-profile",
-  "version": "1.0.0-semantically-released",
-  "description": "User profile micro-frontend for Open edX",
-  "author": "edX",
-  "license": "AGPL-3.0",
+  "name": "@openedx/frontend-app-profile",
+  "version": "0.0.0-dev",
+  "packageManager": "npm@11.12.1",
+  "description": "User profile frontend app for Open edX",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/openedx/frontend-app-profile.git"
   },
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "files": [
+    "/dist"
+  ],
+  "workspaces": [
+    "packages/*"
+  ],
+  "browserslist": [
+    "extends @edx/browserslist-config"
+  ],
+  "sideEffects": [
+    "*.css",
+    "*.scss"
+  ],
+  "atlasTranslations": {
+    "path": "translations/frontend-app-profile/src/i18n/messages",
+    "dependencies": [
+      "@openedx/frontend-base"
+    ]
+  },
   "scripts": {
-    "build": "fedx-scripts webpack",
-    "i18n_extract": "fedx-scripts formatjs extract",
-    "lint": "fedx-scripts eslint --ext .js --ext .jsx .",
-    "snapshot": "fedx-scripts jest --updateSnapshot",
-    "start": "fedx-scripts webpack-dev-server --progress",
-    "dev": "PUBLIC_PATH=/profile/ MFE_CONFIG_API_URL='http://local.openedx.io:8000/api/mfe_config/v1' fedx-scripts webpack-dev-server --progress --host apps.local.openedx.io",
-    "test": "TZ=UTC fedx-scripts jest --coverage --passWithNoTests",
-    "stubs": "pact-stub-service ./src/pacts/frontend-app-profile-edx-platform.json --port 18000"
+    "build": "make build",
+    "build:ci": "make build-ci",
+    "build:packages": "make build-packages",
+    "clean": "make clean",
+    "clean:packages": "make clean-packages",
+    "dev": "PORT=1995 PUBLIC_PATH=/profile openedx dev",
+    "dev:site": "make dev-site",
+    "dev:packages": "make dev-packages",
+    "i18n_extract": "openedx formatjs extract",
+    "lint": "openedx lint .",
+    "lint:fix": "openedx lint --fix .",
+    "prepack": "npm run clean && npm run build",
+    "stubs": "pact-stub-service ./src/pacts/frontend-app-profile-edx-platform.json --port 18000",
+    "test": "openedx test --coverage --passWithNoTests",
+    "translations:pull": "openedx translations:pull",
+    "watch:build": "nodemon --exec 'npm run build'"
   },
-  "bugs": {
-    "url": "https://github.com/openedx/frontend-app-profile/issues"
-  },
+  "author": "Open edX",
+  "license": "AGPL-3.0",
   "homepage": "https://github.com/openedx/frontend-app-profile#readme",
   "publishConfig": {
     "access": "public"
   },
-  "browserslist": [
-    "extends @edx/browserslist-config"
-  ],
+  "bugs": {
+    "url": "https://github.com/openedx/frontend-app-profile/issues"
+  },
   "dependencies": {
-    "@edx/brand": "npm:@openedx/brand-openedx@^1.2.3",
-    "@edx/frontend-component-footer": "^14.6.0",
-    "@edx/frontend-component-header": "^8.2.1",
-    "@edx/frontend-platform": "^8.7.0",
+    "@cospired/i18n-iso-languages": "^4.2.0",
     "@edx/openedx-atlas": "^0.7.0",
     "@fortawesome/fontawesome-svg-core": "6.7.2",
     "@fortawesome/free-brands-svg-icons": "6.7.2",
     "@fortawesome/free-regular-svg-icons": "6.7.2",
     "@fortawesome/free-solid-svg-icons": "6.7.2",
     "@fortawesome/react-fontawesome": "0.2.6",
-    "@openedx/frontend-plugin-framework": "^1.7.0",
-    "@openedx/paragon": "^23.4.5",
-    "@pact-foundation/pact": "^11.0.2",
-    "@tanstack/react-query": "^5.103.2",
     "classnames": "2.5.1",
-    "core-js": "3.48.0",
-    "history": "5.3.0",
-    "lodash.camelcase": "4.3.0",
+    "i18n-iso-countries": "^7.14.0",
     "lodash.get": "4.4.2",
-    "lodash.snakecase": "4.1.1",
     "prop-types": "15.8.1",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "react-helmet": "6.1.0",
-    "react-router": "6.30.3",
-    "react-router-dom": "6.30.3",
-    "regenerator-runtime": "0.14.1",
-    "universal-cookie": "4.0.4"
+    "react-helmet": "6.1.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "19.8.1",
-    "@commitlint/config-angular": "19.8.1",
     "@edx/browserslist-config": "^1.1.1",
-    "@openedx/frontend-build": "^14.6.6",
+    "@openedx/frontend-base": "^2.0.0-alpha || 0.0.0-dev",
+    "@openedx/paragon": "^23 || 0.0.0-dev",
+    "@pact-foundation/pact": "^11.0.2",
     "@testing-library/jest-dom": "6.9.1",
     "@testing-library/react": "14.3.1",
-    "glob": "11.1.0",
-    "jest-environment-jsdom": "^30.3.0"
+    "@types/jest": "^29.5.14",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "nodemon": "^3.1.14",
+    "tsc-alias": "^1.8.16",
+    "turbo": "^2.9.2"
+  },
+  "peerDependencies": {
+    "@openedx/frontend-base": "^2.0.0-alpha || 0.0.0-dev",
+    "@openedx/paragon": "^23 || 0.0.0-dev",
+    "@tanstack/react-query": "^5",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-router": "^6",
+    "react-router-dom": "^6"
   }
 }

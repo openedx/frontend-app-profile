@@ -2,17 +2,13 @@ import { useMemo } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { breakpoints, useWindowSize } from '@openedx/paragon';
-import { getConfig } from '@edx/frontend-platform';
-import {
-  getCountryList as getTranslatedCountryList,
-  getCountryMessages,
-  getLanguageList,
-  getLanguageMessages,
-  getLocale,
-} from '@edx/frontend-platform/i18n';
-import { logError } from '@edx/frontend-platform/logging';
+import { logError, useAppConfig, useIntl } from '@openedx/frontend-base';
 
-import { retryUnlessClientError } from '../../data/queryOptions';
+import { getCountryList as getTranslatedCountryList, getCountryMessages } from '@src/data/countries';
+import { getLanguageList, getLanguageMessages } from '@src/data/languages';
+import { parseEnvBoolean } from '@src/utils';
+
+import { retryUnlessClientError } from '@src/data/queryOptions';
 import {
   deleteProfilePhoto,
   getAccount,
@@ -21,7 +17,7 @@ import {
   getPreferences,
   patchPreferences,
   postProfilePhoto,
-} from './api';
+} from '@src/profile/data/api';
 import {
   getDraftSocialLinksByPlatform,
   getEditMode,
@@ -29,9 +25,9 @@ import {
   getFormValues,
   getProfileImage,
   getSortedCountries,
-} from './derive';
-import { useProfileForm } from './FormContext';
-import { profileKeys, profileMutationKeys } from './queryKeys';
+} from '@src/profile/data/derive';
+import { useProfileForm } from '@src/profile/data/FormContext';
+import { profileKeys, profileMutationKeys } from '@src/profile/data/queryKeys';
 
 const EMPTY_LIST = [];
 const EMPTY_OBJECT = {};
@@ -47,7 +43,7 @@ export function useIsOnMobileScreen() {
 }
 
 export function useIsVisibilityEnabled() {
-  return getConfig().DISABLE_VISIBILITY_EDITING !== 'true';
+  return !parseEnvBoolean(useAppConfig().DISABLE_VISIBILITY_EDITING);
 }
 
 export function useHandleChange(changeHandler) {
@@ -70,21 +66,27 @@ export function useCloseOpenHandler(handler, formId) {
 
 /**
  * The viewed account. A 404 is an unknown user, which must not be retried before the page says so.
+ *
+ * Not kept past the page: Account writes this record too, under a key of its own, so a cached copy
+ * would paint a name the learner has just changed.
  */
 export const useAccount = (username) => useQuery({
   queryKey: profileKeys.account(username),
   queryFn: () => getAccount(username),
   retry: retryUnlessClientError,
+  gcTime: 0,
 });
 
 /**
- * The visibility preferences, which only the profile's owner may read.
+ * The visibility preferences, which only the profile's owner may read. Not kept past the page
+ * either, and for the same reason.
  */
 export const usePreferences = (username, { enabled = true } = {}) => useQuery({
   queryKey: profileKeys.preferences(username),
   queryFn: () => getPreferences(username),
   enabled,
   retry: retryUnlessClientError,
+  gcTime: 0,
 });
 
 export const useCourseCertificates = (username) => useQuery({
@@ -171,7 +173,7 @@ export const useCountryOptions = () => {
   const { username } = useProfileForm();
   const { data: account } = useAccount(username);
   const { data: countryCodes = EMPTY_LIST } = useCountryCodes();
-  const locale = getLocale();
+  const { locale } = useIntl();
   const committedCountry = account?.country;
 
   return useMemo(() => ({
@@ -185,7 +187,7 @@ export const useCountryOptions = () => {
  * The options of the preferred language select, in the current locale.
  */
 export const useLanguageOptions = () => {
-  const locale = getLocale();
+  const { locale } = useIntl();
 
   return useMemo(() => ({
     sortedLanguages: getLanguageList(locale),

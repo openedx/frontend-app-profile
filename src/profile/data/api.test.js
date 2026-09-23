@@ -1,5 +1,10 @@
-import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
-import { logError } from '@edx/frontend-platform/logging';
+import {
+  camelCaseObject,
+  convertKeyNames,
+  getAuthenticatedHttpClient,
+  logError,
+  snakeCaseObject,
+} from '@openedx/frontend-base';
 import {
   getAccount,
   patchProfile,
@@ -9,27 +14,16 @@ import {
   patchPreferences,
   getCourseCertificates,
   getCountryList,
-} from './api';
+} from '@src/profile/data/api';
 
-import { FIELD_LABELS } from './constants';
-
-import { camelCaseObject, snakeCaseObject, convertKeyNames } from '../utils';
+import { FIELD_LABELS } from '@src/profile/data/constants';
 
 // --- Mocks ---
-jest.mock('@edx/frontend-platform', () => ({
-  ensureConfig: jest.fn(),
-  getConfig: jest.fn(() => ({ LMS_BASE_URL: 'http://fake-lms' })),
-}));
-
-jest.mock('@edx/frontend-platform/auth', () => ({
+jest.mock('@openedx/frontend-base', () => ({
+  ...jest.requireActual('@openedx/frontend-base'),
+  getSiteConfig: jest.fn(() => ({ lmsBaseUrl: 'http://fake-lms' })),
   getAuthenticatedHttpClient: jest.fn(),
-}));
-
-jest.mock('@edx/frontend-platform/logging', () => ({
   logError: jest.fn(),
-}));
-
-jest.mock('../utils', () => ({
   camelCaseObject: jest.fn((obj) => obj),
   snakeCaseObject: jest.fn((obj) => obj),
   convertKeyNames: jest.fn((obj) => obj),

@@ -4,11 +4,10 @@ import React, {
 import PropTypes from 'prop-types';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
-import { logError } from '@edx/frontend-platform/logging';
+import { getAuthenticatedUser, logError } from '@openedx/frontend-base';
 
-import { getPreferences, patchPreferences, patchProfile } from './api';
-import { pickAccountDrafts, pickPreferencesDrafts } from './derive';
+import { getPreferences, patchPreferences, patchProfile } from '@src/profile/data/api';
+import { pickAccountDrafts, pickPreferencesDrafts } from '@src/profile/data/derive';
 import {
   CLOSE_FORM,
   formReducer,
@@ -19,8 +18,8 @@ import {
   SAVE_RESET,
   SAVE_SUCCESS,
   UPDATE_DRAFT,
-} from './formReducer';
-import { profileKeys, profileMutationKeys } from './queryKeys';
+} from '@src/profile/data/formReducer';
+import { profileKeys, profileMutationKeys } from '@src/profile/data/queryKeys';
 
 // How long a saved field stays in its "complete" state before the form closes itself.
 export const CLOSE_FORM_DELAY = 1000;

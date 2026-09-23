@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { IntlProvider } from '@edx/frontend-platform/i18n';
-import EditButton from './EditButton';
+import { IntlProvider } from '@openedx/frontend-base';
+import EditButton from '@src/profile/forms/elements/EditButton';
 
 const messages = {
   'profile.editbutton.edit': 'Edit',

@@ -2,40 +2,34 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { act, renderHook, waitFor } from '@testing-library/react';
 
-import { configure as configureI18n } from '@edx/frontend-platform/i18n';
-import { logError } from '@edx/frontend-platform/logging';
+import {
+  addAppConfigs, logError, mergeAppConfig, setSiteConfig,
+} from '@openedx/frontend-base';
+import siteConfig from 'site.config';
 
-import * as api from './api';
-import { ProfileFormContext } from './FormContext';
+import { appId } from '@src/constants';
+
+import * as api from '@src/profile/data/api';
+import { ProfileFormContext } from '@src/profile/data/FormContext';
 import {
   CUSTOM_ALL_USERS_PREFERENCES,
   useCountryOptions,
   useDeleteProfilePhoto,
   useEditableForm,
+  useIsVisibilityEnabled,
   useMigrateAccountPrivacy,
   useProfileData,
   useSaveProfilePhoto,
-} from './hooks';
-import { profileKeys } from './queryKeys';
-import {
-  createFormContextValue,
-  createTestQueryClient,
-  createWrapper,
-} from '../../tests/renderWithProviders';
+} from '@src/profile/data/hooks';
+import { profileKeys } from '@src/profile/data/queryKeys';
+import { createTestQueryClient, createWrapper } from '@src/tests/renderWithProviders';
+import { createFormContextValue } from '@src/profile/test/renderWithForm';
 
-jest.mock('./api');
-jest.mock('@edx/frontend-platform/logging', () => ({
+jest.mock('@src/profile/data/api');
+jest.mock('@openedx/frontend-base', () => ({
+  ...jest.requireActual('@openedx/frontend-base'),
   logError: jest.fn(),
 }));
-
-configureI18n({
-  loggingService: { logError: jest.fn() },
-  config: {
-    ENVIRONMENT: 'production',
-    LANGUAGE_PREFERENCE_COOKIE_NAME: 'yum',
-  },
-  messages: [],
-});
 
 const account = {
   username: 'staff',
@@ -75,6 +69,30 @@ beforeEach(() => {
   api.getPreferences.mockResolvedValue(preferences);
   api.getCourseCertificates.mockResolvedValue(certificates);
   api.getCountryList.mockResolvedValue(['US', 'CA']);
+});
+
+describe('useIsVisibilityEnabled', () => {
+  // `mergeAppConfig` cannot unset a key, so the app config is rebuilt from the test site config
+  // before each case; that is the only way the "operator set nothing" row stays honest.
+  beforeEach(() => {
+    setSiteConfig(siteConfig);
+    addAppConfigs();
+  });
+
+  it.each([
+    [undefined, true],
+    [false, true],
+    ['', true],
+    [true, false],
+    ['true', false],
+  ])('reads a DISABLE_VISIBILITY_EDITING of %p as visibility enabled: %p', (value, expected) => {
+    mergeAppConfig(appId, { DISABLE_VISIBILITY_EDITING: value });
+    const { Wrapper } = createHookWrapper();
+
+    const { result } = renderHook(() => useIsVisibilityEnabled(), { wrapper: Wrapper });
+
+    expect(result.current).toBe(expected);
+  });
 });
 
 describe('useProfileData', () => {

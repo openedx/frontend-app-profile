@@ -1,32 +1,72 @@
-#####################
+####################
 frontend-app-profile
-#####################
+####################
 
-|license-badge| |status-badge| |ci-badge| |codecov-badge|
+|license-badge| |status-badge| |ci-badge| |codecov-badge| |semantic-release|
 
-.. |license-badge| image:: https://img.shields.io/github/license/openedx/frontend-app-profile.svg
-    :target: https://github.com/openedx/frontend-app-profile/blob/main/LICENSE
-    :alt: License
+The Profile app is a `frontend-base`_ application: a library that plugs into
+the Open edX frontend shell, rather than a standalone micro-frontend bundled
+with its own webpack build.
 
-.. |status-badge| image:: https://img.shields.io/badge/Status-Maintained-brightgreen
+.. _frontend-base: https://github.com/openedx/frontend-base
 
-.. |ci-badge| image:: https://github.com/openedx/frontend-app-profile/actions/workflows/ci.yml/badge.svg
-    :target: https://github.com/openedx/frontend-app-profile/actions/workflows/ci.yml
-    :alt: Continuous Integration
-
-.. |codecov-badge| image:: https://codecov.io/github/openedx/frontend-app-profile/coverage.svg?branch=main
-    :target: https://codecov.io/github/openedx/frontend-app-profile?branch=main
-    :alt: Codecov
-
-********
+*******
 Purpose
-********
+*******
 
-This is a micro-frontend application responsible for the display and updating of user profiles.
+This app displays and updates learner profiles.
 
-When a user views their own profile, they're given fields to edit their full name, location, primary spoken language, education, social links, and bio.  Each field also has a dropdown to select the visibility of that field - i.e., whether it can be viewed by other learners.
+When learners view their own profile, they get fields to edit their full name,
+country, primary spoken language, education, social links and bio, along with
+their photo. Each field has a control to select its visibility, that is,
+whether other learners can see it.
 
-When a user views someone else's profile, they see all those fields that that user set as public.
+When learners view someone else's profile, they see the fields that learner has
+made public.
+
+Account settings, including the fields this page links out to edit, are a
+`separate app (Account)`_.
+
+.. _separate app (Account): https://github.com/openedx/frontend-app-account
+
+*********************
+Branches and Releases
+*********************
+
+This app is published to NPM by ``semantic-release``, and its branches follow
+`OEP-10 ADR 0002`_:
+
+``master``
+  Unstable.  Every merge publishes a prerelease on the ``alpha`` dist-tag.
+  Breaking changes land here with no DEPR process and no warning, so it is not
+  supported in production.  All changes, including bug fixes, should target this
+  branch first.
+
+``stable``
+  Carries the newest stable major and owns the ``latest`` dist-tag.  Changes
+  arrive here as backports from ``master``, and no breaking change lands after
+  publication.
+
+``n.x`` and ``n.m.x``
+  Maintenance branches for majors and minors that ``stable`` has moved past.
+  Each owns the dist-tag matching its own name, so consumers select a maintained
+  line by semver range, e.g. ``"1.x"``.
+
+``stable`` is not cut yet, and the package is not on NPM yet; `#1406`_ tracks
+both.  Both ``.releaserc`` and the ``Release CI`` workflow already know the
+whole layout, including the maintenance branch patterns, so a new line starts
+publishing as soon as it is pushed.
+
+This repository is no longer branched or tagged for Open edX releases in its own
+right.  It participates by published version instead, per `OEP-10 ADR 0003`_.
+
+The micro-frontend this app replaces goes on living on the ``legacy-mfe``
+branch, which is where any further ``release/RELEASENAME`` branches for it are
+cut, for as long as a supported release still ships it.
+
+.. _#1406: https://github.com/openedx/frontend-app-profile/issues/1406
+.. _OEP-10 ADR 0002: https://docs.openedx.org/projects/openedx-proposals/en/latest/processes/oep-0010/decisions/0002-frontend-stable-branches.html
+.. _OEP-10 ADR 0003: https://docs.openedx.org/projects/openedx-proposals/en/latest/processes/oep-0010/decisions/0003-frontend-release-strategy.html
 
 ***************
 Getting Started
@@ -35,78 +75,179 @@ Getting Started
 Prerequisites
 =============
 
-The Tutor_ platform is a prerequisite for developing an MFE.
-Utilize `relevant tutor-mfe documentation`_ to guide you through
-the process of MFE development within the Tutor environment.
+A running Open edX instance is needed to serve this app's backend APIs.
+`Tutor`_ in development mode is the usual choice, and ``site.config.dev.tsx``
+already points at its default hostnames.
+
+Unlike a micro-frontend, this app is neither built nor served by ``tutor-mfe``.
+The dev server below runs on the host.
 
 .. _Tutor: https://github.com/overhangio/tutor
-
-.. _relevant tutor-mfe documentation: https://github.com/overhangio/tutor-mfe#mfe-development
-
 
 Cloning and Startup
 ===================
 
 1. Clone the repo:
 
-  ``git clone https://github.com/openedx/frontend-app-profile.git``
+   ``git clone https://github.com/openedx/frontend-app-profile.git``
 
-2. Use the version of node in the `.nvmrc` file.
+2. Use the version of Node specified in the ``.nvmrc`` file.
 
-  The current version of the micro-frontend build scripts support the version of node found in `.nvmrc`.
-  Using other major versions of node *may* work, but this is unsupported.  For
-  convenience, this repository includes an .nvmrc file to help in setting the
-  correct node version via `nvm <https://github.com/nvm-sh/nvm>`_.
+   Using other major versions of Node *may* work, but is unsupported.  This
+   repository includes an ``.nvmrc`` file to help set the correct Node version
+   via `nvm <https://github.com/nvm-sh/nvm>`_.
 
 3. Install npm dependencies:
 
-  ``cd frontend-app-profile && npm ci``
+   ``cd frontend-app-profile && npm install``
 
-4. Mount the frontend-app-profile MFE in Tutor:
+4. Start the dev server:
 
-  ``tutor mounts add <your-tutor-project-dir>/frontend-app-profile``
-5. Build the Docker image:
+   ``npm run dev``
 
-  ``tutor images build profile-dev``
+The dev server defaults to ``PORT=1995 PUBLIC_PATH=/profile`` (set in the
+``dev`` script in ``package.json``) and serves a learner's profile at
+`http://apps.local.openedx.io:1995/profile/u/staff <http://apps.local.openedx.io:1995/profile/u/staff>`_.
+The ``/profile/u/<username>`` path is fixed: it is what the shell's header and
+the LMS link to.
 
-6. Launch the development server with Tutor:
+Configuration used by the dev server is defined in ``site.config.dev.tsx`` at
+the repo root.
 
-  ``tutor dev start profile``
+Local Development Against ``frontend-base``
+===========================================
 
+To develop this app and a local checkout of ``frontend-base`` in tandem, use the
+built-in npm workspace support:
 
-The dev server is running at `http://localhost:1995/u/staff <http://localhost:1995/u/staff>`_.
+.. code-block:: sh
 
-`Tutor <https://github.com/overhangio/tutor>`_. If you start Tutor with ``tutor dev start profile``
-that should give you everything you need as a companion to this frontend.
+    mkdir -p packages/frontend-base
+    sudo mount --bind /path/to/frontend-base packages/frontend-base
+    npm install
+    npm run dev:packages
 
-Plugins
-=======
-This MFE can be customized using `Frontend Plugin Framework <https://github.com/openedx/frontend-plugin-framework>`_.
-
-The parts of this MFE that can be customized in that manner are documented `here </src/plugin-slots>`_.
+Bind mounts are used instead of symlinks because Node resolves symlinks to their
+real paths, which breaks hoisted dependency resolution.  When you are done,
+unmount with ``sudo umount packages/frontend-base``.
 
 Configuration
 =============
 
-This MFE is configured via node environment variables supplied at build time. See the .env file for the list of required environment variables. Example build syntax with a single environment variable:
+This app is no longer configured by build-time environment variables.  Its
+config resolves three sources, in order of increasing precedence: the app's
+bundled ``defaultConfig``, the site's ``commonAppConfig``, and the app's
+``config``.  The first is the app author's, at build time; the other two are the
+operator's, the second applying to every app on the site and the third to this
+app alone.  Components read the result with ``useAppConfig``, so they follow a
+config change at runtime.
 
-.. code-block::
+The keys keep the names the micro-frontend read from its environment, so values
+that reach the app through the MFE config API keep working.  Booleans accept
+either a boolean or the strings ``'true'`` and ``'false'``.
 
-   NODE_ENV=production ACCESS_TOKEN_COOKIE_NAME='edx-jwt-cookie-header-payload' npm run build
+.. list-table::
+   :widths: 30 50 20
+   :header-rows: 1
 
+   * - Name
+     - Description / Usage
+     - Default
+
+   * - ``DISABLE_VISIBILITY_EDITING``
+     - Hides the per-field visibility controls, leaving the account-wide
+       privacy setting in charge of who sees what.
+     - ``false``
+
+   * - ``CREDENTIALS_BASE_URL``
+     - The Learner Record service, linked from the "View My Records" button on
+       a learner's own profile.  The button is hidden when this is unset.
+     - ``null``
+
+The site name and LMS URL come from the site config's ``siteName`` and
+``lmsBaseUrl``.
+
+The link to account settings on the full name field resolves the
+``org.openedx.frontend.role.account`` route role, so it stays in the site when
+the Account app is installed alongside this one, and falls back to the LMS's own
+``/account/settings`` page otherwise.
+
+*****
+Slots
+*****
+
+This app offers slots for operators to customize its pages.  See `src/slots/`_
+for the current list and per-slot READMEs with usage examples.
+
+.. _src/slots/: ./src/slots/
+
+**********
+Developing
+**********
+
+Project Structure
+=================
+
+The layout follows the standard `frontend-base app layout`_:
+
+- ``src/app.ts`` - the app definition imported by ``site.config.*.tsx``,
+  including its ``defaultConfig``.
+- ``src/constants.ts`` - the app's ``appId`` and route role identifiers.
+- ``src/index.ts`` - the package's public exports (this is a library).
+- ``src/routes.tsx`` - the app's react-router routes: the profile page at
+  ``profile/u/:username``, and an index route answering the bare ``profile``
+  path, which names no learner, with the not-found page.
+- ``src/Main.tsx`` - the root component for the app's routes.
+- ``src/slots.tsx`` - slot operations this app performs on *other* apps' slots
+  (none at present).
+- ``src/slots/`` - the slots this app offers to consumers.
+- ``src/style.scss`` - app-scoped runtime styles, with partials in ``src/sass/``.
+
+Everything else under ``src/`` is a feature directory: ``profile/`` for the
+page, its forms and its data layer, and ``data/`` for the shared react-query
+options and the country and language lists.
+
+For more, see the `frontend-base migration how-to`_.
+
+.. _frontend-base app layout: https://github.com/openedx/frontend-base/blob/main/docs/how_tos/migrate-frontend-app.md#src-file-structure
+.. _frontend-base migration how-to: https://github.com/openedx/frontend-base/blob/main/docs/how_tos/migrate-frontend-app.md
+
+Build Process Notes
+===================
+
+**Library build**
+
+``npm run build`` compiles the library into ``dist/`` via ``tsc`` and
+``tsc-alias``, and copies the SCSS and asset files across.  This is what gets
+published and consumed by sites.
+
+**CI build**
+
+``npm run build:ci`` runs ``openedx build`` against ``site.config.ci.tsx`` so
+webpack traverses the full app graph.  This catches issues, such as broken
+lazy-loaded imports, that ``tsc`` and Jest would not surface.
+
+Internationalization
+====================
+
+Please refer to the `frontend-base i18n howto`_ for documentation on
+internationalization.
+
+.. _frontend-base i18n howto: https://github.com/openedx/frontend-base/blob/main/docs/how_tos/i18n.rst
+
+************
 Getting Help
-============
+************
 
 If you're having trouble, we have discussion forums at
 https://discuss.openedx.org where you can connect with others in the community.
 
-Our real-time conversations are on Slack. You can request a `Slack
-invitation`_, then join our `community Slack workspace`_.  Because this is a
-frontend repository, the best place to discuss it would be in the `#wg-frontend
-channel`_.
+Our real-time conversations are on Slack. You can request a `Slack invitation`_,
+then join our `community Slack workspace`_.  Because this is a frontend
+repository, the best place to discuss it would be in the `#wg-frontend channel`_.
 
 For anything non-trivial, the best path is to open an issue in this repository
-with as many details about the issue you are facing as you can provide.  Please tag **@openedx/2u-infinity** on any PRs or issues.
+with as many details about the issue you are facing as you can provide.
 
 https://github.com/openedx/frontend-app-profile/issues
 
@@ -117,16 +258,17 @@ For more information about these options, see the `Getting Help`_ page.
 .. _#wg-frontend channel: https://openedx.slack.com/archives/C04BM6YC7A6
 .. _Getting Help: https://openedx.org/getting-help
 
+*******
 License
-=======
+*******
 
-The code in this repository is licensed under the AGPLv3 unless otherwise
-noted.
+The code in this repository is licensed under the AGPLv3 unless otherwise noted.
 
 Please see `LICENSE <LICENSE>`_ for details.
 
+************
 Contributing
-============
+************
 
 Contributions are very welcome.  Please read `How To Contribute`_ for details.
 
@@ -139,23 +281,46 @@ beginning development to maximize the chances of your change being accepted.
 You can start a conversation by creating a new issue on this repo summarizing
 your idea.
 
+****************************
 The Open edX Code of Conduct
-============================
+****************************
 
 All community members are expected to follow the `Open edX Code of Conduct`_.
 
 .. _Open edX Code of Conduct: https://openedx.org/code-of-conduct/
 
+******
 People
-======
+******
 
 The assigned maintainers for this component and other project details may be
 found in `Backstage`_. Backstage pulls this data from the ``catalog-info.yaml``
 file in this repo.
 
-.. _Backstage: https://backstage.herokuapp.com/catalog/default/component/frontend-app-profile
+.. _Backstage: https://backstage.openedx.org/catalog/default/component/frontend-app-profile
 
+*************************
 Reporting Security Issues
-=========================
+*************************
 
-Please do not report security issues in public.  Email security@openedx.org instead.
+Please do not report security issues in public, and email security@openedx.org
+instead.
+
+.. |license-badge| image:: https://img.shields.io/github/license/openedx/frontend-app-profile.svg
+    :target: https://github.com/openedx/frontend-app-profile/blob/master/LICENSE
+    :alt: License
+
+.. |status-badge| image:: https://img.shields.io/badge/Status-Maintained-brightgreen
+    :alt: Maintained
+
+.. |ci-badge| image:: https://github.com/openedx/frontend-app-profile/actions/workflows/ci.yml/badge.svg
+    :target: https://github.com/openedx/frontend-app-profile/actions/workflows/ci.yml
+    :alt: Continuous Integration
+
+.. |codecov-badge| image:: https://codecov.io/github/openedx/frontend-app-profile/coverage.svg?branch=master
+    :target: https://codecov.io/github/openedx/frontend-app-profile?branch=master
+    :alt: Codecov
+
+.. |semantic-release| image:: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
+    :target: https://github.com/semantic-release/semantic-release
+    :alt: semantic-release

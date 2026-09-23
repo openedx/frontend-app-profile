@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import FormControls from './FormControls';
-import messages from './FormControls.messages';
+import FormControls from '@src/profile/forms/elements/FormControls';
+import messages from '@src/profile/forms/elements/FormControls.messages';
 
 const defaultProps = {
   cancelHandler: jest.fn(),
@@ -11,26 +11,14 @@ const defaultProps = {
   saveState: null,
 };
 
-jest.mock('@edx/frontend-platform/i18n', () => {
-  const actual = jest.requireActual('@edx/frontend-platform/i18n');
-  return {
-    ...actual,
-    useIntl: () => ({
-      formatMessage: (msg) => msg.id, // returns id so we can assert on it
-    }),
-    injectIntl: (Component) => (props) => (
-      <Component
-        {...props}
-        intl={{
-          formatMessage: (msg) => msg.id, // returns id so we can assert on it
-        }}
-      />
-    ),
-    intlShape: {}, // optional, prevents prop-type warnings
-  };
-});
+jest.mock('@openedx/frontend-base', () => ({
+  ...jest.requireActual('@openedx/frontend-base'),
+  useIntl: () => ({
+    formatMessage: (msg) => msg.id, // returns id so we can assert on it
+  }),
+}));
 
-jest.mock('../../data/hooks', () => ({
+jest.mock('@src/profile/data/hooks', () => ({
   useIsVisibilityEnabled: () => true,
 }));
 
