@@ -16,10 +16,12 @@ export const parseEnvBoolean = (value) => {
 };
 
 /**
- * The URL of the account settings page: the route the site provides for the account role, or the
- * LMS's own page when it provides none.
- * @returns {string}
+ * The account settings page to link to: the route the site provides for the account role, or the
+ * LMS's own page when it provides none. `isInternal` says whether the site's router can navigate
+ * to it, so callers do not have to work that out from the URL a second time.
+ * @returns {{ url: string, isInternal: boolean }}
  */
-export const getAccountSettingsUrl = () => (
-  resolveRouteByRole(accountRole)?.url ?? `${getSiteConfig().lmsBaseUrl}/account/settings`
+export const getAccountSettingsRoute = () => (
+  resolveRouteByRole(accountRole)
+  ?? { url: `${getSiteConfig().lmsBaseUrl}/account/settings`, isInternal: false }
 );

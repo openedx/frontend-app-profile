@@ -4,7 +4,7 @@ import siteConfig from 'site.config';
 
 import { accountRole } from '@src/constants';
 import { renderWithForm } from '@src/profile/test/renderWithForm';
-import { getAccountSettingsUrl } from '@src/utils';
+import { getAccountSettingsRoute } from '@src/utils';
 import Name from './Name';
 
 jest.mock('@src/profile/data/api');
@@ -21,7 +21,7 @@ const props = {
 
 // The link to account settings only shows while the field is open for editing.
 const renderOpenForm = () => renderWithForm(
-  <Name {...props} accountSettingsUrl={getAccountSettingsUrl()} />,
+  <Name {...props} accountSettings={getAccountSettingsRoute()} />,
   { form: { currentlyEditingField: 'name' } },
 );
 
