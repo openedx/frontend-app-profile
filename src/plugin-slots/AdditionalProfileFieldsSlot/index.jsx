@@ -1,23 +1,43 @@
-import { PluginSlot } from '@openedx/frontend-plugin-framework';
-import { useDispatch, useSelector } from 'react-redux';
-
 import { useCallback } from 'react';
-import { patchProfile } from '../../profile/data/services';
-import { fetchProfile } from '../../profile/data/actions';
+import { PluginSlot } from '@openedx/frontend-plugin-framework';
+import { useQueryClient } from '@tanstack/react-query';
+
+import { patchProfile } from '../../profile/data/api';
+import { useProfileForm } from '../../profile/data/FormContext';
+import { useAccount } from '../../profile/data/hooks';
+import { profileKeys } from '../../profile/data/queryKeys';
 
 import SwitchContent from '../../profile/forms/elements/SwitchContent';
 import EmptyContent from '../../profile/forms/elements/EmptyContent';
 import EditableItemHeader from '../../profile/forms/elements/EditableItemHeader';
 
 const AdditionalProfileFieldsSlot = () => {
-  const dispatch = useDispatch();
-  const extendedProfileValues = useSelector((state) => state.profilePage.account.extendedProfile);
-  const errors = useSelector((state) => state.profilePage.errors);
+  const queryClient = useQueryClient();
+  const { username, errors } = useProfileForm();
+  const { data: account } = useAccount(username);
+
+  const refreshUserProfile = useCallback(
+    (profileUsername = username) => queryClient.invalidateQueries({
+      queryKey: profileKeys.account(profileUsername),
+    }),
+    [queryClient, username],
+  );
+
+  // Saves the fields and folds the response into the cached account, so the page shows the new
+  // values without a refetch.
+  const updateUserProfile = useCallback(async (profileUsername, params) => {
+    const updatedAccount = await patchProfile(profileUsername, params);
+    queryClient.setQueryData(
+      profileKeys.account(profileUsername),
+      (current) => (current ? { ...current, ...updatedAccount } : current),
+    );
+    return updatedAccount;
+  }, [queryClient]);
 
   const pluginProps = {
-    refreshUserProfile: useCallback((username) => dispatch(fetchProfile(username)), [dispatch]),
-    updateUserProfile: patchProfile,
-    profileFieldValues: extendedProfileValues,
+    refreshUserProfile,
+    updateUserProfile,
+    profileFieldValues: account?.extendedProfile,
     profileFieldErrors: errors,
     formComponents: {
       SwitchContent,

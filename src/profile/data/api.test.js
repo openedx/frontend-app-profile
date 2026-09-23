@@ -9,7 +9,7 @@ import {
   patchPreferences,
   getCourseCertificates,
   getCountryList,
-} from './services';
+} from './api';
 
 import { FIELD_LABELS } from './constants';
 
@@ -48,7 +48,7 @@ beforeEach(() => {
 });
 
 // --- Tests ---
-describe('services', () => {
+describe('api', () => {
   describe('getAccount', () => {
     it('should return processed account data', async () => {
       const mockData = { name: 'John Doe', socialLinks: [] };
