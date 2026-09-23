@@ -4,8 +4,7 @@ import React, {
 import PropTypes from 'prop-types';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
-import { logError } from '@edx/frontend-platform/logging';
+import { getAuthenticatedUser, logError } from '@openedx/frontend-base';
 
 import { getPreferences, patchPreferences, patchProfile } from './api';
 import { pickAccountDrafts, pickPreferencesDrafts } from './derive';

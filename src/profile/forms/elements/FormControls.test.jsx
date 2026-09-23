@@ -11,24 +11,12 @@ const defaultProps = {
   saveState: null,
 };
 
-jest.mock('@edx/frontend-platform/i18n', () => {
-  const actual = jest.requireActual('@edx/frontend-platform/i18n');
-  return {
-    ...actual,
-    useIntl: () => ({
-      formatMessage: (msg) => msg.id, // returns id so we can assert on it
-    }),
-    injectIntl: (Component) => (props) => (
-      <Component
-        {...props}
-        intl={{
-          formatMessage: (msg) => msg.id, // returns id so we can assert on it
-        }}
-      />
-    ),
-    intlShape: {}, // optional, prevents prop-type warnings
-  };
-});
+jest.mock('@openedx/frontend-base', () => ({
+  ...jest.requireActual('@openedx/frontend-base'),
+  useIntl: () => ({
+    formatMessage: (msg) => msg.id, // returns id so we can assert on it
+  }),
+}));
 
 jest.mock('../../data/hooks', () => ({
   useIsVisibilityEnabled: () => true,

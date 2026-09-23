@@ -10,6 +10,7 @@ module.exports = createConfig('test', {
     'src/__mocks__',
     // Test helpers only ever imported by tests.
     'src/tests/',
+    'src/profile/test/',
   ],
   moduleNameMapper: {
     '\\.svg$': '<rootDir>/src/__mocks__/svg.js',

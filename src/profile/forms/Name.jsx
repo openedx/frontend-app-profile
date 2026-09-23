@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useIntl } from '@edx/frontend-platform/i18n';
+import { useIntl } from '@openedx/frontend-base';
 
 import { InfoOutline } from '@openedx/paragon/icons';
 import { Hyperlink, OverlayTrigger, Tooltip } from '@openedx/paragon';

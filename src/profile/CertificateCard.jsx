@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormattedDate, FormattedMessage, useIntl } from '@edx/frontend-platform/i18n';
+import { FormattedDate, FormattedMessage, useIntl } from '@openedx/frontend-base';
 import { Hyperlink } from '@openedx/paragon';
 import get from 'lodash.get';
 

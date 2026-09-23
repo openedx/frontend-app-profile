@@ -4,27 +4,31 @@ import { fireEvent, screen, waitFor } from '@testing-library/react';
 
 import * as api from '../../profile/data/api';
 import { profileKeys } from '../../profile/data/queryKeys';
-import { createTestQueryClient, renderWithForm } from '../../tests/renderWithProviders';
+import { createTestQueryClient } from '../../tests/renderWithProviders';
+import { renderWithForm } from '../../profile/test/renderWithForm';
 import AdditionalProfileFieldsSlot from '.';
 
 jest.mock('../../profile/data/api');
 
 // A widget that exercises every slot prop.
-jest.mock('@openedx/frontend-plugin-framework', () => ({
-  PluginSlot: ({ id, pluginProps }) => (
+jest.mock('@openedx/frontend-base', () => ({
+  ...jest.requireActual('@openedx/frontend-base'),
+  Slot: ({
+    id, profileFieldValues, profileFieldErrors, formComponents, updateUserProfile, refreshUserProfile,
+  }) => (
     <div data-testid="slot" data-slot-id={id}>
-      <span data-testid="values">{JSON.stringify(pluginProps.profileFieldValues)}</span>
-      <span data-testid="errors">{JSON.stringify(pluginProps.profileFieldErrors)}</span>
-      <span data-testid="components">{Object.keys(pluginProps.formComponents).join(',')}</span>
+      <span data-testid="values">{JSON.stringify(profileFieldValues)}</span>
+      <span data-testid="errors">{JSON.stringify(profileFieldErrors)}</span>
+      <span data-testid="components">{Object.keys(formComponents).join(',')}</span>
       <button
         type="button"
-        onClick={() => pluginProps.updateUserProfile('staff', {
+        onClick={() => updateUserProfile('staff', {
           extendedProfile: [{ fieldName: 'favorite_color', fieldValue: 'red' }],
         })}
       >
         save
       </button>
-      <button type="button" onClick={() => pluginProps.refreshUserProfile('staff')}>refresh</button>
+      <button type="button" onClick={() => refreshUserProfile('staff')}>refresh</button>
     </div>
   ),
 }));

@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { act, renderHook, waitFor } from '@testing-library/react';
 
-import { configure as configureI18n } from '@edx/frontend-platform/i18n';
-import { logError } from '@edx/frontend-platform/logging';
+import { logError, mergeAppConfig } from '@openedx/frontend-base';
+
+import { appId } from '@src/constants';
 
 import * as api from './api';
 import { ProfileFormContext } from './FormContext';
@@ -12,30 +13,20 @@ import {
   useCountryOptions,
   useDeleteProfilePhoto,
   useEditableForm,
+  useIsVisibilityEnabled,
   useMigrateAccountPrivacy,
   useProfileData,
   useSaveProfilePhoto,
 } from './hooks';
 import { profileKeys } from './queryKeys';
-import {
-  createFormContextValue,
-  createTestQueryClient,
-  createWrapper,
-} from '../../tests/renderWithProviders';
+import { createTestQueryClient, createWrapper } from '../../tests/renderWithProviders';
+import { createFormContextValue } from '../test/renderWithForm';
 
 jest.mock('./api');
-jest.mock('@edx/frontend-platform/logging', () => ({
+jest.mock('@openedx/frontend-base', () => ({
+  ...jest.requireActual('@openedx/frontend-base'),
   logError: jest.fn(),
 }));
-
-configureI18n({
-  loggingService: { logError: jest.fn() },
-  config: {
-    ENVIRONMENT: 'production',
-    LANGUAGE_PREFERENCE_COOKIE_NAME: 'yum',
-  },
-  messages: [],
-});
 
 const account = {
   username: 'staff',
@@ -75,6 +66,25 @@ beforeEach(() => {
   api.getPreferences.mockResolvedValue(preferences);
   api.getCourseCertificates.mockResolvedValue(certificates);
   api.getCountryList.mockResolvedValue(['US', 'CA']);
+});
+
+describe('useIsVisibilityEnabled', () => {
+  afterEach(() => mergeAppConfig(appId, { DISABLE_VISIBILITY_EDITING: false }));
+
+  it.each([
+    [undefined, true],
+    [false, true],
+    ['', true],
+    [true, false],
+    ['true', false],
+  ])('reads a DISABLE_VISIBILITY_EDITING of %p as visibility enabled: %p', (value, expected) => {
+    mergeAppConfig(appId, { DISABLE_VISIBILITY_EDITING: value });
+    const { Wrapper } = createHookWrapper();
+
+    const { result } = renderHook(() => useIsVisibilityEnabled(), { wrapper: Wrapper });
+
+    expect(result.current).toBe(expected);
+  });
 });
 
 describe('useProfileData', () => {
