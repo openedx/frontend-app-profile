@@ -4,8 +4,8 @@ import { useParams } from 'react-router-dom';
 import {
   ErrorPage,
   FormattedMessage,
-  getAppConfig,
   sendTrackingLogEvent,
+  useAppConfig,
   useIntl,
 } from '@openedx/frontend-base';
 import {
@@ -40,7 +40,6 @@ import {
 
 import AdditionalProfileFieldsSlot from '@src/slots/AdditionalProfileFieldsSlot';
 
-import { appId } from '@src/constants';
 import { getAccountSettingsUrl } from '@src/utils';
 
 const ProfilePageContent = () => {
@@ -83,7 +82,7 @@ const ProfilePageContent = () => {
   const isMobileView = useIsOnMobileScreen();
   const isTabletView = useIsOnTabletScreen();
 
-  const { CREDENTIALS_BASE_URL: credentialsBaseUrl } = getAppConfig(appId);
+  const { CREDENTIALS_BASE_URL: credentialsBaseUrl } = useAppConfig();
   const viewMyRecordsUrl = credentialsBaseUrl ? `${credentialsBaseUrl}/records` : null;
 
   useEffect(() => {

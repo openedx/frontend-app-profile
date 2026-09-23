@@ -43,13 +43,21 @@ describe('routes', () => {
   });
 
   it('keeps the profile page at u/:username, where the header and the LMS link to it', () => {
-    expect(main.children?.map(route => route.path)).toEqual(['u/:username']);
+    expect(main.children?.map(route => route.path)).toEqual([undefined, 'u/:username']);
   });
 
-  it('lazy-loads the layout and the page', async () => {
-    const [page] = main.children ?? [];
+  it('answers the bare profile path, which names no learner, with the not-found page', () => {
+    expect(main.children?.find(route => route.index)).toBeDefined();
+  });
+
+  it('lazy-loads the layout and the pages', async () => {
+    const index = main.children?.find(route => route.index);
+    const page = main.children?.find(route => route.path === 'u/:username');
 
     await expect(main.lazy?.()).resolves.toEqual({ Component: (await import('@src/Main')).default });
+    await expect(index?.lazy?.()).resolves.toEqual({
+      Component: (await import('@src/profile/NotFoundPage')).default,
+    });
     await expect(page?.lazy?.()).resolves.toEqual({
       Component: (await import('@src/profile/ProfilePage')).default,
     });
