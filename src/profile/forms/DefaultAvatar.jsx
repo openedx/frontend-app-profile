@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 
 /**
@@ -8,7 +7,7 @@ import PropTypes from 'prop-types';
  * which an SVG referenced through an `<img>` src cannot resolve against this page, and a viewBox
  * with no width or height only stretches to its container while the element is in this document.
  */
-const DefaultAvatar = ({ className = undefined }) => (
+const DefaultAvatar = ({ className }) => (
   <svg
     className={className}
     viewBox="0 0 24 24"
@@ -26,7 +25,7 @@ const DefaultAvatar = ({ className = undefined }) => (
 );
 
 DefaultAvatar.propTypes = {
-  className: PropTypes.string,
+  className: PropTypes.string.isRequired,
 };
 
 export default DefaultAvatar;

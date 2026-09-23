@@ -265,7 +265,7 @@ const ProfilePageContent = () => {
                     <p className="font-weight-bold text-primary-500 m-0 h2">
                       {isMobileView ? (
                         <FormattedMessage
-                          id="profile.profile.information"
+                          id="profile.profile.information.mobile"
                           defaultMessage="Profile"
                           description="heading for the editable profile section in mobile view"
                         />
