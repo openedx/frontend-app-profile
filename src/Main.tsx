@@ -18,7 +18,8 @@ const Main = () => {
           })}
         </title>
       </Helmet>
-      {/* No Paragon Container: the page's banner is full-bleed by design. */}
+      {/* No Paragon Container here: the page's banner and its grey band are full-bleed by
+          design, so the page puts the header's container around their content instead. */}
       <main className="profile-app" id="main">
         {/* Keeps the per-navigation page event `AuthenticatedPageRoute` used to send. */}
         <PageWrap>
