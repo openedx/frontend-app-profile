@@ -13,7 +13,7 @@ jest.mock('@src/profile/data/api');
 const Probe = () => {
   const context = useSlotContext();
   const updateUserProfile = context.updateUserProfile as (username: string, params: object) => void;
-  const refreshUserProfile = context.refreshUserProfile as (username: string) => void;
+  const refreshUserProfile = context.refreshUserProfile as (username?: string) => void;
   const formComponents = context.formComponents as Record<string, unknown>;
 
   return (
@@ -30,6 +30,7 @@ const Probe = () => {
         save
       </button>
       <button type="button" onClick={() => refreshUserProfile('staff')}>refresh</button>
+      <button type="button" onClick={() => refreshUserProfile()}>refresh own</button>
     </>
   );
 };
@@ -88,6 +89,29 @@ describe('AdditionalProfileFieldsSlot', () => {
     await waitFor(() => expect(api.patchProfile).toHaveBeenCalledWith('staff', updated));
     await waitFor(() => expect(screen.getByTestId('values')).toHaveTextContent(JSON.stringify(updated.extendedProfile)));
     expect(queryClient.getQueryData(profileKeys.account('staff'))).toEqual({ ...account, ...updated });
+  });
+
+  it('leaves the cache alone when the account is not in it', async () => {
+    const updated = { extendedProfile: [{ fieldName: 'favorite_color', fieldValue: 'red' }] };
+    jest.mocked(api.patchProfile).mockResolvedValue(updated);
+    // The account never arrives, so the save has nothing to fold the response into.
+    jest.mocked(api.getAccount).mockReturnValue(new Promise(() => {}));
+    const queryClient = createTestQueryClient({ staleTime: Infinity });
+    renderWithForm(<AdditionalProfileFieldsSlot />, { queryClient });
+
+    fireEvent.click(screen.getByRole('button', { name: 'save' }));
+
+    await waitFor(() => expect(api.patchProfile).toHaveBeenCalledWith('staff', updated));
+    expect(queryClient.getQueryData(profileKeys.account('staff'))).toBeUndefined();
+  });
+
+  it('refreshes the profile of the form it belongs to by default', async () => {
+    const { queryClient } = renderSlot();
+    const invalidateQueries = jest.spyOn(queryClient, 'invalidateQueries');
+
+    fireEvent.click(screen.getByRole('button', { name: 'refresh own' }));
+
+    await waitFor(() => expect(invalidateQueries).toHaveBeenCalledWith({ queryKey: profileKeys.account('staff') }));
   });
 
   it('refreshes the profile on request', async () => {
