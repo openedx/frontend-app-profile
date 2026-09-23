@@ -27,11 +27,22 @@ describe('getAccountSettingsUrl', () => {
     expect(getAccountSettingsUrl()).toBe('http://localhost:18000/account/settings');
   });
 
-  it('uses the route the site provides for the account role', () => {
+  it('uses the external route the site provides for the account role', () => {
     mergeSiteConfig({
       externalRoutes: [{ role: accountRole, url: 'http://account.example.com/account/' }],
     });
 
     expect(getAccountSettingsUrl()).toBe('http://account.example.com/account/');
+  });
+
+  it('resolves to a path in this site when the account app is installed alongside', () => {
+    mergeSiteConfig({
+      apps: [{
+        appId: 'org.openedx.frontend.app.accountTest',
+        routes: [{ path: 'account', handle: { roles: [accountRole] } }],
+      }],
+    });
+
+    expect(getAccountSettingsUrl()).toBe('/account');
   });
 });

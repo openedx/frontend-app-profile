@@ -1,11 +1,11 @@
-import { ContextType, ReactElement, ReactNode } from 'react';
+import { ReactElement, ReactNode } from 'react';
 import { render, RenderOptions } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import { getSiteConfig, IntlProvider, SiteContext } from '@openedx/frontend-base';
+import { CurrentAppProvider, IntlProvider } from '@openedx/frontend-base';
 
-type SiteContextValue = ContextType<typeof SiteContext>;
+import { appId } from '@src/constants';
 
 /**
  * A QueryClient for tests: no retries (and no delay between the retries a query insists on), so
@@ -28,24 +28,23 @@ export const createTestQueryClient = (queryOptions = {}) => new QueryClient({
 
 interface WrapperOptions {
   queryClient?: QueryClient;
-  siteContext?: Partial<SiteContextValue> | null;
   route?: string;
   path?: string;
 }
 
 /**
- * The providers the app expects: react-query, i18n, a memory router (with `children` mounted at
- * `path`, so `useParams` resolves) and, when `siteContext` is given, frontend-base's SiteContext.
+ * The providers the app expects: react-query, i18n, the app config `useAppConfig` reads, and a
+ * memory router with `children` mounted at `path`, so `useParams` resolves. The same set `Main`
+ * puts around the pages at runtime.
  */
 export const createWrapper = ({
   queryClient = createTestQueryClient(),
-  siteContext = null,
   route = '/',
   path = '*',
 }: WrapperOptions = {}) => {
-  const Wrapper = ({ children }: { children: ReactNode }) => {
-    const tree = (
-      <QueryClientProvider client={queryClient}>
+  const Wrapper = ({ children }: { children: ReactNode }) => (
+    <QueryClientProvider client={queryClient}>
+      <CurrentAppProvider appId={appId}>
         <IntlProvider locale="en">
           <MemoryRouter initialEntries={[route]}>
             <Routes>
@@ -53,22 +52,9 @@ export const createWrapper = ({
             </Routes>
           </MemoryRouter>
         </IntlProvider>
-      </QueryClientProvider>
-    );
-
-    if (!siteContext) {
-      return tree;
-    }
-
-    const value: SiteContextValue = {
-      authenticatedUser: null,
-      siteConfig: getSiteConfig(),
-      locale: 'en',
-      ...siteContext,
-    };
-
-    return <SiteContext.Provider value={value}>{tree}</SiteContext.Provider>;
-  };
+      </CurrentAppProvider>
+    </QueryClientProvider>
+  );
 
   return Wrapper;
 };
@@ -77,16 +63,13 @@ type RenderWithProvidersOptions = WrapperOptions & Omit<RenderOptions, 'wrapper'
 
 export const renderWithProviders = (ui: ReactElement, {
   queryClient = createTestQueryClient(),
-  siteContext = null,
   route = '/',
   path = '*',
   ...renderOptions
 }: RenderWithProvidersOptions = {}) => ({
   queryClient,
   ...render(ui, {
-    wrapper: createWrapper({
-      queryClient, siteContext, route, path,
-    }),
+    wrapper: createWrapper({ queryClient, route, path }),
     ...renderOptions,
   }),
 });

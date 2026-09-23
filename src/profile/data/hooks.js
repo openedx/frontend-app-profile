@@ -2,9 +2,8 @@ import { useMemo } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { breakpoints, useWindowSize } from '@openedx/paragon';
-import { getAppConfig, logError, useIntl } from '@openedx/frontend-base';
+import { logError, useAppConfig, useIntl } from '@openedx/frontend-base';
 
-import { appId } from '@src/constants';
 import { getCountryList as getTranslatedCountryList, getCountryMessages } from '@src/data/countries';
 import { getLanguageList, getLanguageMessages } from '@src/data/languages';
 import { parseEnvBoolean } from '@src/utils';
@@ -44,7 +43,7 @@ export function useIsOnMobileScreen() {
 }
 
 export function useIsVisibilityEnabled() {
-  return !parseEnvBoolean(getAppConfig(appId).DISABLE_VISIBILITY_EDITING);
+  return !parseEnvBoolean(useAppConfig().DISABLE_VISIBILITY_EDITING);
 }
 
 export function useHandleChange(changeHandler) {

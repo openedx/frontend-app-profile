@@ -2,7 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { act, renderHook, waitFor } from '@testing-library/react';
 
-import { logError, mergeAppConfig } from '@openedx/frontend-base';
+import {
+  addAppConfigs, logError, mergeAppConfig, setSiteConfig,
+} from '@openedx/frontend-base';
+import siteConfig from 'site.config';
 
 import { appId } from '@src/constants';
 
@@ -69,7 +72,12 @@ beforeEach(() => {
 });
 
 describe('useIsVisibilityEnabled', () => {
-  afterEach(() => mergeAppConfig(appId, { DISABLE_VISIBILITY_EDITING: false }));
+  // `mergeAppConfig` cannot unset a key, so the app config is rebuilt from the test site config
+  // before each case; that is the only way the "operator set nothing" row stays honest.
+  beforeEach(() => {
+    setSiteConfig(siteConfig);
+    addAppConfigs();
+  });
 
   it.each([
     [undefined, true],

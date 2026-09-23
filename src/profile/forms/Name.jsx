@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useIntl } from '@openedx/frontend-base';
+import { getLinkProps, isInternalUrl, useIntl } from '@openedx/frontend-base';
 
 import { InfoOutline } from '@openedx/paragon/icons';
 import { Hyperlink, OverlayTrigger, Tooltip } from '@openedx/paragon';
@@ -67,7 +67,12 @@ const Name = ({
                 </div>
                 <EditableItemHeader content={name} />
                 <h4 className="font-weight-normal">
-                  <Hyperlink destination={accountSettingsUrl} target="_blank">
+                  {/* A route in this site navigates in the client; the LMS's own page
+                      opens in a new tab, as it always has. */}
+                  <Hyperlink
+                    {...getLinkProps(accountSettingsUrl)}
+                    target={isInternalUrl(accountSettingsUrl) ? '_self' : '_blank'}
+                  >
                     {intl.formatMessage(messages['profile.name.redirect'])}
                   </Hyperlink>
                 </h4>

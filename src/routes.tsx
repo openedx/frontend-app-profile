@@ -21,6 +21,14 @@ const routes: RoleRouteObject[] = [
     },
     children: [
       {
+        // `/profile` on its own names no learner, so it is as unknown as a bad username.
+        index: true,
+        async lazy() {
+          const module = await import(/* webpackChunkName: "profile-not-found" */ './profile/NotFoundPage');
+          return { Component: module.default };
+        },
+      },
+      {
         path: 'u/:username',
         async lazy() {
           const module = await import(/* webpackChunkName: "profile-page" */ './profile/ProfilePage');
