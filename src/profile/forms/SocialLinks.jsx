@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Alert } from '@openedx/paragon';
 import { faXTwitter, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { FormattedMessage } from '@edx/frontend-platform/i18n';
+import { FormattedMessage } from '@openedx/frontend-base';
 import classNames from 'classnames';
 
 import FormControls from './elements/FormControls';

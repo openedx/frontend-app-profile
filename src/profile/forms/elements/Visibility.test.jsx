@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { IntlProvider } from '@edx/frontend-platform/i18n';
+import { IntlProvider } from '@openedx/frontend-base';
 import { Visibility, VisibilitySelect } from './Visibility';
 import '@testing-library/jest-dom';
 
