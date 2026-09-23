@@ -7,7 +7,7 @@ import {
   snakeCaseObject,
 } from '@openedx/frontend-base';
 
-import { FIELD_LABELS } from './constants';
+import { FIELD_LABELS } from '@src/profile/data/constants';
 
 function processAccountData(data) {
   const processedData = camelCaseObject(data);

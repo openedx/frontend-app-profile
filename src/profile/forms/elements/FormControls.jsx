@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { Button, StatefulButton } from '@openedx/paragon';
 import { useIntl } from '@openedx/frontend-base';
 
-import messages from './FormControls.messages';
+import messages from '@src/profile/forms/elements/FormControls.messages';
 
-import { VisibilitySelect } from './Visibility';
-import { useIsVisibilityEnabled } from '../../data/hooks';
+import { VisibilitySelect } from '@src/profile/forms/elements/Visibility';
+import { useIsVisibilityEnabled } from '@src/profile/data/hooks';
 
 const FormControls = ({
   cancelHandler,

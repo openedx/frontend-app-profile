@@ -9,7 +9,7 @@ import {
   getVisibilities,
   pickAccountDrafts,
   pickPreferencesDrafts,
-} from './derive';
+} from '@src/profile/data/derive';
 
 const account = {
   name: 'Lemon Seltzer',

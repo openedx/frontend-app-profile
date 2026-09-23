@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { IntlProvider } from '@openedx/frontend-base';
-import { Visibility, VisibilitySelect } from './Visibility';
+import { Visibility, VisibilitySelect } from '@src/profile/forms/elements/Visibility';
 import '@testing-library/jest-dom';
 
 const messages = {

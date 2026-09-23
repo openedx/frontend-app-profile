@@ -1,4 +1,4 @@
-import { isClientError, retryUnlessClientError } from './queryOptions';
+import { isClientError, retryUnlessClientError } from '@src/data/queryOptions';
 
 describe('isClientError', () => {
   it('is true for a 4xx response', () => {

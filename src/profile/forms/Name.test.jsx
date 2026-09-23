@@ -5,7 +5,7 @@ import siteConfig from 'site.config';
 import { accountRole } from '@src/constants';
 import { renderWithForm } from '@src/profile/test/renderWithForm';
 import { getAccountSettingsRoute } from '@src/utils';
-import Name from './Name';
+import Name from '@src/profile/forms/Name';
 
 jest.mock('@src/profile/data/api');
 

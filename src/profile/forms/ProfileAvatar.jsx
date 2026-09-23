@@ -10,8 +10,8 @@ import {
 import { FormattedMessage, useIntl } from '@openedx/frontend-base';
 
 import { PhotoCamera } from '@openedx/paragon/icons';
-import DefaultAvatar from './DefaultAvatar';
-import messages from './ProfileAvatar.messages';
+import DefaultAvatar from '@src/profile/forms/DefaultAvatar';
+import messages from '@src/profile/forms/ProfileAvatar.messages';
 
 const ProfileAvatar = ({
   src,

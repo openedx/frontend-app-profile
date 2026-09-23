@@ -8,7 +8,7 @@ import {
   SAVE_RESET,
   SAVE_SUCCESS,
   UPDATE_DRAFT,
-} from './formReducer';
+} from '@src/profile/data/formReducer';
 
 describe('formReducer', () => {
   it('returns the initial state by default', () => {

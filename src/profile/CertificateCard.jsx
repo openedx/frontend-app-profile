@@ -7,8 +7,8 @@ import get from 'lodash.get';
 import classNames from 'classnames';
 import professionalCertificateSVG from './assets/professional-certificate.svg';
 import verifiedCertificateSVG from './assets/verified-certificate.svg';
-import messages from './Certificates.messages';
-import { useIsOnMobileScreen } from './data/hooks';
+import messages from '@src/profile/Certificates.messages';
+import { useIsOnMobileScreen } from '@src/profile/data/hooks';
 
 const CertificateCard = ({
   certificateType,

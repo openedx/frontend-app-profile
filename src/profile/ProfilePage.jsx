@@ -14,21 +14,21 @@ import {
 import { InfoOutline } from '@openedx/paragon/icons';
 import classNames from 'classnames';
 
-import ProfileAvatar from './forms/ProfileAvatar';
-import Name from './forms/Name';
-import Country from './forms/Country';
-import PreferredLanguage from './forms/PreferredLanguage';
-import Education from './forms/Education';
-import SocialLinks from './forms/SocialLinks';
-import Bio from './forms/Bio';
-import DateJoined from './DateJoined';
-import UserCertificateSummary from './UserCertificateSummary';
-import PageLoading from './PageLoading';
-import Certificates from './Certificates';
-import NotFoundPage from './NotFoundPage';
+import ProfileAvatar from '@src/profile/forms/ProfileAvatar';
+import Name from '@src/profile/forms/Name';
+import Country from '@src/profile/forms/Country';
+import PreferredLanguage from '@src/profile/forms/PreferredLanguage';
+import Education from '@src/profile/forms/Education';
+import SocialLinks from '@src/profile/forms/SocialLinks';
+import Bio from '@src/profile/forms/Bio';
+import DateJoined from '@src/profile/DateJoined';
+import UserCertificateSummary from '@src/profile/UserCertificateSummary';
+import PageLoading from '@src/profile/PageLoading';
+import Certificates from '@src/profile/Certificates';
+import NotFoundPage from '@src/profile/NotFoundPage';
 
-import messages from './ProfilePage.messages';
-import { ProfileFormProvider, useProfileForm } from './data/FormContext';
+import messages from '@src/profile/ProfilePage.messages';
+import { ProfileFormProvider, useProfileForm } from '@src/profile/data/FormContext';
 import {
   useDeleteProfilePhoto,
   useIsOnMobileScreen,
@@ -36,7 +36,7 @@ import {
   useMigrateAccountPrivacy,
   useProfileData,
   useSaveProfilePhoto,
-} from './data/hooks';
+} from '@src/profile/data/hooks';
 
 import AdditionalProfileFieldsSlot from '@src/slots/AdditionalProfileFieldsSlot';
 
