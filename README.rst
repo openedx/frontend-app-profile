@@ -134,12 +134,13 @@ unmount with ``sudo umount packages/frontend-base``.
 Configuration
 =============
 
-This app is no longer configured by build-time environment variables.
-``getAppConfig`` resolves three sources, in order of increasing precedence: the
-app's bundled ``defaultConfig``, the site's ``commonAppConfig``, and the app's
+This app is no longer configured by build-time environment variables.  Its
+config resolves three sources, in order of increasing precedence: the app's
+bundled ``defaultConfig``, the site's ``commonAppConfig``, and the app's
 ``config``.  The first is the app author's, at build time; the other two are the
 operator's, the second applying to every app on the site and the third to this
-app alone.
+app alone.  Components read the result with ``useAppConfig``, so they follow a
+config change at runtime.
 
 The keys keep the names the micro-frontend read from its environment, so values
 that reach the app through the MFE config API keep working.  Booleans accept
@@ -194,7 +195,8 @@ The layout follows the standard `frontend-base app layout`_:
 - ``src/constants.ts`` - the app's ``appId`` and route role identifiers.
 - ``src/index.ts`` - the package's public exports (this is a library).
 - ``src/routes.tsx`` - the app's react-router routes: the profile page at
-  ``profile/u/:username``.
+  ``profile/u/:username``, and an index route answering the bare ``profile``
+  path, which names no learner, with the not-found page.
 - ``src/Main.tsx`` - the root component for the app's routes.
 - ``src/slots.tsx`` - slot operations this app performs on *other* apps' slots
   (none at present).

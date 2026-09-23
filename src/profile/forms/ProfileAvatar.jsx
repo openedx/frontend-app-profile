@@ -10,7 +10,7 @@ import {
 import { FormattedMessage, useIntl } from '@openedx/frontend-base';
 
 import { PhotoCamera } from '@openedx/paragon/icons';
-import defaultAvatar from '../assets/avatar.svg';
+import DefaultAvatar from './DefaultAvatar';
 import messages from './ProfileAvatar.messages';
 
 const ProfileAvatar = ({
@@ -114,7 +114,7 @@ const ProfileAvatar = ({
 
   const renderAvatar = () => (
     isDefault ? (
-      <img className="text-muted" src={defaultAvatar} alt="" aria-hidden />
+      <DefaultAvatar className="text-muted" />
     ) : (
       <img
         data-hj-suppress

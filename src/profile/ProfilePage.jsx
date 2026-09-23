@@ -40,7 +40,7 @@ import {
 
 import AdditionalProfileFieldsSlot from '@src/slots/AdditionalProfileFieldsSlot';
 
-import { getAccountSettingsUrl } from '@src/utils';
+import { getAccountSettingsRoute } from '@src/utils';
 
 const ProfilePageContent = () => {
   const intl = useIntl();
@@ -318,7 +318,7 @@ const ProfilePageContent = () => {
                     {isBlockVisible(name) && (
                     <Name
                       name={name}
-                      accountSettingsUrl={getAccountSettingsUrl()}
+                      accountSettings={getAccountSettingsRoute()}
                       visibilityName={visibilityName}
                       formId="name"
                       {...commonFormProps}

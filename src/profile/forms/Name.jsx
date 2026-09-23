@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getLinkProps, isInternalUrl, useIntl } from '@openedx/frontend-base';
+import { getLinkProps, useIntl } from '@openedx/frontend-base';
 
 import { InfoOutline } from '@openedx/paragon/icons';
 import { Hyperlink, OverlayTrigger, Tooltip } from '@openedx/paragon';
@@ -27,7 +27,7 @@ const Name = ({
   submitHandler,
   closeHandler,
   openHandler,
-  accountSettingsUrl,
+  accountSettings,
 }) => {
   const isVisibilityEnabled = useIsVisibilityEnabled();
   const intl = useIntl();
@@ -70,8 +70,8 @@ const Name = ({
                   {/* A route in this site navigates in the client; the LMS's own page
                       opens in a new tab, as it always has. */}
                   <Hyperlink
-                    {...getLinkProps(accountSettingsUrl)}
-                    target={isInternalUrl(accountSettingsUrl) ? '_self' : '_blank'}
+                    {...getLinkProps(accountSettings.url)}
+                    target={accountSettings.isInternal ? '_self' : '_blank'}
                   >
                     {intl.formatMessage(messages['profile.name.redirect'])}
                   </Hyperlink>
@@ -177,7 +177,10 @@ Name.propTypes = {
   submitHandler: PropTypes.func.isRequired,
   closeHandler: PropTypes.func.isRequired,
   openHandler: PropTypes.func.isRequired,
-  accountSettingsUrl: PropTypes.string.isRequired,
+  accountSettings: PropTypes.shape({
+    url: PropTypes.string.isRequired,
+    isInternal: PropTypes.bool.isRequired,
+  }).isRequired,
 };
 
 Name.defaultProps = {
