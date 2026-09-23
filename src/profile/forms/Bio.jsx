@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { FormattedMessage, useIntl } from '@edx/frontend-platform/i18n';
 import { Form } from '@openedx/paragon';
 
@@ -12,9 +11,9 @@ import EditableItemHeader from './elements/EditableItemHeader';
 import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
 
-import { editableFormSelector } from '../data/selectors';
 import {
   useCloseOpenHandler,
+  useEditableForm,
   useHandleChange,
   useHandleSubmit,
   useIsOnMobileScreen,
@@ -25,9 +24,6 @@ const Bio = ({
   formId,
   bio,
   visibilityBio,
-  editMode,
-  saveState,
-  error,
   changeHandler,
   submitHandler,
   closeHandler,
@@ -36,6 +32,7 @@ const Bio = ({
   const isMobileView = useIsOnMobileScreen();
   const isVisibilityEnabled = useIsVisibilityEnabled();
   const intl = useIntl();
+  const { editMode, error, saveState } = useEditableForm(formId);
 
   const handleChange = useHandleChange(changeHandler);
   const handleSubmit = useHandleSubmit(submitHandler, formId);
@@ -128,9 +125,6 @@ Bio.propTypes = {
   formId: PropTypes.string.isRequired,
   bio: PropTypes.string,
   visibilityBio: PropTypes.oneOf(['private', 'all_users']),
-  editMode: PropTypes.oneOf(['editing', 'editable', 'empty', 'static']),
-  saveState: PropTypes.string,
-  error: PropTypes.string,
   changeHandler: PropTypes.func.isRequired,
   submitHandler: PropTypes.func.isRequired,
   closeHandler: PropTypes.func.isRequired,
@@ -138,14 +132,8 @@ Bio.propTypes = {
 };
 
 Bio.defaultProps = {
-  editMode: 'static',
-  saveState: null,
   bio: null,
   visibilityBio: 'private',
-  error: null,
 };
 
-export default connect(
-  editableFormSelector,
-  {},
-)(Bio);
+export default Bio;

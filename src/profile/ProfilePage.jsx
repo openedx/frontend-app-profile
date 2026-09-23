@@ -1,29 +1,15 @@
-import React, {
-  useEffect, useState, useContext, useCallback,
-} from 'react';
-import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import React, { useContext, useEffect, useRef } from 'react';
+import { useParams } from 'react-router-dom';
 
 import { sendTrackingLogEvent } from '@edx/frontend-platform/analytics';
 import { ensureConfig } from '@edx/frontend-platform';
-import { AppContext } from '@edx/frontend-platform/react';
+import { AppContext, ErrorPage } from '@edx/frontend-platform/react';
 import { FormattedMessage, useIntl } from '@edx/frontend-platform/i18n';
 import {
   Alert, Hyperlink, OverlayTrigger, Tooltip,
 } from '@openedx/paragon';
 import { InfoOutline } from '@openedx/paragon/icons';
 import classNames from 'classnames';
-
-import {
-  fetchProfile,
-  saveProfile,
-  saveProfilePhoto,
-  deleteProfilePhoto,
-  openForm,
-  closeForm,
-  updateDraft,
-} from './data/actions';
 
 import ProfileAvatar from './forms/ProfileAvatar';
 import Name from './forms/Name';
@@ -36,29 +22,44 @@ import DateJoined from './DateJoined';
 import UserCertificateSummary from './UserCertificateSummary';
 import PageLoading from './PageLoading';
 import Certificates from './Certificates';
+import NotFoundPage from './NotFoundPage';
 
-import { profilePageSelector } from './data/selectors';
 import messages from './ProfilePage.messages';
-import withParams from '../utils/hoc';
-import { useIsOnMobileScreen, useIsOnTabletScreen } from './data/hooks';
+import { ProfileFormProvider, useProfileForm } from './data/FormContext';
+import {
+  useDeleteProfilePhoto,
+  useIsOnMobileScreen,
+  useIsOnTabletScreen,
+  useMigrateAccountPrivacy,
+  useProfileData,
+  useSaveProfilePhoto,
+} from './data/hooks';
 
 import AdditionalProfileFieldsSlot from '../plugin-slots/AdditionalProfileFieldsSlot';
 
 ensureConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL', 'ACCOUNT_SETTINGS_URL'], 'ProfilePage');
 
-const ProfilePage = ({ params }) => {
-  const dispatch = useDispatch();
+const ProfilePageContent = () => {
   const intl = useIntl();
-  const context = useContext(AppContext);
+  const { config } = useContext(AppContext);
   const {
+    username,
+    isOwnProfile,
+    openForm,
+    closeForm,
+    updateDraft,
+    saveProfile,
+  } = useProfileForm();
+  const {
+    isPending,
+    isNotFound,
+    isError,
+    accountPrivacy,
     dateJoined,
     courseCertificates,
     name,
     visibilityName,
     profileImage,
-    savePhotoState,
-    isLoadingProfile,
-    photoUploadError,
     country,
     visibilityCountry,
     levelOfEducation,
@@ -70,66 +71,51 @@ const ProfilePage = ({ params }) => {
     visibilityLanguageProficiencies,
     bio,
     visibilityBio,
-    saveState,
-    username,
-  } = useSelector(profilePageSelector);
+  } = useProfileData();
+  const savePhoto = useSaveProfilePhoto(username);
+  const deletePhoto = useDeleteProfilePhoto(username);
+  const migrateAccountPrivacy = useMigrateAccountPrivacy(username);
+  const hasMigratedPrivacy = useRef(false);
 
-  const navigate = useNavigate();
-  const [viewMyRecordsUrl, setViewMyRecordsUrl] = useState(null);
   const isMobileView = useIsOnMobileScreen();
   const isTabletView = useIsOnTabletScreen();
 
-  useEffect(() => {
-    const { CREDENTIALS_BASE_URL } = context.config;
-    if (CREDENTIALS_BASE_URL) {
-      setViewMyRecordsUrl(`${CREDENTIALS_BASE_URL}/records`);
-    }
-
-    dispatch(fetchProfile(params.username));
-    sendTrackingLogEvent('edx.profile.viewed', {
-      username: params.username,
-    });
-  }, [dispatch, params.username, context.config]);
+  const viewMyRecordsUrl = config.CREDENTIALS_BASE_URL ? `${config.CREDENTIALS_BASE_URL}/records` : null;
 
   useEffect(() => {
-    if (!username && saveState === 'error' && navigate) {
-      navigate('/notfound');
+    sendTrackingLogEvent('edx.profile.viewed', { username });
+  }, [username]);
+
+  // Accounts still on the legacy "everything public" privacy setting are moved to the per-field
+  // model on first view, once; the ref keeps StrictMode's doubled effects from doing it twice.
+  const { mutate: migratePrivacy } = migrateAccountPrivacy;
+  useEffect(() => {
+    if (isOwnProfile && accountPrivacy === 'all_users' && !hasMigratedPrivacy.current) {
+      hasMigratedPrivacy.current = true;
+      migratePrivacy();
     }
-  }, [username, saveState, navigate]);
+  }, [isOwnProfile, accountPrivacy, migratePrivacy]);
 
-  const authenticatedUserName = context.authenticatedUser.username;
+  if (isNotFound) {
+    return <NotFoundPage />;
+  }
+  if (isError) {
+    return <ErrorPage />;
+  }
 
-  const handleSaveProfilePhoto = useCallback((formData) => {
-    dispatch(saveProfilePhoto(authenticatedUserName, formData));
-  }, [dispatch, authenticatedUserName]);
+  const savePhotoState = savePhoto.isPending || deletePhoto.isPending ? 'pending' : null;
+  const photoUploadError = savePhoto.error?.processedData ?? null;
 
-  const handleDeleteProfilePhoto = useCallback(() => {
-    dispatch(deleteProfilePhoto(authenticatedUserName));
-  }, [dispatch, authenticatedUserName]);
+  const handleDeleteProfilePhoto = () => {
+    // The error of a rejected upload is about a photo that is going away.
+    savePhoto.reset();
+    deletePhoto.mutate();
+  };
 
-  const handleClose = useCallback((formId) => {
-    dispatch(closeForm(formId));
-  }, [dispatch]);
-
-  const handleOpen = useCallback((formId) => {
-    dispatch(openForm(formId));
-  }, [dispatch]);
-
-  const handleSubmit = useCallback((formId) => {
-    dispatch(saveProfile(formId, authenticatedUserName));
-  }, [dispatch, authenticatedUserName]);
-
-  const handleChange = useCallback((fieldName, value) => {
-    dispatch(updateDraft(fieldName, value));
-  }, [dispatch]);
-
-  const isAuthenticatedUserProfile = () => params.username === authenticatedUserName;
-
-  const isBlockVisible = (blockInfo) => isAuthenticatedUserProfile()
-      || (!isAuthenticatedUserProfile() && Boolean(blockInfo));
+  const isBlockVisible = (blockInfo) => isOwnProfile || Boolean(blockInfo);
 
   const renderViewMyRecordsButton = () => {
-    if (!(viewMyRecordsUrl && isAuthenticatedUserProfile())) {
+    if (!(viewMyRecordsUrl && isOwnProfile)) {
       return null;
     }
 
@@ -161,15 +147,15 @@ const ProfilePage = ({ params }) => {
   );
 
   const commonFormProps = {
-    openHandler: handleOpen,
-    closeHandler: handleClose,
-    submitHandler: handleSubmit,
-    changeHandler: handleChange,
+    openHandler: openForm,
+    closeHandler: closeForm,
+    submitHandler: saveProfile,
+    changeHandler: updateDraft,
   };
 
   return (
     <div className="profile-page">
-      {isLoadingProfile ? (
+      {isPending ? (
         <PageLoading srMessage={intl.formatMessage(messages['profile.loading'])} />
       ) : (
         <>
@@ -208,10 +194,10 @@ const ProfilePage = ({ params }) => {
                     className="col p-0"
                     src={profileImage.src}
                     isDefault={profileImage.isDefault}
-                    onSave={handleSaveProfilePhoto}
+                    onSave={savePhoto.mutate}
                     onDelete={handleDeleteProfilePhoto}
                     savePhotoState={savePhotoState}
-                    isEditable={isAuthenticatedUserProfile()}
+                    isEditable={isOwnProfile}
                   />
                   <div
                     className={classNames([
@@ -222,7 +208,7 @@ const ProfilePage = ({ params }) => {
                     ])}
                   >
                     <p className="row m-0 font-weight-bold text-truncate text-primary-500 h3">
-                      {params.username}
+                      {username}
                     </p>
                     {isBlockVisible(name) && (
                     <p className="row pt-2 text-gray-800 font-weight-normal m-0 p">
@@ -313,13 +299,13 @@ const ProfilePage = ({ params }) => {
                       </OverlayTrigger>
                     </div>
                     <h4 className="edit-section-header text-gray-700">
-                      {params.username}
+                      {username}
                     </h4>
                   </div>
                   {isBlockVisible(name) && (
                   <Name
                     name={name}
-                    accountSettingsUrl={context.config.ACCOUNT_SETTINGS_URL}
+                    accountSettingsUrl={config.ACCOUNT_SETTINGS_URL}
                     visibilityName={visibilityName}
                     formId="name"
                     {...commonFormProps}
@@ -387,10 +373,7 @@ const ProfilePage = ({ params }) => {
             ])}
           >
             {isBlockVisible((courseCertificates || []).length) && (
-            <Certificates
-              certificates={courseCertificates || []}
-              formId="certificates"
-            />
+            <Certificates certificates={courseCertificates || []} />
             )}
           </div>
         </>
@@ -399,70 +382,17 @@ const ProfilePage = ({ params }) => {
   );
 };
 
-ProfilePage.propTypes = {
-  params: PropTypes.shape({
-    username: PropTypes.string.isRequired,
-  }).isRequired,
-  requiresParentalConsent: PropTypes.bool,
-  dateJoined: PropTypes.string,
-  username: PropTypes.string,
-  bio: PropTypes.string,
-  visibilityBio: PropTypes.string,
-  courseCertificates: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string,
-  })),
-  country: PropTypes.string,
-  visibilityCountry: PropTypes.string,
-  levelOfEducation: PropTypes.string,
-  visibilityLevelOfEducation: PropTypes.string,
-  languageProficiencies: PropTypes.arrayOf(PropTypes.shape({
-    code: PropTypes.string.isRequired,
-  })),
-  visibilityLanguageProficiencies: PropTypes.string,
-  name: PropTypes.string,
-  visibilityName: PropTypes.string,
-  socialLinks: PropTypes.arrayOf(PropTypes.shape({
-    platform: PropTypes.string,
-    socialLink: PropTypes.string,
-  })),
-  draftSocialLinksByPlatform: PropTypes.objectOf(PropTypes.shape({
-    platform: PropTypes.string,
-    socialLink: PropTypes.string,
-  })),
-  visibilitySocialLinks: PropTypes.string,
-  profileImage: PropTypes.shape({
-    src: PropTypes.string,
-    isDefault: PropTypes.bool,
-  }),
-  saveState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
-  savePhotoState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
-  isLoadingProfile: PropTypes.bool,
-  photoUploadError: PropTypes.objectOf(PropTypes.string),
+/**
+ * The profile of the user named in the route. The form state is keyed on the username, so
+ * navigating from one profile to another starts it afresh.
+ */
+const ProfilePage = () => {
+  const { username } = useParams();
+  return (
+    <ProfileFormProvider key={username} username={username}>
+      <ProfilePageContent />
+    </ProfileFormProvider>
+  );
 };
 
-ProfilePage.defaultProps = {
-  saveState: null,
-  username: '',
-  savePhotoState: null,
-  photoUploadError: {},
-  profileImage: {},
-  name: null,
-  levelOfEducation: null,
-  country: null,
-  socialLinks: [],
-  draftSocialLinksByPlatform: {},
-  bio: null,
-  languageProficiencies: [],
-  courseCertificates: [],
-  requiresParentalConsent: null,
-  dateJoined: null,
-  visibilityName: null,
-  visibilityCountry: null,
-  visibilityLevelOfEducation: null,
-  visibilitySocialLinks: null,
-  visibilityLanguageProficiencies: null,
-  visibilityBio: null,
-  isLoadingProfile: false,
-};
-
-export default withParams(ProfilePage);
+export default ProfilePage;

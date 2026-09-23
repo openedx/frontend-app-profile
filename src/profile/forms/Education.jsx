@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { FormattedMessage, useIntl } from '@edx/frontend-platform/i18n';
 import get from 'lodash.get';
 import { Form } from '@openedx/paragon';
@@ -14,9 +13,9 @@ import SwitchContent from './elements/SwitchContent';
 
 import { EDUCATION_LEVELS } from '../data/constants';
 
-import { editableFormSelector } from '../data/selectors';
 import {
   useCloseOpenHandler,
+  useEditableForm,
   useHandleChange,
   useHandleSubmit,
   useIsVisibilityEnabled,
@@ -26,9 +25,6 @@ const Education = ({
   formId,
   levelOfEducation,
   visibilityLevelOfEducation,
-  editMode,
-  saveState,
-  error,
   changeHandler,
   submitHandler,
   closeHandler,
@@ -36,6 +32,7 @@ const Education = ({
 }) => {
   const isVisibilityEnabled = useIsVisibilityEnabled();
   const intl = useIntl();
+  const { editMode, error, saveState } = useEditableForm(formId);
 
   const handleChange = useHandleChange(changeHandler);
   const handleSubmit = useHandleSubmit(submitHandler, formId);
@@ -148,9 +145,6 @@ Education.propTypes = {
   formId: PropTypes.string.isRequired,
   levelOfEducation: PropTypes.string,
   visibilityLevelOfEducation: PropTypes.oneOf(['private', 'all_users']),
-  editMode: PropTypes.oneOf(['editing', 'editable', 'empty', 'static']),
-  saveState: PropTypes.string,
-  error: PropTypes.string,
   changeHandler: PropTypes.func.isRequired,
   submitHandler: PropTypes.func.isRequired,
   closeHandler: PropTypes.func.isRequired,
@@ -158,14 +152,8 @@ Education.propTypes = {
 };
 
 Education.defaultProps = {
-  editMode: 'static',
-  saveState: null,
   levelOfEducation: null,
   visibilityLevelOfEducation: 'private',
-  error: null,
 };
 
-export default connect(
-  editableFormSelector,
-  {},
-)(Education);
+export default Education;
