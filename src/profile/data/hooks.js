@@ -66,21 +66,27 @@ export function useCloseOpenHandler(handler, formId) {
 
 /**
  * The viewed account. A 404 is an unknown user, which must not be retried before the page says so.
+ *
+ * Not kept past the page: Account writes this record too, under a key of its own, so a cached copy
+ * would paint a name the learner has just changed.
  */
 export const useAccount = (username) => useQuery({
   queryKey: profileKeys.account(username),
   queryFn: () => getAccount(username),
   retry: retryUnlessClientError,
+  gcTime: 0,
 });
 
 /**
- * The visibility preferences, which only the profile's owner may read.
+ * The visibility preferences, which only the profile's owner may read. Not kept past the page
+ * either, and for the same reason.
  */
 export const usePreferences = (username, { enabled = true } = {}) => useQuery({
   queryKey: profileKeys.preferences(username),
   queryFn: () => getPreferences(username),
   enabled,
   retry: retryUnlessClientError,
+  gcTime: 0,
 });
 
 export const useCourseCertificates = (username) => useQuery({
