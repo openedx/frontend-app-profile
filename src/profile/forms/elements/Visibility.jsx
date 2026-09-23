@@ -4,7 +4,7 @@ import { getSiteConfig, useIntl } from '@openedx/frontend-base';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEyeSlash, faEye } from '@fortawesome/free-regular-svg-icons';
 
-import messages from './Visibility.messages';
+import messages from '@src/profile/forms/elements/Visibility.messages';
 
 const Visibility = ({ to = 'private' }) => {
   const intl = useIntl();

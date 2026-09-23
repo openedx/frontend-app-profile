@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { FormattedMessage, getSiteConfig } from '@openedx/frontend-base';
 
 import classNames from 'classnames';
-import CertificateCard from './CertificateCard';
-import { useIsOnTabletScreen } from './data/hooks';
+import CertificateCard from '@src/profile/CertificateCard';
+import { useIsOnTabletScreen } from '@src/profile/data/hooks';
 
 const Certificates = ({ certificates }) => {
   const isTabletView = useIsOnTabletScreen();

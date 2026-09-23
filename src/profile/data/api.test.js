@@ -14,9 +14,9 @@ import {
   patchPreferences,
   getCourseCertificates,
   getCountryList,
-} from './api';
+} from '@src/profile/data/api';
 
-import { FIELD_LABELS } from './constants';
+import { FIELD_LABELS } from '@src/profile/data/constants';
 
 // --- Mocks ---
 jest.mock('@openedx/frontend-base', () => ({
