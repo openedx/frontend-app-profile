@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Alert } from '@openedx/paragon';
-import { connect } from 'react-redux';
 import { faXTwitter, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import classNames from 'classnames';
@@ -11,8 +10,8 @@ import EditableItemHeader from './elements/EditableItemHeader';
 import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
 
-import { editableFormSelector } from '../data/selectors';
-import { useIsVisibilityEnabled } from '../data/hooks';
+import { KNOWN_SOCIAL_PLATFORMS } from '../data/derive';
+import { useEditableForm, useIsVisibilityEnabled } from '../data/hooks';
 
 const platformDisplayInfo = {
   facebook: {
@@ -34,21 +33,18 @@ const SocialLinks = ({
   socialLinks,
   draftSocialLinksByPlatform,
   visibilitySocialLinks,
-  editMode,
-  saveState,
-  error,
   changeHandler,
   submitHandler,
   closeHandler,
   openHandler,
 }) => {
   const isVisibilityEnabled = useIsVisibilityEnabled();
+  const { editMode, error, saveState } = useEditableForm(formId);
   const [activePlatform, setActivePlatform] = useState(null);
 
   const mergeWithDrafts = (newSocialLink) => {
-    const knownPlatforms = ['x', 'facebook', 'linkedin'];
     const updated = [];
-    knownPlatforms.forEach((platform) => {
+    KNOWN_SOCIAL_PLATFORMS.forEach((platform) => {
       if (newSocialLink.platform === platform) {
         updated.push(newSocialLink);
       } else if (draftSocialLinksByPlatform[platform] !== undefined) {
@@ -235,9 +231,6 @@ SocialLinks.propTypes = {
     socialLink: PropTypes.string,
   })),
   visibilitySocialLinks: PropTypes.oneOf(['private', 'all_users']),
-  editMode: PropTypes.oneOf(['editing', 'editable', 'empty', 'static']),
-  saveState: PropTypes.string,
-  error: PropTypes.string,
   changeHandler: PropTypes.func.isRequired,
   submitHandler: PropTypes.func.isRequired,
   closeHandler: PropTypes.func.isRequired,
@@ -245,14 +238,8 @@ SocialLinks.propTypes = {
 };
 
 SocialLinks.defaultProps = {
-  editMode: 'static',
-  saveState: null,
   draftSocialLinksByPlatform: {},
   visibilitySocialLinks: 'private',
-  error: null,
 };
 
-export default connect(
-  editableFormSelector,
-  {},
-)(SocialLinks);
+export default SocialLinks;

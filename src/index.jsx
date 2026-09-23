@@ -17,11 +17,12 @@ import React from 'react';
 // eslint-disable-next-line import/no-unresolved
 import { createRoot } from 'react-dom/client';
 
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
 import Header from '@edx/frontend-component-header';
 import { FooterSlot } from '@edx/frontend-component-footer';
 
 import messages from './i18n';
-import configureStore from './data/configureStore';
 
 import Head from './head/Head';
 
@@ -29,16 +30,21 @@ import AppRoutes from './routes/AppRoutes';
 
 import './index.scss';
 
+// The frontend-base shell provides a QueryClient of its own; this one goes away with the conversion.
+const queryClient = new QueryClient();
+
 const rootNode = createRoot(document.getElementById('root'));
 subscribe(APP_READY, async () => {
   rootNode.render(
-    <AppProvider store={configureStore()}>
-      <Head />
-      <Header />
-      <main id="main">
-        <AppRoutes />
-      </main>
-      <FooterSlot />
+    <AppProvider>
+      <QueryClientProvider client={queryClient}>
+        <Head />
+        <Header />
+        <main id="main">
+          <AppRoutes />
+        </main>
+        <FooterSlot />
+      </QueryClientProvider>
     </AppProvider>,
     document.getElementById('root'),
   );

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { useIntl } from '@edx/frontend-platform/i18n';
 
 import { InfoOutline } from '@openedx/paragon/icons';
@@ -12,9 +11,9 @@ import EditableItemHeader from './elements/EditableItemHeader';
 import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
 
-import { editableFormSelector } from '../data/selectors';
 import {
   useCloseOpenHandler,
+  useEditableForm,
   useHandleChange,
   useHandleSubmit,
   useIsVisibilityEnabled,
@@ -24,8 +23,6 @@ const Name = ({
   formId,
   name,
   visibilityName,
-  editMode,
-  saveState,
   changeHandler,
   submitHandler,
   closeHandler,
@@ -34,6 +31,7 @@ const Name = ({
 }) => {
   const isVisibilityEnabled = useIsVisibilityEnabled();
   const intl = useIntl();
+  const { editMode, saveState } = useEditableForm(formId);
 
   const handleChange = useHandleChange(changeHandler);
   const handleSubmit = useHandleSubmit(submitHandler, formId);
@@ -170,8 +168,6 @@ Name.propTypes = {
   formId: PropTypes.string.isRequired,
   name: PropTypes.string,
   visibilityName: PropTypes.oneOf(['private', 'all_users']),
-  editMode: PropTypes.oneOf(['editing', 'editable', 'empty', 'static']),
-  saveState: PropTypes.string,
   changeHandler: PropTypes.func.isRequired,
   submitHandler: PropTypes.func.isRequired,
   closeHandler: PropTypes.func.isRequired,
@@ -180,13 +176,8 @@ Name.propTypes = {
 };
 
 Name.defaultProps = {
-  editMode: 'static',
-  saveState: null,
   name: null,
   visibilityName: 'private',
 };
 
-export default connect(
-  editableFormSelector,
-  {},
-)(Name);
+export default Name;

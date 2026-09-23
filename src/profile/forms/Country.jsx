@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { useIntl } from '@edx/frontend-platform/i18n';
 import { Form } from '@openedx/paragon';
 
@@ -11,9 +10,10 @@ import EditableItemHeader from './elements/EditableItemHeader';
 import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
 
-import { countrySelector } from '../data/selectors';
 import {
   useCloseOpenHandler,
+  useCountryOptions,
+  useEditableForm,
   useHandleChange,
   useHandleSubmit,
   useIsVisibilityEnabled,
@@ -23,12 +23,6 @@ const Country = ({
   formId,
   country,
   visibilityCountry,
-  editMode,
-  saveState,
-  error,
-  translatedCountries,
-  countriesCodesList,
-  countryMessages,
   changeHandler,
   submitHandler,
   closeHandler,
@@ -36,6 +30,8 @@ const Country = ({
 }) => {
   const isVisibilityEnabled = useIsVisibilityEnabled();
   const intl = useIntl();
+  const { editMode, error, saveState } = useEditableForm(formId);
+  const { translatedCountries, countryMessages, countriesCodesList } = useCountryOptions();
 
   const handleChange = useHandleChange(changeHandler);
   const handleSubmit = useHandleSubmit(submitHandler, formId);
@@ -134,15 +130,6 @@ Country.propTypes = {
   formId: PropTypes.string.isRequired,
   country: PropTypes.string,
   visibilityCountry: PropTypes.oneOf(['private', 'all_users']),
-  editMode: PropTypes.oneOf(['editing', 'editable', 'empty', 'static']),
-  saveState: PropTypes.string,
-  error: PropTypes.string,
-  translatedCountries: PropTypes.arrayOf(PropTypes.shape({
-    code: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-  })).isRequired,
-  countriesCodesList: PropTypes.arrayOf(PropTypes.string).isRequired,
-  countryMessages: PropTypes.objectOf(PropTypes.string).isRequired,
   changeHandler: PropTypes.func.isRequired,
   submitHandler: PropTypes.func.isRequired,
   closeHandler: PropTypes.func.isRequired,
@@ -150,14 +137,8 @@ Country.propTypes = {
 };
 
 Country.defaultProps = {
-  editMode: 'static',
-  saveState: null,
   country: null,
   visibilityCountry: 'private',
-  error: null,
 };
 
-export default connect(
-  countrySelector,
-  {},
-)(Country);
+export default Country;

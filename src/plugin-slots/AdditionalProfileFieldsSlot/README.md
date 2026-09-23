@@ -43,13 +43,13 @@ export default config;
 When implementing a plugin for this slot, the following props are available:
 
 ### `updateUserProfile`
-- **Type**: Function  
-- **Description**: A function for updating the user's profile with new field values. This handles the API call to persist changes to the backend.
-- **Usage**: Pass an object containing the field updates to be saved to the user's profile. The function automatically handles the persistence and UI updates.
+- **Type**: Function
+- **Description**: A function for updating the user's profile with new field values. This handles the API call to persist changes to the backend and updates the page with the values the server returns.
+- **Usage**: Pass the username and an object containing the field updates to be saved to the user's profile. It returns a promise that resolves to the updated account, or rejects with the API error.
 
 #### Example
 ```javascript
-updateUserProfile({ extendedProfile: [{ fieldName: 'favorite_color', fieldValue: value }] });
+updateUserProfile(username, { extendedProfile: [{ fieldName: 'favorite_color', fieldValue: value }] });
 ```
 
 ### `profileFieldValues`
@@ -89,7 +89,7 @@ const nifValue = nifField ? nifField.fieldValue : null;
 ### `refreshUserProfile`
 - **Type**: Function
 - **Description**: A function that triggers a refresh of the user's profile data. This can be used after updating profile fields to ensure the UI reflects the latest data from the server.
-- **Usage**: Call this function with the username parameter when you need to manually reload the user profile information. Note that `updateUserProfile` typically handles data refresh automatically.
+- **Usage**: Call this function with the username parameter when you need to reload the user profile information from the server, for instance after saving through some other means. `updateUserProfile` already refreshes the page with the values it saves.
 
 #### Example
 ```javascript
