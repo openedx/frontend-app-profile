@@ -4,7 +4,12 @@
 Status
 ------
 
-Accepted
+Superseded
+
+Superseded by `frontend-base's theming <https://github.com/openedx/frontend-base/blob/main/docs/how_tos/theming.md>`_.
+This app no longer bundles a header, a footer or a brand package: it is a library
+that renders inside the Open edX frontend shell, and branding belongs to the site
+that composes it.
 
 Context
 -------
