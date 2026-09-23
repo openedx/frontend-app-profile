@@ -1,36 +1,19 @@
 import React from 'react';
 import { fireEvent, screen, waitFor } from '@testing-library/react';
 
-import { mergeConfig } from '@edx/frontend-platform';
-import { sendTrackingLogEvent } from '@edx/frontend-platform/analytics';
-import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
-import { configure as configureI18n } from '@edx/frontend-platform/i18n';
+import { mergeAppConfig, sendTrackingLogEvent } from '@openedx/frontend-base';
 
+import { appId } from '@src/constants';
 import * as api from './data/api';
 import { CUSTOM_ALL_USERS_PREFERENCES } from './data/hooks';
 import ProfilePage from './ProfilePage';
 import { renderWithProviders } from '../tests/renderWithProviders';
 
 jest.mock('./data/api');
-jest.mock('@edx/frontend-platform/auth', () => ({
-  getAuthenticatedUser: jest.fn(),
-  getAuthenticatedHttpClient: jest.fn(),
-}));
-jest.mock('@edx/frontend-platform/analytics', () => ({
+jest.mock('@openedx/frontend-base', () => ({
+  ...jest.requireActual('@openedx/frontend-base'),
   sendTrackingLogEvent: jest.fn(),
 }));
-jest.mock('@edx/frontend-platform/logging', () => ({
-  logError: jest.fn(),
-}));
-
-configureI18n({
-  loggingService: { logError: jest.fn() },
-  config: {
-    ENVIRONMENT: 'production',
-    LANGUAGE_PREFERENCE_COOKIE_NAME: 'yum',
-  },
-  messages: [],
-});
 
 const account = {
   username: 'staff',
@@ -64,23 +47,20 @@ const certificates = [{
   uuid: 'abc',
 }];
 
+// `setupTest` signs in `staff`, so a route username of `staff` is the learner's own profile.
 const renderPage = ({ username = 'staff', config = {} } = {}) => {
-  mergeConfig({
+  mergeAppConfig(appId, {
     CREDENTIALS_BASE_URL: 'http://credentials.example.com',
-    ACCOUNT_SETTINGS_URL: 'http://account.example.com',
     ...config,
   });
   return renderWithProviders(<ProfilePage />, {
-    route: `/u/${username}`,
-    path: '/u/:username',
-    // The page reads `config` from the context; whose profile it is comes from getAuthenticatedUser.
-    appContext: {},
+    route: `/profile/u/${username}`,
+    path: '/profile/u/:username',
   });
 };
 
 beforeEach(() => {
   jest.clearAllMocks();
-  getAuthenticatedUser.mockReturnValue({ username: 'staff' });
   api.getAccount.mockResolvedValue(account);
   api.getPreferences.mockResolvedValue(preferences);
   api.getCourseCertificates.mockResolvedValue(certificates);

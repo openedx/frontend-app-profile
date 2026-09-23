@@ -1,10 +1,13 @@
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { sendTrackingLogEvent } from '@edx/frontend-platform/analytics';
-import { ensureConfig } from '@edx/frontend-platform';
-import { AppContext, ErrorPage } from '@edx/frontend-platform/react';
-import { FormattedMessage, useIntl } from '@edx/frontend-platform/i18n';
+import {
+  ErrorPage,
+  FormattedMessage,
+  getAppConfig,
+  sendTrackingLogEvent,
+  useIntl,
+} from '@openedx/frontend-base';
 import {
   Alert, Hyperlink, OverlayTrigger, Tooltip,
 } from '@openedx/paragon';
@@ -37,11 +40,11 @@ import {
 
 import AdditionalProfileFieldsSlot from '../plugin-slots/AdditionalProfileFieldsSlot';
 
-ensureConfig(['CREDENTIALS_BASE_URL', 'LMS_BASE_URL', 'ACCOUNT_SETTINGS_URL'], 'ProfilePage');
+import { appId } from '@src/constants';
+import { getAccountSettingsUrl } from '@src/utils';
 
 const ProfilePageContent = () => {
   const intl = useIntl();
-  const { config } = useContext(AppContext);
   const {
     username,
     isOwnProfile,
@@ -80,7 +83,8 @@ const ProfilePageContent = () => {
   const isMobileView = useIsOnMobileScreen();
   const isTabletView = useIsOnTabletScreen();
 
-  const viewMyRecordsUrl = config.CREDENTIALS_BASE_URL ? `${config.CREDENTIALS_BASE_URL}/records` : null;
+  const { CREDENTIALS_BASE_URL: credentialsBaseUrl } = getAppConfig(appId);
+  const viewMyRecordsUrl = credentialsBaseUrl ? `${credentialsBaseUrl}/records` : null;
 
   useEffect(() => {
     sendTrackingLogEvent('edx.profile.viewed', { username });
@@ -305,7 +309,7 @@ const ProfilePageContent = () => {
                   {isBlockVisible(name) && (
                   <Name
                     name={name}
-                    accountSettingsUrl={config.ACCOUNT_SETTINGS_URL}
+                    accountSettingsUrl={getAccountSettingsUrl()}
                     visibilityName={visibilityName}
                     formId="name"
                     {...commonFormProps}
