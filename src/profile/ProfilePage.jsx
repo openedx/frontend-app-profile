@@ -252,13 +252,7 @@ const ProfilePageContent = () => {
             isMobileView ? 'py-4 px-3' : 'py-6',
           )}
           >
-            <Container
-              size="xl"
-              className={classNames(
-                'col d-inline-flex h-100 w-100 align-items-start justify-content-start g-3rem',
-                { 'px-0': isMobileView },
-              )}
-            >
+            <Container size="xl" className={classNames({ 'px-0': isMobileView })}>
               <div className="w-100 p-0">
                 <div className="col justify-content-start align-items-start p-0">
                   <div className="col align-self-stretch height-42px justify-content-start align-items-start p-0">
@@ -386,13 +380,7 @@ const ProfilePageContent = () => {
             isMobileView ? 'py-4 px-3' : 'py-6',
           )}
           >
-            <Container
-              size="xl"
-              className={classNames(
-                'col d-inline-flex h-100 w-100 align-items-start justify-content-start g-3rem',
-                { 'px-0': isMobileView },
-              )}
-            >
+            <Container size="xl" className={classNames({ 'px-0': isMobileView })}>
               {isBlockVisible((courseCertificates || []).length) && (
               <Certificates certificates={courseCertificates || []} />
               )}
