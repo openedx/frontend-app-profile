@@ -38,7 +38,7 @@ import {
   useSaveProfilePhoto,
 } from './data/hooks';
 
-import AdditionalProfileFieldsSlot from '../plugin-slots/AdditionalProfileFieldsSlot';
+import AdditionalProfileFieldsSlot from '@src/slots/AdditionalProfileFieldsSlot';
 
 import { appId } from '@src/constants';
 import { getAccountSettingsUrl } from '@src/utils';
