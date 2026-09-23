@@ -11,6 +11,13 @@ import EditableItemHeader from '@src/profile/forms/elements/EditableItemHeader';
 import EmptyContent from '@src/profile/forms/elements/EmptyContent';
 import SwitchContent from '@src/profile/forms/elements/SwitchContent';
 
+// Static, so it keeps its identity between renders and `Slot`'s memo can do its job.
+const formComponents = {
+  SwitchContent,
+  EmptyContent,
+  EditableItemHeader,
+};
+
 const AdditionalProfileFieldsSlot = () => {
   const queryClient = useQueryClient();
   const { username, errors } = useProfileForm();
@@ -40,11 +47,7 @@ const AdditionalProfileFieldsSlot = () => {
     updateUserProfile,
     profileFieldValues: account?.extendedProfile,
     profileFieldErrors: errors,
-    formComponents: {
-      SwitchContent,
-      EmptyContent,
-      EditableItemHeader,
-    },
+    formComponents,
   };
 
   return (
