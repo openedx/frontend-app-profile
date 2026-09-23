@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { PluginSlot } from '@openedx/frontend-plugin-framework';
+import { Slot } from '@openedx/frontend-base';
 import { useQueryClient } from '@tanstack/react-query';
 
 import { patchProfile } from '../../profile/data/api';
@@ -34,7 +34,8 @@ const AdditionalProfileFieldsSlot = () => {
     return updatedAccount;
   }, [queryClient]);
 
-  const pluginProps = {
+  // These reach the widgets as slot props; see the README for their contract.
+  const slotProps = {
     refreshUserProfile,
     updateUserProfile,
     profileFieldValues: account?.extendedProfile,
@@ -47,9 +48,9 @@ const AdditionalProfileFieldsSlot = () => {
   };
 
   return (
-    <PluginSlot
+    <Slot
       id="org.openedx.frontend.profile.additional_profile_fields.v1"
-      pluginProps={pluginProps}
+      {...slotProps}
     />
   );
 };

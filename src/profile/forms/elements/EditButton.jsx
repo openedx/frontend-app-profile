@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { EditOutline } from '@openedx/paragon/icons';
-import { useIntl } from '@edx/frontend-platform/i18n';
+import { useIntl } from '@openedx/frontend-base';
 import { Button, OverlayTrigger, Tooltip } from '@openedx/paragon';
 import messages from './EditButton.messages';
 

@@ -2,15 +2,12 @@ import { useMemo } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { breakpoints, useWindowSize } from '@openedx/paragon';
-import { getConfig } from '@edx/frontend-platform';
-import {
-  getCountryList as getTranslatedCountryList,
-  getCountryMessages,
-  getLanguageList,
-  getLanguageMessages,
-  getLocale,
-} from '@edx/frontend-platform/i18n';
-import { logError } from '@edx/frontend-platform/logging';
+import { getAppConfig, logError, useIntl } from '@openedx/frontend-base';
+
+import { appId } from '@src/constants';
+import { getCountryList as getTranslatedCountryList, getCountryMessages } from '@src/data/countries';
+import { getLanguageList, getLanguageMessages } from '@src/data/languages';
+import { parseEnvBoolean } from '@src/utils';
 
 import { retryUnlessClientError } from '../../data/queryOptions';
 import {
@@ -47,7 +44,7 @@ export function useIsOnMobileScreen() {
 }
 
 export function useIsVisibilityEnabled() {
-  return getConfig().DISABLE_VISIBILITY_EDITING !== 'true';
+  return !parseEnvBoolean(getAppConfig(appId).DISABLE_VISIBILITY_EDITING);
 }
 
 export function useHandleChange(changeHandler) {
@@ -171,7 +168,7 @@ export const useCountryOptions = () => {
   const { username } = useProfileForm();
   const { data: account } = useAccount(username);
   const { data: countryCodes = EMPTY_LIST } = useCountryCodes();
-  const locale = getLocale();
+  const { locale } = useIntl();
   const committedCountry = account?.country;
 
   return useMemo(() => ({
@@ -185,7 +182,7 @@ export const useCountryOptions = () => {
  * The options of the preferred language select, in the current locale.
  */
 export const useLanguageOptions = () => {
-  const locale = getLocale();
+  const { locale } = useIntl();
 
   return useMemo(() => ({
     sortedLanguages: getLanguageList(locale),

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormattedMessage } from '@edx/frontend-platform/i18n';
+import { FormattedMessage } from '@openedx/frontend-base';
 
 const NotFoundPage = () => (
   <div className="container-fluid d-flex py-5 justify-content-center align-items-start text-center">
