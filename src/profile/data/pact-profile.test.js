@@ -6,7 +6,7 @@ import path from 'path';
 import { PactV3, MatchersV3 } from '@pact-foundation/pact';
 
 import { initializeMockApp, mergeSiteConfig } from '@openedx/frontend-base';
-import { getAccount } from './api';
+import { getAccount } from '@src/profile/data/api';
 
 const expectedUserInfo200 = {
   username: 'staff',

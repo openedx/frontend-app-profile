@@ -8,7 +8,7 @@ import { getCountryList as getTranslatedCountryList, getCountryMessages } from '
 import { getLanguageList, getLanguageMessages } from '@src/data/languages';
 import { parseEnvBoolean } from '@src/utils';
 
-import { retryUnlessClientError } from '../../data/queryOptions';
+import { retryUnlessClientError } from '@src/data/queryOptions';
 import {
   deleteProfilePhoto,
   getAccount,
@@ -17,7 +17,7 @@ import {
   getPreferences,
   patchPreferences,
   postProfilePhoto,
-} from './api';
+} from '@src/profile/data/api';
 import {
   getDraftSocialLinksByPlatform,
   getEditMode,
@@ -25,9 +25,9 @@ import {
   getFormValues,
   getProfileImage,
   getSortedCountries,
-} from './derive';
-import { useProfileForm } from './FormContext';
-import { profileKeys, profileMutationKeys } from './queryKeys';
+} from '@src/profile/data/derive';
+import { useProfileForm } from '@src/profile/data/FormContext';
+import { profileKeys, profileMutationKeys } from '@src/profile/data/queryKeys';
 
 const EMPTY_LIST = [];
 const EMPTY_OBJECT = {};

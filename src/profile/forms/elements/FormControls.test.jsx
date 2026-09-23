@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import FormControls from './FormControls';
-import messages from './FormControls.messages';
+import FormControls from '@src/profile/forms/elements/FormControls';
+import messages from '@src/profile/forms/elements/FormControls.messages';
 
 const defaultProps = {
   cancelHandler: jest.fn(),
@@ -18,7 +18,7 @@ jest.mock('@openedx/frontend-base', () => ({
   }),
 }));
 
-jest.mock('../../data/hooks', () => ({
+jest.mock('@src/profile/data/hooks', () => ({
   useIsVisibilityEnabled: () => true,
 }));
 

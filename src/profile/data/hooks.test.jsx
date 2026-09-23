@@ -9,8 +9,8 @@ import siteConfig from 'site.config';
 
 import { appId } from '@src/constants';
 
-import * as api from './api';
-import { ProfileFormContext } from './FormContext';
+import * as api from '@src/profile/data/api';
+import { ProfileFormContext } from '@src/profile/data/FormContext';
 import {
   CUSTOM_ALL_USERS_PREFERENCES,
   useCountryOptions,
@@ -20,12 +20,12 @@ import {
   useMigrateAccountPrivacy,
   useProfileData,
   useSaveProfilePhoto,
-} from './hooks';
-import { profileKeys } from './queryKeys';
-import { createTestQueryClient, createWrapper } from '../../tests/renderWithProviders';
-import { createFormContextValue } from '../test/renderWithForm';
+} from '@src/profile/data/hooks';
+import { profileKeys } from '@src/profile/data/queryKeys';
+import { createTestQueryClient, createWrapper } from '@src/tests/renderWithProviders';
+import { createFormContextValue } from '@src/profile/test/renderWithForm';
 
-jest.mock('./api');
+jest.mock('@src/profile/data/api');
 jest.mock('@openedx/frontend-base', () => ({
   ...jest.requireActual('@openedx/frontend-base'),
   logError: jest.fn(),
