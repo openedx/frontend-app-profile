@@ -4,12 +4,12 @@ import { fireEvent, screen, waitFor } from '@testing-library/react';
 import { mergeAppConfig, sendTrackingLogEvent } from '@openedx/frontend-base';
 
 import { appId } from '@src/constants';
-import * as api from './data/api';
-import { CUSTOM_ALL_USERS_PREFERENCES } from './data/hooks';
-import ProfilePage from './ProfilePage';
-import { renderWithProviders } from '../tests/renderWithProviders';
+import * as api from '@src/profile/data/api';
+import { CUSTOM_ALL_USERS_PREFERENCES } from '@src/profile/data/hooks';
+import ProfilePage from '@src/profile/ProfilePage';
+import { renderWithProviders } from '@src/tests/renderWithProviders';
 
-jest.mock('./data/api');
+jest.mock('@src/profile/data/api');
 jest.mock('@openedx/frontend-base', () => ({
   ...jest.requireActual('@openedx/frontend-base'),
   sendTrackingLogEvent: jest.fn(),

@@ -4,12 +4,12 @@ import { getLinkProps, useIntl } from '@openedx/frontend-base';
 
 import { InfoOutline } from '@openedx/paragon/icons';
 import { Hyperlink, OverlayTrigger, Tooltip } from '@openedx/paragon';
-import messages from './Name.messages';
+import messages from '@src/profile/forms/Name.messages';
 
-import FormControls from './elements/FormControls';
-import EditableItemHeader from './elements/EditableItemHeader';
-import EmptyContent from './elements/EmptyContent';
-import SwitchContent from './elements/SwitchContent';
+import FormControls from '@src/profile/forms/elements/FormControls';
+import EditableItemHeader from '@src/profile/forms/elements/EditableItemHeader';
+import EmptyContent from '@src/profile/forms/elements/EmptyContent';
+import SwitchContent from '@src/profile/forms/elements/SwitchContent';
 
 import {
   useCloseOpenHandler,
@@ -17,7 +17,7 @@ import {
   useHandleChange,
   useHandleSubmit,
   useIsVisibilityEnabled,
-} from '../data/hooks';
+} from '@src/profile/data/hooks';
 
 const Name = ({
   formId,

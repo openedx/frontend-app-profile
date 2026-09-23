@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
-import EditButton from './EditButton';
-import { Visibility } from './Visibility';
-import { useIsOnMobileScreen } from '../../data/hooks';
+import EditButton from '@src/profile/forms/elements/EditButton';
+import { Visibility } from '@src/profile/forms/elements/Visibility';
+import { useIsOnMobileScreen } from '@src/profile/data/hooks';
 
 const EditableItemHeader = ({
   content = '',
