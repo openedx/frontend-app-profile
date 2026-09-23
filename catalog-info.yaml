@@ -4,7 +4,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: 'frontend-app-profile'
-  description: 'This is a micro-frontend application responsible for displaying and updating the user profiles.'
+  description: 'Open edX frontend app for displaying and updating learner profiles.'
   links:
     - url: 'https://github.com/openedx/frontend-app-profile/blob/master/README.rst'
       title: 'Documentation'
