@@ -1,4 +1,5 @@
-import { fireEvent, screen, waitFor } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { mergeSiteConfig, useSlotContext, WidgetOperationTypes } from '@openedx/frontend-base';
 
 import * as api from '@src/profile/data/api';
@@ -80,11 +81,13 @@ describe('AdditionalProfileFieldsSlot', () => {
   });
 
   it('saves through the accounts API and shows the values the server returns', async () => {
+    const user = userEvent.setup();
+
     const updated = { extendedProfile: [{ fieldName: 'favorite_color', fieldValue: 'red' }] };
     jest.mocked(api.patchProfile).mockResolvedValue(updated);
     const { queryClient } = renderSlot();
 
-    fireEvent.click(screen.getByRole('button', { name: 'save' }));
+    await user.click(screen.getByRole('button', { name: 'save' }));
 
     await waitFor(() => expect(api.patchProfile).toHaveBeenCalledWith('staff', updated));
     await waitFor(() => expect(screen.getByTestId('values')).toHaveTextContent(JSON.stringify(updated.extendedProfile)));
@@ -92,6 +95,8 @@ describe('AdditionalProfileFieldsSlot', () => {
   });
 
   it('leaves the cache alone when the account is not in it', async () => {
+    const user = userEvent.setup();
+
     const updated = { extendedProfile: [{ fieldName: 'favorite_color', fieldValue: 'red' }] };
     jest.mocked(api.patchProfile).mockResolvedValue(updated);
     // The account never arrives, so the save has nothing to fold the response into.
@@ -99,26 +104,30 @@ describe('AdditionalProfileFieldsSlot', () => {
     const queryClient = createTestQueryClient({ staleTime: Infinity });
     renderWithForm(<AdditionalProfileFieldsSlot />, { queryClient });
 
-    fireEvent.click(screen.getByRole('button', { name: 'save' }));
+    await user.click(screen.getByRole('button', { name: 'save' }));
 
     await waitFor(() => expect(api.patchProfile).toHaveBeenCalledWith('staff', updated));
     expect(queryClient.getQueryData(profileKeys.account('staff'))).toBeUndefined();
   });
 
   it('refreshes the profile of the form it belongs to by default', async () => {
+    const user = userEvent.setup();
+
     const { queryClient } = renderSlot();
     const invalidateQueries = jest.spyOn(queryClient, 'invalidateQueries');
 
-    fireEvent.click(screen.getByRole('button', { name: 'refresh own' }));
+    await user.click(screen.getByRole('button', { name: 'refresh own' }));
 
     await waitFor(() => expect(invalidateQueries).toHaveBeenCalledWith({ queryKey: profileKeys.account('staff') }));
   });
 
   it('refreshes the profile on request', async () => {
+    const user = userEvent.setup();
+
     const { queryClient } = renderSlot();
     const invalidateQueries = jest.spyOn(queryClient, 'invalidateQueries');
 
-    fireEvent.click(screen.getByRole('button', { name: 'refresh' }));
+    await user.click(screen.getByRole('button', { name: 'refresh' }));
 
     await waitFor(() => expect(invalidateQueries).toHaveBeenCalledWith({ queryKey: profileKeys.account('staff') }));
     await waitFor(() => expect(api.getAccount).toHaveBeenCalledWith('staff'));

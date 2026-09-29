@@ -1,5 +1,6 @@
 import React from 'react';
-import { fireEvent, screen, waitFor } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import { mergeAppConfig, sendTrackingLogEvent } from '@openedx/frontend-base';
 
@@ -118,15 +119,17 @@ describe('<ProfilePage />', () => {
   });
 
   it('edits and saves a field', async () => {
+    const user = userEvent.setup();
+
     api.getAccount.mockResolvedValue({ ...account, bio: null });
     api.patchProfile.mockResolvedValue({ bio: 'Hello there' });
     renderPage();
 
-    fireEvent.click(await screen.findByRole('button', { name: /Add a short bio/ }));
+    await user.click(await screen.findByRole('button', { name: /Add a short bio/ }));
     const textarea = screen.getByRole('textbox');
-    fireEvent.change(textarea, { target: { value: 'Hello there' } });
+    await user.type(textarea, 'Hello there');
     expect(textarea).toHaveValue('Hello there');
-    fireEvent.click(screen.getByRole('button', { name: 'Save' }));
+    await user.click(screen.getByRole('button', { name: 'Save' }));
 
     await waitFor(() => expect(api.patchProfile).toHaveBeenCalledWith('staff', { bio: 'Hello there' }));
     expect(await screen.findByRole('button', { name: 'Saved' })).toBeInTheDocument();
@@ -195,6 +198,8 @@ describe('<ProfilePage />', () => {
   });
 
   it('shows the message of a rejected photo upload', async () => {
+    const user = userEvent.setup();
+
     const error = new Error('Bad Request');
     error.processedData = { userMessage: 'The file must be smaller than 1 MB in size.' };
     api.postProfilePhoto.mockRejectedValue(error);
@@ -202,13 +207,15 @@ describe('<ProfilePage />', () => {
 
     await screen.findAllByText('Lemon Seltzer');
     const file = new File(['photo'], 'photo.png', { type: 'image/png' });
-    fireEvent.change(container.querySelector('#photo-file'), { target: { files: [file] } });
+    await user.upload(container.querySelector('#photo-file'), file);
 
     expect(await screen.findByText('The file must be smaller than 1 MB in size.')).toBeInTheDocument();
     expect(api.postProfilePhoto).toHaveBeenCalledWith('staff', expect.any(FormData));
   });
 
   it('drops the upload error along with the photo', async () => {
+    const user = userEvent.setup();
+
     const error = new Error('Bad Request');
     error.processedData = { userMessage: 'The file must be smaller than 1 MB in size.' };
     api.postProfilePhoto.mockRejectedValue(error);
@@ -216,13 +223,14 @@ describe('<ProfilePage />', () => {
     const { container } = renderPage();
 
     await screen.findAllByText('Lemon Seltzer');
-    fireEvent.change(container.querySelector('#photo-file'), {
-      target: { files: [new File(['photo'], 'photo.png', { type: 'image/png' })] },
-    });
+    await user.upload(
+      container.querySelector('#photo-file'),
+      new File(['photo'], 'photo.png', { type: 'image/png' }),
+    );
     await screen.findByText('The file must be smaller than 1 MB in size.');
 
-    fireEvent.click(container.querySelector('#dropdown-toggle-with-iconbutton'));
-    fireEvent.click(await screen.findByRole('button', { name: 'Remove photo' }));
+    await user.click(container.querySelector('#dropdown-toggle-with-iconbutton'));
+    await user.click(await screen.findByRole('button', { name: 'Remove photo' }));
 
     await waitFor(() => expect(api.deleteProfilePhoto).toHaveBeenCalledWith('staff'));
     await waitFor(() => {
