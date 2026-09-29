@@ -1,5 +1,6 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import FormControls from '@src/profile/forms/elements/FormControls';
 import messages from '@src/profile/forms/elements/FormControls.messages';
 
@@ -44,9 +45,11 @@ describe('FormControls', () => {
     ).toBeInTheDocument();
   });
 
-  it('calls cancelHandler when Cancel button is clicked', () => {
+  it('calls cancelHandler when Cancel button is clicked', async () => {
+    const user = userEvent.setup();
+
     render(<FormControls {...defaultProps} />);
-    fireEvent.click(
+    await user.click(
       screen.getByRole('button', { name: messages['profile.formcontrols.button.cancel'].id }),
     );
     expect(defaultProps.cancelHandler).toHaveBeenCalled();
