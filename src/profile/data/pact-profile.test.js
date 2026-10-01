@@ -5,8 +5,8 @@ import path from 'path';
 
 import { PactV3, MatchersV3 } from '@pact-foundation/pact';
 
-import { initializeMockApp, getConfig, setConfig } from '@edx/frontend-platform';
-import { getAccount } from './api';
+import { initializeMockApp, mergeSiteConfig } from '@openedx/frontend-base';
+import { getAccount } from '@src/profile/data/api';
 
 const expectedUserInfo200 = {
   username: 'staff',
@@ -51,10 +51,7 @@ describe('getAccount for one username', () => {
       },
     });
     return provider.executeTest(async (mockserver) => {
-      setConfig({
-        ...getConfig(),
-        LMS_BASE_URL: mockserver.url,
-      });
+      mergeSiteConfig({ lmsBaseUrl: mockserver.url });
       const response = await getAccount(username200);
       expect(response).toEqual(expectedUserInfo200);
     });
@@ -74,10 +71,7 @@ describe('getAccount for one username', () => {
       },
     });
     await provider.executeTest(async (mockserver) => {
-      setConfig({
-        ...getConfig(),
-        LMS_BASE_URL: mockserver.url,
-      });
+      mergeSiteConfig({ lmsBaseUrl: mockserver.url });
       await expect(getAccount(username404).then((response) => response.data)).rejects.toThrow('Request failed with status code 404');
     });
   });

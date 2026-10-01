@@ -7,11 +7,11 @@ import {
   Tooltip,
   OverlayTrigger,
 } from '@openedx/paragon';
-import { FormattedMessage, useIntl } from '@edx/frontend-platform/i18n';
+import { FormattedMessage, useIntl } from '@openedx/frontend-base';
 
 import { PhotoCamera } from '@openedx/paragon/icons';
-import { ReactComponent as DefaultAvatar } from '../assets/avatar.svg';
-import messages from './ProfileAvatar.messages';
+import DefaultAvatar from '@src/profile/forms/DefaultAvatar';
+import messages from '@src/profile/forms/ProfileAvatar.messages';
 
 const ProfileAvatar = ({
   src,
@@ -114,7 +114,7 @@ const ProfileAvatar = ({
 
   const renderAvatar = () => (
     isDefault ? (
-      <DefaultAvatar className="text-muted" role="img" aria-hidden focusable="false" viewBox="0 0 24 24" />
+      <DefaultAvatar className="text-muted" />
     ) : (
       <img
         data-hj-suppress

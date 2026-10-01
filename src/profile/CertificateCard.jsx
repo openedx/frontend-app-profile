@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormattedDate, FormattedMessage, useIntl } from '@edx/frontend-platform/i18n';
+import { FormattedDate, FormattedMessage, useIntl } from '@openedx/frontend-base';
 import { Hyperlink } from '@openedx/paragon';
 import get from 'lodash.get';
 
 import classNames from 'classnames';
 import professionalCertificateSVG from './assets/professional-certificate.svg';
 import verifiedCertificateSVG from './assets/verified-certificate.svg';
-import messages from './Certificates.messages';
-import { useIsOnMobileScreen } from './data/hooks';
+import messages from '@src/profile/Certificates.messages';
+import { useIsOnMobileScreen } from '@src/profile/data/hooks';
 
 const CertificateCard = ({
   certificateType,

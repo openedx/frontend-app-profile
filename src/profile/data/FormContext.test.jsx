@@ -2,19 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { act, renderHook, waitFor } from '@testing-library/react';
 
-import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
-import { logError } from '@edx/frontend-platform/logging';
+import { getAuthenticatedUser, logError } from '@openedx/frontend-base';
 
-import * as api from './api';
-import { CLOSE_FORM_DELAY, ProfileFormProvider, useProfileForm } from './FormContext';
-import { profileKeys } from './queryKeys';
-import { createTestQueryClient, createWrapper } from '../../tests/renderWithProviders';
+import * as api from '@src/profile/data/api';
+import { CLOSE_FORM_DELAY, ProfileFormProvider, useProfileForm } from '@src/profile/data/FormContext';
+import { profileKeys } from '@src/profile/data/queryKeys';
+import { createTestQueryClient, createWrapper } from '@src/tests/renderWithProviders';
 
-jest.mock('./api');
-jest.mock('@edx/frontend-platform/auth', () => ({
+jest.mock('@src/profile/data/api');
+jest.mock('@openedx/frontend-base', () => ({
+  ...jest.requireActual('@openedx/frontend-base'),
   getAuthenticatedUser: jest.fn(),
-}));
-jest.mock('@edx/frontend-platform/logging', () => ({
   logError: jest.fn(),
 }));
 

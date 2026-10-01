@@ -1,36 +1,21 @@
 import React from 'react';
-import { fireEvent, screen, waitFor } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
-import { mergeConfig } from '@edx/frontend-platform';
-import { sendTrackingLogEvent } from '@edx/frontend-platform/analytics';
-import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
-import { configure as configureI18n } from '@edx/frontend-platform/i18n';
+import { mergeAppConfig, sendTrackingLogEvent } from '@openedx/frontend-base';
 
-import * as api from './data/api';
-import { CUSTOM_ALL_USERS_PREFERENCES } from './data/hooks';
-import ProfilePage from './ProfilePage';
-import { renderWithProviders } from '../tests/renderWithProviders';
+import { appId } from '@src/constants';
+import * as api from '@src/profile/data/api';
+import { CUSTOM_ALL_USERS_PREFERENCES } from '@src/profile/data/hooks';
+import { profileKeys } from '@src/profile/data/queryKeys';
+import ProfilePage from '@src/profile/ProfilePage';
+import { createTestQueryClient, renderWithProviders } from '@src/tests/renderWithProviders';
 
-jest.mock('./data/api');
-jest.mock('@edx/frontend-platform/auth', () => ({
-  getAuthenticatedUser: jest.fn(),
-  getAuthenticatedHttpClient: jest.fn(),
-}));
-jest.mock('@edx/frontend-platform/analytics', () => ({
+jest.mock('@src/profile/data/api');
+jest.mock('@openedx/frontend-base', () => ({
+  ...jest.requireActual('@openedx/frontend-base'),
   sendTrackingLogEvent: jest.fn(),
 }));
-jest.mock('@edx/frontend-platform/logging', () => ({
-  logError: jest.fn(),
-}));
-
-configureI18n({
-  loggingService: { logError: jest.fn() },
-  config: {
-    ENVIRONMENT: 'production',
-    LANGUAGE_PREFERENCE_COOKIE_NAME: 'yum',
-  },
-  messages: [],
-});
 
 const account = {
   username: 'staff',
@@ -64,23 +49,21 @@ const certificates = [{
   uuid: 'abc',
 }];
 
-const renderPage = ({ username = 'staff', config = {} } = {}) => {
-  mergeConfig({
+// `setupTest` signs in `staff`, so a route username of `staff` is the learner's own profile.
+const renderPage = ({ username = 'staff', config = {}, ...options } = {}) => {
+  mergeAppConfig(appId, {
     CREDENTIALS_BASE_URL: 'http://credentials.example.com',
-    ACCOUNT_SETTINGS_URL: 'http://account.example.com',
     ...config,
   });
   return renderWithProviders(<ProfilePage />, {
-    route: `/u/${username}`,
-    path: '/u/:username',
-    // The page reads `config` from the context; whose profile it is comes from getAuthenticatedUser.
-    appContext: {},
+    route: `/profile/u/${username}`,
+    path: '/profile/u/:username',
+    ...options,
   });
 };
 
 beforeEach(() => {
   jest.clearAllMocks();
-  getAuthenticatedUser.mockReturnValue({ username: 'staff' });
   api.getAccount.mockResolvedValue(account);
   api.getPreferences.mockResolvedValue(preferences);
   api.getCourseCertificates.mockResolvedValue(certificates);
@@ -113,16 +96,40 @@ describe('<ProfilePage />', () => {
     expect(api.getPreferences).toHaveBeenCalledWith('staff');
   });
 
+  it('starts cold on a revisit, so a name the Account app changed is never painted stale', async () => {
+    // A client that keeps queries around, as the shell's does; the profile's own opt out of it.
+    const queryClient = createTestQueryClient({ gcTime: 5 * 60 * 1000 });
+
+    const firstVisit = renderPage({ queryClient });
+    expect(await screen.findAllByText('Lemon Seltzer')).toHaveLength(2);
+    firstVisit.unmount();
+
+    await waitFor(() => {
+      expect(queryClient.getQueryData(profileKeys.account('staff'))).toBeUndefined();
+      expect(queryClient.getQueryData(profileKeys.preferences('staff'))).toBeUndefined();
+    });
+
+    // The learner renames themselves in Account, then comes back.
+    api.getAccount.mockResolvedValue({ ...account, name: 'Sparkling Water' });
+    renderPage({ queryClient });
+
+    expect(screen.getByRole('status')).toHaveTextContent('Profile loading...');
+    expect(screen.queryByText('Lemon Seltzer')).not.toBeInTheDocument();
+    expect(await screen.findAllByText('Sparkling Water')).toHaveLength(2);
+  });
+
   it('edits and saves a field', async () => {
+    const user = userEvent.setup();
+
     api.getAccount.mockResolvedValue({ ...account, bio: null });
     api.patchProfile.mockResolvedValue({ bio: 'Hello there' });
     renderPage();
 
-    fireEvent.click(await screen.findByRole('button', { name: /Add a short bio/ }));
+    await user.click(await screen.findByRole('button', { name: /Add a short bio/ }));
     const textarea = screen.getByRole('textbox');
-    fireEvent.change(textarea, { target: { value: 'Hello there' } });
+    await user.type(textarea, 'Hello there');
     expect(textarea).toHaveValue('Hello there');
-    fireEvent.click(screen.getByRole('button', { name: 'Save' }));
+    await user.click(screen.getByRole('button', { name: 'Save' }));
 
     await waitFor(() => expect(api.patchProfile).toHaveBeenCalledWith('staff', { bio: 'Hello there' }));
     expect(await screen.findByRole('button', { name: 'Saved' })).toBeInTheDocument();
@@ -191,6 +198,8 @@ describe('<ProfilePage />', () => {
   });
 
   it('shows the message of a rejected photo upload', async () => {
+    const user = userEvent.setup();
+
     const error = new Error('Bad Request');
     error.processedData = { userMessage: 'The file must be smaller than 1 MB in size.' };
     api.postProfilePhoto.mockRejectedValue(error);
@@ -198,13 +207,15 @@ describe('<ProfilePage />', () => {
 
     await screen.findAllByText('Lemon Seltzer');
     const file = new File(['photo'], 'photo.png', { type: 'image/png' });
-    fireEvent.change(container.querySelector('#photo-file'), { target: { files: [file] } });
+    await user.upload(container.querySelector('#photo-file'), file);
 
     expect(await screen.findByText('The file must be smaller than 1 MB in size.')).toBeInTheDocument();
     expect(api.postProfilePhoto).toHaveBeenCalledWith('staff', expect.any(FormData));
   });
 
   it('drops the upload error along with the photo', async () => {
+    const user = userEvent.setup();
+
     const error = new Error('Bad Request');
     error.processedData = { userMessage: 'The file must be smaller than 1 MB in size.' };
     api.postProfilePhoto.mockRejectedValue(error);
@@ -212,13 +223,14 @@ describe('<ProfilePage />', () => {
     const { container } = renderPage();
 
     await screen.findAllByText('Lemon Seltzer');
-    fireEvent.change(container.querySelector('#photo-file'), {
-      target: { files: [new File(['photo'], 'photo.png', { type: 'image/png' })] },
-    });
+    await user.upload(
+      container.querySelector('#photo-file'),
+      new File(['photo'], 'photo.png', { type: 'image/png' }),
+    );
     await screen.findByText('The file must be smaller than 1 MB in size.');
 
-    fireEvent.click(container.querySelector('#dropdown-toggle-with-iconbutton'));
-    fireEvent.click(await screen.findByRole('button', { name: 'Remove photo' }));
+    await user.click(container.querySelector('#dropdown-toggle-with-iconbutton'));
+    await user.click(await screen.findByRole('button', { name: 'Remove photo' }));
 
     await waitFor(() => expect(api.deleteProfilePhoto).toHaveBeenCalledWith('staff'));
     await waitFor(() => {

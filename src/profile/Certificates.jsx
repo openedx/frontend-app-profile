@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from '@edx/frontend-platform/i18n';
-import { getConfig } from '@edx/frontend-platform';
+import { FormattedMessage, getSiteConfig } from '@openedx/frontend-base';
 
 import classNames from 'classnames';
-import CertificateCard from './CertificateCard';
-import { useIsOnTabletScreen } from './data/hooks';
+import CertificateCard from '@src/profile/CertificateCard';
+import { useIsOnTabletScreen } from '@src/profile/data/hooks';
 
 const Certificates = ({ certificates }) => {
   const isTabletView = useIsOnTabletScreen();
@@ -28,7 +27,7 @@ const Certificates = ({ certificates }) => {
               defaultMessage="Your learner records information is only visible to you. Only your username and profile image are visible to others on {siteName}."
               description="description of the certificates section"
               values={{
-                siteName: getConfig().SITE_NAME,
+                siteName: getSiteConfig().siteName,
               }}
             />
           </p>
