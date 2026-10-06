@@ -22,6 +22,7 @@ The application evaluates ownership in `ProfilePage.jsx`:
 - If `isOwner === false`:
   - Field visibility `all_users` -> Render field value (no edit button).
   - Field visibility `private` -> Suppress completely (no empty gaps).
+- **Note**: Privacy is enforced server-side — the API never returns a private field's value to non-owner viewers. Client-side `isBlockVisible()` in `ProfilePage.jsx` only checks whether the field value is truthy, not the visibility flag itself; "no empty gaps" works because private values arrive as `null`/empty, not because of an explicit client-side visibility check. 
 
 ## 4. Feature Toggles & System Overrides
 * `DISABLE_VISIBILITY_EDITING`: When `true`, hides the visibility toggle dropdown inside all forms.

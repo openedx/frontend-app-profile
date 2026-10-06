@@ -13,7 +13,7 @@ Defines telemetry schemas for learner interactions inside `frontend-app-profile`
 
 ### 2.1 Profile Viewed Event
 * **Event Name**: `edx.profile.viewed`
-* **Trigger**: Dispatched on successful mount of `ProfilePage.jsx` when profile data is loaded.
+* **Trigger**: Dispatched immediately on `ProfilePage.jsx` mount, in the same `useEffect` as `dispatch(fetchProfile(...))`; fired unconditionally and not gated on the profile fetch succeeding or completing.
 * **Implementation Reference**: `src/profile/ProfilePage.jsx` (`sendTrackingLogEvent('edx.profile.viewed', { username })`)
 * **Note**: Event name corrected to match actual implementation (previously documented as `edx.bi.user.profile.viewed`). Current payload only includes `username`. The extended schema below (`category`, `action`, `is_owner`, etc.) is **planned/future work**, not current behavior.
 * **Payload Schema (current)**:

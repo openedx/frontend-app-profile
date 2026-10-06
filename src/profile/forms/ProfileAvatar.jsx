@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Dropdown,
@@ -6,12 +6,16 @@ import {
   Icon,
   Tooltip,
   OverlayTrigger,
+  Toast,
 } from '@openedx/paragon';
 import { FormattedMessage, useIntl } from '@edx/frontend-platform/i18n';
 
 import { PhotoCamera } from '@openedx/paragon/icons';
 import { ReactComponent as DefaultAvatar } from '../assets/avatar.svg';
 import messages from './ProfileAvatar.messages';
+
+const MAX_FILE_SIZE_BYTES = 1 * 1024 * 1024; // 1MB
+const ALLOWED_FILE_TYPES = ['image/jpeg', 'image/png'];
 
 const ProfileAvatar = ({
   src,
@@ -24,6 +28,7 @@ const ProfileAvatar = ({
   const intl = useIntl();
   const fileInput = useRef(null);
   const form = useRef(null);
+  const [validationError, setValidationError] = useState(null);
 
   const onClickUpload = () => {
     fileInput.current.click();
@@ -42,6 +47,24 @@ const ProfileAvatar = ({
   };
 
   const onChangeInput = () => {
+    const file = fileInput.current.files[0];
+    if (!file) {
+      return;
+    }
+
+    if (!ALLOWED_FILE_TYPES.includes(file.type)) {
+      setValidationError(messages['profile.profileavatar.error.invalid-type']);
+      form.current.reset();
+      return;
+    }
+
+    if (file.size > MAX_FILE_SIZE_BYTES) {
+      setValidationError(messages['profile.profileavatar.error.too-large']);
+      form.current.reset();
+      return;
+    }
+
+    setValidationError(null);
     onSubmit();
   };
 
@@ -127,6 +150,14 @@ const ProfileAvatar = ({
 
   return (
     <div className="profile-avatar-wrap position-relative">
+      <Toast
+        show={Boolean(validationError)}
+        onClose={() => setValidationError(null)}
+        delay={5000}
+        autohide
+      >
+        {validationError && intl.formatMessage(validationError)}
+      </Toast>
       <div className="profile-avatar rounded-circle bg-light">
         {savePhotoState === 'pending' && renderPending()}
         {renderAvatar()}
