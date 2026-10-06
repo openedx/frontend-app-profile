@@ -21,6 +21,16 @@ const messages = defineMessages({
     defaultMessage: 'Upload photo',
     description: 'Tooltip for upload photo button',
   },
+  'profile.profileavatar.error.filesize': {
+    id: 'profile.profileavatar.error.filesize',
+    defaultMessage: 'The file size limit is 1 MB. Please choose a smaller photo and try again.',
+    description: 'Error shown when uploaded photo exceeds the maximum file size',
+  },
+  'profile.profileavatar.error.filetype': {
+    id: 'profile.profileavatar.error.filetype',
+    defaultMessage: 'Only JPG and PNG image files are supported. Please choose a different photo and try again.',
+    description: 'Error shown when uploaded photo is not a supported file type',
+  },
 });
 
 export default messages;
