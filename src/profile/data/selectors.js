@@ -98,6 +98,10 @@ export const sortedCountriesSelector = createSelector(
     const countryList = getCountryList(locale);
     const userCountry = profileAccount.country;
 
+    if (countriesCodesList.length === 0) {
+      return countryList;
+    }
+
     return countryList.filter(({ code }) => code === userCountry || countriesCodesList.find(x => x === code));
   },
 );
