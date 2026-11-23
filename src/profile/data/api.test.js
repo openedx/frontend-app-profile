@@ -51,7 +51,7 @@ describe('api', () => {
       const result = await getAccount('john');
       expect(result).toMatchObject(mockData);
       expect(mockHttpClient.get).toHaveBeenCalledWith(
-        'http://fake-lms/api/user/v1/accounts/john',
+        'http://fake-lms/api/user/v2/accounts/john/',
       );
     });
   });
@@ -72,6 +72,35 @@ describe('api', () => {
 
       await expect(patchProfile('john', {})).rejects.toMatchObject(error);
     });
+
+    it('should turn the v2 error body into one message per form', async () => {
+      camelCaseObject.mockImplementationOnce(jest.requireActual('@openedx/frontend-base').camelCaseObject);
+      mockHttpClient.patch.mockRejectedValue({
+        response: {
+          data: {
+            errors: {
+              bio: ['Ensure this field has no more than 300 characters.'],
+              'social_links[0].social_link': ['This field is required.'],
+              'social_links[1].platform': ['"myspace" is not a valid choice.'],
+            },
+          },
+        },
+      });
+
+      await expect(patchProfile('john', {})).rejects.toMatchObject({
+        processedData: {
+          fieldErrors: {
+            bio: { userMessage: 'Ensure this field has no more than 300 characters.' },
+            socialLinks: { userMessage: 'This field is required. "myspace" is not a valid choice.' },
+          },
+        },
+      });
+      expect(mockHttpClient.patch).toHaveBeenCalledWith(
+        'http://fake-lms/api/user/v2/accounts/john/',
+        {},
+        { headers: { 'Content-Type': 'application/merge-patch+json' } },
+      );
+    });
   });
 
   describe('postProfilePhoto', () => {
@@ -90,6 +119,26 @@ describe('api', () => {
       mockHttpClient.post.mockRejectedValue(error);
       await expect(postProfilePhoto('john', new FormData())).rejects.toMatchObject(error);
     });
+
+    it('should show the message v2 gives for the file', async () => {
+      mockHttpClient.post.mockRejectedValue({
+        response: {
+          data: {
+            detail: 'file: The file must be smaller than 1 MB in size.',
+            errors: { file: ['The file must be smaller than 1 MB in size.'] },
+          },
+        },
+      });
+
+      await expect(postProfilePhoto('john', new FormData())).rejects.toMatchObject({
+        processedData: { userMessage: 'The file must be smaller than 1 MB in size.' },
+      });
+      expect(mockHttpClient.post).toHaveBeenCalledWith(
+        'http://fake-lms/api/user/v2/accounts/john/profile_image/',
+        expect.any(FormData),
+        { headers: { 'Content-Type': 'multipart/form-data' } },
+      );
+    });
   });
 
   describe('deleteProfilePhoto', () => {
@@ -101,6 +150,7 @@ describe('api', () => {
 
       const result = await deleteProfilePhoto('john');
       expect(result).toEqual({ url: 'deleted.png' });
+      expect(mockHttpClient.delete).toHaveBeenCalledWith('http://fake-lms/api/user/v2/accounts/john/profile_image/');
     });
   });
 
@@ -111,6 +161,7 @@ describe('api', () => {
       const result = await getPreferences('john');
       expect(result).toMatchObject({ pref: 1 });
       expect(camelCaseObject).toHaveBeenCalledWith({ pref: 1 });
+      expect(mockHttpClient.get).toHaveBeenCalledWith('http://fake-lms/api/user/v2/accounts/john/preferences/');
     });
   });
 
@@ -123,6 +174,11 @@ describe('api', () => {
       expect(result).toBe(params);
       expect(snakeCaseObject).toHaveBeenCalledWith(params);
       expect(convertKeyNames).toHaveBeenCalled();
+      expect(mockHttpClient.patch).toHaveBeenCalledWith(
+        'http://fake-lms/api/user/v2/accounts/john/preferences/',
+        params,
+        { headers: { 'Content-Type': 'application/merge-patch+json' } },
+      );
     });
   });
 
@@ -156,6 +212,7 @@ describe('api', () => {
 
       const result = await getCountryList();
       expect(result).toEqual(['US', 'CA']);
+      expect(mockHttpClient.get).toHaveBeenCalledWith('http://fake-lms/api/user/v2/registrations/');
     });
 
     it('should log error and return empty array on failure', async () => {

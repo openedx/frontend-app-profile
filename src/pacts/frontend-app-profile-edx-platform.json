@@ -12,7 +12,7 @@
       ],
       "request": {
         "method": "GET",
-        "path": "/api/user/v1/accounts/staff_not_found"
+        "path": "/api/user/v2/accounts/staff_not_found/"
       },
       "response": {
         "status": 404
@@ -27,7 +27,7 @@
       ],
       "request": {
         "method": "GET",
-        "path": "/api/user/v1/accounts/staff"
+        "path": "/api/user/v2/accounts/staff/"
       },
       "response": {
         "body": {

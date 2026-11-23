@@ -25,6 +25,28 @@ function processAccountData(data) {
   };
 }
 
+// v2 refuses a change with the standard error body, whose `errors` lists the messages for each
+// refused property, or for an item inside one, such as `social_links[0].social_link`. The forms
+// show one message per property, as v1's `field_errors` gave them.
+function processAccountErrors(data) {
+  const messages = {};
+  Object.entries(data.errors || {}).forEach(([name, fieldMessages]) => {
+    const field = name.split(/[[.]/)[0];
+    messages[field] = [...(messages[field] || []), ...fieldMessages];
+  });
+  if (Object.keys(messages).length === 0) {
+    return camelCaseObject(data);
+  }
+  const fieldErrors = Object.fromEntries(
+    Object.entries(messages).map(([field, list]) => [field, { user_message: list.join(' ') }]),
+  );
+  return camelCaseObject({ field_errors: fieldErrors });
+}
+
+function processPhotoErrors(data) {
+  return { userMessage: (data.errors?.file || []).join(' ') || data.detail };
+}
+
 function processAndThrowError(error, errorDataProcessor) {
   const processedError = Object.create(error);
   if (error.response && error.response.data && typeof error.response.data === 'object') {
@@ -36,7 +58,7 @@ function processAndThrowError(error, errorDataProcessor) {
 }
 
 export async function getAccount(username) {
-  const { data } = await getHttpClient().get(`${getSiteConfig().lmsBaseUrl}/api/user/v1/accounts/${username}`);
+  const { data } = await getHttpClient().get(`${getSiteConfig().lmsBaseUrl}/api/user/v2/accounts/${username}/`);
 
   return processAccountData(data);
 }
@@ -45,13 +67,13 @@ export async function patchProfile(username, params) {
   const processedParams = snakeCaseObject(params);
 
   const { data } = await getHttpClient()
-    .patch(`${getSiteConfig().lmsBaseUrl}/api/user/v1/accounts/${username}`, processedParams, {
+    .patch(`${getSiteConfig().lmsBaseUrl}/api/user/v2/accounts/${username}/`, processedParams, {
       headers: {
         'Content-Type': 'application/merge-patch+json',
       },
     })
     .catch((error) => {
-      processAndThrowError(error, processAccountData);
+      processAndThrowError(error, processAccountErrors);
     });
 
   return processAccountData(data);
@@ -60,7 +82,7 @@ export async function patchProfile(username, params) {
 export async function postProfilePhoto(username, formData) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { data } = await getHttpClient().post(
-    `${getSiteConfig().lmsBaseUrl}/api/user/v1/accounts/${username}/image`,
+    `${getSiteConfig().lmsBaseUrl}/api/user/v2/accounts/${username}/profile_image/`,
     formData,
     {
       headers: {
@@ -68,7 +90,7 @@ export async function postProfilePhoto(username, formData) {
       },
     },
   ).catch((error) => {
-    processAndThrowError(error, camelCaseObject);
+    processAndThrowError(error, processPhotoErrors);
   });
 
   // TODO: Someday in the future the POST photo endpoint
@@ -82,7 +104,7 @@ export async function postProfilePhoto(username, formData) {
 
 export async function deleteProfilePhoto(username) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { data } = await getHttpClient().delete(`${getSiteConfig().lmsBaseUrl}/api/user/v1/accounts/${username}/image`);
+  const { data } = await getHttpClient().delete(`${getSiteConfig().lmsBaseUrl}/api/user/v2/accounts/${username}/profile_image/`);
 
   // TODO: Someday in the future the POST photo endpoint
   // will return the new values. At that time we should
@@ -94,7 +116,7 @@ export async function deleteProfilePhoto(username) {
 }
 
 export async function getPreferences(username) {
-  const { data } = await getHttpClient().get(`${getSiteConfig().lmsBaseUrl}/api/user/v1/preferences/${username}`);
+  const { data } = await getHttpClient().get(`${getSiteConfig().lmsBaseUrl}/api/user/v2/accounts/${username}/preferences/`);
 
   return camelCaseObject(data);
 }
@@ -113,7 +135,7 @@ export async function patchPreferences(username, params) {
     visibility_time_zone: 'visibility.time_zone',
   });
 
-  await getHttpClient().patch(`${getSiteConfig().lmsBaseUrl}/api/user/v1/preferences/${username}`, processedParams, {
+  await getHttpClient().patch(`${getSiteConfig().lmsBaseUrl}/api/user/v2/accounts/${username}/preferences/`, processedParams, {
     headers: { 'Content-Type': 'application/merge-patch+json' },
   });
 
@@ -159,7 +181,7 @@ function extractCountryList(data) {
 }
 
 export async function getCountryList() {
-  const url = `${getSiteConfig().lmsBaseUrl}/user_api/v1/account/registration/`;
+  const url = `${getSiteConfig().lmsBaseUrl}/api/user/v2/registrations/`;
 
   try {
     const { data } = await getHttpClient().get(url);

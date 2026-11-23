@@ -41,7 +41,7 @@ describe('getAccount for one username', () => {
       uponReceiving: "A request for user's basic information",
       withRequest: {
         method: 'GET',
-        path: `/api/user/v1/accounts/${username200}`,
+        path: `/api/user/v2/accounts/${username200}/`,
         headers: {},
       },
       willRespondWith: {
@@ -64,7 +64,7 @@ describe('getAccount for one username', () => {
       uponReceiving: "A request for user's basic information",
       withRequest: {
         method: 'GET',
-        path: `/api/user/v1/accounts/${username404}`,
+        path: `/api/user/v2/accounts/${username404}/`,
       },
       willRespondWith: {
         status: 404,
